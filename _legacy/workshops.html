@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshopy &#8212; CTRL Europe</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --bg:#F5F5F3;--bg2:#EEECEA;--dark:#0B1020;--dark2:#1C2440;
+  --mid:#6B7280;--light:rgba(11,16,32,0.08);--light2:rgba(11,16,32,0.04);
+  --accent:#4A7BFF;--accent2:#2D5FE8;--accent-dim:rgba(74,123,255,0.1);
+  --serif:"Geist",system-ui,sans-serif;--mono:"Geist Mono",monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;overflow-x:hidden;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--serif);background:var(--bg);color:var(--dark);overflow-x:hidden;cursor:none}
+#cur{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;display:none}
+.cur-dot{width:4px;height:4px;background:var(--accent);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:transform 0.2s}
+.cur-dot.big{transform:translate(-50%,-50%) scale(7);opacity:0.12}
+@media(hover:hover) and (pointer:fine){#cur{display:block}}
+@media not ((hover:hover) and (pointer:fine)){
+  body{cursor:auto!important}
+  #cur{display:none!important}
+  a,button,.card-hover,.nav-logo,.nav-link,.nav-cta,.lang-btn,.btn-p,.btn-g,.foot-logo,.foot-col a{cursor:auto!important}
+}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 52px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s,border-color 0.4s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(245,245,243,0.94);backdrop-filter:blur(20px);border-color:var(--light)}
+.nav-logo{font-size:15px;font-weight:700;color:var(--dark);text-decoration:none;letter-spacing:-0.3px;display:flex;align-items:center;gap:8px;cursor:none}
+.nav-logo-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0}
+.nav-right{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:13px;font-weight:400;color:var(--mid);text-decoration:none;transition:color 0.2s;cursor:none}
+.nav-link:hover,.nav-link.active{color:var(--dark)}
+.nav-link.active{font-weight:500}
+.nav-cta{font-size:12px;font-weight:600;color:var(--bg);background:var(--dark);padding:8px 18px;text-decoration:none;cursor:none;transition:background 0.2s;letter-spacing:0.3px}
+.nav-cta:hover{background:var(--accent)}
+.lang-btn{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);background:none;border:1px solid var(--light);padding:5px 10px;cursor:none;font-family:var(--serif);transition:all 0.2s}
+.lang-btn:hover{color:var(--dark);border-color:rgba(11,16,32,0.2)}
+.page-hero{padding:160px 52px 100px;min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:1px solid var(--light)}
+.page-label{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:block;line-height:1.5}
+.page-title{font-size:clamp(52px,7vw,110px);font-weight:800;line-height:1;letter-spacing:-3px;color:var(--dark);margin-bottom:24px;margin-top:0}
+.page-sub{font-size:18px;font-weight:300;line-height:1.65;color:var(--mid);max-width:560px}
+.page-sub strong{color:var(--dark);font-weight:500}
+section.sec{padding:120px 52px}
+.inner{max-width:1300px;margin:0 auto}
+.sec-label{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:block;line-height:1.5}
+.sec-title{font-size:clamp(36px,4vw,64px);font-weight:700;line-height:1.1;letter-spacing:-2px;color:var(--dark);margin-bottom:64px;margin-top:0}
+.sec-title em{font-style:italic;font-weight:300;color:var(--mid)}
+.sec-title.light{color:var(--bg)}
+.sec-title.light em{color:rgba(245,245,243,0.3)}
+.btn-p{font-size:13px;font-weight:600;color:var(--bg);background:var(--dark);padding:14px 28px;text-decoration:none;cursor:none;transition:all 0.25s;letter-spacing:0.3px;display:inline-flex;align-items:center;gap:8px;border:none}
+.btn-p:hover{background:var(--accent)}
+.btn-g{font-size:13px;font-weight:500;color:var(--dark);background:transparent;border:1px solid var(--light);padding:14px 28px;text-decoration:none;cursor:none;transition:all 0.25s;letter-spacing:0.3px;display:inline-flex;align-items:center;gap:8px}
+.btn-g:hover{border-color:var(--dark)}
+.btn-g.light{color:var(--bg);border-color:rgba(245,245,243,0.15)}
+.btn-g.light:hover{border-color:rgba(245,245,243,0.4)}
+.ticker-wrap-outer{border-top:1px solid var(--light);border-bottom:1px solid var(--light);overflow:hidden;padding:13px 0;background:var(--bg)}
+.ticker-inner{display:flex;animation:tickerAnim 30s linear infinite;white-space:nowrap}
+.ticker-item{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--mid);padding:0 44px;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:44px}
+.ticker-item::after{content:"\00B7";color:var(--light);font-size:18px}
+.divider{height:1px;background:var(--light);margin:0}
+.rev{opacity:0;transform:translateY(36px);transition:opacity 0.85s var(--ease),transform 0.85s var(--ease)}
+.rev.in{opacity:1;transform:none}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}.d5{transition-delay:0.5s}
+.en{display:none}
+body.EN .cs{display:none}
+body.EN .en{display:block}
+span.en{display:none}
+span.cs{display:inline}
+body.EN span.cs{display:none}
+body.EN span.en{display:inline}
+.page-label,.section-label,.sec-label,
+span.page-label,span.section-label,span.sec-label{display:block}
+span.page-label.cs,span.section-label.cs,span.sec-label.cs{display:block}
+span.page-label.en,span.section-label.en,span.sec-label.en{display:none}
+body.EN span.page-label.cs,body.EN span.section-label.cs,body.EN span.sec-label.cs{display:none}
+body.EN span.page-label.en,body.EN span.section-label.en,body.EN span.sec-label.en{display:block}
+footer{background:var(--dark);padding:72px 52px 48px;border-top:1px solid rgba(245,245,243,0.06)}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:64px;padding-bottom:64px;border-bottom:1px solid rgba(245,245,243,0.06)}
+.foot-logo{font-size:18px;font-weight:700;color:var(--bg);letter-spacing:-0.3px;display:flex;align-items:center;gap:8px;text-decoration:none;cursor:none}
+.foot-logo-dot{width:5px;height:5px;background:var(--accent);border-radius:50%}
+.foot-motto{font-family:var(--mono);font-size:11px;color:rgba(245,245,243,0.2);margin-top:10px;font-style:italic}
+.foot-cols{display:flex;gap:64px}
+.foot-col h4{font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.22);margin-bottom:18px}
+.foot-col a{display:block;font-size:13px;font-weight:300;color:rgba(245,245,243,0.4);text-decoration:none;margin-bottom:11px;transition:color 0.2s;cursor:none}
+.foot-col a:hover{color:var(--bg)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center}
+.foot-copy{font-family:var(--mono);font-size:11px;font-weight:300;color:rgba(245,245,243,0.18)}
+.foot-tag{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.12)}
+@keyframes scrollLine{0%{top:-100%}100%{top:200%}}
+@keyframes tickerAnim{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:1024px){
+  nav,nav.solid{padding:0 24px}
+  .page-hero,section.sec{padding:120px 24px 80px}
+  section.sec{padding:80px 24px}
+  body.EN .nav-right .nav-link:not(.keep),.nav-right .nav-link:not(.keep){display:none}
+  footer{padding:52px 24px 36px}
+  .foot-top{flex-direction:column;gap:40px}
+  .foot-cols{flex-wrap:wrap;gap:32px}
+  .topic-row{grid-template-columns:40px 1fr;gap:20px}
+  .topic-row-tag{display:none}
+  .how-step{grid-template-columns:1fr}
+  .how-num{font-size:24px}
+  .big-counter{font-size:clamp(48px,10vw,80px)}
+  [style*="grid-template-columns:1fr 1fr;gap:100"]{grid-template-columns:1fr!important;gap:48px!important}
+  [style*="grid-template-columns:1fr 1fr;gap:80"]{grid-template-columns:1fr!important;gap:48px!important}
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:1fr 1fr;gap:100px;align-items:start"]{grid-template-columns:1fr!important;gap:48px!important}
+}
+@media(max-width:768px){
+  .about-2col{grid-template-columns:1fr!important;gap:48px!important}
+  .join-grid{grid-template-columns:1fr!important;gap:40px!important}
+  .structure-grid{grid-template-columns:1fr!important;gap:40px!important}
+  section.sec{padding:72px 24px}
+  .page-hero{padding:100px 24px 60px}
+  .narrative-text{font-size:clamp(32px,6vw,72px);padding:0 24px}
+  [style*="grid-template-columns:1fr 1fr;gap:80px"]{grid-template-columns:1fr!important;gap:40px!important}
+}
+@media(max-width:640px){
+  .page-title{font-size:clamp(44px,10vw,72px);letter-spacing:-1.5px}
+}
+@media(max-width:480px){
+  nav,nav.solid{padding:0 16px;height:56px}
+  body.EN .nav-right .nav-link,.nav-right .nav-link{display:none}
+  .nav-cta{padding:8px 14px;font-size:10px}
+  .lang-btn{font-size:10px;padding:4px 8px}
+  .sec{padding:64px 20px}
+  .inner{max-width:100%;padding:0}
+  .page-hero{padding:90px 20px 52px}
+  .page-title{font-size:clamp(34px,9vw,52px)!important;letter-spacing:-1.5px!important}
+  .page-sub{font-size:15px!important}
+  .sec-title{font-size:clamp(26px,7vw,40px)!important;letter-spacing:-1px!important}
+  .topic-row{grid-template-columns:28px 1fr!important;gap:12px!important;padding:20px 0!important}
+  .topic-row-tag{display:none!important}
+  .how-step{grid-template-columns:1fr!important;gap:10px!important}
+  .btn-p,.btn-g{padding:14px 24px!important;font-size:12px!important}
+  .foot-top{flex-direction:column!important;gap:32px!important}
+  .foot-cols{flex-direction:column!important;gap:24px!important}
+  footer{padding:48px 20px 32px!important}
+  .big-counter{font-size:clamp(44px,11vw,64px)!important}
+  .narrative-text{font-size:clamp(26px,7vw,44px)!important;padding:0 20px!important;letter-spacing:-0.5px!important}
+  [style*="padding:36px 28px"]{padding:24px 16px!important}
+  [style*="padding:28px 32px"]{padding:20px 24px!important}
+  .topics-marquee{display:none}
+  .nav-right{gap:12px!important}
+  .ham-btn{padding:10px!important;margin-left:0!important}
+}
+
+/* NARRATIVE */
+#narrative{background:var(--dark);color:var(--bg);position:relative}
+.narrative-sticky{position:relative;width:100%;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:2}
+.narrative-text{font-size:clamp(42px,6vw,88px);font-weight:700;line-height:1.1;letter-spacing:-2px;text-align:center;max-width:900px;padding:0 52px;width:100%}
+.narrative-line{display:block;overflow:hidden;padding-bottom:0.08em}
+.narrative-line > span{display:block;transform:translateY(110%);transition:transform 0.7s cubic-bezier(0.16,1,0.3,1),opacity 0.5s ease}
+.narrative-line > span.is-in{transform:translateY(0)}
+.narrative-text em{font-style:italic;font-weight:300;color:rgba(245,245,243,0.3)}
+.narrative-text .narrative-line > span span{color:var(--accent)}
+/* TOPIC ROW */
+.topic-row{display:grid;grid-template-columns:64px 1fr auto;gap:40px;align-items:center;padding:36px 0;border-bottom:1px solid var(--light);transition:padding-left 0.35s cubic-bezier(0.16,1,0.3,1),background 0.3s;cursor:default}
+.topic-row:first-child{border-top:1px solid var(--light)}
+.topic-row:hover{padding-left:16px}
+.topic-row-num{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--accent)}
+.topic-row-title{font-size:20px;font-weight:600;letter-spacing:-0.4px;color:var(--dark)}
+.topic-row-tag{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);white-space:nowrap}
+.topic-row-desc{grid-column:2;font-size:14px;font-weight:300;line-height:1.7;color:var(--mid);max-width:600px;padding-top:8px}
+/* HOW CARDS */
+.how-step{display:grid;grid-template-columns:52px 1fr;gap:28px;align-items:start;padding:40px 0;border-bottom:1px solid rgba(245,245,243,0.06)}
+.how-step:first-child{border-top:1px solid rgba(245,245,243,0.06)}
+.how-num{font-family:var(--mono);font-size:32px;font-weight:700;color:var(--accent);line-height:1}
+.how-title{font-size:20px;font-weight:600;color:var(--bg);margin-bottom:10px;letter-spacing:-0.3px}
+.how-desc{font-size:14px;font-weight:300;line-height:1.8;color:rgba(245,245,243,0.45)}
+/* COUNTER */
+.big-counter{font-size:clamp(64px,8vw,112px);font-weight:800;letter-spacing:-4px;line-height:1;color:var(--bg)}
+.big-counter span{color:var(--accent)}
+/* MARQUEE TOPICS */
+.topics-marquee{overflow:hidden;padding:20px 0;border-top:1px solid var(--light);border-bottom:1px solid var(--light);background:var(--bg2)}
+.topics-track{display:flex;gap:0;animation:tickerAnim 20s linear infinite;white-space:nowrap}
+.topics-tag{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding:0 32px;flex-shrink:0;display:flex;align-items:center;gap:32px}
+.topics-tag::after{content:"·";color:var(--light);font-size:20px}
+
+.ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:1001;margin-left:8px}
+.ham-btn span{display:block;width:22px;height:2px;background:var(--dark);transition:all 0.3s cubic-bezier(0.16,1,0.3,1);transform-origin:center}
+.ham-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham-btn.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;width:100vw;background:var(--bg);z-index:999;display:flex;flex-direction:column;justify-content:center;padding:52px 32px;transform:translateY(-100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);pointer-events:none}
+.mobile-menu.open{transform:translateY(0);pointer-events:all}
+.mobile-menu a{font-size:clamp(28px,8vw,48px);font-weight:800;letter-spacing:-1.5px;color:var(--dark);text-decoration:none;display:block;padding:12px 0;border-bottom:1px solid var(--light);transition:color 0.2s,padding-left 0.3s cubic-bezier(0.16,1,0.3,1)}
+.mobile-menu a:hover{color:var(--accent);padding-left:10px}
+.mobile-menu .menu-cta{margin-top:28px;display:inline-block;background:var(--dark)!important;color:var(--bg)!important;padding:14px 28px;font-size:13px!important;font-weight:600!important;letter-spacing:2px!important;text-transform:uppercase;border-bottom:none!important;border-radius:0}
+.mobile-menu .menu-lang{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:12px;cursor:pointer;background:none;border:none;padding:0;display:block}
+.mobile-menu .menu-close{position:absolute;top:16px;right:16px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:none;border:none;font-size:22px;color:var(--dark);cursor:pointer;z-index:1001;transition:opacity 0.2s;opacity:0.5;line-height:1;padding:0}
+.mobile-menu .menu-close:hover{opacity:1}
+@media(max-width:768px){.ham-btn{display:flex!important}.nav-link{display:none!important}.nav-cta{display:none!important}}
+@media(min-width:769px){.mobile-menu{display:none!important}}
+</style>
+</head>
+<body>
+<div id="cur"><div class="cur-dot" id="curDot"></div></div>
+
+<nav id="nav">
+  <a href="/" class="nav-logo"><div class="nav-logo-dot"></div>CTRL Europe</a>
+  <div class="nav-right">
+    <a href="/about" class="nav-link keep"><span class="cs">O n&#225;s</span><span class="en">About</span></a>
+    <a href="/articles" class="nav-link keep"><span class="cs">&#268;l&#225;nky</span><span class="en">Articles</span></a>
+    <a href="/summit" class="nav-link">Summit</a>
+    <a href="/workshops" class="nav-link active"><span class="cs">Workshopy</span><span class="en">Workshops</span></a>
+    <a href="/research" class="nav-link"><span class="cs">V&#253;zkum</span><span class="en">Research</span></a>
+    <button class="lang-btn" id="langBtn">EN</button>
+    <a href="/join" class="nav-cta"><span class="cs">Zapojit se</span><span class="en">Join us</span></a>
+    <button class="ham-btn" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+      <button class="menu-close" id="menuClose" aria-label="Close menu">✕</button>
+      <a href="/"><span class="cs">Domů</span><span class="en">Home</span></a>
+      <a href="/about"><span class="cs">O nás</span><span class="en">About</span></a>
+      <a href="/summit"><span class="cs">Summit</span><span class="en">Summit</span></a>
+      <a href="/workshops" style="color:var(--accent)"><span class="cs">Workshopy</span><span class="en">Workshops</span></a>
+      <a href="/research"><span class="cs">Výzkum</span><span class="en">Research</span></a>
+      <a href="/articles"><span class="cs">Články</span><span class="en">Articles</span></a>
+      <a href="/join" class="menu-cta"><span class="cs">Zapojit se &rarr;</span><span class="en">Join us &rarr;</span></a>
+      <button class="menu-lang" id="mobileLangBtn">EN</button>
+</div>
+
+
+<!-- HERO -->
+<section style="min-height:100vh;background:var(--bg);display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 100px;position:relative;overflow:hidden">
+  <div style="position:absolute;top:0;right:0;width:50%;height:100%;background:linear-gradient(135deg,transparent 0%,rgba(74,123,255,0.04) 100%);pointer-events:none"></div>
+  <div style="position:absolute;inset:0;opacity:0.018;background-image:linear-gradient(rgba(11,16,32,1) 1px,transparent 1px),linear-gradient(90deg,rgba(11,16,32,1) 1px,transparent 1px);background-size:52px 52px;pointer-events:none"></div>
+
+  <div style="position:relative;z-index:1;max-width:1100px">
+    <div style="display:flex;align-items:center;gap:20px;margin-bottom:36px;opacity:0;transform:translateY(16px)" id="heroMeta">
+      <span style="font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)">CTRL Europe</span>
+      <span style="width:1px;height:12px;background:var(--light)"></span>
+      <span style="font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid)" class="cs">Vzd&#283;l&#225;v&#225;n&#237; &middot; &#352;koly &middot; Studenti</span>
+      <span style="font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid)" class="en">Education &middot; Schools &middot; Students</span>
+    </div>
+
+    <h1 style="font-size:clamp(72px,10vw,160px);font-weight:800;line-height:0.92;letter-spacing:-5px;color:var(--dark);margin-bottom:48px;opacity:0;transform:translateY(24px)" id="heroTitle">
+      CTRL<br><span style="color:var(--accent)">Workshops</span>
+    </h1>
+
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;opacity:0;transform:translateY(16px)" id="heroBottom">
+      <p style="font-size:18px;font-weight:300;line-height:1.65;color:var(--mid);max-width:480px" class="cs">Modern&#237; workshopy zam&#283;&#345;en&#233; na AI, m&#233;dia, digit&#225;ln&#237; gramotnost a budoucnost vzd&#283;l&#225;v&#225;n&#237;. P&#345;&#237;mo na va&#353;&#237; &#353;kole. Zdarma.</p>
+      <p style="font-size:18px;font-weight:300;line-height:1.65;color:var(--mid);max-width:480px" class="en">Modern workshops focused on AI, media, digital literacy and the future of education. Directly at your school. Free of charge.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0">
+        <a href="/join" class="btn-p cs">Objednat workshop &rarr;</a>
+        <a href="/join" class="btn-p en">Order workshop &rarr;</a>
+        <a href="#topics" class="btn-g cs">T&#233;mata</a>
+        <a href="#topics" class="btn-g en">Topics</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPIC MARQUEE -->
+<div class="topics-marquee">
+  <div class="topics-track" id="topicsTrack">
+    <div class="topics-tag cs">AI a ka&#382;dodenn&#237; &#382;ivot</div>
+    <div class="topics-tag en">AI &amp; Everyday Life</div>
+    <div class="topics-tag cs">Deepfaky</div>
+    <div class="topics-tag en">Deepfakes</div>
+    <div class="topics-tag cs">Medi&#225;ln&#237; gramotnost</div>
+    <div class="topics-tag en">Media Literacy</div>
+    <div class="topics-tag cs">Algoritmy soci&#225;ln&#237;ch s&#237;t&#237;</div>
+    <div class="topics-tag en">Social Media Algorithms</div>
+    <div class="topics-tag cs">Kritick&#233; my&#353;len&#237;</div>
+    <div class="topics-tag en">Critical Thinking</div>
+    <div class="topics-tag cs">Dezinformace</div>
+    <div class="topics-tag en">Misinformation</div>
+    <div class="topics-tag cs">Digit&#225;ln&#237; bezpe&#269;nost</div>
+    <div class="topics-tag en">Digital Safety</div>
+    <div class="topics-tag cs">Budoucnost technologi&#237;</div>
+    <div class="topics-tag en">Future of Technology</div>
+    <div class="topics-tag cs">AI a ka&#382;dodenn&#237; &#382;ivot</div>
+    <div class="topics-tag en">AI &amp; Everyday Life</div>
+    <div class="topics-tag cs">Deepfaky</div>
+    <div class="topics-tag en">Deepfakes</div>
+    <div class="topics-tag cs">Medi&#225;ln&#237; gramotnost</div>
+    <div class="topics-tag en">Media Literacy</div>
+    <div class="topics-tag cs">Algoritmy soci&#225;ln&#237;ch s&#237;t&#237;</div>
+    <div class="topics-tag en">Social Media Algorithms</div>
+    <div class="topics-tag cs">Kritick&#233; my&#353;len&#237;</div>
+    <div class="topics-tag en">Critical Thinking</div>
+    <div class="topics-tag cs">Dezinformace</div>
+    <div class="topics-tag en">Misinformation</div>
+    <div class="topics-tag cs">Digit&#225;ln&#237; bezpe&#269;nost</div>
+    <div class="topics-tag en">Digital Safety</div>
+    <div class="topics-tag cs">Budoucnost technologi&#237;</div>
+    <div class="topics-tag en">Future of Technology</div>
+  </div>
+</div>
+
+<!-- O WORKSHOPECH -->
+<section class="sec" style="background:var(--bg)">
+  <div class="inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start">
+      <div class="rev">
+        <span class="sec-label cs">Pro&#269; workshopy</span>
+        <span class="sec-label en">Why workshops</span>
+        <h2 class="sec-title" style="margin-bottom:32px">
+          <span class="cs">&#352;koly neu&#269;&#237; to nejd&#367;le&#382;it&#283;j&#353;&#237;.</span>
+          <span class="en">Schools don&#39;t teach what matters most.</span>
+        </h2>
+        <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:20px" class="cs">Algoritmy rozhoduj&#237; co vid&#237;me. Deepfaky nahrazuj&#237; realitu. Dezinformace se &#353;&#237;&#345;&#237; rychleji ne&#382; fakty. A vzd&#283;l&#225;vac&#237; syst&#233;m na to nen&#237; p&#345;ipraven&#253;.</p>
+        <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:20px" class="en">Algorithms decide what we see. Deepfakes replace reality. Disinformation spreads faster than facts. And the education system is not prepared for this.</p>
+        <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:20px" class="cs">Osnovy vznikaj&#237; roky dop&#345;edu. Technologie se m&#283;n&#237; ka&#382;d&#253; m&#283;s&#237;c. CTRL Workshops t&#233;to propast p&#345;eklenuje &#8212; prakticky, interaktivn&#283;, bez zbyte&#269;n&#233; teorie.</p>
+        <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:20px" class="en">Curricula are developed years in advance. Technology changes every month. CTRL Workshops bridges this gap &#8212; practically, interactively, without unnecessary theory.</p>
+        <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid)" class="cs"><strong style="color:var(--dark);font-weight:500">Digit&#225;ln&#237; gramotnost u&#382; nen&#237; voliteln&#225;. Je to z&#225;kladn&#237; dovednost pro &#382;ivot v modern&#237; spole&#269;nosti.</strong></p>
+        <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid)" class="en"><strong style="color:var(--dark);font-weight:500">Digital literacy is no longer optional. It is a fundamental skill for life in modern society.</strong></p>
+      </div>
+      <div class="rev d2">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--light)">
+          <div style="background:var(--bg2);padding:36px 28px;text-align:center">
+            <div class="big-counter" style="color:var(--dark)" id="c-min" data-target="90">0</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:8px" class="cs">Minut programu</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:8px" class="en">Minutes of program</div>
+          </div>
+          <div style="background:var(--bg2);padding:36px 28px;text-align:center">
+            <div class="big-counter" style="color:var(--dark)">0<span style="color:var(--accent)"> K&#269;</span></div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:8px" class="cs">Pro partnersk&#233; &#353;koly</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:8px" class="en">For partner schools</div>
+          </div>
+          <div style="background:var(--bg2);padding:36px 28px;text-align:center">
+            <div class="big-counter" id="c-top" data-target="8" style="color:var(--dark)">0</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:8px" class="cs">Hlavn&#237;ch t&#233;mat</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:8px" class="en">Main topics</div>
+          </div>
+          <div style="background:var(--bg2);padding:36px 28px;text-align:center">
+            <div class="big-counter" id="c-age" data-target="20" style="color:var(--dark)">0</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:8px" class="cs">Maxim&#225;ln&#237; v&#283;k</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:8px" class="en">Years max age</div>
+          </div>
+        </div>
+        <div style="margin-top:24px;padding:28px 32px;background:var(--dark);display:flex;align-items:center;gap:20px">
+          <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+          <p style="font-size:14px;font-weight:300;line-height:1.7;color:rgba(245,245,243,0.5)" class="cs">Workshop prob&#237;h&#225; p&#345;&#237;mo na va&#353;&#237; &#353;kole &#8212; &#382;&#225;dn&#233; cestov&#225;n&#237;, &#382;&#225;dn&#233; komplikace.</p>
+          <p style="font-size:14px;font-weight:300;line-height:1.7;color:rgba(245,245,243,0.5)" class="en">The workshop takes place directly at your school &#8212; no travel, no complications.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NARRATIVE SCROLL -->
+
+
+<!-- TOPICS -->
+<section class="sec" id="topics" style="background:var(--bg)">
+  <div class="inner">
+    <span class="sec-label rev cs">T&#233;mata workshopu</span>
+    <span class="sec-label rev en">Workshop topics</span>
+    <h2 class="sec-title rev">
+      <span class="cs">Osm t&#233;mat. <em>Jeden c&#237;l.</em></span>
+      <span class="en">Eight topics. <em>One goal.</em></span>
+    </h2>
+    <div style="margin-top:52px">
+      <div class="topic-row rev d1">
+        <div class="topic-row-num">01</div>
+        <div>
+          <div class="topic-row-title cs">AI a ka&#382;dodenn&#237; &#382;ivot</div>
+          <div class="topic-row-title en">AI &amp; Everyday Life</div>
+          <div class="topic-row-desc cs">Jak um&#283;l&#225; inteligence ovliv&#328;uje ka&#382;dodenn&#237; rozhodov&#225;n&#237;, vzd&#283;l&#225;v&#225;n&#237; a pracovn&#237; trh. Co AI um&#237;, co neum&#237;, a jak si udr&#382;et kritick&#253; pohled.</div>
+          <div class="topic-row-desc en">How artificial intelligence influences everyday decision-making, education and the job market. What AI can do, what it can&#39;t, and how to maintain a critical perspective.</div>
+        </div>
+        <div class="topic-row-tag">AI &amp; Society</div>
+      </div>
+      <div class="topic-row rev d1">
+        <div class="topic-row-num">02</div>
+        <div>
+          <div class="topic-row-title cs">Deepfaky a manipulace</div>
+          <div class="topic-row-title en">Deepfakes &amp; Manipulation</div>
+          <div class="topic-row-desc cs">Jak funguje syntetick&#253; obsah, jak ho rozpoznat a pro&#269; je to dnes z&#225;sadn&#237; dovednost. Praktick&#225; cvi&#269;en&#237; s re&#225;ln&#253;mi p&#345;&#237;klady.</div>
+          <div class="topic-row-desc en">How synthetic content works, how to detect it and why this is an essential skill today. Practical exercises with real-world examples.</div>
+        </div>
+        <div class="topic-row-tag">Media</div>
+      </div>
+      <div class="topic-row rev d2">
+        <div class="topic-row-num">03</div>
+        <div>
+          <div class="topic-row-title cs">Algoritmy soci&#225;ln&#237;ch s&#237;t&#237;</div>
+          <div class="topic-row-title en">Social Media Algorithms</div>
+          <div class="topic-row-desc cs">Jak soci&#225;ln&#237; s&#237;t&#283; rozhoduj&#237; co vid&#237;me, jak funguj&#237; echo chambers a filtra&#269;n&#237; bubliny a jak si udr&#382;et kontrolu nad informan&#269;n&#237;m prost&#345;ed&#237;m.</div>
+          <div class="topic-row-desc en">How social networks decide what we see, how echo chambers and filter bubbles work and how to maintain control over your information environment.</div>
+        </div>
+        <div class="topic-row-tag">Algorithms</div>
+      </div>
+      <div class="topic-row rev d2">
+        <div class="topic-row-num">04</div>
+        <div>
+          <div class="topic-row-title cs">Medi&#225;ln&#237; gramotnost</div>
+          <div class="topic-row-title en">Media Literacy</div>
+          <div class="topic-row-desc cs">Jak &#269;&#237;st m&#233;dia s pochopen&#237;m jak funguj&#237;. Zdroje, redak&#269;n&#237; line, bias &#8212; a metody ov&#283;&#345;ov&#225;n&#237; informac&#237; kter&#233; funguj&#237; v praxi.</div>
+          <div class="topic-row-desc en">How to read media with an understanding of how they work. Sources, editorial lines, bias &#8212; and information verification methods that work in practice.</div>
+        </div>
+        <div class="topic-row-tag">Literacy</div>
+      </div>
+      <div class="topic-row rev d3">
+        <div class="topic-row-num">05</div>
+        <div>
+          <div class="topic-row-title cs">Dezinformace a d&#367;v&#283;ra</div>
+          <div class="topic-row-title en">Misinformation &amp; Trust</div>
+          <div class="topic-row-desc cs">Jak se dezinformace tvo&#345;&#237;, &#353;&#237;&#345;&#237; a jak ovliv&#328;uj&#237; d&#367;v&#283;ru v instituce a v&#283;&#345;ejnou diskuzi. Metody fact-checkingu a kritick&#233;ho my&#353;len&#237;.</div>
+          <div class="topic-row-desc en">How disinformation is created, spread and how it influences trust in institutions and public discourse. Methods of fact-checking and critical thinking.</div>
+        </div>
+        <div class="topic-row-tag">Trust</div>
+      </div>
+      <div class="topic-row rev d3">
+        <div class="topic-row-num">06</div>
+        <div>
+          <div class="topic-row-title cs">Digit&#225;ln&#237; bezpe&#269;nost</div>
+          <div class="topic-row-title en">Digital Safety</div>
+          <div class="topic-row-desc cs">Osobn&#237; data, soukrom&#237; online, kyberbezpe&#269;nost. Co o n&#225;s platformy v&#237; a jak chr&#225;nit sv&#233; digit&#225;ln&#237; identity.</div>
+          <div class="topic-row-desc en">Personal data, online privacy, cybersecurity. What platforms know about us and how to protect your digital identity.</div>
+        </div>
+        <div class="topic-row-tag">Safety</div>
+      </div>
+      <div class="topic-row rev d4">
+        <div class="topic-row-num">07</div>
+        <div>
+          <div class="topic-row-title cs">Kritick&#233; my&#353;len&#237; online</div>
+          <div class="topic-row-title en">Critical Thinking Online</div>
+          <div class="topic-row-desc cs">Systematick&#253; p&#345;&#237;stup k hodnocen&#237; digit&#225;ln&#237;ho obsahu. Jak nep&#345;ij&#237;mat zjednodu&#353;en&#237;, jak ov&#283;&#345;ovat a jak si udr&#382;et autonomn&#237; my&#353;len&#237; v dob&#283; informa&#269;n&#237;ho p&#345;ehlcen&#237;.</div>
+          <div class="topic-row-desc en">A systematic approach to evaluating digital content. How not to accept oversimplification, how to verify and how to maintain autonomous thinking in an age of information overload.</div>
+        </div>
+        <div class="topic-row-tag">Thinking</div>
+      </div>
+      <div class="topic-row rev d4">
+        <div class="topic-row-num">08</div>
+        <div>
+          <div class="topic-row-title cs">Z&#225;vislost na technologi&#237;ch</div>
+          <div class="topic-row-title en">Technology addiction</div>
+          <div class="topic-row-desc cs">V&#283;da za n&#225;vykn&#253;mi aplikacemi nen&#237; n&#225;hoda &#8212; je to design. Dopamin, notifikace, nekon&#269;&#237;c&#237; scroll. Jak funguje a jak z&#237;skat kontrolu zp&#283;t.</div>
+          <div class="topic-row-desc en">The science behind addictive apps is not an accident &#8212; it&#39;s design. Dopamine, notifications, endless scroll. How it works and how to regain control.</div>
+        </div>
+        <div class="topic-row-tag">Wellbeing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JAK TO FUNGUJE -->
+<section class="sec" style="background:var(--dark)">
+  <div class="inner">
+    <span class="sec-label rev cs" style="color:var(--accent)">Form&#225;t</span>
+    <span class="sec-label rev en" style="color:var(--accent)">Format</span>
+    <h2 class="sec-title rev" style="color:var(--bg)">
+      <span class="cs">Jak workshop <em style="color:rgba(245,245,243,0.3)">funguje.</em></span>
+      <span class="en">How the workshop <em style="color:rgba(245,245,243,0.3)">works.</em></span>
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:16px">
+      <div class="rev d1">
+        <div class="how-step">
+          <div class="how-num">01</div>
+          <div>
+            <div class="how-title cs">Interaktivn&#237; &#250;vod</div>
+            <div class="how-title en">Interactive introduction</div>
+            <p class="how-desc cs">Workshop za&#269;&#237;n&#225; kv&#237;zem nebo simulac&#237; &#8212; ne p&#345;edn&#225;&#353;kou. Studenti jsou zapojen&#237; od prvn&#237; minuty.</p>
+            <p class="how-desc en">The workshop starts with a quiz or simulation &#8212; not a lecture. Students are engaged from the first minute.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">02</div>
+          <div>
+            <div class="how-title cs">Re&#225;ln&#233; p&#345;&#237;klady</div>
+            <div class="how-title en">Real-world examples</div>
+            <p class="how-desc cs">Pracujeme s aktu&#225;ln&#237;mi p&#345;&#237;pady z m&#233;di&#237;, soci&#225;ln&#237;ch s&#237;t&#237; a technologick&#233;ho sv&#283;ta &#8212; ne z u&#269;ebnice.</p>
+            <p class="how-desc en">We work with current cases from media, social networks and the technology world &#8212; not from textbooks.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">03</div>
+          <div>
+            <div class="how-title cs">Skupinov&#233; aktivity</div>
+            <div class="how-title en">Group activities</div>
+            <p class="how-desc cs">Studenti pracuj&#237; v t&#253;mech, diskutuj&#237;, argumentuj&#237; a spole&#269;n&#283; &#345;e&#353;&#237; probl&#233;my. &#381;&#225;dn&#233; pasivn&#237; pos&#237;zen&#237;.</p>
+            <p class="how-desc en">Students work in teams, discuss, argue and solve problems together. No passive sitting.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rev d2">
+        <div class="how-step">
+          <div class="how-num">04</div>
+          <div>
+            <div class="how-title cs">Multimedi&#225;ln&#237; prezentace</div>
+            <div class="how-title en">Multimedia presentation</div>
+            <p class="how-desc cs">Vizu&#225;ln&#237;, dynamick&#253;, modern&#237;. Workshop je navr&#382;en pro generaci kter&#225; vyr&#367;stala s chytr&#253;mi telefony.</p>
+            <p class="how-desc en">Visual, dynamic, modern. The workshop is designed for the generation that grew up with smartphones.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">05</div>
+          <div>
+            <div class="how-title cs">Simulace a deepfake test</div>
+            <div class="how-title en">Simulations and deepfake test</div>
+            <p class="how-desc cs">Studenti testuj&#237; sv&#233; schopnosti poznat syntetick&#253; obsah a manipulaci v re&#225;ln&#253;ch uk&#225;zk&#225;ch.</p>
+            <p class="how-desc en">Students test their ability to recognize synthetic content and manipulation in real examples.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">06</div>
+          <div>
+            <div class="how-title cs">Diskuze a z&#225;v&#283;r</div>
+            <div class="how-title en">Discussion and conclusion</div>
+            <p class="how-desc cs">Workshop kon&#269;&#237; &#345;&#237;zenou diskuz&#237; kde studenti sd&#237;lej&#237; n&#225;zory a lektor odpov&#237;d&#225; na ot&#225;zky.</p>
+            <p class="how-desc en">The workshop ends with a structured discussion where students share views and the lecturer answers questions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRO SKOLY -->
+<section class="sec" style="background:var(--bg)">
+  <div class="inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start">
+      <div class="rev">
+        <span class="sec-label cs">Pro &#353;koly</span>
+        <span class="sec-label en">For schools</span>
+        <h2 class="sec-title" style="margin-bottom:32px">
+          <span class="cs">P&#345;ijedeme p&#345;&#237;mo <em>k v&#225;m.</em></span>
+          <span class="en">We come <em>directly to you.</em></span>
+        </h2>
+        <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:20px" class="cs">Workshop p&#345;izp&#367;sobujeme v&#283;ku student&#367;, t&#233;matu kter&#233; &#353;kolu zaj&#237;m&#225; a &#269;asov&#253;m mo&#382;nostem. Jsme flexibiln&#237; &#8212; funguje to pro t&#345;&#237;dy, skupiny i cel&#233; ro&#269;n&#237;ky.</p>
+        <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:20px" class="en">We adapt the workshop to the age of students, the topic the school is interested in and time constraints. We are flexible &#8212; it works for classes, groups and entire year groups.</p>
+        <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid)" class="cs">Pro partnersk&#233; &#353;koly je workshop zcela zdarma. Dlouhodob&#225; spolupr&#225;ce v&#237;tan&#225;.</p>
+        <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid)" class="en">For partner schools the workshop is completely free. Long-term cooperation is welcome.</p>
+        <div style="margin-top:40px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="/join" class="btn-p cs">Objednat workshop &rarr;</a>
+          <a href="/join" class="btn-p en">Order workshop &rarr;</a>
+        </div>
+      </div>
+      <div class="rev d2" style="display:flex;flex-direction:column;gap:1px;background:var(--light)">
+        <div style="background:var(--bg2);padding:32px 36px;display:flex;align-items:center;gap:20px;transition:padding-left 0.3s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.paddingLeft='48px'" onmouseout="this.style.paddingLeft='36px'">
+          <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+          <span style="font-size:15px;font-weight:400;color:var(--dark)" class="cs">Workshopy zdarma pro partnersk&#233; &#353;koly</span>
+          <span style="font-size:15px;font-weight:400;color:var(--dark)" class="en">Free workshops for partner schools</span>
+        </div>
+        <div style="background:var(--bg2);padding:32px 36px;display:flex;align-items:center;gap:20px;transition:padding-left 0.3s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.paddingLeft='48px'" onmouseout="this.style.paddingLeft='36px'">
+          <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+          <span style="font-size:15px;font-weight:400;color:var(--dark)" class="cs">P&#345;izp&#367;soben&#253; obsah pro ka&#382;d&#253; v&#283;k</span>
+          <span style="font-size:15px;font-weight:400;color:var(--dark)" class="en">Adapted content for every age group</span>
+        </div>
+        <div style="background:var(--bg2);padding:32px 36px;display:flex;align-items:center;gap:20px;transition:padding-left 0.3s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.paddingLeft='48px'" onmouseout="this.style.paddingLeft='36px'">
+          <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+          <span style="font-size:15px;font-weight:400;color:var(--dark)" class="cs">Flexibiln&#237; &#269;asov&#253; form&#225;t</span>
+          <span style="font-size:15px;font-weight:400;color:var(--dark)" class="en">Flexible time format</span>
+        </div>
+        <div style="background:var(--bg2);padding:32px 36px;display:flex;align-items:center;gap:20px;transition:padding-left 0.3s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.paddingLeft='48px'" onmouseout="this.style.paddingLeft='36px'">
+          <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+          <span style="font-size:15px;font-weight:400;color:var(--dark)" class="cs">P&#345;&#237;mo na va&#353;&#237; &#353;kole</span>
+          <span style="font-size:15px;font-weight:400;color:var(--dark)" class="en">Directly at your school</span>
+        </div>
+        <div style="background:var(--bg2);padding:32px 36px;display:flex;align-items:center;gap:20px;transition:padding-left 0.3s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.paddingLeft='48px'" onmouseout="this.style.paddingLeft='36px'">
+          <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+          <span style="font-size:15px;font-weight:400;color:var(--dark)" class="cs">Dlouhodob&#225; partnersk&#225; spolupr&#225;ce</span>
+          <span style="font-size:15px;font-weight:400;color:var(--dark)" class="en">Long-term partnership cooperation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEZINARODNI ROZMER -->
+<section class="sec" style="background:var(--bg2)">
+  <div class="inner">
+    <span class="sec-label rev cs">Mezin&#225;rodn&#237; rozm&#283;r</span>
+    <span class="sec-label rev en">International dimension</span>
+    <h2 class="sec-title rev">
+      <span class="cs">St&#345;edn&#237; Evropa jako <em>v&#253;choz&#237; bod.</em></span>
+      <span class="en">Central Europe as <em>the starting point.</em></span>
+    </h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--light);margin-top:16px">
+      <div class="rev d1" style="background:var(--bg2);padding:48px 40px">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px">CEE</div>
+        <h3 style="font-size:20px;font-weight:600;letter-spacing:-0.4px;margin-bottom:14px;color:var(--dark)" class="cs">Region st&#345;edn&#237; Evropy</h3>
+        <h3 style="font-size:20px;font-weight:600;letter-spacing:-0.4px;margin-bottom:14px;color:var(--dark)" class="en">Central European region</h3>
+        <p style="font-size:14px;font-weight:300;line-height:1.75;color:var(--mid)" class="cs">Workshopy jsou p&#345;izp&#367;soben&#233; kontextu st&#345;edn&#237; Evropy &#8212; jej&#237; historii, m&#233;di&#225;ln&#237;mu prost&#345;ed&#237; a digit&#225;ln&#237;m v&#253;zv&#225;m regionu.</p>
+        <p style="font-size:14px;font-weight:300;line-height:1.75;color:var(--mid)" class="en">Workshops are tailored to the Central European context &#8212; its history, media environment and digital challenges of the region.</p>
+      </div>
+      <div class="rev d2" style="background:var(--bg2);padding:48px 40px">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px">Exchange</div>
+        <h3 style="font-size:20px;font-weight:600;letter-spacing:-0.4px;margin-bottom:14px;color:var(--dark)" class="cs">Mezin&#225;rodn&#237; v&#253;m&#283;na ml&#225;de&#382;e</h3>
+        <h3 style="font-size:20px;font-weight:600;letter-spacing:-0.4px;margin-bottom:14px;color:var(--dark)" class="en">Youth exchange</h3>
+        <p style="font-size:14px;font-weight:300;line-height:1.75;color:var(--mid)" class="cs">Propojujeme studenty a &#353;koly z r&#367;zn&#253;ch zem&#237; CEE. Sd&#237;len&#237; zkusenosti a budov&#225;n&#237; mezin&#225;rodn&#237;ch kontakt&#367;.</p>
+        <p style="font-size:14px;font-weight:300;line-height:1.75;color:var(--mid)" class="en">We connect students and schools from different CEE countries. Sharing experiences and building international contacts.</p>
+      </div>
+      <div class="rev d3" style="background:var(--bg2);padding:48px 40px">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px">Vision</div>
+        <h3 style="font-size:20px;font-weight:600;letter-spacing:-0.4px;margin-bottom:14px;color:var(--dark)" class="cs">Evropsk&#253; dialog</h3>
+        <h3 style="font-size:20px;font-weight:600;letter-spacing:-0.4px;margin-bottom:14px;color:var(--dark)" class="en">European dialogue</h3>
+        <p style="font-size:14px;font-weight:300;line-height:1.75;color:var(--mid)" class="cs">C&#237;lem je s&#237;&#357; &#353;kol a organizac&#237;, kter&#233; sd&#237;lej&#237; hodnoty digit&#225;ln&#237; gramotnosti a kritick&#233;ho my&#353;len&#237; napříč Evropou.</p>
+        <p style="font-size:14px;font-weight:300;line-height:1.75;color:var(--mid)" class="en">The goal is a network of schools and organizations that share the values of digital literacy and critical thinking across Europe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIZE -->
+<section class="sec" style="background:var(--dark)">
+  <div class="inner" style="display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center">
+    <div class="rev">
+      <span class="sec-label cs" style="color:var(--accent)">Dlouhodob&#225; vize</span>
+      <span class="sec-label en" style="color:var(--accent)">Long-term vision</span>
+      <h2 style="font-size:clamp(36px,4.5vw,64px);font-weight:700;line-height:1.05;letter-spacing:-2px;color:var(--bg);margin-bottom:28px;margin-top:16px">
+        <span class="cs">S&#237;&#357; &#353;kol. <em style="color:rgba(245,245,243,0.3)">Cel&#225; Evropa.</em></span>
+        <span class="en">A network of schools. <em style="color:rgba(245,245,243,0.3)">All of Europe.</em></span>
+      </h2>
+      <p style="font-size:16px;font-weight:300;line-height:1.85;color:rgba(245,245,243,0.5);margin-bottom:18px" class="cs">Na&#353;&#237;m c&#237;lem je vybudovat dlouhodob&#253; eduka&#269;n&#237; program kter&#253; prop&#225;j&#269;&#237; &#353;koly, studenty a organizace napříč st&#345;edn&#237; Evropou.</p>
+      <p style="font-size:16px;font-weight:300;line-height:1.85;color:rgba(245,245,243,0.5);margin-bottom:18px" class="en">Our goal is to build a long-term educational program that connects schools, students and organizations across Central Europe.</p>
+      <p style="font-size:16px;font-weight:300;line-height:1.85;color:rgba(245,245,243,0.5)" class="cs">Neslibujeme co nem&#367;&#382;eme dodr&#382;et. Stavíme to p&#345;edstaven&#237; krok po kroku &#8212; a ka&#382;d&#253; workshop je dal&#353;&#237;m krokem.</p>
+      <p style="font-size:16px;font-weight:300;line-height:1.85;color:rgba(245,245,243,0.5)" class="en">We don&#39;t promise what we can&#39;t deliver. We build it step by step &#8212; and every workshop is another step.</p>
+    </div>
+    <div class="rev d2" style="display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:center;gap:20px;padding:28px 32px;border:1px solid rgba(245,245,243,0.06);transition:border-color 0.3s" onmouseover="this.style.borderColor='rgba(74,123,255,0.4)'" onmouseout="this.style.borderColor='rgba(245,245,243,0.06)'">
+        <div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent);min-width:60px">01</div>
+        <span style="font-size:14px;font-weight:300;color:rgba(245,245,243,0.55)" class="cs">S&#237;&#357; partnersk&#253;ch &#353;kol v JMK a cel&#233; &#268;R</span>
+        <span style="font-size:14px;font-weight:300;color:rgba(245,245,243,0.55)" class="en">Network of partner schools in JMK and across CZ</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;padding:28px 32px;border:1px solid rgba(245,245,243,0.06);transition:border-color 0.3s" onmouseover="this.style.borderColor='rgba(74,123,255,0.4)'" onmouseout="this.style.borderColor='rgba(245,245,243,0.06)'">
+        <div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent);min-width:60px">02</div>
+        <span style="font-size:14px;font-weight:300;color:rgba(245,245,243,0.55)" class="cs">Rozs&#237;&#345;en&#237; do zem&#237; CEE &#8212; Slovensko, Polsko a d&#225;l</span>
+        <span style="font-size:14px;font-weight:300;color:rgba(245,245,243,0.55)" class="en">Expansion to CEE countries &#8212; Slovakia, Poland and beyond</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;padding:28px 32px;border:1px solid rgba(245,245,243,0.06);transition:border-color 0.3s" onmouseover="this.style.borderColor='rgba(74,123,255,0.4)'" onmouseout="this.style.borderColor='rgba(245,245,243,0.06)'">
+        <div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent);min-width:60px">03</div>
+        <span style="font-size:14px;font-weight:300;color:rgba(245,245,243,0.55)" class="cs">Vzd&#283;l&#225;vac&#237; materi&#225;ly a online platforma</span>
+        <span style="font-size:14px;font-weight:300;color:rgba(245,245,243,0.55)" class="en">Educational materials and online platform</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="background:var(--bg);text-align:center">
+  <div class="inner" style="max-width:700px;margin:0 auto">
+    <h2 style="font-size:clamp(40px,5.5vw,80px);font-weight:800;line-height:1.0;letter-spacing:-3px;color:var(--dark);margin-bottom:24px" class="rev cs">Objednejte workshop.</h2>
+    <h2 style="font-size:clamp(40px,5.5vw,80px);font-weight:800;line-height:1.0;letter-spacing:-3px;color:var(--dark);margin-bottom:24px" class="rev en">Order a workshop.</h2>
+    <p style="font-size:17px;font-weight:300;line-height:1.8;color:var(--mid);margin-bottom:40px" class="rev d1 cs">Pro &#353;koly zdarma. Napi&#353;te n&#225;m zpr&#225;vu a domluv&#237;me se na term&#237;nu.</p>
+    <p style="font-size:17px;font-weight:300;line-height:1.8;color:var(--mid);margin-bottom:40px" class="rev d1 en">Free for schools. Send us a message and we&#39;ll arrange the dates.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap" class="rev d2">
+      <a href="/join" class="btn-p cs">Objednat &rarr;</a>
+      <a href="/join" class="btn-p en">Order &rarr;</a>
+      <a href="mailto:" class="btn-g cs">Napi&#353;te n&#225;m</a>
+      <a href="mailto:" class="btn-g en">Email us</a>
+    </div>
+  </div>
+</section>
+<div class="ticker-wrap-outer"><div class="ticker-inner" id="ticker">
+  <div class="ticker-item cs">CTRL Workshopy</div><div class="ticker-item en">CTRL Workshops</div>
+  <div class="ticker-item cs">AI a ka&#382;dodenn&#237; &#382;ivot</div><div class="ticker-item en">AI &amp; Everyday Life</div>
+  <div class="ticker-item cs">Medi&#225;ln&#237; gramotnost</div><div class="ticker-item en">Media Literacy</div>
+  <div class="ticker-item cs">Deepfaky</div><div class="ticker-item en">Deepfakes</div>
+  <div class="ticker-item cs">Kritick&#233; my&#353;len&#237;</div><div class="ticker-item en">Critical Thinking</div>
+  <div class="ticker-item cs">Digit&#225;ln&#237; bezpe&#269;nost</div><div class="ticker-item en">Digital Safety</div>
+  <div class="ticker-item cs">Zdarma pro &#353;koly</div><div class="ticker-item en">Free for schools</div>
+  <div class="ticker-item">CTRL Europe</div>
+</div></div>
+
+<section id="narrative">
+  <div class="narrative-sticky" id="narrativeSticky">
+    <div class="narrative-text" id="narrativeText">
+      <span class="narrative-line"><span class="cs">Algoritmy <em>formuj&#237; n&#225;zory.</em></span><span class="en">Algorithms <em>shape opinions.</em></span></span>
+    </div>
+    <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;transition:opacity 0.5s;pointer-events:none" id="scrollHint"><div style="font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,245,243,0.4)" class="cs">Scrolluj d&#225;l</div><div style="font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,245,243,0.4)" class="en">Keep scrolling</div><div style="width:1px;height:40px;background:rgba(245,245,243,0.2);position:relative;overflow:hidden"><div style="position:absolute;top:-100%;width:100%;height:100%;background:rgba(245,245,243,0.5);animation:scrollLine 2s ease-in-out infinite"></div></div></div>
+  </div>
+</section>
+
+<footer><div class="inner">
+  <div class="foot-top">
+    <div><a href="/" class="foot-logo"><div class="foot-logo-dot"></div>CTRL Europe</a>
+    <div class="foot-motto"><span class="cs">&bdquo;P&#345;evezm&#283;te kontrolu d&#345;&#237;v, ne&#382; to ud&#283;l&#225; n&#283;kdo jin&#253;.&ldquo;</span><span class="en">&ldquo;Take control before someone else does.&rdquo;</span></div></div>
+    <div class="foot-cols">
+      <div class="foot-col"><h4 class="cs">Projekt</h4><h4 class="en">Project</h4>
+        <a href="/about"><span class="cs">O n&#225;s</span><span class="en">About</span></a>
+        <a href="/summit">Summit 2026</a>
+        <a href="/workshops"><span class="cs">Workshopy</span><span class="en">Workshops</span></a>
+        <a href="/research"><span class="cs">V&#253;zkum</span><span class="en">Research</span></a>
+        <a href="/articles"><span class="cs">&#268;l&#225;nky</span><span class="en">Articles</span></a>
+      </div>
+      <div class="foot-col"><h4 class="cs">Kontakt</h4><h4 class="en">Contact</h4>
+        <a href="mailto:"></a>
+        <a href="/join"><span class="cs">Spolupr&#225;ce</span><span class="en">Cooperate</span></a>
+      </div>
+      <div class="foot-col"><h4 class="cs">Soci&#225;ln&#237; s&#237;t&#283;</h4><h4 class="en">Social</h4>
+        <a href="https://www.instagram.com/ctrleurope/">Instagram</a><a href="#">TikTok</a><a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">&#169; 2025 CTRL Europe Team, z.&#160;s. &#183; Brno</div>
+    <div class="foot-tag">CEE Youth Platform</div>
+  </div>
+</div></footer><script>
+(function() {
+  // Nav
+  const nav = document.getElementById('nav');
+  if (nav) window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 40), { passive: true });
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+  // Reveal
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+  // Lang
+  const lb = document.getElementById('langBtn');
+  const mlb = document.getElementById('mobileLangBtn');
+  if (lb) {
+    let en = false;
+    const toggle = () => { en = !en; document.body.classList.toggle('EN', en); lb.textContent = en ? 'CS' : 'EN'; if (mlb) mlb.textContent = en ? 'CS' : 'EN'; if (en) document.querySelectorAll('.en.rev').forEach(e => e.classList.add('in')); };
+    lb.addEventListener('click', toggle);
+    if (mlb) mlb.addEventListener('click', toggle);
+  }
+  // Ticker clone
+  document.querySelectorAll('.ticker-inner').forEach(t => { t.parentNode.appendChild(t.cloneNode(true)); });
+})();
+
+// Hero entrance
+(function() {
+  setTimeout(function() {
+    var m = document.getElementById('heroMeta');
+    if(m){m.style.transition='opacity 0.8s ease,transform 0.8s cubic-bezier(0.16,1,0.3,1)';m.style.opacity='1';m.style.transform='none';}
+  }, 200);
+  setTimeout(function() {
+    var t = document.getElementById('heroTitle');
+    if(t){t.style.transition='opacity 0.9s ease,transform 1s cubic-bezier(0.16,1,0.3,1)';t.style.opacity='1';t.style.transform='none';}
+  }, 350);
+  setTimeout(function() {
+    var b = document.getElementById('heroBottom');
+    if(b){b.style.transition='opacity 0.9s ease 0.1s,transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s';b.style.opacity='1';b.style.transform='none';}
+  }, 600);
+})();
+
+// Counters
+(function(){
+  const targets = [{id:'c-min',val:90},{id:'c-top',val:8},{id:'c-age',val:20}];
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if(!e.isIntersecting) return;
+      targets.forEach(({id,val}) => {
+        const el = document.getElementById(id);
+        if(!el) return;
+        const dur=1400, start=Date.now();
+        const tick=()=>{
+          const p=Math.min((Date.now()-start)/dur,1);
+          const ease=1-Math.pow(1-p,3);
+          el.textContent=Math.round(ease*val);
+          if(p<1) requestAnimationFrame(tick);
+        };
+        tick();
+      });
+      io.disconnect();
+    });
+  },{threshold:0.3});
+  const el = document.getElementById('c-min');
+  if(el) io.observe(el.closest('.inner') || el);
+})();
+
+// Topics marquee clone
+const tt = document.getElementById('topicsTrack');
+if(tt) tt.parentNode.appendChild(tt.cloneNode(true));
+
+// GSAP
+if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined'){
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Narrative pin + line switching (desktop + mobile)
+  (function() {
+    const lines = [
+      { cs: 'Algoritmy <em>formuj&#237; n&#225;zory.</em>', en: 'Algorithms <em>shape opinions.</em>' },
+      { cs: 'Informace se &#353;&#237;&#345;&#237; <span>okam&#382;it&#283;.</span>', en: 'Information spreads <span>instantly.</span>' },
+      { cs: 'Deepfakes jsou <em>nerozeznateln&#233; od reality.</em>', en: 'Deepfakes are <em>indistinguishable from reality.</em>' },
+      { cs: 'Digit&#225;ln&#237; gramotnost <span>u&#382; nen&#237; voliteln&#225;.</span>', en: 'Digital literacy <span>is no longer optional.</span>' },
+      { cs: '<span>Vzd&#283;l&#225;v&#225;n&#237; mus&#237;</span> reagovat.', en: '<span>Education must</span> evolve.' }
+    ];
+    let current = -1;
+    let narrativeST = null;
+    const narrativeSection = document.getElementById('narrative');
+    const narrativeSticky = document.getElementById('narrativeSticky');
+    const textEl = document.getElementById('narrativeText');
+    const scrollHint = document.getElementById('scrollHint');
+    if (!narrativeSection || !narrativeSticky || !textEl) return;
+
+    function viewportH() {
+      return Math.round(window.visualViewport ? window.visualViewport.height : window.innerHeight);
+    }
+
+    function setStickyHeight() {
+      narrativeSticky.style.height = viewportH() + 'px';
+    }
+
+    function setLine(idx) {
+      if (idx === current || idx < 0 || idx >= lines.length) return;
+      current = idx;
+      const line = lines[idx];
+      textEl.innerHTML = `
+        <span class="narrative-line cs"><span>${line.cs}</span></span>
+        <span class="narrative-line en"><span>${line.en}</span></span>
+      `;
+      requestAnimationFrame(() => {
+        textEl.querySelectorAll('.narrative-line > span').forEach(s => s.classList.add('is-in'));
+      });
+      if (scrollHint) scrollHint.style.opacity = idx < lines.length - 1 ? '1' : '0';
+    }
+
+    function refreshNarrative() {
+      setStickyHeight();
+      ScrollTrigger.refresh();
+    }
+
+    function buildNarrative() {
+      setStickyHeight();
+      if (!narrativeST) {
+        narrativeST = ScrollTrigger.create({
+          id: 'narrativePin',
+          trigger: narrativeSection,
+          start: 'top top',
+          end: '+=375%',
+          pin: narrativeSticky,
+          pinSpacing: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onEnter: () => { if (scrollHint) scrollHint.style.opacity = '1'; },
+          onLeave: () => { if (scrollHint) scrollHint.style.opacity = '0'; },
+          onEnterBack: () => { if (scrollHint) scrollHint.style.opacity = '1'; },
+          onLeaveBack: () => { if (scrollHint) scrollHint.style.opacity = '0'; },
+          onUpdate: (self) => {
+            const idx = Math.min(lines.length - 1, Math.floor(self.progress * lines.length));
+            setLine(idx);
+          }
+        });
+        setLine(0);
+      }
+      ScrollTrigger.refresh();
+    }
+
+    buildNarrative();
+    window.addEventListener('resize', refreshNarrative, { passive: true });
+    window.addEventListener('load', refreshNarrative);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', refreshNarrative, { passive: true });
+    }
+  })();
+
+  gsap.fromTo('.topic-row', {x:-20,opacity:0},{
+    x:0,opacity:1,stagger:0.06,duration:0.7,ease:'power2.out',
+    scrollTrigger:{trigger:'#topics',start:'top 80%'}
+  });
+  gsap.fromTo('.how-step',{y:40,opacity:0},{
+    y:0,opacity:1,stagger:0.1,duration:0.8,ease:'power3.out',
+    scrollTrigger:{trigger:'.how-step',start:'top 80%'}
+  });
+}
+
+(function(){
+  var btn=document.getElementById('hamBtn');
+  var menu=document.getElementById('mobileMenu');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(){
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+  const closeBtn=document.getElementById('menuClose');
+  if(closeBtn) closeBtn.addEventListener('click',function(){
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow='';
+  });
+})();
+</script>
+<script src="router.js"></script>
+</body>
+</html>

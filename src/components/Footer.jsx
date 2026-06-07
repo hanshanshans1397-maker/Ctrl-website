@@ -1,0 +1,105 @@
+import { Link } from 'react-router-dom';
+
+function IconInstagram() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[14px] h-[14px] shrink-0">
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function IconTikTok() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[14px] h-[14px] shrink-0">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.89a8.18 8.18 0 0 0 4.78 1.52V7c-.01 0-.4-.06-1.01-.31z" />
+    </svg>
+  );
+}
+
+function IconLinkedIn() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[14px] h-[14px] shrink-0">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer className="border-t border-[rgba(245,245,243,0.06)] bg-dark px-[52px] pt-10 pb-7 max-lg:px-6 max-lg:pt-9 max-lg:pb-6 max-[480px]:px-5 max-[480px]:pt-7 max-[480px]:pb-5">
+      <div className="mx-auto max-w-[1300px]">
+        <div className="mb-8 flex items-start justify-between border-b border-[rgba(245,245,243,0.06)] pb-8 max-lg:mb-6 max-lg:flex-col max-lg:gap-7 max-lg:pb-6 max-[480px]:mb-5 max-[480px]:gap-5 max-[480px]:pb-5">
+          <div>
+            <Link to="/" className="flex items-baseline gap-[0.1em] no-underline text-[clamp(22px,2.5vw,30px)] font-extrabold leading-[0.95] tracking-[-1px] text-bg">
+              <img src="/ctrl_logo_cropped.png" alt="CTRL" className="h-[1cap] w-auto" />
+              <span>Europe</span>
+            </Link>
+            <div className="mt-3 font-mono text-[11px] text-[rgba(245,245,243,0.5)] italic">
+              "Take control before someone else does."
+            </div>
+          </div>
+          <div className="flex gap-14 max-lg:flex-wrap max-lg:gap-8 max-[480px]:flex-col max-[480px]:gap-5">
+            <div>
+              <h4 className="cs mb-3.5 font-mono text-[10px] font-normal tracking-[2px] text-[rgba(245,245,243,0.22)] uppercase">Projekt</h4>
+              <h4 className="en mb-3.5 font-mono text-[10px] font-normal tracking-[2px] text-[rgba(245,245,243,0.22)] uppercase">Project</h4>
+              <Link to="/about" className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg">
+                <span className="cs">O nás</span><span className="en">About</span>
+              </Link>
+              <Link to="/summit" className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg">
+                Summit 2026
+              </Link>
+              <Link to="/workshops" className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg">
+                <span className="cs">Workshopy</span><span className="en">Workshops</span>
+              </Link>
+              <Link to="/research" className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg">
+                <span className="cs">Výzkum</span><span className="en">Research</span>
+              </Link>
+              <Link to="/articles" className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg">
+                <span className="cs">Články</span><span className="en">Articles</span>
+              </Link>
+            </div>
+            <div>
+              <h4 className="cs mb-3.5 font-mono text-[10px] font-normal tracking-[2px] text-[rgba(245,245,243,0.22)] uppercase">Kontakt</h4>
+              <h4 className="en mb-3.5 font-mono text-[10px] font-normal tracking-[2px] text-[rgba(245,245,243,0.22)] uppercase">Contact</h4>
+              <Link to="/join" className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg">
+                <span className="cs">Spolupráce</span><span className="en">Cooperate</span>
+              </Link>
+            </div>
+            <div>
+              <h4 className="cs mb-3.5 font-mono text-[10px] font-normal tracking-[2px] text-[rgba(245,245,243,0.22)] uppercase">Sociální sítě</h4>
+              <h4 className="en mb-3.5 font-mono text-[10px] font-normal tracking-[2px] text-[rgba(245,245,243,0.22)] uppercase">Social</h4>
+              <a href="https://www.instagram.com/ctrleurope/" className="mb-2 flex items-center gap-2 text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg">
+                <IconInstagram />
+                Instagram
+              </a>
+              <a href="#" className="mb-2 flex items-center gap-2 text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg">
+                <IconTikTok />
+                TikTok
+              </a>
+              <a href="#" className="mb-2 flex items-center gap-2 text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg">
+                <IconLinkedIn />
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center justify-between gap-4 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-2">
+          <div className="font-mono text-[11px] font-light text-[rgba(245,245,243,0.3)]">
+            © 2026 CTRL Europe | Website by{' '}
+            <a href="https://hiro.dankoweby.cz" target="_blank" rel="noopener noreferrer" className="text-[rgba(245,245,243,0.55)] hover:text-bg transition-colors duration-200 no-underline">Sebastián Danko</a>
+            {' & '}
+            <a href="https://github.com/crhaxx" target="_blank" rel="noopener noreferrer" className="text-[rgba(245,245,243,0.55)] hover:text-bg transition-colors duration-200 no-underline">Nikola Crhák</a>
+            {' (CTRL Team)'}
+          </div>
+          <div className="font-mono text-[10px] tracking-[2px] text-[rgba(245,245,243,0.12)] uppercase shrink-0">
+            CEE Youth Platform
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

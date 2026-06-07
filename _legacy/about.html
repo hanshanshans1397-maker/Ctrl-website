@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O n&#225;s &#8212; CTRL Europe</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --bg:#F5F5F3;--bg2:#EEECEA;--dark:#0B1020;--dark2:#1C2440;
+  --mid:#6B7280;--light:rgba(11,16,32,0.08);--light2:rgba(11,16,32,0.04);
+  --accent:#4A7BFF;--accent2:#2D5FE8;--accent-dim:rgba(74,123,255,0.1);
+  --serif:"Geist",system-ui,sans-serif;--mono:"Geist Mono",monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;overflow-x:hidden;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--serif);background:var(--bg);color:var(--dark);overflow-x:hidden;cursor:none}
+#cur{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;display:none}
+.cur-dot{width:4px;height:4px;background:var(--accent);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:transform 0.2s}
+.cur-dot.big{transform:translate(-50%,-50%) scale(7);opacity:0.12}
+@media(hover:hover) and (pointer:fine){#cur{display:block}}
+@media not ((hover:hover) and (pointer:fine)){
+  body{cursor:auto!important}
+  #cur{display:none!important}
+  a,button,.card-hover,.nav-logo,.nav-link,.nav-cta,.lang-btn,.btn-p,.btn-g,.foot-logo,.foot-col a{cursor:auto!important}
+}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 52px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s,border-color 0.4s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(245,245,243,0.94);backdrop-filter:blur(20px);border-color:var(--light)}
+.nav-logo{font-size:15px;font-weight:700;color:var(--dark);text-decoration:none;letter-spacing:-0.3px;display:flex;align-items:center;gap:8px;cursor:none}
+.nav-logo-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0}
+.nav-right{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:13px;font-weight:400;color:var(--mid);text-decoration:none;transition:color 0.2s;cursor:none}
+.nav-link:hover,.nav-link.active{color:var(--dark)}
+.nav-link.active{font-weight:500}
+.nav-cta{font-size:12px;font-weight:600;color:var(--bg);background:var(--dark);padding:8px 18px;text-decoration:none;cursor:none;transition:background 0.2s;letter-spacing:0.3px}
+.nav-cta:hover{background:var(--accent)}
+.lang-btn{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);background:none;border:1px solid var(--light);padding:5px 10px;cursor:none;font-family:var(--serif);transition:all 0.2s}
+.lang-btn:hover{color:var(--dark);border-color:rgba(11,16,32,0.2)}
+.page-hero{padding:160px 52px 100px;min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:1px solid var(--light)}
+.page-label{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:block;line-height:1.5}
+.page-title{font-size:clamp(52px,7vw,110px);font-weight:800;line-height:1;letter-spacing:-3px;color:var(--dark);margin-bottom:24px;margin-top:0}
+.page-sub{font-size:18px;font-weight:300;line-height:1.65;color:var(--mid);max-width:560px}
+.page-sub strong{color:var(--dark);font-weight:500}
+section.sec{padding:120px 52px}
+.inner{max-width:1300px;margin:0 auto}
+.sec-label{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:block;line-height:1.5}
+.sec-title{font-size:clamp(36px,4vw,64px);font-weight:700;line-height:1.1;letter-spacing:-2px;color:var(--dark);margin-bottom:64px;margin-top:0}
+.sec-title em{font-style:italic;font-weight:300;color:var(--mid)}
+.sec-title.light{color:var(--bg)}
+.sec-title.light em{color:rgba(245,245,243,0.3)}
+.btn-p{font-size:13px;font-weight:600;color:var(--bg);background:var(--dark);padding:14px 28px;text-decoration:none;cursor:none;transition:all 0.25s;letter-spacing:0.3px;display:inline-flex;align-items:center;gap:8px;border:none}
+.btn-p:hover{background:var(--accent)}
+.btn-g{font-size:13px;font-weight:500;color:var(--dark);background:transparent;border:1px solid var(--light);padding:14px 28px;text-decoration:none;cursor:none;transition:all 0.25s;letter-spacing:0.3px;display:inline-flex;align-items:center;gap:8px}
+.btn-g:hover{border-color:var(--dark)}
+.btn-g.light{color:var(--bg);border-color:rgba(245,245,243,0.15)}
+.btn-g.light:hover{border-color:rgba(245,245,243,0.4)}
+.ticker-wrap-outer{border-top:1px solid var(--light);border-bottom:1px solid var(--light);overflow:hidden;padding:13px 0;background:var(--bg)}
+.ticker-inner{display:flex;animation:tickerAnim 30s linear infinite;white-space:nowrap}
+.ticker-item{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--mid);padding:0 44px;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:44px}
+.ticker-item::after{content:"\00B7";color:var(--light);font-size:18px}
+.divider{height:1px;background:var(--light);margin:0}
+.rev{opacity:0;transform:translateY(36px);transition:opacity 0.85s var(--ease),transform 0.85s var(--ease)}
+.rev.in{opacity:1;transform:none}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}.d5{transition-delay:0.5s}
+.en{display:none}
+body.EN .cs{display:none}
+body.EN .en{display:block}
+span.en{display:none}
+span.cs{display:inline}
+body.EN span.cs{display:none}
+body.EN span.en{display:inline}
+.page-label,.section-label,.sec-label,
+span.page-label,span.section-label,span.sec-label{display:block}
+span.page-label.cs,span.section-label.cs,span.sec-label.cs{display:block}
+span.page-label.en,span.section-label.en,span.sec-label.en{display:none}
+body.EN span.page-label.cs,body.EN span.section-label.cs,body.EN span.sec-label.cs{display:none}
+body.EN span.page-label.en,body.EN span.section-label.en,body.EN span.sec-label.en{display:block}
+footer{background:var(--dark);padding:72px 52px 48px;border-top:1px solid rgba(245,245,243,0.06)}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:64px;padding-bottom:64px;border-bottom:1px solid rgba(245,245,243,0.06)}
+.foot-logo{font-size:18px;font-weight:700;color:var(--bg);letter-spacing:-0.3px;display:flex;align-items:center;gap:8px;text-decoration:none;cursor:none}
+.foot-logo-dot{width:5px;height:5px;background:var(--accent);border-radius:50%}
+.foot-motto{font-family:var(--mono);font-size:11px;color:rgba(245,245,243,0.2);margin-top:10px;font-style:italic}
+.foot-cols{display:flex;gap:64px}
+.foot-col h4{font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.22);margin-bottom:18px}
+.foot-col a{display:block;font-size:13px;font-weight:300;color:rgba(245,245,243,0.4);text-decoration:none;margin-bottom:11px;transition:color 0.2s;cursor:none}
+.foot-col a:hover{color:var(--bg)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center}
+.foot-copy{font-family:var(--mono);font-size:11px;font-weight:300;color:rgba(245,245,243,0.18)}
+.foot-tag{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.12)}
+@keyframes scrollLine{0%{top:-100%}100%{top:200%}}
+@keyframes tickerAnim{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:1024px){
+  nav,nav.solid{padding:0 24px}
+  .page-hero,section.sec{padding:120px 24px 80px}
+  section.sec{padding:80px 24px}
+  body.EN .nav-right .nav-link:not(.keep),.nav-right .nav-link:not(.keep){display:none}
+  footer{padding:52px 24px 36px}
+  .foot-top{flex-direction:column;gap:40px}
+  .foot-cols{flex-wrap:wrap;gap:32px}
+  .val-grid{grid-template-columns:1fr 1fr!important}
+  .about-2col{grid-template-columns:1fr!important}
+}
+@media(max-width:768px){
+  .about-2col{grid-template-columns:1fr!important;gap:48px!important}
+  .join-grid{grid-template-columns:1fr!important;gap:40px!important}
+  .structure-grid{grid-template-columns:1fr!important;gap:40px!important}
+  section.sec{padding:72px 24px}
+  .page-hero{padding:100px 24px 60px}
+}
+@media(max-width:640px){
+  .page-title{font-size:clamp(44px,10vw,72px);letter-spacing:-1.5px}
+  .val-grid{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:120px"]{grid-template-columns:1fr!important;gap:24px!important}
+  .inner{padding:0 20px}
+  .sec{padding:60px 0}
+  [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:480px){
+  nav,nav.solid{padding:0 16px;height:56px}
+  body.EN .nav-right .nav-link,.nav-right .nav-link{display:none}
+  .nav-cta{padding:8px 14px;font-size:10px}
+  .lang-btn{font-size:10px;padding:4px 8px}
+  .sec{padding:64px 20px}
+  .inner{max-width:100%;padding:0}
+  .page-hero{padding:90px 20px 52px}
+  .page-title{font-size:clamp(34px,9vw,52px)!important;letter-spacing:-1.5px!important}
+  .page-sub{font-size:15px!important}
+  .sec-title{font-size:clamp(26px,7vw,40px)!important;letter-spacing:-1px!important}
+  .about-2col{grid-template-columns:1fr!important;gap:40px!important}
+  .join-grid{grid-template-columns:1fr!important;gap:32px!important}
+  .structure-grid{grid-template-columns:1fr!important;gap:32px!important}
+  .btn-p,.btn-g{padding:14px 24px!important;font-size:12px!important}
+  .foot-top{flex-direction:column!important;gap:32px!important}
+  .foot-cols{flex-direction:column!important;gap:24px!important}
+  footer{padding:48px 20px 32px!important}
+  [style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr 1fr!important}
+  .val-card{padding:32px 24px!important}
+  .nav-right{gap:12px!important}
+  .ham-btn{padding:10px!important;margin-left:0!important}
+}
+
+.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--light);margin-top:64px}
+.val-card{background:var(--bg2);padding:44px 36px}
+.val-title{font-size:17px;font-weight:600;letter-spacing:-0.3px;margin-bottom:12px;color:var(--dark)}
+.val-desc{font-size:14px;font-weight:300;line-height:1.75;color:var(--mid)}
+
+.ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:1001;margin-left:8px}
+.ham-btn span{display:block;width:22px;height:2px;background:var(--dark);transition:all 0.3s cubic-bezier(0.16,1,0.3,1);transform-origin:center}
+.ham-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham-btn.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;width:100vw;background:var(--bg);z-index:999;display:flex;flex-direction:column;justify-content:center;padding:52px 32px;transform:translateY(-100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);pointer-events:none}
+.mobile-menu.open{transform:translateY(0);pointer-events:all}
+.mobile-menu a{font-size:clamp(28px,8vw,48px);font-weight:800;letter-spacing:-1.5px;color:var(--dark);text-decoration:none;display:block;padding:12px 0;border-bottom:1px solid var(--light);transition:color 0.2s,padding-left 0.3s cubic-bezier(0.16,1,0.3,1)}
+.mobile-menu a:hover{color:var(--accent);padding-left:10px}
+.mobile-menu .menu-cta{margin-top:28px;display:inline-block;background:var(--dark)!important;color:var(--bg)!important;padding:14px 28px;font-size:13px!important;font-weight:600!important;letter-spacing:2px!important;text-transform:uppercase;border-bottom:none!important;border-radius:0}
+.mobile-menu .menu-lang{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:12px;cursor:pointer;background:none;border:none;padding:0;display:block}
+.mobile-menu .menu-close{position:absolute;top:16px;right:16px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:none;border:none;font-size:22px;color:var(--dark);cursor:pointer;z-index:1001;transition:opacity 0.2s;opacity:0.5;line-height:1;padding:0}
+.mobile-menu .menu-close:hover{opacity:1}
+@media(max-width:768px){.ham-btn{display:flex!important}.nav-link{display:none!important}.nav-cta{display:none!important}}
+@media(min-width:769px){.mobile-menu{display:none!important}}
+
+@media(max-width:640px){
+  .page-title{font-size:clamp(44px,10vw,72px);letter-spacing:-1.5px}
+}
+
+.prose p{font-size:16px;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:20px}
+.prose p strong{color:var(--dark);font-weight:500}
+.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--light);margin-top:64px}
+.val-card{background:var(--bg2);padding:44px 36px}
+.val-title{font-size:17px;font-weight:600;letter-spacing:-0.3px;margin-bottom:12px;color:var(--dark)}
+.val-desc{font-size:14px;font-weight:300;line-height:1.75;color:var(--mid)}
+@media(max-width:1024px){
+  .val-grid{grid-template-columns:1fr 1fr}
+  .about-2col{grid-template-columns:1fr !important}
+}
+@media(max-width:640px){
+  .val-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:768px){
+  .about-2col{grid-template-columns:1fr!important;gap:48px!important}
+  .join-grid{grid-template-columns:1fr!important;gap:40px!important}
+  .structure-grid{grid-template-columns:1fr!important;gap:40px!important}
+}
+@media(max-width:480px){
+  nav,nav.solid{padding:0 16px;height:56px}
+  body.EN .nav-right .nav-link,.nav-right .nav-link{display:none}
+  .nav-cta{padding:8px 14px;font-size:10px}
+  .lang-btn{font-size:10px;padding:4px 8px}
+  .sec{padding:64px 20px}
+  .inner{max-width:100%;padding:0}
+  #hero{padding:0 20px 72px}
+  .hero-title{font-size:clamp(40px,11vw,60px)!important;letter-spacing:-1.5px!important;line-height:0.95!important}
+  .hero-bottom{flex-direction:column!important;align-items:flex-start!important;gap:20px!important}
+  .hero-scroll{display:none}
+  .page-hero{padding:90px 20px 52px}
+  .page-title{font-size:clamp(34px,9vw,52px)!important;letter-spacing:-1.5px!important}
+  .page-sub{font-size:15px!important}
+  .sec-title{font-size:clamp(26px,7vw,40px)!important;letter-spacing:-1px!important}
+  .what-grid{grid-template-columns:1fr!important;gap:2px!important}
+  .numbers-grid{grid-template-columns:1fr 1fr!important;gap:1px!important}
+  .about-2col{grid-template-columns:1fr!important;gap:40px!important}
+  .join-grid{grid-template-columns:1fr!important;gap:32px!important}
+  .structure-grid{grid-template-columns:1fr!important;gap:32px!important}
+  .board-grid{grid-template-columns:1fr 1fr!important;gap:1px!important}
+  .narrative-text{font-size:clamp(26px,7vw,44px)!important;padding:0 20px!important;letter-spacing:-0.5px!important}
+  .topic-row{grid-template-columns:28px 1fr!important;gap:12px!important;padding:20px 0!important}
+  .topic-row-tag{display:none!important}
+  .how-step{grid-template-columns:1fr!important;gap:10px!important}
+  .btn-p,.btn-g{padding:12px 20px!important;font-size:10px!important}
+  .foot-top{flex-direction:column!important;gap:32px!important}
+  .foot-cols{flex-direction:column!important;gap:24px!important}
+  .fi-wrap input,.fi-wrap select,.fi-wrap textarea{font-size:16px!important}
+  .submit-btn,.fsub{width:100%!important;text-align:center!important}
+  .big-counter{font-size:clamp(44px,11vw,64px)!important}
+  footer{padding:48px 20px 32px!important}
+  .topics-marquee{display:none}
+}
+
+.ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:1001;margin-left:8px}
+.ham-btn span{display:block;width:22px;height:2px;background:var(--dark);transition:all 0.3s cubic-bezier(0.16,1,0.3,1);transform-origin:center}
+.ham-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham-btn.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;width:100vw;background:var(--bg);z-index:999;display:flex;flex-direction:column;justify-content:center;padding:52px 32px;transform:translateY(-100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);pointer-events:none}
+.mobile-menu.open{transform:translateY(0);pointer-events:all}
+.mobile-menu a{font-size:clamp(28px,8vw,48px);font-weight:800;letter-spacing:-1.5px;color:var(--dark);text-decoration:none;display:block;padding:12px 0;border-bottom:1px solid var(--light);transition:color 0.2s,padding-left 0.3s cubic-bezier(0.16,1,0.3,1)}
+.mobile-menu a:hover{color:var(--accent);padding-left:10px}
+.mobile-menu .menu-cta{margin-top:28px;display:inline-block;background:var(--dark)!important;color:var(--bg)!important;padding:14px 28px;font-size:13px!important;font-weight:600!important;letter-spacing:2px!important;text-transform:uppercase;border-bottom:none!important;border-radius:0}
+.mobile-menu .menu-lang{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:12px;cursor:pointer;background:none;border:none;padding:0;display:block}
+.mobile-menu .menu-close{position:absolute;top:16px;right:16px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:none;border:none;font-size:22px;color:var(--dark);cursor:pointer;z-index:1001;transition:opacity 0.2s;opacity:0.5;line-height:1;padding:0}
+.mobile-menu .menu-close:hover{opacity:1}
+@media(max-width:768px){.ham-btn{display:flex!important}.nav-link{display:none!important}.nav-cta{display:none!important}}
+@media(min-width:769px){.mobile-menu{display:none!important}}
+
+@media(max-width:640px){
+  [style*="grid-template-columns:120px"]{grid-template-columns:1fr!important;gap:24px!important}
+  [style*="grid-template-columns:1fr 1fr;gap:100"]{grid-template-columns:1fr!important;gap:40px!important}
+  [style*="grid-template-columns:1fr 1fr;gap:80"]{grid-template-columns:1fr!important;gap:40px!important}
+  [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr 1fr!important}
+  .inner{padding:0 20px}
+  .sec{padding:60px 0}
+}
+</style>
+</head>
+<body>
+<div id="cur"><div class="cur-dot" id="curDot"></div></div>
+
+<nav id="nav">
+  <a href="/" class="nav-logo"><div class="nav-logo-dot"></div>CTRL Europe</a>
+  <div class="nav-right">
+    <a href="/about" class="nav-link keep active"><span class="cs">O n&#225;s</span><span class="en">About</span></a>
+    <a href="/articles" class="nav-link keep"><span class="cs">&#268;l&#225;nky</span><span class="en">Articles</span></a>
+    <a href="/summit" class="nav-link">Summit</a>
+    <a href="/workshops" class="nav-link"><span class="cs">Workshopy</span><span class="en">Workshops</span></a>
+    <a href="/research" class="nav-link"><span class="cs">V&#253;zkum</span><span class="en">Research</span></a>
+    <button class="lang-btn" id="langBtn">EN</button>
+    <a href="/join" class="nav-cta"><span class="cs">Zapojit se</span><span class="en">Join us</span></a>
+    <button class="ham-btn" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+      <button class="menu-close" id="menuClose" aria-label="Close menu">✕</button>
+      <a href="/"><span class="cs">Domů</span><span class="en">Home</span></a>
+      <a href="/about" style="color:var(--accent)"><span class="cs">O nás</span><span class="en">About</span></a>
+      <a href="/summit"><span class="cs">Summit</span><span class="en">Summit</span></a>
+      <a href="/workshops"><span class="cs">Workshopy</span><span class="en">Workshops</span></a>
+      <a href="/research"><span class="cs">Výzkum</span><span class="en">Research</span></a>
+      <a href="/articles"><span class="cs">Články</span><span class="en">Articles</span></a>
+      <a href="/join" class="menu-cta"><span class="cs">Zapojit se &rarr;</span><span class="en">Join us &rarr;</span></a>
+      <button class="menu-lang" id="mobileLangBtn">EN</button>
+</div>
+
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="inner">
+    <span class="page-label cs">CTRL Europe</span>
+    <span class="page-label en">CTRL Europe</span>
+    <h1 class="page-title cs">O n&#225;s</h1>
+    <h1 class="page-title en">About us</h1>
+    <p class="page-sub cs">Nez&#225;visl&#225; youth platforma pro st&#345;edn&#237; Evropu. Vzd&#283;l&#225;v&#225;me, propojujeme a budujeme digit&#225;ln&#237; odolnost nov&#233; generace.</p>
+    <p class="page-sub en">An independent youth platform for Central Europe. We educate, connect and build digital resilience for the next generation.</p>
+  </div>
+</div>
+
+<!-- PRO&#268; CTRL EXISTUJE -->
+<section class="sec" style="background:var(--dark)">
+  <div class="inner">
+    <span class="sec-label rev cs" style="color:var(--accent)">Pro&#269; CTRL existuje</span>
+    <span class="sec-label rev en" style="color:var(--accent)">Why CTRL exists</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;margin-top:48px" class="about-2col">
+      <div class="rev">
+        <h2 style="font-size:clamp(36px,4vw,60px);font-weight:700;line-height:1.05;letter-spacing:-2px;color:var(--bg);margin-bottom:32px">
+          <span class="cs">Technologie m&#283;n&#237; spole&#269;nost rychleji ne&#382; ji um&#237;me vysv&#283;tlit.</span>
+          <span class="en">Technology is changing society faster than we can explain it.</span>
+        </h2>
+        <div class="prose" style="color:rgba(245,245,243,0.5)">
+          <p class="cs">Um&#283;l&#225; inteligence, deepfakes, dezinformace a algoritmick&#225; manipulace &#8212; to nejsou vzd&#225;len&#233; probl&#233;my. Jsou sou&#269;&#225;st&#237; ka&#382;dodenn&#237;ho &#382;ivota ka&#382;d&#233;ho studenta, ka&#382;d&#233; &#353;koly, ka&#382;d&#233; rodiny.</p>
+          <p class="en">Artificial intelligence, deepfakes, disinformation and algorithmic manipulation &#8212; these are not distant problems. They are part of the everyday life of every student, every school, every family.</p>
+          <p class="cs">Vzd&#283;l&#225;vac&#237; syst&#233;my na tuto zm&#283;nu nest&#237;haj&#237; reagovat. Osnovy vznikaj&#237; roky dop&#345;edu. Technologie se m&#283;n&#237; ka&#382;d&#253; m&#283;s&#237;c. Mezi t&#237;m, co &#353;koly u&#269;&#237; a t&#237;m, co mlad&#237; lid&#233; skute&#269;n&#283; pot&#345;ebuj&#237; v&#283;d&#283;t, roste propast.</p>
+          <p class="en">Education systems are not keeping up with this change. Curricula are developed years in advance. Technology changes every month. The gap between what schools teach and what young people actually need to know is growing.</p>
+          <p class="cs"><strong style="color:var(--bg)">CTRL Europe tuto propast p&#345;eklen&#382;uje. Ne akademicky. Prakticky. P&#345;&#237;mo tam, kde mlad&#237; lid&#233; jsou.</strong></p>
+          <p class="en"><strong style="color:var(--bg)">CTRL Europe bridges this gap. Not academically. Practically. Directly where young people are.</strong></p>
+        </div>
+      </div>
+      <div class="rev d2" style="display:flex;flex-direction:column;gap:1px;background:rgba(245,245,243,0.05)">
+        <div style="padding:32px 36px;border-bottom:1px solid rgba(245,245,243,0.06)">
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.25);margin-bottom:10px" class="cs">Zalo&#382;eno</div>
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.25);margin-bottom:10px" class="en">Founded</div>
+          <div style="font-size:20px;font-weight:600;color:var(--bg)">2025, Brno</div>
+        </div>
+        <div style="padding:32px 36px;border-bottom:1px solid rgba(245,245,243,0.06)">
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.25);margin-bottom:10px" class="cs">Aktivn&#237;ch &#269;len&#367;</div>
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.25);margin-bottom:10px" class="en">Active members</div>
+          <div style="font-size:20px;font-weight:600;color:var(--accent)">41+</div>
+        </div>
+        <div style="padding:32px 36px;border-bottom:1px solid rgba(245,245,243,0.06)">
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.25);margin-bottom:10px" class="cs">Jazyk&#367; v t&#253;mu</div>
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.25);margin-bottom:10px" class="en">Languages in team</div>
+          <div style="font-size:20px;font-weight:600;color:var(--bg)">7+</div>
+        </div>
+        <div style="padding:32px 36px">
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.25);margin-bottom:10px" class="cs">Region</div>
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,243,0.25);margin-bottom:10px" class="en">Region</div>
+          <div style="font-size:20px;font-weight:600;color:var(--bg)">CEE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KDO JSME -->
+<section class="sec" style="background:var(--bg)">
+  <div class="inner">
+    <span class="sec-label rev cs">Kdo jsme</span>
+    <span class="sec-label rev en">Who we are</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:100px;margin-top:48px" class="about-2col">
+      <div class="rev">
+        <h2 class="sec-title" style="margin-bottom:32px">
+          <span class="cs">Nez&#225;visl&#225;, <em>student-led</em> organizace.</span>
+          <span class="en">An independent, <em>student-led</em> organization.</span>
+        </h2>
+        <div class="prose">
+          <p class="cs">CTRL Europe je nez&#225;visl&#225; studentsk&#225; organizace a youth platforma se s&#237;dlem v Brn&#283;. Vznikla v roce 2025 z iniciativy student&#367; ve v&#283;ku 16&#8211;19 let ze st&#345;edn&#237; Evropy.</p>
+          <p class="en">CTRL Europe is an independent student organization and youth platform based in Brno. It was founded in 2025 on the initiative of students aged 16&#8211;19 from Central Europe.</p>
+          <p class="cs">Jsme student-led organizace. To znamen&#225;, &#382;e rozhodujeme, organizujeme a realizujeme sami &#8212; bez &#269;ek&#225;n&#237; na instituce nebo granty kter&#233; by n&#225;m &#345;ekly jak na to.</p>
+          <p class="en">We are a student-led organization. That means we decide, organize and execute ourselves &#8212; without waiting for institutions or grants to tell us how.</p>
+          <p class="cs">Zam&#283;&#345;ujeme se na st&#345;edn&#237; a v&#253;chodn&#237; Evropu &#8212; region kter&#253; m&#225; specifick&#253; historick&#253; kontext, vlastn&#237; v&#253;zvy a vlastn&#237; p&#345;&#237;le&#382;itosti. V&#283;&#345;&#237;me, &#382;e digit&#225;ln&#237; gramotnost a kritick&#233; my&#353;len&#237; jsou pro tuto &#269;&#225;st Evropy obzvl&#225;&#353;&#357; d&#367;le&#382;it&#233;.</p>
+          <p class="en">We focus on Central and Eastern Europe &#8212; a region with a specific historical context, its own challenges and its own opportunities. We believe digital literacy and critical thinking are especially important for this part of Europe.</p>
+          <p class="cs">Nejsme aktivistick&#225; organizace. Nejsme politick&#225; platforma. Jsme vzd&#283;l&#225;vac&#237; a v&#253;zkumn&#225; youth organizace s mezin&#225;rodn&#237;mi ambicemi.</p>
+          <p class="en">We are not an activist organization. We are not a political platform. We are an educational and research youth organization with international ambitions.</p>
+        </div>
+      </div>
+      <div class="rev d2">
+        <div style="display:flex;flex-direction:column;gap:1px;background:var(--light)">
+          <div style="background:var(--bg2);padding:28px 32px;display:flex;align-items:center;gap:16px;transition:padding-left 0.3s var(--ease)" onmouseover="this.style.paddingLeft='44px'" onmouseout="this.style.paddingLeft='32px'">
+            <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+            <span style="font-size:15px;font-weight:400;color:var(--dark)" class="cs">Nez&#225;visl&#225; studentsk&#225; organizace</span>
+            <span style="font-size:15px;font-weight:400;color:var(--dark)" class="en">Independent student organization</span>
+          </div>
+          <div style="background:var(--bg2);padding:28px 32px;display:flex;align-items:center;gap:16px;transition:padding-left 0.3s" onmouseover="this.style.paddingLeft='44px'" onmouseout="this.style.paddingLeft='32px'">
+            <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+            <span style="font-size:15px;font-weight:400;color:var(--dark)" class="cs">V&#237;cej&#225;zy&#269;n&#253; t&#253;m ze CEE</span>
+            <span style="font-size:15px;font-weight:400;color:var(--dark)" class="en">Multilingual team from CEE</span>
+          </div>
+          <div style="background:var(--bg2);padding:28px 32px;display:flex;align-items:center;gap:16px;transition:padding-left 0.3s" onmouseover="this.style.paddingLeft='44px'" onmouseout="this.style.paddingLeft='32px'">
+            <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+            <span style="font-size:15px;font-weight:400;color:var(--dark)" class="cs">Vzd&#283;l&#225;vac&#237; a v&#253;zkumn&#225; orientace</span>
+            <span style="font-size:15px;font-weight:400;color:var(--dark)" class="en">Educational and research focus</span>
+          </div>
+          <div style="background:var(--bg2);padding:28px 32px;display:flex;align-items:center;gap:16px;transition:padding-left 0.3s" onmouseover="this.style.paddingLeft='44px'" onmouseout="this.style.paddingLeft='32px'">
+            <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+            <span style="font-size:15px;font-weight:400;color:var(--dark)" class="cs">Mezin&#225;rodn&#237; ambice</span>
+            <span style="font-size:15px;font-weight:400;color:var(--dark)" class="en">International ambitions</span>
+          </div>
+          <div style="background:var(--bg2);padding:28px 32px;display:flex;align-items:center;gap:16px;transition:padding-left 0.3s" onmouseover="this.style.paddingLeft='44px'" onmouseout="this.style.paddingLeft='32px'">
+            <div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0"></div>
+            <span style="font-size:15px;font-weight:400;color:var(--dark)" class="cs">Registrovan&#253; spolek v &#268;R</span>
+            <span style="font-size:15px;font-weight:400;color:var(--dark)" class="en">Registered association in CZ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CO D&#282;L&#193;ME -->
+<section class="sec" style="background:var(--bg2)">
+  <div class="inner">
+    <span class="sec-label rev cs">Co d&#283;l&#225;me</span>
+    <span class="sec-label rev en">What we do</span>
+    <h2 class="sec-title rev">
+      <span class="cs">P&#283;t oblast&#237;. <em>Jeden c&#237;l.</em></span>
+      <span class="en">Five areas. <em>One goal.</em></span>
+    </h2>
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--light);margin-top:0">
+      <div class="rev d1" style="background:var(--bg2);padding:52px 44px;display:grid;grid-template-columns:120px 1fr;gap:48px;align-items:start">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding-top:4px"><span class="cs">01 V&#253;zkum</span><span class="en">01 Research</span></div>
+        <div>
+          <h3 style="font-size:22px;font-weight:600;letter-spacing:-0.5px;margin-bottom:16px;color:var(--dark)" class="cs">V&#253;zkum</h3>
+          <h3 style="font-size:22px;font-weight:600;letter-spacing:-0.5px;margin-bottom:16px;color:var(--dark)" class="en">Research</h3>
+          <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--mid)" class="cs">Analyzujeme digit&#225;ln&#237; hrozby v kontextu st&#345;edn&#237; Evropy. Zkoum&#225;me vliv dezinformac&#237; na mlad&#233; voli&#269;e, &#353;&#237;&#345;en&#237; deepfakes v medi&#225;ln&#237;m prostoru a dopady algoritmick&#233; manipulace na politick&#233; n&#225;zory. Na&#353;e v&#253;stupy jsou ur&#269;eny pro &#353;koly, m&#233;dia, think tanky a evropsk&#233; instituce.</p>
+          <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--mid)" class="en">We analyze digital threats in the context of Central Europe. We study the influence of disinformation on young voters, the spread of deepfakes in the media and the impact of algorithmic manipulation on political views. Our outputs are intended for schools, media, think tanks and European institutions.</p>
+        </div>
+      </div>
+      <div class="rev d1" style="background:var(--bg);padding:52px 44px;display:grid;grid-template-columns:120px 1fr;gap:48px;align-items:start">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding-top:4px"><span class="cs">02 Vzd&#283;l&#225;v&#225;n&#237;</span><span class="en">02 Edu</span></div>
+        <div>
+          <h3 style="font-size:22px;font-weight:600;letter-spacing:-0.5px;margin-bottom:16px;color:var(--dark)" class="cs">Workshopy</h3>
+          <h3 style="font-size:22px;font-weight:600;letter-spacing:-0.5px;margin-bottom:16px;color:var(--dark)" class="en">Workshops</h3>
+          <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--mid)" class="cs">P&#345;ij&#237;&#382;d&#237;me na st&#345;edn&#237; &#353;koly s 90minutov&#253;m interaktivn&#237;m programem. U&#269;&#237;me studenty jak poznat deepfake, jak funguj&#237; doporu&#269;ovac&#237; algoritmy, jak se &#353;&#237;&#345;&#237; dezinformace a jak si udr&#382;et kritick&#253; pohled na digit&#225;ln&#237; obsah. Program je zdarma pro v&#353;echny partnersk&#233; &#353;koly.</p>
+          <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--mid)" class="en">We come to secondary schools with a 90-minute interactive program. We teach students how to detect deepfakes, how recommendation algorithms work, how disinformation spreads and how to maintain a critical perspective on digital content. The program is free for all partner schools.</p>
+        </div>
+      </div>
+      <div class="rev d1" style="background:var(--bg2);padding:52px 44px;display:grid;grid-template-columns:120px 1fr;gap:48px;align-items:start">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding-top:4px"><span class="cs">03 M&#233;dia</span><span class="en">03 Media</span></div>
+        <div>
+          <h3 style="font-size:22px;font-weight:600;letter-spacing:-0.5px;margin-bottom:16px;color:var(--dark)" class="cs">M&#233;dia a podcasty</h3>
+          <h3 style="font-size:22px;font-weight:600;letter-spacing:-0.5px;margin-bottom:16px;color:var(--dark)" class="en">Media and podcasts</h3>
+          <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--mid)" class="cs">Podcast CTRL+ALT p&#345;in&#225;&#353;&#237; rozhovory s experty, novin&#225;&#345;i a lidmi z evropsk&#253;ch instituc&#237;. T&#233;mata: AI, medi&#225;ln&#237; gramotnost, svoboda slova online, dezinformace a budoucnost demokracie. Tvo&#345;&#237;me obsah kter&#253; skute&#269;n&#283; vzd&#283;l&#225;v&#225; &#8212; na platform&#225;ch kde mlad&#237; lid&#233; jsou.</p>
+          <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--mid)" class="en">The CTRL+ALT podcast brings conversations with experts, journalists and people from European institutions. Topics: AI, media literacy, online freedom of speech, disinformation and the future of democracy. We create content that truly educates &#8212; on platforms where young people actually are.</p>
+        </div>
+      </div>
+      <div class="rev d1" style="background:var(--bg);padding:52px 44px;display:grid;grid-template-columns:120px 1fr;gap:48px;align-items:start">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding-top:4px"><span class="cs">04 Mezin&#225;rodn&#237;</span><span class="en">04 Intl</span></div>
+        <div>
+          <h3 style="font-size:22px;font-weight:600;letter-spacing:-0.5px;margin-bottom:16px;color:var(--dark)" class="cs">Mezin&#225;rodn&#237; spolupr&#225;ce</h3>
+          <h3 style="font-size:22px;font-weight:600;letter-spacing:-0.5px;margin-bottom:16px;color:var(--dark)" class="en">International cooperation</h3>
+          <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--mid)" class="cs">Budujeme partnerství se &#353;kolami, organizacemi a institucemi v cel&#233;m regionu CEE. P&#345;ipravujeme youth exchange programy, mezin&#225;rodn&#237; st&#225;&#382;e a spole&#269;n&#233; v&#253;zkumn&#233; projekty. Na&#353;&#237;m c&#237;lem je propojit mladou generaci st&#345;edn&#237; Evropy kolem sd&#237;len&#253;ch hodnot.</p>
+          <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--mid)" class="en">We are building partnerships with schools, organizations and institutions throughout the CEE region. We are preparing youth exchange programs, international internships and joint research projects. Our goal is to connect the young generation of Central Europe around shared values.</p>
+        </div>
+      </div>
+      <div class="rev d1" style="background:var(--bg2);padding:52px 44px;display:grid;grid-template-columns:120px 1fr;gap:48px;align-items:start">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding-top:4px"><span class="cs">05 Akce</span><span class="en">05 Events</span></div>
+        <div>
+          <h3 style="font-size:22px;font-weight:600;letter-spacing:-0.5px;margin-bottom:16px;color:var(--dark)" class="cs">Konference a summity</h3>
+          <h3 style="font-size:22px;font-weight:600;letter-spacing:-0.5px;margin-bottom:16px;color:var(--dark)" class="en">Conferences and summits</h3>
+          <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--mid)" class="cs">CTRL Summit 2026 bude prvn&#237; mezin&#225;rodn&#237; konferenc&#237; CTRL Europe. Brno, jaro 2026. Keynotes, panelov&#233; diskuze, workshopy. M&#237;sto kde se setk&#225;v&#225; mlad&#225; st&#345;edoevropsk&#225; generace a buduje spole&#269;nou odpov&#283;&#271; na digit&#225;ln&#237; v&#253;zvy sou&#269;asnosti.</p>
+          <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--mid)" class="en">CTRL Summit 2026 will be the first international CTRL Europe conference. Brno, spring 2026. Keynotes, panel discussions, workshops. Where the young Central European generation meets and builds a common response to today&#39;s digital challenges.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZAKLADATEL -->
+<section class="sec" style="background:var(--bg)">
+  <div class="inner">
+    <span class="sec-label rev cs">Zakladatel</span>
+    <span class="sec-label rev en">Founder</span>
+    <div style="display:grid;grid-template-columns:400px 1fr;gap:100px;align-items:start;margin-top:48px" class="about-2col">
+      <div class="rev">
+        <div style="aspect-ratio:3/4;overflow:hidden;margin-bottom:24px;position:relative">
+          <img src="IMG_4222.jpeg" alt="Jan Krej&#269;&#237;" style="width:100%;height:100%;object-fit:cover;object-position:center 8%;display:block">
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:12px 20px;background:rgba(245,245,243,0.85)">
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid)">Jan Krej&#269;&#237; &#8212; 2025</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--light)">
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid)" class="cs">Role</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid)" class="en">Role</div>
+            <div style="font-size:13px;font-weight:500;color:var(--dark)" class="cs">P&#345;edseda &amp; Zakladatel</div>
+            <div style="font-size:13px;font-weight:500;color:var(--dark)" class="en">President &amp; Founder</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--light)">
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid)" class="cs">V&#283;k</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid)" class="en">Age</div>
+            <div style="font-size:13px;font-weight:500;color:var(--dark)">17</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--light)">
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid)" class="cs">P&#367;sobi&#353;t&#283;</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid)" class="en">Base</div>
+            <div style="font-size:13px;font-weight:500;color:var(--dark)">Brno, CZ</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev d2">
+        <h2 style="font-size:clamp(44px,5vw,72px);font-weight:800;line-height:0.95;letter-spacing:-2.5px;color:var(--dark);margin-bottom:10px">Jan Krej&#269;&#237;</h2>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:40px" class="cs">P&#345;edseda &amp; Zakladatel CTRL Europe</div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:40px" class="en">President &amp; Founder of CTRL Europe</div>
+        <div class="prose">
+          <p class="cs">CTRL Europe jsem nezalo&#382;il jako &#353;koln&#237; projekt. Zalo&#382;il jsem ho proto&#382;e vid&#237;m probl&#233;m &#8212; a proto&#382;e jsem p&#345;esv&#283;d&#269;en, &#382;e na&#353;e generace ho mus&#237; &#345;e&#353;it sama.</p>
+          <p class="en">I didn&#39;t found CTRL Europe as a school project. I founded it because I see a problem &#8212; and because I am convinced that our generation must solve it itself.</p>
+          <p class="cs">Jsem sedmn&#225;ctilet&#253; student IT na St&#345;edn&#237; &#353;kole informatiky, po&#353;tovnictv&#237; a finan&#269;nictv&#237; v Brn&#283;. Od m&#225;l&#237; m&#283; zaj&#237;m&#225; pr&#367;se&#269;&#237;k technologi&#237;, politiky a spole&#269;nosti. Vid&#237;m jak digit&#225;ln&#237; manipulace ovliv&#328;uje demokratick&#233; procesy &#8212; a jak m&#225;lo se o tom mluv&#237; tam, kde by se mluvit m&#283;lo.</p>
+          <p class="en">I am a seventeen-year-old IT student at the Secondary School of Informatics, Posts and Finance in Brno. Since childhood I have been interested in the intersection of technology, politics and society. I see how digital manipulation influences democratic processes &#8212; and how little is said about it where it should be said.</p>
+          <p class="cs">V&#283;&#345;&#237;m, &#382;e digit&#225;ln&#237; gramotnost nen&#237; voliteln&#253; p&#345;edm&#283;t. Je to z&#225;kladn&#237; kompetence pro &#382;ivot ve svobodn&#233; spole&#269;nosti. A v&#283;&#345;&#237;m, &#382;e prvn&#237; generace, kter&#225; vyr&#367;st&#225; pln&#283; uvnit&#345; digit&#225;ln&#237;ch syst&#233;m&#367; &#8212; na&#353;e generace &#8212; m&#225; unik&#225;tn&#237; perspektivu a odpov&#283;dnost tuto situaci zm&#283;nit.</p>
+          <p class="en">I believe digital literacy is not an optional subject. It is a fundamental competence for life in a free society. And I believe that the first generation growing up fully inside digital systems &#8212; our generation &#8212; has a unique perspective and responsibility to change this situation.</p>
+          <p class="cs"><strong>CTRL Europe nen&#237; m&#367;j jedin&#253; projekt &#8212; ale je nejd&#367;le&#382;it&#283;j&#353;&#237;. Proto&#382;e z&#225;le&#382;&#237; na v&#237;ce ne&#382; jen na mn&#283;.</strong></p>
+          <p class="en"><strong>CTRL Europe is not my only project &#8212; but it is the most important one. Because it matters beyond just me.</strong></p>
+        </div>
+        <div style="margin-top:48px;padding-top:40px;border-top:1px solid var(--light)">
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:20px" class="cs">Ocen&#283;n&#237; a projekty</div>
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:20px" class="en">Awards and projects</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:flex-start;gap:14px;font-size:14px;font-weight:300;color:var(--mid)"><div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:7px"></div><span class="cs">V&#237;t&#283;z sout&#283;&#382;e Den hejtmanem JMK 2025/2026</span><span class="en">Winner &#8212; Day as Governor, South Moravian Region 2025/2026</span></div>
+            <div style="display:flex;align-items:flex-start;gap:14px;font-size:14px;font-weight:300;color:var(--mid)"><div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:7px"></div><span class="cs">V&#237;t&#283;z krajsk&#233;ho kola ENERSOL 2024</span><span class="en">Winner &#8212; Regional round ENERSOL 2024</span></div>
+            <div style="display:flex;align-items:flex-start;gap:14px;font-size:14px;font-weight:300;color:var(--mid)"><div style="width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:7px"></div><span class="cs">V&#237;t&#283;z sout&#283;&#382;e 35 let demokracie</span><span class="en">Winner &#8212; 35 Years of Democracy competition</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZACE -->
+<section class="sec" style="background:var(--dark)">
+  <div class="inner">
+    <span class="sec-label rev cs" style="color:var(--accent)">Organizace</span>
+    <span class="sec-label rev en" style="color:var(--accent)">Structure</span>
+    <h2 class="sec-title rev" style="color:var(--bg)">
+      <span class="cs">Profesion&#225;ln&#237; struktura. <em>Youth perspektiva.</em></span>
+      <span class="en">Professional structure. <em>Youth perspective.</em></span>
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:16px" class="about-2col">
+      <div class="rev d1">
+        <div class="prose" style="color:rgba(245,245,243,0.5)">
+          <p class="cs"><strong style="color:var(--bg)">P&#345;edsednictvo</strong> tvo&#345;&#237; &#269;ty&#345;i &#269;lenov&#233;: p&#345;edseda, m&#237;stop&#345;edseda, tajemnice a z&#225;stupce p&#345;edsednictva. P&#345;edsednictvo rozhoduje o strategick&#233;m sm&#283;&#345;ov&#225;n&#237; organizace.</p>
+          <p class="en"><strong style="color:var(--bg)">The Executive Board</strong> consists of four members: president, vice president, secretary and board representative. The board decides on the strategic direction of the organization.</p>
+          <p class="cs"><strong style="color:var(--bg)">Rada z&#225;stupc&#367;</strong> sdru&#382;uje vedouc&#237; v&#353;ech bun&#283;k. Ka&#382;d&#225; bu&#328;ka m&#225; vlastn&#237; agendu, vlastn&#237; projekty a p&#345;&#237;m&#233; napojen&#237; na p&#345;edsednictvo.</p>
+          <p class="en"><strong style="color:var(--bg)">The Council of Representatives</strong> brings together the leaders of all cells. Each cell has its own agenda, its own projects and a direct connection to the board.</p>
+          <p class="cs">Celkem 41 aktivn&#237;ch &#269;len&#367;. V&#237;cej&#225;zy&#269;n&#253; t&#253;m. St&#345;edn&#237; Evropa jako v&#253;choz&#237; bod &#8212; Evropa jako c&#237;l.</p>
+          <p class="en">41 active members in total. Multilingual team. Central Europe as the starting point &#8212; Europe as the goal.</p>
+        </div>
+      </div>
+      <div class="rev d2" style="display:flex;flex-direction:column;gap:1px;background:rgba(245,245,243,0.05)">
+        <div style="padding:20px 28px;background:rgba(74,123,255,0.15);border-left:3px solid var(--accent)">
+          <div style="font-size:14px;font-weight:600;color:var(--bg)" class="cs">P&#345;edsednictvo</div>
+          <div style="font-size:14px;font-weight:600;color:var(--bg)" class="en">Executive Board</div>
+          <div style="font-size:12px;font-weight:300;color:rgba(245,245,243,0.4);margin-top:3px">Jan Krej&#269;&#237; &bull; Jakub Ra&#353;ovsk&#253; &bull; Alena Markov&#225; &bull; Bety Fritzov&#225;</div>
+        </div>
+        <div style="padding:18px 28px"><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="cs">PR a komunikace &#8212; Jakub Ra&#353;ovsk&#253;</div><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="en">PR &amp; Communications &#8212; Jakub Ra&#353;ovsk&#253;</div></div>
+        <div style="padding:18px 28px"><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="cs">Soci&#225;ln&#237; s&#237;t&#283; &#8212; Ji&#345;&#237; V&#237;tek</div><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="en">Social Media &#8212; Ji&#345;&#237; V&#237;tek</div></div>
+        <div style="padding:18px 28px"><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="cs">Podcast &#8212; Marek Rou&#353;ar</div><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="en">Podcast &#8212; Marek Rou&#353;ar</div></div>
+        <div style="padding:18px 28px"><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="cs">V&#253;zkum &#8212; Pavel Klus&#225;k</div><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="en">Research &#8212; Pavel Klus&#225;k</div></div>
+        <div style="padding:18px 28px"><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="cs">Grafika &#8212; Zden&#283;k Fr&#337;mel</div><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="en">Graphics &#8212; Zden&#283;k Fr&#337;mel</div></div>
+        <div style="padding:18px 28px"><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="cs">Video &#8212; Luk&#225;&#353; Holec</div><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="en">Video &#8212; Luk&#225;&#353; Holec</div></div>
+        <div style="padding:18px 28px"><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="cs">Mezin&#225;rodn&#237; &#8212; Laith Awad</div><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="en">International &#8212; Laith Awad</div></div>
+        <div style="padding:18px 28px"><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="cs">Eventy &#8212; Vojt&#283;ch Kub&#237;n</div><div style="font-size:13px;font-weight:400;color:rgba(245,245,243,0.6)" class="en">Events &#8212; Vojt&#283;ch Kub&#237;n</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIZE -->
+<section class="sec" style="background:var(--bg)">
+  <div class="inner">
+    <span class="sec-label rev cs">Dlouhodob&#225; vize</span>
+    <span class="sec-label rev en">Long-term vision</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:100px;margin-top:48px" class="about-2col">
+      <div class="rev">
+        <h2 class="sec-title" style="margin-bottom:32px">
+          <span class="cs">Budujeme n&#283;co co <em>p&#345;etrvá.</em></span>
+          <span class="en">Building something <em>that lasts.</em></span>
+        </h2>
+        <div class="prose">
+          <p class="cs">Na&#353;&#237;m c&#237;lem je vybudovat udr&#382;itelnou evropskou youth platformu zam&#283;&#345;enou na digit&#225;ln&#237; gramotnost, v&#253;zkum a mezin&#225;rodn&#237; spolupr&#225;ci.</p>
+          <p class="en">Our goal is to build a sustainable European youth platform focused on digital literacy, research and international cooperation.</p>
+          <p class="cs">V horizontu p&#283;ti let chceme b&#253;t p&#345;&#237;tomni ve v&#237;ce zem&#237;ch st&#345;edn&#237; Evropy, m&#237;t funk&#269;n&#237; s&#237;&#357; partnersk&#253;ch &#353;kol a organizac&#237;, produkovat v&#253;zkum kter&#253; je citov&#225;n a pou&#382;&#237;v&#225;n, a organizovat ka&#382;doro&#269;n&#237; mezin&#225;rodn&#237; summit kter&#253; je relevantn&#237; pro tv&#367;rce politik i pro studenty.</p>
+          <p class="en">Within five years we want to be present in multiple Central European countries, have a functioning network of partner schools and organizations, produce research that is cited and used, and organize an annual international summit relevant to both policymakers and students.</p>
+          <p class="cs">Neslibujeme revoluci. Slibujeme poctiv&#233; pr&#225;ci na probl&#233;mu kter&#253; je skute&#269;n&#253; a kter&#253; dlouhodob&#283; z&#225;le&#382;&#237;.</p>
+          <p class="en">We don&#39;t promise revolution. We promise honest work on a problem that is real and that matters in the long term.</p>
+        </div>
+      </div>
+      <div class="val-grid" style="margin-top:0;align-self:start">
+        <div class="val-card rev d1">
+          <div class="val-title cs">Kritick&#233; my&#353;len&#237;</div>
+          <div class="val-title en">Critical thinking</div>
+          <p class="val-desc cs">Klademe ot&#225;zky. Ov&#283;&#345;ujeme zdroje. Nep&#345;ij&#237;m&#225;me zjednodu&#353;en&#237;.</p>
+          <p class="val-desc en">We ask questions. We verify sources. We don&#39;t accept oversimplification.</p>
+        </div>
+        <div class="val-card rev d2">
+          <div class="val-title cs">Odpov&#283;dnost</div>
+          <div class="val-title en">Responsibility</div>
+          <p class="val-desc cs">Za na&#353;e v&#253;stupy, za na&#353;e z&#225;vazky, za organizaci jako celek.</p>
+          <p class="val-desc en">For our outputs, our commitments, the organization as a whole.</p>
+        </div>
+        <div class="val-card rev d3">
+          <div class="val-title cs">Mezin&#225;rodn&#237; spolupr&#225;ce</div>
+          <div class="val-title en">International cooperation</div>
+          <p class="val-desc cs">Probl&#233;my digit&#225;ln&#237; doby nem&#225;j&#237; hranice. Ani na&#353;e odpov&#283;&#271; by je m&#237;t nem&#283;la.</p>
+          <p class="val-desc en">Problems of the digital age have no borders. Neither should our response.</p>
+        </div>
+        <div class="val-card rev d1">
+          <div class="val-title cs">Medi&#225;ln&#237; gramotnost</div>
+          <div class="val-title en">Media literacy</div>
+          <p class="val-desc cs">Rozum&#283;t m&#233;di&#237;m znamen&#225; &#269;&#237;st je s v&#283;dom&#237;m jak funguj&#237;.</p>
+          <p class="val-desc en">Understanding media means reading them with awareness of how they work.</p>
+        </div>
+        <div class="val-card rev d2">
+          <div class="val-title cs">Veden&#237; mlad&#253;ch</div>
+          <div class="val-title en">Youth leadership</div>
+          <p class="val-desc cs">Zodpov&#283;dnost nez&#225;vis&#237; na v&#283;ku &#8212; z&#225;vis&#237; na odhodl&#225;n&#237;.</p>
+          <p class="val-desc en">Responsibility doesn&#39;t depend on age &#8212; it depends on commitment.</p>
+        </div>
+        <div class="val-card rev d3">
+          <div class="val-title cs">Preciznost</div>
+          <div class="val-title en">Precision</div>
+          <p class="val-desc cs">D&#283;l&#225;me m&#233;n&#283; v&#283;c&#237;, ale d&#283;l&#225;me je dob&#345;e.</p>
+          <p class="val-desc en">We do fewer things, but we do them well.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section class="sec" style="background:var(--bg2)">
+  <div class="inner">
+    <span class="sec-label rev cs">Rada z&#225;stupc&#367;</span>
+    <span class="sec-label rev en">Council of Representatives</span>
+    <h2 class="sec-title rev">
+      <span class="cs">Vedouc&#237; <em>bun&#283;k.</em></span>
+      <span class="en">Cell <em>leaders.</em></span>
+    </h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--light)">
+      <div class="rev d1" style="background:var(--bg2);padding:32px 28px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="cs">PR a komunikace</div>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="en">PR &amp; Communications</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px">Jakub Ra&#353;ovsk&#253;</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="cs">Vedouc&#237;</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="en">Lead</div>
+      </div>
+      <div class="rev d1" style="background:var(--bg2);padding:32px 28px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="cs">Soci&#225;ln&#237; s&#237;t&#283;</div>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="en">Social Media</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px">Ji&#345;&#237; V&#237;tek</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="cs">Vedouc&#237;</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="en">Lead</div>
+      </div>
+      <div class="rev d2" style="background:var(--bg2);padding:32px 28px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="cs">Podcast</div>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="en">Podcast</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px">Marek Rou&#353;ar</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="cs">Vedouc&#237;</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="en">Lead</div>
+      </div>
+      <div class="rev d2" style="background:var(--bg2);padding:32px 28px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="cs">V&#253;zkum</div>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="en">Research</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px">Pavel Klus&#225;k</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="cs">Vedouc&#237;</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="en">Lead</div>
+      </div>
+      <div class="rev d3" style="background:var(--bg2);padding:32px 28px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="cs">Grafika</div>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="en">Graphics</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px">Zden&#283;k Fr&#337;mel</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="cs">Vedouc&#237;</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="en">Lead</div>
+      </div>
+      <div class="rev d3" style="background:var(--bg2);padding:32px 28px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="cs">Video</div>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="en">Video</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px">Luk&#225;&#353; Holec</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="cs">Vedouc&#237;</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="en">Lead</div>
+      </div>
+      <div class="rev d4" style="background:var(--bg2);padding:32px 28px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="cs">Mezin&#225;rodn&#237;</div>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="en">International</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px">Laith Awad</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="cs">Vedouc&#237;</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="en">Lead</div>
+      </div>
+      <div class="rev d4" style="background:var(--bg2);padding:32px 28px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="cs">Eventy</div>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px" class="en">Events</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px">Vojt&#283;ch Kub&#237;n</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="cs">Vedouc&#237;</div>
+        <div style="font-size:12px;font-weight:300;color:var(--mid)" class="en">Lead</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--dark);text-align:center">
+  <div class="inner" style="max-width:700px;margin:0 auto">
+    <h2 style="font-size:clamp(36px,5vw,72px);font-weight:800;line-height:1.0;letter-spacing:-2.5px;color:var(--bg);margin-bottom:24px" class="rev cs">Zapojte se.</h2>
+    <h2 style="font-size:clamp(36px,5vw,72px);font-weight:800;line-height:1.0;letter-spacing:-2.5px;color:var(--bg);margin-bottom:24px" class="rev en">Get involved.</h2>
+    <p style="font-size:17px;font-weight:300;line-height:1.8;color:rgba(245,245,243,0.45);margin-bottom:40px;max-width:540px;margin-left:auto;margin-right:auto" class="rev d1 cs">Hled&#225;me partnersk&#233; &#353;koly, organizace a instituce kter&#233; cht&#283;j&#237; b&#253;t sou&#269;&#225;st&#237; toho co budujeme. Jsme tady.</p>
+    <p style="font-size:17px;font-weight:300;line-height:1.8;color:rgba(245,245,243,0.45);margin-bottom:40px;max-width:540px;margin-left:auto;margin-right:auto" class="rev d1 en">We are looking for partner schools, organizations and institutions that want to be part of what we are building. We are here.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap" class="rev d2">
+      <a href="/join" class="btn-p cs">Nap&#353;te n&#225;m &rarr;</a>
+      <a href="/join" class="btn-p en">Write to us &rarr;</a>
+      <!-- <a href="mailto:" class="btn-g light"></a> -->
+    </div>
+  </div>
+</section>
+<div class="ticker-wrap-outer"><div class="ticker-inner" id="ticker">
+  <div class="ticker-item">CTRL Europe</div><div class="ticker-item">CEE Youth Platform</div>
+  <div class="ticker-item cs">Digit&#225;ln&#237; odolnost</div><div class="ticker-item en">Digital Resilience</div>
+  <div class="ticker-item">CTRL Summit 2026</div>
+  <div class="ticker-item">Erasmus+</div>
+  <div class="ticker-item cs">AI pov&#283;dom&#237;</div><div class="ticker-item en">AI Awareness</div>
+  <div class="ticker-item cs">Medi&#225;ln&#237; gramotnost</div><div class="ticker-item en">Media Literacy</div>
+  <div class="ticker-item">Brno</div>
+</div></div>
+<footer><div class="inner">
+  <div class="foot-top">
+    <div><a href="/" class="foot-logo"><div class="foot-logo-dot"></div>CTRL Europe</a>
+    <div class="foot-motto"><span class="cs">&bdquo;P&#345;evezm&#283;te kontrolu d&#345;&#237;v, ne&#382; to ud&#283;l&#225; n&#283;kdo jin&#253;.&ldquo;</span><span class="en">&ldquo;Take control before someone else does.&rdquo;</span></div></div>
+    <div class="foot-cols">
+      <div class="foot-col"><h4 class="cs">Projekt</h4><h4 class="en">Project</h4>
+        <a href="/about"><span class="cs">O n&#225;s</span><span class="en">About</span></a>
+        <a href="/summit">Summit 2026</a>
+        <a href="/workshops"><span class="cs">Workshopy</span><span class="en">Workshops</span></a>
+        <a href="/research"><span class="cs">V&#253;zkum</span><span class="en">Research</span></a>
+        <a href="/articles"><span class="cs">&#268;l&#225;nky</span><span class="en">Articles</span></a>
+      </div>
+      <div class="foot-col"><h4 class="cs">Kontakt</h4><h4 class="en">Contact</h4>
+        <a href="mailto:"></a>
+        <a href="/join"><span class="cs">Spolupr&#225;ce</span><span class="en">Cooperate</span></a>
+      </div>
+      <div class="foot-col"><h4 class="cs">Soci&#225;ln&#237; s&#237;t&#283;</h4><h4 class="en">Social</h4>
+        <a href="https://www.instagram.com/ctrleurope/">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">&#169; 2025 CTRL Europe Team, z.&#160;s. &#183; Brno</div>
+    <div class="foot-tag">CEE Youth Platform</div>
+  </div>
+</div></footer>
+<script>
+(function() {
+  // Nav
+  const nav = document.getElementById('nav');
+  if (nav) window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 40), { passive: true });
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+  // Reveal
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+  // Lang
+  const lb = document.getElementById('langBtn');
+  const mlb = document.getElementById('mobileLangBtn');
+  if (lb) {
+    let en = false;
+    const toggle = () => { en = !en; document.body.classList.toggle('EN', en); lb.textContent = en ? 'CS' : 'EN'; if (mlb) mlb.textContent = en ? 'CS' : 'EN'; if (en) document.querySelectorAll('.en.rev').forEach(e => e.classList.add('in')); };
+    lb.addEventListener('click', toggle);
+    if (mlb) mlb.addEventListener('click', toggle);
+  }
+  // Ticker clone
+  document.querySelectorAll('.ticker-inner').forEach(t => { t.parentNode.appendChild(t.cloneNode(true)); });
+})();
+
+(function(){
+  var btn=document.getElementById('hamBtn');
+  var menu=document.getElementById('mobileMenu');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(){
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+  const closeBtn=document.getElementById('menuClose');
+  if(closeBtn) closeBtn.addEventListener('click',function(){
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow='';
+  });
+})();
+</script>
+<script src="router.js"></script>
+</body>
+</html>
