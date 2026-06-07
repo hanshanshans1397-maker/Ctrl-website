@@ -4,12 +4,12 @@ export function WorkshopsPageContent() {
   return (
     <>
       <section className="hero-full relative flex min-h-screen flex-col justify-end overflow-hidden bg-dark max-sm:min-h-0 max-sm:justify-start" id="hero">
-        <img src="/photos/workshopy.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover z-0 max-sm:hidden" />
+        <img src="/photos/workshopy.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover z-0 max-sm:hidden"  fetchpriority="high" decoding="async" />
         <div className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_top,rgba(11,16,32,0.92)_0%,rgba(11,16,32,0.58)_50%,rgba(11,16,32,0.2)_100%)] max-sm:hidden" aria-hidden="true" />
 
         {/* Mobile split: half-screen image with gradient + title overlay */}
         <div className="hidden max-sm:block relative w-full h-[50vh] shrink-0 bg-dark">
-          <img src="/photos/workshopy.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
+          <img src="/photos/workshopy.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover"  fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           <div className="absolute bottom-0 left-0 right-0 px-5 pb-6 z-[3]">
             <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-2">Education</span>

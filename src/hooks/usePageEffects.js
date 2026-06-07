@@ -69,10 +69,20 @@ export function useNavSolid(navRef) {
   const [isSolid, setIsSolid] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsSolid(window.scrollY > 40);
+    let raf = null;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        setIsSolid(window.scrollY > 40);
+      });
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, [navRef]);
 
   return isSolid;

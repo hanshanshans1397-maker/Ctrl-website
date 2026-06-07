@@ -12,7 +12,7 @@ export function HomePageContent() {
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-[center_25%] z-0 max-sm:hidden"
-        />
+         fetchpriority="high" decoding="async" />
         <div
           className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)] max-sm:hidden"
           aria-hidden="true"
@@ -24,12 +24,12 @@ export function HomePageContent() {
 
         {/* Mobile split: half-screen image with gradient + title overlay */}
         <div className="hidden max-sm:block relative w-full h-[50vh] shrink-0 bg-dark">
-          <img src="/photos/hero.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_25%]" />
+          <img src="/photos/hero.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_25%]"  fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           <div className="absolute bottom-0 left-0 right-0 px-5 pb-6 z-[3]">
             <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-2">BRNO &middot; 2026</span>
             <div className="flex items-baseline gap-[0.1em] text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
-              <img src="/ctrl_logo_cropped.png" alt="CTRL" className="h-[1cap] w-auto" />
+              <img src="/ctrl_logo_cropped.png" alt="CTRL" className="h-[1cap] w-auto"  loading="lazy" decoding="async" />
               <span>Europe</span>
             </div>
           </div>
@@ -41,7 +41,7 @@ export function HomePageContent() {
           </div>
 
           <h1 className="hero-title relative z-[3] flex items-baseline gap-[0.12em] text-[clamp(72px,10vw,160px)] font-extrabold leading-[0.95] tracking-[-4px] text-bg mb-10 max-w-[1100px] max-lg:text-[clamp(52px,8vw,100px)] max-lg:tracking-[-2px] max-[640px]:text-[clamp(44px,10vw,72px)] max-[640px]:tracking-[-1.5px] max-[640px]:mb-7 max-[640px]:mx-auto max-sm:hidden max-[480px]:text-[clamp(40px,11vw,60px)]">
-            <div className="word"><span><img src="/ctrl_logo_cropped.png" alt="CTRL" className="h-[1cap] w-auto" /></span></div>
+            <div className="word"><span><img src="/ctrl_logo_cropped.png" alt="CTRL" className="h-[1cap] w-auto"  loading="lazy" decoding="async" /></span></div>
             <div className="word"><span>Europe</span></div>
           </h1>
 
@@ -65,12 +65,12 @@ export function HomePageContent() {
           <div className="ticker-item cs font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-12 max-sm:px-5 whitespace-nowrap shrink-0 flex items-center gap-12">Digitální odolnost</div>
           <div className="ticker-item en font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-12 max-sm:px-5 whitespace-nowrap shrink-0 flex items-center gap-12">Digital Resilience</div>
           <div className="ticker-item px-12 max-sm:px-5 shrink-0 flex items-center gap-12">
-            <img src="/jihomoravskykrajlogovelke.jpg" alt="Jihomoravský kraj" className="h-[28px] w-auto opacity-50 grayscale" />
+            <img src="/jihomoravskykrajlogovelke.jpg" alt="Jihomoravský kraj" className="h-[28px] w-auto opacity-50 grayscale"  loading="lazy" decoding="async" />
           </div>
           <div className="ticker-item font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-12 max-sm:px-5 whitespace-nowrap shrink-0 flex items-center gap-12">Erasmus+</div>
           <div className="ticker-item font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-12 max-sm:px-5 whitespace-nowrap shrink-0 flex items-center gap-12">CTRL Summit 2026</div>
           <div className="ticker-item px-12 max-sm:px-5 shrink-0 flex items-center gap-12">
-            <img src="/cichnovabrnofull.png" alt="Cichnova Brno" className="h-[28px] w-auto opacity-50 grayscale" />
+            <img src="/cichnovabrnofull.png" alt="Cichnova Brno" className="h-[28px] w-auto opacity-50 grayscale"  loading="lazy" decoding="async" />
           </div>
           <div className="ticker-item cs font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-12 max-sm:px-5 whitespace-nowrap shrink-0 flex items-center gap-12">Mediální gramotnost</div>
           <div className="ticker-item en font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-12 max-sm:px-5 whitespace-nowrap shrink-0 flex items-center gap-12">Media Literacy</div>
@@ -175,13 +175,13 @@ export function HomePageContent() {
 
       <div className="grid grid-cols-3 border-b border-light max-[640px]:grid-cols-1">
         <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-r border-light max-[640px]:border-r-0 max-[640px]:border-b">
-          <img src="/photos/team.jpg" alt="Členové CTRL Europe" className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105" />
+          <img src="/photos/team.jpg" alt="Členové CTRL Europe" className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"  loading="lazy" decoding="async" />
         </div>
         <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-r border-light max-[640px]:border-r-0 max-[640px]:border-b">
-          <img src="/photos/hero.png" alt="Prezentace CTRL Europe" className="absolute inset-0 w-full h-full object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105" />
+          <img src="/photos/hero.png" alt="Prezentace CTRL Europe" className="absolute inset-0 w-full h-full object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105"  fetchpriority="high" decoding="async" />
         </div>
         <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group max-[640px]:border-b">
-          <img src="/photos/member-heart.jpg" alt="Studentský projekt CTRL" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+          <img src="/photos/member-heart.jpg" alt="Studentský projekt CTRL" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"  loading="lazy" decoding="async" />
         </div>
       </div>
 
@@ -232,7 +232,7 @@ export function HomePageContent() {
           </h2>
           <div className="board-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-2">
             <div className="rev d1 bg-bg2 py-10 px-8">
-              <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden"><img src="/IMG_4222.jpeg" alt="Jan Krejčí" className="w-full h-full object-cover object-[center_5%]" /></div>
+              <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden"><img src="/IMG_4222.jpeg" alt="Jan Krejčí" className="w-full h-full object-cover object-[center_5%]"  loading="lazy" decoding="async" /></div>
               <div className="text-base font-semibold mb-1">Jan Krejčí</div>
               <div className="font-mono text-[10px] tracking-[1.5px] uppercase text-accent mb-1.5"><span className="cs">Předseda & Zakladatel</span><span className="en">President & Founder</span></div>
             </div>
@@ -388,7 +388,7 @@ export function HomePageContent() {
           </div>
           <div className="rev d2 relative max-lg:hidden">
             <div className="aspect-[3/4] overflow-hidden">
-              <img src="/IMG_4222.jpeg" alt="Jan Krejčí, zakladatel CTRL Europe" className="w-full h-full object-cover object-[center_8%]" />
+              <img src="/IMG_4222.jpeg" alt="Jan Krejčí, zakladatel CTRL Europe" className="w-full h-full object-cover object-[center_8%]"  loading="lazy" decoding="async" />
             </div>
             <div className="absolute bottom-0 left-0 right-0 py-3 px-5 bg-[rgba(11,16,32,0.8)]">
               <div className="font-mono text-[10px] tracking-[2px] uppercase text-[rgba(245,245,243,0.5)]">Jan Krejčí · 2025</div>

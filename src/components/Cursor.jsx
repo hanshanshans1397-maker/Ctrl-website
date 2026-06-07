@@ -23,34 +23,18 @@ export function Cursor() {
     const dot = dotRef.current;
     if (!dot || !window.matchMedia?.(FINE_POINTER).matches) return;
 
-    const bindings = [];
-    const bind = () => {
-      bindings.forEach(({ el, onEnter, onLeave }) => {
-        el.removeEventListener('mouseenter', onEnter);
-        el.removeEventListener('mouseleave', onLeave);
-      });
-      bindings.length = 0;
+    const onEnter = () => dot.classList.add('big');
+    const onLeave = () => dot.classList.remove('big');
 
-      document.querySelectorAll('a, button, [data-cursor-hover]').forEach((el) => {
-        const onEnter = () => dot.classList.add('big');
-        const onLeave = () => dot.classList.remove('big');
-        el.addEventListener('mouseenter', onEnter);
-        el.addEventListener('mouseleave', onLeave);
-        bindings.push({ el, onEnter, onLeave });
-      });
-    };
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest('a, button, [data-cursor-hover]')) onEnter();
+    });
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest('a, button, [data-cursor-hover]')) onLeave();
+    });
 
-    bind();
-    const t = window.setTimeout(bind, 100);
-    return () => {
-      window.clearTimeout(t);
-      bindings.forEach(({ el, onEnter, onLeave }) => {
-        el.removeEventListener('mouseenter', onEnter);
-        el.removeEventListener('mouseleave', onLeave);
-      });
-      dot.classList.remove('big');
-    };
-  });
+    return () => dot.classList.remove('big');
+  }, []);
 
   return (
     <div id="cur">

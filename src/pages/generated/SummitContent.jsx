@@ -12,7 +12,7 @@ export function SummitPageContent() {
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-[center_35%] z-0 max-sm:hidden"
-        />
+         fetchpriority="high" decoding="async" />
         <div
           className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_top,rgba(11,16,32,0.88)_0%,rgba(11,16,32,0.52)_50%,rgba(11,16,32,0.18)_100%)] max-sm:hidden"
           aria-hidden="true"
@@ -20,13 +20,13 @@ export function SummitPageContent() {
 
         {/* Mobile split: half-screen image with gradient + title overlay */}
         <div className="hidden max-sm:block relative w-full h-[50vh] shrink-0 bg-dark">
-          <img src="/photos/Seminar.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_35%]" />
+          <img src="/photos/Seminar.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_35%]"  fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           <div className="absolute bottom-0 left-0 right-0 px-5 pb-6 z-[3]">
             <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-2">Spring 2026</span>
             <div className="flex items-baseline gap-[0.15em] text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span>Summit</span>
-              <img src="/2026.png" alt="2026" className="h-[0.85em] w-auto inline-block align-middle opacity-100" />
+              <img src="/2026.png" alt="2026" className="h-[0.85em] w-auto inline-block align-middle opacity-100"  loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@ export function SummitPageContent() {
               <span>Summit</span>
             </div>
             <div className="word">
-              <span><img src="/2026.png" alt="2026" className="h-[1em] w-auto inline-block align-middle opacity-100" /></span>
+              <span><img src="/2026.png" alt="2026" className="h-[1em] w-auto inline-block align-middle opacity-100"  loading="lazy" decoding="async" /></span>
             </div>
           </h1>
 

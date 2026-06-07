@@ -92,13 +92,21 @@ export function Layout() {
     const hero = document.getElementById('hero');
     if (!hero) return undefined;
 
+    let raf = null;
     const onScroll = () => {
-      setDarkNav(window.scrollY <= hero.offsetHeight - 80);
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        setDarkNav(window.scrollY <= hero.offsetHeight - 80);
+      });
     };
 
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, [hasDarkHero, pathname]);
 
   useEffect(() => {

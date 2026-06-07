@@ -131,15 +131,20 @@ export function useWorkshopsEffects() {
       onLeaveBack: () => updateScrollHint(-1),
     });
 
+    let resizeTimer = null;
     const onResize = () => {
-      setStickyHeight();
-      ScrollTrigger.refresh();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setStickyHeight();
+        ScrollTrigger.refresh();
+      }, 150);
     };
 
     window.addEventListener('resize', onResize, { passive: true });
     window.visualViewport?.addEventListener('resize', onResize, { passive: true });
 
     return () => {
+      clearTimeout(resizeTimer);
       narrativeST?.kill();
       window.removeEventListener('resize', onResize);
       window.visualViewport?.removeEventListener('resize', onResize);

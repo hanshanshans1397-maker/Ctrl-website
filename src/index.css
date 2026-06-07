@@ -204,6 +204,8 @@ body.EN .topics-tag.en {
 .ticker-wrap,
 .ticker-inner {
   animation: var(--animate-ticker);
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 @media (max-width: 768px) {
@@ -221,6 +223,8 @@ body.EN .topics-tag.en {
 .topics-track {
   @apply flex w-max whitespace-nowrap;
   animation: tickerAnim 45s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /* form success (JS toggles .show) */
@@ -260,6 +264,11 @@ body.EN .topics-tag.en {
   to {
     transform: translateX(-50%);
   }
+}
+
+/* promote hero bg image to its own compositor layer */
+#hero > img:first-child {
+  will-change: transform;
 }
 
 /* grain overlay on all hero sections */
@@ -315,6 +324,8 @@ body.EN .topics-tag.en {
   width: max-content;
   align-items: stretch;
   animation: tickerAnim 55s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .partner-item {
