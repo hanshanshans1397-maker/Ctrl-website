@@ -7,22 +7,27 @@ export function SummitPageContent() {
         id="hero"
         className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-dark px-[52px] pb-[100px] max-lg:px-6 max-lg:pb-20 max-md:px-7 max-md:pb-16 max-sm:px-0 max-sm:pb-0 max-sm:pt-0 max-sm:min-h-0 max-sm:justify-start"
       >
+        {/* PŮVODNÍ HERO POZADÍ (desktop) — odkomentuj pro návrat k fotce:
         <img
           src="/photos/Seminar.jpg"
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-[center_35%] z-0 max-sm:hidden"
-         fetchpriority="high" decoding="async" />
+          fetchpriority="high" decoding="async"
+        />
         <div
           className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_top,rgba(11,16,32,0.88)_0%,rgba(11,16,32,0.52)_50%,rgba(11,16,32,0.18)_100%)] max-sm:hidden"
           aria-hidden="true"
         />
+        */}
 
-        {/* Mobile split: half-screen image with gradient + title overlay */}
-        <div className="hidden max-sm:block relative w-full h-[50vh] shrink-0 bg-dark">
-          <img src="/photos/Seminar.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_35%]"  fetchpriority="high" decoding="async" />
+        {/* Mobile split: title overlay (bez fotky v pozadí) */}
+        <div className="hidden max-sm:block relative w-full shrink-0 bg-dark pt-24 pb-6">
+          {/* PŮVODNÍ MOBILE POZADÍ — odkomentuj spolu s h-[50vh] na rodiči:
+          <img src="/photos/Seminar.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_35%]" fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
-          <div className="absolute bottom-0 left-0 right-0 px-5 pb-6 z-[3]">
+          */}
+          <div className="px-5 z-[3]">
             <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-2">Spring 2026</span>
             <div className="flex items-baseline gap-[0.15em] text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span>Summit</span>
