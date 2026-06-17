@@ -22,13 +22,13 @@ export function SummitPageContent() {
         */}
 
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
-        <div className="hidden max-sm:block relative w-full shrink-0 bg-dark pt-24 pb-6">
+        <div className="hero-mobile-head hidden max-sm:block relative w-full shrink-0 bg-dark">
           {/* PŮVODNÍ MOBILE POZADÍ — odkomentuj spolu s h-[50vh] na rodiči:
           <img src="/photos/Seminar.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_35%]" fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           */}
           <div className="px-5 z-[3]">
-            <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-2">Spring 2026</span>
+            <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-3">Spring 2026</span>
             <div className="flex items-baseline gap-[0.15em] text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span>Summit</span>
               <img src="/2026.png" alt="2026" className="h-[0.85em] w-auto inline-block align-middle opacity-100"  loading="lazy" decoding="async" />
@@ -36,7 +36,7 @@ export function SummitPageContent() {
           </div>
         </div>
 
-        <div className="relative z-[3] max-w-[1100px] max-sm:px-5 max-sm:pt-8 max-sm:pb-10 max-sm:max-w-full">
+        <div className="hero-mobile-body relative z-[3] max-w-[1100px] max-sm:px-5 max-sm:max-w-full">
           <div
             id="heroMeta"
             className="mb-10 flex translate-y-4 items-center gap-5 opacity-0 max-sm:hidden"
@@ -55,7 +55,7 @@ export function SummitPageContent() {
 
           <div
             id="heroBottom"
-            className="flex translate-y-4 flex-wrap items-end justify-between gap-10 opacity-0 max-sm:flex-col max-sm:items-start max-sm:gap-6 max-[480px]:gap-5"
+            className="flex translate-y-4 flex-wrap items-end justify-between gap-10 opacity-0 max-sm:flex-col max-sm:items-start max-sm:gap-7 max-[480px]:gap-6"
           >
             <p className="cs max-w-[500px] text-lg leading-[1.65] font-light text-[rgba(245,245,243,0.75)]">
               Mezinárodní youth summit zaměřený na digitální budoucnost Evropy. AI, média, dezinformace, youth
@@ -94,7 +94,7 @@ export function SummitPageContent() {
           </div>
         </div>
 
-        <div className="deco-year pointer-events-none absolute right-[52px] bottom-[60px] text-[clamp(120px,16vw,220px)] leading-none font-black tracking-[-8px] text-[rgba(245,245,243,0.03)] select-none max-md:hidden">
+        <div className="deco-year pointer-events-none absolute z-[1] right-[52px] bottom-[60px] text-[clamp(120px,16vw,220px)] leading-none font-black tracking-[-8px] text-[rgba(245,245,243,0.03)] select-none max-sm:left-1/2 max-sm:right-auto max-sm:bottom-6 max-sm:-translate-x-1/2 max-sm:text-[clamp(56px,18vw,88px)] max-sm:tracking-[-3px]">
           2026
         </div>
       </section>

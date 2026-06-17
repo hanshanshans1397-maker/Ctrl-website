@@ -26,7 +26,7 @@ export function HomePageContent() {
         />
 
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
-        <div className="hidden max-sm:block relative w-full shrink-0 bg-dark pt-24 pb-6">
+        <div className="hero-mobile-head hidden max-sm:block relative w-full shrink-0 bg-dark">
           {/* PŮVODNÍ MOBILE POZADÍ — odkomentuj spolu s h-[50vh] na rodiči:
           <img src="/photos/hero.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_25%]" fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
@@ -40,7 +40,7 @@ export function HomePageContent() {
           </div>
         </div>
 
-        <div className="max-sm:px-5 max-sm:pt-7 max-sm:pb-10">
+        <div className="hero-mobile-body max-sm:px-5">
           <div className="hero-meta relative z-[3] flex items-center gap-5 mb-12 opacity-0 max-[640px]:justify-center max-[640px]:mb-8 max-[640px]:flex-wrap max-sm:hidden max-[480px]:gap-2">
             <span className="font-mono text-[10px] font-medium tracking-[3px] uppercase text-accent">BRNO &middot; 2026</span>
           </div>
@@ -239,7 +239,7 @@ export function HomePageContent() {
             <div className="rev d1 bg-bg2 py-10 px-8">
               <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden"><img src="/IMG_4222.jpeg" alt="Jan Krejčí" className="w-full h-full object-cover object-[center_5%]"  loading="lazy" decoding="async" /></div>
               <div className="text-base font-semibold mb-1">Jan Krejčí</div>
-              <div className="font-mono text-[10px] tracking-[1.5px] uppercase text-accent mb-1.5"><span className="cs">Předseda & Zakladatel</span><span className="en">President & Founder</span></div>
+              <div className="font-mono text-[10px] tracking-[1.5px] uppercase text-accent mb-1.5"><span className="cs">Prezident & Zakladatel</span><span className="en">President & Founder</span></div>
             </div>
             <div className="rev d2 bg-bg2 py-10 px-8">
               <div className="w-[72px] h-[72px] bg-light rounded-full mb-5 flex items-center justify-center text-xl font-bold text-mid font-mono">JR</div>
@@ -367,7 +367,7 @@ export function HomePageContent() {
               <div>
                 <div className="text-[15px] font-semibold text-dark">Jan Krejčí</div>
                 <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid mt-0.5">
-                  <span className="cs">Předseda &amp; Zakladatel · CTRL Europe</span>
+                  <span className="cs">Prezident &amp; Zakladatel · CTRL Europe</span>
                   <span className="en">President &amp; Founder · CTRL Europe</span>
                 </div>
               </div>

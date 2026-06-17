@@ -10,7 +10,7 @@ export function WorkshopsPageContent() {
         */}
 
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
-        <div className="hidden max-sm:block relative w-full shrink-0 bg-dark pt-24 pb-6">
+        <div className="hero-mobile-head hidden max-sm:block relative w-full shrink-0 bg-dark">
           {/* PŮVODNÍ MOBILE POZADÍ — odkomentuj spolu s h-[50vh] na rodiči:
           <img src="/photos/workshopy.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
@@ -24,7 +24,7 @@ export function WorkshopsPageContent() {
           </div>
         </div>
 
-        <div className="relative z-[3] max-w-[1100px] max-sm:px-5 max-sm:pt-8 max-sm:pb-10 max-sm:max-w-full">
+        <div className="hero-mobile-body relative z-[3] max-w-[1100px] max-sm:px-5 max-sm:max-w-full">
           <div className="mb-9 flex translate-y-4 flex-wrap items-center gap-5 opacity-0 max-[640px]:mb-6 max-[480px]:gap-2 max-sm:hidden" id="heroMeta">
             <span className="font-mono text-[10px] tracking-[3px] text-accent uppercase">Education</span>
           </div>

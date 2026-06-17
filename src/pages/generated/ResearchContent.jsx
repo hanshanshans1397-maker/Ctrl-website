@@ -8,7 +8,7 @@ export function ResearchPageContent() {
         */}
 
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
-        <div className="hidden max-sm:block relative w-full shrink-0 bg-dark pt-24 pb-6">
+        <div className="hero-mobile-head hero-mobile-head--solo hidden max-sm:block relative w-full shrink-0 bg-dark">
           {/* PŮVODNÍ MOBILE POZADÍ — odkomentuj spolu s h-[50vh] na rodiči:
           <img src="/photos/vyzkum.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />

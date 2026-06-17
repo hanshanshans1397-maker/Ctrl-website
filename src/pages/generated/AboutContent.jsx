@@ -10,7 +10,7 @@ export function AboutPageContent() {
         */}
 
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
-        <div className="hidden max-sm:block relative w-full shrink-0 bg-dark pt-24 pb-6">
+        <div className="hero-mobile-head hidden max-sm:block relative w-full shrink-0 bg-dark">
           {/* PŮVODNÍ MOBILE POZADÍ — odkomentuj spolu s h-[50vh] na rodiči:
           <img src="/photos/ClenskyProjektClenove.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
@@ -24,7 +24,7 @@ export function AboutPageContent() {
           </div>
         </div>
 
-        <div className="relative z-[3] max-w-[1100px] max-sm:px-5 max-sm:pt-8 max-sm:pb-10 max-sm:max-w-full">
+        <div className="hero-mobile-body relative z-[3] max-w-[1100px] max-sm:px-5 max-sm:max-w-full">
           <div className="mb-9 flex translate-y-4 flex-wrap items-center gap-5 opacity-0 max-[640px]:mb-6 max-[480px]:gap-2 max-sm:hidden" id="heroMeta">
             <span className="font-mono text-[10px] tracking-[3px] text-accent uppercase">Kdo jsme</span>
           </div>
@@ -217,7 +217,7 @@ export function AboutPageContent() {
                 <div className="flex justify-between py-3 border-b border-light">
                   <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid cs">Role</div>
                   <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid en">Role</div>
-                  <div className="text-[13px] font-medium text-dark cs">Předseda & Zakladatel</div>
+                  <div className="text-[13px] font-medium text-dark cs">Prezident & Zakladatel</div>
                   <div className="text-[13px] font-medium text-dark en">President & Founder</div>
                 </div>
                 <div className="flex justify-between py-3 border-b border-light">
@@ -234,7 +234,7 @@ export function AboutPageContent() {
             </div>
             <div className="rev d2">
               <h2 className="text-[clamp(44px,5vw,72px)] font-extrabold leading-[0.95] tracking-[-2.5px] text-dark mb-2.5">Jan Krejčí</h2>
-              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent mb-10 cs">Předseda & Zakladatel CTRL Europe</div>
+              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent mb-10 cs">Prezident & Zakladatel CTRL Europe</div>
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent mb-10 en">President & Founder of CTRL Europe</div>
               <div className="prose">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">CTRL Europe jsem nezaložil jako školní projekt. Založil jsem ho protože vidím skutečný problém a věřím, že naše generace ho musí řešit sama.</p>
