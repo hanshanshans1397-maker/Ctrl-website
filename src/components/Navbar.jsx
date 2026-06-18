@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLang } from '../context/LangContext';
 
@@ -60,6 +61,23 @@ const NAV_ITEMS = [
   },
 ];
 
+const JOIN_OPTIONS = [
+  {
+    to: '/join',
+    cs: 'Škola nebo organizace',
+    en: 'School or organization',
+    descCs: 'Workshopy, partnerství a společné projekty pro vaši instituci',
+    descEn: 'Workshops, partnerships and joint projects for your institution',
+  },
+  {
+    to: '/apply',
+    cs: 'Staň se členem',
+    en: 'Become a member',
+    descCs: 'Vyber si buňku a připoj se k síti 650+ mladých lidí',
+    descEn: 'Pick a cell and join a network of 650+ young people',
+  },
+];
+
 function NavLabel({ item }) {
   if (item.label) return item.label;
   return (
@@ -70,11 +88,63 @@ function NavLabel({ item }) {
   );
 }
 
+function JoinOptionLabel({ option, variant = 'title' }) {
+  if (variant === 'desc') {
+    return (
+      <>
+        <span className="cs">{option.descCs}</span>
+        <span className="en">{option.descEn}</span>
+      </>
+    );
+  }
+  return (
+    <>
+      <span className="cs">{option.cs}</span>
+      <span className="en">{option.en}</span>
+    </>
+  );
+}
+
 export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onCloseMenu }) {
   const { pathname } = useLocation();
   const { langLabel, toggleLang } = useLang();
+  const [joinOpen, setJoinOpen] = useState(false);
+  const [mobileJoinOpen, setMobileJoinOpen] = useState(false);
+  const joinRef = useRef(null);
 
   const isActive = (to) => pathname === to || (to !== '/' && pathname.startsWith(to));
+  const isJoinActive = isActive('/join') || isActive('/apply');
+
+  useEffect(() => {
+    setJoinOpen(false);
+    setMobileJoinOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!joinOpen) return undefined;
+
+    const onPointerDown = (e) => {
+      if (joinRef.current && !joinRef.current.contains(e.target)) {
+        setJoinOpen(false);
+      }
+    };
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setJoinOpen(false);
+    };
+
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [joinOpen]);
+
+  const closeAll = () => {
+    setJoinOpen(false);
+    setMobileJoinOpen(false);
+    onCloseMenu();
+  };
 
   const navLinkClass = (item) => {
     const active = isActive(item.to);
@@ -100,7 +170,7 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
         <Link
           to="/"
           className="flex items-center no-underline"
-          onClick={onCloseMenu}
+          onClick={closeAll}
         >
           <img
             src="/ctrl-logo.png"
@@ -110,7 +180,7 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
         </Link>
         <div className="flex items-center gap-7 max-[480px]:gap-3">
           {NAV_ITEMS.map((item) => (
-            <Link key={item.to} to={item.to} className={navLinkClass(item)} onClick={onCloseMenu}>
+            <Link key={item.to} to={item.to} className={navLinkClass(item)} onClick={closeAll}>
               <NavLabel item={item} />
             </Link>
           ))}
@@ -125,15 +195,41 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
           >
             {langLabel}
           </button>
-          <Link
-            to="/join"
-            className={`bg-dark px-[18px] py-2 text-[12px] font-semibold tracking-wide text-bg no-underline transition-colors duration-200 hover:bg-accent max-lg:hidden max-[480px]:px-3.5 max-[480px]:text-[10px] ${
-              isActive('/join') ? 'ring-1 ring-accent/30' : ''
-            }`}
-          >
-            <span className="cs">Zapojit se</span>
-            <span className="en">Join us</span>
-          </Link>
+          <div className="join-dropdown relative max-lg:hidden" ref={joinRef}>
+            <button
+              type="button"
+              className={`join-dropdown-trigger bg-dark px-[18px] py-2 text-[12px] font-semibold tracking-wide text-bg transition-colors duration-200 hover:bg-accent max-[480px]:px-3.5 max-[480px]:text-[10px] ${
+                isJoinActive ? 'ring-1 ring-accent/30' : ''
+              }`}
+              aria-expanded={joinOpen}
+              aria-haspopup="true"
+              onClick={() => setJoinOpen((v) => !v)}
+            >
+              <span className="cs">Zapojit se</span>
+              <span className="en">Join us</span>
+              <span className="join-dropdown-chevron" aria-hidden="true" />
+            </button>
+            {joinOpen && (
+              <div className="join-dropdown-panel" role="menu">
+                {JOIN_OPTIONS.map((option) => (
+                  <Link
+                    key={option.to}
+                    to={option.to}
+                    role="menuitem"
+                    className={`join-dropdown-item${isActive(option.to) ? ' is-active' : ''}`}
+                    onClick={() => setJoinOpen(false)}
+                  >
+                    <span className="join-dropdown-item-title">
+                      <JoinOptionLabel option={option} />
+                    </span>
+                    <span className="join-dropdown-item-desc">
+                      <JoinOptionLabel option={option} variant="desc" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <button
             type="button"
             className={`relative z-[1001] ml-2 flex flex-col gap-[5px] border-none bg-transparent p-2 lg:hidden max-[480px]:ml-0 max-[480px]:p-2.5 ${menuOpen ? 'open' : ''}`}
@@ -163,7 +259,7 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
         <Link
           to="/"
           className={`flex items-center gap-3 border-b border-light py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive('/') ? 'text-accent' : 'text-dark'}`}
-          onClick={onCloseMenu}
+          onClick={closeAll}
         >
           <span className="cs">Domů</span>
           <span className="en">Home</span>
@@ -173,20 +269,43 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
             key={item.to}
             to={item.to}
             className={`flex items-center gap-3 border-b border-light py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive(item.to) ? 'text-accent' : 'text-dark'}`}
-            onClick={onCloseMenu}
+            onClick={closeAll}
           >
             {item.icon('w-7 h-7 shrink-0 opacity-50')}
             <NavLabel item={item} />
           </Link>
         ))}
-        <Link
-          to="/join"
-          className={`menu-cta${isActive('/join') ? ' is-active' : ''}`}
-          onClick={onCloseMenu}
-        >
-          <span className="cs">Zapojit se →</span>
-          <span className="en">Join us →</span>
-        </Link>
+        <div className="mt-7">
+          <button
+            type="button"
+            className={`menu-cta flex w-full items-center justify-between text-left${isJoinActive ? ' is-active' : ''}`}
+            aria-expanded={mobileJoinOpen}
+            onClick={() => setMobileJoinOpen((v) => !v)}
+          >
+            <span className="cs">Zapojit se</span>
+            <span className="en">Join us</span>
+            <span className="join-dropdown-chevron join-dropdown-chevron-light" aria-hidden="true" />
+          </button>
+          {mobileJoinOpen && (
+            <div className="join-mobile-options">
+              {JOIN_OPTIONS.map((option) => (
+                <Link
+                  key={option.to}
+                  to={option.to}
+                  className={`join-mobile-option${isActive(option.to) ? ' is-active' : ''}`}
+                  onClick={closeAll}
+                >
+                  <span className="join-mobile-option-title">
+                    <JoinOptionLabel option={option} />
+                  </span>
+                  <span className="join-mobile-option-desc">
+                    <JoinOptionLabel option={option} variant="desc" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

@@ -35,6 +35,7 @@ npm run preview  # náhled buildu
 | `/articles` | Články |
 | `/research` | Výzkum |
 | `/join` | Zapojit se |
+| `/apply` | Přihláška člena |
 | `/summit` | Summit |
 | `/workshops` | Workshopy |
 | `/article-template` | Šablona článku |
@@ -53,3 +54,24 @@ node scripts/html-to-jsx.mjs
 ```
 
 Po regeneraci zkontroluj JSX (zejména vnořené `<a>` tagy a chybějící uzavírací elementy).
+
+## Přihláška člena — odesílání e-mailu (Resend)
+
+Formulář na `/apply` posílá přihlášku přes Vercel API (`/api/apply`) na e-mail pomocí [Resend](https://resend.com).
+
+1. Založ účet na Resend a vytvoř API klíč.
+2. Zkopíruj `.env.example` → `.env` a doplň hodnoty.
+3. V Resend ověř odesílací doménu (produkce) nebo pro test použij `onboarding@resend.dev` (e-maily dorazí jen na účet registrovaný v Resend).
+4. Na Vercelu nastav stejné proměnné v **Project → Settings → Environment Variables**:
+   - `RESEND_API_KEY`
+   - `RESEND_FROM_EMAIL`
+   - `APPLY_TO_EMAIL` (výchozí `ctrleurope@seznam.cz`)
+   - `SITE_URL` (veřejná URL webu pro logo v potvrzovacím e-mailu, např. `https://ctrleurope.com`)
+
+Lokální test API endpointu (včetně odesílání):
+
+```bash
+npm run dev:vercel
+```
+
+Samotné `npm run dev` spustí jen frontend — `/api/apply` funguje až s `vercel dev` nebo po deployi na Vercel.

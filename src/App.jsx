@@ -5,6 +5,7 @@ import AboutPage from './pages/AboutPage';
 import ArticleTemplatePage from './pages/ArticleTemplatePage';
 import ArticlesPage from './pages/ArticlesPage';
 import HomePage from './pages/HomePage';
+import ApplyPage from './pages/ApplyPage';
 import JoinPage from './pages/JoinPage';
 import ResearchPage from './pages/ResearchPage';
 import SummitPage from './pages/SummitPage';
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="articles" element={<ArticlesPage />} />
             <Route path="research" element={<ResearchPage />} />
             <Route path="join" element={<JoinPage />} />
+            <Route path="apply" element={<ApplyPage />} />
             <Route path="summit" element={<SummitPage />} />
             <Route path="workshops" element={<WorkshopsPage />} />
             <Route path="article-template" element={<ArticleTemplatePage />} />

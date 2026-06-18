@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export function JoinPageContent() {
   return (
     <>
-      <div className="page-hero relative overflow-hidden bg-dark flex min-h-[60vh] flex-col justify-end px-[52px] pt-40 pb-[100px] max-lg:px-6 max-lg:pb-20 max-sm:justify-center max-sm:px-5">
+      <div className="page-hero relative overflow-hidden bg-dark flex min-h-[60vh] flex-col justify-end px-[52px] pt-40 pb-[100px] max-lg:px-6 max-lg:pb-20 max-sm:justify-center max-sm:px-5" id="hero">
         {/* PŮVODNÍ HERO POZADÍ — odkomentuj pro návrat k fotce:
         <img src="/photos/stage.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_35%] z-0" fetchpriority="high" decoding="async" />
         <div className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_top,rgba(11,16,32,0.92)_0%,rgba(11,16,32,0.58)_50%,rgba(11,16,32,0.2)_100%)]" aria-hidden="true" />
