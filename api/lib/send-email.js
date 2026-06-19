@@ -1,13 +1,13 @@
 function escapeHtml(value) {
-  return String(value ?? '')
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;');
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 }
 
 function getSiteUrl() {
-  return (process.env.SITE_URL || 'https://ctrleurope.com').replace(/\/$/, '');
+  return (process.env.SITE_URL || "https://ctrleurope.com").replace(/\/$/, "");
 }
 
 function getLogoUrl() {
@@ -15,7 +15,7 @@ function getLogoUrl() {
 }
 
 function emailRow(label, value) {
-  if (!value) return '';
+  if (!value) return "";
   return `<tr>
     <td style="padding:8px 12px;border-bottom:1px solid #e4e1d9;font-weight:600;vertical-align:top;width:38%;color:#0d1117;">${escapeHtml(label)}</td>
     <td style="padding:8px 12px;border-bottom:1px solid #e4e1d9;color:#0d1117;white-space:pre-wrap;">${escapeHtml(value)}</td>
@@ -23,7 +23,7 @@ function emailRow(label, value) {
 }
 
 function confirmationRow(label, value) {
-  if (!value) return '';
+  if (!value) return "";
   return `<tr>
     <td style="padding:10px 0;border-bottom:1px solid rgba(29,78,216,0.12);font-family:Geist Mono,Consolas,monospace;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#1d4ed8;vertical-align:top;width:42%;">${escapeHtml(label)}</td>
     <td style="padding:10px 0 10px 16px;border-bottom:1px solid rgba(29,78,216,0.12);font-size:14px;line-height:1.5;color:#0b1020;font-weight:500;">${escapeHtml(value)}</td>
@@ -42,18 +42,25 @@ function wrapEmail(title, rows) {
 </html>`;
 }
 
-function wrapConfirmationEmail({ isEn, greeting, intro, summaryTitle, rows, outro }) {
+function wrapConfirmationEmail({
+  isEn,
+  greeting,
+  intro,
+  summaryTitle,
+  rows,
+  outro,
+}) {
   const siteUrl = getSiteUrl();
   const logoUrl = getLogoUrl();
-  const eyebrow = isEn ? 'Member application' : 'Přihláška člena';
-  const headline = isEn ? 'Thank you for applying.' : 'Děkujeme za přihlášku.';
-  const websiteLabel = isEn ? 'Visit website' : 'Navštívit web';
+  const eyebrow = isEn ? "Member application" : "Přihláška člena";
+  const headline = isEn ? "Thank you for applying." : "Děkujeme za přihlášku.";
+  const websiteLabel = isEn ? "Visit website" : "Navštívit web";
   const tagline = isEn
-    ? 'Building digital resilience for the next European generation.'
-    : 'Budujeme digitální odolnost pro novou evropskou generaci.';
+    ? "Building digital resilience for the next European generation."
+    : "Budujeme digitální odolnost pro novou evropskou generaci.";
 
   return `<!DOCTYPE html>
-<html lang="${isEn ? 'en' : 'cs'}">
+<html lang="${isEn ? "en" : "cs"}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -127,18 +134,19 @@ function wrapConfirmationEmail({ isEn, greeting, intro, summaryTitle, rows, outr
 
 export async function sendEmail({ subject, html, to, replyTo }) {
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM_EMAIL || 'CTRL Europe <onboarding@resend.dev>';
-  const recipient = to || process.env.APPLY_TO_EMAIL || 'ctrleurope@seznam.cz';
+  const from =
+    process.env.RESEND_FROM_EMAIL || "CTRL Europe <no-reply@ctrleurope.com>";
+  const recipient = to || process.env.APPLY_TO_EMAIL || "ctrleurope@seznam.cz";
 
   if (!apiKey) {
-    throw new Error('RESEND_API_KEY is not configured');
+    throw new Error("RESEND_API_KEY is not configured");
   }
 
-  const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       from,
@@ -158,27 +166,35 @@ export async function sendEmail({ subject, html, to, replyTo }) {
 }
 
 export function buildApplyEmail(body) {
-  const isEn = body.lang === 'en';
-  const subject = isEn ? 'CTRL Europe — Member Application' : 'CTRL Europe — Přihláška člena';
+  const isEn = body.lang === "en";
+  const subject = isEn
+    ? "CTRL Europe — Member Application"
+    : "CTRL Europe — Přihláška člena";
   const title = subject;
 
   const rows = [
-    emailRow(isEn ? 'First name' : 'Jméno', body.firstName),
-    emailRow(isEn ? 'Last name' : 'Příjmení', body.lastName),
-    emailRow(isEn ? 'Date of birth' : 'Datum narození', body.birthDate),
-    emailRow(isEn ? 'Phone' : 'Telefon', body.phone),
-    emailRow('E-mail', body.email),
-    emailRow(isEn ? 'City' : 'Město', body.city),
-    emailRow(isEn ? 'Country' : 'Země', body.country),
-    emailRow(isEn ? 'School / employment' : 'Škola nebo zaměstnání', body.school),
-    emailRow(isEn ? 'Cells of interest' : 'Zájem o buňky', body.cells),
-    emailRow(isEn ? 'Skills' : 'Dovednosti', body.skills),
-    emailRow(isEn ? 'Languages' : 'Jazyky', body.languages),
-    emailRow(isEn ? 'Hours per week' : 'Hodin týdně', body.hoursPerWeek),
-    emailRow(isEn ? 'Involvement' : 'Forma zapojení', body.involvement),
-    emailRow(isEn ? 'Motivation' : 'Motivace', body.motivation),
-    emailRow(isEn ? 'How they heard about us' : 'Kde slyšeli o nás', body.hearAbout),
-  ].join('');
+    emailRow(isEn ? "First name" : "Jméno", body.firstName),
+    emailRow(isEn ? "Last name" : "Příjmení", body.lastName),
+    emailRow(isEn ? "Date of birth" : "Datum narození", body.birthDate),
+    emailRow(isEn ? "Phone" : "Telefon", body.phone),
+    emailRow("E-mail", body.email),
+    emailRow(isEn ? "City" : "Město", body.city),
+    emailRow(isEn ? "Country" : "Země", body.country),
+    emailRow(
+      isEn ? "School / employment" : "Škola nebo zaměstnání",
+      body.school,
+    ),
+    emailRow(isEn ? "Cells of interest" : "Zájem o buňky", body.cells),
+    emailRow(isEn ? "Skills" : "Dovednosti", body.skills),
+    emailRow(isEn ? "Languages" : "Jazyky", body.languages),
+    emailRow(isEn ? "Hours per week" : "Hodin týdně", body.hoursPerWeek),
+    emailRow(isEn ? "Involvement" : "Forma zapojení", body.involvement),
+    emailRow(isEn ? "Motivation" : "Motivace", body.motivation),
+    emailRow(
+      isEn ? "How they heard about us" : "Kde slyšeli o nás",
+      body.hearAbout,
+    ),
+  ].join("");
 
   return {
     subject,
@@ -188,37 +204,44 @@ export function buildApplyEmail(body) {
 }
 
 export function buildApplyConfirmationEmail(body) {
-  const isEn = body.lang === 'en';
-  const firstName = String(body.firstName ?? '').trim();
+  const isEn = body.lang === "en";
+  const firstName = String(body.firstName ?? "").trim();
 
   const subject = isEn
-    ? 'Thank you for your application — CTRL Europe'
-    : 'Děkujeme za přihlášku — CTRL Europe';
+    ? "Thank you for your application — CTRL Europe"
+    : "Děkujeme za přihlášku — CTRL Europe";
 
   const greeting = isEn
-    ? `Hi${firstName ? ` ${firstName}` : ''},`
-    : `Ahoj${firstName ? ` ${firstName}` : ''},`;
+    ? `Hi${firstName ? ` ${firstName}` : ""},`
+    : `Ahoj${firstName ? ` ${firstName}` : ""},`;
 
   const intro = isEn
-    ? 'Thank you for applying to CTRL Europe. We received your application and appreciate your interest in joining our network of young people building digital resilience across Central and Eastern Europe.'
-    : 'Děkujeme, že ses rozhodl/a podat přihlášku do CTRL Europe. Tvou přihlášku jsme přijali a vážíme si tvého zájmu o zapojení do naší sítě mladých lidí, kteří budují digitální odolnost ve střední a východní Evropě.';
+    ? "Thank you for applying to CTRL Europe. We received your application and appreciate your interest in joining our network of young people building digital resilience across Central and Eastern Europe."
+    : "Děkujeme, že ses rozhodl/a podat přihlášku do CTRL Europe. Tvou přihlášku jsme přijali a vážíme si tvého zájmu o zapojení do naší sítě mladých lidí, kteří budují digitální odolnost ve střední a východní Evropě.";
 
-  const summaryTitle = isEn ? 'What you chose' : 'Co jsi vybral/a';
+  const summaryTitle = isEn ? "What you chose" : "Co jsi vybral/a";
 
   const rows = [
-    confirmationRow(isEn ? 'Cells of interest' : 'Zájem o buňky', body.cells),
-    confirmationRow(isEn ? 'Skills' : 'Dovednosti', body.skills),
-    confirmationRow(isEn ? 'Involvement' : 'Forma zapojení', body.involvement),
-    confirmationRow(isEn ? 'Hours per week' : 'Hodin týdně', body.hoursPerWeek),
-  ].join('');
+    confirmationRow(isEn ? "Cells of interest" : "Zájem o buňky", body.cells),
+    confirmationRow(isEn ? "Skills" : "Dovednosti", body.skills),
+    confirmationRow(isEn ? "Involvement" : "Forma zapojení", body.involvement),
+    confirmationRow(isEn ? "Hours per week" : "Hodin týdně", body.hoursPerWeek),
+  ].join("");
 
   const outro = isEn
-    ? 'We will review your application and get back to you within a few business days with next steps. If you are under 15, we may need consent from a legal guardian.'
-    : 'Tvou přihlášku projdeme a brzy se ti ozveme s dalšími informacemi — obvykle do několika pracovních dní. Pokud je ti méně než 15 let, budeme potřebovat souhlas zákonného zástupce.';
+    ? "We will review your application and get back to you within a few business days with next steps. If you are under 15, we may need consent from a legal guardian."
+    : "Tvou přihlášku projdeme a brzy se ti ozveme s dalšími informacemi — obvykle do několika pracovních dní. Pokud je ti méně než 15 let, budeme potřebovat souhlas zákonného zástupce.";
 
   return {
     subject,
-    html: wrapConfirmationEmail({ isEn, greeting, intro, summaryTitle, rows, outro }),
+    html: wrapConfirmationEmail({
+      isEn,
+      greeting,
+      intro,
+      summaryTitle,
+      rows,
+      outro,
+    }),
     to: body.email,
   };
 }
