@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export function ArticlesPageContent() {
   return (
@@ -45,10 +45,12 @@ export function ArticlesPageContent() {
             id="heroBottom"
           >
             <p className="cs max-w-[480px] text-lg leading-[1.65] font-light text-[rgba(245,245,243,0.7)] max-sm:text-[15px]">
-              Naše analýzy, reporty a výzkumné články o digitálních hrozbách a odolnosti.
+              Naše analýzy, reporty a výzkumné články o digitálních hrozbách a
+              odolnosti.
             </p>
             <p className="en max-w-[480px] text-lg leading-[1.65] font-light text-[rgba(245,245,243,0.7)] max-sm:text-[15px]">
-              Our analyses, reports and research articles on digital threats and resilience.
+              Our analyses, reports and research articles on digital threats and
+              resilience.
             </p>
             <div className="flex shrink-0 flex-wrap gap-3 max-[640px]:w-full max-[480px]:gap-2">
               <a href="#articles-list" className="btn-p cs">
@@ -71,11 +73,14 @@ export function ArticlesPageContent() {
       <section className="sec bg-bg" id="articles-list">
         <div className="inner">
           <div className="rev mb-10">
-            <p className="font-mono text-[11px] tracking-[3px] uppercase text-mid cs">Články se chystají — brzy zde najdete naše analýzy, reporty a výzkumné texty.</p>
-            <p className="font-mono text-[11px] tracking-[3px] uppercase text-mid en">Articles coming soon — our analyses, reports and research pieces will be published here shortly.</p>
+            <p className="font-mono text-[11px] tracking-[3px] uppercase text-mid cs">
+              Články se chystají.
+            </p>
+            <p className="font-mono text-[11px] tracking-[3px] uppercase text-mid en">
+              Articles coming soon.
+            </p>
           </div>
           <div className="grid grid-cols-3 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-1">
-
             <div className="rev d1 bg-bg2 flex flex-col">
               <div className="h-[200px] animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
               <div className="flex flex-col gap-4 p-7">
@@ -126,9 +131,7 @@ export function ArticlesPageContent() {
                 <div className="h-2.5 w-16 animate-pulse bg-[rgba(11,16,32,0.06)] mt-2"></div>
               </div>
             </div>
-
           </div>
-
         </div>
       </section>
 
