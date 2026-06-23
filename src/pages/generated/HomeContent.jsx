@@ -924,7 +924,7 @@ export function HomePageContent() {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-px bg-light max-[480px]:grid-cols-1">
+            <div className="grid grid-cols-3 gap-px bg-dark max-[480px]:grid-cols-1">
               <div className="bg-bg py-6 px-6">
                 <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid mb-2">
                   <span className="cs">Vznik</span>
