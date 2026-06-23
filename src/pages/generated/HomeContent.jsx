@@ -181,7 +181,7 @@ export function HomePageContent() {
           <div className="what-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:gap-0.5">
             {/* 01 — Výzkum */}
             <div className="what-card rev d1 group min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100">
-              <div className="what-num font-mono text-[11px] tracking-[2px] text-mid mb-8 max-sm:mb-5">
+              <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 01
               </div>
               {/* CPU chip + magnifying glass — digital threat research */}
@@ -268,7 +268,7 @@ export function HomePageContent() {
 
             {/* 02 — Workshopy */}
             <div className="what-card rev d2 group min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100">
-              <div className="what-num font-mono text-[11px] tracking-[2px] text-mid mb-8 max-sm:mb-5">
+              <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 02
               </div>
               {/* Terminal window >_ — hands-on digital education */}
@@ -346,7 +346,7 @@ export function HomePageContent() {
 
             {/* 03 — Média */}
             <div className="what-card rev d3 group min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100">
-              <div className="what-num font-mono text-[11px] tracking-[2px] text-mid mb-8 max-sm:mb-5">
+              <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 03
               </div>
               {/* Eye with viewfinder + scan lines — critical media literacy */}
@@ -427,7 +427,7 @@ export function HomePageContent() {
 
             {/* 04 — Summit */}
             <div className="what-card rev d4 group min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100">
-              <div className="what-num font-mono text-[11px] tracking-[2px] text-mid mb-8 max-sm:mb-5">
+              <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 04
               </div>
               {/* Globe + network triangle — international youth summit */}
