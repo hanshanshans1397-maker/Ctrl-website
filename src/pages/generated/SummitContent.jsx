@@ -290,9 +290,9 @@ export function SummitPageContent() {
               <span className="cs">Hlavní témata</span>
               <span className="en">Main themes</span>
             </span>
-            <h2 className="section-title">
+            <h2 className="section-title italic">
               <span className="cs">
-                Témata která <em>dnes záleží.</em>
+                Témata na kterých <em>dnes záleží.</em>
               </span>
               <span className="en">
                 Themes that <em>matter today.</em>
@@ -559,7 +559,7 @@ export function SummitPageContent() {
               <span className="cs">Program</span>
               <span className="en">Program</span>
             </span>
-            <h2 className="section-title">
+            <h2 className="section-title italic">
               <span className="cs">
                 Co summit <em>nabídne.</em>
               </span>
@@ -1057,7 +1057,7 @@ export function SummitPageContent() {
               <span className="cs">Pro koho</span>
               <span className="en">Who it&apos;s for</span>
             </span>
-            <h2 className="sec-title text-[clamp(36px,4vw,64px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px] [&_em]:font-light [&_em]:text-mid [&_em]:italic">
+            <h2 className="sec-title italic text-[clamp(36px,4vw,64px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px] [&_em]:font-light [&_em]:text-mid [&_em]:italic">
               <span className="cs">
                 Summit je otevřený <em>pro všechny.</em>
               </span>

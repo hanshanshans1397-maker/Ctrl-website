@@ -175,9 +175,13 @@ export function HomePageContent() {
               <span className="cs">Naše práce</span>
               <span className="en">Our work</span>
             </span>
-            <h2 className="section-title">
-              <span className="cs">Čtyři oblasti naší práce.</span>
-              <span className="en">Four areas of our work.</span>
+            <h2 className="section-title italic">
+              <span className="cs">
+                Čtyři oblasti <em>naší práce.</em>
+              </span>
+              <span className="en">
+                Four areas <em>of our work.</em>
+              </span>
             </h2>
           </div>
           <div className="what-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:gap-0.5">
@@ -889,20 +893,20 @@ export function HomePageContent() {
                 <span className="en">Why we do this</span>
               </span>
               <blockquote className="text-[clamp(22px,3vw,36px)] font-light leading-[1.4] tracking-[-0.5px] text-dark mb-10 max-[640px]:text-[clamp(18px,5vw,24px)]">
-              <span className="cs">
-                &ldquo;CTRL Europe jsem nezaložil jako školní projekt. Vidím
-                problém: dezinformace, deepfaky, algoritmická manipulace. Věřím,
-                že naše generace ho musí řešit sama. Školy na to nestíhají.
-                Proto jsme se rozhodli jednat.&rdquo;
-              </span>
-              <span className="en">
-                &ldquo;I didn&apos;t start CTRL Europe as a school project. I
-                see a clear problem: disinformation, deepfakes, algorithmic
-                manipulation. I believe our generation has to solve it
-                ourselves. Schools can&apos;t keep up. So we decided to
-                act.&rdquo;
-              </span>
-            </blockquote>
+                <span className="cs">
+                  &ldquo;CTRL Europe jsem nezaložil jako školní projekt. Vidím
+                  problém: dezinformace, deepfaky, algoritmická manipulace.
+                  Věřím, že naše generace ho musí řešit sama. Školy na to
+                  nestíhají. Proto jsme se rozhodli jednat.&rdquo;
+                </span>
+                <span className="en">
+                  &ldquo;I didn&apos;t start CTRL Europe as a school project. I
+                  see a clear problem: disinformation, deepfakes, algorithmic
+                  manipulation. I believe our generation has to solve it
+                  ourselves. Schools can&apos;t keep up. So we decided to
+                  act.&rdquo;
+                </span>
+              </blockquote>
             </div>
             <div className="flex items-center gap-4 mb-14 max-[640px]:mb-10">
               <div className="w-8 h-px bg-accent shrink-0" />

@@ -332,7 +332,7 @@ export function WorkshopsPageContent() {
               <span className="cs">Témata workshopu</span>
               <span className="en">Workshop topics</span>
             </span>
-            <h2 className="section-title">
+            <h2 className="section-title italic">
               <span className="cs">
                 Osm témat. <em>Jeden cíl.</em>
               </span>
@@ -715,7 +715,7 @@ export function WorkshopsPageContent() {
               <span className="cs">Formát</span>
               <span className="en">Format</span>
             </span>
-            <h2 className="section-title">
+            <h2 className="section-title italic">
               <span className="cs">
                 Jak workshop <em>funguje.</em>
               </span>
@@ -832,7 +832,7 @@ export function WorkshopsPageContent() {
               <span className="cs">Pro školy</span>
               <span className="en">For schools</span>
             </span>
-            <h2 className="section-title">
+            <h2 className="section-title italic">
               <span className="cs">
                 Přijedeme přímo <em>k vám.</em>
               </span>
@@ -1045,7 +1045,7 @@ export function WorkshopsPageContent() {
               <span className="cs">Mezinárodní rozměr</span>
               <span className="en">International dimension</span>
             </span>
-            <h2 className="section-title">
+            <h2 className="section-title italic">
               <span className="cs">
                 Střední Evropa jako <em>výchozí bod.</em>
               </span>
@@ -1144,7 +1144,7 @@ export function WorkshopsPageContent() {
               <span className="cs">Dlouhodobá vize</span>
               <span className="en">Long-term vision</span>
             </span>
-            <h2 className="section-title">
+            <h2 className="section-title italic">
               <span className="cs">
                 Síť škol. <em>Celá Evropa.</em>
               </span>
