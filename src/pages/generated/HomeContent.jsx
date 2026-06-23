@@ -491,8 +491,8 @@ export function HomePageContent() {
         </div>
       </section>
 
-      <div className="grid grid-cols-3 border-b border-light max-[640px]:grid-cols-1">
-        <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-r border-light max-[640px]:border-r-0 max-[640px]:border-b">
+      <div className="grid grid-cols-3 gap-3 bg-dark border-4 border-dark p-3 max-[640px]:grid-cols-1 max-[640px]:gap-2 max-[640px]:p-2">
+        <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-2 border-dark">
           <img
             src="/photos/team.jpg"
             alt="Členové CTRL Europe"
@@ -501,7 +501,7 @@ export function HomePageContent() {
             decoding="async"
           />
         </div>
-        <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-r border-light max-[640px]:border-r-0 max-[640px]:border-b">
+        <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-2 border-dark">
           <img
             src="/photos/hero.png"
             alt="Prezentace CTRL Europe"
@@ -510,7 +510,7 @@ export function HomePageContent() {
             decoding="async"
           />
         </div>
-        <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group max-[640px]:border-b">
+        <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-2 border-dark">
           <img
             src="/photos/member-heart.jpg"
             alt="Studentský projekt CTRL"
@@ -598,7 +598,7 @@ export function HomePageContent() {
           </h2>
           <div className="board-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-2">
             <div className="rev d1 bg-bg2 py-10 px-8">
-              <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden">
+              <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden border-4 border-dark">
                 <img
                   src="/IMG_4222.jpeg"
                   alt="Jan Krejčí"
@@ -943,17 +943,19 @@ export function HomePageContent() {
             </div>
           </div>
           <div className="rev d2 relative max-lg:hidden">
-            <div className="aspect-[3/4] overflow-hidden">
-              <img
-                src="/IMG_4222.jpeg"
-                alt="Jan Krejčí, zakladatel CTRL Europe"
-                className="w-full h-full object-cover object-[center_8%]"
-                loading="lazy"
-                decoding="async"
-              />
+            <div className="aspect-[3/4] border-4 border-dark p-3 bg-dark">
+              <div className="h-full overflow-hidden">
+                <img
+                  src="/IMG_4222.jpeg"
+                  alt="Jan Krejčí, zakladatel CTRL Europe"
+                  className="w-full h-full object-cover object-[center_8%]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 py-3 px-5 bg-[rgba(11,16,32,0.8)]">
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-[rgba(245,245,243,0.5)]">
+            <div className="absolute bottom-0 left-0 right-0 py-3 px-5 bg-[rgba(11,16,32,0.85)]">
+              <div className="font-mono text-[10px] tracking-[2px] uppercase text-[rgba(245,245,243,1)]">
                 Jan Krejčí · 2025
               </div>
             </div>
