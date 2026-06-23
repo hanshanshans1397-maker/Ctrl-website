@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ApplyPageContent } from "./generated/ApplyContent";
-import { useApplyForm } from "../hooks/useApplyForm";
 
 function ApplyComingSoon() {
   return (
@@ -53,8 +52,6 @@ function ApplyComingSoon() {
 }
 
 export default function ApplyPage() {
-  useApplyForm("applyForm");
-
   useEffect(() => {
     document.title = "Přihláška | CTRL Europe";
   }, []);

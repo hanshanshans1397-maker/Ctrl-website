@@ -18,8 +18,21 @@ export function useLenis() {
     const onTick = (time) => lenis.raf(time * 1000);
     gsap.ticker.add(onTick);
 
+    const onAnchorClick = (e) => {
+      const anchor = e.target.closest('a[href^="#"]');
+      if (!anchor) return;
+      const hash = anchor.getAttribute('href');
+      const target = document.querySelector(hash);
+      if (!target) return;
+      e.preventDefault();
+      lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+    };
+
+    document.addEventListener('click', onAnchorClick);
+
     return () => {
       gsap.ticker.remove(onTick);
+      document.removeEventListener('click', onAnchorClick);
       lenis.destroy();
     };
   }, []);

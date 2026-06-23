@@ -71,7 +71,7 @@ export function Layout() {
   const { isEn } = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkNav, setDarkNav] = useState(false);
-  const darkHeroRoutes = ['/', '/summit', '/about', '/workshops', '/research', '/join'];
+  const darkHeroRoutes = ['/', '/summit', '/about', '/workshops', '/research', '/join', '/articles', '/apply'];
   const hasDarkHero = darkHeroRoutes.includes(pathname);
   const isNavSolid = useNavSolid(navRef);
 

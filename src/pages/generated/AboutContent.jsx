@@ -37,6 +37,20 @@ export function AboutPageContent() {
           <div className="flex translate-y-4 flex-wrap items-end justify-between gap-10 opacity-0 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-8 max-[480px]:gap-5" id="heroBottom">
             <p className="cs max-w-[480px] text-lg leading-[1.65] font-light text-[rgba(245,245,243,0.7)] max-sm:text-[15px]">Nezávislá youth platforma pro střední Evropu. Vzděláváme, propojujeme a budujeme digitální odolnost nové generace.</p>
             <p className="en max-w-[480px] text-lg leading-[1.65] font-light text-[rgba(245,245,243,0.7)] max-sm:text-[15px]">An independent youth platform for Central Europe. We educate, connect and build digital resilience for the next generation.</p>
+            <div className="flex shrink-0 flex-wrap gap-3 max-[640px]:w-full max-[480px]:gap-2">
+              <Link to="/apply" className="btn-p cs">
+                Zapojit se &rarr;
+              </Link>
+              <Link to="/apply" className="btn-p en">
+                Get involved &rarr;
+              </Link>
+              <a href="#about-team" className="btn-g light cs">
+                Náš tým
+              </a>
+              <a href="#about-team" className="btn-g light en">
+                Our team
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -213,7 +227,7 @@ export function AboutPageContent() {
       </section>
 
 
-      <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
+      <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg" id="about-team">
         <div className="inner max-w-[1300px] mx-auto">
           <div className="section-head rev">
             <span className="section-label">

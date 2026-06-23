@@ -336,8 +336,9 @@ body.EN .topics-tag.en {
 
 .apply-page .progress-seg .fill {
   height: 100%;
-  width: 100%;
+  width: 0%;
   background: var(--apply-blue);
+  transition: width 0.4s ease;
 }
 
 .apply-page .section {
@@ -632,6 +633,94 @@ body.EN .topics-tag.en {
   display: none;
 }
 
+/* ── Wizard steps ── */
+.apply-steps-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.apply-steps-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.apply-step {
+  min-width: 100%;
+  width: 100%;
+}
+
+.apply-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.apply-btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 13px 20px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  border: 1.5px solid var(--apply-line);
+  border-radius: 8px;
+  color: var(--apply-muted);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.apply-btn-back:hover {
+  border-color: var(--apply-ink);
+  color: var(--apply-ink);
+}
+
+.apply-btn-next {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--apply-line);
+  color: var(--apply-muted);
+  border: none;
+  border-radius: 8px;
+  cursor: not-allowed;
+  transition:
+    background 0.25s,
+    color 0.25s,
+    transform 0.1s;
+}
+
+.apply-btn-next.apply-btn-next--active {
+  background: var(--apply-blue);
+  color: #fff;
+  cursor: pointer;
+}
+
+.apply-btn-next.apply-btn-next--active:hover {
+  background: #1741b8;
+}
+
+.apply-btn-next.apply-btn-next--active:active {
+  transform: scale(0.99);
+}
+
+.apply-nav-note {
+  margin-top: 4px;
+}
+
 /* i18n scoped to apply page */
 .apply-page .section-sub.en,
 .apply-page .lede.en,
@@ -657,15 +746,44 @@ body.EN .apply-page .success p.en {
   display: block;
 }
 
+.apply-page.apply-page--below-hero {
+  padding-top: 80px;
+}
+
+/* Join form panel reuses apply-page CSS but overrides the full-page layout */
+.apply-page.join-apply-panel {
+  min-height: unset;
+  display: block;
+  padding: 48px;
+  justify-content: unset;
+}
+
+@media (max-width: 960px) {
+  .apply-page.join-apply-panel {
+    padding: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .apply-page.join-apply-panel {
+    padding: 28px;
+  }
+}
+
 @media (max-width: 520px) {
   .apply-page {
     padding: calc(40px + 4.5rem) 18px 100px;
+  }
+
+  .apply-page.apply-page--below-hero {
+    padding-top: 56px;
   }
 
   .apply-page .field-row {
     grid-template-columns: 1fr;
   }
 }
+
 
 @keyframes scrollLine {
   0% {

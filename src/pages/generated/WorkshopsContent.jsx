@@ -32,7 +32,10 @@ export function WorkshopsPageContent() {
             className="mb-9 flex translate-y-4 flex-wrap items-center gap-5 opacity-0 max-[640px]:mb-6 max-[480px]:gap-2 max-sm:hidden"
             id="heroMeta"
           >
-            <span className="text-xl text-accent">Education</span>
+            <span className="text-xl text-accent">
+              <span className="cs">Vzdělávání</span>
+              <span className="en">Education</span>
+            </span>
           </div>
 
           <h1
@@ -274,7 +277,9 @@ export function WorkshopsPageContent() {
                   </svg>
                 </div>
                 <div className="font-mono text-[40px] font-bold text-accent leading-none tracking-[-2px]">
-                  <span className="cs"><span className="mr-[0.2em]">do</span>26</span>
+                  <span className="cs">
+                    <span className="mr-[0.2em]">do</span>26
+                  </span>
                   <span className="en">≤26</span>
                 </div>
                 <div className="cs text-sm font-light text-mid mt-1">
