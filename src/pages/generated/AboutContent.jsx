@@ -707,81 +707,89 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d2 flex flex-col gap-px bg-light">
-              <div className="py-5 px-7 bg-accent/[0.08] border-l-[3px] border-accent">
-                <div className="text-sm font-semibold text-dark cs">
+            <div className="rev d2 flex flex-col gap-px bg-dark/10">
+              <div className="py-5 px-7 bg-dark2 border-l-[3px] border-l-accent">
+                <div className="text-sm font-semibold text-white cs">
                   Předsednictvo
                 </div>
-                <div className="text-sm font-semibold text-dark en">
+                <div className="text-sm font-semibold text-white en">
                   Executive Board
                 </div>
-                <div className="text-xs font-light text-mid mt-[3px]">
+                <div className="text-xs font-light text-white/50 mt-[3px]">
                   Jan Krejčí &bull; Jakub Rašovský &bull; Alena Marková &bull;
                   Bety Fritzová
                 </div>
               </div>
-              <div className="py-[18px] px-7 bg-bg">
-                <div className="text-[13px] font-normal text-mid cs">
+              <div className="py-[18px] px-7 bg-bg2">
+                <div className="text-[13px] font-normal text-dark/70 cs">
                   PR a komunikace: Jakub Rašovský
                 </div>
-                <div className="text-[13px] font-normal text-mid en">
+                <div className="text-[13px] font-normal text-dark/70 en">
                   PR & Communications: Jakub Rašovský
                 </div>
               </div>
-              <div className="py-[18px] px-7 bg-bg">
-                <div className="text-[13px] font-normal text-mid cs">
+              <div className="py-[18px] px-7 bg-bg2">
+                <div className="text-[13px] font-normal text-dark/70 cs">
                   Sociální sítě: Jiří Vítek
                 </div>
-                <div className="text-[13px] font-normal text-mid en">
+                <div className="text-[13px] font-normal text-dark/70 en">
                   Social Media: Jiří Vítek
                 </div>
               </div>
-              <div className="py-[18px] px-7 bg-bg">
-                <div className="text-[13px] font-normal text-mid cs">
+              <div className="py-[18px] px-7 bg-bg2">
+                <div className="text-[13px] font-normal text-dark/70 cs">
                   Podcast: Marek Roušar
                 </div>
-                <div className="text-[13px] font-normal text-mid en">
+                <div className="text-[13px] font-normal text-dark/70 en">
                   Podcast: Marek Roušar
                 </div>
               </div>
-              <div className="py-[18px] px-7 bg-bg">
-                <div className="text-[13px] font-normal text-mid cs">
+              <div className="py-[18px] px-7 bg-bg2">
+                <div className="text-[13px] font-normal text-dark/70 cs">
                   Výzkum: Pavel Klusák
                 </div>
-                <div className="text-[13px] font-normal text-mid en">
+                <div className="text-[13px] font-normal text-dark/70 en">
                   Research: Pavel Klusák
                 </div>
               </div>
-              <div className="py-[18px] px-7 bg-bg">
-                <div className="text-[13px] font-normal text-mid cs">
+              <div className="py-[18px] px-7 bg-bg2">
+                <div className="text-[13px] font-normal text-dark/70 cs">
                   Grafika: Zdeněk Frőmel
                 </div>
-                <div className="text-[13px] font-normal text-mid en">
+                <div className="text-[13px] font-normal text-dark/70 en">
                   Graphics: Zdeněk Frőmel
                 </div>
               </div>
-              <div className="py-[18px] px-7 bg-bg">
-                <div className="text-[13px] font-normal text-mid cs">
+              <div className="py-[18px] px-7 bg-bg2">
+                <div className="text-[13px] font-normal text-dark/70 cs">
                   Video: Lukáš Holec
                 </div>
-                <div className="text-[13px] font-normal text-mid en">
+                <div className="text-[13px] font-normal text-dark/70 en">
                   Video: Lukáš Holec
                 </div>
               </div>
-              <div className="py-[18px] px-7 bg-bg">
-                <div className="text-[13px] font-normal text-mid cs">
-                  Mezinárodní: Laith Awad
+              <div className="py-[18px] px-7 bg-bg2">
+                <div className="text-[13px] font-normal text-dark/70 cs">
+                  Mezinárodní komunikace: Laith Awad
                 </div>
-                <div className="text-[13px] font-normal text-mid en">
-                  International: Laith Awad
+                <div className="text-[13px] font-normal text-dark/70 en">
+                  International communication: Laith Awad
                 </div>
               </div>
-              <div className="py-[18px] px-7 bg-bg">
-                <div className="text-[13px] font-normal text-mid cs">
-                  Eventy: Vojtěch Kubín
+              <div className="py-[18px] px-7 bg-bg2">
+                <div className="text-[13px] font-normal text-dark/70 cs">
+                  Organizace eventů: Vojtěch Kubín
                 </div>
-                <div className="text-[13px] font-normal text-mid en">
-                  Events: Vojtěch Kubín
+                <div className="text-[13px] font-normal text-dark/70 en">
+                  Event organization: Vojtěch Kubín
+                </div>
+              </div>
+              <div className="py-[18px] px-7 bg-bg2">
+                <div className="text-[13px] font-normal text-dark/70 cs">
+                  IT & Vývoj: Nikola Crhák
+                </div>
+                <div className="text-[13px] font-normal text-dark/70 en">
+                  IT & Development: Nikola Crhák
                 </div>
               </div>
             </div>
@@ -953,7 +961,7 @@ export function AboutPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-1">
+          <div className="grid grid-cols-3 gap-px bg-dark max-lg:grid-cols-2 max-[480px]:grid-cols-1">
             <div className="rev d1 bg-bg2 py-8 px-7">
               <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
                 PR a komunikace
@@ -978,7 +986,7 @@ export function AboutPageContent() {
               <div className="text-xs font-light text-mid cs">Vedoucí</div>
               <div className="text-xs font-light text-mid en">Lead</div>
             </div>
-            <div className="rev d2 bg-bg2 py-8 px-7">
+            <div className="rev d1 bg-bg2 py-8 px-7">
               <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
                 Podcast
               </div>
@@ -1000,7 +1008,7 @@ export function AboutPageContent() {
               <div className="text-xs font-light text-mid cs">Vedoucí</div>
               <div className="text-xs font-light text-mid en">Lead</div>
             </div>
-            <div className="rev d3 bg-bg2 py-8 px-7">
+            <div className="rev d2 bg-bg2 py-8 px-7">
               <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
                 Grafika
               </div>
@@ -1013,7 +1021,7 @@ export function AboutPageContent() {
               <div className="text-xs font-light text-mid cs">Vedoucí</div>
               <div className="text-xs font-light text-mid en">Lead</div>
             </div>
-            <div className="rev d3 bg-bg2 py-8 px-7">
+            <div className="rev d2 bg-bg2 py-8 px-7">
               <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
                 Video
               </div>
@@ -1024,7 +1032,7 @@ export function AboutPageContent() {
               <div className="text-xs font-light text-mid cs">Vedoucí</div>
               <div className="text-xs font-light text-mid en">Lead</div>
             </div>
-            <div className="rev d4 bg-bg2 py-8 px-7">
+            <div className="rev d3 bg-bg2 py-8 px-7">
               <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
                 Mezinárodní
               </div>
@@ -1035,7 +1043,7 @@ export function AboutPageContent() {
               <div className="text-xs font-light text-mid cs">Vedoucí</div>
               <div className="text-xs font-light text-mid en">Lead</div>
             </div>
-            <div className="rev d4 bg-bg2 py-8 px-7">
+            <div className="rev d3 bg-bg2 py-8 px-7">
               <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
                 Eventy
               </div>
@@ -1045,6 +1053,17 @@ export function AboutPageContent() {
               <div className="text-[15px] font-semibold mb-1">
                 Vojtěch Kubín
               </div>
+              <div className="text-xs font-light text-mid cs">Vedoucí</div>
+              <div className="text-xs font-light text-mid en">Lead</div>
+            </div>
+            <div className="rev d3 bg-bg2 py-8 px-7">
+              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
+                IT & Vývoj
+              </div>
+              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 en">
+                IT & Development
+              </div>
+              <div className="text-[15px] font-semibold mb-1">Nikola Crhák</div>
               <div className="text-xs font-light text-mid cs">Vedoucí</div>
               <div className="text-xs font-light text-mid en">Lead</div>
             </div>
