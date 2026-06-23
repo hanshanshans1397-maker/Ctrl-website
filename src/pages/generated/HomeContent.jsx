@@ -170,14 +170,16 @@ export function HomePageContent() {
         className="py-40 px-[52px] bg-bg max-lg:py-[100px] max-lg:px-6 max-sm:py-16 max-sm:px-5"
       >
         <div className="max-w-[1300px] mx-auto">
-          <span className="section-label rev font-mono text-[11px] tracking-[3px] uppercase text-accent mb-6 block">
-            <span className="cs">Naše práce</span>
-            <span className="en">Our work</span>
-          </span>
-          <h2 className="section-title rev text-[clamp(40px,5vw,72px)] font-bold leading-[1.1] tracking-[-2px] text-dark max-w-[800px] mb-20 max-sm:mb-12 max-sm:text-[clamp(28px,7vw,40px)] max-sm:tracking-[-1px]">
-            <span className="cs">Čtyři oblasti naší práce.</span>
-            <span className="en">Four areas of our work.</span>
-          </h2>
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Naše práce</span>
+              <span className="en">Our work</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Čtyři oblasti naší práce.</span>
+              <span className="en">Four areas of our work.</span>
+            </h2>
+          </div>
           <div className="what-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:gap-0.5">
             {/* 01 — Výzkum */}
             <div className="what-card rev d1 group min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100">
@@ -526,16 +528,17 @@ export function HomePageContent() {
         className="py-40 px-[52px] bg-bg max-lg:py-[100px] max-lg:px-6 max-[480px]:py-[52px] max-[480px]:px-5"
       >
         <div className="max-w-[1300px] mx-auto">
-          <span className="section-label rev font-mono text-[11px] tracking-[3px] uppercase text-accent mb-6 block">
-            <span className="cs">Dopad</span>
-            <span className="en">Impact</span>
-          </span>
-          <h2 className="section-title rev text-[clamp(40px,5vw,72px)] font-bold leading-[1.1] tracking-[-2px] text-dark max-w-[800px] mb-20">
-            <span className="cs">Náš dopad v číslech.</span>
-            <span className="en">Real numbers. Real impact.</span>
-          </h2>
-
-          <div className="numbers-grid grid grid-cols-4 gap-px bg-light mt-20 max-lg:grid-cols-2 max-[640px]:gap-px">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Dopad</span>
+              <span className="en">Impact</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Náš dopad v číslech.</span>
+              <span className="en">Real numbers. Real impact.</span>
+            </h2>
+          </div>
+          <div className="numbers-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-[640px]:gap-px">
             <div className="number-card rev d1 bg-bg py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
               <div className="number-val text-[clamp(52px,6vw,80px)] font-bold tracking-[-3px] leading-none text-dark mb-3 [&_span]:text-accent">
                 <span id="c1">0</span>+
@@ -586,16 +589,16 @@ export function HomePageContent() {
 
       <section className="sec-board py-[120px] px-[52px] bg-bg2 max-lg:py-20 max-lg:px-6 max-[640px]:py-[52px] max-[640px]:px-5 max-[480px]:py-12 max-[480px]:px-5">
         <div className="max-w-[1300px] mx-auto">
-          <div className="rev cs font-mono text-[11px] tracking-[3px] uppercase text-accent mb-6 block leading-normal">
-            Předsednictvo
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Předsednictvo</span>
+              <span className="en">Executive Board</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Předsednictvo.</span>
+              <span className="en">Executive Board.</span>
+            </h2>
           </div>
-          <div className="rev en font-mono text-[11px] tracking-[3px] uppercase text-accent mb-6 block leading-normal">
-            Executive Board
-          </div>
-          <h2 className="rev text-[clamp(36px,4vw,64px)] font-bold leading-[1.1] tracking-[-2px] text-dark mb-16 mt-0">
-            <span className="cs">Předsednictvo.</span>
-            <span className="en">Executive Board.</span>
-          </h2>
           <div className="board-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-2">
             <div className="rev d1 bg-bg2 py-10 px-8">
               <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden border-4 border-dark">
@@ -661,16 +664,16 @@ export function HomePageContent() {
         className="py-40 px-[52px] bg-bg max-lg:py-[100px] max-lg:px-6 max-[480px]:py-[52px] max-[480px]:px-5"
       >
         <div className="max-w-[1300px] mx-auto">
-          <span className="section-label rev cs font-mono text-[11px] tracking-[3px] uppercase text-accent mb-6 block">
-            Zapojit se
-          </span>
-          <span className="section-label rev en font-mono text-[11px] tracking-[3px] uppercase text-accent mb-6 block">
-            Join us
-          </span>
-          <h2 className="section-title rev text-[clamp(40px,5vw,72px)] font-bold leading-[1.1] tracking-[-2px] text-dark max-w-[800px] mb-20">
-            <span className="cs">Chci se připojit.</span>
-            <span className="en">I want to join.</span>
-          </h2>
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Zapojit se</span>
+              <span className="en">Join us</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Chci se připojit.</span>
+              <span className="en">I want to join.</span>
+            </h2>
+          </div>
           <div className="join-grid grid grid-cols-2 gap-[100px] mt-20 items-start max-lg:grid-cols-1 max-lg:gap-[52px] max-[640px]:gap-10 max-[480px]:gap-8">
             <div className="rev d1">
               <p className="join-info cs text-[15px] font-light leading-[1.85] text-mid mb-4 [&_strong]:text-dark [&_strong]:font-medium">
@@ -880,11 +883,12 @@ export function HomePageContent() {
       <section className="bg-bg py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[640px]:py-16 max-[640px]:px-5">
         <div className="max-w-[1300px] mx-auto grid grid-cols-[1fr_360px] gap-20 items-center max-lg:grid-cols-1 max-lg:gap-14">
           <div className="rev">
-            <span className="font-mono text-[11px] tracking-[3px] uppercase text-accent mb-8 block">
-              <span className="cs">Proč to děláme</span>
-              <span className="en">Why we do this</span>
-            </span>
-            <blockquote className="text-[clamp(22px,3vw,36px)] font-light leading-[1.4] tracking-[-0.5px] text-dark mb-10 max-[640px]:text-[clamp(18px,5vw,24px)]">
+            <div className="section-head rev">
+              <span className="section-label">
+                <span className="cs">Proč to děláme</span>
+                <span className="en">Why we do this</span>
+              </span>
+              <blockquote className="text-[clamp(22px,3vw,36px)] font-light leading-[1.4] tracking-[-0.5px] text-dark mb-10 max-[640px]:text-[clamp(18px,5vw,24px)]">
               <span className="cs">
                 &ldquo;CTRL Europe jsem nezaložil jako školní projekt. Vidím
                 problém: dezinformace, deepfaky, algoritmická manipulace. Věřím,
@@ -899,6 +903,7 @@ export function HomePageContent() {
                 act.&rdquo;
               </span>
             </blockquote>
+            </div>
             <div className="flex items-center gap-4 mb-14 max-[640px]:mb-10">
               <div className="w-8 h-px bg-accent shrink-0" />
               <div>

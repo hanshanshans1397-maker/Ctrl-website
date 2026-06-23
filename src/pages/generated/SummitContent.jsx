@@ -28,7 +28,7 @@ export function SummitPageContent() {
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           */}
           <div className="px-5 z-[3]">
-            <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-3">Spring 2026</span>
+            <span className="block text-xl text-accent mb-3">Spring 2026</span>
             <div className="flex items-baseline gap-[0.15em] text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span>Summit</span>
               <img src="/2026.png" alt="2026" className="h-[0.85em] w-auto inline-block align-middle opacity-100"  loading="lazy" decoding="async" />
@@ -41,7 +41,7 @@ export function SummitPageContent() {
             id="heroMeta"
             className="mb-10 flex translate-y-4 items-center gap-5 opacity-0 max-sm:hidden"
           >
-            <span className="font-mono text-[10px] tracking-[3px] text-accent uppercase">Spring 2026</span>
+            <span className="text-xl text-accent">Spring 2026</span>
           </div>
 
           <h1 className="split-text mb-12 text-[clamp(72px,10vw,160px)] leading-[0.92] font-extrabold tracking-[-5px] text-bg max-[380px]:text-[clamp(40px,11vw,62px)] max-[380px]:leading-none max-[380px]:tracking-[-2px] max-sm:hidden">
@@ -138,18 +138,18 @@ export function SummitPageContent() {
 
       <section className="sec bg-bg px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16" id="about">
         <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full">
-          <span className="sec-label rev cs mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase">
-            O summitu
-          </span>
-          <span className="sec-label rev en mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase">
-            About the summit
-          </span>
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">O summitu</span>
+              <span className="en">About the summit</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Nejde o běžnou školní konferenci.</span>
+              <span className="en">This is not a typical school conference.</span>
+            </h2>
+          </div>
           <div className="about-2col grid grid-cols-2 items-start gap-[100px] max-md:grid-cols-1 max-md:gap-12 max-sm:gap-10">
             <div className="rev">
-              <h2 className="sec-title mb-8 text-[clamp(36px,4vw,64px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:mb-6 max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px]">
-                <span className="cs">Nejde o běžnou školní konferenci.</span>
-                <span className="en">This is not a typical school conference.</span>
-              </h2>
               <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">
                 CTRL Summit vzniká protože mladá generace potřebuje vlastní prostor pro diskuzi o technologiích, AI a
                 médiích. Ne jako diváka. Jako aktivní účastník.
@@ -214,20 +214,20 @@ export function SummitPageContent() {
 
       <section className="sec bg-bg px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16">
         <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full">
-          <span className="sec-label rev cs mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase">
-            Hlavní témata
-          </span>
-          <span className="sec-label rev en mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase">
-            Main themes
-          </span>
-          <h2 className="sec-title rev mb-16 text-[clamp(36px,4vw,64px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px] [&_em]:font-light [&_em]:text-mid [&_em]:italic">
-            <span className="cs">
-              Témata která <em>dnes záleží.</em>
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Hlavní témata</span>
+              <span className="en">Main themes</span>
             </span>
-            <span className="en">
-              Themes that <em>matter today.</em>
-            </span>
-          </h2>
+            <h2 className="section-title">
+              <span className="cs">
+                Témata která <em>dnes záleží.</em>
+              </span>
+              <span className="en">
+                Themes that <em>matter today.</em>
+              </span>
+            </h2>
+          </div>
           <div className="flex flex-col gap-px bg-light">
             <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
               <div className="pt-1">
@@ -327,20 +327,20 @@ export function SummitPageContent() {
 
       <section className="sec bg-bg px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16">
         <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full">
-          <span className="sec-label rev cs mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase">
-            Program
-          </span>
-          <span className="sec-label rev en mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase">
-            Program
-          </span>
-          <h2 className="sec-title rev mb-16 text-[clamp(36px,4vw,64px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px] [&_em]:font-light [&_em]:text-mid [&_em]:italic">
-            <span className="cs">
-              Co summit <em>nabídne.</em>
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Program</span>
+              <span className="en">Program</span>
             </span>
+            <h2 className="section-title">
+              <span className="cs">
+                Co summit <em>nabídne.</em>
+              </span>
             <span className="en">
               What the summit <em>offers.</em>
             </span>
           </h2>
+          </div>
           <div className="grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2">
             <div className="offer-card rev d1 relative overflow-hidden border border-light bg-bg2 px-9 py-11 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(11,16,32,0.08)] hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">01</div>
@@ -486,20 +486,20 @@ export function SummitPageContent() {
 
       <section className="sec bg-bg2 px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16">
         <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full">
-          <span className="sec-label rev cs mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase">
-            Pro koho
-          </span>
-          <span className="sec-label rev en mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase">
-            Who it&apos;s for
-          </span>
-          <h2 className="sec-title rev mb-16 text-[clamp(36px,4vw,64px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px] [&_em]:font-light [&_em]:text-mid [&_em]:italic">
-            <span className="cs">
-              Summit je otevřený <em>pro všechny.</em>
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Pro koho</span>
+              <span className="en">Who it&apos;s for</span>
             </span>
-            <span className="en">
-              The summit is open <em>to everyone.</em>
-            </span>
-          </h2>
+            <h2 className="section-title">
+              <span className="cs">
+                Summit je otevřený <em>pro všechny.</em>
+              </span>
+              <span className="en">
+                The summit is open <em>to everyone.</em>
+              </span>
+            </h2>
+          </div>
           <div className="grid grid-cols-3 gap-px bg-light max-md:grid-cols-1">
             <div className="for-card rev d1 border border-light bg-bg p-8 transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] hover:border-accent max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">Studenti</div>
@@ -570,18 +570,18 @@ export function SummitPageContent() {
 
       <section className="sec bg-bg2 px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16">
         <div className="inner mx-auto max-w-[900px] text-center max-sm:max-w-full">
-          <span className="sec-label rev cs mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase">
-            Dlouhodobá vize
-          </span>
-          <span className="sec-label rev en mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase">
-            Long-term vision
-          </span>
-          <h2 className="rev cs mb-8 text-[clamp(40px,5.5vw,80px)] leading-none font-extrabold tracking-[-3px] text-dark">
-            Každoroční evropský youth summit.
-          </h2>
-          <h2 className="rev en mb-8 text-[clamp(40px,5.5vw,80px)] leading-none font-extrabold tracking-[-3px] text-dark">
-            An annual European youth summit.
-          </h2>
+          <div className="section-head rev mx-auto text-center">
+            <span className="section-label">
+              <span className="cs">Dlouhodobá vize</span>
+              <span className="en">Long-term vision</span>
+            </span>
+            <h2 className="section-title cs">
+              Každoroční evropský youth summit.
+            </h2>
+            <h2 className="section-title en">
+              An annual European youth summit.
+            </h2>
+          </div>
           <p className="rev d1 cs mx-auto mb-5 max-w-[640px] text-[17px] leading-[1.85] font-light text-mid">
             Naším cílem je vybudovat každoroční mezinárodní summit který propojuje mladé lidé z celé Evropy kolem sdílených výzev digitální doby.
           </p>

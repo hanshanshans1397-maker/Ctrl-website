@@ -2,11 +2,14 @@ export function ApplyPageContent() {
   return (
     <div className="apply-page">
       <div className="apply-wrap">
-        <div className="eyebrow cs">CTRL Europe · Přihláška člena</div>
-        <div className="eyebrow en">CTRL Europe · Member Application</div>
-
-        <h1 className="cs">Připoj se k síti.</h1>
-        <h1 className="en">Join the network.</h1>
+        <div className="section-head">
+          <span className="section-label">
+            <span className="cs">CTRL Europe · Přihláška člena</span>
+            <span className="en">CTRL Europe · Member Application</span>
+          </span>
+          <h1 className="cs">Připoj se k síti.</h1>
+          <h1 className="en">Join the network.</h1>
+        </div>
 
         <p className="lede cs">
           CTRL Europe roste díky lidem jako ty. Vyplň přihlášku a staneš se součástí{' '}
@@ -55,8 +58,10 @@ export function ApplyPageContent() {
 
           <div className="section">
             <div className="section-num">01</div>
-            <div className="section-title cs">Kdo jsi</div>
-            <div className="section-title en">Who you are</div>
+            <span className="section-label">
+              <span className="cs">Kdo jsi</span>
+              <span className="en">Who you are</span>
+            </span>
             <p className="section-sub cs">Základní údaje pro vedení členské evidence.</p>
             <p className="section-sub en">Basic details for our member records.</p>
 
@@ -204,8 +209,10 @@ export function ApplyPageContent() {
 
           <div className="section">
             <div className="section-num">02</div>
-            <div className="section-title cs">Kam chceš patřit</div>
-            <div className="section-title en">Where you want to belong</div>
+            <span className="section-label">
+              <span className="cs">Kam chceš patřit</span>
+              <span className="en">Where you want to belong</span>
+            </span>
             <p className="section-sub cs">
               Buňky jsou specializované týmy v rámci CTRL Europe. Vyber tu, která tě nejvíc zajímá
               — klidně víc než jednu.
@@ -241,8 +248,10 @@ export function ApplyPageContent() {
 
           <div className="section">
             <div className="section-num">03</div>
-            <div className="section-title cs">Co umíš</div>
-            <div className="section-title en">What you can do</div>
+            <span className="section-label">
+              <span className="cs">Co umíš</span>
+              <span className="en">What you can do</span>
+            </span>
             <p className="section-sub cs">
               Žádná zkušenost nevyžadována — chceme jen vědět, kde bys mohl/a být užitečný/á.
             </p>
@@ -292,8 +301,10 @@ export function ApplyPageContent() {
 
           <div className="section">
             <div className="section-num">04</div>
-            <div className="section-title cs">Kolik času máš</div>
-            <div className="section-title en">How much time you have</div>
+            <span className="section-label">
+              <span className="cs">Kolik času máš</span>
+              <span className="en">How much time you have</span>
+            </span>
             <p className="section-sub cs">
               Žádný závazek navíc — jen ať víme, s čím můžeme počítat.
             </p>
@@ -373,8 +384,10 @@ export function ApplyPageContent() {
 
           <div className="section">
             <div className="section-num">05</div>
-            <div className="section-title cs">Proč CTRL Europe</div>
-            <div className="section-title en">Why CTRL Europe</div>
+            <span className="section-label">
+              <span className="cs">Proč CTRL Europe</span>
+              <span className="en">Why CTRL Europe</span>
+            </span>
             <p className="section-sub cs">
               Pár vět stačí. Chceme slyšet tvůj vlastní hlas, ne dokonalou esej.
             </p>

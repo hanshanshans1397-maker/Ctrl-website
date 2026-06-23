@@ -3,10 +3,12 @@ export function ArticlesPageContent() {
     <>
       <div className="page-hero max-sm:!pt-16 max-[480px]:!pt-14">
         <div className="inner max-sm:px-5 max-sm:pb-8">
-          <span className="page-label cs">Obsah</span>
-          <span className="page-label en">Content</span>
-          <h1 className="page-title cs">Články a reporty</h1>
-          <h1 className="page-title en">Articles &amp; Reports</h1>
+          <div className="section-head">
+            <span className="page-label cs">Obsah</span>
+            <span className="page-label en">Content</span>
+            <h1 className="page-title cs">Články a reporty</h1>
+            <h1 className="page-title en">Articles &amp; Reports</h1>
+          </div>
           <p className="page-sub cs">Naše analýzy, reporty a výzkumné články.</p>
           <p className="page-sub en">Our analyses, reports and research articles.</p>
         </div>

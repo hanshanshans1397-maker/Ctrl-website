@@ -16,7 +16,7 @@ export function AboutPageContent() {
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           */}
           <div className="px-5 z-[3]">
-            <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-2">Kdo jsme</span>
+            <span className="block text-xl text-accent mb-2">Kdo jsme</span>
             <div className="flex flex-col text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span className="cs">O nás</span>
               <span className="en">About us</span>
@@ -26,7 +26,7 @@ export function AboutPageContent() {
 
         <div className="hero-mobile-body relative z-[3] max-w-[1100px] max-sm:px-5 max-sm:max-w-full">
           <div className="mb-9 flex translate-y-4 flex-wrap items-center gap-5 opacity-0 max-[640px]:mb-6 max-[480px]:gap-2 max-sm:hidden" id="heroMeta">
-            <span className="font-mono text-[10px] tracking-[3px] text-accent uppercase">Kdo jsme</span>
+            <span className="text-xl text-accent">Kdo jsme</span>
           </div>
 
           <h1 className="mb-12 text-[clamp(72px,10vw,160px)] leading-[0.92] font-extrabold tracking-[-5px] text-bg opacity-0 translate-y-6 max-lg:text-[clamp(52px,8vw,100px)] max-lg:tracking-[-2px] max-[640px]:mb-8 max-[640px]:text-[clamp(44px,10vw,72px)] max-[640px]:tracking-[-1.5px] max-[480px]:text-[clamp(40px,11vw,60px)] max-[480px]:tracking-[-1px] max-sm:hidden" id="heroTitle">
@@ -43,14 +43,18 @@ export function AboutPageContent() {
 
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
         <div className="inner max-w-[1300px] mx-auto">
-          <span className="sec-label rev cs font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Proč CTRL existuje</span>
-          <span className="sec-label rev en font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Why CTRL exists</span>
-          <div className="about-2col grid grid-cols-2 gap-[100px] items-start mt-12 max-lg:grid-cols-1 max-lg:gap-12">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Proč CTRL existuje</span>
+              <span className="en">Why CTRL exists</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Technologie mění společnost rychleji než ji umíme vysvětlit.</span>
+              <span className="en">Technology is changing society faster than we can explain it.</span>
+            </h2>
+          </div>
+          <div className="about-2col grid grid-cols-2 gap-[100px] items-start max-lg:grid-cols-1 max-lg:gap-12">
             <div className="rev">
-              <h2 className="text-[clamp(36px,4vw,60px)] font-bold leading-[1.05] tracking-[-2px] text-dark mb-8">
-                <span className="cs">Technologie mění společnost rychleji než ji umíme vysvětlit.</span>
-                <span className="en">Technology is changing society faster than we can explain it.</span>
-              </h2>
               <div className="prose">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">Umělá inteligence, deepfakes, dezinformace a algoritmická manipulace. To nejsou vzdálené problémy. Jsou součástí každodenního života každého studenta, každé školy, každé rodiny.</p>
                 <p className="en text-base font-light leading-[1.85] text-mid mb-5">Artificial intelligence, deepfakes, disinformation and algorithmic manipulation. These are not distant problems. They are part of the everyday life of every student, every school, every family.</p>
@@ -89,14 +93,18 @@ export function AboutPageContent() {
 
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
         <div className="inner max-w-[1300px] mx-auto">
-          <span className="sec-label rev cs font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Kdo jsme</span>
-          <span className="sec-label rev en font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Who we are</span>
-          <div className="about-2col grid grid-cols-2 gap-[100px] mt-12 max-lg:grid-cols-1 max-lg:gap-12">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Kdo jsme</span>
+              <span className="en">Who we are</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Nezávislá, <em>student-led</em> organizace.</span>
+              <span className="en">An independent, <em>student-led</em> organization.</span>
+            </h2>
+          </div>
+          <div className="about-2col grid grid-cols-2 gap-[100px] max-lg:grid-cols-1 max-lg:gap-12">
             <div className="rev">
-              <h2 className="sec-title text-[clamp(36px,4vw,64px)] font-bold leading-[1.1] tracking-[-2px] text-dark mb-8 mt-0 [&_em]:italic [&_em]:font-light [&_em]:text-mid">
-                <span className="cs">Nezávislá, <em>student-led</em> organizace.</span>
-                <span className="en">An independent, <em>student-led</em> organization.</span>
-              </h2>
               <div className="prose">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">CTRL Europe je nezávislá studentská organizace a youth platforma se sídlem v Brně. Vznikla v roce 2025 z iniciativy studentů ve věku 16–19 let ze střední Evropy.</p>
                 <p className="en text-base font-light leading-[1.85] text-mid mb-5">CTRL Europe is an independent student organization and youth platform based in Brno. It was founded in 2025 on the initiative of students aged 16–19 from Central Europe.</p>
@@ -144,12 +152,16 @@ export function AboutPageContent() {
 
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg2">
         <div className="inner max-w-[1300px] mx-auto">
-          <span className="sec-label rev cs font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Co děláme</span>
-          <span className="sec-label rev en font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">What we do</span>
-          <h2 className="sec-title rev text-[clamp(36px,4vw,64px)] font-bold leading-[1.1] tracking-[-2px] text-dark mb-16 mt-0 [&_em]:italic [&_em]:font-light [&_em]:text-mid">
-            <span className="cs">Pět oblastí. <em>Jeden cíl.</em></span>
-            <span className="en">Five areas. <em>One goal.</em></span>
-          </h2>
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Co děláme</span>
+              <span className="en">What we do</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Pět oblastí. <em>Jeden cíl.</em></span>
+              <span className="en">Five areas. <em>One goal.</em></span>
+            </h2>
+          </div>
           <div className="flex flex-col gap-px bg-light">
             <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-[480px]:grid-cols-1 max-[480px]:gap-6">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1"><span className="cs">01 Výzkum</span><span className="en">01 Research</span></div>
@@ -203,9 +215,14 @@ export function AboutPageContent() {
 
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
         <div className="inner max-w-[1300px] mx-auto">
-          <span className="sec-label rev cs font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Zakladatel</span>
-          <span className="sec-label rev en font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Founder</span>
-          <div className="about-2col grid grid-cols-2 gap-[100px] items-start mt-12 max-lg:grid-cols-1 max-lg:gap-12 lg:grid-cols-[400px_1fr]">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Zakladatel</span>
+              <span className="en">Founder</span>
+            </span>
+            <h2 className="section-title">Jan Krejčí</h2>
+          </div>
+          <div className="about-2col grid grid-cols-2 gap-[100px] items-start max-lg:grid-cols-1 max-lg:gap-12 lg:grid-cols-[400px_1fr]">
             <div className="rev">
               <div className="aspect-[3/4] overflow-hidden mb-6 relative">
                 <img src="/IMG_4222.jpeg" alt="Jan Krejčí" className="w-full h-full object-cover object-[center_8%] block"  loading="lazy" decoding="async" />
@@ -233,9 +250,8 @@ export function AboutPageContent() {
               </div>
             </div>
             <div className="rev d2">
-              <h2 className="text-[clamp(44px,5vw,72px)] font-extrabold leading-[0.95] tracking-[-2.5px] text-dark mb-2.5">Jan Krejčí</h2>
-              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent mb-10 cs">Prezident & Zakladatel CTRL Europe</div>
-              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent mb-10 en">President & Founder of CTRL Europe</div>
+              <div className="text-xl text-accent mb-10 cs">Prezident & Zakladatel CTRL Europe</div>
+              <div className="text-xl text-accent mb-10 en">President & Founder of CTRL Europe</div>
               <div className="prose">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">CTRL Europe jsem nezaložil jako školní projekt. Založil jsem ho protože vidím skutečný problém a věřím, že naše generace ho musí řešit sama.</p>
                 <p className="en text-base font-light leading-[1.85] text-mid mb-5">I didn't start CTRL Europe as a school project. I started it because I see a real problem, and because I believe our generation has to solve it ourselves.</p>
@@ -266,13 +282,17 @@ export function AboutPageContent() {
 
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
         <div className="inner max-w-[1300px] mx-auto">
-          <span className="sec-label rev cs font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Organizace</span>
-          <span className="sec-label rev en font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Structure</span>
-          <h2 className="sec-title rev text-[clamp(36px,4vw,64px)] font-bold leading-[1.1] tracking-[-2px] text-dark mb-16 mt-0 [&_em]:italic [&_em]:font-light [&_em]:text-mid">
-            <span className="cs">Profesionální struktura. <em>Youth perspektiva.</em></span>
-            <span className="en">Professional structure. <em>Youth perspective.</em></span>
-          </h2>
-          <div className="about-2col grid grid-cols-2 gap-20 mt-4 max-lg:grid-cols-1 max-lg:gap-12">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Organizace</span>
+              <span className="en">Structure</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Profesionální struktura. <em>Youth perspektiva.</em></span>
+              <span className="en">Professional structure. <em>Youth perspective.</em></span>
+            </h2>
+          </div>
+          <div className="about-2col grid grid-cols-2 gap-20 max-lg:grid-cols-1 max-lg:gap-12">
             <div className="rev d1">
               <div className="prose">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5"><strong className="text-dark font-medium">Předsednictvo</strong> tvoří čtyři členové: předseda, místopředseda, tajemnice a zástupce předsednictva. Předsednictvo rozhoduje o strategickém směřování organizace.</p>
@@ -305,14 +325,18 @@ export function AboutPageContent() {
 
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
         <div className="inner max-w-[1300px] mx-auto">
-          <span className="sec-label rev cs font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Dlouhodobá vize</span>
-          <span className="sec-label rev en font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Long-term vision</span>
-          <div className="about-2col grid grid-cols-2 gap-[100px] mt-12 max-lg:grid-cols-1 max-lg:gap-12">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Dlouhodobá vize</span>
+              <span className="en">Long-term vision</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Budujeme něco co <em>přetrvá.</em></span>
+              <span className="en">Building something <em>that lasts.</em></span>
+            </h2>
+          </div>
+          <div className="about-2col grid grid-cols-2 gap-[100px] max-lg:grid-cols-1 max-lg:gap-12">
             <div className="rev">
-              <h2 className="sec-title text-[clamp(36px,4vw,64px)] font-bold leading-[1.1] tracking-[-2px] text-dark mb-8 mt-0 [&_em]:italic [&_em]:font-light [&_em]:text-mid">
-                <span className="cs">Budujeme něco co <em>přetrvá.</em></span>
-                <span className="en">Building something <em>that lasts.</em></span>
-              </h2>
               <div className="prose">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">Naším cílem je vybudovat udržitelnou evropskou youth platformu zaměřenou na digitální gramotnost, výzkum a mezinárodní spolupráci.</p>
                 <p className="en text-base font-light leading-[1.85] text-mid mb-5">Our goal is to build a sustainable European youth platform focused on digital literacy, research and international cooperation.</p>
@@ -368,12 +392,16 @@ export function AboutPageContent() {
 
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg2">
         <div className="inner max-w-[1300px] mx-auto">
-          <span className="sec-label rev cs font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Rada zástupců</span>
-          <span className="sec-label rev en font-mono text-[11px] font-normal tracking-[3px] uppercase text-accent mb-6 block leading-normal">Council of Representatives</span>
-          <h2 className="sec-title rev text-[clamp(36px,4vw,64px)] font-bold leading-[1.1] tracking-[-2px] text-dark mb-16 mt-0 [&_em]:italic [&_em]:font-light [&_em]:text-mid">
-            <span className="cs">Vedoucí <em>buněk.</em></span>
-            <span className="en">Cell <em>leaders.</em></span>
-          </h2>
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Rada zástupců</span>
+              <span className="en">Council of Representatives</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Vedoucí <em>buněk.</em></span>
+              <span className="en">Cell <em>leaders.</em></span>
+            </h2>
+          </div>
           <div className="grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-1">
             <div className="rev d1 bg-bg2 py-8 px-7">
               <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">PR a komunikace</div>

@@ -7,11 +7,14 @@ function ApplyComingSoon() {
   return (
     <div className="apply-page">
       <div className="apply-wrap">
-        <div className="eyebrow cs">CTRL Europe · Přihláška člena</div>
-        <div className="eyebrow en">CTRL Europe · Member Application</div>
-
-        <h1 className="cs">Připravujeme.</h1>
-        <h1 className="en">Coming soon.</h1>
+        <div className="section-head">
+          <span className="section-label">
+            <span className="cs">CTRL Europe · Přihláška člena</span>
+            <span className="en">CTRL Europe · Member Application</span>
+          </span>
+          <h1 className="cs">Připravujeme.</h1>
+          <h1 className="en">Coming soon.</h1>
+        </div>
 
         <p className="lede cs">
           Online přihláška pro členství v CTRL Europe se právě připravuje. Brzy

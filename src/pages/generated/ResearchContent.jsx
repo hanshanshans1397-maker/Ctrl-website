@@ -14,7 +14,7 @@ export function ResearchPageContent() {
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           */}
           <div className="px-5 z-[3]">
-            <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-2">CTRL</span>
+            <span className="block text-xl text-accent mb-2">CTRL</span>
             <div className="flex flex-col text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span className="cs">Výzkum</span>
               <span className="en">Research</span>
@@ -23,10 +23,12 @@ export function ResearchPageContent() {
         </div>
 
         <div className="inner relative z-[2] max-sm:hidden">
-          <span className="page-label cs max-sm:hidden">CTRL</span>
-          <span className="page-label en max-sm:hidden">CTRL</span>
-          <h1 className="page-title cs text-bg max-sm:hidden">Výzkum</h1>
-          <h1 className="page-title en text-bg max-sm:hidden">Research</h1>
+          <div className="section-head">
+            <span className="page-label cs max-sm:hidden">CTRL</span>
+            <span className="page-label en max-sm:hidden">CTRL</span>
+            <h1 className="page-title cs text-bg max-sm:hidden">Výzkum</h1>
+            <h1 className="page-title en text-bg max-sm:hidden">Research</h1>
+          </div>
           <p className="page-sub cs text-[rgba(245,245,243,0.65)]">Analyzujeme digitální hrozby v kontextu střední Evropy.</p>
           <p className="page-sub en text-[rgba(245,245,243,0.65)]">We analyze digital threats in the context of Central Europe.</p>
         </div>

@@ -16,7 +16,7 @@ export function WorkshopsPageContent() {
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           */}
           <div className="px-5 z-[3]">
-            <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-2">Education</span>
+            <span className="block text-xl text-accent mb-2">Education</span>
             <div className="flex flex-col text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span className="cs">Workshopy</span>
               <span className="en">Workshops</span>
@@ -26,7 +26,7 @@ export function WorkshopsPageContent() {
 
         <div className="hero-mobile-body relative z-[3] max-w-[1100px] max-sm:px-5 max-sm:max-w-full">
           <div className="mb-9 flex translate-y-4 flex-wrap items-center gap-5 opacity-0 max-[640px]:mb-6 max-[480px]:gap-2 max-sm:hidden" id="heroMeta">
-            <span className="font-mono text-[10px] tracking-[3px] text-accent uppercase">Education</span>
+            <span className="text-xl text-accent">Education</span>
           </div>
 
           <h1 className="mb-12 text-[clamp(72px,10vw,160px)] leading-[0.92] font-extrabold tracking-[-5px] text-bg opacity-0 translate-y-6 max-lg:text-[clamp(52px,8vw,100px)] max-lg:tracking-[-2px] max-[640px]:mb-8 max-[640px]:text-[clamp(44px,10vw,72px)] max-[640px]:tracking-[-1.5px] max-[480px]:text-[clamp(40px,11vw,60px)] max-[480px]:tracking-[-1px] max-sm:hidden" id="heroTitle">
@@ -89,14 +89,18 @@ export function WorkshopsPageContent() {
 
 <section className="sec bg-bg">
         <div className="inner">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Proč workshopy</span>
+              <span className="en">Why workshops</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Školy neučí to nejdůležitější.</span>
+              <span className="en">Schools don't teach what matters most.</span>
+            </h2>
+          </div>
           <div className="about-2col grid grid-cols-2 items-start gap-[100px] max-lg:grid-cols-1 max-lg:gap-12 max-sm:gap-10">
             <div className="rev">
-              <span className="sec-label cs">Proč workshopy</span>
-              <span className="sec-label en">Why workshops</span>
-              <h2 className="sec-title mb-8">
-                <span className="cs">Školy neučí to nejdůležitější.</span>
-                <span className="en">Schools don't teach what matters most.</span>
-              </h2>
               <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">Algoritmy rozhodují co vidíme. Deepfaky nahrazují realitu. Dezinformace se šíří rychleji než fakty. A vzdělávací systém na to není připravený.</p>
               <p className="en mb-5 text-base leading-[1.85] font-light text-mid">Algorithms decide what we see. Deepfakes replace reality. Disinformation spreads faster than facts. And the education system is not prepared for this.</p>
               <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">Osnovy vznikají roky dopředu. Technologie se mění každý měsíc. CTRL Workshops tuto propast překlenuje. Prakticky, interaktivně, bez zbytečné teorie.</p>
@@ -178,13 +182,17 @@ export function WorkshopsPageContent() {
 
       <section className="sec bg-bg" id="topics">
         <div className="inner">
-          <span className="sec-label rev cs">Témata workshopu</span>
-          <span className="sec-label rev en">Workshop topics</span>
-          <h2 className="sec-title rev">
-            <span className="cs">Osm témat. <em>Jeden cíl.</em></span>
-            <span className="en">Eight topics. <em>One goal.</em></span>
-          </h2>
-          <div className="mt-[52px] max-sm:mt-8">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Témata workshopu</span>
+              <span className="en">Workshop topics</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Osm témat. <em>Jeden cíl.</em></span>
+              <span className="en">Eight topics. <em>One goal.</em></span>
+            </h2>
+          </div>
+          <div>
             <div className="topic-row rev d1">
               <div className="topic-row-num">01</div>
               <div>
@@ -325,13 +333,17 @@ export function WorkshopsPageContent() {
 
       <section className="sec bg-bg">
         <div className="inner">
-          <span className="sec-label rev cs text-accent">Formát</span>
-          <span className="sec-label rev en text-accent">Format</span>
-          <h2 className="sec-title rev text-dark">
-            <span className="cs">Jak workshop <em className="text-mid">funguje.</em></span>
-            <span className="en">How the workshop <em className="text-mid">works.</em></span>
-          </h2>
-          <div className="mt-4 grid grid-cols-2 gap-20 max-lg:grid-cols-1 max-lg:gap-12 max-sm:gap-8">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Formát</span>
+              <span className="en">Format</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Jak workshop <em>funguje.</em></span>
+              <span className="en">How the workshop <em>works.</em></span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 gap-20 max-lg:grid-cols-1 max-lg:gap-12 max-sm:gap-8">
             <div className="rev d1">
               <div className="how-step">
                 <div className="how-num">01</div>
@@ -397,14 +409,18 @@ export function WorkshopsPageContent() {
 
       <section className="sec bg-bg">
         <div className="inner">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Pro školy</span>
+              <span className="en">For schools</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Přijedeme přímo <em>k vám.</em></span>
+              <span className="en">We come <em>directly to you.</em></span>
+            </h2>
+          </div>
           <div className="about-2col grid grid-cols-2 items-start gap-[100px] max-lg:grid-cols-1 max-lg:gap-12 max-sm:gap-10">
             <div className="rev">
-              <span className="sec-label cs">Pro školy</span>
-              <span className="sec-label en">For schools</span>
-              <h2 className="sec-title mb-8">
-                <span className="cs">Přijedeme přímo <em>k vám.</em></span>
-                <span className="en">We come <em>directly to you.</em></span>
-              </h2>
               <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">Workshop přizpůsobujeme věku studentů, tématu které školu zajímá a časovým možnostem. Jsme flexibilní. Funguje to pro třídy, skupiny i celé ročníky.</p>
               <p className="en mb-5 text-base leading-[1.85] font-light text-mid">We adapt the workshop to the age of students, the topic the school is interested in and time constraints. We are flexible. It works for classes, groups and entire year groups.</p>
               <p className="cs text-base leading-[1.85] font-light text-mid">Pro partnerské školy je workshop zcela zdarma. Dlouhodobá spolupráce vítaná.</p>
@@ -500,13 +516,17 @@ export function WorkshopsPageContent() {
 
       <section className="sec bg-bg2">
         <div className="inner">
-          <span className="sec-label rev cs">Mezinárodní rozměr</span>
-          <span className="sec-label rev en">International dimension</span>
-          <h2 className="sec-title rev">
-            <span className="cs">Střední Evropa jako <em>výchozí bod.</em></span>
-            <span className="en">Central Europe as <em>the starting point.</em></span>
-          </h2>
-          <div className="mt-4 grid grid-cols-3 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-1">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Mezinárodní rozměr</span>
+              <span className="en">International dimension</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Střední Evropa jako <em>výchozí bod.</em></span>
+              <span className="en">Central Europe as <em>the starting point.</em></span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-3 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-1">
             <div className="rev d1 bg-bg2 px-10 py-12 max-sm:px-6 max-sm:py-8">
               <div className="mb-5">
                 <svg viewBox="0 0 30 20" className="h-7 w-auto" xmlns="http://www.w3.org/2000/svg">
@@ -542,14 +562,19 @@ export function WorkshopsPageContent() {
 
 
       <section className="sec bg-bg2">
-        <div className="inner about-2col grid grid-cols-2 items-center gap-[100px] max-lg:grid-cols-1 max-lg:gap-12 max-lg:items-start max-sm:gap-10">
-          <div className="rev">
-            <span className="sec-label cs text-accent">Dlouhodobá vize</span>
-            <span className="sec-label en text-accent">Long-term vision</span>
-            <h2 className="mt-4 mb-7 text-[clamp(36px,4.5vw,64px)] leading-[1.05] font-bold tracking-[-2px] text-dark">
-              <span className="cs">Síť škol. <em className="italic font-light text-mid">Celá Evropa.</em></span>
-              <span className="en">A network of schools. <em className="italic font-light text-mid">All of Europe.</em></span>
+        <div className="inner">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Dlouhodobá vize</span>
+              <span className="en">Long-term vision</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Síť škol. <em>Celá Evropa.</em></span>
+              <span className="en">A network of schools. <em>All of Europe.</em></span>
             </h2>
+          </div>
+          <div className="about-2col grid grid-cols-2 items-center gap-[100px] max-lg:grid-cols-1 max-lg:gap-12 max-lg:items-start max-sm:gap-10">
+          <div className="rev">
             <p className="cs mb-[18px] text-base leading-[1.85] font-light text-mid">Naším cílem je vybudovat dlouhodobý edukační program který propájčí školy, studenty a organizace napříč střední Evropou.</p>
             <p className="en mb-[18px] text-base leading-[1.85] font-light text-mid">Our goal is to build a long-term educational program that connects schools, students and organizations across Central Europe.</p>
             <p className="cs text-base leading-[1.85] font-light text-mid">Neslibujeme co nemůžeme dodržet. Stavíme program krok po kroku. Každý workshop je dalším krokem.</p>
@@ -573,6 +598,7 @@ export function WorkshopsPageContent() {
               <span className="en text-sm font-light text-dark">Educational materials and online platform</span>
             </div>
           </div>
+        </div>
         </div>
       </section>
 

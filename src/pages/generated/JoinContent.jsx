@@ -9,18 +9,20 @@ export function JoinPageContent() {
         <div className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_top,rgba(11,16,32,0.92)_0%,rgba(11,16,32,0.58)_50%,rgba(11,16,32,0.2)_100%)]" aria-hidden="true" />
         */}
         <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full relative z-[2]">
-          <span className="page-label cs mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase max-sm:mb-4">
-            Spolupráce
-          </span>
-          <span className="page-label en mb-6 block font-mono text-[11px] leading-[1.5] font-normal tracking-[3px] text-accent uppercase max-sm:mb-4">
-            Cooperate
-          </span>
-          <h1 className="page-title cs mb-6 text-[clamp(52px,7vw,110px)] leading-none font-extrabold tracking-[-3px] text-bg max-sm:mb-5 max-sm:text-[clamp(34px,9vw,52px)] max-sm:tracking-[-1.5px]">
-            Zapojte se.
-          </h1>
-          <h1 className="page-title en mb-6 text-[clamp(52px,7vw,110px)] leading-none font-extrabold tracking-[-3px] text-bg max-sm:mb-5 max-sm:text-[clamp(34px,9vw,52px)] max-sm:tracking-[-1.5px]">
-            Get involved.
-          </h1>
+          <div className="section-head">
+            <span className="page-label cs">
+              Spolupráce
+            </span>
+            <span className="page-label en">
+              Cooperate
+            </span>
+            <h1 className="page-title cs text-bg">
+              Zapojte se.
+            </h1>
+            <h1 className="page-title en text-bg">
+              Get involved.
+            </h1>
+          </div>
           <p className="page-sub cs max-w-[560px] text-lg leading-[1.65] font-light text-[rgba(245,245,243,0.65)] max-sm:text-[15px]">
             Hledáme partnerské školy, organizace a instituce. Napište nám.
           </p>
