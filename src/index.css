@@ -12,7 +12,7 @@
   --color-light: rgba(11, 16, 32, 0.08);
   --color-light2: rgba(11, 16, 32, 0.04);
 
-  --font-sans: "Geist", system-ui, sans-serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
   --font-mono: "Geist Mono", monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -40,7 +40,7 @@
 
   h1,
   h2 {
-    font-feature-settings: "ss01", "ss02", "cv01";
+    font-feature-settings: normal;
   }
 }
 
