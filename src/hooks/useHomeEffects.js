@@ -1,29 +1,25 @@
 import { useEffect } from 'react';
 import gsap from 'gsap';
-import { useLang } from '../context/LangContext';
+import { EASE_PREMIUM, prefersReducedMotion } from '../utils/motion';
 
 export function useHomeEffects() {
-  const { isEn } = useLang();
-
   useEffect(() => {
+    if (prefersReducedMotion()) {
+      document.querySelectorAll('.hero-title .word span, .hero-meta, .hero-sub, .hero-ctas').forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return undefined;
+    }
+
+    const tl = gsap.timeline({ defaults: { ease: EASE_PREMIUM } });
     const words = document.querySelectorAll('.hero-title .word span');
-    gsap.to(words, {
-      y: 0,
-      opacity: 1,
-      duration: 1.1,
-      stagger: 0.12,
-      ease: 'power3.out',
-      delay: 0.2,
-    });
-    gsap.to('.hero-meta', { opacity: 1, duration: 0.6, delay: 0.2 });
-    gsap.to('.hero-sub, .hero-ctas', {
-      y: 0,
-      opacity: 1,
-      duration: 0.65,
-      stagger: 0.1,
-      delay: 0.3,
-      ease: 'power3.out',
-    });
+
+    tl.fromTo(words, { y: '110%', opacity: 0 }, { y: 0, opacity: 1, duration: 1.05, stagger: 0.11 }, 0.15);
+    tl.to('.hero-meta', { opacity: 1, duration: 0.6 }, 0.2);
+    tl.fromTo('.hero-sub, .hero-ctas', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.1 }, 0.28);
+
+    return () => tl.kill();
   }, []);
 
   useEffect(() => {
@@ -40,6 +36,10 @@ export function useHomeEffects() {
             const el = document.getElementById(id);
             if (!el) return;
             const target = counterTargets[i];
+            if (prefersReducedMotion()) {
+              el.textContent = String(target);
+              return;
+            }
             const dur = 1800;
             const start = Date.now();
             const tick = () => {
@@ -59,40 +59,4 @@ export function useHomeEffects() {
     cIO.observe(numSection);
     return () => cIO.disconnect();
   }, []);
-
-  useEffect(() => {
-    const form = document.getElementById('indexForm');
-    const success = document.getElementById('formSuccess');
-    const btn = document.getElementById('indexSubmitBtn');
-    if (!form) return undefined;
-
-    const onSubmit = async (e) => {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.textContent = '...';
-      const data = new FormData(form);
-      try {
-        const res = await fetch('https://formspree.io/f/mqejkdwe', {
-          method: 'POST',
-          body: data,
-          headers: { Accept: 'application/json' },
-        });
-        if (res.ok) {
-          form.style.display = 'none';
-          success.style.display = 'block';
-        } else {
-          alert(isEn ? 'Could not send. Please try again.' : 'Nepodařilo se odeslat. Zkuste to znovu.');
-          btn.disabled = false;
-          btn.innerHTML = '<span class="cs">Odeslat zprávu</span><span class="en">Send message</span>';
-        }
-      } catch {
-        alert(isEn ? 'Network error. Please try again.' : 'Chyba sítě. Zkuste to znovu.');
-        btn.disabled = false;
-        btn.innerHTML = '<span class="cs">Odeslat zprávu</span><span class="en">Send message</span>';
-      }
-    };
-
-    form.addEventListener('submit', onSubmit);
-    return () => form.removeEventListener('submit', onSubmit);
-  }, [isEn]);
 }

@@ -245,7 +245,7 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
 
       <div
         className={`fixed inset-0 z-[999] flex w-screen flex-col justify-center bg-bg px-8 py-[52px] transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] lg:hidden ${
-          menuOpen ? 'pointer-events-auto translate-y-0' : 'pointer-events-none -translate-y-full'
+          menuOpen ? 'mobile-menu-open pointer-events-auto translate-y-0' : 'pointer-events-none -translate-y-full'
         }`}
       >
         <button
@@ -258,17 +258,19 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
         </button>
         <Link
           to="/"
-          className={`flex items-center gap-3 border-b border-light py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive('/') ? 'text-accent' : 'text-dark'}`}
+          className={`mobile-menu-link flex items-center gap-3 border-b border-light py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive('/') ? 'text-accent' : 'text-dark'}`}
+          style={{ animationDelay: '0.05s' }}
           onClick={closeAll}
         >
           <span className="cs">Domů</span>
           <span className="en">Home</span>
         </Link>
-        {NAV_ITEMS.map((item) => (
+        {NAV_ITEMS.map((item, i) => (
           <Link
             key={item.to}
             to={item.to}
-            className={`flex items-center gap-3 border-b border-light py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive(item.to) ? 'text-accent' : 'text-dark'}`}
+            className={`mobile-menu-link flex items-center gap-3 border-b border-light py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive(item.to) ? 'text-accent' : 'text-dark'}`}
+            style={{ animationDelay: `${0.1 + i * 0.05}s` }}
             onClick={closeAll}
           >
             {item.icon('w-7 h-7 shrink-0 opacity-50')}

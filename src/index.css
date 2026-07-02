@@ -123,13 +123,19 @@ body.EN .topics-tag.en {
 
 /* scroll reveal (JS adds .in) */
 .rev {
-  @apply opacity-0 translate-y-7 transition-[opacity,transform] duration-[900ms];
+  @apply opacity-0 translate-y-7 transition-[opacity,transform,filter] duration-[900ms];
   transition-timing-function: var(--ease-out-expo);
   will-change: transform, opacity;
+  filter: blur(6px);
 }
 
 .rev.in {
   @apply opacity-100 translate-y-0;
+  filter: blur(0);
+}
+
+.rev.anim-gsap {
+  transition: none !important;
 }
 
 .d1 {
@@ -146,6 +152,39 @@ body.EN .topics-tag.en {
 }
 .d5 {
   transition-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rev,
+  .split-text .word span,
+  .narrative-line > span,
+  .hero-sub,
+  .hero-ctas,
+  .hero-meta {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .ticker-wrap,
+  .ticker-inner,
+  .topics-track,
+  .partner-track {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body.reduced-motion .rev,
+body.reduced-motion .split-text .word span {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
 }
 
 /* hero word animation (GSAP) */
@@ -330,7 +369,7 @@ body.EN .topics-tag.en {
   flex: 1;
   height: 3px;
   background: var(--apply-line);
-  border-radius: 2px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -406,7 +445,7 @@ body.EN .topics-tag.en {
   color: var(--apply-ink);
   background: #fff;
   border: 1.5px solid var(--apply-line);
-  border-radius: 7px;
+  border-radius: 0;
   transition:
     border-color 0.15s,
     box-shadow 0.15s;
@@ -446,7 +485,7 @@ body.EN .topics-tag.en {
   font-size: 13px;
   font-weight: 500;
   border: 1.5px solid var(--apply-line);
-  border-radius: 100px;
+  border-radius: 0;
   background: #fff;
   cursor: pointer;
   transition: all 0.15s;
@@ -475,7 +514,7 @@ body.EN .topics-tag.en {
   gap: 12px;
   padding: 14px 16px;
   border: 1.5px solid var(--apply-line);
-  border-radius: 9px;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.15s;
   background: #fff;
@@ -493,7 +532,7 @@ body.EN .topics-tag.en {
 .apply-page .radio-dot {
   width: 18px;
   height: 18px;
-  border-radius: 50%;
+  border-radius: 0;
   border: 2px solid var(--apply-line);
   flex-shrink: 0;
   margin-top: 1px;
@@ -509,7 +548,7 @@ body.EN .topics-tag.en {
   content: "";
   position: absolute;
   inset: 3px;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--apply-blue);
 }
 
@@ -565,7 +604,7 @@ body.EN .topics-tag.en {
   font-size: 15px;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   transition:
     background 0.15s,
@@ -606,7 +645,7 @@ body.EN .topics-tag.en {
 .apply-page .success-icon {
   width: 56px;
   height: 56px;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--apply-blue-soft);
   display: flex;
   align-items: center;
@@ -667,7 +706,7 @@ body.EN .topics-tag.en {
   font-weight: 500;
   background: transparent;
   border: 1.5px solid var(--apply-line);
-  border-radius: 8px;
+  border-radius: 0;
   color: var(--apply-muted);
   cursor: pointer;
   transition:
@@ -695,7 +734,7 @@ body.EN .topics-tag.en {
   background: var(--apply-line);
   color: var(--apply-muted);
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: not-allowed;
   transition:
     background 0.25s,
@@ -834,6 +873,16 @@ body.EN .apply-page .success p.en {
     rgba(74, 123, 255, 0.12) 0%,
     transparent 65%
   );
+  animation: heroGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  from {
+    opacity: 0.75;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 640px) {
@@ -964,6 +1013,224 @@ body.EN .apply-page .success p.en {
 .nav-link-u.nav-active::after {
   transform: scaleX(1);
   transform-origin: left center;
+}
+
+/* custom cursor */
+#cur {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  display: none;
+}
+
+.cur-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  will-change: transform;
+  transition:
+    width 0.3s var(--ease-out-expo),
+    height 0.3s var(--ease-out-expo),
+    opacity 0.3s var(--ease-out-expo),
+    background 0.3s ease;
+}
+
+.cur-dot.big {
+  width: 36px;
+  height: 36px;
+  opacity: 0.14;
+  background: var(--color-accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #cur {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #cur {
+    display: none !important;
+  }
+}
+
+/* page transition */
+.page-transition-overlay {
+  opacity: 0;
+}
+
+/* nav entrance */
+#nav {
+  will-change: transform, opacity;
+}
+
+#nav.is-ready {
+  will-change: auto;
+}
+
+/* section label accent line */
+.section-head .section-label,
+.section-head .page-label,
+.section-head .sec-label {
+  position: relative;
+  padding-left: 18px;
+}
+
+.section-head .section-label::before,
+.section-head .page-label::before,
+.section-head .sec-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background: var(--color-accent);
+  transform: translateY(-50%);
+  transition: width 0.5s var(--ease-out-expo);
+}
+
+.section-head.rev.in .section-label::before,
+.section-head.rev.in .page-label::before,
+.section-head.rev.in .sec-label::before,
+.section-head .section-label.is-visible::before,
+.section-head .page-label.is-visible::before,
+.section-head .sec-label.is-visible::before {
+  width: 12px;
+}
+
+/* photo strip cells */
+.photo-strip > * {
+  overflow: hidden;
+}
+
+.photo-strip img {
+  will-change: transform, opacity;
+}
+
+/* premium button hover */
+.btn-primary,
+.btn-p,
+.fsub,
+.join-dropdown-trigger {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.35s var(--ease-out-expo),
+    box-shadow 0.35s var(--ease-out-expo);
+}
+
+@media (hover: hover) {
+  .btn-primary:hover,
+  .btn-p:hover,
+  .fsub:hover:not(:disabled),
+  .join-dropdown-trigger:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(74, 123, 255, 0.18);
+  }
+}
+
+/* join dropdown panel entrance */
+.join-dropdown-panel {
+  animation: panelIn 0.35s var(--ease-out-expo) both;
+  transform-origin: top right;
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* mobile menu link stagger */
+@media (max-width: 1023px) {
+  .mobile-menu-link {
+    animation: menuLinkIn 0.55s var(--ease-out-expo) both;
+    animation-play-state: paused;
+  }
+
+  .mobile-menu-open .mobile-menu-link {
+    animation-play-state: running;
+  }
+}
+
+@keyframes menuLinkIn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* hero grain subtle drift */
+.hero-grain {
+  animation: grainDrift 12s linear infinite;
+}
+
+@keyframes grainDrift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-1%, 1%);
+  }
+  50% {
+    transform: translate(1%, -1%);
+  }
+  75% {
+    transform: translate(-0.5%, -0.5%);
+  }
+}
+
+/* section grid wipe reveal */
+.what-grid,
+.numbers-grid,
+.board-grid,
+.val-grid {
+  will-change: clip-path;
+}
+
+.section-head .section-title,
+.section-head .sec-title {
+  will-change: transform, opacity, filter;
+}
+
+.section-head .section-title em,
+.section-head .sec-title em {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+.what-card:hover .what-icon {
+  transform: translateY(-3px);
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.what-icon {
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+/* number card subtle lift on hover */
+.number-card:hover .number-val {
+  transform: translateY(-2px);
+  transition: transform 0.35s var(--ease-out-expo);
+}
+
+.number-val {
+  transition: transform 0.35s var(--ease-out-expo);
 }
 
 /* Shared layout & UI — used via className across pages */

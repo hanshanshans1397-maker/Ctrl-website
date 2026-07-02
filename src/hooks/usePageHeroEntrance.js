@@ -1,52 +1,65 @@
 import { useEffect } from 'react';
+import gsap from 'gsap';
+import { EASE_PREMIUM, prefersReducedMotion } from '../utils/motion';
 
 export function usePageHeroEntrance({ splitText = false } = {}) {
   useEffect(() => {
-    const timers = [];
+    const meta = document.getElementById('heroMeta');
+    const title = document.getElementById('heroTitle');
+    const bottom = document.getElementById('heroBottom');
+    const splitEls = document.querySelectorAll('.split-text');
 
-    timers.push(
-      window.setTimeout(() => {
-        const meta = document.getElementById('heroMeta');
-        if (!meta) return;
-        meta.style.transition = 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1)';
+    if (prefersReducedMotion()) {
+      if (meta) {
         meta.style.opacity = '1';
         meta.style.transform = 'none';
-      }, 80),
-    );
+      }
+      if (title) {
+        title.style.opacity = '1';
+        title.style.transform = 'none';
+      }
+      if (bottom) {
+        bottom.style.opacity = '1';
+        bottom.style.transform = 'none';
+      }
+      splitEls.forEach((el) => {
+        el.classList.add('in');
+        el.querySelectorAll('.word span').forEach((span) => {
+          span.style.transform = 'none';
+          span.style.opacity = '1';
+        });
+      });
+      return undefined;
+    }
 
-    if (splitText) {
-      timers.push(
-        window.setTimeout(() => {
-          document.querySelectorAll('.split-text').forEach((el) => {
-            el.classList.add('in');
-            el.querySelectorAll('.word span').forEach((span, i) => {
-              span.style.transitionDelay = `${0.05 + i * 0.08}s`;
-            });
-          });
-        }, 150),
+    const tl = gsap.timeline({ defaults: { ease: EASE_PREMIUM } });
+
+    if (meta) {
+      tl.fromTo(meta, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.65 }, 0.1);
+    }
+
+    if (splitText && splitEls.length) {
+      splitEls.forEach((el) => el.classList.add('in'));
+      const words = document.querySelectorAll('.split-text .word span');
+      tl.fromTo(
+        words,
+        { y: '110%', opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, stagger: 0.09 },
+        0.15,
       );
-    } else {
-      timers.push(
-        window.setTimeout(() => {
-          const title = document.getElementById('heroTitle');
-          if (!title) return;
-          title.style.transition = 'opacity 0.6s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1)';
-          title.style.opacity = '1';
-          title.style.transform = 'none';
-        }, 150),
+    } else if (title) {
+      tl.fromTo(title, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.85 }, 0.18);
+    }
+
+    if (bottom) {
+      tl.fromTo(
+        bottom,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.75 },
+        splitText ? 0.35 : 0.32,
       );
     }
 
-    timers.push(
-      window.setTimeout(() => {
-        const bottom = document.getElementById('heroBottom');
-        if (!bottom) return;
-        bottom.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)';
-        bottom.style.opacity = '1';
-        bottom.style.transform = 'none';
-      }, splitText ? 250 : 280),
-    );
-
-    return () => timers.forEach((t) => window.clearTimeout(t));
+    return () => tl.kill();
   }, [splitText]);
 }

@@ -120,14 +120,14 @@ export function Footer() {
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >
                 <span className="cs">Spolupráce</span>
-                <span className="en">Cooperate</span>
+                <span className="en">Collaborate With Us</span>
               </Link>
               <Link
                 to="/apply"
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >
-                <span className="cs">Přihláška</span>
-                <span className="en">Application</span>
+                <span className="cs">Přidejte se k nám</span>
+                <span className="en">Join Us</span>
               </Link>
             </div>
             <div>
@@ -145,12 +145,13 @@ export function Footer() {
                 Instagram
               </a>
               <a
-                href="#"
+                href="https://www.tiktok.com/@ctrleurope"
                 className="mb-2 flex items-center gap-2 text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >
                 <IconTikTok />
                 TikTok
               </a>
+              {/*  
               <a
                 href="#"
                 className="mb-2 flex items-center gap-2 text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
@@ -158,6 +159,7 @@ export function Footer() {
                 <IconLinkedIn />
                 LinkedIn
               </a>
+              */}
             </div>
           </div>
         </div>

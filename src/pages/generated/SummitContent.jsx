@@ -1230,13 +1230,13 @@ export function SummitPageContent() {
               I&apos;m interested &rarr;
             </Link>
             <a
-              href="mailto:"
+              href="mailto:ctrleurope@seznam.cz"
               className="btn-g cs inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-dark no-underline transition-all duration-[250ms] hover:border-dark"
             >
               Napište nám
             </a>
             <a
-              href="mailto:"
+              href="mailto:ctrleurope@seznam.cz"
               className="btn-g en inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-dark no-underline transition-all duration-[250ms] hover:border-dark"
             >
               Email us

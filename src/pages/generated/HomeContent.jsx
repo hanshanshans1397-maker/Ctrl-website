@@ -497,7 +497,7 @@ export function HomePageContent() {
         </div>
       </section>
 
-      <div className="grid grid-cols-3 gap-3 bg-dark border-4 border-dark p-3 max-[640px]:grid-cols-1 max-[640px]:gap-2 max-[640px]:p-2">
+      <div className="photo-strip grid grid-cols-3 gap-3 bg-dark border-4 border-dark p-3 max-[640px]:grid-cols-1 max-[640px]:gap-2 max-[640px]:p-2">
         <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-2 border-dark">
           <img
             src="/photos/team.jpg"
@@ -665,229 +665,56 @@ export function HomePageContent() {
 
       <section
         id="join"
-        className="py-40 px-[52px] bg-bg max-lg:py-[100px] max-lg:px-6 max-[480px]:py-[52px] max-[480px]:px-5"
+        className="sec bg-bg px-[52px] py-[120px] text-center max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16"
       >
-        <div className="max-w-[1300px] mx-auto">
-          <div className="section-head rev">
-            <span className="section-label">
-              <span className="cs">Zapojit se</span>
-              <span className="en">Join us</span>
-            </span>
-            <h2 className="section-title">
-              <span className="cs">Chci se připojit.</span>
-              <span className="en">I want to join.</span>
-            </h2>
-          </div>
-          <div className="join-grid grid grid-cols-2 gap-[100px] mt-20 items-start max-lg:grid-cols-1 max-lg:gap-[52px] max-[640px]:gap-10 max-[480px]:gap-8">
-            <div className="rev d1">
-              <p className="join-info cs text-[15px] font-light leading-[1.85] text-mid mb-4 [&_strong]:text-dark [&_strong]:font-medium">
-                <strong>CTRL Europe</strong> hledá partnery, školy a organizace,
-                které chtějí být součástí změny. Oslovte nás. Jsme tady.
-              </p>
-              <p className="join-info en text-[15px] font-light leading-[1.85] text-mid mb-4 [&_strong]:text-dark [&_strong]:font-medium">
-                <strong>CTRL Europe</strong> is looking for partners, schools
-                and organizations that want to be part of change. Contact us. We
-                are here.
-              </p>
-              <div className="join-criteria mt-12 flex flex-col border-t border-light">
-                <div className="join-criterion py-[18px] border-b border-light flex items-start gap-4 text-sm font-light text-mid transition-[color,padding-left] duration-300 hover:text-dark hover:pl-2">
-                  <svg
-                    className="w-[15px] h-[15px] text-accent shrink-0 mt-0.5"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M1.5 14.5V8l6.5-5 6.5 5v6.5" />
-                    <path d="M5.5 14.5v-4.5h5v4.5" />
-                    <path d="M1.5 14.5h13" />
-                  </svg>
-                  <span className="cs">
-                    Partnerská škola: CTRL Workshop zdarma
-                  </span>
-                  <span className="en">
-                    Partner school: CTRL Workshop for free
-                  </span>
-                </div>
-                <div className="join-criterion py-[18px] border-b border-light flex items-start gap-4 text-sm font-light text-mid transition-[color,padding-left] duration-300 hover:text-dark hover:pl-2">
-                  <svg
-                    className="w-[15px] h-[15px] text-accent shrink-0 mt-0.5"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="6" cy="5" r="2" />
-                    <path d="M1 14.5c0-2.8 2.2-4.5 5-4.5s5 1.7 5 4.5" />
-                    <circle cx="12.5" cy="5.5" r="1.5" strokeWidth="1.2" />
-                    <path d="M14.5 14.5c0-2-1.2-3.2-3-3.8" strokeWidth="1.2" />
-                  </svg>
-                  <span className="cs">
-                    Partnerská organizace: společné projekty
-                  </span>
-                  <span className="en">
-                    Partner organization: joint projects
-                  </span>
-                </div>
-                <div className="join-criterion py-[18px] border-b border-light flex items-start gap-4 text-sm font-light text-mid transition-[color,padding-left] duration-300 hover:text-dark hover:pl-2">
-                  <svg
-                    className="w-[15px] h-[15px] text-accent shrink-0 mt-0.5"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M2.5 12a7 7 0 0 1 0-8" />
-                    <path d="M5 10a4 4 0 0 1 0-4" />
-                    <circle
-                      cx="8"
-                      cy="8"
-                      r="1"
-                      fill="currentColor"
-                      stroke="none"
-                    />
-                    <path d="M11 10a4 4 0 0 0 0-4" />
-                    <path d="M13.5 12a7 7 0 0 0 0-8" />
-                  </svg>
-                  <span className="cs">Mediální partnerství</span>
-                  <span className="en">Media partnership</span>
-                </div>
-                <div className="join-criterion py-[18px] border-b border-light flex items-start gap-4 text-sm font-light text-mid transition-[color,padding-left] duration-300 hover:text-dark hover:pl-2">
-                  <svg
-                    className="w-[15px] h-[15px] text-accent shrink-0 mt-0.5"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="2.5" y="1.5" width="11" height="13" rx="1" />
-                    <path d="M5.5 5.5h5M5.5 8h5M5.5 10.5h3" />
-                  </svg>
-                  <span className="cs">
-                    Institucionální spolupráce: Erasmus+ a granty
-                  </span>
-                  <span className="en">
-                    Institutional cooperation: Erasmus+ and grants
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="join-form-panel rev d2 bg-white border border-light p-12 px-10 max-lg:p-9 max-lg:px-7 max-[480px]:p-7 max-[480px]:px-5">
-              <div id="formSuccess" className="hidden text-center">
-                <div className="text-[32px] mb-4">✓</div>
-                <h3 className="cs text-xl font-bold mb-2">Zpráva odeslána.</h3>
-                <h3 className="en text-xl font-bold mb-2">Message sent.</h3>
-                <p className="cs text-sm font-light text-mid">
-                  Děkujeme. Ozveme se co nejdříve.
-                </p>
-                <p className="en text-sm font-light text-mid">
-                  Thank you. We will get back to you soon.
-                </p>
-              </div>
-              <form id="indexForm" className="form-block flex flex-col gap-5">
-                <input type="text" name="_gotcha" className="hidden" />
-                <div className="fl flex flex-col gap-2">
-                  <label className="font-mono text-[10px] font-normal tracking-[2px] uppercase text-mid">
-                    <span className="cs">Jméno / Organizace</span>
-                    <span className="en">Name / Organization</span>
-                  </label>
-                  <input
-                    className="fi w-full bg-bg border border-light rounded-none px-4 py-3.5 text-sm font-light text-dark outline-none transition-[border-color,background] duration-250 focus:border-dark focus:bg-white"
-                    type="text"
-                    name="name"
-                    data-ph-cs="Jan Novák / ZŠ Brno"
-                    data-ph-en="John Smith / Example School"
-                    required
-                  />
-                </div>
-                <div className="fl flex flex-col gap-2">
-                  <label className="font-mono text-[10px] font-normal tracking-[2px] uppercase text-mid">
-                    Email
-                  </label>
-                  <input
-                    className="fi w-full bg-bg border border-light rounded-none px-4 py-3.5 text-sm font-light text-dark outline-none transition-[border-color,background] duration-250 focus:border-dark focus:bg-white"
-                    type="email"
-                    name="email"
-                    data-ph-cs="vas@email.cz"
-                    data-ph-en="you@email.com"
-                    required
-                  />
-                </div>
-                <div className="fl flex flex-col gap-2">
-                  <label className="font-mono text-[10px] font-normal tracking-[2px] uppercase text-mid">
-                    <span className="cs">Typ spolupráce</span>
-                    <span className="en">Type of cooperation</span>
-                  </label>
-                  <select
-                    className="fs w-full cursor-pointer bg-bg border border-light rounded-none px-4 py-3.5 text-sm font-light text-dark outline-none transition-[border-color,background] duration-250 focus:border-dark focus:bg-white"
-                    name="type"
-                  >
-                    <option value="">Vyberte...</option>
-                    <option value="Partnerská škola" className="cs">
-                      Partnerská škola
-                    </option>
-                    <option value="Partner school" className="en">
-                      Partner school
-                    </option>
-                    <option value="Workshop">Workshop</option>
-                    <option value="Partnerská organizace" className="cs">
-                      Partnerská organizace
-                    </option>
-                    <option value="Partner organization" className="en">
-                      Partner organization
-                    </option>
-                    <option value="Mediální partnerstí" className="cs">
-                      Mediální partnerstí
-                    </option>
-                    <option value="Media partnership" className="en">
-                      Media partnership
-                    </option>
-                    <option value="Jiné" className="cs">
-                      Jiné
-                    </option>
-                    <option value="Other" className="en">
-                      Other
-                    </option>
-                  </select>
-                </div>
-                <div className="fl flex flex-col gap-2">
-                  <label className="font-mono text-[10px] font-normal tracking-[2px] uppercase text-mid">
-                    <span className="cs">Zpráva</span>
-                    <span className="en">Message</span>
-                  </label>
-                  <textarea
-                    className="fta w-full min-h-20 resize-none bg-bg border border-light rounded-none px-4 py-3.5 text-sm font-light text-dark outline-none transition-[border-color,background] duration-250 focus:border-dark focus:bg-white placeholder:text-[rgba(11,16,32,0.25)]"
-                    name="message"
-                    data-ph-cs="Napište nám..."
-                    data-ph-en="Write to us..."
-                  ></textarea>
-                </div>
-                <button
-                  className="fsub bg-dark text-bg border-none py-4 px-9 text-xs font-semibold tracking-[2px] uppercase transition-colors duration-250 hover:bg-accent self-start mt-2 max-[640px]:w-full max-[640px]:text-center"
-                  type="submit"
-                  id="indexSubmitBtn"
-                >
-                  <span className="cs">Odeslat zprávu</span>
-                  <span className="en">Send message</span>
-                </button>
-              </form>
-            </div>
+        <div className="inner mx-auto max-w-[680px] max-sm:max-w-full">
+          <h2 className="rev cs mb-6 text-[clamp(40px,5vw,72px)] leading-none font-extrabold tracking-[-2.5px] text-dark">
+            Chceš být součástí?
+          </h2>
+          <h2 className="rev en mb-6 text-[clamp(40px,5vw,72px)] leading-none font-extrabold tracking-[-2.5px] text-dark">
+            Want to be part of it?
+          </h2>
+          <p className="rev d1 cs mb-10 text-[17px] leading-[1.8] font-light text-mid">
+            CTRL Europe hledá partnery, školy a mladé lidi, kteří chtějí být
+            součástí změny. Vyberte si cestu, která vám sedí.
+          </p>
+          <p className="rev d1 en mb-10 text-[17px] leading-[1.8] font-light text-mid">
+            CTRL Europe is looking for partners, schools, and young people who
+            want to be part of the change. Choose the path that fits you.
+          </p>
+          <div className="rev d2 flex flex-wrap justify-center gap-3">
+            <Link
+              to="/join"
+              className="btn-p cs inline-flex items-center gap-2 border-none bg-dark px-7 py-3.5 text-[13px] font-semibold tracking-[0.3px] text-bg no-underline transition-all duration-[250ms] hover:bg-accent"
+            >
+              Spolupráce &rarr;
+            </Link>
+            <Link
+              to="/join"
+              className="btn-p en inline-flex items-center gap-2 border-none bg-dark px-7 py-3.5 text-[13px] font-semibold tracking-[0.3px] text-bg no-underline transition-all duration-[250ms] hover:bg-accent"
+            >
+              Cooperate &rarr;
+            </Link>
+            <Link
+              to="/apply"
+              className="btn-g cs inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-dark no-underline transition-all duration-[250ms] hover:border-dark"
+            >
+              Přihláška
+            </Link>
+            <Link
+              to="/apply"
+              className="btn-g en inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-dark no-underline transition-all duration-[250ms] hover:border-dark"
+            >
+              Application
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="bg-bg py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[640px]:py-16 max-[640px]:px-5">
+      <section className="bg-bg2 py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[640px]:py-16 max-[640px]:px-5">
         <div className="max-w-[1300px] mx-auto grid grid-cols-[1fr_360px] gap-20 items-center max-lg:grid-cols-1 max-lg:gap-14">
           <div className="rev">
-            <div className="section-head rev">
+            <div className="section-head">
               <span className="section-label">
                 <span className="cs">Proč to děláme</span>
                 <span className="en">Why we do this</span>

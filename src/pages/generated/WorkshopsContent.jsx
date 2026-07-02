@@ -325,8 +325,11 @@ export function WorkshopsPageContent() {
         </div>
       </section>
 
-      <section className="sec bg-bg" id="topics">
-        <div className="inner">
+      <section
+        className="sec bg-bg px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16"
+        id="topics"
+      >
+        <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full">
           <div className="section-head rev">
             <span className="section-label">
               <span className="cs">Témata workshopu</span>
@@ -341,26 +344,11 @@ export function WorkshopsPageContent() {
               </span>
             </h2>
           </div>
-          <div>
-            <div className="topic-row rev d1">
-              <div className="topic-row-num">01</div>
-              <div>
-                <div className="topic-row-title cs">AI a každodenní život</div>
-                <div className="topic-row-title en">AI & Everyday Life</div>
-                <div className="topic-row-desc cs">
-                  Jak umělá inteligence ovlivňuje každodenní rozhodování,
-                  vzdělávání a pracovní trh. Co AI umí, co neumí, a jak si
-                  udržet kritický pohled.
-                </div>
-                <div className="topic-row-desc en">
-                  How artificial intelligence influences everyday
-                  decision-making, education and the job market. What AI can do,
-                  what it can't, and how to maintain a critical perspective.
-                </div>
-              </div>
-              <div className="topic-row-tag">
+          <div className="flex flex-col gap-px bg-light">
+            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+              <div className="pt-1">
                 <svg
-                  className="w-5 h-5 text-mid"
+                  className="w-8 h-8 text-accent"
                   viewBox="0 0 16 16"
                   fill="none"
                   stroke="currentColor"
@@ -383,27 +371,30 @@ export function WorkshopsPageContent() {
                   />
                 </svg>
               </div>
-            </div>
-            <div className="topic-row rev d1">
-              <div className="topic-row-num">02</div>
               <div>
-                <div className="topic-row-title cs">Deepfaky a manipulace</div>
-                <div className="topic-row-title en">
-                  Deepfakes & Manipulation
-                </div>
-                <div className="topic-row-desc cs">
-                  Jak funguje syntetický obsah, jak ho rozpoznat a proč je to
-                  dnes zásadní dovednost. Praktická cvičení s reálnými příklady.
-                </div>
-                <div className="topic-row-desc en">
-                  How synthetic content works, how to detect it and why this is
-                  an essential skill today. Practical exercises with real-world
-                  examples.
-                </div>
+                <h3 className="cs mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  AI a každodenní život
+                </h3>
+                <h3 className="en mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  AI & Everyday Life
+                </h3>
+                <p className="cs text-sm leading-[1.8] font-light text-mid">
+                  Jak umělá inteligence ovlivňuje každodenní rozhodování,
+                  vzdělávání a pracovní trh. Co AI umí, co neumí, a jak si
+                  udržet kritický pohled.
+                </p>
+                <p className="en text-sm leading-[1.8] font-light text-mid">
+                  How artificial intelligence influences everyday
+                  decision-making, education and the job market. What AI can do,
+                  what it can&apos;t, and how to maintain a critical
+                  perspective.
+                </p>
               </div>
-              <div className="topic-row-tag">
+            </div>
+            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+              <div className="pt-1">
                 <svg
-                  className="w-5 h-5 text-mid"
+                  className="w-8 h-8 text-accent"
                   viewBox="0 0 16 16"
                   fill="none"
                   stroke="currentColor"
@@ -419,30 +410,28 @@ export function WorkshopsPageContent() {
                   />
                 </svg>
               </div>
-            </div>
-            <div className="topic-row rev d2">
-              <div className="topic-row-num">03</div>
               <div>
-                <div className="topic-row-title cs">
-                  Algoritmy sociálních sítí
-                </div>
-                <div className="topic-row-title en">
-                  Social Media Algorithms
-                </div>
-                <div className="topic-row-desc cs">
-                  Jak sociální sítě rozhodují co vidíme, jak fungují echo
-                  chambers a filtrační bubliny a jak si udržet kontrolu nad
-                  informančním prostředím.
-                </div>
-                <div className="topic-row-desc en">
-                  How social networks decide what we see, how echo chambers and
-                  filter bubbles work and how to maintain control over your
-                  information environment.
-                </div>
+                <h3 className="cs mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Deepfaky a manipulace
+                </h3>
+                <h3 className="en mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Deepfakes & Manipulation
+                </h3>
+                <p className="cs text-sm leading-[1.8] font-light text-mid">
+                  Jak funguje syntetický obsah, jak ho rozpoznat a proč je to
+                  dnes zásadní dovednost. Praktická cvičení s reálnými příklady.
+                </p>
+                <p className="en text-sm leading-[1.8] font-light text-mid">
+                  How synthetic content works, how to detect it and why this is
+                  an essential skill today. Practical exercises with real-world
+                  examples.
+                </p>
               </div>
-              <div className="topic-row-tag">
+            </div>
+            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+              <div className="pt-1">
                 <svg
-                  className="w-5 h-5 text-mid"
+                  className="w-8 h-8 text-accent"
                   viewBox="0 0 16 16"
                   fill="none"
                   stroke="currentColor"
@@ -500,26 +489,29 @@ export function WorkshopsPageContent() {
                   />
                 </svg>
               </div>
-            </div>
-            <div className="topic-row rev d2">
-              <div className="topic-row-num">04</div>
               <div>
-                <div className="topic-row-title cs">Mediální gramotnost</div>
-                <div className="topic-row-title en">Media Literacy</div>
-                <div className="topic-row-desc cs">
-                  Jak číst média s pochopením jak fungují. Zdroje, redakční
-                  linie, media bias a metody ověřování informací, které fungují
-                  v praxi.
-                </div>
-                <div className="topic-row-desc en">
-                  How to read media with an understanding of how they work.
-                  Sources, editorial lines, media bias and practical information
-                  verification methods.
-                </div>
+                <h3 className="cs mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Algoritmy sociálních sítí
+                </h3>
+                <h3 className="en mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Social Media Algorithms
+                </h3>
+                <p className="cs text-sm leading-[1.8] font-light text-mid">
+                  Jak sociální sítě rozhodují co vidíme, jak fungují echo
+                  chambers a filtrační bubliny a jak si udržet kontrolu nad
+                  informančním prostředím.
+                </p>
+                <p className="en text-sm leading-[1.8] font-light text-mid">
+                  How social networks decide what we see, how echo chambers and
+                  filter bubbles work and how to maintain control over your
+                  information environment.
+                </p>
               </div>
-              <div className="topic-row-tag">
+            </div>
+            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+              <div className="pt-1">
                 <svg
-                  className="w-5 h-5 text-mid"
+                  className="w-8 h-8 text-accent"
                   viewBox="0 0 16 16"
                   fill="none"
                   stroke="currentColor"
@@ -540,26 +532,29 @@ export function WorkshopsPageContent() {
                   />
                 </svg>
               </div>
-            </div>
-            <div className="topic-row rev d3">
-              <div className="topic-row-num">05</div>
               <div>
-                <div className="topic-row-title cs">Dezinformace a důvěra</div>
-                <div className="topic-row-title en">Misinformation & Trust</div>
-                <div className="topic-row-desc cs">
-                  Jak se dezinformace tvoří, šíří a jak ovlivňují důvěru v
-                  instituce a věřejnou diskuzi. Metody fact-checkingu a
-                  kritického myšlení.
-                </div>
-                <div className="topic-row-desc en">
-                  How disinformation is created, spread and how it influences
-                  trust in institutions and public discourse. Methods of
-                  fact-checking and critical thinking.
-                </div>
+                <h3 className="cs mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Mediální gramotnost
+                </h3>
+                <h3 className="en mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Media Literacy
+                </h3>
+                <p className="cs text-sm leading-[1.8] font-light text-mid">
+                  Jak číst média s pochopením jak fungují. Zdroje, redakční
+                  linie, media bias a metody ověřování informací, které fungují
+                  v praxi.
+                </p>
+                <p className="en text-sm leading-[1.8] font-light text-mid">
+                  How to read media with an understanding of how they work.
+                  Sources, editorial lines, media bias and practical information
+                  verification methods.
+                </p>
               </div>
-              <div className="topic-row-tag">
+            </div>
+            <div className="rev d2 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+              <div className="pt-1">
                 <svg
-                  className="w-5 h-5 text-mid"
+                  className="w-8 h-8 text-accent"
                   viewBox="0 0 16 16"
                   fill="none"
                   stroke="currentColor"
@@ -577,24 +572,29 @@ export function WorkshopsPageContent() {
                   />
                 </svg>
               </div>
-            </div>
-            <div className="topic-row rev d3">
-              <div className="topic-row-num">06</div>
               <div>
-                <div className="topic-row-title cs">Digitální bezpečnost</div>
-                <div className="topic-row-title en">Digital Safety</div>
-                <div className="topic-row-desc cs">
-                  Osobní data, soukromí online, kyberbezpečnost. Co o nás
-                  platformy ví a jak chránit své digitální identity.
-                </div>
-                <div className="topic-row-desc en">
-                  Personal data, online privacy, cybersecurity. What platforms
-                  know about us and how to protect your digital identity.
-                </div>
+                <h3 className="cs mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Dezinformace a důvěra
+                </h3>
+                <h3 className="en mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Misinformation & Trust
+                </h3>
+                <p className="cs text-sm leading-[1.8] font-light text-mid">
+                  Jak se dezinformace tvoří, šíří a jak ovlivňují důvěru v
+                  instituce a věřejnou diskuzi. Metody fact-checkingu a
+                  kritického myšlení.
+                </p>
+                <p className="en text-sm leading-[1.8] font-light text-mid">
+                  How disinformation is created, spread and how it influences
+                  trust in institutions and public discourse. Methods of
+                  fact-checking and critical thinking.
+                </p>
               </div>
-              <div className="topic-row-tag">
+            </div>
+            <div className="rev d2 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+              <div className="pt-1">
                 <svg
-                  className="w-5 h-5 text-mid"
+                  className="w-8 h-8 text-accent"
                   viewBox="0 0 16 16"
                   fill="none"
                   stroke="currentColor"
@@ -616,31 +616,27 @@ export function WorkshopsPageContent() {
                   <path d="M8 11v1.5" strokeLinecap="round" strokeWidth="1.2" />
                 </svg>
               </div>
-            </div>
-            <div className="topic-row rev d4">
-              <div className="topic-row-num">07</div>
               <div>
-                <div className="topic-row-title cs">
-                  Kritické myšlení online
-                </div>
-                <div className="topic-row-title en">
-                  Critical Thinking Online
-                </div>
-                <div className="topic-row-desc cs">
-                  Systematický přístup k hodnocení digitálního obsahu. Jak
-                  nepřijímat zjednodušení, jak ověřovat a jak si udržet
-                  autonomní myšlení v době informačního přehlcení.
-                </div>
-                <div className="topic-row-desc en">
-                  A systematic approach to evaluating digital content. How not
-                  to accept oversimplification, how to verify and how to
-                  maintain autonomous thinking in an age of information
-                  overload.
-                </div>
+                <h3 className="cs mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Digitální bezpečnost
+                </h3>
+                <h3 className="en mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Digital Safety
+                </h3>
+                <p className="cs text-sm leading-[1.8] font-light text-mid">
+                  Osobní data, soukromí online, kyberbezpečnost. Co o nás
+                  platformy ví a jak chránit své digitální identity.
+                </p>
+                <p className="en text-sm leading-[1.8] font-light text-mid">
+                  Personal data, online privacy, cybersecurity. What platforms
+                  know about us and how to protect your digital identity.
+                </p>
               </div>
-              <div className="topic-row-tag">
+            </div>
+            <div className="rev d3 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+              <div className="pt-1">
                 <svg
-                  className="w-5 h-5 text-mid"
+                  className="w-8 h-8 text-accent"
                   viewBox="0 0 16 16"
                   fill="none"
                   stroke="currentColor"
@@ -660,28 +656,30 @@ export function WorkshopsPageContent() {
                   />
                 </svg>
               </div>
-            </div>
-            <div className="topic-row rev d4">
-              <div className="topic-row-num">08</div>
               <div>
-                <div className="topic-row-title cs">
-                  Závislost na technologiích
-                </div>
-                <div className="topic-row-title en">Technology addiction</div>
-                <div className="topic-row-desc cs">
-                  Věda za návykovými aplikacemi není náhoda. Je to záměrný
-                  design. Dopamin, notifikace, nekončící scroll. Jak funguje a
-                  jak získat kontrolu zpět.
-                </div>
-                <div className="topic-row-desc en">
-                  The science behind addictive apps is not an accident. It is
-                  intentional design. Dopamine, notifications, endless scroll.
-                  How it works and how to regain control.
-                </div>
+                <h3 className="cs mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Kritické myšlení online
+                </h3>
+                <h3 className="en mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Critical Thinking Online
+                </h3>
+                <p className="cs text-sm leading-[1.8] font-light text-mid">
+                  Systematický přístup k hodnocení digitálního obsahu. Jak
+                  nepřijímat zjednodušení, jak ověřovat a jak si udržet
+                  autonomní myšlení v době informačního přehlcení.
+                </p>
+                <p className="en text-sm leading-[1.8] font-light text-mid">
+                  A systematic approach to evaluating digital content. How not
+                  to accept oversimplification, how to verify and how to
+                  maintain autonomous thinking in an age of information
+                  overload.
+                </p>
               </div>
-              <div className="topic-row-tag">
+            </div>
+            <div className="rev d3 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+              <div className="pt-1">
                 <svg
-                  className="w-5 h-5 text-mid"
+                  className="w-8 h-8 text-accent"
                   viewBox="0 0 16 16"
                   fill="none"
                   stroke="currentColor"
@@ -702,6 +700,24 @@ export function WorkshopsPageContent() {
                     strokeWidth="1.1"
                   />
                 </svg>
+              </div>
+              <div>
+                <h3 className="cs mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Závislost na technologiích
+                </h3>
+                <h3 className="en mb-3 text-xl font-semibold tracking-[-0.4px] text-dark">
+                  Technology addiction
+                </h3>
+                <p className="cs text-sm leading-[1.8] font-light text-mid">
+                  Věda za návykovými aplikacemi není náhoda. Je to záměrný
+                  design. Dopamin, notifikace, nekončící scroll. Jak funguje a
+                  jak získat kontrolu zpět.
+                </p>
+                <p className="en text-sm leading-[1.8] font-light text-mid">
+                  The science behind addictive apps is not an accident. It is
+                  intentional design. Dopamine, notifications, endless scroll.
+                  How it works and how to regain control.
+                </p>
               </div>
             </div>
           </div>
@@ -891,7 +907,7 @@ export function WorkshopsPageContent() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    // FREE
+                    FREE
                   </div>
                   <span className="cs text-[14px] font-normal text-dark">
                     Workshopy zdarma pro partnerské školy
@@ -919,7 +935,7 @@ export function WorkshopsPageContent() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    // ADAPT
+                    ADAPT
                   </div>
                   <span className="cs text-[14px] font-normal text-dark">
                     Přizpůsobený obsah pro každý věk
@@ -953,7 +969,7 @@ export function WorkshopsPageContent() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    // FLEX
+                    FLEX
                   </div>
                   <span className="cs text-[14px] font-normal text-dark">
                     Flexibilní časový formát
@@ -982,7 +998,7 @@ export function WorkshopsPageContent() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    // ON-SITE
+                    ON-SITE
                   </div>
                   <span className="cs text-[14px] font-normal text-dark">
                     Přímo na vaší škole
@@ -1023,7 +1039,7 @@ export function WorkshopsPageContent() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    // PARTNER
+                    PARTNER
                   </div>
                   <span className="cs text-[14px] font-normal text-dark">
                     Dlouhodobá partnerská spolupráce
@@ -1060,7 +1076,7 @@ export function WorkshopsPageContent() {
                 <svg
                   viewBox="0 0 30 20"
                   className="h-7 w-auto"
-                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns="http:www.w3.org/2000/svg"
                 >
                   <rect width="30" height="20" fill="#003399" />
                   {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map(
@@ -1177,7 +1193,7 @@ export function WorkshopsPageContent() {
               {/* Cyber step badges — no hover, static */}
               <div className="flex items-start gap-5 border border-light bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
                 <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
-                  // 01
+                  01
                 </div>
                 <span className="cs text-sm font-light text-dark">
                   Síť partnerských škol v JMK a celé ČR
@@ -1188,7 +1204,7 @@ export function WorkshopsPageContent() {
               </div>
               <div className="flex items-start gap-5 border border-light bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
                 <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
-                  // 02
+                  02
                 </div>
                 <span className="cs text-sm font-light text-dark">
                   Rozsíření do zemí CEE: Slovensko, Polsko a dál
@@ -1199,7 +1215,7 @@ export function WorkshopsPageContent() {
               </div>
               <div className="flex items-start gap-5 border border-light bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
                 <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
-                  // 03
+                  03
                 </div>
                 <span className="cs text-sm font-light text-dark">
                   Vzdělávací materiály a online platforma
@@ -1234,10 +1250,10 @@ export function WorkshopsPageContent() {
             <Link to="/join" className="btn-p en">
               Order &rarr;
             </Link>
-            <a href="mailto:" className="btn-g cs">
+            <a href="mailto:ctrleurope@seznam.cz" className="btn-g cs">
               Napište nám
             </a>
-            <a href="mailto:" className="btn-g en">
+            <a href="mailto:ctrleurope@seznam.cz" className="btn-g en">
               Email us
             </a>
           </div>

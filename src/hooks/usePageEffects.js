@@ -1,6 +1,8 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { scrollPageToTop } from './useLenis';
+import { GSAP_REVEAL, prefersReducedMotion } from '../utils/motion';
 
 export function useScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -14,7 +16,7 @@ export function useScrollToTop() {
       history.scrollRestoration = 'manual';
     }
     ScrollTrigger.clearScrollMemory();
-    window.scrollTo(0, 0);
+    scrollPageToTop();
   }, [pathname, hash]);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export function useScrollToTop() {
 
     let cancelled = false;
     const scrollToTop = () => {
-      if (!cancelled) window.scrollTo(0, 0);
+      if (!cancelled) scrollPageToTop();
     };
 
     scrollToTop();
@@ -46,13 +48,36 @@ export function useScrollToTop() {
   }, [pathname, hash]);
 }
 
+function isGsapContentColumn(el) {
+  return el.classList.contains('rev') && el.querySelector(':scope > .section-head');
+}
+
+function shouldSkipReveal(el) {
+  if (GSAP_REVEAL.split(',').some((sel) => el.matches(sel.trim()))) return true;
+  if (el.classList.contains('section-head')) return true;
+  if (isGsapContentColumn(el)) return true;
+  if (el.closest('.section-head') && !el.classList.contains('section-head')) {
+    const head = el.closest('.section-head');
+    if (head?.querySelector('.section-title, .sec-title, .page-title')) return true;
+  }
+  return false;
+}
+
 export function useScrollReveal(deps = []) {
   useEffect(() => {
+    if (prefersReducedMotion()) {
+      document.querySelectorAll('.rev').forEach((el) => el.classList.add('in'));
+      return undefined;
+    }
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
             e.target.classList.add('in');
+            e.target.querySelectorAll('.rev:not(.anim-gsap)').forEach((child) => {
+              child.classList.add('in');
+            });
             io.unobserve(e.target);
           }
         });
@@ -60,7 +85,9 @@ export function useScrollReveal(deps = []) {
       { threshold: 0.08, rootMargin: '0px 0px -40px 0px' },
     );
 
-    document.querySelectorAll('.rev').forEach((el) => io.observe(el));
+    document.querySelectorAll('.rev').forEach((el) => {
+      if (!shouldSkipReveal(el)) io.observe(el);
+    });
     return () => io.disconnect();
   }, deps);
 }

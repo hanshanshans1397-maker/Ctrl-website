@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { Cursor } from './Cursor';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 import { PageTransition } from './PageTransition';
@@ -12,6 +13,8 @@ import {
   useTickerClone,
 } from '../hooks/usePageEffects';
 import { useLenis } from '../hooks/useLenis';
+import { usePremiumAnimations } from '../hooks/usePremiumAnimations';
+import { prefersReducedMotion } from '../utils/motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -51,7 +54,7 @@ function useMagneticButtons(pathname) {
         gsap.to(btn, { x, y, duration: 0.4, ease: 'power3.out', overwrite: true });
       };
       const onLeave = () => {
-        gsap.to(btn, { x: 0, y: 0, duration: 0.65, ease: 'elastic.out(1, 0.45)', overwrite: true });
+        gsap.to(btn, { x: 0, y: 0, duration: 0.55, ease: 'power3.out', overwrite: true });
       };
       btn.addEventListener('mousemove', onMove);
       btn.addEventListener('mouseleave', onLeave);
@@ -78,10 +81,27 @@ export function Layout() {
   useLenis();
   useScrollToTop();
   useScrollReveal([pathname]);
+  usePremiumAnimations(pathname);
   useTickerClone();
   useFormI18n(isEn);
   useHeroParallax(pathname);
   useMagneticButtons(pathname);
+
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav || prefersReducedMotion()) {
+      navRef.current?.classList.add('is-ready');
+      return undefined;
+    }
+
+    gsap.fromTo(
+      nav,
+      { y: -20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.05 },
+    );
+    nav.classList.add('is-ready');
+    return undefined;
+  }, []);
 
   useEffect(() => {
     if (!hasDarkHero) {
@@ -120,6 +140,7 @@ export function Layout() {
 
   return (
     <>
+      <Cursor />
       <Navbar
         navRef={navRef}
         menuOpen={menuOpen}
