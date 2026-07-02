@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { AnimatedCounter } from "../../components/AnimatedCounter";
 import { HeroThreatMonitor } from "../../components/HeroThreatMonitor";
 
 export function HomePageContent() {
@@ -564,7 +565,7 @@ export function HomePageContent() {
           <div className="numbers-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-[640px]:gap-px">
             <div className="number-card rev d1 bg-bg py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
               <div className="number-val text-[clamp(52px,6vw,80px)] font-bold tracking-[-3px] leading-none text-dark mb-3 [&_span]:text-accent">
-                <span id="c1">0</span>+
+                <AnimatedCounter value={621} />+
               </div>
               <div className="number-label cs font-mono text-[11px] font-light tracking-[2px] uppercase text-mid">
                 Aktivních členů
@@ -575,7 +576,7 @@ export function HomePageContent() {
             </div>
             <div className="number-card rev d2 bg-bg py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
               <div className="number-val text-[clamp(52px,6vw,80px)] font-bold tracking-[-3px] leading-none text-dark mb-3 [&_span]:text-accent">
-                <span id="c2">0</span>+
+                <AnimatedCounter value={1112} />+
               </div>
               <div className="number-label cs font-mono text-[11px] font-light tracking-[2px] uppercase text-mid">
                 Celkem přihlášek
@@ -586,7 +587,7 @@ export function HomePageContent() {
             </div>
             <div className="number-card rev d3 bg-bg py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
               <div className="number-val text-[clamp(52px,6vw,80px)] font-bold tracking-[-3px] leading-none text-dark mb-3 [&_span]:text-accent">
-                <span id="c3">0</span>
+                <AnimatedCounter value={9} />
               </div>
               <div className="number-label cs font-mono text-[11px] font-light tracking-[2px] uppercase text-mid">
                 Jazyků v týmu
@@ -597,7 +598,7 @@ export function HomePageContent() {
             </div>
             <div className="number-card rev d4 bg-bg py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
               <div className="number-val text-[clamp(52px,6vw,80px)] font-bold tracking-[-3px] leading-none text-dark mb-3 [&_span]:text-accent">
-                <span id="c4">0</span>
+                <AnimatedCounter value={8} />
               </div>
               <div className="number-label cs font-mono text-[11px] font-light tracking-[2px] uppercase text-mid">
                 Zemí v týmu

@@ -36,41 +36,4 @@ export function useHomeEffects() {
     return () => tl.kill();
   }, []);
 
-  useEffect(() => {
-    const counterTargets = [621, 1112, 9, 8];
-    const counterIds = ['c1', 'c2', 'c3', 'c4'];
-    const numSection = document.getElementById('numbers');
-    if (!numSection) return undefined;
-
-    const cIO = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          counterIds.forEach((id, i) => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const target = counterTargets[i];
-            if (prefersReducedMotion() || shouldUseLiteMotion()) {
-              el.textContent = String(target);
-              return;
-            }
-            const dur = 1800;
-            const start = Date.now();
-            const tick = () => {
-              const p = Math.min((Date.now() - start) / dur, 1);
-              const ease = 1 - (1 - p) ** 3;
-              el.textContent = Math.round(ease * target);
-              if (p < 1) requestAnimationFrame(tick);
-            };
-            tick();
-          });
-          cIO.disconnect();
-        });
-      },
-      { threshold: 0.3 },
-    );
-
-    cIO.observe(numSection);
-    return () => cIO.disconnect();
-  }, []);
 }

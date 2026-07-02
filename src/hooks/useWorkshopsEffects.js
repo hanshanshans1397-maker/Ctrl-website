@@ -20,46 +20,6 @@ export function useWorkshopsEffects() {
   usePageHeroEntrance({ splitText: false });
 
   useEffect(() => {
-    const targets = [
-      { id: 'c-min', val: 180 },
-      { id: 'c-top', val: 8 },
-      { id: 'c-age', val: 20 },
-    ];
-    const first = document.getElementById('c-min');
-    if (!first) return undefined;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          targets.forEach(({ id, val }) => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            if (prefersReducedMotion() || shouldUseLiteMotion()) {
-              el.textContent = String(val);
-              return;
-            }
-            const dur = 1400;
-            const start = Date.now();
-            const tick = () => {
-              const p = Math.min((Date.now() - start) / dur, 1);
-              const ease = 1 - (1 - p) ** 3;
-              el.textContent = Math.round(ease * val);
-              if (p < 1) requestAnimationFrame(tick);
-            };
-            tick();
-          });
-          io.disconnect();
-        });
-      },
-      { threshold: 0.3 },
-    );
-
-    io.observe(first.closest('.inner') || first);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
     const narrativeSection = document.getElementById('narrative');
     const narrativeSticky = document.getElementById('narrativeSticky');
     const textEl = document.getElementById('narrativeText');
