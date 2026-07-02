@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ArticlesWritingAnimation } from "../../components/ArticlesWritingAnimation";
 
 export function ArticlesPageContent() {
   return (
@@ -36,8 +37,8 @@ export function ArticlesPageContent() {
             className="mb-12 text-[clamp(72px,10vw,160px)] leading-[0.92] font-extrabold tracking-[-5px] text-bg opacity-0 translate-y-6 max-lg:text-[clamp(52px,8vw,100px)] max-lg:tracking-[-2px] max-[640px]:mb-8 max-[640px]:text-[clamp(44px,10vw,72px)] max-[640px]:tracking-[-1.5px] max-[480px]:text-[clamp(40px,11vw,60px)] max-[480px]:tracking-[-1px] max-sm:hidden"
             id="heroTitle"
           >
-            <span className="cs block">Články a&nbsp;reporty</span>
-            <span className="en block">Articles &amp;&nbsp;Reports</span>
+            <span className="cs block">Články</span>
+            <span className="en block">Articles</span>
           </h1>
 
           <div
@@ -72,65 +73,40 @@ export function ArticlesPageContent() {
 
       <section className="sec bg-bg" id="articles-list">
         <div className="inner">
-          <div className="rev mb-10">
-            <p className="font-mono text-[11px] tracking-[3px] uppercase text-mid cs">
-              Články se chystají.
+          <div className="rev mx-auto max-w-[720px] text-center">
+            <p className="mb-3 font-mono text-[11px] tracking-[3px] text-accent uppercase cs">
+              Připravujeme
             </p>
-            <p className="font-mono text-[11px] tracking-[3px] uppercase text-mid en">
-              Articles coming soon.
+            <p className="mb-3 font-mono text-[11px] tracking-[3px] text-accent uppercase en">
+              Coming soon
             </p>
-          </div>
-          <div className="grid grid-cols-3 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-1">
-            <div className="rev d1 bg-bg2 flex flex-col">
-              <div className="h-[200px] animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-              <div className="flex flex-col gap-4 p-7">
-                <div className="h-2.5 w-16 animate-pulse bg-light"></div>
-                <div className="flex flex-col gap-2">
-                  <div className="h-[22px] w-full animate-pulse bg-light"></div>
-                  <div className="h-[22px] w-3/4 animate-pulse bg-light"></div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div className="h-3 w-full animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-                  <div className="h-3 w-5/6 animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-                  <div className="h-3 w-2/3 animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-                </div>
-                <div className="h-2.5 w-20 animate-pulse bg-[rgba(11,16,32,0.06)] mt-2"></div>
-              </div>
+
+            <div className="rev d1 my-10 flex justify-center">
+              <ArticlesWritingAnimation />
             </div>
 
-            <div className="rev d2 bg-bg2 flex flex-col">
-              <div className="h-[200px] animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-              <div className="flex flex-col gap-4 p-7">
-                <div className="h-2.5 w-20 animate-pulse bg-light"></div>
-                <div className="flex flex-col gap-2">
-                  <div className="h-[22px] w-full animate-pulse bg-light"></div>
-                  <div className="h-[22px] w-1/2 animate-pulse bg-light"></div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div className="h-3 w-full animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-                  <div className="h-3 w-4/5 animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-                  <div className="h-3 w-3/5 animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-                </div>
-                <div className="h-2.5 w-24 animate-pulse bg-[rgba(11,16,32,0.06)] mt-2"></div>
-              </div>
-            </div>
+            <h2 className="mb-5 text-[clamp(28px,3.5vw,44px)] leading-[1.1] font-bold tracking-[-1.5px] text-dark cs">
+              Články se právě píší
+            </h2>
+            <h2 className="mb-5 text-[clamp(28px,3.5vw,44px)] leading-[1.1] font-bold tracking-[-1.5px] text-dark en">
+              Articles in the making
+            </h2>
 
-            <div className="rev d3 bg-bg2 flex flex-col">
-              <div className="h-[200px] animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-              <div className="flex flex-col gap-4 p-7">
-                <div className="h-2.5 w-14 animate-pulse bg-light"></div>
-                <div className="flex flex-col gap-2">
-                  <div className="h-[22px] w-full animate-pulse bg-light"></div>
-                  <div className="h-[22px] w-5/6 animate-pulse bg-light"></div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div className="h-3 w-full animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-                  <div className="h-3 w-full animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-                  <div className="h-3 w-1/2 animate-pulse bg-[rgba(11,16,32,0.06)]"></div>
-                </div>
-                <div className="h-2.5 w-16 animate-pulse bg-[rgba(11,16,32,0.06)] mt-2"></div>
-              </div>
-            </div>
+            <p className="mx-auto mb-4 max-w-[520px] text-lg leading-[1.65] font-light text-mid cs">
+              Brzy vyjde první článek. Analýzy, reporty a výzkumné texty
+              připravujeme právě teď.
+            </p>
+            <p className="mx-auto mb-8 max-w-[520px] text-lg leading-[1.65] font-light text-mid en">
+              The first article will be out soon. We are currently preparing
+              analyses, reports and research pieces.
+            </p>
+
+            <Link to="/research" className="btn-g">
+              <span className="cs">Mezitím prozkoumejte výzkum &rarr;</span>
+              <span className="en">
+                Explore our research in the meantime &rarr;
+              </span>
+            </Link>
           </div>
         </div>
       </section>
