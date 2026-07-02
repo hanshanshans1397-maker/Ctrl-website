@@ -1,5 +1,315 @@
 import { Link } from "react-router-dom";
 
+const CELL_LEADERS = [
+  {
+    id: "01",
+    deptCs: "PR a komunikace",
+    deptEn: "PR & Communications",
+    name: "Jakub Rašovský",
+    detailCs: "Tiskové zprávy, mediální komunikace a vnější image CTRL Europe.",
+    detailEn:
+      "Press releases, media communications and CTRL Europe's public image.",
+    delay: "d1",
+  },
+  {
+    id: "02",
+    deptCs: "Sociální sítě",
+    deptEn: "Social Media",
+    name: "Jiří Vítek",
+    detailCs: "Obsah, strategie a provoz profilů CTRL na sociálních sítích.",
+    detailEn:
+      "Content, strategy and management of CTRL's social media profiles.",
+    delay: "d1",
+  },
+  {
+    id: "03",
+    deptCs: "Podcast",
+    deptEn: "Podcast",
+    name: "Marek Roušar",
+    detailCs: "Střih, produkce a editace podcastů CTRL",
+    detailEn: "Editing, production and management of CTRL's podcasts.",
+    delay: "d1",
+  },
+  {
+    id: "04",
+    deptCs: "Výzkum",
+    deptEn: "Research",
+    name: "Pavel Klusák",
+    detailCs:
+      "Analýza digitálních hrozeb, dezinformací a dat pro naše projekty.",
+    detailEn:
+      "Analysis of digital threats, disinformation and data for our projects.",
+    delay: "d2",
+  },
+  {
+    id: "05",
+    deptCs: "Grafika",
+    deptEn: "Graphics",
+    name: "Zdeněk Frőmel",
+    detailCs:
+      "Vizuální identita, grafika pro akce, web a propagační materiály.",
+    detailEn:
+      "Visual identity, graphics for events, web and promotional materials.",
+    delay: "d2",
+  },
+  {
+    id: "06",
+    deptCs: "Video",
+    deptEn: "Video",
+    name: "Lukáš Holec",
+    detailCs:
+      "Video produkce, dokumentace akcí a vizuální obsah pro platformu.",
+    detailEn:
+      "Video production, event coverage and visual content for the platform.",
+    delay: "d2",
+  },
+  {
+    id: "07",
+    deptCs: "Mezinárodní komunikace",
+    deptEn: "International communication",
+    name: "Laith Awad",
+    detailCs:
+      "Komunikace, partnerství a propojení se zahraničními organizacemi.",
+    detailEn:
+      "Communications, partnerships and ties with international organizations.",
+    delay: "d3",
+  },
+  {
+    id: "08",
+    deptCs: "Organizace eventů",
+    deptEn: "Event organization",
+    name: "Vojtěch Kubín",
+    detailCs: "Plánování a realizace summitů, workshopů a dalších akcí CTRL.",
+    detailEn:
+      "Planning and delivery of CTRL summits, workshops and other events.",
+    delay: "d3",
+  },
+  {
+    id: "09",
+    deptCs: "IT & Vývoj",
+    deptEn: "IT & Development",
+    name: "Nikola Crhák",
+    detailCs: "Web, technická infrastruktura a digitální nástroje organizace.",
+    detailEn:
+      "Website, technical infrastructure and the organization's digital tools.",
+    delay: "d3",
+  },
+];
+
+const BOARD_MEMBERS = [
+  {
+    name: "Jan Krejčí",
+    roleCs: "Prezident & Zakladatel",
+    roleEn: "President & Founder",
+  },
+  {
+    name: "Jakub Rašovský",
+    roleCs: "Místopředseda",
+    roleEn: "Vice President",
+  },
+  {
+    name: "Bety Fritzová",
+    roleCs: "Tajemnice",
+    roleEn: "Secretary",
+  },
+  {
+    name: "Alena Marková",
+    roleCs: "Zástupce předsednictva",
+    roleEn: "Board Rep.",
+  },
+];
+
+function getInitials(name) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
+function StructureDirectoryRow({
+  name,
+  labelCs,
+  labelEn,
+  variant = "list",
+  size = "default",
+}) {
+  const nameGridClass =
+    size === "lg"
+      ? "text-[15px] font-semibold leading-tight tracking-[-0.2px] text-dark"
+      : "text-[15px] font-medium leading-tight tracking-[-0.2px] text-dark";
+  const roleGridClass =
+    size === "lg"
+      ? "mt-1.5 font-mono text-[11px] leading-snug tracking-[1.2px] uppercase text-mid"
+      : "mt-1 font-mono text-[10px] leading-snug tracking-[1.2px] uppercase text-mid";
+
+  if (variant === "grid") {
+    return (
+      <div>
+        <div className={nameGridClass}>{name}</div>
+        <div className={`cs ${roleGridClass}`}>{labelCs}</div>
+        <div className={`en ${roleGridClass}`}>{labelEn}</div>
+      </div>
+    );
+  }
+
+  const nameListClass =
+    size === "lg"
+      ? "text-[17px] font-semibold leading-tight tracking-[-0.3px] text-dark lg:text-[18px]"
+      : "text-[15px] font-medium leading-tight tracking-[-0.2px] text-dark sm:text-[16px]";
+  const roleListClass =
+    size === "lg"
+      ? "font-mono text-[11px] leading-snug tracking-[1.3px] uppercase text-mid lg:text-[12px] lg:tracking-[1.5px]"
+      : "font-mono text-[10px] leading-snug tracking-[1.2px] uppercase text-mid sm:tracking-[1.5px]";
+
+  return (
+    <div
+      className={`flex items-baseline justify-between gap-3 border-b border-light last:border-b-0 sm:gap-6 ${
+        size === "lg" ? "py-4 lg:py-5" : "py-3 sm:py-3.5"
+      }`}
+    >
+      <div className={nameListClass}>{name}</div>
+      <div className="max-w-[52%] shrink-0 text-right sm:max-w-none">
+        <div className={`cs ${roleListClass}`}>{labelCs}</div>
+        <div className={`en ${roleListClass}`}>{labelEn}</div>
+      </div>
+    </div>
+  );
+}
+
+function BoardStructureBlock({ className = "" }) {
+  return (
+    <div
+      className={`flex h-full flex-col border border-light border-l-[3px] border-l-accent bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
+    >
+      <div className="mb-3 cs font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5 lg:text-[11px]">
+        Předsednictvo
+      </div>
+      <div className="mb-3 en font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5 lg:text-[11px]">
+        Executive Board
+      </div>
+      <div className="grid grid-cols-2 gap-x-4 gap-y-4 lg:hidden">
+        {BOARD_MEMBERS.map((member) => (
+          <StructureDirectoryRow
+            key={member.name}
+            variant="grid"
+            size="lg"
+            name={member.name}
+            labelCs={member.roleCs}
+            labelEn={member.roleEn}
+          />
+        ))}
+      </div>
+      <div className="hidden lg:block">
+        {BOARD_MEMBERS.map((member) => (
+          <StructureDirectoryRow
+            key={member.name}
+            size="lg"
+            name={member.name}
+            labelCs={member.roleCs}
+            labelEn={member.roleEn}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CouncilStructureBlock({ className = "" }) {
+  return (
+    <div
+      className={`flex h-full flex-col border border-light bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
+    >
+      <div className="mb-3 cs font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5">
+        Rada zástupců
+      </div>
+      <div className="mb-3 en font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5">
+        Council of Representatives
+      </div>
+      <div className="grid grid-cols-2 gap-x-4 gap-y-4 lg:hidden">
+        {CELL_LEADERS.map((leader) => (
+          <StructureDirectoryRow
+            key={leader.id}
+            variant="grid"
+            name={leader.name}
+            labelCs={leader.deptCs}
+            labelEn={leader.deptEn}
+          />
+        ))}
+      </div>
+      <div className="hidden lg:block">
+        {CELL_LEADERS.map((leader) => (
+          <StructureDirectoryRow
+            key={leader.id}
+            name={leader.name}
+            labelCs={leader.deptCs}
+            labelEn={leader.deptEn}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CellLeaderCard({ leader, className = "" }) {
+  return (
+    <div
+      className={`rev ${leader.delay} group relative flex h-full min-h-[248px] flex-col border border-light border-l-[3px] border-l-transparent bg-white px-7 py-8 transition-all duration-300 hover:border-l-accent hover:shadow-[0_12px_40px_rgba(11,16,32,0.05)] max-md:min-h-0 max-md:px-5 max-md:py-6 md:px-6 md:py-7 ${className}`}
+    >
+      <div className="mb-4 flex items-start justify-between gap-4 max-md:mb-3 md:mb-5">
+        <div className="min-w-0">
+          <div className="cs font-mono text-[10px] tracking-[2px] uppercase text-accent">
+            {leader.deptCs}
+          </div>
+          <div className="en font-mono text-[10px] tracking-[2px] uppercase text-accent">
+            {leader.deptEn}
+          </div>
+        </div>
+        <span className="shrink-0 font-mono text-[10px] tracking-[2px] text-mid/25 transition-colors duration-300 group-hover:text-accent/45">
+          {leader.id}
+        </span>
+      </div>
+
+      {(leader.detailCs || leader.detailEn) && (
+        <div className="mb-6 flex-1 max-md:mb-5 md:mb-8">
+          {leader.detailCs && (
+            <p className="cs text-[13px] font-light leading-[1.8] text-mid transition-colors duration-300 group-hover:text-dark/75 max-md:text-[14px] max-md:leading-[1.75]">
+              {leader.detailCs}
+            </p>
+          )}
+          {leader.detailEn && (
+            <p className="en text-[13px] font-light leading-[1.8] text-mid transition-colors duration-300 group-hover:text-dark/75 max-md:text-[14px] max-md:leading-[1.75]">
+              {leader.detailEn}
+            </p>
+          )}
+        </div>
+      )}
+
+      <div className="mt-auto flex items-center gap-3.5 border-t border-light pt-5 max-md:gap-4 max-md:pt-4">
+        <div
+          aria-hidden="true"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-dim text-[11px] font-semibold tracking-[0.5px] text-accent ring-1 ring-accent/10 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent group-hover:text-white group-hover:ring-accent/20 max-md:h-12 max-md:w-12 max-md:text-[12px]"
+        >
+          {getInitials(leader.name)}
+        </div>
+        <div className="min-w-0">
+          <div className="text-[15px] font-semibold tracking-[-0.3px] text-dark max-md:text-[16px]">
+            {leader.name}
+          </div>
+          <div className="cs mt-0.5 font-mono text-[9px] tracking-[1.5px] uppercase text-mid max-md:text-[10px]">
+            Vedoucí
+          </div>
+          <div className="en mt-0.5 font-mono text-[9px] tracking-[1.5px] uppercase text-mid max-md:text-[10px]">
+            Lead
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function AboutPageContent() {
   return (
     <>
@@ -310,26 +620,32 @@ export function AboutPageContent() {
             </h2>
           </div>
           <div className="flex flex-col gap-px bg-light">
-            <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-[480px]:grid-cols-1 max-[480px]:gap-6">
-              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1">
+            <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">01 Výzkum</span>
                 <span className="en">01 Research</span>
               </div>
               <div>
-                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark cs">
+                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark cs max-lg:flex max-lg:items-baseline max-lg:gap-3 max-lg:text-xl max-lg:mb-3">
+                  <span className="hidden max-lg:inline font-mono text-accent text-lg font-bold tracking-normal">
+                    01
+                  </span>
                   Výzkum
                 </h3>
-                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark en">
+                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark en max-lg:flex max-lg:items-baseline max-lg:gap-3 max-lg:text-xl max-lg:mb-3">
+                  <span className="hidden max-lg:inline font-mono text-accent text-lg font-bold tracking-normal">
+                    01
+                  </span>
                   Research
                 </h3>
-                <p className="text-[15px] font-light leading-[1.8] text-mid cs">
+                <p className="text-[15px] font-light leading-[1.8] text-mid cs max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   Analyzujeme digitální hrozby v kontextu střední Evropy.
                   Zkoumáme vliv dezinformací na mladé voliče, šíření deepfakes v
                   mediálním prostoru a dopady algoritmické manipulace na
                   politické názory. Naše výstupy jsou určeny pro školy, média,
                   think tanky a evropské instituce.
                 </p>
-                <p className="text-[15px] font-light leading-[1.8] text-mid en">
+                <p className="text-[15px] font-light leading-[1.8] text-mid en max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   We analyze digital threats in the context of Central Europe.
                   We study the influence of disinformation on young voters, the
                   spread of deepfakes in the media and the impact of algorithmic
@@ -338,26 +654,32 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 bg-bg py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-[480px]:grid-cols-1 max-[480px]:gap-6">
-              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1">
+            <div className="rev d1 bg-bg py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">02 Vzdělávání</span>
                 <span className="en">02 Edu</span>
               </div>
               <div>
-                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark cs">
+                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark cs max-lg:flex max-lg:items-baseline max-lg:gap-3 max-lg:text-xl max-lg:mb-3">
+                  <span className="hidden max-lg:inline font-mono text-accent text-lg font-bold tracking-normal">
+                    02
+                  </span>
                   Workshopy
                 </h3>
-                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark en">
+                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark en max-lg:flex max-lg:items-baseline max-lg:gap-3 max-lg:text-xl max-lg:mb-3">
+                  <span className="hidden max-lg:inline font-mono text-accent text-lg font-bold tracking-normal">
+                    02
+                  </span>
                   Workshops
                 </h3>
-                <p className="text-[15px] font-light leading-[1.8] text-mid cs">
+                <p className="text-[15px] font-light leading-[1.8] text-mid cs max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   Přijíždíme na střední školy s 90minutovým interaktivním
                   programem. Učíme studenty jak poznat deepfake, jak fungují
                   doporučovací algoritmy, jak se šíří dezinformace a jak si
                   udržet kritický pohled na digitální obsah. Program je zdarma
                   pro všechny partnerské školy.
                 </p>
-                <p className="text-[15px] font-light leading-[1.8] text-mid en">
+                <p className="text-[15px] font-light leading-[1.8] text-mid en max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   We come to secondary schools with a 90-minute interactive
                   program. We teach students how to detect deepfakes, how
                   recommendation algorithms work, how disinformation spreads and
@@ -366,26 +688,32 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-[480px]:grid-cols-1 max-[480px]:gap-6">
-              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1">
+            <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">03 Média</span>
                 <span className="en">03 Media</span>
               </div>
               <div>
-                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark cs">
+                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark cs max-lg:flex max-lg:items-baseline max-lg:gap-3 max-lg:text-xl max-lg:mb-3">
+                  <span className="hidden max-lg:inline font-mono text-accent text-lg font-bold tracking-normal">
+                    03
+                  </span>
                   Média a podcasty
                 </h3>
-                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark en">
+                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark en max-lg:flex max-lg:items-baseline max-lg:gap-3 max-lg:text-xl max-lg:mb-3">
+                  <span className="hidden max-lg:inline font-mono text-accent text-lg font-bold tracking-normal">
+                    03
+                  </span>
                   Media and podcasts
                 </h3>
-                <p className="text-[15px] font-light leading-[1.8] text-mid cs">
+                <p className="text-[15px] font-light leading-[1.8] text-mid cs max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   Podcast CTRL+ALT přináší rozhovory s experty, novináři a lidmi
                   z evropských institucí. Témata: AI, mediální gramotnost,
                   svoboda slova online, dezinformace a budoucnost demokracie.
                   Tvoříme obsah který skutečně vzdělává. Na platformách kde
                   mladí lidé jsou.
                 </p>
-                <p className="text-[15px] font-light leading-[1.8] text-mid en">
+                <p className="text-[15px] font-light leading-[1.8] text-mid en max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   The CTRL+ALT podcast brings conversations with experts,
                   journalists and people from European institutions. Topics: AI,
                   media literacy, online freedom of speech, disinformation and
@@ -394,26 +722,32 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 bg-bg py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-[480px]:grid-cols-1 max-[480px]:gap-6">
-              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1">
+            <div className="rev d1 bg-bg py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">04 Mezinárodní</span>
                 <span className="en">04 Intl</span>
               </div>
               <div>
-                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark cs">
+                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark cs max-lg:flex max-lg:items-baseline max-lg:gap-3 max-lg:text-xl max-lg:mb-3">
+                  <span className="hidden max-lg:inline font-mono text-accent text-lg font-bold tracking-normal">
+                    04
+                  </span>
                   Mezinárodní spolupráce
                 </h3>
-                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark en">
+                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark en max-lg:flex max-lg:items-baseline max-lg:gap-3 max-lg:text-xl max-lg:mb-3">
+                  <span className="hidden max-lg:inline font-mono text-accent text-lg font-bold tracking-normal">
+                    04
+                  </span>
                   International cooperation
                 </h3>
-                <p className="text-[15px] font-light leading-[1.8] text-mid cs">
+                <p className="text-[15px] font-light leading-[1.8] text-mid cs max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   Budujeme partnerství se školami, organizacemi a institucemi v
                   celém regionu CEE. Připravujeme youth exchange programy,
                   mezinárodní stáže a společné výzkumné projekty. Naším cílem je
                   propojit mladou generaci střední Evropy kolem sdílených
                   hodnot.
                 </p>
-                <p className="text-[15px] font-light leading-[1.8] text-mid en">
+                <p className="text-[15px] font-light leading-[1.8] text-mid en max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   We are building partnerships with schools, organizations and
                   institutions throughout the CEE region. We are preparing youth
                   exchange programs, international internships and joint
@@ -422,25 +756,31 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-[480px]:grid-cols-1 max-[480px]:gap-6">
-              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1">
+            <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+              <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">05 Akce</span>
                 <span className="en">05 Events</span>
               </div>
               <div>
-                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark cs">
+                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark cs max-lg:flex max-lg:items-baseline max-lg:gap-3 max-lg:text-xl max-lg:mb-3">
+                  <span className="hidden max-lg:inline font-mono text-accent text-lg font-bold tracking-normal">
+                    05
+                  </span>
                   Konference a summity
                 </h3>
-                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark en">
+                <h3 className="text-[22px] font-semibold tracking-[-0.5px] mb-4 text-dark en max-lg:flex max-lg:items-baseline max-lg:gap-3 max-lg:text-xl max-lg:mb-3">
+                  <span className="hidden max-lg:inline font-mono text-accent text-lg font-bold tracking-normal">
+                    05
+                  </span>
                   Conferences and summits
                 </h3>
-                <p className="text-[15px] font-light leading-[1.8] text-mid cs">
+                <p className="text-[15px] font-light leading-[1.8] text-mid cs max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   CTRL Summit 2026 bude první mezinárodní konferencí CTRL
                   Europe. Brno, jaro 2026. Keynotes, panelové diskuze,
                   workshopy. Místo kde se setkává mladá středoevropská generace
                   a buduje společnou odpověď na digitální výzvy současnosti.
                 </p>
-                <p className="text-[15px] font-light leading-[1.8] text-mid en">
+                <p className="text-[15px] font-light leading-[1.8] text-mid en max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   CTRL Summit 2026 will be the first international CTRL Europe
                   conference. Brno, spring 2026. Keynotes, panel discussions,
                   workshops. Where the young Central European generation meets
@@ -666,8 +1006,8 @@ export function AboutPageContent() {
               </span>
             </h2>
           </div>
-          <div className="about-2col grid grid-cols-2 gap-20 max-lg:grid-cols-1 max-lg:gap-12">
-            <div className="rev d1">
+          <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
+            <div className="rev d1 flex h-full flex-col gap-8 border-t border-light pt-6 sm:gap-10 sm:pt-10 lg:gap-0 lg:border-t-0 lg:pt-0">
               <div className="prose">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
                   <strong className="text-dark font-medium">
@@ -709,92 +1049,12 @@ export function AboutPageContent() {
                   as the starting point. Europe as the goal.
                 </p>
               </div>
+              <div className="lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pt-10">
+                <BoardStructureBlock />
+              </div>
             </div>
-            <div className="rev d2 flex flex-col gap-px bg-dark/10">
-              <div className="py-5 px-7 bg-dark2 border-l-[3px] border-l-accent">
-                <div className="text-sm font-semibold text-white cs">
-                  Předsednictvo
-                </div>
-                <div className="text-sm font-semibold text-white en">
-                  Executive Board
-                </div>
-                <div className="text-xs font-light text-white/50 mt-[3px]">
-                  Jan Krejčí &bull; Jakub Rašovský &bull; Alena Marková &bull;
-                  Bety Fritzová
-                </div>
-              </div>
-              <div className="py-[18px] px-7 bg-bg2">
-                <div className="text-[13px] font-normal text-dark/70 cs">
-                  PR a komunikace: Jakub Rašovský
-                </div>
-                <div className="text-[13px] font-normal text-dark/70 en">
-                  PR & Communications: Jakub Rašovský
-                </div>
-              </div>
-              <div className="py-[18px] px-7 bg-bg2">
-                <div className="text-[13px] font-normal text-dark/70 cs">
-                  Sociální sítě: Jiří Vítek
-                </div>
-                <div className="text-[13px] font-normal text-dark/70 en">
-                  Social Media: Jiří Vítek
-                </div>
-              </div>
-              <div className="py-[18px] px-7 bg-bg2">
-                <div className="text-[13px] font-normal text-dark/70 cs">
-                  Podcast: Marek Roušar
-                </div>
-                <div className="text-[13px] font-normal text-dark/70 en">
-                  Podcast: Marek Roušar
-                </div>
-              </div>
-              <div className="py-[18px] px-7 bg-bg2">
-                <div className="text-[13px] font-normal text-dark/70 cs">
-                  Výzkum: Pavel Klusák
-                </div>
-                <div className="text-[13px] font-normal text-dark/70 en">
-                  Research: Pavel Klusák
-                </div>
-              </div>
-              <div className="py-[18px] px-7 bg-bg2">
-                <div className="text-[13px] font-normal text-dark/70 cs">
-                  Grafika: Zdeněk Frőmel
-                </div>
-                <div className="text-[13px] font-normal text-dark/70 en">
-                  Graphics: Zdeněk Frőmel
-                </div>
-              </div>
-              <div className="py-[18px] px-7 bg-bg2">
-                <div className="text-[13px] font-normal text-dark/70 cs">
-                  Video: Lukáš Holec
-                </div>
-                <div className="text-[13px] font-normal text-dark/70 en">
-                  Video: Lukáš Holec
-                </div>
-              </div>
-              <div className="py-[18px] px-7 bg-bg2">
-                <div className="text-[13px] font-normal text-dark/70 cs">
-                  Mezinárodní komunikace: Laith Awad
-                </div>
-                <div className="text-[13px] font-normal text-dark/70 en">
-                  International communication: Laith Awad
-                </div>
-              </div>
-              <div className="py-[18px] px-7 bg-bg2">
-                <div className="text-[13px] font-normal text-dark/70 cs">
-                  Organizace eventů: Vojtěch Kubín
-                </div>
-                <div className="text-[13px] font-normal text-dark/70 en">
-                  Event organization: Vojtěch Kubín
-                </div>
-              </div>
-              <div className="py-[18px] px-7 bg-bg2">
-                <div className="text-[13px] font-normal text-dark/70 cs">
-                  IT & Vývoj: Nikola Crhák
-                </div>
-                <div className="text-[13px] font-normal text-dark/70 en">
-                  IT & Development: Nikola Crhák
-                </div>
-              </div>
+            <div className="rev d2 flex h-full flex-col border-t border-light pt-6 sm:pt-10 lg:border-t-0 lg:pt-0">
+              <CouncilStructureBlock />
             </div>
           </div>
         </div>
@@ -964,112 +1224,19 @@ export function AboutPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-3 gap-px bg-dark max-lg:grid-cols-2 max-[480px]:grid-cols-1">
-            <div className="rev d1 bg-bg2 py-8 px-7">
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
-                PR a komunikace
-              </div>
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 en">
-                PR & Communications
-              </div>
-              <div className="text-[15px] font-semibold mb-1">
-                Jakub Rašovský
-              </div>
-              <div className="text-xs font-light text-mid cs">Vedoucí</div>
-              <div className="text-xs font-light text-mid en">Lead</div>
-            </div>
-            <div className="rev d1 bg-bg2 py-8 px-7">
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
-                Sociální sítě
-              </div>
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 en">
-                Social Media
-              </div>
-              <div className="text-[15px] font-semibold mb-1">Jiří Vítek</div>
-              <div className="text-xs font-light text-mid cs">Vedoucí</div>
-              <div className="text-xs font-light text-mid en">Lead</div>
-            </div>
-            <div className="rev d1 bg-bg2 py-8 px-7">
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
-                Podcast
-              </div>
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 en">
-                Podcast
-              </div>
-              <div className="text-[15px] font-semibold mb-1">Marek Roušar</div>
-              <div className="text-xs font-light text-mid cs">Vedoucí</div>
-              <div className="text-xs font-light text-mid en">Lead</div>
-            </div>
-            <div className="rev d2 bg-bg2 py-8 px-7">
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
-                Výzkum
-              </div>
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 en">
-                Research
-              </div>
-              <div className="text-[15px] font-semibold mb-1">Pavel Klusák</div>
-              <div className="text-xs font-light text-mid cs">Vedoucí</div>
-              <div className="text-xs font-light text-mid en">Lead</div>
-            </div>
-            <div className="rev d2 bg-bg2 py-8 px-7">
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
-                Grafika
-              </div>
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 en">
-                Graphics
-              </div>
-              <div className="text-[15px] font-semibold mb-1">
-                Zdeněk Frőmel
-              </div>
-              <div className="text-xs font-light text-mid cs">Vedoucí</div>
-              <div className="text-xs font-light text-mid en">Lead</div>
-            </div>
-            <div className="rev d2 bg-bg2 py-8 px-7">
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
-                Video
-              </div>
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 en">
-                Video
-              </div>
-              <div className="text-[15px] font-semibold mb-1">Lukáš Holec</div>
-              <div className="text-xs font-light text-mid cs">Vedoucí</div>
-              <div className="text-xs font-light text-mid en">Lead</div>
-            </div>
-            <div className="rev d3 bg-bg2 py-8 px-7">
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
-                Mezinárodní
-              </div>
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 en">
-                International
-              </div>
-              <div className="text-[15px] font-semibold mb-1">Laith Awad</div>
-              <div className="text-xs font-light text-mid cs">Vedoucí</div>
-              <div className="text-xs font-light text-mid en">Lead</div>
-            </div>
-            <div className="rev d3 bg-bg2 py-8 px-7">
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
-                Eventy
-              </div>
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 en">
-                Events
-              </div>
-              <div className="text-[15px] font-semibold mb-1">
-                Vojtěch Kubín
-              </div>
-              <div className="text-xs font-light text-mid cs">Vedoucí</div>
-              <div className="text-xs font-light text-mid en">Lead</div>
-            </div>
-            <div className="rev d3 bg-bg2 py-8 px-7">
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 cs">
-                IT & Vývoj
-              </div>
-              <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-3 en">
-                IT & Development
-              </div>
-              <div className="text-[15px] font-semibold mb-1">Nikola Crhák</div>
-              <div className="text-xs font-light text-mid cs">Vedoucí</div>
-              <div className="text-xs font-light text-mid en">Lead</div>
-            </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-3 lg:grid-cols-3">
+            {CELL_LEADERS.map((leader, index) => (
+              <CellLeaderCard
+                key={leader.id}
+                leader={leader}
+                className={
+                  index === CELL_LEADERS.length - 1 &&
+                  CELL_LEADERS.length % 2 === 1
+                    ? "md:col-span-2 lg:col-span-1"
+                    : ""
+                }
+              />
+            ))}
           </div>
         </div>
       </section>

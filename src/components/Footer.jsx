@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useLang } from "../context/LangContext";
+import { getInstagramUrl, CONTACT_EMAIL } from "../utils/socialLinks";
 
 function IconInstagram() {
   return (
@@ -45,6 +47,9 @@ function IconLinkedIn() {
 }
 
 export function Footer() {
+  const { isEn } = useLang();
+  const instagramUrl = getInstagramUrl(isEn);
+
   return (
     <footer className="border-t border-[rgba(245,245,243,0.06)] bg-dark px-[52px] pt-10 pb-7 max-lg:px-6 max-lg:pt-9 max-lg:pb-6 max-[480px]:px-5 max-[480px]:pt-7 max-[480px]:pb-5">
       <div className="mx-auto max-w-[1300px]">
@@ -107,6 +112,13 @@ export function Footer() {
                 <span className="cs">Články</span>
                 <span className="en">Articles</span>
               </Link>
+              <Link
+                to="/aktuality"
+                className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
+              >
+                <span className="cs">Aktuality</span>
+                <span className="en">News</span>
+              </Link>
             </div>
             <div>
               <h4 className="cs mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
@@ -115,6 +127,12 @@ export function Footer() {
               <h4 className="en mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
                 Contact
               </h4>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
+              >
+                {CONTACT_EMAIL}
+              </a>
               <Link
                 to="/join"
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
@@ -138,7 +156,7 @@ export function Footer() {
                 Social
               </h4>
               <a
-                href="https://www.instagram.com/ctrleurope/"
+                href={instagramUrl}
                 className="mb-2 flex items-center gap-2 text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >
                 <IconInstagram />
@@ -185,7 +203,7 @@ export function Footer() {
             </a>
             {" (CTRL Team)"}
           </div>
-          <div className="font-mono text-[10px] tracking-[2px] text-[rgba(245,245,243,0.12)] uppercase shrink-0">
+          <div className="font-mono text-[10px] tracking-[2px] text-[rgba(245,245,243,0.45)] uppercase shrink-0">
             CEE Youth Platform
           </div>
         </div>

@@ -1,35 +1,29 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import gsap from 'gsap';
-import { EASE_PREMIUM, prefersReducedMotion } from '../utils/motion';
+import { prefersReducedMotion } from '../utils/motion';
 
 export function PageTransition({ children }) {
   const el = useRef(null);
-  const overlayRef = useRef(null);
+  const hasMounted = useRef(false);
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const node = el.current;
-    const overlay = overlayRef.current;
     if (!node) return undefined;
 
-    if (prefersReducedMotion()) {
-      gsap.set(node, { opacity: 1, y: 0, filter: 'none' });
-      if (overlay) gsap.set(overlay, { opacity: 0 });
+    gsap.set(node, { opacity: 1, y: 0, filter: 'none', clearProps: 'scale,transform' });
+
+    if (prefersReducedMotion() || !hasMounted.current) {
+      hasMounted.current = true;
       return undefined;
     }
 
-    const tl = gsap.timeline({ defaults: { ease: EASE_PREMIUM } });
-
-    if (overlay) {
-      tl.fromTo(overlay, { opacity: 0.35 }, { opacity: 0, duration: 0.45 }, 0);
-    }
-
+    const tl = gsap.timeline();
     tl.fromTo(
       node,
-      { opacity: 0, y: 20, filter: 'blur(6px)' },
-      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.62, clearProps: 'filter' },
-      0.04,
+      { opacity: 0.94, y: 8 },
+      { opacity: 1, y: 0, duration: 0.34, ease: 'power2.out' },
     );
 
     return () => tl.kill();
@@ -37,12 +31,9 @@ export function PageTransition({ children }) {
 
   return (
     <div className="page-transition-wrap relative">
-      <div
-        ref={overlayRef}
-        className="page-transition-overlay pointer-events-none fixed inset-0 z-[90] bg-bg"
-        aria-hidden="true"
-      />
-      <div ref={el}>{children}</div>
+      <div ref={el} className="page-transition-content">
+        {children}
+      </div>
     </div>
   );
 }

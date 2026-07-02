@@ -10,6 +10,7 @@ import JoinPage from './pages/JoinPage';
 import ResearchPage from './pages/ResearchPage';
 import SummitPage from './pages/SummitPage';
 import WorkshopsPage from './pages/WorkshopsPage';
+import AktualityPage from './pages/AktualityPage';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
             <Route index element={<HomePage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="articles" element={<ArticlesPage />} />
+            <Route path="aktuality" element={<AktualityPage />} />
             <Route path="research" element={<ResearchPage />} />
             <Route path="join" element={<JoinPage />} />
             <Route path="apply" element={<ApplyPage />} />

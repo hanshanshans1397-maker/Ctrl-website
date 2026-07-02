@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Cursor } from './Cursor';
 import { Footer } from './Footer';
@@ -15,6 +15,7 @@ import {
 import { useLenis } from '../hooks/useLenis';
 import { usePremiumAnimations } from '../hooks/usePremiumAnimations';
 import { prefersReducedMotion } from '../utils/motion';
+import { hasDarkHero } from '../utils/routes';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -73,9 +74,8 @@ export function Layout() {
   const { pathname } = useLocation();
   const { isEn } = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkNav, setDarkNav] = useState(false);
-  const darkHeroRoutes = ['/', '/summit', '/about', '/workshops', '/research', '/join', '/articles', '/apply'];
-  const hasDarkHero = darkHeroRoutes.includes(pathname);
+  const [darkNav, setDarkNav] = useState(() => hasDarkHero(pathname));
+  const hasDarkHeroRoute = hasDarkHero(pathname);
   const isNavSolid = useNavSolid(navRef);
 
   useLenis();
@@ -103,9 +103,20 @@ export function Layout() {
     return undefined;
   }, []);
 
-  useEffect(() => {
-    if (!hasDarkHero) {
+  useLayoutEffect(() => {
+    document.documentElement.classList.toggle('dark-hero', hasDarkHeroRoute);
+
+    if (!hasDarkHeroRoute) {
       setDarkNav(false);
+      return;
+    }
+
+    const hero = document.getElementById('hero');
+    setDarkNav(!hero || window.scrollY <= hero.offsetHeight - 80);
+  }, [hasDarkHeroRoute, pathname]);
+
+  useEffect(() => {
+    if (!hasDarkHeroRoute) {
       return undefined;
     }
 
@@ -127,7 +138,7 @@ export function Layout() {
       window.removeEventListener('scroll', onScroll);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [hasDarkHero, pathname]);
+  }, [hasDarkHeroRoute, pathname]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';

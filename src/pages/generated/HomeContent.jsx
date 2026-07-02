@@ -86,29 +86,29 @@ export function HomePageContent() {
               </strong>
             </p>
             <div className="hero-ctas flex gap-3 opacity-0 translate-y-5 mr-[clamp(48px,8vw,140px)] max-[640px]:mr-0 max-[640px]:flex-wrap max-[640px]:justify-center max-sm:justify-start">
-              <Link
-                to="/join"
-                className="btn-primary cs inline-flex items-center gap-2 text-[13px] font-semibold text-bg bg-dark px-7 py-3.5 tracking-wide transition-all duration-250 hover:bg-accent no-underline"
+              <a
+                href="#what"
+                className="btn-primary cs inline-flex items-center gap-2 text-[13px] font-semibold bg-bg text-dark px-7 py-3.5 tracking-wide transition-all duration-250 hover:bg-accent hover:text-bg no-underline"
               >
-                Zapojit se &rarr;
-              </Link>
-              <Link
-                to="/join"
-                className="btn-primary en inline-flex items-center gap-2 text-[13px] font-semibold text-bg bg-dark px-7 py-3.5 tracking-wide transition-all duration-250 hover:bg-accent no-underline"
+                Naše práce
+              </a>
+              <a
+                href="#what"
+                className="btn-primary en inline-flex items-center gap-2 text-[13px] font-semibold bg-bg text-dark px-7 py-3.5 tracking-wide transition-all duration-250 hover:bg-accent hover:text-bg no-underline"
               >
-                Join us &rarr;
-              </Link>
+                Our work
+              </a>
               <Link
                 to="/about"
                 className="btn-ghost cs text-[13px] font-medium text-bg border border-[rgba(245,245,243,0.25)] px-7 py-3.5 transition-all hover:bg-[rgba(245,245,243,0.08)] no-underline"
               >
-                Naše mise
+                O nás &rarr;
               </Link>
               <Link
                 to="/about"
                 className="btn-ghost en text-[13px] font-medium text-bg border border-[rgba(245,245,243,0.25)] px-7 py-3.5 transition-all hover:bg-[rgba(245,245,243,0.08)] no-underline"
               >
-                Our mission
+                About us &rarr;
               </Link>
             </div>
           </div>
@@ -186,7 +186,10 @@ export function HomePageContent() {
           </div>
           <div className="what-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:gap-0.5">
             {/* 01 — Výzkum */}
-            <div className="what-card rev d1 group min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100">
+            <Link
+              to="/research"
+              className="what-card rev d1 group block min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
+            >
               <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 01
               </div>
@@ -270,10 +273,13 @@ export function HomePageContent() {
                 on Central European society. We produce research reports for
                 schools, media and institutions.
               </p>
-            </div>
+            </Link>
 
             {/* 02 — Workshopy */}
-            <div className="what-card rev d2 group min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100">
+            <Link
+              to="/workshops"
+              className="what-card rev d2 group block min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
+            >
               <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 02
               </div>
@@ -348,10 +354,13 @@ export function HomePageContent() {
                 recognize deepfakes. How algorithms work. How to defend against
                 manipulation.
               </p>
-            </div>
+            </Link>
 
             {/* 03 — Média */}
-            <div className="what-card rev d3 group min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100">
+            <Link
+              to="/articles"
+              className="what-card rev d3 group block min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
+            >
               <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 03
               </div>
@@ -429,10 +438,13 @@ export function HomePageContent() {
                 content that truly educates. On platforms where young people
                 actually are.
               </p>
-            </div>
+            </Link>
 
             {/* 04 — Summit */}
-            <div className="what-card rev d4 group min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100">
+            <Link
+              to="/summit"
+              className="what-card rev d4 group block min-w-0 bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
+            >
               <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 04
               </div>
@@ -492,7 +504,7 @@ export function HomePageContent() {
                 CTRL Summit 2026 is the first international conference for the
                 young Central European generation. Brno, spring 2026.
               </p>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -529,7 +541,7 @@ export function HomePageContent() {
 
       <section
         id="numbers"
-        className="py-40 px-[52px] bg-bg max-lg:py-[100px] max-lg:px-6 max-[480px]:py-[52px] max-[480px]:px-5"
+        className="py-40 px-[52px] bg-bg2 max-lg:py-[100px] max-lg:px-6 max-[480px]:py-[52px] max-[480px]:px-5"
       >
         <div className="max-w-[1300px] mx-auto">
           <div className="section-head rev">
@@ -591,12 +603,56 @@ export function HomePageContent() {
         </div>
       </section>
 
+      <section
+        id="aktuality-promo"
+        className="border-light bg-bg px-[52px] py-20 max-lg:px-6 max-lg:py-16 max-sm:px-5 max-sm:py-14"
+      >
+        <div className="mx-auto flex max-w-[1300px] items-end justify-between gap-10 max-lg:flex-col max-lg:items-start max-lg:gap-8">
+          <div className="rev max-w-[680px]">
+            <div className="section-head mb-0">
+              <span className="section-label">
+                <span className="cs">Aktuality</span>
+                <span className="en">News</span>
+              </span>
+              <h2 className="section-title !mb-4 max-sm:!mb-3">
+                <span className="cs">Soutěže, novinky a oznámení.</span>
+                <span className="en">
+                  Competitions, updates and announcements.
+                </span>
+              </h2>
+            </div>
+            <p className="text-[15px] font-light leading-[1.8] text-mid">
+              <span className="cs">
+                Pravidelně zde zveřejňujeme soutěže, veřejné výzvy i další
+                oznámení od CTRL Europe. Stránka je otevřená všem — nemusíte být
+                členem, abyste se zapojili nebo měli přehled o tom, co u nás
+                právě probíhá.
+              </span>
+              <span className="en">
+                We regularly post competitions, public calls, workshop and
+                summit dates, and other announcements from CTRL Europe. The page
+                is open to everyone — you don&apos;t need to be a member to take
+                part or stay informed about what we&apos;re running.
+              </span>
+            </p>
+          </div>
+          <div className="rev d1 shrink-0">
+            <Link to="/aktuality" className="btn-g cs">
+              Přejít na Aktuality &rarr;
+            </Link>
+            <Link to="/aktuality" className="btn-g en">
+              Go to News &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="sec-board py-[120px] px-[52px] bg-bg2 max-lg:py-20 max-lg:px-6 max-[640px]:py-[52px] max-[640px]:px-5 max-[480px]:py-12 max-[480px]:px-5">
         <div className="max-w-[1300px] mx-auto">
           <div className="section-head rev">
             <span className="section-label">
-              <span className="cs">Předsednictvo</span>
-              <span className="en">Executive Board</span>
+              <span className="cs">Vedení</span>
+              <span className="en">Leadership</span>
             </span>
             <h2 className="section-title">
               <span className="cs">Předsednictvo.</span>
@@ -604,7 +660,7 @@ export function HomePageContent() {
             </h2>
           </div>
           <div className="board-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-2">
-            <div className="rev d1 bg-bg2 py-10 px-8">
+            <div className="rev d1 bg-bg py-10 px-8">
               <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden">
                 <img
                   src="/IMG_4222.jpeg"
@@ -620,7 +676,7 @@ export function HomePageContent() {
                 <span className="en">President & Founder</span>
               </div>
             </div>
-            <div className="rev d2 bg-bg2 py-10 px-8">
+            <div className="rev d2 bg-bg py-10 px-8">
               <div className="w-[72px] h-[72px] bg-light rounded-full mb-5 flex items-center justify-center text-xl font-bold text-mid font-mono">
                 JR
               </div>
@@ -630,7 +686,7 @@ export function HomePageContent() {
                 <span className="en">Vice President</span>
               </div>
             </div>
-            <div className="rev d3 bg-bg2 py-10 px-8">
+            <div className="rev d3 bg-bg py-10 px-8">
               <div className="w-[72px] h-[72px] bg-light rounded-full mb-5 flex items-center justify-center text-xl font-bold text-mid font-mono">
                 BF
               </div>
@@ -640,7 +696,7 @@ export function HomePageContent() {
                 <span className="en">Secretary</span>
               </div>
             </div>
-            <div className="rev d4 bg-bg2 py-10 px-8">
+            <div className="rev d4 bg-bg py-10 px-8">
               <div className="w-[72px] h-[72px] bg-light rounded-full mb-5 flex items-center justify-center text-xl font-bold text-mid font-mono">
                 AM
               </div>
