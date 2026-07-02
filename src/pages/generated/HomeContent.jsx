@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { HeroThreatMonitor } from "../../components/HeroThreatMonitor";
 
 export function HomePageContent() {
   return (
@@ -24,6 +25,8 @@ export function HomePageContent() {
           className="hero-grain absolute inset-0 z-[2] opacity-[0.02] bg-[url('data:image/svg+xml,%3Csvg%20viewBox=%270%200%20512%20512%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.75%27%20numOctaves=%274%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27100%25%27%20height=%27100%25%27%20filter=%27url(%23n)%27/%3E%3C/svg%3E')] max-sm:hidden"
           aria-hidden="true"
         />
+
+        <HeroThreatMonitor />
 
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
         <div className="hero-mobile-head hidden max-sm:block relative w-full shrink-0 bg-dark">
