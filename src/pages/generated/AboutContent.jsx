@@ -487,6 +487,54 @@ export function AboutPageContent() {
         </div>
       </section>
 
+      <section className="sec py-16 px-[52px] max-lg:py-14 max-lg:px-6 max-[480px]:py-12 max-[480px]:px-5 bg-dark">
+        <div className="inner max-w-[1300px] mx-auto">
+          <div className="section-head rev mb-10 max-lg:mb-8">
+            <span className="section-label">
+              <span className="cs">V akci</span>
+              <span className="en">In action</span>
+            </span>
+            <h2 className="section-title italic !text-bg [&_em]:!text-[rgba(245,245,243,0.45)]">
+              <span className="cs">
+                Přímo tam, <em>kde mladí lidé jsou.</em>
+              </span>
+              <span className="en">
+                Directly where <em>young people are.</em>
+              </span>
+            </h2>
+          </div>
+          <div className="photo-strip grid grid-cols-3 gap-3 max-lg:grid-cols-1 max-[640px]:gap-2">
+            <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
+              <img
+                src="/photos/ClenskyProjektClenove.png"
+                alt="Členové studentského projektu CTRL"
+                className="absolute inset-0 w-full h-full object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
+              <img
+                src="/photos/workshopy.png"
+                alt="Účastníci workshopu CTRL"
+                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
+              <img
+                src="/photos/vyzkum.png"
+                alt="Výzkum CTRL Europe"
+                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
         <div className="inner max-w-[1300px] mx-auto">
           <div className="section-head rev">
@@ -791,7 +839,6 @@ export function AboutPageContent() {
           </div>
         </div>
       </section>
-
       <section
         className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"
         id="about-team"

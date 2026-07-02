@@ -509,35 +509,39 @@ export function HomePageContent() {
         </div>
       </section>
 
-      <div className="photo-strip grid grid-cols-3 gap-3 bg-dark border-4 border-dark p-3 max-[640px]:grid-cols-1 max-[640px]:gap-2 max-[640px]:p-2">
-        <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-2 border-dark">
-          <img
-            src="/photos/team.jpg"
-            alt="Členové CTRL Europe"
-            className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-            decoding="async"
-          />
+      <section className="sec py-16 px-[52px] max-lg:py-14 max-lg:px-6 max-[480px]:py-12 max-[480px]:px-5 bg-dark">
+        <div className="inner max-w-[1300px] mx-auto">
+          <div className="photo-strip grid grid-cols-3 gap-3 max-lg:grid-cols-1 max-[640px]:gap-2">
+            <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
+              <img
+                src="/photos/team.jpg"
+                alt="Členové CTRL Europe"
+                className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
+              <img
+                src="/photos/hero.png"
+                alt="Prezentace CTRL Europe"
+                className="absolute inset-0 w-full h-full object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
+              <img
+                src="/photos/member-heart.jpg"
+                alt="Studentský projekt CTRL"
+                className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
         </div>
-        <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-2 border-dark">
-          <img
-            src="/photos/hero.png"
-            alt="Prezentace CTRL Europe"
-            className="absolute inset-0 w-full h-full object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </div>
-        <div className="relative h-[300px] max-[640px]:h-[250px] overflow-hidden group border-2 border-dark">
-          <img
-            src="/photos/member-heart.jpg"
-            alt="Studentský projekt CTRL"
-            className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
+      </section>
 
       <section
         id="numbers"
