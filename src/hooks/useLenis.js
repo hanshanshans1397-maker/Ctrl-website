@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { prefersReducedMotion } from '../utils/motion';
+import { shouldDisableSmoothScroll } from '../utils/motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +21,7 @@ export function scrollPageToTop() {
 
 export function useLenis() {
   useEffect(() => {
-    if (prefersReducedMotion()) return undefined;
+    if (shouldDisableSmoothScroll()) return undefined;
 
     const lenis = new Lenis({
       duration: 1.2,

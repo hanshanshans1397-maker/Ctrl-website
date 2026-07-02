@@ -154,6 +154,46 @@ body.EN .topics-tag.en {
 .rev.in {
   @apply opacity-100 translate-y-0;
   filter: blur(0);
+  will-change: auto;
+}
+
+@media (max-width: 768px), (hover: none) {
+  .rev {
+    filter: none;
+    transition-duration: 550ms;
+    will-change: auto;
+  }
+}
+
+body.lite-motion .rev {
+  filter: none;
+  transition-duration: 500ms;
+  will-change: auto;
+}
+
+body.lite-motion .split-text .word span {
+  transition-duration: 400ms;
+}
+
+body.lite-motion #hero::after,
+body.lite-motion .page-hero.bg-dark::after {
+  animation: none;
+  opacity: 0.85;
+}
+
+body.lite-motion .hero-grain {
+  animation: none;
+}
+
+body.lite-motion #hero > img:first-child {
+  will-change: auto;
+}
+
+body.lite-motion .ticker-wrap,
+body.lite-motion .ticker-inner,
+body.lite-motion .topics-track,
+body.lite-motion .partner-track {
+  will-change: auto;
 }
 
 .rev.anim-gsap {
@@ -274,6 +314,16 @@ body.reduced-motion .split-text .word span {
   .ticker-wrap,
   .ticker-inner {
     animation-duration: 15s;
+  }
+
+  #hero::after,
+  .page-hero.bg-dark::after {
+    animation: none;
+    opacity: 0.85;
+  }
+
+  .hero-grain {
+    animation: none;
   }
 }
 

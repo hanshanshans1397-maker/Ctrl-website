@@ -1,7 +1,13 @@
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { EASE_PREMIUM, prefersReducedMotion, GSAP_REVEAL } from '../utils/motion';
+import {
+  EASE_PREMIUM,
+  prefersReducedMotion,
+  shouldUseLiteMotion,
+  revealGsapElements,
+  applyMotionBodyClass,
+} from '../utils/motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -335,16 +341,12 @@ function imageReveal() {
 
 export function usePremiumAnimations(pathname) {
   useEffect(() => {
-    if (prefersReducedMotion()) {
-      document.querySelectorAll(GSAP_REVEAL).forEach((el) => el.classList.add('in'));
-      document.querySelectorAll('.section-head .section-label, .section-head .page-label, .section-head .sec-label').forEach((el) => {
-        el.classList.add('is-visible');
-      });
-      document.body.classList.add('reduced-motion');
+    applyMotionBodyClass();
+
+    if (shouldUseLiteMotion()) {
+      revealGsapElements();
       return undefined;
     }
-
-    document.body.classList.remove('reduced-motion');
 
     const ctx = gsap.context(() => {
       sectionBlockReveal();

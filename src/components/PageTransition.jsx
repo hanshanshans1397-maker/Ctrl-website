@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import gsap from 'gsap';
-import { prefersReducedMotion } from '../utils/motion';
+import { shouldUseLiteMotion } from '../utils/motion';
 
 export function PageTransition({ children }) {
   const el = useRef(null);
@@ -14,7 +14,7 @@ export function PageTransition({ children }) {
 
     gsap.set(node, { opacity: 1, y: 0, filter: 'none', clearProps: 'scale,transform' });
 
-    if (prefersReducedMotion() || !hasMounted.current) {
+    if (shouldUseLiteMotion() || !hasMounted.current) {
       hasMounted.current = true;
       return undefined;
     }

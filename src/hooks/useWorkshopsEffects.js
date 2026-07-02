@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLang } from '../context/LangContext';
 import { usePageHeroEntrance } from './usePageHeroEntrance';
+import { prefersReducedMotion, shouldUseLiteMotion } from '../utils/motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,6 +35,10 @@ export function useWorkshopsEffects() {
           targets.forEach(({ id, val }) => {
             const el = document.getElementById(id);
             if (!el) return;
+            if (prefersReducedMotion() || shouldUseLiteMotion()) {
+              el.textContent = String(val);
+              return;
+            }
             const dur = 1400;
             const start = Date.now();
             const tick = () => {
@@ -60,6 +65,13 @@ export function useWorkshopsEffects() {
     const textEl = document.getElementById('narrativeText');
     const scrollHint = document.getElementById('scrollHint');
     if (!narrativeSection || !narrativeSticky || !textEl) return undefined;
+
+    if (shouldUseLiteMotion()) {
+      const lines = NARRATIVE_LINES.map((line) => (isEn ? line.en : line.cs)).join('<br />');
+      textEl.innerHTML = `<div class="narrative-line is-in"><span class="${isEn ? 'en' : 'cs'}">${lines}</span></div>`;
+      if (scrollHint) scrollHint.classList.remove('is-visible');
+      return undefined;
+    }
 
     let current = -1;
     let narrativeST = null;

@@ -14,7 +14,7 @@ import {
 } from '../hooks/usePageEffects';
 import { useLenis } from '../hooks/useLenis';
 import { usePremiumAnimations } from '../hooks/usePremiumAnimations';
-import { prefersReducedMotion } from '../utils/motion';
+import { prefersReducedMotion, shouldUseLiteMotion, applyMotionBodyClass, onReducedMotionChange } from '../utils/motion';
 import { hasDarkHero } from '../utils/routes';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -78,6 +78,11 @@ export function Layout() {
   const hasDarkHeroRoute = hasDarkHero(pathname);
   const isNavSolid = useNavSolid(navRef);
 
+  useEffect(() => {
+    applyMotionBodyClass();
+    return onReducedMotionChange(() => applyMotionBodyClass());
+  }, []);
+
   useLenis();
   useScrollToTop();
   useScrollReveal([pathname]);
@@ -89,7 +94,7 @@ export function Layout() {
 
   useEffect(() => {
     const nav = navRef.current;
-    if (!nav || prefersReducedMotion()) {
+    if (!nav || prefersReducedMotion() || shouldUseLiteMotion()) {
       navRef.current?.classList.add('is-ready');
       return undefined;
     }

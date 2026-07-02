@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import gsap from 'gsap';
-import { EASE_PREMIUM, prefersReducedMotion } from '../utils/motion';
+import { EASE_PREMIUM, prefersReducedMotion, shouldUseLiteMotion } from '../utils/motion';
 
 export function usePageHeroEntrance({ splitText = false } = {}) {
   useEffect(() => {
@@ -33,6 +33,16 @@ export function usePageHeroEntrance({ splitText = false } = {}) {
     }
 
     const tl = gsap.timeline({ defaults: { ease: EASE_PREMIUM } });
+    const lite = shouldUseLiteMotion();
+    const heroParts = [meta, title, bottom].filter(Boolean);
+
+    if (lite) {
+      if (splitText && splitEls.length) {
+        splitEls.forEach((el) => el.classList.add('in'));
+      }
+      tl.fromTo(heroParts, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.06 }, 0.05);
+      return () => tl.kill();
+    }
 
     if (meta) {
       tl.fromTo(meta, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.65 }, 0.1);

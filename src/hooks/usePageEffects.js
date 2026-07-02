@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { scrollPageToTop } from './useLenis';
-import { GSAP_REVEAL, prefersReducedMotion } from '../utils/motion';
+import { GSAP_REVEAL, prefersReducedMotion, shouldUseLiteMotion } from '../utils/motion';
 
 export function useScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -70,6 +70,8 @@ export function useScrollReveal(deps = []) {
       return undefined;
     }
 
+    const rootMargin = shouldUseLiteMotion() ? '0px 0px -20px 0px' : '0px 0px -40px 0px';
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -82,7 +84,7 @@ export function useScrollReveal(deps = []) {
           }
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' },
+      { threshold: 0.08, rootMargin },
     );
 
     document.querySelectorAll('.rev').forEach((el) => {
