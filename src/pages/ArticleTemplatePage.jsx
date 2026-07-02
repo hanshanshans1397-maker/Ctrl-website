@@ -1,10 +1,8 @@
-import { useEffect } from 'react';
 import { ArticleTemplatePageContent } from './generated/ArticleTemplateContent';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function ArticleTemplatePage() {
-  useEffect(() => {
-    document.title = 'Článek | CTRL Europe';
-  }, []);
+  usePageMeta('article-template');
 
   return <ArticleTemplatePageContent />;
 }

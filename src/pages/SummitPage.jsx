@@ -1,13 +1,10 @@
-import { useEffect } from 'react';
 import { SummitPageContent } from './generated/SummitContent';
 import { useSummitEffects } from '../hooks/useSummitEffects';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function SummitPage() {
   useSummitEffects();
-
-  useEffect(() => {
-    document.title = 'CTRL Summit 2026 | CTRL Europe';
-  }, []);
+  usePageMeta('summit');
 
   return <SummitPageContent />;
 }

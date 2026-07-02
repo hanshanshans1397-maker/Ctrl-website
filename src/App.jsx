@@ -27,7 +27,9 @@ export default function App() {
             <Route path="apply" element={<ApplyPage />} />
             <Route path="summit" element={<SummitPage />} />
             <Route path="workshops" element={<WorkshopsPage />} />
-            <Route path="article-template" element={<ArticleTemplatePage />} />
+            {import.meta.env.DEV ? (
+              <Route path="article-template" element={<ArticleTemplatePage />} />
+            ) : null}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

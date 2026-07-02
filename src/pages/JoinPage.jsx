@@ -1,10 +1,8 @@
-import { useEffect } from 'react';
 import { JoinPageContent } from './generated/JoinContent';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function JoinPage() {
-  useEffect(() => {
-    document.title = 'Zapojit se | CTRL Europe';
-  }, []);
+  usePageMeta('join');
 
   return <JoinPageContent />;
 }

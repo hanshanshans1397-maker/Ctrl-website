@@ -1,13 +1,10 @@
-import { useEffect } from 'react';
 import { AktualityPageContent } from './generated/AktualityContent';
 import { usePageHeroEntrance } from '../hooks/usePageHeroEntrance';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function AktualityPage() {
   usePageHeroEntrance({ splitText: false });
-
-  useEffect(() => {
-    document.title = 'Aktuality | CTRL Europe';
-  }, []);
+  usePageMeta('aktuality');
 
   return <AktualityPageContent />;
 }

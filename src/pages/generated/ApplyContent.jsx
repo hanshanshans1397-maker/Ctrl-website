@@ -1,85 +1,88 @@
-import { useState, useRef } from 'react';
-import { useLang } from '../../context/LangContext';
+import { useState, useRef } from "react";
+import { useLang } from "../../context/LangContext";
 
-const APPLY_API_URL = '/api/apply';
+const APPLY_API_URL = "/api/apply";
 const TOTAL_STEPS = 5;
 
 const INVOLVEMENT_LABELS = {
-  lokalni: { cs: 'Lokální buňka', en: 'Local cell' },
-  online: { cs: 'Online příspěvek', en: 'Online contribution' },
-  event: { cs: 'Jen velké akce', en: 'Major events only' },
+  lokalni: { cs: "Lokální buňka", en: "Local cell" },
+  online: { cs: "Online příspěvek", en: "Online contribution" },
+  event: { cs: "Jen velké akce", en: "Major events only" },
 };
 
 const COUNTRY_LABELS = {
-  cz: { cs: 'Česká republika', en: 'Czech Republic' },
-  sk: { cs: 'Slovensko', en: 'Slovakia' },
-  at: { cs: 'Rakousko', en: 'Austria' },
-  pl: { cs: 'Polsko', en: 'Poland' },
-  si: { cs: 'Slovinsko', en: 'Slovenia' },
-  hu: { cs: 'Maďarsko', en: 'Hungary' },
-  other: { cs: 'Jiná', en: 'Other' },
+  cz: { cs: "Česká republika", en: "Czech Republic" },
+  sk: { cs: "Slovensko", en: "Slovakia" },
+  at: { cs: "Rakousko", en: "Austria" },
+  pl: { cs: "Polsko", en: "Poland" },
+  si: { cs: "Slovinsko", en: "Slovenia" },
+  hu: { cs: "Maďarsko", en: "Hungary" },
+  other: { cs: "Jiná", en: "Other" },
 };
 
 const HEAR_ABOUT_LABELS = {
-  social: { cs: 'Instagram / TikTok', en: 'Instagram / TikTok' },
-  friend: { cs: 'Od kamaráda', en: 'From a friend' },
-  school: { cs: 'Na škole / workshopu', en: 'At school / workshop' },
-  summit: { cs: 'CTRL Summit', en: 'CTRL Summit' },
-  web: { cs: 'Web ctrleurope.com', en: 'Website ctrleurope.com' },
-  other: { cs: 'Jinde', en: 'Elsewhere' },
+  social: { cs: "Instagram / TikTok", en: "Instagram / TikTok" },
+  friend: { cs: "Od kamaráda", en: "From a friend" },
+  school: { cs: "Na škole / workshopu", en: "At school / workshop" },
+  summit: { cs: "CTRL Summit", en: "CTRL Summit" },
+  web: { cs: "Web ctrleurope.com", en: "Website ctrleurope.com" },
+  other: { cs: "Jinde", en: "Elsewhere" },
 };
 
 const CELLS = [
-  ['pr', 'PR a komunikace', 'PR and communications'],
-  ['social', 'Sociální sítě', 'Social media'],
-  ['podcast', 'Podcast', 'Podcast'],
-  ['research', 'Research', 'Research'],
-  ['design', 'Grafika a design', 'Graphics and design'],
-  ['video', 'Video', 'Video'],
-  ['intl', 'Mezinárodní vztahy', 'International relations'],
-  ['events', 'Eventy', 'Events'],
-  ['nevim', 'Ještě nevím', 'Not sure yet'],
+  ["pr", "PR a komunikace", "PR and communications"],
+  ["social", "Sociální sítě", "Social media"],
+  ["podcast", "Podcast", "Podcast"],
+  ["research", "Research", "Research"],
+  ["design", "Grafika a design", "Graphics and design"],
+  ["video", "Video", "Video"],
+  ["intl", "Mezinárodní vztahy", "International relations"],
+  ["events", "Eventy", "Events"],
+  ["nevim", "Ještě nevím", "Not sure yet"],
 ];
 
 const SKILLS = [
-  ['psani', 'Psaní a copywriting', 'Writing and copywriting'],
-  ['grafika', 'Grafický design', 'Graphic design'],
-  ['video2', 'Střih videa', 'Video editing'],
-  ['prog', 'Programování', 'Programming'],
-  ['reci', 'Veřejné vystupování', 'Public speaking'],
-  ['jazyky', 'Cizí jazyky', 'Foreign languages'],
-  ['organizace', 'Organizace eventů', 'Event organization'],
-  ['data', 'Analýza dat', 'Data analysis'],
+  ["psani", "Psaní a copywriting", "Writing and copywriting"],
+  ["grafika", "Grafický design", "Graphic design"],
+  ["video2", "Střih videa", "Video editing"],
+  ["prog", "Programování", "Programming"],
+  ["reci", "Veřejné vystupování", "Public speaking"],
+  ["jazyky", "Cizí jazyky", "Foreign languages"],
+  ["organizace", "Organizace eventů", "Event organization"],
+  ["data", "Analýza dat", "Data analysis"],
 ];
 
 const INVOLVEMENT = [
   [
-    'lokalni',
-    'Lokální buňka', 'Local cell',
-    'Chci aktivně budovat CTRL Europe na své škole nebo ve svém městě.',
-    'I want to actively build CTRL Europe at my school or in my city.',
+    "lokalni",
+    "Lokální buňka",
+    "Local cell",
+    "Chci aktivně budovat CTRL Europe na své škole nebo ve svém městě.",
+    "I want to actively build CTRL Europe at my school or in my city.",
   ],
   [
-    'online',
-    'Online příspěvek', 'Online contribution',
-    'Pomůžu s obsahem, researchem nebo komunikací na dálku.',
-    'I will help with content, research or communication remotely.',
+    "online",
+    "Online příspěvek",
+    "Online contribution",
+    "Pomůžu s obsahem, researchem nebo komunikací na dálku.",
+    "I will help with content, research or communication remotely.",
   ],
   [
-    'event',
-    'Jen velké akce', 'Major events only',
-    'Rád se zapojím do CTRL Summit a podobných eventů.',
-    'I am happy to get involved in CTRL Summit and similar events.',
+    "event",
+    "Jen velké akce",
+    "Major events only",
+    "Rád se zapojím do CTRL Summit a podobných eventů.",
+    "I am happy to get involved in CTRL Summit and similar events.",
   ],
 ];
 
 function formatHours(value, isEn) {
-  const unit = isEn ? 'hrs' : 'hod';
+  const unit = isEn ? "hrs" : "hod";
   return Number(value) === 15 ? `15+ ${unit}` : `${value} ${unit}`;
 }
 
 function labelFromMap(map, value, isEn) {
-  if (!value) return '';
+  if (!value) return "";
   const entry = map[value];
   if (!entry) return String(value);
   return isEn ? entry.en : entry.cs;
@@ -91,7 +94,7 @@ function getChipLabels(data, sel, isEn) {
       const item = data.find(([v]) => v === val);
       return item ? (isEn ? item[2] : item[1]) : val;
     })
-    .join(', ');
+    .join(", ");
 }
 
 function toggleSet(prev, val) {
@@ -109,16 +112,16 @@ export function ApplyPageContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Step 0 — required tracked fields
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [birthDate, setBirthDate] = useState('');
-  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [email, setEmail] = useState("");
 
   // Step 3 — required
-  const [radioForma, setRadioForma] = useState('');
+  const [radioForma, setRadioForma] = useState("");
 
   // Step 4 — required
-  const [motivation, setMotivation] = useState('');
+  const [motivation, setMotivation] = useState("");
 
   // Chip selections (no required, but tracked for submission)
   const [cellsSel, setCellsSel] = useState(new Set());
@@ -140,19 +143,19 @@ export function ApplyPageContent() {
     switch (step) {
       case 0:
         return (
-          firstName.trim() !== '' &&
-          lastName.trim() !== '' &&
-          birthDate !== '' &&
-          email.trim() !== ''
+          firstName.trim() !== "" &&
+          lastName.trim() !== "" &&
+          birthDate !== "" &&
+          email.trim() !== ""
         );
       case 1:
         return true;
       case 2:
         return true;
       case 3:
-        return radioForma !== '';
+        return radioForma !== "";
       case 4:
-        return motivation.trim() !== '';
+        return motivation.trim() !== "";
       default:
         return false;
     }
@@ -174,50 +177,54 @@ export function ApplyPageContent() {
     setIsSubmitting(true);
 
     const payload = {
-      lang: isEn ? 'en' : 'cs',
+      lang: isEn ? "en" : "cs",
       firstName,
       lastName,
       birthDate,
-      phone: phoneRef.current?.value ?? '',
+      phone: phoneRef.current?.value ?? "",
       email,
-      city: cityRef.current?.value ?? '',
+      city: cityRef.current?.value ?? "",
       country: labelFromMap(COUNTRY_LABELS, countryRef.current?.value, isEn),
-      school: schoolRef.current?.value ?? '',
-      languages: languagesRef.current?.value ?? '',
+      school: schoolRef.current?.value ?? "",
+      languages: languagesRef.current?.value ?? "",
       hoursPerWeek: formatHours(hours, isEn),
       motivation,
-      hearAbout: labelFromMap(HEAR_ABOUT_LABELS, hearAboutRef.current?.value, isEn),
+      hearAbout: labelFromMap(
+        HEAR_ABOUT_LABELS,
+        hearAboutRef.current?.value,
+        isEn,
+      ),
       cells: getChipLabels(CELLS, cellsSel, isEn),
       skills: getChipLabels(SKILLS, skillsSel, isEn),
       involvement: labelFromMap(INVOLVEMENT_LABELS, radioForma, isEn),
-      _gotcha: honeypotRef.current?.value ?? '',
+      _gotcha: honeypotRef.current?.value ?? "",
     };
 
     try {
       const res = await fetch(APPLY_API_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
       if (res.ok) {
         setIsSuccess(true);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         alert(
           isEn
-            ? 'Could not send. Please try again.'
-            : 'Nepodařilo se odeslat. Zkuste to znovu.',
+            ? "Could not send. Please try again."
+            : "Nepodařilo se odeslat. Zkuste to znovu.",
         );
         setIsSubmitting(false);
       }
     } catch {
       alert(
         isEn
-          ? 'Could not send. Please try again or email us.'
-          : 'Nepodařilo se odeslat. Zkuste to znovu nebo nám napište e-mail.',
+          ? "Could not send. Please try again or email us."
+          : "Nepodařilo se odeslat. Zkuste to znovu nebo nám napište e-mail.",
       );
       setIsSubmitting(false);
     }
@@ -240,19 +247,19 @@ export function ApplyPageContent() {
           </div>
           <p className="page-sub cs max-w-[560px] text-lg leading-[1.65] font-light text-[rgba(245,245,243,0.65)] max-sm:text-[15px]">
             CTRL Europe roste díky lidem jako ty. Vyplň přihlášku a staneš se
-            součástí{' '}
+            součástí{" "}
             <strong className="text-bg font-semibold">
-              sítě 650+ mladých lidí
-            </strong>{' '}
+              sítě 621+ mladých lidí
+            </strong>{" "}
             napříč střední a východní Evropou, kteří se rozhodli nečekat až to
             vyřeší někdo jiný.
           </p>
           <p className="page-sub en max-w-[560px] text-lg leading-[1.65] font-light text-[rgba(245,245,243,0.65)] max-sm:text-[15px]">
             CTRL Europe grows thanks to people like you. Fill out the
-            application and become part of a{' '}
+            application and become part of a{" "}
             <strong className="text-bg font-semibold">
-              network of 650+ young people
-            </strong>{' '}
+              network of 621+ young people
+            </strong>{" "}
             across Central and Eastern Europe who decided not to wait for
             someone else to fix things.
           </p>
@@ -267,7 +274,7 @@ export function ApplyPageContent() {
               <div key={i} className="progress-seg">
                 <div
                   className="fill"
-                  style={{ width: i <= step ? '100%' : '0%' }}
+                  style={{ width: i <= step ? "100%" : "0%" }}
                 />
               </div>
             ))}
@@ -324,7 +331,6 @@ export function ApplyPageContent() {
                   className="apply-steps-track"
                   style={{ transform: `translateX(-${step * 100}%)` }}
                 >
-
                   {/* ── Step 0: Kdo jsi ── */}
                   <div className="apply-step">
                     <div className="section">
@@ -349,7 +355,7 @@ export function ApplyPageContent() {
                           <input
                             type="text"
                             name="firstName"
-                            placeholder={isEn ? 'Jane' : 'Jana'}
+                            placeholder={isEn ? "Jane" : "Jana"}
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                           />
@@ -362,7 +368,7 @@ export function ApplyPageContent() {
                           <input
                             type="text"
                             name="lastName"
-                            placeholder={isEn ? 'Smith' : 'Nováková'}
+                            placeholder={isEn ? "Smith" : "Nováková"}
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
                           />
@@ -401,7 +407,9 @@ export function ApplyPageContent() {
                         <input
                           type="email"
                           name="email"
-                          placeholder={isEn ? 'jane@email.com' : 'jana@email.cz'}
+                          placeholder={
+                            isEn ? "jane@email.com" : "jana@email.cz"
+                          }
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -430,11 +438,13 @@ export function ApplyPageContent() {
                             defaultValue="cz"
                             ref={countryRef}
                           >
-                            {Object.entries(COUNTRY_LABELS).map(([val, labels]) => (
-                              <option key={val} value={val}>
-                                {isEn ? labels.en : labels.cs}
-                              </option>
-                            ))}
+                            {Object.entries(COUNTRY_LABELS).map(
+                              ([val, labels]) => (
+                                <option key={val} value={val}>
+                                  {isEn ? labels.en : labels.cs}
+                                </option>
+                              ),
+                            )}
                           </select>
                         </div>
                       </div>
@@ -442,11 +452,11 @@ export function ApplyPageContent() {
                       <div className="field">
                         <label>
                           <span className="cs">
-                            Škola nebo zaměstnání{' '}
+                            Škola nebo zaměstnání{" "}
                             <span className="opt">nepovinné</span>
                           </span>
                           <span className="en">
-                            School or employment{' '}
+                            School or employment{" "}
                             <span className="opt">optional</span>
                           </span>
                         </label>
@@ -455,8 +465,8 @@ export function ApplyPageContent() {
                           name="school"
                           placeholder={
                             isEn
-                              ? 'Example High School, Brno'
-                              : 'Gymnázium Matyáše Lercha, Brno'
+                              ? "Example High School, Brno"
+                              : "Gymnázium Matyáše Lercha, Brno"
                           }
                           ref={schoolRef}
                         />
@@ -487,14 +497,14 @@ export function ApplyPageContent() {
                           {CELLS.map(([val, cs, en]) => (
                             <div
                               key={val}
-                              className={`chip${cellsSel.has(val) ? ' selected' : ''}`}
+                              className={`chip${cellsSel.has(val) ? " selected" : ""}`}
                               role="button"
                               tabIndex={0}
                               onClick={() =>
                                 setCellsSel((prev) => toggleSet(prev, val))
                               }
                               onKeyDown={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ')
+                                if (e.key === "Enter" || e.key === " ")
                                   setCellsSel((prev) => toggleSet(prev, val));
                               }}
                             >
@@ -516,8 +526,8 @@ export function ApplyPageContent() {
                         <span className="en">What you can do</span>
                       </span>
                       <p className="section-sub cs">
-                        Žádná zkušenost nevyžadována — chceme jen vědět, kde
-                        bys mohl/a být užitečný/á.
+                        Žádná zkušenost nevyžadována — chceme jen vědět, kde bys
+                        mohl/a být užitečný/á.
                       </p>
                       <p className="section-sub en">
                         No experience required — we just want to know where you
@@ -529,14 +539,14 @@ export function ApplyPageContent() {
                           {SKILLS.map(([val, cs, en]) => (
                             <div
                               key={val}
-                              className={`chip${skillsSel.has(val) ? ' selected' : ''}`}
+                              className={`chip${skillsSel.has(val) ? " selected" : ""}`}
                               role="button"
                               tabIndex={0}
                               onClick={() =>
                                 setSkillsSel((prev) => toggleSet(prev, val))
                               }
                               onKeyDown={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ')
+                                if (e.key === "Enter" || e.key === " ")
                                   setSkillsSel((prev) => toggleSet(prev, val));
                               }}
                             >
@@ -550,11 +560,11 @@ export function ApplyPageContent() {
                       <div className="field field-spaced">
                         <label>
                           <span className="cs">
-                            Jazyky, kterými mluvíš{' '}
+                            Jazyky, kterými mluvíš{" "}
                             <span className="opt">nepovinné</span>
                           </span>
                           <span className="en">
-                            Languages you speak{' '}
+                            Languages you speak{" "}
                             <span className="opt">optional</span>
                           </span>
                         </label>
@@ -563,8 +573,8 @@ export function ApplyPageContent() {
                           name="languages"
                           placeholder={
                             isEn
-                              ? 'Czech, English, German...'
-                              : 'čeština, angličtina, němčina...'
+                              ? "Czech, English, German..."
+                              : "čeština, angličtina, němčina..."
                           }
                           ref={languagesRef}
                         />
@@ -624,13 +634,13 @@ export function ApplyPageContent() {
                             ([val, titleCs, titleEn, descCs, descEn]) => (
                               <div
                                 key={val}
-                                className={`radio-card${radioForma === val ? ' selected' : ''}`}
+                                className={`radio-card${radioForma === val ? " selected" : ""}`}
                                 role="radio"
                                 aria-checked={radioForma === val}
                                 tabIndex={0}
                                 onClick={() => setRadioForma(val)}
                                 onKeyDown={(e) => {
-                                  if (e.key === 'Enter' || e.key === ' ')
+                                  if (e.key === "Enter" || e.key === " ")
                                     setRadioForma(val);
                                 }}
                               >
@@ -683,8 +693,8 @@ export function ApplyPageContent() {
                           name="motivation"
                           placeholder={
                             isEn
-                              ? 'Write a few sentences about why you want to get involved...'
-                              : 'Napiš pár vět o tom, proč se chceš zapojit...'
+                              ? "Write a few sentences about why you want to get involved..."
+                              : "Napiš pár vět o tom, proč se chceš zapojit..."
                           }
                           value={motivation}
                           onChange={(e) => setMotivation(e.target.value)}
@@ -694,11 +704,11 @@ export function ApplyPageContent() {
                       <div className="field">
                         <label>
                           <span className="cs">
-                            Kde jsi o nás slyšel/a?{' '}
+                            Kde jsi o nás slyšel/a?{" "}
                             <span className="opt">nepovinné</span>
                           </span>
                           <span className="en">
-                            How did you hear about us?{' '}
+                            How did you hear about us?{" "}
                             <span className="opt">optional</span>
                           </span>
                         </label>
@@ -708,7 +718,7 @@ export function ApplyPageContent() {
                           ref={hearAboutRef}
                         >
                           <option value="" disabled>
-                            {isEn ? 'Select...' : 'Vyber...'}
+                            {isEn ? "Select..." : "Vyber..."}
                           </option>
                           {Object.entries(HEAR_ABOUT_LABELS).map(
                             ([val, labels]) => (
@@ -721,7 +731,6 @@ export function ApplyPageContent() {
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
 
@@ -756,7 +765,7 @@ export function ApplyPageContent() {
                 {step < TOTAL_STEPS - 1 ? (
                   <button
                     type="button"
-                    className={`apply-btn-next${valid ? ' apply-btn-next--active' : ''}`}
+                    className={`apply-btn-next${valid ? " apply-btn-next--active" : ""}`}
                     onClick={goNext}
                     disabled={!valid}
                   >
@@ -781,7 +790,7 @@ export function ApplyPageContent() {
                 ) : (
                   <button
                     type="button"
-                    className={`apply-btn-next${valid && !isSubmitting ? ' apply-btn-next--active' : ''}`}
+                    className={`apply-btn-next${valid && !isSubmitting ? " apply-btn-next--active" : ""}`}
                     onClick={handleSubmit}
                     disabled={!valid || isSubmitting}
                   >

@@ -1,13 +1,10 @@
-import { useEffect } from 'react';
 import { AboutPageContent } from './generated/AboutContent';
 import { usePageHeroEntrance } from '../hooks/usePageHeroEntrance';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function AboutPage() {
   usePageHeroEntrance({ splitText: false });
-
-  useEffect(() => {
-    document.title = 'O nás | CTRL Europe';
-  }, []);
+  usePageMeta('about');
 
   return <AboutPageContent />;
 }

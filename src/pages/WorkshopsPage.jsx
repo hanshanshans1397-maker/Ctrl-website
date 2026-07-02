@@ -1,13 +1,10 @@
-import { useEffect } from 'react';
 import { WorkshopsPageContent } from './generated/WorkshopsContent';
 import { useWorkshopsEffects } from '../hooks/useWorkshopsEffects';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function WorkshopsPage() {
   useWorkshopsEffects();
-
-  useEffect(() => {
-    document.title = 'Workshopy | CTRL Europe';
-  }, []);
+  usePageMeta('workshops');
 
   return <WorkshopsPageContent />;
 }
