@@ -52,8 +52,24 @@ function isGsapContentColumn(el) {
   return el.classList.contains('rev') && el.querySelector(':scope > .section-head');
 }
 
+function matchesGsapReveal(el) {
+  return GSAP_REVEAL.split(',').some((sel) => el.matches(sel.trim()));
+}
+
 function shouldSkipReveal(el) {
-  if (GSAP_REVEAL.split(',').some((sel) => el.matches(sel.trim()))) return true;
+  if (prefersReducedMotion()) return true;
+
+  if (shouldUseLiteMotion()) {
+    if (el.classList.contains('section-head')) return true;
+    if (matchesGsapReveal(el)) return true;
+    if (el.closest('.section-head') && !el.classList.contains('section-head')) {
+      const head = el.closest('.section-head');
+      if (head?.querySelector('.section-title, .sec-title, .page-title')) return true;
+    }
+    return false;
+  }
+
+  if (matchesGsapReveal(el)) return true;
   if (el.classList.contains('section-head')) return true;
   if (isGsapContentColumn(el)) return true;
   if (el.closest('.section-head') && !el.classList.contains('section-head')) {
@@ -117,27 +133,42 @@ export function useNavSolid(navRef) {
   return isSolid;
 }
 
+function cloneTickers() {
+  document.querySelectorAll('.ticker-inner, .ticker-wrap').forEach((t) => {
+    if (t.dataset.cloned) return;
+
+    const parent = t.parentNode;
+    if (parent) {
+      [...parent.children]
+        .filter(
+          (el) =>
+            el !== t &&
+            (el.classList.contains('ticker-inner') || el.classList.contains('ticker-wrap')),
+        )
+        .forEach((el) => el.remove());
+    }
+
+    [...t.children].forEach((child) => t.appendChild(child.cloneNode(true)));
+    t.dataset.cloned = '1';
+  });
+}
+
 export function useTickerClone() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    document.querySelectorAll('.ticker-inner, .ticker-wrap').forEach((t) => {
-      if (t.dataset.cloned) return;
-
-      const parent = t.parentNode;
-      if (parent) {
-        [...parent.children]
-          .filter(
-            (el) =>
-              el !== t &&
-              (el.classList.contains('ticker-inner') || el.classList.contains('ticker-wrap')),
-          )
-          .forEach((el) => el.remove());
+    if (shouldUseLiteMotion()) {
+      const run = () => cloneTickers();
+      if ('requestIdleCallback' in window) {
+        const id = requestIdleCallback(run, { timeout: 1500 });
+        return () => cancelIdleCallback(id);
       }
+      const id = window.setTimeout(run, 300);
+      return () => window.clearTimeout(id);
+    }
 
-      [...t.children].forEach((child) => t.appendChild(child.cloneNode(true)));
-      t.dataset.cloned = '1';
-    });
+    cloneTickers();
+    return undefined;
   }, [pathname]);
 }
 

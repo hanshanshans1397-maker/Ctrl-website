@@ -1,26 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { EASE_PREMIUM, prefersReducedMotion, shouldUseLiteMotion } from '../utils/motion';
 
+function showHeroImmediately() {
+  document.querySelectorAll('.hero-title .word span, .hero-meta, .hero-sub, .hero-ctas').forEach((el) => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+}
+
 export function useHomeEffects() {
+  useLayoutEffect(() => {
+    if (shouldUseLiteMotion()) {
+      showHeroImmediately();
+    }
+  }, []);
+
   useEffect(() => {
+    if (shouldUseLiteMotion()) return undefined;
+
     const heroEls = document.querySelectorAll('.hero-title .word span, .hero-meta, .hero-sub, .hero-ctas');
 
     if (prefersReducedMotion()) {
-      heroEls.forEach((el) => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
+      showHeroImmediately();
       return undefined;
     }
 
     const tl = gsap.timeline({ defaults: { ease: EASE_PREMIUM } });
-
-    if (shouldUseLiteMotion()) {
-      tl.fromTo(heroEls, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.04 }, 0.05);
-      return () => tl.kill();
-    }
-
     const words = document.querySelectorAll('.hero-title .word span');
 
     tl.fromTo(words, { y: '110%', opacity: 0 }, { y: 0, opacity: 1, duration: 1.05, stagger: 0.11 }, 0.15);

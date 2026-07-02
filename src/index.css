@@ -171,8 +171,25 @@ body.lite-motion .rev {
   will-change: auto;
 }
 
+@media (max-width: 768px), (hover: none) {
+  .hero-meta,
+  .hero-sub,
+  .hero-ctas {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 body.lite-motion .split-text .word span {
   transition-duration: 400ms;
+}
+
+body.lite-motion .hero-meta,
+body.lite-motion .hero-sub,
+body.lite-motion .hero-ctas,
+body.lite-motion .hero-title .word span {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 body.lite-motion #hero::after,

@@ -35,6 +35,11 @@ export function shouldDisableSmoothScroll() {
 
 export function revealGsapElements() {
   document.querySelectorAll(GSAP_REVEAL).forEach((el) => el.classList.add('in'));
+  document.querySelectorAll('.rev').forEach((el) => {
+    if (el.querySelector(':scope > .section-head')) {
+      el.classList.add('in');
+    }
+  });
   document
     .querySelectorAll('.section-head .section-label, .section-head .page-label, .section-head .sec-label')
     .forEach((el) => el.classList.add('is-visible'));

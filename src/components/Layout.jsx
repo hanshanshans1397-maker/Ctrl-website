@@ -78,8 +78,11 @@ export function Layout() {
   const hasDarkHeroRoute = hasDarkHero(pathname);
   const isNavSolid = useNavSolid(navRef);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     applyMotionBodyClass();
+  }, []);
+
+  useEffect(() => {
     return onReducedMotionChange(() => applyMotionBodyClass());
   }, []);
 
