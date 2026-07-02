@@ -119,6 +119,61 @@ const BOARD_MEMBERS = [
   },
 ];
 
+const CORE_VALUES = [
+  {
+    id: "01",
+    titleCs: "Kritické myšlení",
+    titleEn: "Critical thinking",
+    descCs: "Klademe otázky. Ověřujeme zdroje. Nepřijímáme zjednodušení.",
+    descEn:
+      "We ask questions. We verify sources. We don't accept oversimplification.",
+    delay: "d1",
+  },
+  {
+    id: "02",
+    titleCs: "Odpovědnost",
+    titleEn: "Responsibility",
+    descCs: "Za naše výstupy, za naše závazky, za organizaci jako celek.",
+    descEn: "For our outputs, our commitments, the organization as a whole.",
+    delay: "d2",
+  },
+  {
+    id: "03",
+    titleCs: "Mezinárodní spolupráce",
+    titleEn: "International cooperation",
+    descCs:
+      "Problémy digitální doby nemají hranice. Ani naše odpověď by je mít neměla.",
+    descEn:
+      "Problems of the digital age have no borders. Neither should our response.",
+    delay: "d3",
+  },
+  {
+    id: "04",
+    titleCs: "Mediální gramotnost",
+    titleEn: "Media literacy",
+    descCs: "Rozumět médiím znamená číst je s vědomím jak fungují.",
+    descEn:
+      "Understanding media means reading them with awareness of how they work.",
+    delay: "d1",
+  },
+  {
+    id: "05",
+    titleCs: "Vedení mladých",
+    titleEn: "Youth leadership",
+    descCs: "Zodpovědnost nezávisí na věku. Závisí na odhodlání.",
+    descEn: "Responsibility doesn't depend on age. It depends on commitment.",
+    delay: "d2",
+  },
+  {
+    id: "06",
+    titleCs: "Preciznost",
+    titleEn: "Precision",
+    descCs: "Děláme méně věcí, ale děláme je dobře.",
+    descEn: "We do fewer things, but we do them well.",
+    delay: "d3",
+  },
+];
+
 function getInitials(name) {
   return name
     .split(/\s+/)
@@ -1109,7 +1164,7 @@ export function AboutPageContent() {
 
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
         <div className="inner max-w-[1300px] mx-auto">
-          <div className="section-head rev">
+          <div className="section-head rev mb-12 max-lg:mb-10 max-sm:mb-8">
             <span className="section-label">
               <span className="cs">Dlouhodobá vize</span>
               <span className="en">Long-term vision</span>
@@ -1123,9 +1178,9 @@ export function AboutPageContent() {
               </span>
             </h2>
           </div>
-          <div className="about-2col grid grid-cols-2 gap-[100px] max-lg:grid-cols-1 max-lg:gap-12">
+          <div className="about-2col grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-[100px]">
             <div className="rev">
-              <div className="prose">
+              <div className="prose max-w-[540px]">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
                   Naším cílem je vybudovat udržitelnou evropskou youth platformu
                   zaměřenou na digitální gramotnost, výzkum a mezinárodní
@@ -1150,105 +1205,38 @@ export function AboutPageContent() {
                   used, and organize an annual international summit relevant to
                   both policymakers and students.
                 </p>
-                <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
+              </div>
+              <blockquote className="mt-8 max-w-[540px] border-l-[3px] border-l-accent pl-6 sm:pl-7">
+                <p className="cs text-[15px] font-medium leading-[1.75] text-dark">
                   Neslibujeme revoluci. Slibujeme poctivé práci na problému
                   který je skutečný a který dlouhodobě záleží.
                 </p>
-                <p className="en text-base font-light leading-[1.85] text-mid mb-5">
+                <p className="en text-[15px] font-medium leading-[1.75] text-dark">
                   We don't promise revolution. We promise honest work on a
                   problem that is real and that matters in the long term.
                 </p>
-              </div>
+              </blockquote>
             </div>
-            <div className="val-grid grid grid-cols-3 gap-px bg-light mt-0 self-start max-lg:grid-cols-2 max-[480px]:grid-cols-1">
-              <div className="val-card rev d1 bg-bg2 py-11 px-9">
-                <div className="val-title cs text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Kritické myšlení
-                </div>
-                <div className="val-title en text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Critical thinking
-                </div>
-                <p className="val-desc cs text-sm font-light leading-[1.75] text-mid">
-                  Klademe otázky. Ověřujeme zdroje. Nepřijímáme zjednodušení.
-                </p>
-                <p className="val-desc en text-sm font-light leading-[1.75] text-mid">
-                  We ask questions. We verify sources. We don't accept
-                  oversimplification.
-                </p>
+            <div className="rev d2 w-full lg:max-w-none">
+              <div className="mb-5 font-mono text-[11px] tracking-[2px] uppercase text-accent">
+                <span className="cs">Naše hodnoty</span>
+                <span className="en">Our values</span>
               </div>
-              <div className="val-card rev d2 bg-bg2 py-11 px-9">
-                <div className="val-title cs text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Odpovědnost
-                </div>
-                <div className="val-title en text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Responsibility
-                </div>
-                <p className="val-desc cs text-sm font-light leading-[1.75] text-mid">
-                  Za naše výstupy, za naše závazky, za organizaci jako celek.
-                </p>
-                <p className="val-desc en text-sm font-light leading-[1.75] text-mid">
-                  For our outputs, our commitments, the organization as a whole.
-                </p>
-              </div>
-              <div className="val-card rev d3 bg-bg2 py-11 px-9">
-                <div className="val-title cs text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Mezinárodní spolupráce
-                </div>
-                <div className="val-title en text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  International cooperation
-                </div>
-                <p className="val-desc cs text-sm font-light leading-[1.75] text-mid">
-                  Problémy digitální doby nemájí hranice. Ani naše odpověď by je
-                  mít neměla.
-                </p>
-                <p className="val-desc en text-sm font-light leading-[1.75] text-mid">
-                  Problems of the digital age have no borders. Neither should
-                  our response.
-                </p>
-              </div>
-              <div className="val-card rev d1 bg-bg2 py-11 px-9">
-                <div className="val-title cs text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Mediální gramotnost
-                </div>
-                <div className="val-title en text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Media literacy
-                </div>
-                <p className="val-desc cs text-sm font-light leading-[1.75] text-mid">
-                  Rozumět médiím znamená číst je s vědomím jak fungují.
-                </p>
-                <p className="val-desc en text-sm font-light leading-[1.75] text-mid">
-                  Understanding media means reading them with awareness of how
-                  they work.
-                </p>
-              </div>
-              <div className="val-card rev d2 bg-bg2 py-11 px-9">
-                <div className="val-title cs text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Vedení mladých
-                </div>
-                <div className="val-title en text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Youth leadership
-                </div>
-                <p className="val-desc cs text-sm font-light leading-[1.75] text-mid">
-                  Zodpovědnost nezávisí na věku. Závisí na odhodlání.
-                </p>
-                <p className="val-desc en text-sm font-light leading-[1.75] text-mid">
-                  Responsibility doesn't depend on age. It depends on
-                  commitment.
-                </p>
-              </div>
-              <div className="val-card rev d3 bg-bg2 py-11 px-9">
-                <div className="val-title cs text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Preciznost
-                </div>
-                <div className="val-title en text-[17px] font-semibold tracking-[-0.3px] mb-3 text-dark">
-                  Precision
-                </div>
-                <p className="val-desc cs text-sm font-light leading-[1.75] text-mid">
-                  Děláme méně věcí, ale děláme je dobře.
-                </p>
-                <p className="val-desc en text-sm font-light leading-[1.75] text-mid">
-                  We do fewer things, but we do them well.
-                </p>
+              <div className="val-grid grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
+                {CORE_VALUES.map((value) => (
+                  <div
+                    key={value.id}
+                    className={`val-card rev ${value.delay} group flex flex-col border border-light bg-white px-5 py-6 transition-colors duration-300 hover:border-accent/25 sm:px-6 sm:py-7 lg:px-7 lg:py-8`}
+                  >
+                    <div className="mb-3 font-mono text-[11px] tracking-[2px] text-accent uppercase">
+                      {value.id}
+                    </div>
+                    <div className="val-title cs">{value.titleCs}</div>
+                    <div className="val-title en">{value.titleEn}</div>
+                    <p className="val-desc cs">{value.descCs}</p>
+                    <p className="val-desc en">{value.descEn}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

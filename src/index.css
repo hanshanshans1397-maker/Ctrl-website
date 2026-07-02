@@ -1679,19 +1679,19 @@ body.EN .apply-page .success p.en {
   }
 
   .val-grid {
-    @apply mt-16 grid grid-cols-3 gap-px bg-light max-lg:grid-cols-2 max-sm:grid-cols-1;
+    @apply mt-0;
   }
 
   .val-card {
-    @apply bg-bg2 px-9 py-11 max-sm:px-6 max-sm:py-8;
+    @apply min-h-0;
   }
 
   .val-title {
-    @apply mb-3 text-[17px] font-semibold tracking-[-0.3px] text-dark;
+    @apply mb-2.5 text-[16px] font-semibold leading-snug tracking-[-0.3px] text-dark sm:text-[17px];
   }
 
   .val-desc {
-    @apply text-sm leading-[1.75] font-light text-mid;
+    @apply text-[13px] leading-[1.75] font-light text-mid sm:text-sm;
   }
 
   .about-2col {

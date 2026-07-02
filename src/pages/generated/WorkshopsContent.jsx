@@ -216,7 +216,8 @@ export function WorkshopsPageContent() {
                   </svg>
                 </div>
                 <div className="font-mono text-[40px] font-bold text-accent leading-none tracking-[-2px]">
-                  0 Kč
+                  <span className="cs">Zdarma</span>
+                  <span className="en">Free</span>
                 </div>
                 <div className="cs text-sm font-light text-mid mt-1">
                   Pro partnerské školy
@@ -276,11 +277,9 @@ export function WorkshopsPageContent() {
                     />
                   </svg>
                 </div>
-                <div className="font-mono text-[40px] font-bold text-accent leading-none tracking-[-2px]">
-                  <span className="cs">
-                    <span className="mr-[0.2em]">do</span>26
-                  </span>
-                  <span className="en">≤26</span>
+                <div className="font-sans text-[32px] font-bold text-accent leading-tight tracking-[-0.5px]">
+                  <span className="cs">26 let</span>
+                  <span className="en">26 years</span>
                 </div>
                 <div className="cs text-sm font-light text-mid mt-1">
                   Maximální věk
