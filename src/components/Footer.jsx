@@ -113,7 +113,7 @@ export function Footer() {
                 <span className="en">Articles</span>
               </Link>
               <Link
-                to="/aktuality"
+                to="/news"
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >
                 <span className="cs">Aktuality</span>

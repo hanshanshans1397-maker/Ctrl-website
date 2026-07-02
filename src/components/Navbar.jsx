@@ -26,7 +26,7 @@ const NAV_ITEMS = [
     ),
   },
   {
-    to: '/aktuality', cs: 'Aktuality', en: 'News',
+    to: '/news', cs: 'Aktuality', en: 'News',
     icon: (cls) => (
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" className={cls}>
         <path d="M2 3.5h8.5l3 3V13.5H2V3.5z" strokeLinejoin="round" />

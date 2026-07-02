@@ -21,7 +21,7 @@ export default function App() {
             <Route index element={<HomePage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="articles" element={<ArticlesPage />} />
-            <Route path="aktuality" element={<AktualityPage />} />
+            <Route path="news" element={<AktualityPage />} />
             <Route path="research" element={<ResearchPage />} />
             <Route path="join" element={<JoinPage />} />
             <Route path="apply" element={<ApplyPage />} />

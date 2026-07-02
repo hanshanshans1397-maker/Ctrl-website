@@ -641,10 +641,10 @@ export function HomePageContent() {
             </p>
           </div>
           <div className="rev d1 shrink-0">
-            <Link to="/aktuality" className="btn-g cs">
+            <Link to="/news" className="btn-g cs">
               Přejít na Aktuality &rarr;
             </Link>
-            <Link to="/aktuality" className="btn-g en">
+            <Link to="/news" className="btn-g en">
               Go to News &rarr;
             </Link>
           </div>

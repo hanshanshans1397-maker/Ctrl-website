@@ -133,7 +133,7 @@ export const PATH_TO_PAGE_KEY = {
   '/': 'home',
   '/about': 'about',
   '/articles': 'articles',
-  '/aktuality': 'aktuality',
+  '/news': 'aktuality',
   '/research': 'research',
   '/join': 'join',
   '/apply': 'apply',

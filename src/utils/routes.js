@@ -6,7 +6,7 @@ export const DARK_HERO_ROUTES = [
   '/research',
   '/join',
   '/articles',
-  '/aktuality',
+  '/news',
   '/apply',
 ];
 
