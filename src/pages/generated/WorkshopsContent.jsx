@@ -907,7 +907,8 @@ export function WorkshopsPageContent() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    FREE
+                    <span className="cs">Zdarma</span>
+                    <span className="en">Free</span>
                   </div>
                   <span className="cs text-[14px] font-normal text-dark">
                     Workshopy zdarma pro partnerské školy
@@ -935,7 +936,8 @@ export function WorkshopsPageContent() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    ADAPT
+                    <span className="cs">Přizpůsobený</span>
+                    <span className="en">Adapted</span>
                   </div>
                   <span className="cs text-[14px] font-normal text-dark">
                     Přizpůsobený obsah pro každý věk
@@ -969,7 +971,8 @@ export function WorkshopsPageContent() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    FLEX
+                    <span className="cs">Flexibilní</span>
+                    <span className="en">Flexible</span>
                   </div>
                   <span className="cs text-[14px] font-normal text-dark">
                     Flexibilní časový formát
@@ -998,7 +1001,8 @@ export function WorkshopsPageContent() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    ON-SITE
+                    <span className="cs">U vás</span>
+                    <span className="en">ON-SITE</span>
                   </div>
                   <span className="cs text-[14px] font-normal text-dark">
                     Přímo na vaší škole
@@ -1039,7 +1043,8 @@ export function WorkshopsPageContent() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    PARTNER
+                    <span className="cs">Partnerství</span>
+                    <span className="en">Partnership</span>
                   </div>
                   <span className="cs text-[14px] font-normal text-dark">
                     Dlouhodobá partnerská spolupráce
@@ -1112,7 +1117,8 @@ export function WorkshopsPageContent() {
             </div>
             <div className="rev d2 bg-bg2 px-10 py-12 max-sm:px-6 max-sm:py-8">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
-                Exchange
+                <span className="cs">Výměna</span>
+                <span className="en">Exchange</span>
               </div>
               <h3 className="cs mb-3.5 text-xl font-semibold tracking-[-0.4px] text-dark">
                 Mezinárodní výměna mládeže
@@ -1131,7 +1137,8 @@ export function WorkshopsPageContent() {
             </div>
             <div className="rev d3 bg-bg2 px-10 py-12 max-sm:px-6 max-sm:py-8">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
-                Vision
+                <span className="cs">Vize</span>
+                <span className="en">Vision</span>
               </div>
               <h3 className="cs mb-3.5 text-xl font-semibold tracking-[-0.4px] text-dark">
                 Evropský dialog

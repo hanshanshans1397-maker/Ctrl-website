@@ -605,11 +605,11 @@ export function HomePageContent() {
           </div>
           <div className="board-grid grid grid-cols-4 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-2">
             <div className="rev d1 bg-bg2 py-10 px-8">
-              <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden border-4 border-dark">
+              <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden">
                 <img
                   src="/IMG_4222.jpeg"
                   alt="Jan Krejčí"
-                  className="w-full h-full object-cover object-[center_5%]"
+                  className="w-full h-full object-cover object-[center_22%]"
                   loading="lazy"
                   decoding="async"
                 />

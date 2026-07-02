@@ -167,7 +167,10 @@ export function AboutPageContent() {
                 <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 en">
                   Region
                 </div>
-                <div className="text-xl font-semibold text-dark">CEE</div>
+                <div className="text-xl font-semibold text-dark">
+                  <span className="cs">Střední Evropa</span>
+                  <span className="en">Central Europe</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1071,7 +1074,7 @@ export function AboutPageContent() {
         </div>
       </section>
 
-      <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg2 text-center">
+      <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg text-center">
         <div className="inner max-w-[700px] mx-auto">
           <h2 className="rev cs text-[clamp(36px,5vw,72px)] font-extrabold leading-none tracking-[-2.5px] text-dark mb-6">
             Zapojte se.
@@ -1089,11 +1092,23 @@ export function AboutPageContent() {
           </p>
           <div className="rev d2 flex gap-3 justify-center flex-wrap">
             <Link to="/join" className="btn-p cs">
-              Napšte nám &rarr;
+              Spolupráce &rarr;
             </Link>
             <Link to="/join" className="btn-p en">
-              Write to us &rarr;
+              Cooperate &rarr;
             </Link>
+            <Link to="/apply" className="btn-g cs">
+              Přihláška
+            </Link>
+            <Link to="/apply" className="btn-g en">
+              Application
+            </Link>
+            <a href="mailto:ctrleurope@seznam.cz" className="btn-g cs">
+              Napište nám
+            </a>
+            <a href="mailto:ctrleurope@seznam.cz" className="btn-g en">
+              Write to us
+            </a>
           </div>
         </div>
       </section>
