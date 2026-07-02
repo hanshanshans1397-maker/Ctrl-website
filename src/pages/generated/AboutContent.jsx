@@ -221,7 +221,7 @@ function StructureDirectoryRow({
 
   return (
     <div
-      className={`flex items-baseline justify-between gap-3 border-b border-light last:border-b-0 sm:gap-6 ${
+      className={`flex items-baseline justify-between gap-3 border-b border-separator last:border-b-0 sm:gap-6 ${
         size === "lg" ? "py-4 lg:py-5" : "py-3 sm:py-3.5"
       }`}
     >
@@ -237,7 +237,7 @@ function StructureDirectoryRow({
 function BoardStructureBlock({ className = "" }) {
   return (
     <div
-      className={`flex h-full flex-col border border-light border-l-[3px] border-l-accent bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
+      className={`flex h-full flex-col border border-separator border-l-[3px] border-l-accent bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
     >
       <div className="mb-3 cs font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5 lg:text-[11px]">
         Předsednictvo
@@ -275,7 +275,7 @@ function BoardStructureBlock({ className = "" }) {
 function CouncilStructureBlock({ className = "" }) {
   return (
     <div
-      className={`flex h-full flex-col border border-light bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
+      className={`flex h-full flex-col border border-separator bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
     >
       <div className="mb-3 cs font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5">
         Rada zástupců
@@ -311,7 +311,7 @@ function CouncilStructureBlock({ className = "" }) {
 function CellLeaderCard({ leader, className = "" }) {
   return (
     <div
-      className={`rev ${leader.delay} group relative flex h-full min-h-[248px] flex-col border border-light border-l-[3px] border-l-transparent bg-white px-7 py-8 transition-all duration-300 hover:border-l-accent hover:shadow-[0_12px_40px_rgba(11,16,32,0.05)] max-md:min-h-0 max-md:px-5 max-md:py-6 md:px-6 md:py-7 ${className}`}
+      className={`rev ${leader.delay} group relative flex h-full min-h-[248px] flex-col border border-separator border-l-[3px] border-l-transparent bg-white px-7 py-8 transition-all duration-300 hover:border-l-accent hover:shadow-[0_12px_40px_rgba(11,16,32,0.05)] max-md:min-h-0 max-md:px-5 max-md:py-6 md:px-6 md:py-7 ${className}`}
     >
       <div className="mb-4 flex items-start justify-between gap-4 max-md:mb-3 md:mb-5">
         <div className="min-w-0">
@@ -342,7 +342,7 @@ function CellLeaderCard({ leader, className = "" }) {
         </div>
       )}
 
-      <div className="mt-auto flex items-center gap-3.5 border-t border-light pt-5 max-md:gap-4 max-md:pt-4">
+      <div className="mt-auto flex items-center gap-3.5 border-t border-separator pt-5 max-md:gap-4 max-md:pt-4">
         <div
           aria-hidden="true"
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-dim text-[11px] font-semibold tracking-[0.5px] text-accent ring-1 ring-accent/10 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent group-hover:text-white group-hover:ring-accent/20 max-md:h-12 max-md:w-12 max-md:text-[12px]"
@@ -495,8 +495,8 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d2 flex flex-col gap-px bg-light">
-              <div className="py-8 px-9 border-b border-light bg-bg">
+            <div className="rev d2 flex flex-col sep-stack">
+              <div className="py-8 px-9 border-b border-separator bg-bg">
                 <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 cs">
                   Založeno
                 </div>
@@ -507,7 +507,7 @@ export function AboutPageContent() {
                   2025, Brno
                 </div>
               </div>
-              <div className="py-8 px-9 border-b border-light bg-bg">
+              <div className="py-8 px-9 border-b border-separator bg-bg">
                 <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 cs">
                   Aktivních členů
                 </div>
@@ -516,7 +516,7 @@ export function AboutPageContent() {
                 </div>
                 <div className="text-xl font-semibold text-accent">621+</div>
               </div>
-              <div className="py-8 px-9 border-b border-light bg-bg">
+              <div className="py-8 px-9 border-b border-separator bg-bg">
                 <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 cs">
                   Jazyků v týmu
                 </div>
@@ -654,7 +654,7 @@ export function AboutPageContent() {
               </div>
             </div>
             <div className="rev d2">
-              <div className="flex flex-col gap-px bg-light">
+              <div className="flex flex-col sep-stack">
                 <div className="bg-bg2 py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
                   <div className="w-1 h-1 bg-accent rounded-full shrink-0"></div>
                   <span className="text-[15px] font-normal text-dark cs">
@@ -722,7 +722,7 @@ export function AboutPageContent() {
               </span>
             </h2>
           </div>
-          <div className="flex flex-col gap-px bg-light">
+          <div className="flex flex-col sep-stack">
             <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">01 Výzkum</span>
@@ -923,7 +923,7 @@ export function AboutPageContent() {
                 </div>
               </div>
               <div className="flex flex-col gap-3">
-                <div className="flex justify-between py-3 border-b border-light">
+                <div className="flex justify-between py-3 border-b border-separator">
                   <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid cs">
                     Role
                   </div>
@@ -937,7 +937,7 @@ export function AboutPageContent() {
                     President & Founder
                   </div>
                 </div>
-                <div className="flex justify-between py-3 border-b border-light">
+                <div className="flex justify-between py-3 border-b border-separator">
                   <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid cs">
                     Věk
                   </div>
@@ -946,7 +946,7 @@ export function AboutPageContent() {
                   </div>
                   <div className="text-[13px] font-medium text-dark">17</div>
                 </div>
-                <div className="flex justify-between py-3 border-b border-light">
+                <div className="flex justify-between py-3 border-b border-separator">
                   <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid cs">
                     Působiště
                   </div>
@@ -1019,7 +1019,7 @@ export function AboutPageContent() {
                   </strong>
                 </p>
               </div>
-              <div className="mt-12 pt-10 border-t border-light">
+              <div className="mt-12 pt-10 border-t border-separator">
                 <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid mb-5 cs">
                   Ocenění a projekty
                 </div>
@@ -1109,7 +1109,7 @@ export function AboutPageContent() {
             </h2>
           </div>
           <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
-            <div className="rev d1 flex h-full flex-col gap-8 border-t border-light pt-6 sm:gap-10 sm:pt-10 lg:gap-0 lg:border-t-0 lg:pt-0">
+            <div className="rev d1 flex h-full flex-col gap-8 border-t border-separator pt-6 sm:gap-10 sm:pt-10 lg:gap-0 lg:border-t-0 lg:pt-0">
               <div className="prose">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
                   <strong className="text-dark font-medium">
@@ -1155,7 +1155,7 @@ export function AboutPageContent() {
                 <BoardStructureBlock />
               </div>
             </div>
-            <div className="rev d2 flex h-full flex-col border-t border-light pt-6 sm:pt-10 lg:border-t-0 lg:pt-0">
+            <div className="rev d2 flex h-full flex-col border-t border-separator pt-6 sm:pt-10 lg:border-t-0 lg:pt-0">
               <CouncilStructureBlock />
             </div>
           </div>
@@ -1226,7 +1226,7 @@ export function AboutPageContent() {
                 {CORE_VALUES.map((value) => (
                   <div
                     key={value.id}
-                    className={`val-card rev ${value.delay} group flex flex-col border border-light bg-white px-5 py-6 transition-colors duration-300 hover:border-accent/25 sm:px-6 sm:py-7 lg:px-7 lg:py-8`}
+                    className={`val-card rev ${value.delay} group flex flex-col border border-separator bg-white px-5 py-6 transition-colors duration-300 hover:border-accent/25 sm:px-6 sm:py-7 lg:px-7 lg:py-8`}
                   >
                     <div className="mb-3 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                       {value.id}
@@ -1314,7 +1314,7 @@ export function AboutPageContent() {
           </div>
         </div>
       </section>
-      <div className="ticker-wrap-outer border-t border-b border-light overflow-hidden py-[13px] bg-bg">
+      <div className="ticker-wrap-outer border-t border-b border-separator overflow-hidden py-[13px] bg-bg">
         <div
           className="ticker-inner flex animate-ticker whitespace-nowrap"
           id="ticker"

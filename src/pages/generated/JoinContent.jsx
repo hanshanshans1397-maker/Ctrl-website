@@ -154,23 +154,23 @@ export function JoinPageContent() {
                 who know that too.
               </p>
 
-              <div className="mt-12 border-t border-light">
-                <div className="flex items-center gap-4 border-b border-light py-5 text-sm font-light text-mid transition-[color,padding-left] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:pl-2.5 hover:text-dark">
+              <div className="mt-12 border-t border-separator">
+                <div className="flex items-center gap-4 border-b border-separator py-5 text-sm font-light text-mid transition-[color,padding-left] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:pl-2.5 hover:text-dark">
                   <div className="h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                   <span className="cs">Partnerská škola: CTRL Workshop zdarma</span>
                   <span className="en">Partner school: CTRL Workshop for free</span>
                 </div>
-                <div className="flex items-center gap-4 border-b border-light py-5 text-sm font-light text-mid transition-[color,padding-left] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:pl-2.5 hover:text-dark">
+                <div className="flex items-center gap-4 border-b border-separator py-5 text-sm font-light text-mid transition-[color,padding-left] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:pl-2.5 hover:text-dark">
                   <div className="h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                   <span className="cs">Partnerská organizace: společné projekty</span>
                   <span className="en">Partner organization: joint projects</span>
                 </div>
-                <div className="flex items-center gap-4 border-b border-light py-5 text-sm font-light text-mid transition-[color,padding-left] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:pl-2.5 hover:text-dark">
+                <div className="flex items-center gap-4 border-b border-separator py-5 text-sm font-light text-mid transition-[color,padding-left] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:pl-2.5 hover:text-dark">
                   <div className="h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                   <span className="cs">Mediální partnerství: rozhovory, reporty</span>
                   <span className="en">Media partnership: interviews, coverage</span>
                 </div>
-                <div className="flex items-center gap-4 border-b border-light py-5 text-sm font-light text-mid transition-[color,padding-left] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:pl-2.5 hover:text-dark">
+                <div className="flex items-center gap-4 border-b border-separator py-5 text-sm font-light text-mid transition-[color,padding-left] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:pl-2.5 hover:text-dark">
                   <div className="h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                   <span className="cs">Institucionální spolupráce: Erasmus+ a granty</span>
                   <span className="en">Institutional cooperation: Erasmus+ and grants</span>
@@ -184,7 +184,7 @@ export function JoinPageContent() {
             </div>
 
             {/* Right — wizard form panel using apply-page CSS */}
-            <div className="join-form-panel rev d2 apply-page join-apply-panel border border-light">
+            <div className="join-form-panel rev d2 apply-page join-apply-panel border border-separator">
 
               {/* Progress bar */}
               <div className="progress-track">
@@ -452,7 +452,7 @@ export function JoinPageContent() {
         </div>
       </section>
 
-      <div className="ticker-wrap-outer overflow-hidden border-t border-b border-light bg-bg py-[13px]">
+      <div className="ticker-wrap-outer overflow-hidden border-t border-b border-separator bg-bg py-[13px]">
         <div
           className="ticker-inner flex animate-ticker whitespace-nowrap"
           id="ticker"

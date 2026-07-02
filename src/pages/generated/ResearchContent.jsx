@@ -61,7 +61,7 @@ export function ResearchPageContent() {
                 European institutions.
               </p>
             </div>
-            <div className="flex flex-col gap-px bg-light">
+            <div className="flex flex-col sep-stack">
               <div className="rev d1 flex items-start justify-between gap-6 bg-bg px-9 py-10 max-sm:flex-col max-sm:gap-4">
                 <div className="flex-1">
                   <div className="cs mb-3 font-mono text-[10px] tracking-[2px] text-accent uppercase">
@@ -116,7 +116,7 @@ export function ResearchPageContent() {
                     region.
                   </div>
                 </div>
-                <div className="shrink-0 flex items-center gap-1.5 border border-light bg-bg2 px-3 py-1.5 self-start mt-1">
+                <div className="shrink-0 flex items-center gap-1.5 border border-separator bg-bg2 px-3 py-1.5 self-start mt-1">
                   <div className="w-1.5 h-1.5 rounded-full bg-mid opacity-50" />
                   <span className="cs font-mono text-[9px] tracking-[2px] uppercase text-mid">
                     Plánováno 2026
@@ -148,7 +148,7 @@ export function ResearchPageContent() {
                     people.
                   </div>
                 </div>
-                <div className="shrink-0 flex items-center gap-1.5 border border-light bg-bg2 px-3 py-1.5 self-start mt-1">
+                <div className="shrink-0 flex items-center gap-1.5 border border-separator bg-bg2 px-3 py-1.5 self-start mt-1">
                   <div className="w-1.5 h-1.5 rounded-full bg-mid opacity-50" />
                   <span className="cs font-mono text-[9px] tracking-[2px] uppercase text-mid">
                     Plánováno 2026

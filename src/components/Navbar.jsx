@@ -171,9 +171,9 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
       <nav
         id="nav"
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-[100] flex h-16 items-center justify-between border-b px-[52px] transition-[background,border-color] duration-400 max-lg:px-6 max-lg:bg-[rgba(245,245,243,0.97)] max-lg:backdrop-blur-[20px] max-lg:border-light max-[480px]:h-14 max-[480px]:px-4 ${
+        className={`fixed top-0 left-0 right-0 z-[100] flex h-16 items-center justify-between border-b px-[52px] transition-[background,border-color] duration-400 max-lg:px-6 max-lg:bg-[rgba(245,245,243,0.97)] max-lg:backdrop-blur-[20px] max-lg:border-separator max-[480px]:h-14 max-[480px]:px-4 ${
           isSolid
-            ? 'border-light bg-[rgba(245,245,243,0.94)] backdrop-blur-[20px]'
+            ? 'border-separator bg-[rgba(245,245,243,0.94)] backdrop-blur-[20px]'
             : 'lg:border-transparent'
         }`}
       >
@@ -268,7 +268,7 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
         </button>
         <Link
           to="/"
-          className={`mobile-menu-link flex items-center gap-3 border-b border-light py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive('/') ? 'text-accent' : 'text-dark'}`}
+          className={`mobile-menu-link flex items-center gap-3 border-b border-separator py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive('/') ? 'text-accent' : 'text-dark'}`}
           style={{ animationDelay: '0.05s' }}
           onClick={closeAll}
         >
@@ -279,7 +279,7 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
           <Link
             key={item.to}
             to={item.to}
-            className={`mobile-menu-link flex items-center gap-3 border-b border-light py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive(item.to) ? 'text-accent' : 'text-dark'}`}
+            className={`mobile-menu-link flex items-center gap-3 border-b border-separator py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive(item.to) ? 'text-accent' : 'text-dark'}`}
             style={{ animationDelay: `${0.1 + i * 0.05}s` }}
             onClick={closeAll}
           >

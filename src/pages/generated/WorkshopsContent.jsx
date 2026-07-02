@@ -160,7 +160,7 @@ export function WorkshopsPageContent() {
                 </strong>
               </p>
             </div>
-            <div className="rev d2 grid grid-cols-2 gap-px bg-light">
+            <div className="rev d2 grid grid-cols-2 sep-grid">
               {/* 90 MIN */}
               <div className="bg-bg2 px-6 py-6 flex flex-col gap-2">
                 <div className="flex items-center justify-between mb-1">
@@ -289,7 +289,7 @@ export function WorkshopsPageContent() {
                 </div>
               </div>
               {/* note — full width */}
-              <div className="col-span-2 flex items-start gap-4 bg-bg px-6 py-4 border-t border-light">
+              <div className="col-span-2 flex items-start gap-4 bg-bg px-6 py-4 border-t border-separator">
                 <svg
                   className="w-4 h-4 text-accent shrink-0 mt-0.5"
                   viewBox="0 0 16 16"
@@ -343,7 +343,7 @@ export function WorkshopsPageContent() {
               </span>
             </h2>
           </div>
-          <div className="flex flex-col gap-px bg-light">
+          <div className="flex flex-col sep-stack">
             <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
               <div className="pt-1">
                 <svg
@@ -885,10 +885,10 @@ export function WorkshopsPageContent() {
                 </Link>
               </div>
             </div>
-            <div className="rev d2 flex flex-col gap-px bg-light">
+            <div className="rev d2 flex flex-col sep-stack">
               {/* FREE */}
               <div className="flex items-center gap-5 bg-bg2 px-7 py-5 max-sm:px-5 max-sm:py-4">
-                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-light bg-bg text-mid">
+                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
                   <svg
                     className="w-4 h-4"
                     viewBox="0 0 16 16"
@@ -919,7 +919,7 @@ export function WorkshopsPageContent() {
               </div>
               {/* ADAPT */}
               <div className="flex items-center gap-5 bg-bg2 px-7 py-5 max-sm:px-5 max-sm:py-4">
-                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-light bg-bg text-mid">
+                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
                   <svg
                     className="w-4 h-4"
                     viewBox="0 0 16 16"
@@ -948,7 +948,7 @@ export function WorkshopsPageContent() {
               </div>
               {/* FLEX */}
               <div className="flex items-center gap-5 bg-bg2 px-7 py-5 max-sm:px-5 max-sm:py-4">
-                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-light bg-bg text-mid">
+                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
                   <svg
                     className="w-4 h-4"
                     viewBox="0 0 16 16"
@@ -983,7 +983,7 @@ export function WorkshopsPageContent() {
               </div>
               {/* ON-SITE */}
               <div className="flex items-center gap-5 bg-bg2 px-7 py-5 max-sm:px-5 max-sm:py-4">
-                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-light bg-bg text-mid">
+                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
                   <svg
                     className="w-4 h-4"
                     viewBox="0 0 16 16"
@@ -1013,7 +1013,7 @@ export function WorkshopsPageContent() {
               </div>
               {/* PARTNER */}
               <div className="flex items-center gap-5 bg-bg2 px-7 py-5 max-sm:px-5 max-sm:py-4">
-                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-light bg-bg text-mid">
+                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
                   <svg
                     className="w-4 h-4"
                     viewBox="0 0 16 16"
@@ -1074,7 +1074,7 @@ export function WorkshopsPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-3 gap-px bg-light max-lg:grid-cols-2 max-[480px]:grid-cols-1">
+          <div className="grid grid-cols-3 sep-grid max-lg:grid-cols-2 max-[480px]:grid-cols-1">
             <div className="rev d1 bg-bg2 px-10 py-12 max-sm:px-6 max-sm:py-8">
               <div className="mb-5">
                 <svg
@@ -1197,7 +1197,7 @@ export function WorkshopsPageContent() {
             </div>
             <div className="rev d2 flex flex-col gap-2.5">
               {/* Cyber step badges — no hover, static */}
-              <div className="flex items-start gap-5 border border-light bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
+              <div className="flex items-start gap-5 border border-separator bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
                 <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
                   01
                 </div>
@@ -1208,7 +1208,7 @@ export function WorkshopsPageContent() {
                   Network of partner schools in JMK and across CZ
                 </span>
               </div>
-              <div className="flex items-start gap-5 border border-light bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
+              <div className="flex items-start gap-5 border border-separator bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
                 <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
                   02
                 </div>
@@ -1219,7 +1219,7 @@ export function WorkshopsPageContent() {
                   Expansion to CEE countries: Slovakia, Poland and beyond
                 </span>
               </div>
-              <div className="flex items-start gap-5 border border-light bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
+              <div className="flex items-start gap-5 border border-separator bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
                 <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
                   03
                 </div>

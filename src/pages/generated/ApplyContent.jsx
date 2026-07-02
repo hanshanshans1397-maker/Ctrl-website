@@ -823,7 +823,7 @@ export function ApplyPageContent() {
         </div>
       </div>
 
-      <div className="ticker-wrap-outer overflow-hidden border-t border-b border-light bg-bg py-[13px]">
+      <div className="ticker-wrap-outer overflow-hidden border-t border-b border-separator bg-bg py-[13px]">
         <div
           className="ticker-inner flex animate-ticker whitespace-nowrap"
           id="ticker"
