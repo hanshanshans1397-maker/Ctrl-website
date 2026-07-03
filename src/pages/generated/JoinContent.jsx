@@ -184,7 +184,7 @@ export function JoinPageContent() {
             </div>
 
             {/* Right — wizard form panel using apply-page CSS */}
-            <div className="join-form-panel rev d2 apply-page join-apply-panel border border-separator">
+            <div className="join-form-panel rev d2 apply-page join-apply-panel">
 
               {/* Progress bar */}
               <div className="progress-track">
@@ -208,10 +208,11 @@ export function JoinPageContent() {
                       viewBox="0 0 24 24"
                       fill="none"
                       aria-hidden="true"
+                      className="text-accent"
                     >
                       <path
                         d="M5 13l4 4L19 7"
-                        stroke="#1D4ED8"
+                        stroke="currentColor"
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"

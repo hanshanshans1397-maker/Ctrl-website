@@ -378,14 +378,14 @@ body.reduced-motion .split-text .word span {
   @apply text-[15px] font-light text-mid;
 }
 
-/* member application form — ported from ctrl prihlaska.html */
+/* member application form */
 .apply-page {
-  --apply-bg: #fafaf7;
-  --apply-ink: #0d1117;
-  --apply-blue: #1d4ed8;
-  --apply-blue-soft: #eff4ff;
-  --apply-line: var(--color-separator);
-  --apply-muted: #6b7280;
+  --apply-bg: var(--color-bg);
+  --apply-ink: var(--color-dark);
+  --apply-blue: var(--color-accent);
+  --apply-blue-soft: var(--color-accent-dim);
+  --apply-line: var(--color-light);
+  --apply-muted: var(--color-mid);
 
   background: var(--apply-bg);
   color: var(--apply-ink);
@@ -509,10 +509,13 @@ body.reduced-motion .split-text .word span {
 
 .apply-page label {
   display: block;
-  font-size: 12.5px;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   margin-bottom: 8px;
-  color: var(--apply-ink);
+  color: var(--color-mid);
 }
 
 .apply-page label .opt {
@@ -529,24 +532,23 @@ body.reduced-motion .split-text .word span {
 .apply-page textarea,
 .apply-page select {
   width: 100%;
-  padding: 13px 14px;
+  padding: 12px 0;
   font-family: var(--font-sans);
   font-size: 14.5px;
   color: var(--apply-ink);
-  background: #fff;
-  border: 1.5px solid var(--apply-line);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-separator);
   border-radius: 0;
-  transition:
-    border-color 0.15s,
-    box-shadow 0.15s;
+  transition: border-color 0.2s;
 }
 
 .apply-page input:focus,
 .apply-page textarea:focus,
 .apply-page select:focus {
   outline: none;
-  border-color: var(--apply-blue);
-  box-shadow: 0 0 0 3px var(--apply-blue-soft);
+  border-bottom-color: var(--color-dark);
+  box-shadow: none;
 }
 
 .apply-page textarea {
@@ -559,8 +561,8 @@ body.reduced-motion .split-text .word span {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 36px;
+  background-position: right 0 center;
+  padding-right: 24px;
   cursor: pointer;
 }
 
@@ -574,22 +576,22 @@ body.reduced-motion .split-text .word span {
   padding: 9px 16px;
   font-size: 13px;
   font-weight: 500;
-  border: 1.5px solid var(--apply-line);
+  border: 1px solid var(--color-light);
   border-radius: 0;
-  background: #fff;
+  background: transparent;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.2s;
   user-select: none;
 }
 
 .apply-page .chip:hover {
-  border-color: var(--apply-blue);
+  border-color: var(--color-dark);
 }
 
 .apply-page .chip.selected {
-  background: var(--apply-blue);
-  border-color: var(--apply-blue);
-  color: #fff;
+  background: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-bg);
 }
 
 .apply-page .radio-cards {
@@ -603,43 +605,43 @@ body.reduced-motion .split-text .word span {
   align-items: flex-start;
   gap: 12px;
   padding: 14px 16px;
-  border: 1.5px solid var(--apply-line);
+  border: 1px solid var(--color-light);
   border-radius: 0;
   cursor: pointer;
-  transition: all 0.15s;
-  background: #fff;
+  transition: all 0.2s;
+  background: transparent;
 }
 
 .apply-page .radio-card:hover {
-  border-color: #c7d2e8;
+  border-color: var(--color-dark);
 }
 
 .apply-page .radio-card.selected {
-  border-color: var(--apply-blue);
-  background: var(--apply-blue-soft);
+  border-color: var(--color-accent);
+  background: var(--color-accent-dim);
 }
 
 .apply-page .radio-dot {
   width: 18px;
   height: 18px;
-  border-radius: 0;
-  border: 2px solid var(--apply-line);
+  border-radius: 50%;
+  border: 1.5px solid var(--color-separator);
   flex-shrink: 0;
   margin-top: 1px;
   position: relative;
-  transition: border-color 0.15s;
+  transition: border-color 0.2s;
 }
 
 .apply-page .radio-card.selected .radio-dot {
-  border-color: var(--apply-blue);
+  border-color: var(--color-accent);
 }
 
 .apply-page .radio-card.selected .radio-dot::after {
   content: "";
   position: absolute;
   inset: 3px;
-  border-radius: 0;
-  background: var(--apply-blue);
+  border-radius: 50%;
+  background: var(--color-accent);
 }
 
 .apply-page .radio-text strong {
@@ -688,8 +690,8 @@ body.reduced-motion .split-text .word span {
 .apply-page .submit-btn {
   width: 100%;
   padding: 17px;
-  background: var(--apply-ink);
-  color: #fff;
+  background: var(--color-dark);
+  color: var(--color-bg);
   font-family: var(--font-sans);
   font-size: 15px;
   font-weight: 600;
@@ -697,12 +699,12 @@ body.reduced-motion .split-text .word span {
   border-radius: 0;
   cursor: pointer;
   transition:
-    background 0.15s,
+    background 0.25s,
     transform 0.1s;
 }
 
 .apply-page .submit-btn:hover {
-  background: var(--apply-blue);
+  background: var(--color-accent);
 }
 
 .apply-page .submit-btn:active {
@@ -795,20 +797,20 @@ body.reduced-motion .split-text .word span {
   font-size: 14px;
   font-weight: 500;
   background: transparent;
-  border: 1.5px solid var(--apply-line);
+  border: 1px solid var(--color-light);
   border-radius: 0;
-  color: var(--apply-muted);
+  color: var(--color-mid);
   cursor: pointer;
   transition:
-    border-color 0.15s,
-    color 0.15s;
+    border-color 0.2s,
+    color 0.2s;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .apply-btn-back:hover {
-  border-color: var(--apply-ink);
-  color: var(--apply-ink);
+  border-color: var(--color-dark);
+  color: var(--color-dark);
 }
 
 .apply-btn-next {
@@ -821,8 +823,8 @@ body.reduced-motion .split-text .word span {
   font-family: var(--font-sans);
   font-size: 15px;
   font-weight: 600;
-  background: var(--apply-line);
-  color: var(--apply-muted);
+  background: var(--color-light2);
+  color: var(--color-mid);
   border: none;
   border-radius: 0;
   cursor: not-allowed;
@@ -833,13 +835,13 @@ body.reduced-motion .split-text .word span {
 }
 
 .apply-btn-next.apply-btn-next--active {
-  background: var(--apply-blue);
-  color: #fff;
+  background: var(--color-dark);
+  color: var(--color-bg);
   cursor: pointer;
 }
 
 .apply-btn-next.apply-btn-next--active:hover {
-  background: #1741b8;
+  background: var(--color-accent);
 }
 
 .apply-btn-next.apply-btn-next--active:active {
@@ -885,6 +887,7 @@ body.EN .apply-page .success p.en {
   display: block;
   padding: 48px;
   justify-content: unset;
+  background: var(--color-bg2);
 }
 
 @media (max-width: 960px) {
@@ -1800,7 +1803,7 @@ body.EN .apply-page .success p.en {
   }
 
   .join-form-panel {
-    @apply border border-separator bg-white px-10 py-12 max-lg:px-7 max-lg:py-9 max-sm:px-5 max-sm:py-7;
+    @apply bg-bg2 px-10 py-12 max-lg:px-7 max-lg:py-9 max-sm:px-5 max-sm:py-7;
   }
 
   .form-block {
@@ -1819,12 +1822,6 @@ body.EN .apply-page .success p.en {
   .fs,
   .fta {
     @apply w-full border-b border-separator bg-transparent py-3 text-sm font-light text-dark outline-none transition-[border-color] duration-[250ms] placeholder:text-[rgba(11,16,32,0.25)] focus:border-dark max-sm:text-base;
-  }
-
-  .join-form-panel .fi,
-  .join-form-panel .fs,
-  .join-form-panel .fta {
-    @apply rounded-none border border-separator bg-bg px-4 py-3.5 focus:border-dark focus:bg-white;
   }
 
   .fs {
