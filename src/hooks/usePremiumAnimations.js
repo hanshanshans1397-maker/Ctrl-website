@@ -8,6 +8,7 @@ import {
   revealGsapElements,
   applyMotionBodyClass,
 } from '../utils/motion';
+import { addScrambleTween } from '../utils/scramble';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -111,7 +112,8 @@ function sectionBlockReveal() {
     const label = head.querySelector('.section-label, .page-label, .sec-label');
     const title = head.querySelector('.section-title, .sec-title, .page-title, h2');
     const titleEm = title?.querySelector('em');
-    const prose = head.querySelector('blockquote, .section-lede');
+    // blockquotes with data-scrub-words are revealed word-by-word while scrolling
+    const prose = head.querySelector('blockquote:not([data-scrub-words]), .section-lede');
     const grid = findGridContainer(head);
     const trailing = collectTrailingSiblings(head, contentRoot);
 
@@ -122,8 +124,8 @@ function sectionBlockReveal() {
     items.forEach(prepareGsap);
     if (contentRoot) prepareGsap(contentRoot);
     trailing.forEach(prepareGsap);
-    gsap.set(head, { opacity: 1, y: 0, filter: 'blur(0px)' });
-    if (contentRoot) gsap.set(contentRoot, { opacity: 1, y: 0, filter: 'blur(0px)' });
+    gsap.set(head, { opacity: 1, y: 0 });
+    if (contentRoot) gsap.set(contentRoot, { opacity: 1, y: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -133,21 +135,23 @@ function sectionBlockReveal() {
       },
     });
 
-    if (label) gsap.set(label, { opacity: 0, x: -18, filter: 'blur(4px)' });
+    if (label) gsap.set(label, { opacity: 0, x: -18 });
     if (title) {
-      gsap.set(title, { opacity: 0, y: 36, filter: 'blur(8px)' });
+      gsap.set(title, { opacity: 0, y: 64, skewY: 3.5, transformOrigin: 'left top' });
       if (titleEm) gsap.set(titleEm, { opacity: 0, y: 12 });
     }
-    if (prose) gsap.set(prose, { opacity: 0, y: 28, filter: 'blur(6px)' });
+    if (prose) gsap.set(prose, { opacity: 0, y: 28 });
     if (grid) gsap.set(grid, { opacity: 1, clipPath: 'inset(0 100% 0 0)' });
-    trailing.forEach((el) => gsap.set(el, { opacity: 0, y: 24, filter: 'blur(4px)' }));
+    trailing.forEach((el) => gsap.set(el, { opacity: 0, y: 24 }));
 
     items.forEach((item) => {
-      gsap.set(item, { opacity: 0, y: 52, filter: 'blur(5px)' });
+      gsap.set(item, { opacity: 0, y: 52, scale: 0.97, transformOrigin: '50% 100%' });
       const num = item.querySelector('.what-num');
       if (num) gsap.set(num, { opacity: 0, scale: 0.55, transformOrigin: 'left center' });
       const numberVal = item.querySelector('.number-val');
-      if (numberVal) gsap.set(numberVal, { opacity: 0, y: 20, scale: 0.92, transformOrigin: 'left bottom' });
+      if (numberVal) gsap.set(numberVal, { opacity: 0, y: 24, scale: 0.8, transformOrigin: 'left bottom' });
+      const avatar = item.querySelector(':scope > .rounded-full');
+      if (avatar) gsap.set(avatar, { opacity: 0, scale: 0.4, rotate: -10, transformOrigin: '50% 50%' });
       const icon = item.querySelector('.what-icon');
       if (icon) prepareSvgIcon(icon);
     });
@@ -162,9 +166,13 @@ function sectionBlockReveal() {
     if (label) {
       tl.to(
         label,
-        { opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.55, ease: EASE_PREMIUM },
+        { opacity: 1, x: 0, duration: 0.55, ease: EASE_PREMIUM },
         t,
       );
+      // Decode effect: label text resolves from random glyphs.
+      const langSpans = label.querySelectorAll(':scope > span');
+      const scrambleTargets = langSpans.length ? langSpans : [label];
+      scrambleTargets.forEach((el) => addScrambleTween(tl, el, t, { duration: 0.75 }));
       tl.add(() => label.classList.add('is-visible'), t);
       t += 0.1;
     }
@@ -172,7 +180,7 @@ function sectionBlockReveal() {
     if (title) {
       tl.to(
         title,
-        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.82, ease: EASE_PREMIUM },
+        { opacity: 1, y: 0, skewY: 0, duration: 0.95, ease: EASE_PREMIUM },
         t,
       );
       if (titleEm) {
@@ -184,7 +192,7 @@ function sectionBlockReveal() {
     if (prose) {
       tl.to(
         prose,
-        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.85, ease: EASE_PREMIUM },
+        { opacity: 1, y: 0, duration: 0.85, ease: EASE_PREMIUM },
         t + 0.06,
       );
       t += 0.12;
@@ -204,11 +212,9 @@ function sectionBlockReveal() {
         {
           opacity: 1,
           y: 0,
-          filter: 'blur(0px)',
           duration: 0.75,
           stagger: 0.1,
           ease: EASE_PREMIUM,
-          clearProps: 'filter',
         },
         t + 0.1,
       );
@@ -226,11 +232,10 @@ function sectionBlockReveal() {
         {
           opacity: 1,
           y: 0,
-          filter: 'blur(0px)',
+          scale: 1,
           duration: 0.88,
           stagger: 0.1,
           ease: EASE_PREMIUM,
-          clearProps: 'filter',
         },
         cardsStart,
       );
@@ -245,8 +250,16 @@ function sectionBlockReveal() {
         if (numberVal) {
           tl.to(
             numberVal,
-            { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: EASE_PREMIUM },
+            { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'back.out(1.9)' },
             offset + 0.08,
+          );
+        }
+        const avatar = item.querySelector(':scope > .rounded-full');
+        if (avatar) {
+          tl.to(
+            avatar,
+            { opacity: 1, scale: 1, rotate: 0, duration: 0.75, ease: 'back.out(1.8)' },
+            offset + 0.12,
           );
         }
         const icon = item.querySelector('.what-icon');
@@ -282,16 +295,14 @@ function staggerReveal(selector, options = {}) {
       if (!group.length) return null;
       return gsap.fromTo(
         group,
-        { y, x, opacity: 0, filter: 'blur(4px)' },
+        { y, x, opacity: 0 },
         {
           y: 0,
           x: 0,
           opacity: 1,
-          filter: 'blur(0px)',
           duration,
           stagger,
           ease: EASE_PREMIUM,
-          clearProps: 'filter',
           onComplete: () => group.forEach((el) => el.classList.add('in')),
           scrollTrigger: { trigger: section, start, once: true },
         },
@@ -301,16 +312,14 @@ function staggerReveal(selector, options = {}) {
 
   return gsap.fromTo(
     els,
-    { y, x, opacity: 0, filter: 'blur(4px)' },
+    { y, x, opacity: 0 },
     {
       y: 0,
       x: 0,
       opacity: 1,
-      filter: 'blur(0px)',
       duration,
       stagger,
       ease: EASE_PREMIUM,
-      clearProps: 'filter',
       onComplete: () => els.forEach((el) => el.classList.add('in')),
       scrollTrigger: { trigger: trigger || els[0], start, once: true },
     },
@@ -321,21 +330,29 @@ function imageReveal() {
   const strips = document.querySelectorAll('.photo-strip > *');
   if (!strips.length) return [];
 
+  // Cinematic: each frame expands open from a smaller window while the
+  // photo inside zooms out to fit.
   return [...strips].map((cell, i) => {
     const img = cell.querySelector('img');
     if (!img) return null;
-    return gsap.fromTo(
-      img,
-      { scale: 1.12, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1.1,
-        delay: i * 0.12,
-        ease: EASE_PREMIUM,
-        scrollTrigger: { trigger: cell, start: 'top 85%', once: true },
-      },
+
+    const tl = gsap.timeline({
+      delay: i * 0.14,
+      scrollTrigger: { trigger: cell, start: 'top 85%', once: true },
+    });
+    tl.fromTo(
+      cell,
+      { clipPath: 'inset(16% 11% 16% 11%)' },
+      { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: EASE_PREMIUM },
+      0,
     );
+    tl.fromTo(
+      img,
+      { scale: 1.22, opacity: 0.55 },
+      { scale: 1, opacity: 1, duration: 1.3, ease: EASE_PREMIUM },
+      0,
+    );
+    return tl;
   });
 }
 

@@ -15,7 +15,7 @@ export function HomePageContent() {
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
         <div className="hero-mobile-head hidden max-sm:block relative w-full shrink-0 bg-dark">
           {/* PŮVODNÍ MOBILE POZADÍ — odkomentuj spolu s h-[50vh] na rodiči:
-          <img src="/photos/hero.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_25%]" fetchpriority="high" decoding="async" />
+          <img src="/photos/hero.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_25%]" fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           */}
           <div className="px-5 z-[3]">
@@ -495,27 +495,27 @@ export function HomePageContent() {
           <div className="photo-strip grid grid-cols-3 gap-3 max-lg:grid-cols-1 max-[640px]:gap-2">
             <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
               <img
-                src="/photos/workshop-audience.png"
+                src="/photos/workshop-audience.webp"
                 alt="Členové CTRL Europe"
-                className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
+                className="strip-img absolute left-0 top-[-7%] w-full h-[114%] object-cover object-[center_20%] transition-[scale] duration-700 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
               <img
-                src="/photos/hero.png"
+                src="/photos/hero.webp"
                 alt="Prezentace CTRL Europe"
-                className="absolute inset-0 w-full h-full object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105"
+                className="strip-img absolute left-0 top-[-7%] w-full h-[114%] object-cover object-[center_30%] transition-[scale] duration-700 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
               <img
-                src="/photos/member-heart.jpg"
+                src="/photos/member-heart.webp"
                 alt="Studentský projekt CTRL"
-                className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                className="strip-img absolute left-0 top-[-7%] w-full h-[114%] object-cover object-top transition-[scale] duration-700 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
               />
@@ -648,7 +648,7 @@ export function HomePageContent() {
             <div className="rev d1 bg-bg py-10 px-8">
               <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden">
                 <img
-                  src="/IMG_4222.jpeg"
+                  src="/IMG_4222.webp"
                   alt="Jan Krejčí"
                   className="w-full h-full object-cover object-[center_22%]"
                   loading="lazy"
@@ -752,7 +752,7 @@ export function HomePageContent() {
         </div>
       </section>
 
-      <section className="bg-bg2 py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[640px]:py-16 max-[640px]:px-5">
+      <section id="why" className="bg-bg2 py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[640px]:py-16 max-[640px]:px-5">
         <div className="max-w-[1300px] mx-auto grid grid-cols-[1fr_360px] gap-20 items-center max-lg:grid-cols-1 max-lg:gap-14">
           <div className="rev">
             <div className="section-head">
@@ -760,7 +760,7 @@ export function HomePageContent() {
                 <span className="cs">Proč to děláme</span>
                 <span className="en">Why we do this</span>
               </span>
-              <blockquote className="text-[clamp(22px,3vw,36px)] font-light leading-[1.4] tracking-[-0.5px] text-dark mb-10 max-[640px]:text-[clamp(18px,5vw,24px)]">
+              <blockquote data-scrub-words className="text-[clamp(22px,3vw,36px)] font-light leading-[1.4] tracking-[-0.5px] text-dark mb-10 max-[640px]:text-[clamp(18px,5vw,24px)]">
                 <span className="cs">
                   &ldquo;CTRL Europe jsem nezaložil jako školní projekt. Vidím
                   problém: dezinformace, deepfaky, algoritmická manipulace.
@@ -823,7 +823,7 @@ export function HomePageContent() {
             <div className="aspect-[3/4] border-4 border-dark p-3 bg-dark">
               <div className="h-full overflow-hidden">
                 <img
-                  src="/IMG_4222.jpeg"
+                  src="/IMG_4222.webp"
                   alt="Jan Krejčí, zakladatel CTRL Europe"
                   className="w-full h-full object-cover object-[center_8%]"
                   loading="lazy"

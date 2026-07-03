@@ -9,7 +9,7 @@ export function SummitPageContent() {
       >
         {/* PŮVODNÍ HERO POZADÍ (desktop) — odkomentuj pro návrat k fotce:
         <img
-          src="/photos/Seminar.jpg"
+          src="/photos/Seminar.webp"
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-[center_35%] z-0 max-sm:hidden"
@@ -24,7 +24,7 @@ export function SummitPageContent() {
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
         <div className="hero-mobile-head hidden max-sm:block relative w-full shrink-0 bg-dark">
           {/* PŮVODNÍ MOBILE POZADÍ — odkomentuj spolu s h-[50vh] na rodiči:
-          <img src="/photos/Seminar.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_35%]" fetchpriority="high" decoding="async" />
+          <img src="/photos/Seminar.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_35%]" fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           */}
           <div className="px-5 z-[3]">
@@ -35,7 +35,7 @@ export function SummitPageContent() {
             <div className="flex items-baseline gap-[0.15em] text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span>Summit</span>
               <img
-                src="/2026.png"
+                src="/2026.webp"
                 alt="2026"
                 className="h-[0.85em] w-auto inline-block align-middle opacity-100"
                 loading="lazy"
@@ -63,7 +63,7 @@ export function SummitPageContent() {
             <div className="word">
               <span>
                 <img
-                  src="/2026.png"
+                  src="/2026.webp"
                   alt="2026"
                   className="h-[1em] w-auto inline-block align-middle opacity-100"
                   loading="lazy"

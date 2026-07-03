@@ -374,14 +374,14 @@ export function AboutPageContent() {
         id="hero"
       >
         {/* PŮVODNÍ HERO POZADÍ (desktop) — odkomentuj pro návrat k fotce:
-        <img src="/photos/ClenskyProjektClenove.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover z-0 max-sm:hidden" fetchpriority="high" decoding="async" />
+        <img src="/photos/ClenskyProjektClenove.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover z-0 max-sm:hidden" fetchpriority="high" decoding="async" />
         <div className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_top,rgba(11,16,32,0.92)_0%,rgba(11,16,32,0.58)_50%,rgba(11,16,32,0.2)_100%)] max-sm:hidden" aria-hidden="true" />
         */}
 
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
         <div className="hero-mobile-head hidden max-sm:block relative w-full shrink-0 bg-dark">
           {/* PŮVODNÍ MOBILE POZADÍ — odkomentuj spolu s h-[50vh] na rodiči:
-          <img src="/photos/ClenskyProjektClenove.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" fetchpriority="high" decoding="async" />
+          <img src="/photos/ClenskyProjektClenove.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           */}
           <div className="px-5 z-[3]">
@@ -562,7 +562,7 @@ export function AboutPageContent() {
           <div className="photo-strip grid grid-cols-3 gap-3 max-lg:grid-cols-1 max-[640px]:gap-2">
             <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
               <img
-                src="/photos/Seminar.jpg"
+                src="/photos/Seminar.webp"
                 alt="Členové studentského projektu CTRL"
                 className="absolute inset-0 w-full h-full object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
@@ -571,7 +571,7 @@ export function AboutPageContent() {
             </div>
             <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
               <img
-                src="/photos/workshopy.png"
+                src="/photos/workshopy.webp"
                 alt="Účastníci workshopu CTRL"
                 className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
@@ -580,7 +580,7 @@ export function AboutPageContent() {
             </div>
             <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
               <img
-                src="/photos/vyzkum.png"
+                src="/photos/vyzkum.webp"
                 alt="Výzkum CTRL Europe"
                 className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
@@ -911,7 +911,7 @@ export function AboutPageContent() {
             <div className="rev">
               <div className="aspect-[3/4] overflow-hidden mb-6 relative">
                 <img
-                  src="/IMG_4222.jpeg"
+                  src="/IMG_4222.webp"
                   alt="Jan Krejčí"
                   className="w-full h-full object-cover object-[center_8%] block"
                   loading="lazy"
