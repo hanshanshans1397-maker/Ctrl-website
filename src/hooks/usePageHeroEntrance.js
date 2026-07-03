@@ -40,7 +40,16 @@ export function usePageHeroEntrance({ splitText = false } = {}) {
       if (splitText && splitEls.length) {
         splitEls.forEach((el) => el.classList.add('in'));
       }
-      tl.fromTo(heroParts, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.06 }, 0.05);
+      // On phones the desktop title/meta are hidden and the mobile hero head
+      // shows the page title instead, so animate it as part of the entrance.
+      const mobileHead = document.querySelector('.hero-mobile-head');
+      const liteParts = [mobileHead, meta, title, bottom].filter(Boolean);
+      tl.fromTo(
+        liteParts,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.55, stagger: 0.08 },
+        0.05,
+      );
       return () => tl.kill();
     }
 

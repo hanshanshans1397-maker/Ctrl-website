@@ -344,7 +344,9 @@ export function usePremiumAnimations(pathname) {
     applyMotionBodyClass();
 
     if (shouldUseLiteMotion()) {
-      revealGsapElements();
+      // Reduced motion: show everything immediately. Other lite devices
+      // (mobile, low-end) get the cheap CSS .rev reveals from useScrollReveal.
+      if (prefersReducedMotion()) revealGsapElements();
       return undefined;
     }
 

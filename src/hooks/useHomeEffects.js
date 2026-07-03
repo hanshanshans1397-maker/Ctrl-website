@@ -13,17 +13,32 @@ export function useHomeEffects() {
   useLayoutEffect(() => {
     if (shouldUseLiteMotion()) {
       showHeroImmediately();
+      if (!prefersReducedMotion()) {
+        // Hidden before first paint; the entrance tween below reveals them.
+        gsap.set('#hero .hero-mobile-head, #hero .hero-mobile-body', { opacity: 0 });
+      }
     }
   }, []);
 
   useEffect(() => {
-    if (shouldUseLiteMotion()) return undefined;
-
-    const heroEls = document.querySelectorAll('.hero-title .word span, .hero-meta, .hero-sub, .hero-ctas');
-
     if (prefersReducedMotion()) {
       showHeroImmediately();
       return undefined;
+    }
+
+    if (shouldUseLiteMotion()) {
+      // Lightweight entrance for mobile/low-end: animate the two hero
+      // wrappers (their children are force-shown by the lite-motion CSS).
+      const parts = document.querySelectorAll('#hero .hero-mobile-head, #hero .hero-mobile-body');
+      if (!parts.length) return undefined;
+      const tl = gsap.timeline({ defaults: { ease: EASE_PREMIUM } });
+      tl.fromTo(
+        parts,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, clearProps: 'opacity,transform' },
+        0.05,
+      );
+      return () => tl.kill();
     }
 
     const tl = gsap.timeline({ defaults: { ease: EASE_PREMIUM } });

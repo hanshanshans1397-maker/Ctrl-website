@@ -171,9 +171,9 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
       <nav
         id="nav"
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-[100] flex h-16 items-center justify-between border-b px-[52px] transition-[background,border-color] duration-400 max-lg:px-6 max-lg:bg-[rgba(245,245,243,0.97)] max-lg:backdrop-blur-[20px] max-lg:border-separator max-[480px]:h-14 max-[480px]:px-4 ${
+        className={`fixed top-0 left-0 right-0 z-[100] flex h-16 items-center justify-between border-b px-[52px] transition-[background,border-color] duration-400 max-lg:px-6 max-lg:bg-[rgba(245,245,243,0.98)] max-lg:border-separator max-[480px]:h-14 max-[480px]:px-4 ${
           isSolid
-            ? 'border-separator bg-[rgba(245,245,243,0.94)] backdrop-blur-[20px]'
+            ? 'border-separator lg:bg-[rgba(245,245,243,0.92)] lg:backdrop-blur-[20px]'
             : 'lg:border-transparent'
         }`}
       >

@@ -218,6 +218,14 @@ body.lite-motion .partner-track {
   transition: none !important;
 }
 
+/* off-screen containers: freeze infinite animations (JS toggles .anim-idle) */
+.anim-idle,
+.anim-idle *,
+.anim-idle::before,
+.anim-idle::after {
+  animation-play-state: paused !important;
+}
+
 .d1 {
   transition-delay: 0.1s;
 }
@@ -4249,24 +4257,19 @@ body.EN .about-structure__members-label.en {
   2.5%,
   76.8% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
   76.9%,
   87.9% {
     stroke: #4a7bff;
-    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
   }
   92% {
     stroke: rgba(74, 123, 255, 0.55);
-    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
   }
   96% {
     stroke: rgba(74, 123, 255, 0.22);
-    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
   }
   100% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
 }
 
@@ -4275,24 +4278,19 @@ body.EN .about-structure__members-label.en {
   2.5%,
   81.6% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
   81.7%,
   87.9% {
     stroke: #4a7bff;
-    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
   }
   92% {
     stroke: rgba(74, 123, 255, 0.55);
-    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
   }
   96% {
     stroke: rgba(74, 123, 255, 0.22);
-    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
   }
   100% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
 }
 
@@ -4301,24 +4299,19 @@ body.EN .about-structure__members-label.en {
   2.5%,
   73.5% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
   73.6%,
   87.9% {
     stroke: #4a7bff;
-    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
   }
   92% {
     stroke: rgba(74, 123, 255, 0.55);
-    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
   }
   96% {
     stroke: rgba(74, 123, 255, 0.22);
-    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
   }
   100% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
 }
 
@@ -4327,24 +4320,19 @@ body.EN .about-structure__members-label.en {
   2.5%,
   80% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
   80.1%,
   87.9% {
     stroke: #4a7bff;
-    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
   }
   92% {
     stroke: rgba(74, 123, 255, 0.55);
-    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
   }
   96% {
     stroke: rgba(74, 123, 255, 0.22);
-    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
   }
   100% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
 }
 
@@ -4353,24 +4341,19 @@ body.EN .about-structure__members-label.en {
   2.5%,
   84.9% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
   85%,
   87.9% {
     stroke: #4a7bff;
-    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
   }
   92% {
     stroke: rgba(74, 123, 255, 0.55);
-    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
   }
   96% {
     stroke: rgba(74, 123, 255, 0.22);
-    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
   }
   100% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
 }
 
@@ -4379,24 +4362,19 @@ body.EN .about-structure__members-label.en {
   2.5%,
   75.1% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
   75.2%,
   87.9% {
     stroke: #4a7bff;
-    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
   }
   92% {
     stroke: rgba(74, 123, 255, 0.55);
-    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
   }
   96% {
     stroke: rgba(74, 123, 255, 0.22);
-    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
   }
   100% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
 }
 
@@ -4405,24 +4383,19 @@ body.EN .about-structure__members-label.en {
   2.5%,
   83.2% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
   83.3%,
   87.9% {
     stroke: #4a7bff;
-    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
   }
   92% {
     stroke: rgba(74, 123, 255, 0.55);
-    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
   }
   96% {
     stroke: rgba(74, 123, 255, 0.22);
-    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
   }
   100% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
 }
 
@@ -4431,24 +4404,19 @@ body.EN .about-structure__members-label.en {
   2.5%,
   71.9% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
   72%,
   87.9% {
     stroke: #4a7bff;
-    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
   }
   92% {
     stroke: rgba(74, 123, 255, 0.55);
-    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
   }
   96% {
     stroke: rgba(74, 123, 255, 0.22);
-    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
   }
   100% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
 }
 
@@ -4457,24 +4425,19 @@ body.EN .about-structure__members-label.en {
   2.5%,
   78.4% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
   78.5%,
   87.9% {
     stroke: #4a7bff;
-    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
   }
   92% {
     stroke: rgba(74, 123, 255, 0.55);
-    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
   }
   96% {
     stroke: rgba(74, 123, 255, 0.22);
-    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
   }
   100% {
     stroke: rgba(11, 16, 32, 0.1);
-    filter: none;
   }
 }
 

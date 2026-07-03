@@ -562,7 +562,7 @@ export function AboutPageContent() {
           <div className="photo-strip grid grid-cols-3 gap-3 max-lg:grid-cols-1 max-[640px]:gap-2">
             <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
               <img
-                src="/photos/ClenskyProjektClenove.png"
+                src="/photos/Seminar.jpg"
                 alt="Členové studentského projektu CTRL"
                 className="absolute inset-0 w-full h-full object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"

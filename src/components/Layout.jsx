@@ -13,6 +13,7 @@ import {
   useTickerClone,
 } from '../hooks/usePageEffects';
 import { useLenis } from '../hooks/useLenis';
+import { usePauseOffscreenAnimations } from '../hooks/usePauseOffscreenAnimations';
 import { usePremiumAnimations } from '../hooks/usePremiumAnimations';
 import { prefersReducedMotion, shouldUseLiteMotion, applyMotionBodyClass, onReducedMotionChange } from '../utils/motion';
 import { hasDarkHero } from '../utils/routes';
@@ -90,6 +91,7 @@ export function Layout() {
   useScrollToTop();
   useScrollReveal([pathname]);
   usePremiumAnimations(pathname);
+  usePauseOffscreenAnimations(pathname);
   useTickerClone();
   useFormI18n(isEn);
   useHeroParallax(pathname);

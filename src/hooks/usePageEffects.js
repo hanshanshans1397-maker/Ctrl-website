@@ -60,12 +60,11 @@ function shouldSkipReveal(el) {
   if (prefersReducedMotion()) return true;
 
   if (shouldUseLiteMotion()) {
-    if (el.classList.contains('section-head')) return true;
-    if (matchesGsapReveal(el)) return true;
-    if (el.closest('.section-head') && !el.classList.contains('section-head')) {
-      const head = el.closest('.section-head');
-      if (head?.querySelector('.section-title, .sec-title, .page-title')) return true;
-    }
+    // GSAP timelines are disabled on lite devices, so the IO-driven CSS
+    // reveal handles everything except hero heads (animated by the hero
+    // entrance timeline).
+    const head = el.closest('.section-head');
+    if (head?.querySelector('.page-title')) return true;
     return false;
   }
 

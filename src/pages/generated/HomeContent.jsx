@@ -113,14 +113,8 @@ export function HomePageContent() {
           <div className="ticker-item en font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-12 max-sm:px-5 whitespace-nowrap shrink-0 flex items-center gap-12">
             Digital Resilience
           </div>
-          <div className="ticker-item px-12 max-sm:px-5 shrink-0 flex items-center gap-12">
-            <img
-              src="/jihomoravskykrajlogovelke.jpg"
-              alt="Jihomoravský kraj"
-              className="h-[28px] w-auto opacity-50 grayscale"
-              loading="lazy"
-              decoding="async"
-            />
+          <div className="ticker-item font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-12 max-sm:px-5 whitespace-nowrap shrink-0 flex items-center gap-12">
+            jihomoravský kraj
           </div>
           <div className="ticker-item font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-12 max-sm:px-5 whitespace-nowrap shrink-0 flex items-center gap-12">
             Erasmus+
@@ -501,7 +495,7 @@ export function HomePageContent() {
           <div className="photo-strip grid grid-cols-3 gap-3 max-lg:grid-cols-1 max-[640px]:gap-2">
             <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
               <img
-                src="/photos/team.jpg"
+                src="/photos/workshop-audience.png"
                 alt="Členové CTRL Europe"
                 className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
