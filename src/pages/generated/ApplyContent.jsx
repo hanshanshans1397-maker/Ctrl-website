@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { ApplyNetworkAnimation } from "../../components/ApplyNetworkAnimation";
 import { useLang } from "../../context/LangContext";
 
 const APPLY_API_URL = "/api/apply";
@@ -267,7 +268,15 @@ export function ApplyPageContent() {
       </div>
 
       <div className="apply-page apply-page--below-hero">
-        <div className="apply-wrap">
+        <div className="apply-layout">
+          <aside className="apply-layout__aside">
+            <ApplyNetworkAnimation
+              step={step}
+              isSuccess={isSuccess}
+              showCountBump={isSuccess || (step === 4 && valid)}
+            />
+          </aside>
+          <div className="apply-wrap">
           {/* Progress bar */}
           <div className="progress-track">
             {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
@@ -821,6 +830,7 @@ export function ApplyPageContent() {
               )}
             </div>
           )}
+          </div>
         </div>
       </div>
 
