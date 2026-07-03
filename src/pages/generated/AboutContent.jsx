@@ -237,7 +237,7 @@ function StructureDirectoryRow({
 function BoardStructureBlock({ className = "" }) {
   return (
     <div
-      className={`flex h-full flex-col border border-separator border-l-[3px] border-l-accent bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
+      className={`flex h-full flex-col border-l-[3px] border-l-accent bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
     >
       <div className="mb-3 cs font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5 lg:text-[11px]">
         Předsednictvo
@@ -275,7 +275,7 @@ function BoardStructureBlock({ className = "" }) {
 function CouncilStructureBlock({ className = "" }) {
   return (
     <div
-      className={`flex h-full flex-col border border-separator bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
+      className={`flex h-full flex-col bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
     >
       <div className="mb-3 cs font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5">
         Rada zástupců
@@ -311,7 +311,7 @@ function CouncilStructureBlock({ className = "" }) {
 function CellLeaderCard({ leader, className = "" }) {
   return (
     <div
-      className={`rev ${leader.delay} group relative flex h-full min-h-[248px] flex-col border border-separator border-l-[3px] border-l-transparent bg-white px-7 py-8 transition-all duration-300 hover:border-l-accent hover:shadow-[0_12px_40px_rgba(11,16,32,0.05)] max-md:min-h-0 max-md:px-5 max-md:py-6 md:px-6 md:py-7 ${className}`}
+      className={`rev ${leader.delay} group relative flex h-full min-h-[248px] flex-col bg-white px-7 py-8 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(11,16,32,0.05)] max-md:min-h-0 max-md:px-5 max-md:py-6 md:px-6 md:py-7 ${className}`}
     >
       <div className="mb-4 flex items-start justify-between gap-4 max-md:mb-3 md:mb-5">
         <div className="min-w-0">
@@ -1178,7 +1178,7 @@ export function AboutPageContent() {
               </span>
             </h2>
           </div>
-          <div className="about-2col grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-[100px]">
+          <div className="about-2col grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(560px,1.15fr)] lg:gap-16 xl:grid-cols-[minmax(0,0.9fr)_minmax(680px,1.1fr)] xl:gap-[90px]">
             <div className="rev">
               <div className="prose max-w-[540px]">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
@@ -1222,11 +1222,11 @@ export function AboutPageContent() {
                 <span className="cs">Naše hodnoty</span>
                 <span className="en">Our values</span>
               </div>
-              <div className="val-grid grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
+              <div className="val-grid grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-2 xl:gap-4">
                 {CORE_VALUES.map((value) => (
                   <div
                     key={value.id}
-                    className={`val-card rev ${value.delay} group flex flex-col border border-separator bg-white px-5 py-6 transition-colors duration-300 hover:border-accent/25 sm:px-6 sm:py-7 lg:px-7 lg:py-8`}
+                    className={`val-card rev ${value.delay} group flex flex-col bg-white px-5 py-6 transition-colors duration-300 hover:border-accent/25 sm:px-6 sm:py-7 lg:px-7 lg:py-8`}
                   >
                     <div className="mb-3 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                       {value.id}
