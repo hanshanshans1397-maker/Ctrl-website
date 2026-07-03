@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import { AnimatedCounter } from "../../components/AnimatedCounter";
-import { HeroThreatMonitor } from "../../components/HeroThreatMonitor";
-
 export function HomePageContent() {
   return (
     <>
@@ -9,25 +7,10 @@ export function HomePageContent() {
         id="hero"
         className="min-h-screen flex flex-col justify-end px-[52px] pb-[100px] relative overflow-hidden bg-dark max-lg:px-6 max-lg:pb-20 max-[640px]:px-7 max-[640px]:pb-16 max-sm:px-0 max-sm:pb-0 max-sm:pt-0 max-sm:min-h-0 max-sm:justify-start max-[480px]:px-5 max-[480px]:pb-14 max-[480px]:pt-0"
       >
-        {/* PŮVODNÍ HERO POZADÍ (desktop) — odkomentuj pro návrat k fotce:
-        <img
-          src="/photos/hero.png"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-[center_25%] z-0 max-sm:hidden"
-          fetchpriority="high" decoding="async"
-        />
-        <div
-          className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)] max-sm:hidden"
-          aria-hidden="true"
-        />
-        */}
         <div
           className="hero-grain absolute inset-0 z-[2] opacity-[0.02] bg-[url('data:image/svg+xml,%3Csvg%20viewBox=%270%200%20512%20512%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.75%27%20numOctaves=%274%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27100%25%27%20height=%27100%25%27%20filter=%27url(%23n)%27/%3E%3C/svg%3E')] max-sm:hidden"
           aria-hidden="true"
         />
-
-        <HeroThreatMonitor />
 
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
         <div className="hero-mobile-head hidden max-sm:block relative w-full shrink-0 bg-dark">
@@ -89,7 +72,7 @@ export function HomePageContent() {
                 prepared generation is democracy&apos;s first line of defense.
               </strong>
             </p>
-            <div className="hero-ctas flex gap-3 opacity-0 translate-y-5 mr-[clamp(48px,8vw,140px)] max-[640px]:mr-0 max-[640px]:flex-wrap max-[640px]:justify-center max-sm:justify-start">
+            <div className="hero-ctas flex gap-3 opacity-0 translate-y-5 max-[640px]:flex-wrap max-[640px]:justify-center max-sm:justify-start">
               <a
                 href="#what"
                 className="btn-primary cs inline-flex items-center gap-2 text-[13px] font-semibold bg-bg text-dark px-7 py-3.5 tracking-wide transition-all duration-250 hover:bg-accent hover:text-bg no-underline"
