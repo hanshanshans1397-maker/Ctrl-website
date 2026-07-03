@@ -22,6 +22,15 @@ export function ResearchPageContent() {
           </div>
         </div>
 
+        <div className="hero-mobile-body hidden max-sm:block relative z-[2] px-5">
+          <p className="page-sub cs text-[rgba(245,245,243,0.65)]">
+            Analyzujeme digitální hrozby v kontextu střední Evropy.
+          </p>
+          <p className="page-sub en text-[rgba(245,245,243,0.65)]">
+            We analyze digital threats in the context of Central Europe.
+          </p>
+        </div>
+
         <div className="inner relative z-[2] max-sm:hidden">
           <div className="section-head">
             <span className="page-label cs max-sm:hidden">CTRL</span>
@@ -44,7 +53,7 @@ export function ResearchPageContent() {
             <div className="rev">
               <h2 className="sec-title mb-8 text-[clamp(32px,3.5vw,52px)] italic">
                 <span className="cs">
-                  Výzkum který <em>mění diskuzi.</em>
+                  Výzkum, který <em>mění diskuzi.</em>
                 </span>
                 <span className="en">
                   Research that <em>changes the conversation.</em>
