@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { AboutStructureAnimation } from "../../components/AboutStructureAnimation";
 
 const CELL_LEADERS = [
   {
@@ -1151,8 +1152,8 @@ export function AboutPageContent() {
                   as the starting point. Europe as the goal.
                 </p>
               </div>
-              <div className="lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pt-10">
-                <BoardStructureBlock />
+              <div className="mt-4 flex w-full justify-center lg:mt-8 lg:justify-start">
+                <AboutStructureAnimation />
               </div>
             </div>
             <div className="rev d2 flex h-full flex-col border-t border-separator pt-6 sm:pt-10 lg:border-t-0 lg:pt-0">

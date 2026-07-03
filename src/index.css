@@ -3328,3 +3328,1188 @@ body.reduced-motion .apply-people__travel--you {
 body.reduced-motion .apply-people__you-scale {
   transform: scale(1);
 }
+
+/* About structure org chart animation */
+.about-structure {
+  width: min(100%, 380px);
+  margin-inline: auto;
+}
+
+@media (min-width: 1024px) {
+  .about-structure {
+    width: 100%;
+    max-width: 520px;
+    margin-inline: 0;
+  }
+}
+
+.about-structure__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.about-structure__label.cs,
+.about-structure__members-label.cs {
+  visibility: visible;
+}
+
+.about-structure__label.en,
+.about-structure__members-label.en {
+  visibility: hidden;
+}
+
+body.EN .about-structure__label.cs,
+body.EN .about-structure__members-label.cs {
+  visibility: hidden;
+}
+
+body.EN .about-structure__label.en,
+body.EN .about-structure__members-label.en {
+  visibility: visible;
+}
+
+.about-structure__label.cs,
+.about-structure__label.en,
+.about-structure__members-label.cs,
+.about-structure__members-label.en {
+  display: inline;
+}
+
+.about-structure__board {
+  transform-box: fill-box;
+  transform-origin: center top;
+  opacity: 0;
+  animation: aboutStructureBoardIn 16s ease infinite;
+}
+
+.about-structure__board-node,
+.about-structure__council-node,
+.about-structure__cell {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.about-structure__board-node--0 {
+  animation: aboutStructureBoardNode0 16s ease infinite;
+}
+
+.about-structure__board-node--1 {
+  animation: aboutStructureBoardNode1 16s ease infinite;
+}
+
+.about-structure__board-node--2 {
+  animation: aboutStructureBoardNode2 16s ease infinite;
+}
+
+.about-structure__board-node--3 {
+  animation: aboutStructureBoardNode3 16s ease infinite;
+}
+
+.about-structure__line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.about-structure__line--vert {
+  animation: aboutStructureLineVert 16s ease infinite;
+}
+
+.about-structure__line--horiz {
+  animation: aboutStructureLineHoriz 16s ease infinite;
+}
+
+.about-structure__council-node {
+  animation: aboutStructureCouncilNode 16s ease infinite;
+}
+
+.about-structure__council-labels {
+  opacity: 0;
+  animation: aboutStructureCouncilLabel 16s ease infinite;
+}
+
+@keyframes aboutStructureCouncilLabel {
+  0%,
+  2.5% {
+    opacity: 1;
+  }
+  3%,
+  4% {
+    opacity: 0;
+  }
+  4%,
+  31% {
+    opacity: 0;
+  }
+  31%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.about-structure__branch {
+  animation: aboutStructureBranchDraw 16s ease infinite;
+}
+
+.about-structure__branch--0 {
+  animation-name: aboutStructureBranch0;
+}
+
+.about-structure__branch--1 {
+  animation-name: aboutStructureBranch1;
+}
+
+.about-structure__branch--2 {
+  animation-name: aboutStructureBranch2;
+}
+
+.about-structure__branch--3 {
+  animation-name: aboutStructureBranch3;
+}
+
+.about-structure__branch--4 {
+  animation-name: aboutStructureBranch4;
+}
+
+.about-structure__branch--5 {
+  animation-name: aboutStructureBranch5;
+}
+
+.about-structure__branch--6 {
+  animation-name: aboutStructureBranch6;
+}
+
+.about-structure__branch--7 {
+  animation-name: aboutStructureBranch7;
+}
+
+.about-structure__branch--8 {
+  animation-name: aboutStructureBranch8;
+}
+
+.about-structure__cell--0 {
+  animation: aboutStructureCell0 16s ease infinite;
+}
+
+.about-structure__cell--1 {
+  animation: aboutStructureCell1 16s ease infinite;
+}
+
+.about-structure__cell--2 {
+  animation: aboutStructureCell2 16s ease infinite;
+}
+
+.about-structure__cell--3 {
+  animation: aboutStructureCell3 16s ease infinite;
+}
+
+.about-structure__cell--4 {
+  animation: aboutStructureCell4 16s ease infinite;
+}
+
+.about-structure__cell--5 {
+  animation: aboutStructureCell5 16s ease infinite;
+}
+
+.about-structure__cell--6 {
+  animation: aboutStructureCell6 16s ease infinite;
+}
+
+.about-structure__cell--7 {
+  animation: aboutStructureCell7 16s ease infinite;
+}
+
+.about-structure__cell--8 {
+  animation: aboutStructureCell8 16s ease infinite;
+}
+
+.about-structure__members {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: aboutStructureMembersIn 16s ease infinite;
+}
+
+@keyframes aboutStructureBoardIn {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  16.5%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aboutStructureBoardNode0 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  4%,
+  7.125% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  7.125%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureBoardNode1 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  4%,
+  8.375% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  8.375%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureBoardNode2 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  4%,
+  10.25% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  10.25%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureBoardNode3 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  4%,
+  12.125% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  12.125%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureLineVert {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  16.5% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  17% {
+    opacity: 1;
+  }
+  29%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureLineHoriz {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  29% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  29.5% {
+    opacity: 1;
+  }
+  41.5%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureCouncilNode {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  4%,
+  29% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  32%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureBranchDraw {
+  0%,
+  37.5% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  38% {
+    opacity: 1;
+  }
+  42%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureBranch0 {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  32% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  32.5% {
+    opacity: 1;
+  }
+  35%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureBranch1 {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  34% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  34.5% {
+    opacity: 1;
+  }
+  37%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureBranch2 {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  36% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  36.5% {
+    opacity: 1;
+  }
+  39%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureBranch3 {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  38% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  38.5% {
+    opacity: 1;
+  }
+  41%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureBranch4 {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  40% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  40.5% {
+    opacity: 1;
+  }
+  43%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureBranch5 {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  42% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  42.5% {
+    opacity: 1;
+  }
+  45%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureBranch6 {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  44% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  44.5% {
+    opacity: 1;
+  }
+  47%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureBranch7 {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  46% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  46.5% {
+    opacity: 1;
+  }
+  49%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureBranch8 {
+  0%,
+  2.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  3%,
+  4% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  4%,
+  48% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  48.5% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes aboutStructureCellIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureCell0 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  4%,
+  32% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  34.5%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureCell1 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  4%,
+  34% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  36.5%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureCell2 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  4%,
+  36% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  38.5%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureCell3 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  4%,
+  38% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  40.5%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureCell4 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  4%,
+  40% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  42.5%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureCell5 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  4%,
+  42% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  44.5%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureCell6 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  4%,
+  44% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  46.5%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureCell7 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  4%,
+  46% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  48.5%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureCell8 {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  4%,
+  48% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  50.5%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aboutStructureMembersIn {
+  0%,
+  2.5% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  3%,
+  4% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  4%,
+  52% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  56%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-structure__cell--0 .about-structure__cell-box {
+  animation: aboutStructureCellBoxGlow0 16s ease-in-out infinite;
+}
+
+.about-structure__cell--1 .about-structure__cell-box {
+  animation: aboutStructureCellBoxGlow1 16s ease-in-out infinite;
+}
+
+.about-structure__cell--2 .about-structure__cell-box {
+  animation: aboutStructureCellBoxGlow2 16s ease-in-out infinite;
+}
+
+.about-structure__cell--3 .about-structure__cell-box {
+  animation: aboutStructureCellBoxGlow3 16s ease-in-out infinite;
+}
+
+.about-structure__cell--4 .about-structure__cell-box {
+  animation: aboutStructureCellBoxGlow4 16s ease-in-out infinite;
+}
+
+.about-structure__cell--5 .about-structure__cell-box {
+  animation: aboutStructureCellBoxGlow5 16s ease-in-out infinite;
+}
+
+.about-structure__cell--6 .about-structure__cell-box {
+  animation: aboutStructureCellBoxGlow6 16s ease-in-out infinite;
+}
+
+.about-structure__cell--7 .about-structure__cell-box {
+  animation: aboutStructureCellBoxGlow7 16s ease-in-out infinite;
+}
+
+.about-structure__cell--8 .about-structure__cell-box {
+  animation: aboutStructureCellBoxGlow8 16s ease-in-out infinite;
+}
+
+@keyframes aboutStructureCellBoxGlow0 {
+  0%,
+  2.5%,
+  76.8% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+  76.9%,
+  87.9% {
+    stroke: #4a7bff;
+    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
+  }
+  92% {
+    stroke: rgba(74, 123, 255, 0.55);
+    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
+  }
+  96% {
+    stroke: rgba(74, 123, 255, 0.22);
+    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
+  }
+  100% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+}
+
+@keyframes aboutStructureCellBoxGlow1 {
+  0%,
+  2.5%,
+  81.6% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+  81.7%,
+  87.9% {
+    stroke: #4a7bff;
+    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
+  }
+  92% {
+    stroke: rgba(74, 123, 255, 0.55);
+    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
+  }
+  96% {
+    stroke: rgba(74, 123, 255, 0.22);
+    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
+  }
+  100% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+}
+
+@keyframes aboutStructureCellBoxGlow2 {
+  0%,
+  2.5%,
+  73.5% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+  73.6%,
+  87.9% {
+    stroke: #4a7bff;
+    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
+  }
+  92% {
+    stroke: rgba(74, 123, 255, 0.55);
+    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
+  }
+  96% {
+    stroke: rgba(74, 123, 255, 0.22);
+    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
+  }
+  100% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+}
+
+@keyframes aboutStructureCellBoxGlow3 {
+  0%,
+  2.5%,
+  80% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+  80.1%,
+  87.9% {
+    stroke: #4a7bff;
+    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
+  }
+  92% {
+    stroke: rgba(74, 123, 255, 0.55);
+    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
+  }
+  96% {
+    stroke: rgba(74, 123, 255, 0.22);
+    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
+  }
+  100% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+}
+
+@keyframes aboutStructureCellBoxGlow4 {
+  0%,
+  2.5%,
+  84.9% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+  85%,
+  87.9% {
+    stroke: #4a7bff;
+    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
+  }
+  92% {
+    stroke: rgba(74, 123, 255, 0.55);
+    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
+  }
+  96% {
+    stroke: rgba(74, 123, 255, 0.22);
+    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
+  }
+  100% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+}
+
+@keyframes aboutStructureCellBoxGlow5 {
+  0%,
+  2.5%,
+  75.1% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+  75.2%,
+  87.9% {
+    stroke: #4a7bff;
+    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
+  }
+  92% {
+    stroke: rgba(74, 123, 255, 0.55);
+    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
+  }
+  96% {
+    stroke: rgba(74, 123, 255, 0.22);
+    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
+  }
+  100% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+}
+
+@keyframes aboutStructureCellBoxGlow6 {
+  0%,
+  2.5%,
+  83.2% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+  83.3%,
+  87.9% {
+    stroke: #4a7bff;
+    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
+  }
+  92% {
+    stroke: rgba(74, 123, 255, 0.55);
+    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
+  }
+  96% {
+    stroke: rgba(74, 123, 255, 0.22);
+    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
+  }
+  100% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+}
+
+@keyframes aboutStructureCellBoxGlow7 {
+  0%,
+  2.5%,
+  71.9% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+  72%,
+  87.9% {
+    stroke: #4a7bff;
+    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
+  }
+  92% {
+    stroke: rgba(74, 123, 255, 0.55);
+    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
+  }
+  96% {
+    stroke: rgba(74, 123, 255, 0.22);
+    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
+  }
+  100% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+}
+
+@keyframes aboutStructureCellBoxGlow8 {
+  0%,
+  2.5%,
+  78.4% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+  78.5%,
+  87.9% {
+    stroke: #4a7bff;
+    filter: drop-shadow(0 0 4px rgba(74, 123, 255, 0.45));
+  }
+  92% {
+    stroke: rgba(74, 123, 255, 0.55);
+    filter: drop-shadow(0 0 2px rgba(74, 123, 255, 0.22));
+  }
+  96% {
+    stroke: rgba(74, 123, 255, 0.22);
+    filter: drop-shadow(0 0 1px rgba(74, 123, 255, 0.08));
+  }
+  100% {
+    stroke: rgba(11, 16, 32, 0.1);
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-structure__board,
+  .about-structure__board-node,
+  .about-structure__line,
+  .about-structure__council-node,
+  .about-structure__council-labels,
+  .about-structure__branch,
+  .about-structure__cell,
+  .about-structure__members,
+  .about-structure__cell-box {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+    stroke: rgba(11, 16, 32, 0.1) !important;
+    filter: none !important;
+  }
+}
+
+body.reduced-motion .about-structure__board,
+body.reduced-motion .about-structure__board-node,
+body.reduced-motion .about-structure__line,
+body.reduced-motion .about-structure__council-node,
+body.reduced-motion .about-structure__council-labels,
+body.reduced-motion .about-structure__branch,
+body.reduced-motion .about-structure__cell,
+body.reduced-motion .about-structure__members,
+body.reduced-motion .about-structure__cell-box {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  stroke-dashoffset: 0 !important;
+  stroke: rgba(11, 16, 32, 0.1) !important;
+  filter: none !important;
+}
