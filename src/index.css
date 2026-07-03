@@ -1347,9 +1347,7 @@ body.EN .apply-page .success p.en {
 }
 
 @media (max-width: 639px) {
-  .what-grid.sep-grid::before,
-  .numbers-grid.sep-grid::before,
-  .board-grid.sep-grid::before {
+  .what-grid.sep-grid::before {
     background-image:
       linear-gradient(to right, var(--color-separator), var(--color-separator)),
       linear-gradient(to right, var(--color-separator), var(--color-separator)),
