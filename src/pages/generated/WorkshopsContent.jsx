@@ -1074,7 +1074,7 @@ export function WorkshopsPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-3 sep-grid max-lg:grid-cols-2 max-[480px]:grid-cols-1">
+          <div className="grid grid-cols-3 sep-grid max-md:grid-cols-1">
             <div className="rev d1 bg-bg2 px-10 py-12 max-sm:px-6 max-sm:py-8">
               <div className="mb-5">
                 <svg
