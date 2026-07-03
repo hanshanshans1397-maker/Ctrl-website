@@ -568,7 +568,7 @@ export function SummitPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-4 sep-grid max-lg:grid-cols-2">
+          <div className="grid grid-cols-4 sep-grid max-lg:grid-cols-2 max-sm:grid-cols-1">
             <div className="offer-card rev d1 relative overflow-hidden border border-separator bg-bg2 px-9 py-11 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(11,16,32,0.08)] hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 01
