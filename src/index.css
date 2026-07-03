@@ -4513,3 +4513,343 @@ body.reduced-motion .about-structure__cell-box {
   stroke: rgba(11, 16, 32, 0.1) !important;
   filter: none !important;
 }
+
+/* join — partnership venn illustration (řízeno stavem formuláře přes data-step / data-success) */
+.join-partnership {
+  width: min(100%, 480px);
+  margin-inline: auto;
+}
+
+@media (min-width: 1024px) {
+  .join-partnership {
+    width: 100%;
+    max-width: 520px;
+    margin-inline: 0;
+  }
+}
+
+.join-partnership__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.join-partnership__t.cs {
+  visibility: visible;
+}
+
+.join-partnership__t.en {
+  visibility: hidden;
+}
+
+body.EN .join-partnership__t.cs {
+  visibility: hidden;
+}
+
+body.EN .join-partnership__t.en {
+  visibility: visible;
+}
+
+/* Jemné dýchání celé scény */
+.join-partnership__scene {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: joinVennFloat 6s ease-in-out infinite;
+}
+
+/* Kruhy: v kroku 0 od sebe, od kroku 1 spojené */
+.join-partnership__half {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.join-partnership[data-step="0"]:not([data-success]) .join-partnership__half--partner {
+  transform: translateX(-40px);
+}
+
+.join-partnership[data-step="0"]:not([data-success]) .join-partnership__half--ctrl {
+  transform: translateX(40px);
+}
+
+/* Tečkovaná linka „hledáme spojení" — jen v kroku 0 */
+.join-partnership__seek {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.join-partnership[data-step="0"]:not([data-success]) .join-partnership__seek {
+  animation: joinVennSeekPulse 1.8s ease-in-out infinite;
+}
+
+/* Průnik a plus — od kroku 1 */
+.join-partnership__lens {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 0.55s ease 0.45s,
+    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s;
+}
+
+.join-partnership__plus {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  transform: scale(0.3) rotate(-90deg);
+  transition:
+    opacity 0.45s ease 0.65s,
+    transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.65s;
+}
+
+.join-partnership[data-step="1"] .join-partnership__lens,
+.join-partnership[data-step="2"] .join-partnership__lens,
+.join-partnership[data-success] .join-partnership__lens {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.join-partnership[data-step="1"] .join-partnership__plus,
+.join-partnership[data-step="2"] .join-partnership__plus,
+.join-partnership[data-success] .join-partnership__plus {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.join-partnership[data-success] .join-partnership__lens {
+  transition: none;
+  animation: joinVennLensBreath 2.6s ease-in-out infinite;
+}
+
+/* Pulzní vlny: jednou při spojení, ve success smyčka */
+.join-partnership__ring {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.join-partnership[data-step="1"] .join-partnership__ring--1 {
+  animation: joinVennRingOnce 1.1s ease-out 0.6s both;
+}
+
+.join-partnership[data-step="1"] .join-partnership__ring--2 {
+  animation: joinVennRingOnce 1.1s ease-out 0.85s both;
+}
+
+.join-partnership[data-success] .join-partnership__ring--1 {
+  animation: joinVennRingLoop 2.6s ease-out infinite;
+}
+
+.join-partnership[data-success] .join-partnership__ring--2 {
+  animation: joinVennRingLoop 2.6s ease-out 0.65s infinite;
+}
+
+/* Orbit: pořád se točí, při spojení zvýrazní */
+.join-partnership__orbit {
+  opacity: 0.35;
+  transition: opacity 0.6s ease;
+}
+
+.join-partnership[data-step="1"] .join-partnership__orbit,
+.join-partnership[data-step="2"] .join-partnership__orbit,
+.join-partnership[data-success] .join-partnership__orbit {
+  opacity: 1;
+}
+
+.join-partnership__orbit-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: joinVennOrbitSpin 26s linear infinite;
+}
+
+/* Jiskry — oslava po úspěšném odeslání */
+.join-partnership__spark {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.join-partnership[data-success] .join-partnership__spark--1 {
+  animation: joinVennSparkTwinkle 2.2s ease-in-out infinite;
+}
+
+.join-partnership[data-success] .join-partnership__spark--2 {
+  animation: joinVennSparkTwinkle 2.2s ease-in-out 0.7s infinite;
+}
+
+/* Chipy s výstupy — v kroku 2 a po odeslání */
+.join-partnership__chip {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.join-partnership[data-step="2"] .join-partnership__chip--1,
+.join-partnership[data-success] .join-partnership__chip--1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.join-partnership[data-step="2"] .join-partnership__chip--2,
+.join-partnership[data-success] .join-partnership__chip--2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.24s;
+}
+
+.join-partnership[data-step="2"] .join-partnership__chip--3,
+.join-partnership[data-success] .join-partnership__chip--3 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.38s;
+}
+
+@keyframes joinVennFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes joinVennSeekPulse {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes joinVennLensBreath {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(0.97);
+  }
+}
+
+@keyframes joinVennRingOnce {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.3);
+  }
+}
+
+@keyframes joinVennRingLoop {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.4);
+  }
+  55% {
+    opacity: 0;
+    transform: scale(2.3);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.3);
+  }
+}
+
+@keyframes joinVennOrbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes joinVennSparkTwinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.2) rotate(0deg);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1) rotate(40deg);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(0.35) rotate(80deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .join-partnership__scene,
+  .join-partnership__half,
+  .join-partnership__seek,
+  .join-partnership__lens,
+  .join-partnership__plus,
+  .join-partnership__ring,
+  .join-partnership__orbit,
+  .join-partnership__orbit-spin,
+  .join-partnership__spark,
+  .join-partnership__chip {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .join-partnership__half,
+  .join-partnership__lens,
+  .join-partnership__plus,
+  .join-partnership__orbit,
+  .join-partnership__chip {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .join-partnership__seek,
+  .join-partnership__ring,
+  .join-partnership__spark {
+    opacity: 0 !important;
+  }
+}
+
+body.reduced-motion .join-partnership__scene,
+body.reduced-motion .join-partnership__half,
+body.reduced-motion .join-partnership__seek,
+body.reduced-motion .join-partnership__lens,
+body.reduced-motion .join-partnership__plus,
+body.reduced-motion .join-partnership__ring,
+body.reduced-motion .join-partnership__orbit,
+body.reduced-motion .join-partnership__orbit-spin,
+body.reduced-motion .join-partnership__spark,
+body.reduced-motion .join-partnership__chip {
+  animation: none !important;
+  transition: none !important;
+}
+
+body.reduced-motion .join-partnership__half,
+body.reduced-motion .join-partnership__lens,
+body.reduced-motion .join-partnership__plus,
+body.reduced-motion .join-partnership__orbit,
+body.reduced-motion .join-partnership__chip {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+body.reduced-motion .join-partnership__seek,
+body.reduced-motion .join-partnership__ring,
+body.reduced-motion .join-partnership__spark {
+  opacity: 0 !important;
+}

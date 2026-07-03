@@ -596,7 +596,7 @@ export function HomePageContent() {
 
       <section
         id="aktuality-promo"
-        className="border-t border-separator bg-bg px-[52px] py-20 max-lg:px-6 max-lg:py-16 max-sm:px-5 max-sm:py-14"
+        className="bg-bg px-[52px] py-20 max-lg:px-6 max-lg:py-16 max-sm:px-5 max-sm:py-14"
       >
         <div className="mx-auto flex max-w-[1300px] items-end justify-between gap-10 max-lg:flex-col max-lg:items-start max-lg:gap-8">
           <div className="rev max-w-[680px]">

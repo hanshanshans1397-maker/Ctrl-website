@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLang } from '../../context/LangContext';
+import { JoinPartnershipAnimation } from '../../components/JoinPartnershipAnimation';
 
 const FORMSPREE_URL = 'https://formspree.io/f/mqejkdwe';
 const TOTAL_STEPS = 3;
@@ -153,6 +154,10 @@ export function JoinPageContent() {
                 Not being prepared is not an option. We are looking for partners
                 who know that too.
               </p>
+
+              <div className="my-10 w-full max-w-[520px]">
+                <JoinPartnershipAnimation step={step} isSuccess={isSuccess} />
+              </div>
 
               <div className="mt-12 border-t border-separator">
                 <div className="flex items-center gap-4 border-b border-separator py-5 text-sm font-light text-mid transition-[color,padding-left] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:pl-2.5 hover:text-dark">
