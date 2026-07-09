@@ -194,7 +194,7 @@ export function Footer() {
             </a>
             {" & "}
             <a
-              href="https://github.com/crhaxx"
+              href="https://nikola.weply.cz"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[rgba(245,245,243,0.55)] hover:text-bg transition-colors duration-200 no-underline"
