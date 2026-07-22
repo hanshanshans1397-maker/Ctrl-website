@@ -545,10 +545,10 @@ export function HomePageContent() {
                 <AnimatedCounter value={621} />+
               </div>
               <div className="number-label cs font-mono text-[11px] font-light tracking-[2px] uppercase text-mid">
-                Aktivních členů
+                Studentů v CEE
               </div>
               <div className="number-label en font-mono text-[11px] font-light tracking-[2px] uppercase text-mid">
-                Active members
+                Students in CEE
               </div>
             </div>
             <div className="number-card rev d2 bg-bg py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">

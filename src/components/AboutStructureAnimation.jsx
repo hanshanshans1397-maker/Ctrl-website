@@ -369,32 +369,6 @@ export function AboutStructureAnimation() {
           <CellCard key={cell.id} cell={cell} />
         ))}
 
-        <g className="about-structure__members">
-          <text
-            className="about-structure__members-label cs"
-            x={CENTER_X}
-            y={324}
-            textAnchor="middle"
-            fill="rgba(11,16,32,0.32)"
-            fontSize="7"
-            fontFamily="var(--font-mono, monospace)"
-            letterSpacing="1.8"
-          >
-            41 AKTIVNÍCH ČLENŮ
-          </text>
-          <text
-            className="about-structure__members-label en"
-            x={CENTER_X}
-            y={324}
-            textAnchor="middle"
-            fill="rgba(11,16,32,0.32)"
-            fontSize="7"
-            fontFamily="var(--font-mono, monospace)"
-            letterSpacing="1.8"
-          >
-            41 ACTIVE MEMBERS
-          </text>
-        </g>
       </svg>
     </div>
   );

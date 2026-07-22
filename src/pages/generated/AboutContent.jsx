@@ -510,10 +510,10 @@ export function AboutPageContent() {
               </div>
               <div className="py-8 px-9 border-b border-separator bg-bg">
                 <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 cs">
-                  Aktivních členů
+                  Studentů v CEE
                 </div>
                 <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 en">
-                  Active members
+                  Students in CEE
                 </div>
                 <div className="text-xl font-semibold text-accent">621+</div>
               </div>
@@ -980,10 +980,10 @@ export function AboutPageContent() {
                 </p>
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
                   Jsem sedmnáctiletý student IT na Střední škole informatiky,
-                  poštovnictví a finančnictví v Brně. Od málí mě zajímá průsečík
-                  technologií, politiky a společnosti. Vidím jak digitální
-                  manipulace ovlivňuje demokratické procesy. A jak málo se o tom
-                  mluví tam, kde by se mluvit mělo.
+                  poštovnictví a finančnictví v Brně. Od mládí mě zajímá
+                  průsečík technologií, politiky a společnosti. Vidím jak
+                  digitální manipulace ovlivňuje demokratické procesy. A jak
+                  málo se o tom mluví tam, kde by se mluvit mělo.
                 </p>
                 <p className="en text-base font-light leading-[1.85] text-mid mb-5">
                   I am a seventeen-year-old IT student at the Secondary School
@@ -1144,12 +1144,12 @@ export function AboutPageContent() {
                   board.
                 </p>
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
-                  Celkem 41 aktivních členů. Vícejázyčný tým. Střední Evropa
-                  jako výchozí bod. Evropa jako cíl.
+                  Vícejázyčný tým. Střední Evropa jako výchozí bod. Evropa jako
+                  cíl.
                 </p>
                 <p className="en text-base font-light leading-[1.85] text-mid mb-5">
-                  41 active members in total. Multilingual team. Central Europe
-                  as the starting point. Europe as the goal.
+                  Multilingual team. Central Europe as the starting point.
+                  Europe as the goal.
                 </p>
               </div>
               <div className="mt-4 flex w-full justify-center lg:mt-8 lg:justify-start">
