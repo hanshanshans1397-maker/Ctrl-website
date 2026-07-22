@@ -1066,8 +1066,8 @@ export function SummitPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-3 sep-grid max-md:grid-cols-1">
-            <div className="for-card rev d1 border border-separator bg-bg p-8 transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] hover:border-accent max-sm:p-5">
+          <div className="for-grid grid grid-cols-3 sep-grid max-md:grid-cols-1">
+            <div className="for-card rev d1 bg-bg p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Studenti
               </div>
@@ -1083,7 +1083,7 @@ export function SummitPageContent() {
                 in digital technology, media or politics.
               </p>
             </div>
-            <div className="for-card rev d2 border border-separator bg-bg p-8 transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] hover:border-accent max-sm:p-5">
+            <div className="for-card rev d2 bg-bg p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Školy a učitelé
               </div>
@@ -1099,7 +1099,7 @@ export function SummitPageContent() {
                 with an international environment.
               </p>
             </div>
-            <div className="for-card rev d3 border border-separator bg-bg p-8 transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] hover:border-accent max-sm:p-5">
+            <div className="for-card rev d3 bg-bg p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Mládežnické organizace
               </div>
@@ -1115,7 +1115,7 @@ export function SummitPageContent() {
                 cooperation and share experiences.
               </p>
             </div>
-            <div className="for-card rev d1 border border-separator bg-bg p-8 transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] hover:border-accent max-sm:p-5">
+            <div className="for-card rev d1 bg-bg p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Experti a řečníci
               </div>
@@ -1131,7 +1131,7 @@ export function SummitPageContent() {
                 their expertise with young people.
               </p>
             </div>
-            <div className="for-card rev d2 border border-separator bg-bg p-8 transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] hover:border-accent max-sm:p-5">
+            <div className="for-card rev d2 bg-bg p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Partneři a sponzoři
               </div>
@@ -1147,7 +1147,7 @@ export function SummitPageContent() {
                 support the emergence of a new generation of leadership.
               </p>
             </div>
-            <div className="for-card rev d3 border border-separator bg-bg p-8 transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] hover:border-accent max-sm:p-5">
+            <div className="for-card rev d3 bg-bg p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Média
               </div>

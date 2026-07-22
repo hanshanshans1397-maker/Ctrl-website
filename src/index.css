@@ -1373,6 +1373,42 @@ body.EN .apply-people__caption.en {
   }
 }
 
+/* summit/workshops 3×2 audience grids — overlay verticals, gap for row rule */
+.for-grid.sep-grid {
+  gap: 0;
+  row-gap: 1px;
+  background-color: var(--color-separator);
+  position: relative;
+  isolation: isolate;
+}
+
+.for-grid.sep-grid > * {
+  position: relative;
+  z-index: 1;
+}
+
+.for-grid.sep-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(var(--color-separator), var(--color-separator)),
+    linear-gradient(var(--color-separator), var(--color-separator));
+  background-size: 1px 100%, 1px 100%;
+  background-position:
+    calc(33.333% - 0.5px) 0,
+    calc(66.666% - 0.5px) 0;
+}
+
+@media (max-width: 767px) {
+  .for-grid.sep-grid::before {
+    display: none;
+  }
+}
+
 /* section grid wipe reveal */
 .what-grid.grid,
 .numbers-grid.grid,
