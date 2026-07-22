@@ -29,14 +29,14 @@ export function SummitPageContent() {
           */}
           <div className="px-5 z-[3]">
             <span className="block text-xl text-accent mb-3">
-              <span className="cs">Jaro 2026</span>
-              <span className="en">Spring 2026</span>
+              <span className="cs">Jaro 2027</span>
+              <span className="en">Spring 2027</span>
             </span>
             <div className="flex items-baseline gap-[0.15em] text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span>Summit</span>
               <img
-                src="/2026.webp"
-                alt="2026"
+                src="/2027.svg"
+                alt="2027"
                 className="h-[0.85em] w-auto inline-block align-middle opacity-100"
                 loading="lazy"
                 decoding="async"
@@ -51,8 +51,8 @@ export function SummitPageContent() {
             className="mb-10 flex translate-y-4 items-center gap-5 opacity-0 max-sm:hidden"
           >
             <span className="text-xl text-accent">
-              <span className="cs">Jaro 2026</span>
-              <span className="en">Spring 2026</span>
+              <span className="cs">Jaro 2027</span>
+              <span className="en">Spring 2027</span>
             </span>
           </div>
 
@@ -63,8 +63,8 @@ export function SummitPageContent() {
             <div className="word">
               <span>
                 <img
-                  src="/2026.webp"
-                  alt="2026"
+                  src="/2027.svg"
+                  alt="2027"
                   className="h-[1em] w-auto inline-block align-middle opacity-100"
                   loading="lazy"
                   decoding="async"
@@ -117,7 +117,7 @@ export function SummitPageContent() {
         </div>
 
         <div className="deco-year pointer-events-none absolute z-[1] right-[52px] bottom-[60px] text-[clamp(120px,16vw,220px)] leading-none font-black tracking-[-8px] text-[rgba(245,245,243,0.03)] select-none max-sm:left-1/2 max-sm:right-auto max-sm:bottom-6 max-sm:-translate-x-1/2 max-sm:text-[clamp(56px,18vw,88px)] max-sm:tracking-[-3px]">
-          2026
+          2027
         </div>
       </section>
 
@@ -162,7 +162,7 @@ export function SummitPageContent() {
               Spring
             </div>
             <div className="mt-1 font-mono text-[10px] tracking-[2px] text-[rgba(255,255,255,0.6)] uppercase">
-              2026
+              2027
             </div>
           </div>
         </div>
@@ -268,10 +268,10 @@ export function SummitPageContent() {
                 </div>
                 <div className="bg-bg2 px-6 py-6 text-center">
                   <div className="text-[40px] font-extrabold tracking-[-2px] text-accent">
-                    0
+                    0 Kč
                   </div>
                   <div className="cs mt-1 font-mono text-[10px] tracking-[2px] text-mid uppercase">
-                    Kc vstup
+                    vstup
                   </div>
                   <div className="en mt-1 font-mono text-[10px] tracking-[2px] text-mid uppercase">
                     Entry fee
@@ -1193,11 +1193,11 @@ export function SummitPageContent() {
           </p>
           <p className="rev d2 cs mx-auto max-w-[640px] text-[17px] leading-[1.85] font-light text-mid">
             Nezaznamenáváme si v tom žádné velké sliby. Stavíme to krok po
-            kroku. Rok 2026 je tím prvním.
+            kroku. Rok 2027 je tím prvním.
           </p>
           <p className="rev d2 en mx-auto max-w-[640px] text-[17px] leading-[1.85] font-light text-mid">
             We are not making grand promises. We are building this step by step.
-            And 2026 is just the beginning.
+            And 2027 is just the beginning.
           </p>
         </div>
       </section>
@@ -1251,7 +1251,7 @@ export function SummitPageContent() {
           id="ticker"
         >
           <div className="ticker-item flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
-            CTRL Summit 2026
+            CTRL Summit 2027
           </div>
           <div className="ticker-item flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
             Brno
@@ -1284,10 +1284,10 @@ export function SummitPageContent() {
             Digital Resilience
           </div>
           <div className="ticker-item cs flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
-            Jaro 2026
+            Jaro 2027
           </div>
           <div className="ticker-item en flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
-            Spring 2026
+            Spring 2027
           </div>
         </div>
       </div>

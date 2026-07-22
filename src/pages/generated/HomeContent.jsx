@@ -752,7 +752,10 @@ export function HomePageContent() {
         </div>
       </section>
 
-      <section id="why" className="bg-bg2 py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[640px]:py-16 max-[640px]:px-5">
+      <section
+        id="why"
+        className="bg-bg2 py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[640px]:py-16 max-[640px]:px-5"
+      >
         <div className="max-w-[1300px] mx-auto grid grid-cols-[1fr_360px] gap-20 items-center max-lg:grid-cols-1 max-lg:gap-14">
           <div className="rev">
             <div className="section-head">
@@ -760,11 +763,14 @@ export function HomePageContent() {
                 <span className="cs">Proč to děláme</span>
                 <span className="en">Why we do this</span>
               </span>
-              <blockquote data-scrub-words className="text-[clamp(22px,3vw,36px)] font-light leading-[1.4] tracking-[-0.5px] text-dark mb-10 max-[640px]:text-[clamp(18px,5vw,24px)]">
+              <blockquote
+                data-scrub-words
+                className="text-[clamp(22px,3vw,36px)] font-light leading-[1.4] tracking-[-0.5px] text-dark mb-10 max-[640px]:text-[clamp(18px,5vw,24px)]"
+              >
                 <span className="cs">
                   &ldquo;CTRL Europe jsem nezaložil jako školní projekt. Vidím
                   problém: dezinformace, deepfaky, algoritmická manipulace.
-                  Věřím, že naše generace ho musí řešit sama. Školy na to
+                  Věřím, že naše generace ho musí řešit sama. Školy to
                   nestíhají. Proto jsme se rozhodli jednat.&rdquo;
                 </span>
                 <span className="en">
