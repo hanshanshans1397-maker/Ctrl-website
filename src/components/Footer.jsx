@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLang } from "../context/LangContext";
 import { getInstagramUrl, CONTACT_EMAIL } from "../utils/socialLinks";
+import { ORGANIZATION } from "../utils/organizationInfo";
 
 function IconInstagram() {
   return (
@@ -181,9 +182,19 @@ export function Footer() {
             </div>
           </div>
         </div>
+        <div className="mb-6 font-mono text-[10px] font-light leading-relaxed text-[rgba(245,245,243,0.25)] max-[640px]:mb-4">
+          <div>{ORGANIZATION.name}</div>
+          <div>{ORGANIZATION.address}</div>
+          <div>
+            <span className="cs">IČO: {ORGANIZATION.ico}</span>
+            <span className="en">Company ID (IČO): {ORGANIZATION.ico}</span>
+          </div>
+          <div className="cs mt-1 max-w-[720px]">{ORGANIZATION.registrationCs}</div>
+          <div className="en mt-1 max-w-[720px]">{ORGANIZATION.registrationEn}</div>
+        </div>
         <div className="flex items-center justify-between gap-4 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-2">
           <div className="font-mono text-[11px] font-light text-[rgba(245,245,243,0.3)]">
-            © 2026 CTRL Europe | Website by{" "}
+            © 2026 {ORGANIZATION.name} | Website by{" "}
             <a
               href="https://hiro.dankoweby.cz"
               target="_blank"
@@ -194,7 +205,7 @@ export function Footer() {
             </a>
             {" & "}
             <a
-              href="https://github.com/crhaxx"
+              href="https://nikola.weply.cz"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[rgba(245,245,243,0.55)] hover:text-bg transition-colors duration-200 no-underline"
