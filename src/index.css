@@ -171,7 +171,13 @@ body.lite-motion .rev {
 @media (max-width: 768px), (hover: none) {
   .hero-meta,
   .hero-sub,
-  .hero-ctas {
+  .hero-ctas,
+  .hero-title .word span,
+  #heroMeta,
+  #heroTitle,
+  #heroBottom,
+  .split-text .word span,
+  .narrative-line > span {
     opacity: 1;
     transform: none;
   }
@@ -184,7 +190,14 @@ body.lite-motion .split-text .word span {
 body.lite-motion .hero-meta,
 body.lite-motion .hero-sub,
 body.lite-motion .hero-ctas,
-body.lite-motion .hero-title .word span {
+body.lite-motion .hero-title .word span,
+body.lite-motion #heroMeta,
+body.lite-motion #heroTitle,
+body.lite-motion #heroBottom,
+body.lite-motion .split-text .word span,
+body.lite-motion #hero .hero-mobile-head,
+body.lite-motion #hero .hero-mobile-body,
+body.lite-motion .narrative-line > span {
   opacity: 1 !important;
   transform: none !important;
 }
@@ -241,10 +254,14 @@ body.lite-motion .partner-track {
 @media (prefers-reduced-motion: reduce) {
   .rev,
   .split-text .word span,
+  .hero-title .word span,
   .narrative-line > span,
   .hero-sub,
   .hero-ctas,
-  .hero-meta {
+  .hero-meta,
+  #heroMeta,
+  #heroTitle,
+  #heroBottom {
     transition: none !important;
     animation: none !important;
     opacity: 1 !important;
@@ -265,7 +282,11 @@ body.lite-motion .partner-track {
 }
 
 body.reduced-motion .rev,
-body.reduced-motion .split-text .word span {
+body.reduced-motion .split-text .word span,
+body.reduced-motion .hero-title .word span,
+body.reduced-motion #heroMeta,
+body.reduced-motion #heroTitle,
+body.reduced-motion #heroBottom {
   opacity: 1 !important;
   transform: none !important;
   filter: none !important;
@@ -545,6 +566,19 @@ body.reduced-motion .split-text .word span {
   border-bottom: 1px solid var(--color-separator);
   border-radius: 0;
   transition: border-color 0.2s;
+}
+
+/* 16px+ prevents iOS Safari focus zoom on tablets/phones */
+@media (max-width: 1024px), (hover: none) {
+  .apply-page input[type="text"],
+  .apply-page input[type="email"],
+  .apply-page input[type="tel"],
+  .apply-page input[type="date"],
+  .apply-page input[type="number"],
+  .apply-page textarea,
+  .apply-page select {
+    font-size: 16px;
+  }
 }
 
 .apply-page input:focus,
@@ -987,6 +1021,38 @@ body.EN .apply-people__caption.en {
   }
 }
 
+/* Prefer dynamic viewport height on iPad Safari (toolbars shrink 100vh) */
+@supports (min-height: 100dvh) {
+  #hero.hero-full,
+  section#hero {
+    min-height: 100dvh;
+  }
+}
+
+/* Tablet band: denser hero — only on lite-motion devices so windowed
+   desktop browsers at ≤1024px keep full typography */
+@media (min-width: 641px) and (max-width: 1024px) {
+  body.lite-motion #hero,
+  body.lite-motion .page-hero.bg-dark {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    padding-bottom: 4rem;
+  }
+
+  body.lite-motion #hero .hero-title,
+  body.lite-motion #heroTitle,
+  body.lite-motion #hero .split-text {
+    font-size: clamp(48px, 7.5vw, 88px) !important;
+    letter-spacing: -2px !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  body.lite-motion #heroMeta,
+  body.lite-motion #hero .hero-meta {
+    margin-bottom: 1.75rem !important;
+  }
+}
+
 @media (max-width: 640px) {
   #hero,
   .page-hero.bg-dark {
@@ -1153,6 +1219,11 @@ body.EN .apply-people__caption.en {
   #cur {
     display: block;
   }
+}
+
+/* Touch tablets (incl. iPad + trackpad) keep the system cursor */
+body.lite-motion #cur {
+  display: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1859,7 +1930,7 @@ body.EN .apply-people__caption.en {
   .fi,
   .fs,
   .fta {
-    @apply w-full border-b border-separator bg-transparent py-3 text-sm font-light text-dark outline-none transition-[border-color] duration-[250ms] placeholder:text-[rgba(11,16,32,0.25)] focus:border-dark max-sm:text-base;
+    @apply w-full border-b border-separator bg-transparent py-3 text-sm font-light text-dark outline-none transition-[border-color] duration-[250ms] placeholder:text-[rgba(11,16,32,0.25)] focus:border-dark max-lg:text-base;
   }
 
   .fs {

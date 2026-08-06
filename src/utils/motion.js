@@ -13,20 +13,30 @@ export function isCoarsePointer() {
   return window.matchMedia?.('(hover: none)').matches ?? false;
 }
 
+/** iPad/tablet even with a mouse/trackpad — hover becomes "hover" but touch remains. */
+export function isTouchDevice() {
+  return (navigator.maxTouchPoints ?? 0) > 1;
+}
+
 export function isLowEndDevice() {
+  if (navigator.connection?.saveData) return true;
+
   const cores = navigator.hardwareConcurrency;
-  if (cores && cores <= 4) return true;
-
   const mem = navigator.deviceMemory;
-  if (mem && mem <= 4) return true;
 
-  return Boolean(navigator.connection?.saveData);
+  // Avoid flagging typical 4-core desktops — they can handle premium motion.
+  // Only treat clearly constrained devices as low-end.
+  if (cores && cores <= 2) return true;
+  if (mem && mem <= 2) return true;
+  if (cores && cores <= 4 && mem && mem <= 4) return true;
+
+  return false;
 }
 
 /** Lighter animations for touch, mobile, or low-end hardware (not accessibility reduced-motion). */
 export function shouldUseLiteMotion() {
   if (prefersReducedMotion()) return true;
-  return isMobileViewport() || isCoarsePointer() || isLowEndDevice();
+  return isMobileViewport() || isCoarsePointer() || isTouchDevice() || isLowEndDevice();
 }
 
 export function shouldDisableSmoothScroll() {

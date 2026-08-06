@@ -16,45 +16,37 @@ function splitQuoteWords(quote) {
 }
 
 function showHeroImmediately() {
-  document.querySelectorAll('.hero-title .word span, .hero-meta, .hero-sub, .hero-ctas').forEach((el) => {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-  });
+  document
+    .querySelectorAll(
+      '.hero-title .word span, .hero-meta, .hero-sub, .hero-ctas, #hero .hero-mobile-head, #hero .hero-mobile-body',
+    )
+    .forEach((el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
 }
 
 export function useHomeEffects() {
   useLayoutEffect(() => {
+    // On lite devices, force the hero visible before paint — never pre-hide
+    // wrappers (a failed/delayed entrance tween used to leave a blank hero).
     if (shouldUseLiteMotion()) {
       showHeroImmediately();
-      if (!prefersReducedMotion()) {
-        // Hidden before first paint; the entrance tween below reveals them.
-        gsap.set('#hero .hero-mobile-head, #hero .hero-mobile-body', { opacity: 0 });
-      }
     }
   }, []);
 
   useEffect(() => {
-    if (prefersReducedMotion()) {
+    if (prefersReducedMotion() || shouldUseLiteMotion()) {
       showHeroImmediately();
       return undefined;
     }
 
-    if (shouldUseLiteMotion()) {
-      // Lightweight entrance for mobile/low-end: animate the two hero
-      // wrappers (their children are force-shown by the lite-motion CSS).
-      const parts = document.querySelectorAll('#hero .hero-mobile-head, #hero .hero-mobile-body');
-      if (!parts.length) return undefined;
-      const tl = gsap.timeline({ defaults: { ease: EASE_PREMIUM } });
-      tl.fromTo(
-        parts,
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, clearProps: 'opacity,transform' },
-        0.05,
-      );
-      return () => tl.kill();
-    }
-
-    const tl = gsap.timeline({ defaults: { ease: EASE_PREMIUM } });
+    const tl = gsap.timeline({
+      defaults: { ease: EASE_PREMIUM },
+      // Never leave the title clipped at translateY(110%) if the tween is
+      // interrupted (Safari / React Strict Mode / tab backgrounding).
+      onInterrupt: showHeroImmediately,
+    });
     const words = document.querySelectorAll('.hero-title .word span');
 
     tl.fromTo(words, { y: '110%', opacity: 0 }, { y: 0, opacity: 1, duration: 1.05, stagger: 0.11 }, 0.15);
@@ -64,7 +56,10 @@ export function useHomeEffects() {
     if (metaSpan) addScrambleTween(tl, metaSpan, 0.3, { duration: 1 });
     tl.fromTo('.hero-sub, .hero-ctas', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.1 }, 0.28);
 
-    return () => tl.kill();
+    return () => {
+      tl.kill();
+      showHeroImmediately();
+    };
   }, []);
 
   // Scroll-driven motion (desktop / capable devices only): hero depth,

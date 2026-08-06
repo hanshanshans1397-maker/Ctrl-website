@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { prefersReducedMotion } from '../utils/motion';
+import { isTouchDevice, prefersReducedMotion } from '../utils/motion';
 
 const FINE_POINTER = '(hover: hover) and (pointer: fine)';
 
@@ -10,7 +10,11 @@ export function Cursor() {
 
   useEffect(() => {
     const dot = dotRef.current;
-    if (!dot || !window.matchMedia?.(FINE_POINTER).matches || prefersReducedMotion()) return undefined;
+    // iPad + trackpad reports fine pointer / hover, but custom cursor fights
+    // system cursor and wastes work — skip on any touch-capable device.
+    if (!dot || isTouchDevice() || !window.matchMedia?.(FINE_POINTER).matches || prefersReducedMotion()) {
+      return undefined;
+    }
 
     gsap.set(dot, { xPercent: -50, yPercent: -50, x: 0, y: 0 });
 
@@ -27,7 +31,9 @@ export function Cursor() {
 
   useEffect(() => {
     const dot = dotRef.current;
-    if (!dot || !window.matchMedia?.(FINE_POINTER).matches || prefersReducedMotion()) return undefined;
+    if (!dot || isTouchDevice() || !window.matchMedia?.(FINE_POINTER).matches || prefersReducedMotion()) {
+      return undefined;
+    }
 
     const onEnter = () => {
       dot.classList.add('big');

@@ -1,57 +1,52 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { EASE_PREMIUM, prefersReducedMotion, shouldUseLiteMotion } from '../utils/motion';
 
+function showPageHeroImmediately() {
+  ['heroMeta', 'heroTitle', 'heroBottom'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+
+  document.querySelectorAll('.split-text').forEach((el) => {
+    el.classList.add('in');
+    el.querySelectorAll('.word span').forEach((span) => {
+      span.style.transform = 'none';
+      span.style.opacity = '1';
+    });
+  });
+
+  const mobileHead = document.querySelector('.hero-mobile-head');
+  if (mobileHead) {
+    mobileHead.style.opacity = '1';
+    mobileHead.style.transform = 'none';
+  }
+}
+
 export function usePageHeroEntrance({ splitText = false } = {}) {
+  useLayoutEffect(() => {
+    if (shouldUseLiteMotion() || prefersReducedMotion()) {
+      showPageHeroImmediately();
+    }
+  }, [splitText]);
+
   useEffect(() => {
+    if (prefersReducedMotion() || shouldUseLiteMotion()) {
+      showPageHeroImmediately();
+      return undefined;
+    }
+
     const meta = document.getElementById('heroMeta');
     const title = document.getElementById('heroTitle');
     const bottom = document.getElementById('heroBottom');
     const splitEls = document.querySelectorAll('.split-text');
 
-    if (prefersReducedMotion()) {
-      if (meta) {
-        meta.style.opacity = '1';
-        meta.style.transform = 'none';
-      }
-      if (title) {
-        title.style.opacity = '1';
-        title.style.transform = 'none';
-      }
-      if (bottom) {
-        bottom.style.opacity = '1';
-        bottom.style.transform = 'none';
-      }
-      splitEls.forEach((el) => {
-        el.classList.add('in');
-        el.querySelectorAll('.word span').forEach((span) => {
-          span.style.transform = 'none';
-          span.style.opacity = '1';
-        });
-      });
-      return undefined;
-    }
-
-    const tl = gsap.timeline({ defaults: { ease: EASE_PREMIUM } });
-    const lite = shouldUseLiteMotion();
-    const heroParts = [meta, title, bottom].filter(Boolean);
-
-    if (lite) {
-      if (splitText && splitEls.length) {
-        splitEls.forEach((el) => el.classList.add('in'));
-      }
-      // On phones the desktop title/meta are hidden and the mobile hero head
-      // shows the page title instead, so animate it as part of the entrance.
-      const mobileHead = document.querySelector('.hero-mobile-head');
-      const liteParts = [mobileHead, meta, title, bottom].filter(Boolean);
-      tl.fromTo(
-        liteParts,
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.55, stagger: 0.08 },
-        0.05,
-      );
-      return () => tl.kill();
-    }
+    const tl = gsap.timeline({
+      defaults: { ease: EASE_PREMIUM },
+      onInterrupt: showPageHeroImmediately,
+    });
 
     if (meta) {
       tl.fromTo(meta, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.65 }, 0.1);
@@ -79,6 +74,9 @@ export function usePageHeroEntrance({ splitText = false } = {}) {
       );
     }
 
-    return () => tl.kill();
+    return () => {
+      tl.kill();
+      showPageHeroImmediately();
+    };
   }, [splitText]);
 }

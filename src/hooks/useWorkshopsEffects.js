@@ -28,7 +28,8 @@ export function useWorkshopsEffects() {
 
     if (shouldUseLiteMotion()) {
       const lines = NARRATIVE_LINES.map((line) => (isEn ? line.en : line.cs)).join('<br />');
-      textEl.innerHTML = `<div class="narrative-line is-in"><span class="${isEn ? 'en' : 'cs'}">${lines}</span></div>`;
+      // is-in must be on the inner span — CSS reveals `.narrative-line > span.is-in`
+      textEl.innerHTML = `<div class="narrative-line"><span class="is-in ${isEn ? 'en' : 'cs'}">${lines}</span></div>`;
       if (scrollHint) scrollHint.classList.remove('is-visible');
       return undefined;
     }

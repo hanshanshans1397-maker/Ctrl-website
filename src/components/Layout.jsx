@@ -24,8 +24,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 function useHeroParallax(pathname) {
   useEffect(() => {
+    if (prefersReducedMotion() || shouldUseLiteMotion()) return undefined;
+
     const img = document.querySelector('#hero > img');
-    if (!img || window.innerWidth < 641) return;
+    if (!img || window.innerWidth < 641) return undefined;
 
     const st = ScrollTrigger.create({
       trigger: '#hero',
@@ -43,7 +45,7 @@ function useHeroParallax(pathname) {
 
 function useMagneticButtons(pathname) {
   useEffect(() => {
-    if (window.matchMedia('(hover: none)').matches) return;
+    if (prefersReducedMotion() || shouldUseLiteMotion()) return undefined;
 
     const buttons = document.querySelectorAll('.btn-p, .btn-primary');
     const cleanups = [];
