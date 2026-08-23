@@ -24,11 +24,12 @@ export function AktualityPageContent() {
 
         <div className="hero-mobile-body hidden max-sm:block relative z-[2] px-5">
           <p className="page-sub cs text-[rgba(245,245,243,0.65)]">
-            Novinky, soutěže a oznámení od spolku CTRL Europe pro veřejnost.
+            Novinky, články, výzkum a oznámení od spolku CTRL Europe pro
+            veřejnost.
           </p>
           <p className="page-sub en text-[rgba(245,245,243,0.65)]">
-            Updates, competitions and announcements from CTRL Europe for the
-            public.
+            News, articles, research and announcements from CTRL Europe for
+            the public.
           </p>
         </div>
 
@@ -42,11 +43,12 @@ export function AktualityPageContent() {
             <h1 className="page-title en text-bg max-sm:hidden">News</h1>
           </div>
           <p className="page-sub cs text-[rgba(245,245,243,0.65)]">
-            Novinky, soutěže a oznámení od spolku CTRL Europe pro veřejnost.
+            Novinky, články, výzkum a oznámení od spolku CTRL Europe pro
+            veřejnost.
           </p>
           <p className="page-sub en text-[rgba(245,245,243,0.65)]">
-            Updates, competitions and announcements from CTRL Europe for the
-            public.
+            News, articles, research and announcements from CTRL Europe for
+            the public.
           </p>
         </div>
       </div>
@@ -70,12 +72,13 @@ export function AktualityPageContent() {
                 </span>
               </h2>
               <p className="cs text-[15px] leading-[1.85] font-light text-mid">
-                Na této stránce budeme sdílet soutěže, výzvy a další novinky pro
-                veřejnost. Zatím sledujte náš Instagram.
+                Na této stránce budeme sdílet články, výzkum, soutěže, výzvy a
+                další novinky pro veřejnost. Zatím sledujte náš Instagram.
               </p>
               <p className="en text-[15px] leading-[1.85] font-light text-mid">
-                This page will feature competitions, calls and other news for the
-                public. For now, follow us on Instagram.
+                This page will feature articles, research, competitions, calls
+                and other news for the public. For now, follow us on
+                Instagram.
               </p>
               <a
                 href={instagramUrl}

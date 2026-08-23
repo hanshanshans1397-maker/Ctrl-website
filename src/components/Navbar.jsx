@@ -15,17 +15,6 @@ const NAV_ITEMS = [
     ),
   },
   {
-    to: '/articles', cs: 'Články', en: 'Articles', keep: true,
-    icon: (cls) => (
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" className={cls}>
-        <rect x="1.5" y="1.5" width="13" height="13" rx="1.5" />
-        <path d="M4 5.5l2 1.5-2 1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M8 8.5h4" strokeLinecap="round" />
-        <path d="M4 11.5h8" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
     to: '/news', cs: 'Aktuality', en: 'News',
     icon: (cls) => (
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" className={cls}>
@@ -55,17 +44,6 @@ const NAV_ITEMS = [
         <path d="M3.5 7.5l2.5 2-2.5 2" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" />
         <path d="M8 9.5h4" strokeLinecap="round" strokeWidth="1.1" opacity="0.6" />
         <path d="M5.5 14.5h5M8 11.5v3" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
-    to: '/research', cs: 'Výzkum', en: 'Research',
-    icon: (cls) => (
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" className={cls}>
-        <rect x="1.5" y="1.5" width="7" height="7" rx="1" />
-        <path d="M3 1.5V0M5.5 1.5V0M8 1.5V0M3 8.5V10M5.5 8.5V10M8 8.5V10M1.5 3H0M1.5 5.5H0M1.5 8H0M8.5 3H10M8.5 5.5H10M8.5 8H10" strokeLinecap="round" strokeWidth="1" opacity="0.4" />
-        <circle cx="12" cy="12" r="3" />
-        <path d="M14.5 14.5L16 16" strokeLinecap="round" strokeWidth="1.5" />
       </svg>
     ),
   },

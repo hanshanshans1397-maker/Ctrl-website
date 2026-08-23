@@ -100,20 +100,6 @@ export function Footer() {
                 <span className="en">Workshops</span>
               </Link>
               <Link
-                to="/research"
-                className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
-              >
-                <span className="cs">Výzkum</span>
-                <span className="en">Research</span>
-              </Link>
-              <Link
-                to="/articles"
-                className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
-              >
-                <span className="cs">Články</span>
-                <span className="en">Articles</span>
-              </Link>
-              <Link
                 to="/news"
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >

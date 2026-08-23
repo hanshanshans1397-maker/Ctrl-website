@@ -3,9 +3,7 @@ export const DARK_HERO_ROUTES = [
   '/summit',
   '/about',
   '/workshops',
-  '/research',
   '/join',
-  '/articles',
   '/news',
   '/apply',
 ];

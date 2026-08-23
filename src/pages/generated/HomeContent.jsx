@@ -168,7 +168,7 @@ export function HomePageContent() {
           <div className="what-grid grid grid-cols-4 sep-grid max-lg:grid-cols-2 max-sm:grid-cols-1">
             {/* 01 — Výzkum */}
             <Link
-              to="/research"
+              to="/news"
               className="what-card rev d1 group flex h-full min-w-0 flex-col bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
             >
               <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
@@ -339,7 +339,7 @@ export function HomePageContent() {
 
             {/* 03 — Média */}
             <Link
-              to="/articles"
+              to="/news"
               className="what-card rev d3 group flex h-full min-w-0 flex-col bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
             >
               <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">

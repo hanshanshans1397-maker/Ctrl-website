@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { AboutStructureAnimation } from "../../components/AboutStructureAnimation";
+import { FakeNewsQuiz } from "../../components/FakeNewsQuiz";
+import { DisinfoGapChart } from "../../components/DisinfoGapChart";
 
 const CELL_LEADERS = [
   {
@@ -543,6 +545,60 @@ export function AboutPageContent() {
         </div>
       </section>
 
+      <section
+        className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg2"
+        id="about-literacy"
+      >
+        <div className="inner max-w-[1300px] mx-auto">
+          <div className="section-head rev mb-14 max-lg:mb-10">
+            <span className="section-label">
+              <span className="cs">Vyzkoušejte si to</span>
+              <span className="en">Try it yourself</span>
+            </span>
+            <h2 className="section-title italic">
+              <span className="cs">
+                Ta propast <em>není abstraktní.</em>
+              </span>
+              <span className="en">
+                That gap <em>is not abstract.</em>
+              </span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-20">
+            <div className="rev d1">
+              <p className="mb-6 max-w-[400px] text-[15px] leading-[1.8] font-light text-mid">
+                <span className="cs">
+                  Tohle je přesně ten typ zprávy, který na workshopech
+                  rozebíráme se studenty. Zkuste si sami, jestli poznáte, co je
+                  smyšlené — a proč.
+                </span>
+                <span className="en">
+                  This is exactly the kind of message we take apart with
+                  students in our workshops. See for yourself whether you can
+                  tell what is fabricated — and why.
+                </span>
+              </p>
+              <FakeNewsQuiz />
+            </div>
+            <div className="rev d2">
+              <p className="mb-6 max-w-[400px] text-[15px] leading-[1.8] font-light text-mid">
+                <span className="cs">
+                  Většina mladých Evropanů se s dezinformacemi už setkala. Míň
+                  z nich si věří, že je pozná. Do téhle mezery míří všechno,
+                  co děláme.
+                </span>
+                <span className="en">
+                  Most young Europeans have already encountered disinformation.
+                  Fewer are confident they can recognise it. Everything we do
+                  aims at that gap.
+                </span>
+              </p>
+              <DisinfoGapChart />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="sec py-16 px-[52px] max-lg:py-14 max-lg:px-6 max-[480px]:py-12 max-[480px]:px-5 bg-dark">
         <div className="inner max-w-[1300px] mx-auto">
           <div className="section-head rev mb-10 max-lg:mb-8">
@@ -758,7 +814,7 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 bg-bg py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+            <div className="rev d2 bg-bg py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">02 Vzdělávání</span>
                 <span className="en">02 Edu</span>
@@ -792,7 +848,7 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+            <div className="rev d3 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">03 Média</span>
                 <span className="en">03 Media</span>
@@ -826,7 +882,7 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 bg-bg py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+            <div className="rev d4 bg-bg py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">04 Mezinárodní</span>
                 <span className="en">04 Intl</span>
@@ -860,7 +916,7 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+            <div className="rev d5 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">05 Akce</span>
                 <span className="en">05 Events</span>

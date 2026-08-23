@@ -10,7 +10,6 @@ const ANIMATED_CONTAINERS = [
   '.ticker-inner',
   '.topics-track',
   '.partner-track',
-  '.articles-writing',
   '.aktuality-info',
   '.about-structure',
   '.join-partnership',

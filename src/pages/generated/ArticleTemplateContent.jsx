@@ -29,10 +29,10 @@ export function ArticleTemplatePageContent() {
       <section className="sec bg-bg2 py-[60px]">
         <div className="mx-auto flex max-w-[720px] flex-wrap items-center justify-between gap-5">
           <div>
-            <div className="cs mb-2 font-mono text-[11px] tracking-[2px] text-mid uppercase">Další články</div>
-            <div className="en mb-2 font-mono text-[11px] tracking-[2px] text-mid uppercase">More articles</div>
+            <div className="cs mb-2 font-mono text-[11px] tracking-[2px] text-mid uppercase">Další aktuality</div>
+            <div className="en mb-2 font-mono text-[11px] tracking-[2px] text-mid uppercase">More news</div>
           </div>
-          <Link to="/articles" className="btn-g"><span className="cs">← Všechny články</span><span className="en">← All articles</span></Link>
+          <Link to="/news" className="btn-g"><span className="cs">← Všechny aktuality</span><span className="en">← All news</span></Link>
         </div>
       </section>
     </>

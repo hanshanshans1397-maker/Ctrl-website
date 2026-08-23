@@ -32,8 +32,7 @@ npm run preview  # náhled buildu
 |-------|---------|
 | `/` | Domů |
 | `/about` | O nás |
-| `/articles` | Články |
-| `/research` | Výzkum |
+| `/news` | Aktuality (vč. článků a výzkumu) |
 | `/join` | Zapojit se |
 | `/apply` | Přihláška člena |
 | `/summit` | Summit |

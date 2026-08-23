@@ -348,7 +348,7 @@ export function SummitPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="rev d2 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -387,7 +387,7 @@ export function SummitPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="rev d3 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -421,7 +421,7 @@ export function SummitPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d2 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="rev d4 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -459,7 +459,7 @@ export function SummitPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d2 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="rev d5 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -492,7 +492,7 @@ export function SummitPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d3 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="rev d5 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"

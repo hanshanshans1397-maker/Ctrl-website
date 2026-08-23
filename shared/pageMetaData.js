@@ -27,42 +27,16 @@ export const PAGE_META = {
       image: '/photos/team.jpg',
     },
   },
-  articles: {
-    cs: {
-      title: 'Články a reporty | CTRL Europe',
-      description:
-        'Články, reporty a publikace CTRL Europe o digitální odolnosti, bezpečnosti a občanské společnosti.',
-    },
-    en: {
-      title: 'Articles & reports | CTRL Europe',
-      description:
-        'Articles, reports and publications from CTRL Europe on digital resilience, security and civil society.',
-    },
-  },
   aktuality: {
     cs: {
       title: 'Aktuality | CTRL Europe',
       description:
-        'Novinky a aktuální informace z CTRL Europe — události, projekty a oznámení.',
+        'Novinky, články a výzkum z CTRL Europe — události, projekty a oznámení.',
     },
     en: {
       title: 'News | CTRL Europe',
       description:
-        'News and updates from CTRL Europe — events, projects and announcements.',
-    },
-  },
-  research: {
-    cs: {
-      title: 'Výzkum | CTRL Europe',
-      description:
-        'Výzkum digitální odolnosti, dezinformací a bezpečnosti v CTRL Europe.',
-      image: '/photos/vyzkum.png',
-    },
-    en: {
-      title: 'Research | CTRL Europe',
-      description:
-        'Research on digital resilience, disinformation and security at CTRL Europe.',
-      image: '/photos/vyzkum.png',
+        'News, articles and research from CTRL Europe — events, projects and announcements.',
     },
   },
   join: {
@@ -132,9 +106,7 @@ export const PAGE_META = {
 export const PATH_TO_PAGE_KEY = {
   '/': 'home',
   '/about': 'about',
-  '/articles': 'articles',
   '/news': 'aktuality',
-  '/research': 'research',
   '/join': 'join',
   '/apply': 'apply',
   '/summit': 'summit',

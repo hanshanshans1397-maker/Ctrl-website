@@ -270,6 +270,74 @@ function sectionBlockReveal() {
   });
 }
 
+/**
+ * Editorial row stacks — /about "Co děláme", /summit "Hlavní témata".
+ *
+ * These used to fade in as one lump (every row carried the same `d1` delay), which
+ * is what made them read as filler. Here the row frame is already in place and the
+ * *content* typesets into it: the index rail slides in from the rule, the heading
+ * wipes up behind a mask, body copy settles last. Rows overlap tightly so the block
+ * resolves as a single gesture instead of five separate pops.
+ */
+function stackRowReveal() {
+  document.querySelectorAll('.sep-stack').forEach((stack) => {
+    // Only the editorial stacks — their rows carry `.rev`. The compact fact
+    // stacks (e.g. the About "Založeno / Studentů" rail) reveal as one block.
+    const rows = [...stack.children].filter((el) => el.classList.contains('rev'));
+    if (!rows.length) return;
+
+    rows.forEach(prepareGsap);
+
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: stack, start: 'top 82%', once: true },
+    });
+
+    rows.forEach((row, i) => {
+      const at = i * 0.09;
+      const [rail, body] = row.children;
+      const headings = body?.querySelectorAll('h3');
+      const copy = body?.querySelectorAll('p');
+      const icon = rail?.querySelector('svg');
+
+      // The row itself never travels — only what sits inside it.
+      gsap.set(row, { opacity: 1, y: 0 });
+      tl.add(() => row.classList.add('in'), at);
+
+      if (icon) prepareSvgIcon(icon);
+
+      if (rail) {
+        gsap.set(rail, { opacity: 0, x: -14 });
+        tl.to(rail, { opacity: 1, x: 0, duration: 0.7, ease: EASE_PREMIUM }, at);
+        if (icon) addIconDraw(tl, icon, at + 0.08);
+      }
+
+      if (headings?.length) {
+        gsap.set(headings, { clipPath: 'inset(0 0 100% 0)', y: 16 });
+        tl.to(
+          headings,
+          {
+            clipPath: 'inset(0 0 0% 0)',
+            y: 0,
+            duration: 0.8,
+            ease: EASE_PREMIUM,
+            clearProps: 'clipPath',
+          },
+          at + 0.06,
+        );
+      }
+
+      if (copy?.length) {
+        gsap.set(copy, { opacity: 0, y: 12 });
+        tl.to(
+          copy,
+          { opacity: 1, y: 0, duration: 0.75, stagger: 0.04, ease: EASE_PREMIUM },
+          at + 0.16,
+        );
+      }
+    });
+  });
+}
+
 function staggerReveal(selector, options = {}) {
   const els = document.querySelectorAll(selector);
   if (!els.length) return null;
@@ -369,6 +437,7 @@ export function usePremiumAnimations(pathname) {
 
     const ctx = gsap.context(() => {
       sectionBlockReveal();
+      stackRowReveal();
       staggerReveal('.join-criterion', { trigger: '.join-criteria', x: -20, y: 0, stagger: 0.06, duration: 0.7 });
       imageReveal();
     });

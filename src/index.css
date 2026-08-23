@@ -2010,393 +2010,51 @@ body.lite-motion #cur {
   }
 }
 
-/* articles — writing illustration */
-.articles-writing {
-  width: min(100%, 420px);
-  margin-inline: auto;
+/* about — media-literacy gap chart */
+.disinfo-bar {
+  width: 0;
+  transition: width 1.15s var(--ease-out-expo);
+  will-change: width;
 }
 
-.articles-writing__svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
+/* about — fake news quiz: message and verdict settle in, they don't pop */
+.fake-news-quiz__bubble {
+  animation: quizBubbleIn 0.5s var(--ease-out-expo) both;
 }
 
-.articles-writing__paper-back {
-  transform: translate(10px, 8px) rotate(3deg) scale(0.985);
-  opacity: 0.55;
+.fake-news-quiz__result {
+  animation: quizResultIn 0.45s var(--ease-out-expo) both;
 }
 
-.articles-writing__logo {
-  opacity: 0.14;
-  filter: grayscale(0.35) brightness(0.55);
-}
-
-.articles-writing__paper {
-  transform-origin: 198px 148px;
-  animation: articlesPaperCycle 13s var(--ease-out-expo) infinite;
-}
-
-.articles-writing__line {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  opacity: 0;
-}
-
-.articles-writing__line--1 {
-  animation: articlesWriteLine1 13s linear infinite;
-}
-
-.articles-writing__line--2 {
-  animation: articlesWriteLine2 13s linear infinite;
-}
-
-.articles-writing__line--3 {
-  animation: articlesWriteLine3 13s linear infinite;
-}
-
-.articles-writing__line--4 {
-  animation: articlesWriteLine4 13s linear infinite;
-}
-
-.articles-writing__pen {
-  transform-origin: 268px 138px;
-  animation: articlesPenWrite 13s ease-in-out infinite;
-}
-
-.articles-writing__pen-tip {
-  animation: articlesPenTip 1.2s ease-in-out infinite;
-}
-
-.articles-writing__ai-node {
-  animation: articlesAiPulse 2.4s ease-in-out infinite;
-}
-
-.articles-writing__ai-node--hub {
-  animation-delay: 0s;
-}
-
-.articles-writing__ai-node--2 {
-  animation-delay: 0.3s;
-}
-
-.articles-writing__ai-node--3 {
-  animation-delay: 0.6s;
-}
-
-.articles-writing__ai-node--4 {
-  animation-delay: 0.9s;
-}
-
-.articles-writing__ai-node--5 {
-  animation-delay: 1.2s;
-}
-
-.articles-writing__ai-stream {
-  stroke-dasharray: 5 4;
-  animation: articlesAiStream 1.6s linear infinite;
-}
-
-.articles-writing__ai-spark {
-  animation: articlesAiSpark 1.6s ease-in-out infinite;
-}
-
-.articles-writing__ai-spark--1 {
-  animation-delay: 0.2s;
-}
-
-.articles-writing__ai-spark--2 {
-  animation-delay: 0.55s;
-}
-
-.articles-writing__ai-spark--3 {
-  animation-delay: 0.9s;
-}
-
-.articles-writing__steam {
-  stroke-dasharray: 24;
-  stroke-dashoffset: 24;
-}
-
-.articles-writing__steam--1 {
-  animation: articlesSteam 3.2s ease-in-out infinite;
-}
-
-.articles-writing__steam--2 {
-  animation: articlesSteam 3.2s ease-in-out 0.8s infinite;
-}
-
-@keyframes articlesPaperCycle {
-  0%,
-  67% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 1;
-  }
-  73% {
-    transform: translate(-150px, -26px) rotate(-10deg);
+@keyframes quizBubbleIn {
+  from {
     opacity: 0;
+    transform: translateY(8px);
   }
-  73.01% {
-    transform: translate(150px, 20px) rotate(8deg);
-    opacity: 0;
-  }
-  82%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 1;
-  }
-}
-
-/* Každý řádek se kreslí ve svém okně; ink se resetuje, když je papír mimo záběr (73%). */
-@keyframes articlesWriteLine1 {
-  0%,
-  8% {
-    stroke-dashoffset: 100;
-    opacity: 1;
-  }
-  19% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  67% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  73%,
-  100% {
-    stroke-dashoffset: 100;
-    opacity: 0;
-  }
-}
-
-@keyframes articlesWriteLine2 {
-  0%,
-  23% {
-    stroke-dashoffset: 100;
-    opacity: 1;
-  }
-  34% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  67% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  73%,
-  100% {
-    stroke-dashoffset: 100;
-    opacity: 0;
-  }
-}
-
-@keyframes articlesWriteLine3 {
-  0%,
-  38% {
-    stroke-dashoffset: 100;
-    opacity: 1;
-  }
-  49% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  67% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  73%,
-  100% {
-    stroke-dashoffset: 100;
-    opacity: 0;
-  }
-}
-
-@keyframes articlesWriteLine4 {
-  0%,
-  53% {
-    stroke-dashoffset: 100;
-    opacity: 1;
-  }
-  62% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  67% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  73%,
-  100% {
-    stroke-dashoffset: 100;
-    opacity: 0;
-  }
-}
-
-/*
- * Hrot pera sleduje konec kreslené linky.
- * Base transform-origin je hrot (268,138). Posuny jsou vůči výchozí pozici.
- * Řádky y: 86 / 116 / 146 / 176; x od ~118 (začátek) do ~330 (konec).
- */
-@keyframes articlesPenWrite {
-  /* přílet zprava k začátku řádku 1 */
-  0% {
-    transform: translate(96px, -8px) rotate(12deg);
-  }
-  8% {
-    transform: translate(-150px, -52px) rotate(-2deg);
-  }
-  /* řádek 1: zleva doprava */
-  19% {
-    transform: translate(62px, -53px) rotate(2deg);
-  }
-  /* přechod na řádek 2 */
-  23% {
-    transform: translate(-150px, -22px) rotate(-2deg);
-  }
-  /* řádek 2 */
-  34% {
-    transform: translate(67px, -23px) rotate(2deg);
-  }
-  /* přechod na řádek 3 */
-  38% {
-    transform: translate(-150px, 8px) rotate(-2deg);
-  }
-  /* řádek 3 */
-  49% {
-    transform: translate(58px, 7px) rotate(2deg);
-  }
-  /* přechod na řádek 4 */
-  53% {
-    transform: translate(-150px, 38px) rotate(-2deg);
-  }
-  /* řádek 4 */
-  62% {
-    transform: translate(37px, 38px) rotate(2deg);
-  }
-  /* pero se zvedne a odjede při výměně papíru */
-  67% {
-    transform: translate(90px, -20px) rotate(14deg);
-  }
-  73%,
-  81% {
-    transform: translate(120px, -30px) rotate(16deg);
-  }
-  /* návrat do výchozí pozice pro nový list */
-  100% {
-    transform: translate(96px, -8px) rotate(12deg);
-  }
-}
-
-@keyframes articlesPenTip {
-  0%,
-  100% {
-    opacity: 0.55;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes articlesAiPulse {
-  0%,
-  100% {
-    opacity: 0.55;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes articlesAiStream {
   to {
-    stroke-dashoffset: -18;
-  }
-}
-
-@keyframes articlesAiSpark {
-  0%,
-  100% {
-    opacity: 0.15;
-  }
-  40%,
-  60% {
-    opacity: 0.9;
-  }
-}
-
-@keyframes articlesSteam {
-  0% {
-    stroke-dashoffset: 24;
-    opacity: 0;
+    opacity: 1;
     transform: translateY(0);
   }
-  30% {
-    opacity: 0.5;
-  }
-  100% {
-    stroke-dashoffset: 0;
+}
+
+@keyframes quizResultIn {
+  from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .articles-writing__paper {
-    animation: none;
-  }
-
-  .articles-writing__paper-back {
-    transform: translate(10px, 8px) rotate(3deg) scale(0.985);
-    opacity: 0.55;
-  }
-
-  .articles-writing__line {
-    stroke-dashoffset: 0;
-    opacity: 0.65;
-    animation: none;
-  }
-
-  .articles-writing__pen,
-  .articles-writing__pen-tip,
-  .articles-writing__ai-node,
-  .articles-writing__ai-stream,
-  .articles-writing__ai-spark,
-  .articles-writing__steam {
-    animation: none;
-  }
-
-  .articles-writing__pen {
-    transform: translate(12px, 48px) rotate(4deg);
-  }
+body.reduced-motion .disinfo-bar {
+  transition: none;
 }
 
-body.reduced-motion .articles-writing__paper {
+body.reduced-motion .fake-news-quiz__bubble,
+body.reduced-motion .fake-news-quiz__result {
   animation: none;
-}
-
-body.reduced-motion .articles-writing__paper-back {
-  transform: translate(10px, 8px) rotate(3deg) scale(0.985);
-  opacity: 0.55;
-}
-
-body.reduced-motion .articles-writing__line {
-  stroke-dashoffset: 0;
-  opacity: 0.65;
-  animation: none;
-}
-
-body.reduced-motion .articles-writing__pen,
-body.reduced-motion .articles-writing__pen-tip,
-body.reduced-motion .articles-writing__ai-node,
-body.reduced-motion .articles-writing__ai-stream,
-body.reduced-motion .articles-writing__ai-spark,
-body.reduced-motion .articles-writing__steam {
-  animation: none;
-}
-
-body.reduced-motion .articles-writing__pen {
-  transform: translate(12px, 48px) rotate(4deg);
 }
 
 /* aktuality — disinformation spread illustration */

@@ -76,4 +76,4 @@ export const EASE_PREMIUM = 'power3.out';
 export const EASE_SMOOTH = 'power2.inOut';
 
 export const GSAP_REVEAL =
-  '.section-head, .what-card, .number-card, .photo-strip > *, .board-grid > *, .join-grid > *, .join-criterion, .offer-card, .val-grid > *';
+  '.section-head, .what-card, .number-card, .photo-strip > *, .board-grid > *, .join-grid > *, .join-criterion, .offer-card, .val-grid > *, .sep-stack > .rev';
