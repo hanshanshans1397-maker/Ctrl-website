@@ -1504,6 +1504,11 @@ body.lite-motion #cur {
   will-change: transform;
 }
 
+/* word gaps are real spans now, so they can never be collapsed away */
+.join-char--space {
+  white-space: pre;
+}
+
 /* cursor spotlight over the "what" cards */
 @media (hover: hover) and (pointer: fine) {
   .what-card::before {

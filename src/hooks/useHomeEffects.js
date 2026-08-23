@@ -123,12 +123,27 @@ export function useHomeEffects() {
       // 4) Join CTA heading rises character by character.
       const joinHeadings = document.querySelectorAll('#join h2');
       joinHeadings.forEach((h2) => {
-        if (!h2.dataset.chars) {
-          h2.dataset.chars = '1';
-          const text = h2.textContent;
-          h2.setAttribute('aria-label', text);
-          h2.innerHTML = [...text]
-            .map((c) => (c === ' ' ? ' ' : `<span class="join-char" aria-hidden="true">${c}</span>`))
+        // Capture the heading exactly once, while React's markup is still
+        // untouched. Re-reading a heading we already split loses the spaces
+        // between the character spans, and a second pass then re-emitted the
+        // whole run of them at the front ("Wan tt ob epar to fit?").
+        const alreadySplit = Boolean(h2.querySelector('.join-char'));
+        if (!h2.dataset.text && !alreadySplit) {
+          h2.dataset.text = h2.textContent.trim();
+        }
+        const source = h2.dataset.text;
+        if (!source) return;
+
+        // Spaces get their own span, so textContent round-trips exactly and
+        // this comparison is a reliable self-heal if the DOM ever drifts.
+        if (!alreadySplit || h2.textContent !== source) {
+          h2.setAttribute('aria-label', source);
+          h2.innerHTML = [...source]
+            .map((c) =>
+              c === ' '
+                ? '<span class="join-char join-char--space" aria-hidden="true"> </span>'
+                : `<span class="join-char" aria-hidden="true">${c}</span>`,
+            )
             .join('');
         }
         h2.classList.add('anim-gsap');
