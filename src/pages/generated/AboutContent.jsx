@@ -9,93 +9,54 @@ const CELL_LEADERS = [
     deptCs: "PR a komunikace",
     deptEn: "PR & Communications",
     name: "Jakub Rašovský",
-    detailCs: "Tiskové zprávy, mediální komunikace a vnější image CTRL Europe.",
-    detailEn:
-      "Press releases, media communications and CTRL Europe's public image.",
-    delay: "d1",
   },
   {
     id: "02",
     deptCs: "Sociální sítě",
     deptEn: "Social Media",
     name: "Jiří Vítek",
-    detailCs: "Obsah, strategie a provoz profilů CTRL na sociálních sítích.",
-    detailEn:
-      "Content, strategy and management of CTRL's social media profiles.",
-    delay: "d1",
   },
   {
     id: "03",
     deptCs: "Podcast",
     deptEn: "Podcast",
     name: "Marek Roušar",
-    detailCs: "Střih, produkce a editace podcastů CTRL",
-    detailEn: "Editing, production and management of CTRL's podcasts.",
-    delay: "d1",
   },
   {
     id: "04",
     deptCs: "Výzkum",
     deptEn: "Research",
     name: "Pavel Klusák",
-    detailCs:
-      "Analýza digitálních hrozeb, dezinformací a dat pro naše projekty.",
-    detailEn:
-      "Analysis of digital threats, disinformation and data for our projects.",
-    delay: "d2",
   },
   {
     id: "05",
     deptCs: "Grafika",
     deptEn: "Graphics",
     name: "Zdeněk Frőmel",
-    detailCs:
-      "Vizuální identita, grafika pro akce, web a propagační materiály.",
-    detailEn:
-      "Visual identity, graphics for events, web and promotional materials.",
-    delay: "d2",
   },
   {
     id: "06",
     deptCs: "Video",
     deptEn: "Video",
     name: "Lukáš Holec",
-    detailCs:
-      "Video produkce, dokumentace akcí a vizuální obsah pro platformu.",
-    detailEn:
-      "Video production, event coverage and visual content for the platform.",
-    delay: "d2",
   },
   {
     id: "07",
     deptCs: "Mezinárodní komunikace",
     deptEn: "International communication",
     name: "Laith Awad",
-    detailCs:
-      "Komunikace, partnerství a propojení se zahraničními organizacemi.",
-    detailEn:
-      "Communications, partnerships and ties with international organizations.",
-    delay: "d3",
   },
   {
     id: "08",
     deptCs: "Organizace eventů",
     deptEn: "Event organization",
     name: "Vojtěch Kubín",
-    detailCs: "Plánování a realizace summitů, workshopů a dalších akcí CTRL.",
-    detailEn:
-      "Planning and delivery of CTRL summits, workshops and other events.",
-    delay: "d3",
   },
   {
     id: "09",
-    deptCs: "IT & Vývoj",
-    deptEn: "IT & Development",
+    deptCs: "Technologie a digital",
+    deptEn: "Technology & digital",
     name: "Nikola Crhák",
-    detailCs: "Web, technická infrastruktura a digitální nástroje organizace.",
-    detailEn:
-      "Website, technical infrastructure and the organization's digital tools.",
-    delay: "d3",
   },
 ];
 
@@ -176,16 +137,6 @@ const CORE_VALUES = [
     delay: "d3",
   },
 ];
-
-function getInitials(name) {
-  return name
-    .split(/\s+/)
-    .filter(Boolean)
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
 
 function StructureDirectoryRow({
   name,
@@ -306,63 +257,6 @@ function CouncilStructureBlock({ className = "" }) {
             labelEn={leader.deptEn}
           />
         ))}
-      </div>
-    </div>
-  );
-}
-
-function CellLeaderCard({ leader, className = "" }) {
-  return (
-    <div
-      className={`rev ${leader.delay} group relative flex h-full min-h-[248px] flex-col bg-white px-7 py-8 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(11,16,32,0.05)] max-md:min-h-0 max-md:px-5 max-md:py-6 md:px-6 md:py-7 ${className}`}
-    >
-      <div className="mb-4 flex items-start justify-between gap-4 max-md:mb-3 md:mb-5">
-        <div className="min-w-0">
-          <div className="cs font-mono text-[10px] tracking-[2px] uppercase text-accent">
-            {leader.deptCs}
-          </div>
-          <div className="en font-mono text-[10px] tracking-[2px] uppercase text-accent">
-            {leader.deptEn}
-          </div>
-        </div>
-        <span className="shrink-0 font-mono text-[10px] tracking-[2px] text-mid/25 transition-colors duration-300 group-hover:text-accent/45">
-          {leader.id}
-        </span>
-      </div>
-
-      {(leader.detailCs || leader.detailEn) && (
-        <div className="mb-6 flex-1 max-md:mb-5 md:mb-8">
-          {leader.detailCs && (
-            <p className="cs text-[13px] font-light leading-[1.8] text-mid transition-colors duration-300 group-hover:text-dark/75 max-md:text-[14px] max-md:leading-[1.75]">
-              {leader.detailCs}
-            </p>
-          )}
-          {leader.detailEn && (
-            <p className="en text-[13px] font-light leading-[1.8] text-mid transition-colors duration-300 group-hover:text-dark/75 max-md:text-[14px] max-md:leading-[1.75]">
-              {leader.detailEn}
-            </p>
-          )}
-        </div>
-      )}
-
-      <div className="mt-auto flex items-center gap-3.5 border-t border-separator pt-5 max-md:gap-4 max-md:pt-4">
-        <div
-          aria-hidden="true"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-dim text-[11px] font-semibold tracking-[0.5px] text-accent ring-1 ring-accent/10 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent group-hover:text-white group-hover:ring-accent/20 max-md:h-12 max-md:w-12 max-md:text-[12px]"
-        >
-          {getInitials(leader.name)}
-        </div>
-        <div className="min-w-0">
-          <div className="text-[15px] font-semibold tracking-[-0.3px] text-dark max-md:text-[16px]">
-            {leader.name}
-          </div>
-          <div className="cs mt-0.5 font-mono text-[9px] tracking-[1.5px] uppercase text-mid max-md:text-[10px]">
-            Vedoucí
-          </div>
-          <div className="en mt-0.5 font-mono text-[9px] tracking-[1.5px] uppercase text-mid max-md:text-[10px]">
-            Lead
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -583,9 +477,9 @@ export function AboutPageContent() {
             <div className="rev d2">
               <p className="mb-6 max-w-[400px] text-[15px] leading-[1.8] font-light text-mid">
                 <span className="cs">
-                  Většina mladých Evropanů se s dezinformacemi už setkala. Míň
-                  z nich si věří, že je pozná. Do téhle mezery míří všechno,
-                  co děláme.
+                  Většina mladých Evropanů se s dezinformacemi už setkala. Míň z
+                  nich si věří, že je pozná. Do téhle mezery míří všechno, co
+                  děláme.
                 </span>
                 <span className="en">
                   Most young Europeans have already encountered disinformation.
@@ -1296,39 +1190,6 @@ export function AboutPageContent() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg2">
-        <div className="inner max-w-[1300px] mx-auto">
-          <div className="section-head rev">
-            <span className="section-label">
-              <span className="cs">Rada zástupců</span>
-              <span className="en">Council of Representatives</span>
-            </span>
-            <h2 className="section-title italic">
-              <span className="cs">
-                Vedoucí <em>buněk.</em>
-              </span>
-              <span className="en">
-                Cell <em>leaders.</em>
-              </span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-3 lg:grid-cols-3">
-            {CELL_LEADERS.map((leader, index) => (
-              <CellLeaderCard
-                key={leader.id}
-                leader={leader}
-                className={
-                  index === CELL_LEADERS.length - 1 &&
-                  CELL_LEADERS.length % 2 === 1
-                    ? "md:col-span-2 lg:col-span-1"
-                    : ""
-                }
-              />
-            ))}
           </div>
         </div>
       </section>
