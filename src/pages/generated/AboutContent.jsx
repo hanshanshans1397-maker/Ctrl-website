@@ -3,6 +3,7 @@ import { AboutStructureAnimation } from "../../components/AboutStructureAnimatio
 import { AlgorithmFeed } from "../../components/AlgorithmFeed";
 import { DisinfoGapChart } from "../../components/DisinfoGapChart";
 import { FakeNewsQuiz } from "../../components/FakeNewsQuiz";
+import { TickerBar } from "../../components/TickerBar";
 
 const CELL_LEADERS = [
   {
@@ -1184,46 +1185,7 @@ export function AboutPageContent() {
           </div>
         </div>
       </section>
-      <div className="ticker-wrap-outer border-t border-b border-separator overflow-hidden py-[13px] bg-bg">
-        <div
-          className="ticker-inner flex animate-ticker whitespace-nowrap"
-          id="ticker"
-        >
-          <div className="ticker-item font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            CTRL Europe
-          </div>
-          <div className="ticker-item font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            CEE Youth Platform
-          </div>
-          <div className="ticker-item cs font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            Digitální odolnost
-          </div>
-          <div className="ticker-item en font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            Digital Resilience
-          </div>
-          <div className="ticker-item font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            CTRL Summit 2026
-          </div>
-          <div className="ticker-item font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            Erasmus+
-          </div>
-          <div className="ticker-item cs font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            AI povědomí
-          </div>
-          <div className="ticker-item en font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            AI Awareness
-          </div>
-          <div className="ticker-item cs font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            Mediální gramotnost
-          </div>
-          <div className="ticker-item en font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            Media Literacy
-          </div>
-          <div className="ticker-item font-mono text-[11px] font-normal tracking-[2px] uppercase text-mid px-11 whitespace-nowrap shrink-0 flex items-center gap-11">
-            Brno
-          </div>
-        </div>
-      </div>
+      <TickerBar />
     </>
   );
 }
