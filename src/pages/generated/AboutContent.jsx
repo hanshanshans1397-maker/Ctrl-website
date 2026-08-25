@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { AboutStructureAnimation } from "../../components/AboutStructureAnimation";
-import { FakeNewsQuiz } from "../../components/FakeNewsQuiz";
+import { AlgorithmFeed } from "../../components/AlgorithmFeed";
 import { DisinfoGapChart } from "../../components/DisinfoGapChart";
+import { FakeNewsQuiz } from "../../components/FakeNewsQuiz";
 
 const CELL_LEADERS = [
   {
@@ -139,125 +140,60 @@ const CORE_VALUES = [
 ];
 
 function StructureDirectoryRow({
+  id,
   name,
   labelCs,
   labelEn,
-  variant = "list",
-  size = "default",
 }) {
-  const nameGridClass =
-    size === "lg"
-      ? "text-[15px] font-semibold leading-tight tracking-[-0.2px] text-dark"
-      : "text-[15px] font-medium leading-tight tracking-[-0.2px] text-dark";
-  const roleGridClass =
-    size === "lg"
-      ? "mt-1.5 font-mono text-[11px] leading-snug tracking-[1.2px] uppercase text-mid"
-      : "mt-1 font-mono text-[10px] leading-snug tracking-[1.2px] uppercase text-mid";
-
-  if (variant === "grid") {
-    return (
-      <div>
-        <div className={nameGridClass}>{name}</div>
-        <div className={`cs ${roleGridClass}`}>{labelCs}</div>
-        <div className={`en ${roleGridClass}`}>{labelEn}</div>
-      </div>
-    );
-  }
-
-  const nameListClass =
-    size === "lg"
-      ? "text-[17px] font-semibold leading-tight tracking-[-0.3px] text-dark lg:text-[18px]"
-      : "text-[15px] font-medium leading-tight tracking-[-0.2px] text-dark sm:text-[16px]";
-  const roleListClass =
-    size === "lg"
-      ? "font-mono text-[11px] leading-snug tracking-[1.3px] uppercase text-mid lg:text-[12px] lg:tracking-[1.5px]"
-      : "font-mono text-[10px] leading-snug tracking-[1.2px] uppercase text-mid sm:tracking-[1.5px]";
-
   return (
-    <div
-      className={`flex items-baseline justify-between gap-3 border-b border-separator last:border-b-0 sm:gap-6 ${
-        size === "lg" ? "py-4 lg:py-5" : "py-3 sm:py-3.5"
-      }`}
-    >
-      <div className={nameListClass}>{name}</div>
-      <div className="max-w-[52%] shrink-0 text-right sm:max-w-none">
-        <div className={`cs ${roleListClass}`}>{labelCs}</div>
-        <div className={`en ${roleListClass}`}>{labelEn}</div>
-      </div>
+    <div className="org-dir__row">
+      {id ? <span className="org-dir__id">{id}</span> : null}
+      <span className="org-dir__name">{name}</span>
+      <span className="org-dir__role">
+        <span className="cs">{labelCs}</span>
+        <span className="en">{labelEn}</span>
+      </span>
     </div>
   );
 }
 
 function BoardStructureBlock({ className = "" }) {
   return (
-    <div
-      className={`flex h-full flex-col border-l-[3px] border-l-accent bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
-    >
-      <div className="mb-3 cs font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5 lg:text-[11px]">
-        Předsednictvo
+    <div className={`org-dir ${className}`}>
+      <div className="org-dir__head">
+        <span className="cs">Předsednictvo</span>
+        <span className="en">Executive Board</span>
+        <span className="org-dir__count">4</span>
       </div>
-      <div className="mb-3 en font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5 lg:text-[11px]">
-        Executive Board
-      </div>
-      <div className="grid grid-cols-2 gap-x-4 gap-y-4 lg:hidden">
-        {BOARD_MEMBERS.map((member) => (
-          <StructureDirectoryRow
-            key={member.name}
-            variant="grid"
-            size="lg"
-            name={member.name}
-            labelCs={member.roleCs}
-            labelEn={member.roleEn}
-          />
-        ))}
-      </div>
-      <div className="hidden lg:block">
-        {BOARD_MEMBERS.map((member) => (
-          <StructureDirectoryRow
-            key={member.name}
-            size="lg"
-            name={member.name}
-            labelCs={member.roleCs}
-            labelEn={member.roleEn}
-          />
-        ))}
-      </div>
+      {BOARD_MEMBERS.map((member) => (
+        <StructureDirectoryRow
+          key={member.name}
+          name={member.name}
+          labelCs={member.roleCs}
+          labelEn={member.roleEn}
+        />
+      ))}
     </div>
   );
 }
 
 function CouncilStructureBlock({ className = "" }) {
   return (
-    <div
-      className={`flex h-full flex-col bg-white px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8 ${className}`}
-    >
-      <div className="mb-3 cs font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5">
-        Rada zástupců
+    <div className={`org-dir ${className}`}>
+      <div className="org-dir__head">
+        <span className="cs">Rada zástupců</span>
+        <span className="en">Council of Representatives</span>
+        <span className="org-dir__count">9</span>
       </div>
-      <div className="mb-3 en font-mono text-[10px] tracking-[2px] uppercase text-accent sm:mb-5">
-        Council of Representatives
-      </div>
-      <div className="grid grid-cols-2 gap-x-4 gap-y-4 lg:hidden">
-        {CELL_LEADERS.map((leader) => (
-          <StructureDirectoryRow
-            key={leader.id}
-            variant="grid"
-            name={leader.name}
-            labelCs={leader.deptCs}
-            labelEn={leader.deptEn}
-          />
-        ))}
-      </div>
-      <div className="hidden lg:block">
-        {CELL_LEADERS.map((leader) => (
-          <StructureDirectoryRow
-            key={leader.id}
-            name={leader.name}
-            labelCs={leader.deptCs}
-            labelEn={leader.deptEn}
-          />
-        ))}
-      </div>
+      {CELL_LEADERS.map((leader) => (
+        <StructureDirectoryRow
+          key={leader.id}
+          id={leader.id}
+          name={leader.name}
+          labelCs={leader.deptCs}
+          labelEn={leader.deptEn}
+        />
+      ))}
     </div>
   );
 }
@@ -458,9 +394,9 @@ export function AboutPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-20">
+          <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-[minmax(0,268px)_minmax(0,1fr)] lg:gap-16 xl:gap-24">
             <div className="rev d1">
-              <p className="mb-6 max-w-[400px] text-[15px] leading-[1.8] font-light text-mid">
+              <p className="mb-8 max-w-[400px] text-[15px] leading-[1.8] font-light text-mid">
                 <span className="cs">
                   Tohle je přesně ten typ zprávy, který na workshopech
                   rozebíráme se studenty. Zkuste si sami, jestli poznáte, co je
@@ -474,21 +410,35 @@ export function AboutPageContent() {
               </p>
               <FakeNewsQuiz />
             </div>
-            <div className="rev d2">
-              <p className="mb-6 max-w-[400px] text-[15px] leading-[1.8] font-light text-mid">
+            <div className="rev d2 lg:pt-[4.75rem]">
+              <p className="mb-8 max-w-[440px] text-[15px] leading-[1.8] font-light text-mid">
                 <span className="cs">
-                  Většina mladých Evropanů se s dezinformacemi už setkala. Míň z
-                  nich si věří, že je pozná. Do téhle mezery míří všechno, co
-                  děláme.
+                  76&nbsp;% mladých Evropanů se s dezinformacemi setkalo jen
+                  za poslední týden. Takhle často — a přesně tady začínají naše
+                  workshopy.
                 </span>
                 <span className="en">
-                  Most young Europeans have already encountered disinformation.
-                  Fewer are confident they can recognise it. Everything we do
-                  aims at that gap.
+                  76% of young Europeans encountered disinformation in the past
+                  week alone. This is how often — and this is where our
+                  workshops start.
                 </span>
               </p>
               <DisinfoGapChart />
             </div>
+          </div>
+          <div className="rev d3 mt-20 border-t border-separator pt-16 max-lg:mt-14 max-lg:pt-12">
+            <p className="mb-8 max-w-[540px] text-[15px] leading-[1.8] font-light text-mid">
+              <span className="cs">
+                A pak je tu ještě něco, co se ve škole skoro neučí: doporučovací
+                algoritmus. Tři kliknutí. Podívejte se, co udělají s feedem.
+              </span>
+              <span className="en">
+                And then there is something schools barely teach: the
+                recommendation algorithm. Three taps. Watch what they do to a
+                feed.
+              </span>
+            </p>
+            <AlgorithmFeed />
           </div>
         </div>
       </section>
@@ -514,7 +464,7 @@ export function AboutPageContent() {
               <img
                 src="/photos/Seminar.webp"
                 alt="Členové studentského projektu CTRL"
-                className="absolute inset-0 w-full h-full object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105"
+                className="absolute left-0 top-[-7%] w-full h-[114%] object-cover object-[center_25%] transition-[scale] duration-700 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
               />
@@ -523,7 +473,7 @@ export function AboutPageContent() {
               <img
                 src="/photos/workshopy.webp"
                 alt="Účastníci workshopu CTRL"
-                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                className="absolute left-0 top-[-7%] w-full h-[114%] object-cover object-center transition-[scale] duration-700 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
               />
@@ -532,7 +482,7 @@ export function AboutPageContent() {
               <img
                 src="/photos/vyzkum.webp"
                 alt="Výzkum CTRL Europe"
-                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                className="absolute left-0 top-[-7%] w-full h-[114%] object-cover object-center transition-[scale] duration-700 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
               />
@@ -606,7 +556,7 @@ export function AboutPageContent() {
             </div>
             <div className="rev d2">
               <div className="flex flex-col sep-stack">
-                <div className="bg-bg2 py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
+                <div className="bg-card py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
                   <div className="w-1 h-1 bg-accent rounded-full shrink-0"></div>
                   <span className="text-[15px] font-normal text-dark cs">
                     Nezávislá studentská organizace
@@ -615,7 +565,7 @@ export function AboutPageContent() {
                     Independent student organization
                   </span>
                 </div>
-                <div className="bg-bg2 py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
+                <div className="bg-card py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
                   <div className="w-1 h-1 bg-accent rounded-full shrink-0"></div>
                   <span className="text-[15px] font-normal text-dark cs">
                     Vícejázyčný tým ze CEE
@@ -624,7 +574,7 @@ export function AboutPageContent() {
                     Multilingual team from CEE
                   </span>
                 </div>
-                <div className="bg-bg2 py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
+                <div className="bg-card py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
                   <div className="w-1 h-1 bg-accent rounded-full shrink-0"></div>
                   <span className="text-[15px] font-normal text-dark cs">
                     Vzdělávací a výzkumná orientace
@@ -633,7 +583,7 @@ export function AboutPageContent() {
                     Educational and research focus
                   </span>
                 </div>
-                <div className="bg-bg2 py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
+                <div className="bg-card py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
                   <div className="w-1 h-1 bg-accent rounded-full shrink-0"></div>
                   <span className="text-[15px] font-normal text-dark cs">
                     Mezinárodní ambice
@@ -642,7 +592,7 @@ export function AboutPageContent() {
                     International ambitions
                   </span>
                 </div>
-                <div className="bg-bg2 py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
+                <div className="bg-card py-7 px-8 flex items-center gap-4 transition-[padding-left] duration-300 hover:pl-11">
                   <div className="w-1 h-1 bg-accent rounded-full shrink-0"></div>
                   <span className="text-[15px] font-normal text-dark cs">
                     Registrovaný spolek v ČR
@@ -673,8 +623,8 @@ export function AboutPageContent() {
               </span>
             </h2>
           </div>
-          <div className="flex flex-col sep-stack">
-            <div className="rev d1 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+          <div className="area-stack mt-10 flex flex-col max-lg:mt-8">
+            <div className="area-item rev d1 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">01 Výzkum</span>
                 <span className="en">01 Research</span>
@@ -708,7 +658,7 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d2 bg-bg py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+            <div className="area-item rev d2 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">02 Vzdělávání</span>
                 <span className="en">02 Edu</span>
@@ -742,7 +692,7 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d3 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+            <div className="area-item rev d3 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">03 Média</span>
                 <span className="en">03 Media</span>
@@ -776,7 +726,7 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d4 bg-bg py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+            <div className="area-item rev d4 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">04 Mezinárodní</span>
                 <span className="en">04 Intl</span>
@@ -810,7 +760,7 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d5 bg-bg2 py-[52px] px-11 grid grid-cols-[120px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-5 max-lg:py-10 max-lg:px-6 max-sm:py-8 max-sm:px-5">
+            <div className="area-item rev d5 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="font-mono text-[11px] tracking-[2px] uppercase text-accent pt-1 max-lg:hidden">
                 <span className="cs">05 Akce</span>
                 <span className="en">05 Events</span>
@@ -863,7 +813,8 @@ export function AboutPageContent() {
                 <img
                   src="/IMG_4222.webp"
                   alt="Jan Krejčí"
-                  className="w-full h-full object-cover object-[center_8%] block"
+                  data-plx=""
+                  className="absolute left-0 top-[-6%] w-full h-[112%] object-cover object-[center_8%] block"
                   loading="lazy"
                   decoding="async"
                 />
@@ -1059,54 +1010,55 @@ export function AboutPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
-            <div className="rev d1 flex h-full flex-col gap-8 border-t border-separator pt-6 sm:gap-10 sm:pt-10 lg:gap-0 lg:border-t-0 lg:pt-0">
-              <div className="prose">
-                <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
-                  <strong className="text-dark font-medium">
+          <div className="mt-10 grid grid-cols-1 items-start gap-8 lg:mt-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10 xl:gap-14">
+            <div className="rev d1">
+              <div className="prose max-w-[520px]">
+                <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">
+                  <strong className="font-medium text-dark">
                     Předsednictvo
                   </strong>{" "}
                   tvoří čtyři členové: předseda, místopředseda, tajemnice a
                   zástupce předsednictva. Předsednictvo rozhoduje o strategickém
                   směřování organizace.
                 </p>
-                <p className="en text-base font-light leading-[1.85] text-mid mb-5">
-                  <strong className="text-dark font-medium">
+                <p className="en mb-5 text-base leading-[1.85] font-light text-mid">
+                  <strong className="font-medium text-dark">
                     The Executive Board
                   </strong>{" "}
                   consists of four members: president, vice president, secretary
                   and board representative. The board decides on the strategic
                   direction of the organization.
                 </p>
-                <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
-                  <strong className="text-dark font-medium">
+                <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">
+                  <strong className="font-medium text-dark">
                     Rada zástupců
                   </strong>{" "}
                   sdružuje vedoucí všech buněk. Každá buňka má vlastní agendu,
                   vlastní projekty a přímé napojení na předsednictvo.
                 </p>
-                <p className="en text-base font-light leading-[1.85] text-mid mb-5">
-                  <strong className="text-dark font-medium">
+                <p className="en mb-5 text-base leading-[1.85] font-light text-mid">
+                  <strong className="font-medium text-dark">
                     The Council of Representatives
                   </strong>{" "}
                   brings together the leaders of all cells. Each cell has its
                   own agenda, its own projects and a direct connection to the
                   board.
                 </p>
-                <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
+                <p className="cs mb-8 text-base leading-[1.85] font-light text-mid">
                   Vícejázyčný tým. Střední Evropa jako výchozí bod. Evropa jako
                   cíl.
                 </p>
-                <p className="en text-base font-light leading-[1.85] text-mid mb-5">
+                <p className="en mb-8 text-base leading-[1.85] font-light text-mid">
                   Multilingual team. Central Europe as the starting point.
                   Europe as the goal.
                 </p>
               </div>
-              <div className="mt-4 flex w-full justify-center lg:mt-8 lg:justify-start">
+              <div className="org-chart-frame">
                 <AboutStructureAnimation />
               </div>
             </div>
-            <div className="rev d2 flex h-full flex-col border-t border-separator pt-6 sm:pt-10 lg:border-t-0 lg:pt-0">
+            <div className="rev d2 flex flex-col gap-4">
+              <BoardStructureBlock />
               <CouncilStructureBlock />
             </div>
           </div>
@@ -1177,7 +1129,7 @@ export function AboutPageContent() {
                 {CORE_VALUES.map((value) => (
                   <div
                     key={value.id}
-                    className={`val-card rev ${value.delay} group flex flex-col bg-white px-5 py-6 transition-colors duration-300 hover:border-accent/25 sm:px-6 sm:py-7 lg:px-7 lg:py-8`}
+                    className={`val-card rev ${value.delay} group flex flex-col bg-card px-5 py-6 transition-colors duration-300 hover:border-accent/25 sm:px-6 sm:py-7 lg:px-7 lg:py-8`}
                   >
                     <div className="mb-3 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                       {value.id}

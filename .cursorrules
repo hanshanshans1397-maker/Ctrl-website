@@ -1,0 +1,14 @@
+# Tech Stack & Guidelines for CTRL Europe
+- **Framework:** Next.js (App Router) / React / Tailwind CSS (vždy preferuj moderní modularitu).
+- **Styling:** Tailwind CSS + Framer Motion pro animace. Žádné obyčejné CSS, pokud to není nutné.
+- **Design Philosophy:** Premium, minimalistický, "Apple-like" nebo "Vercel-like" vzhled. Tmavé režimy, jemné gradienty, glassmorphism (backdrop-blur), čisté typography (Inter / Geist font).
+
+# Interaktivní a 3D prvky (Povinné pro prémiový vzhled)
+- Pro 3D objekty nebo efekty na pozadí používej **Three.js** (přes `@react-three/fiber` a `@react-three/drei`) nebo lehčí alternativy typu **Canvas / WebGL** shadery (např. Aceternity UI, KokonutUI nebo Tailwind-based animované komponenty).
+- Stránky nesmí být statické: Každá sekce musí obsahovat plynulé scrollovací animace (Framer Motion - `whileInView`, `initial`, `animate`).
+- Používej interaktivní mikrointerakce (hover efekty na tlačítkách, magnetická tlačítka, spotlight efekty pod kurzorem).
+
+# Pravidla pro generování kódu
+- Nikdy nevytvářej obří monolitické soubory. Rozbíjej komponenty na menší části (`/components/ui`, `/components/sections`).
+- Pokud používáš externí knihovny (Three.js, Lucide icons, Framer Motion), vždy zkontroluj, že jsou správně importované a kompatibilní s aktuálním Reactem.
+- Piš čistý, produkčně připravený kód bez placeholderů typu `// doplňte později`.

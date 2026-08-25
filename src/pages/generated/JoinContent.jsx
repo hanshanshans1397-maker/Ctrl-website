@@ -197,7 +197,7 @@ export function JoinPageContent() {
                   <div key={i} className="progress-seg">
                     <div
                       className="fill"
-                      style={{ width: i <= step ? '100%' : '0%' }}
+                      style={{ transform: i <= step ? 'scaleX(1)' : 'scaleX(0)' }}
                     />
                   </div>
                 ))}

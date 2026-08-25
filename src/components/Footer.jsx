@@ -52,8 +52,8 @@ export function Footer() {
   const instagramUrl = getInstagramUrl(isEn);
 
   return (
-    <footer className="border-t border-[rgba(245,245,243,0.06)] bg-dark px-[52px] pt-10 pb-7 max-lg:px-6 max-lg:pt-9 max-lg:pb-6 max-[480px]:px-5 max-[480px]:pt-7 max-[480px]:pb-5">
-      <div className="mx-auto max-w-[1300px]">
+    <footer className="overflow-hidden border-t border-[rgba(245,245,243,0.06)] bg-dark px-[52px] pt-10 pb-7 max-lg:px-6 max-lg:pt-9 max-lg:pb-6 max-[480px]:px-5 max-[480px]:pt-7 max-[480px]:pb-5">
+      <div className="mx-auto max-w-[1300px]" data-footer-inner="">
         <div className="mb-8 flex items-start justify-between border-b border-[rgba(245,245,243,0.06)] pb-8 max-lg:mb-6 max-lg:flex-col max-lg:gap-7 max-lg:pb-6 max-[480px]:mb-5 max-[480px]:gap-5 max-[480px]:pb-5">
           <div>
             <Link

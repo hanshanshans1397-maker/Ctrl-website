@@ -14,10 +14,6 @@ export function HomePageContent() {
 
         {/* Mobile split: title overlay (bez fotky v pozadí) */}
         <div className="hero-mobile-head hidden max-sm:block relative w-full shrink-0 bg-dark">
-          {/* PŮVODNÍ MOBILE POZADÍ — odkomentuj spolu s h-[50vh] na rodiči:
-          <img src="/photos/hero.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_25%]" fetchpriority="high" decoding="async" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
-          */}
           <div className="px-5 z-[3]">
             <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-2">
               BRNO &middot; 2026
@@ -26,8 +22,10 @@ export function HomePageContent() {
               <img
                 src="/ctrl_logo_cropped.png"
                 alt="CTRL"
-                className="h-[1cap] w-auto"
-                loading="lazy"
+                className="hero-logo h-[1em] w-auto"
+                width={833}
+                height={340}
+                fetchpriority="high"
                 decoding="async"
               />
               <span>Europe</span>
@@ -43,13 +41,15 @@ export function HomePageContent() {
           </div>
 
           <h1 className="hero-title relative z-[3] flex items-baseline gap-[0.12em] text-[clamp(72px,10vw,160px)] font-extrabold leading-[0.95] tracking-[-4px] text-bg mb-10 max-w-[1100px] max-lg:text-[clamp(52px,8vw,100px)] max-lg:tracking-[-2px] max-[640px]:text-[clamp(44px,10vw,72px)] max-[640px]:tracking-[-1.5px] max-[640px]:mb-7 max-[640px]:mx-auto max-sm:hidden max-[480px]:text-[clamp(40px,11vw,60px)]">
-            <div className="word">
+            <div className="word word--logo">
               <span>
                 <img
                   src="/ctrl_logo_cropped.png"
                   alt="CTRL"
-                  className="h-[1cap] w-auto"
-                  loading="lazy"
+                  className="hero-logo h-[1em] w-auto"
+                  width={833}
+                  height={340}
+                  fetchpriority="high"
                   decoding="async"
                 />
               </span>
@@ -75,25 +75,25 @@ export function HomePageContent() {
             <div className="hero-ctas flex gap-3 opacity-0 translate-y-5 max-[640px]:flex-wrap max-[640px]:justify-center max-sm:justify-start">
               <a
                 href="#what"
-                className="btn-primary cs inline-flex items-center gap-2 text-[13px] font-semibold bg-bg text-dark px-7 py-3.5 tracking-wide transition-all duration-250 hover:bg-accent hover:text-bg no-underline"
+                className="btn-primary cs inline-flex items-center gap-2 text-[13px] font-semibold bg-bg text-dark px-7 py-3.5 tracking-wide transition-[background-color,color] duration-250 hover:bg-accent hover:text-bg no-underline"
               >
                 Naše práce
               </a>
               <a
                 href="#what"
-                className="btn-primary en inline-flex items-center gap-2 text-[13px] font-semibold bg-bg text-dark px-7 py-3.5 tracking-wide transition-all duration-250 hover:bg-accent hover:text-bg no-underline"
+                className="btn-primary en inline-flex items-center gap-2 text-[13px] font-semibold bg-bg text-dark px-7 py-3.5 tracking-wide transition-[background-color,color] duration-250 hover:bg-accent hover:text-bg no-underline"
               >
                 Our work
               </a>
               <Link
                 to="/about"
-                className="btn-ghost cs text-[13px] font-medium text-bg border border-[rgba(245,245,243,0.25)] px-7 py-3.5 transition-all hover:bg-[rgba(245,245,243,0.08)] no-underline"
+                className="btn-ghost cs text-[13px] font-medium text-bg border border-[rgba(245,245,243,0.25)] px-7 py-3.5 transition-[background-color,border-color] duration-250 hover:bg-[rgba(245,245,243,0.08)] no-underline"
               >
                 O nás &rarr;
               </Link>
               <Link
                 to="/about"
-                className="btn-ghost en text-[13px] font-medium text-bg border border-[rgba(245,245,243,0.25)] px-7 py-3.5 transition-all hover:bg-[rgba(245,245,243,0.08)] no-underline"
+                className="btn-ghost en text-[13px] font-medium text-bg border border-[rgba(245,245,243,0.25)] px-7 py-3.5 transition-[background-color,border-color] duration-250 hover:bg-[rgba(245,245,243,0.08)] no-underline"
               >
                 About us &rarr;
               </Link>
@@ -169,7 +169,7 @@ export function HomePageContent() {
             {/* 01 — Výzkum */}
             <Link
               to="/news"
-              className="what-card rev d1 group flex h-full min-w-0 flex-col bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
+              className="what-card rev d1 group flex h-full min-w-0 flex-col bg-card py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
             >
               <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 01
@@ -259,7 +259,7 @@ export function HomePageContent() {
             {/* 02 — Workshopy */}
             <Link
               to="/workshops"
-              className="what-card rev d2 group flex h-full min-w-0 flex-col bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
+              className="what-card rev d2 group flex h-full min-w-0 flex-col bg-card py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
             >
               <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 02
@@ -340,7 +340,7 @@ export function HomePageContent() {
             {/* 03 — Média */}
             <Link
               to="/news"
-              className="what-card rev d3 group flex h-full min-w-0 flex-col bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
+              className="what-card rev d3 group flex h-full min-w-0 flex-col bg-card py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
             >
               <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 03
@@ -424,7 +424,7 @@ export function HomePageContent() {
             {/* 04 — Summit */}
             <Link
               to="/summit"
-              className="what-card rev d4 group flex h-full min-w-0 flex-col bg-bg py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
+              className="what-card rev d4 group flex h-full min-w-0 flex-col bg-card py-[52px] px-10 max-sm:py-10 max-sm:px-6 relative overflow-hidden no-underline text-inherit transition-colors duration-300 hover:bg-bg2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent after:scale-x-0 after:origin-left after:transition-transform after:duration-400 hover:after:scale-x-100"
             >
               <div className="what-num font-mono text-[32px] leading-none font-bold text-accent max-lg:text-2xl mb-8 max-sm:mb-5">
                 04
@@ -540,7 +540,7 @@ export function HomePageContent() {
             </h2>
           </div>
           <div className="numbers-grid grid grid-cols-4 sep-grid max-lg:grid-cols-2">
-            <div className="number-card rev d1 bg-bg py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
+            <div className="number-card rev d1 bg-card py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
               <div className="number-val text-[clamp(52px,6vw,80px)] font-bold tracking-[-3px] leading-none text-dark mb-3 [&_span]:text-accent">
                 <AnimatedCounter value={621} />+
               </div>
@@ -551,7 +551,7 @@ export function HomePageContent() {
                 Students in CEE
               </div>
             </div>
-            <div className="number-card rev d2 bg-bg py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
+            <div className="number-card rev d2 bg-card py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
               <div className="number-val text-[clamp(52px,6vw,80px)] font-bold tracking-[-3px] leading-none text-dark mb-3 [&_span]:text-accent">
                 <AnimatedCounter value={1112} />+
               </div>
@@ -562,7 +562,7 @@ export function HomePageContent() {
                 Total applications
               </div>
             </div>
-            <div className="number-card rev d3 bg-bg py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
+            <div className="number-card rev d3 bg-card py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
               <div className="number-val text-[clamp(52px,6vw,80px)] font-bold tracking-[-3px] leading-none text-dark mb-3 [&_span]:text-accent">
                 <AnimatedCounter value={9} />
               </div>
@@ -573,7 +573,7 @@ export function HomePageContent() {
                 Languages in team
               </div>
             </div>
-            <div className="number-card rev d4 bg-bg py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
+            <div className="number-card rev d4 bg-card py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
               <div className="number-val text-[clamp(52px,6vw,80px)] font-bold tracking-[-3px] leading-none text-dark mb-3 [&_span]:text-accent">
                 <AnimatedCounter value={8} />
               </div>
@@ -645,7 +645,7 @@ export function HomePageContent() {
             </h2>
           </div>
           <div className="board-grid grid grid-cols-4 sep-grid max-lg:grid-cols-2 max-[480px]:grid-cols-2">
-            <div className="rev d1 bg-bg py-10 px-8">
+            <div className="rev d1 bg-card py-10 px-8">
               <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden">
                 <img
                   src="/IMG_4222.webp"
@@ -661,7 +661,7 @@ export function HomePageContent() {
                 <span className="en">President & Founder</span>
               </div>
             </div>
-            <div className="rev d2 bg-bg py-10 px-8">
+            <div className="rev d2 bg-card py-10 px-8">
               <div className="w-[72px] h-[72px] bg-light rounded-full mb-5 flex items-center justify-center text-xl font-bold text-mid font-mono">
                 JR
               </div>
@@ -671,7 +671,7 @@ export function HomePageContent() {
                 <span className="en">Vice President</span>
               </div>
             </div>
-            <div className="rev d3 bg-bg py-10 px-8">
+            <div className="rev d3 bg-card py-10 px-8">
               <div className="w-[72px] h-[72px] bg-light rounded-full mb-5 flex items-center justify-center text-xl font-bold text-mid font-mono">
                 BF
               </div>
@@ -681,7 +681,7 @@ export function HomePageContent() {
                 <span className="en">Secretary</span>
               </div>
             </div>
-            <div className="rev d4 bg-bg py-10 px-8">
+            <div className="rev d4 bg-card py-10 px-8">
               <div className="w-[72px] h-[72px] bg-light rounded-full mb-5 flex items-center justify-center text-xl font-bold text-mid font-mono">
                 AM
               </div>
@@ -710,7 +710,7 @@ export function HomePageContent() {
       >
         <div className="inner mx-auto max-w-[680px] max-sm:max-w-full">
           <h2 className="rev cs mb-6 text-[clamp(40px,5vw,72px)] leading-none font-extrabold tracking-[-2.5px] text-dark">
-            Chceš být součástí?
+            Chceš být&nbsp;součástí?
           </h2>
           <h2 className="rev en mb-6 text-[clamp(40px,5vw,72px)] leading-none font-extrabold tracking-[-2.5px] text-dark">
             Want to be part of it?
@@ -726,25 +726,25 @@ export function HomePageContent() {
           <div className="rev d2 flex flex-wrap justify-center gap-3">
             <Link
               to="/join"
-              className="btn-p cs inline-flex items-center gap-2 border-none bg-dark px-7 py-3.5 text-[13px] font-semibold tracking-[0.3px] text-bg no-underline transition-all duration-[250ms] hover:bg-accent"
+              className="btn-p cs inline-flex items-center gap-2 border-none bg-dark px-7 py-3.5 text-[13px] font-semibold tracking-[0.3px] text-bg no-underline transition-[background-color] duration-[250ms] hover:bg-accent"
             >
               Spolupráce &rarr;
             </Link>
             <Link
               to="/join"
-              className="btn-p en inline-flex items-center gap-2 border-none bg-dark px-7 py-3.5 text-[13px] font-semibold tracking-[0.3px] text-bg no-underline transition-all duration-[250ms] hover:bg-accent"
+              className="btn-p en inline-flex items-center gap-2 border-none bg-dark px-7 py-3.5 text-[13px] font-semibold tracking-[0.3px] text-bg no-underline transition-[background-color] duration-[250ms] hover:bg-accent"
             >
               Cooperate &rarr;
             </Link>
             <Link
               to="/apply"
-              className="btn-g cs inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-dark no-underline transition-all duration-[250ms] hover:border-dark"
+              className="btn-g cs inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-dark no-underline transition-[border-color] duration-[250ms] hover:border-dark"
             >
               Přihláška
             </Link>
             <Link
               to="/apply"
-              className="btn-g en inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-dark no-underline transition-all duration-[250ms] hover:border-dark"
+              className="btn-g en inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-dark no-underline transition-[border-color] duration-[250ms] hover:border-dark"
             >
               Application
             </Link>
@@ -799,7 +799,7 @@ export function HomePageContent() {
               </div>
             </div>
             <div className="grid grid-cols-3 gap-px bg-dark max-[480px]:grid-cols-1">
-              <div className="bg-bg py-6 px-6">
+              <div className="bg-card py-6 px-6">
                 <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid mb-2">
                   <span className="cs">Vznik</span>
                   <span className="en">Founded</span>
@@ -808,7 +808,7 @@ export function HomePageContent() {
                   2025 · Brno
                 </div>
               </div>
-              <div className="bg-bg py-6 px-6">
+              <div className="bg-card py-6 px-6">
                 <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid mb-2">
                   <span className="cs">Struktura</span>
                   <span className="en">Structure</span>
@@ -817,7 +817,7 @@ export function HomePageContent() {
                   Student-led
                 </div>
               </div>
-              <div className="bg-bg py-6 px-6">
+              <div className="bg-card py-6 px-6">
                 <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid mb-2">
                   Region
                 </div>

@@ -272,7 +272,7 @@ export function AktualityInfoAnimation() {
                     width={BOX}
                     height={BOX}
                     rx="4"
-                    fill="#f5f5f3"
+                    fill="var(--color-card)"
                     stroke="rgba(180,60,60,0.45)"
                     strokeWidth="1.2"
                   />

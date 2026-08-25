@@ -12,6 +12,7 @@ import {
   useScrollToTop,
   useTickerClone,
 } from '../hooks/usePageEffects';
+import { useCardTilt, useScrollProgress } from '../hooks/useInteractiveMotion';
 import { useLenis } from '../hooks/useLenis';
 import { usePauseOffscreenAnimations } from '../hooks/usePauseOffscreenAnimations';
 import { usePremiumAnimations } from '../hooks/usePremiumAnimations';
@@ -98,6 +99,8 @@ export function Layout() {
   useFormI18n(isEn);
   useHeroParallax(pathname);
   useMagneticButtons(pathname);
+  useCardTilt(pathname);
+  useScrollProgress(pathname);
 
   useEffect(() => {
     const nav = navRef.current;
@@ -163,6 +166,7 @@ export function Layout() {
 
   return (
     <>
+      <div id="scrollProgress" aria-hidden="true" />
       <Cursor />
       <Navbar
         navRef={navRef}

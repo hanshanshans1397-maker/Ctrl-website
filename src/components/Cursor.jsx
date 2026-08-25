@@ -18,11 +18,16 @@ export function Cursor() {
 
     gsap.set(dot, { xPercent: -50, yPercent: -50, x: 0, y: 0 });
 
+    // quickTo only retargets x/y — it never kills a running scale tween.
+    const xTo = gsap.quickTo(dot, 'x', { duration: 0.35, ease: 'power3.out' });
+    const yTo = gsap.quickTo(dot, 'y', { duration: 0.35, ease: 'power3.out' });
+
     const onMove = (e) => {
       if (e.pointerType !== 'mouse') return;
       pos.current.x = e.clientX;
       pos.current.y = e.clientY;
-      gsap.to(dot, { x: pos.current.x, y: pos.current.y, duration: 0.35, ease: 'power3.out', overwrite: true });
+      xTo(pos.current.x);
+      yTo(pos.current.y);
     };
 
     document.addEventListener('pointermove', onMove);
@@ -35,13 +40,15 @@ export function Cursor() {
       return undefined;
     }
 
+    // Grow via transform scale (5px -> ~36px) instead of width/height,
+    // so the hover state never triggers layout.
     const onEnter = () => {
       dot.classList.add('big');
-      gsap.to(dot, { scale: 1, duration: 0.3, ease: 'power3.out' });
+      gsap.to(dot, { scale: 7.2, duration: 0.3, ease: 'power3.out', overwrite: 'auto' });
     };
     const onLeave = () => {
       dot.classList.remove('big');
-      gsap.to(dot, { scale: 1, duration: 0.35, ease: 'power3.out' });
+      gsap.to(dot, { scale: 1, duration: 0.35, ease: 'power3.out', overwrite: 'auto' });
     };
 
     const onOver = (e) => {

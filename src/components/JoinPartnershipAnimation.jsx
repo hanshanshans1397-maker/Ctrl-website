@@ -91,7 +91,7 @@ function Chip({ index, x, w, cs, en }) {
           width={w}
           height="32"
           rx="16"
-          fill="#ffffff"
+          fill="var(--color-card)"
           stroke="rgba(74,123,255,0.35)"
           strokeWidth="1.2"
         />
@@ -201,7 +201,7 @@ export function JoinPartnershipAnimation({ step = 0, isSuccess = false }) {
                 cx={LEFT_C.x}
                 cy={LEFT_C.y}
                 r={R}
-                fill="#ffffff"
+                fill="var(--color-card)"
                 stroke="rgba(11,16,32,0.16)"
                 strokeWidth="1.4"
               />
@@ -227,7 +227,7 @@ export function JoinPartnershipAnimation({ step = 0, isSuccess = false }) {
                 cx={RIGHT_C.x}
                 cy={RIGHT_C.y}
                 r={R}
-                fill="#ffffff"
+                fill="var(--color-card)"
                 stroke="rgba(74,123,255,0.5)"
                 strokeWidth="1.4"
               />

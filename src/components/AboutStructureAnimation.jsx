@@ -176,8 +176,8 @@ function CellCard({ cell }) {
           className="about-structure__cell-box"
           width={CARD_W}
           height={CARD_H}
-          rx="3"
-          fill="#ffffff"
+          rx="0"
+          fill="var(--color-card)"
           stroke="rgba(11,16,32,0.1)"
           strokeWidth="1.1"
         />
@@ -219,7 +219,7 @@ export function AboutStructureAnimation() {
             y={BOARD.y}
             width={BOARD.w}
             height={BOARD.h}
-            fill="#ffffff"
+            fill="var(--color-card)"
             stroke="rgba(11,16,32,0.09)"
             strokeWidth="1"
           />
@@ -300,8 +300,8 @@ export function AboutStructureAnimation() {
               y={94}
               width="200"
               height="12"
-              rx="2"
-              fill="#f5f5f3"
+              rx="0"
+              fill="var(--color-card)"
             />
             <text
               className="about-structure__label cs"

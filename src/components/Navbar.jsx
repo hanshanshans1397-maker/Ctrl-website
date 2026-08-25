@@ -4,6 +4,16 @@ import { useLang } from '../context/LangContext';
 
 const NAV_ITEMS = [
   {
+    to: '/', cs: 'Domů', en: 'Home',
+    icon: (cls) => (
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" className={cls}>
+        <path d="M2.5 7.5L8 2.5l5.5 5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M4 7v6.5h8V7" strokeLinejoin="round" />
+        <path d="M6.5 13.5v-4h3v4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
     to: '/about', cs: 'O nás', en: 'About', keep: true,
     icon: (cls) => (
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" className={cls}>
@@ -149,9 +159,9 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
       <nav
         id="nav"
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-[100] flex h-16 items-center justify-between border-b px-[52px] transition-[background,border-color] duration-400 max-lg:px-6 max-lg:bg-[rgba(245,245,243,0.98)] max-lg:border-separator max-[480px]:h-14 max-[480px]:px-4 ${
+        className={`fixed top-0 left-0 right-0 z-[100] flex h-16 items-center justify-between border-b px-[52px] transition-[background,border-color] duration-400 max-lg:px-6 max-lg:bg-bg/98 max-lg:border-separator max-[480px]:h-14 max-[480px]:px-4 ${
           isSolid
-            ? 'border-separator lg:bg-[rgba(245,245,243,0.92)] lg:backdrop-blur-[20px]'
+            ? 'border-separator lg:bg-bg/92 lg:backdrop-blur-[20px]'
             : 'lg:border-transparent'
         }`}
       >
@@ -174,7 +184,7 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
           ))}
           <button
             type="button"
-            className={`border px-2.5 py-1.5 font-sans text-[11px] font-medium uppercase tracking-[1.5px] transition-all duration-200 max-[480px]:px-2 max-[480px]:py-1 max-[480px]:text-[10px] ${
+            className={`border px-2.5 py-1.5 font-sans text-[11px] font-medium uppercase tracking-[1.5px] transition-[border-color,color,background-color] duration-200 max-[480px]:px-2 max-[480px]:py-1 max-[480px]:text-[10px] ${
               darkNav
                 ? 'border-[rgba(245,245,243,0.2)] text-[rgba(245,245,243,0.6)] hover:border-[rgba(245,245,243,0.4)] lg:border-[rgba(245,245,243,0.2)] max-lg:border-light max-lg:text-mid max-lg:hover:border-[rgba(11,16,32,0.2)] max-lg:hover:text-dark'
                 : 'border-light text-mid hover:border-[rgba(11,16,32,0.2)] hover:text-dark'
@@ -224,9 +234,9 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
             aria-label="Menu"
             onClick={onToggleMenu}
           >
-            <span className={`block h-0.5 w-[22px] origin-center transition-all duration-300 bg-dark ${menuOpen ? 'translate-y-[7px] rotate-45' : ''}`} />
-            <span className={`block h-0.5 w-[22px] origin-center transition-all duration-300 bg-dark ${menuOpen ? 'scale-x-0 opacity-0' : ''}`} />
-            <span className={`block h-0.5 w-[22px] origin-center transition-all duration-300 bg-dark ${menuOpen ? '-translate-y-[7px] -rotate-45' : ''}`} />
+            <span className={`block h-0.5 w-[22px] origin-center transition-[transform,background-color] duration-300 ease-[var(--ease-out-expo)] bg-dark ${menuOpen ? 'translate-y-[7px] rotate-45' : ''}`} />
+            <span className={`block h-0.5 w-[22px] origin-center transition-[transform,opacity,background-color] duration-300 ease-[var(--ease-out-expo)] bg-dark ${menuOpen ? 'scale-x-0 opacity-0' : ''}`} />
+            <span className={`block h-0.5 w-[22px] origin-center transition-[transform,background-color] duration-300 ease-[var(--ease-out-expo)] bg-dark ${menuOpen ? '-translate-y-[7px] -rotate-45' : ''}`} />
           </button>
         </div>
       </nav>
@@ -244,15 +254,6 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
         >
           ✕
         </button>
-        <Link
-          to="/"
-          className={`mobile-menu-link flex items-center gap-3 border-b border-separator py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive('/') ? 'text-accent' : 'text-dark'}`}
-          style={{ animationDelay: '0.05s' }}
-          onClick={closeAll}
-        >
-          <span className="cs">Domů</span>
-          <span className="en">Home</span>
-        </Link>
         {NAV_ITEMS.map((item, i) => (
           <Link
             key={item.to}

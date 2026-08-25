@@ -21,8 +21,13 @@ function showHeroImmediately() {
       '.hero-title .word span, .hero-meta, .hero-sub, .hero-ctas, #hero .hero-mobile-head, #hero .hero-mobile-body',
     )
     .forEach((el) => {
-      el.style.opacity = '1';
+      // Tailwind v4 uses the `translate` property (not only `transform`).
+      // Clearing transform alone reverts to translate-y-[110%] and clips
+      // "Europe" inside overflow:hidden — leaving only blue logo fragments.
+      el.style.translate = 'none';
       el.style.transform = 'none';
+      el.style.opacity = '1';
+      gsap.set(el, { x: 0, y: 0, yPercent: 0, opacity: 1 });
     });
 }
 
@@ -47,16 +52,37 @@ export function useHomeEffects() {
       // interrupted (Safari / React Strict Mode / tab backgrounding).
       onInterrupt: showHeroImmediately,
     });
-    const words = document.querySelectorAll('.hero-title .word span');
+    const logoWord = document.querySelector('.hero-title .word--logo span');
+    const textWords = document.querySelectorAll('.hero-title .word:not(.word--logo) span');
 
-    tl.fromTo(words, { y: '110%', opacity: 0 }, { y: 0, opacity: 1, duration: 1.05, stagger: 0.11 }, 0.15);
+    // Logo PNG sits in overflow:visible — use a softer rise so it can't clip.
+    if (logoWord) {
+      tl.fromTo(
+        logoWord,
+        { yPercent: 40, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 1.05 },
+        0.15,
+      );
+    }
+    if (textWords.length) {
+      tl.fromTo(
+        textWords,
+        { y: '110%', opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.05, stagger: 0.11 },
+        0.26,
+      );
+    }
     tl.to('.hero-meta', { opacity: 1, duration: 0.6 }, 0.2);
     // "BRNO · 2026" decodes from random glyphs — on-brand terminal feel.
     const metaSpan = document.querySelector('.hero-meta span');
     if (metaSpan) addScrambleTween(tl, metaSpan, 0.3, { duration: 1 });
     tl.fromTo('.hero-sub, .hero-ctas', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.1 }, 0.28);
 
+    // Hard fallback: never leave the logo/title stuck mid-clip on flaky GPUs.
+    const failSafe = window.setTimeout(showHeroImmediately, 2200);
+
     return () => {
+      window.clearTimeout(failSafe);
       tl.kill();
       showHeroImmediately();
     };
@@ -102,23 +128,7 @@ export function useHomeEffects() {
         }
       }
 
-      // 3) Gentle parallax inside the photo strip cells.
-      document.querySelectorAll('.photo-strip .strip-img').forEach((img) => {
-        gsap.fromTo(
-          img,
-          { yPercent: -5 },
-          {
-            yPercent: 5,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: img.parentElement,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true,
-            },
-          },
-        );
-      });
+      // (photo-strip parallax now lives in usePremiumAnimations — sitewide)
 
       // 4) Join CTA heading rises character by character.
       const joinHeadings = document.querySelectorAll('#join h2');
@@ -138,12 +148,23 @@ export function useHomeEffects() {
         // this comparison is a reliable self-heal if the DOM ever drifts.
         if (!alreadySplit || h2.textContent !== source) {
           h2.setAttribute('aria-label', source);
-          h2.innerHTML = [...source]
-            .map((c) =>
-              c === ' '
-                ? '<span class="join-char join-char--space" aria-hidden="true"> </span>'
-                : `<span class="join-char" aria-hidden="true">${c}</span>`,
-            )
+          // Keep each word (including trailing "?") as one unbreakable unit so
+          // punctuation cannot wrap onto its own line after the char split.
+          h2.innerHTML = source
+            .split(/(\s+)/)
+            .map((token) => {
+              if (!token) return '';
+              if (/^\s+$/.test(token)) {
+                return '<span class="join-char join-char--space" aria-hidden="true"> </span>';
+              }
+              const chars = [...token]
+                .map(
+                  (c) =>
+                    `<span class="join-char" aria-hidden="true">${c}</span>`,
+                )
+                .join('');
+              return `<span class="join-word">${chars}</span>`;
+            })
             .join('');
         }
         h2.classList.add('anim-gsap');

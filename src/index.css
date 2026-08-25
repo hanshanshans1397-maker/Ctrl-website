@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #eeecea;
-  --color-bg2: #f5f5f3;
+  --color-bg: #e4dfd8;
+  --color-bg2: #d9d3cb;
+  --color-card: #ebe6df;
   --color-dark: #0b1020;
   --color-dark2: #1c2440;
   --color-mid: #6b7280;
@@ -11,7 +12,7 @@
   --color-accent-dim: rgba(74, 123, 255, 0.1);
   --color-light: rgba(11, 16, 32, 0.08);
   --color-light2: rgba(11, 16, 32, 0.04);
-  --color-separator: #3d5078;
+  --color-separator: #c4bdb4;
 
   --font-sans: "Montserrat", system-ui, sans-serif;
   --font-mono: "Geist Mono", monospace;
@@ -180,6 +181,7 @@ body.lite-motion .rev {
   .narrative-line > span {
     opacity: 1;
     transform: none;
+    translate: none;
   }
 }
 
@@ -200,6 +202,7 @@ body.lite-motion #hero .hero-mobile-body,
 body.lite-motion .narrative-line > span {
   opacity: 1 !important;
   transform: none !important;
+  translate: none !important;
 }
 
 body.lite-motion #hero::after,
@@ -225,6 +228,74 @@ body.lite-motion .partner-track {
 
 .rev.anim-gsap {
   transition: none !important;
+}
+
+/* route-change curtain — GSAP owns its position entirely (parked off-screen
+   in a pre-paint layout effect; a CSS transform here would double with
+   GSAP's yPercent channel) */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  background: var(--color-dark);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-curtain::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+body.lite-motion .page-curtain,
+body.reduced-motion .page-curtain {
+  display: none;
+}
+
+/* reading progress line (GSAP scales it with scroll; invisible on lite) */
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 1002;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+/* Once the reveal finishes (GSAP drops .anim-gsap), interactive cards take
+   back their snappy hover transitions. Transform is deliberately excluded on
+   capable devices — GSAP owns it there (cursor tilt + lift). */
+@media (hover: hover) and (pointer: fine) {
+  body:not(.lite-motion) .rev.in.offer-card,
+  body:not(.lite-motion) .rev.in.for-card {
+    transition-property: box-shadow, opacity;
+    transition-duration: 0.35s, 0.55s;
+    transition-timing-function: var(--ease-out-expo);
+    transition-delay: 0s;
+  }
+
+  body:not(.lite-motion) .rev.in.what-card {
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+  }
+
+  body:not(.lite-motion) .rev.in.val-card {
+    transition-property: border-color, background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+  }
 }
 
 /* off-screen containers: freeze infinite animations (JS toggles .anim-idle) */
@@ -266,6 +337,7 @@ body.lite-motion .partner-track {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+    translate: none !important;
     filter: none !important;
   }
 
@@ -289,6 +361,7 @@ body.reduced-motion #heroTitle,
 body.reduced-motion #heroBottom {
   opacity: 1 !important;
   transform: none !important;
+  translate: none !important;
   filter: none !important;
 }
 
@@ -296,11 +369,33 @@ body.reduced-motion #heroBottom {
 .hero-title .word,
 .split-text .word {
   @apply inline-block overflow-hidden;
+  /* Keep a real clip box before webfonts / logo img settle — otherwise
+     overflow:hidden collapses and the blue CTRL logo shows as blobs. */
+  min-height: 0.95em;
+  vertical-align: baseline;
+}
+
+/* Logo word: never clip the PNG — translateY % + overflow ate the glyph. */
+.hero-title .word--logo {
+  overflow: visible;
+}
+
+.hero-title .word--logo .hero-logo {
+  display: block;
+  aspect-ratio: 833 / 340;
 }
 
 .hero-title .word span,
 .split-text .word span {
-  @apply inline-block translate-y-[110%] opacity-0;
+  @apply inline-block opacity-0;
+  /* Use transform (not Tailwind translate-*) so GSAP + fail-safes share
+     one property and can't leave glyphs stuck under overflow:hidden. */
+  transform: translate3d(0, 110%, 0);
+}
+
+/* Softer initial offset (no overflow clip on the logo word). */
+.hero-title .word--logo span {
+  transform: translate3d(0, 40%, 0);
 }
 
 .split-text.in .word span {
@@ -405,7 +500,7 @@ body.reduced-motion #heroBottom {
 
 /* member application form */
 .apply-page {
-  --apply-bg: var(--color-bg);
+  --apply-bg: var(--color-bg2);
   --apply-ink: var(--color-dark);
   --apply-blue: var(--color-accent);
   --apply-blue-soft: var(--color-accent-dim);
@@ -490,9 +585,11 @@ body.reduced-motion #heroBottom {
 
 .apply-page .progress-seg .fill {
   height: 100%;
-  width: 0%;
+  width: 100%;
   background: var(--apply-blue);
-  transition: width 0.4s ease;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s var(--ease-out-expo);
 }
 
 .apply-page .section {
@@ -618,7 +715,10 @@ body.reduced-motion #heroBottom {
   border-radius: 0;
   background: transparent;
   cursor: pointer;
-  transition: all 0.2s;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
   user-select: none;
 }
 
@@ -646,7 +746,9 @@ body.reduced-motion #heroBottom {
   border: 1px solid var(--color-light);
   border-radius: 0;
   cursor: pointer;
-  transition: all 0.2s;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
   background: transparent;
 }
 
@@ -962,10 +1064,10 @@ body.EN .apply-people__caption.en {
 
 @keyframes scrollLine {
   0% {
-    top: -100%;
+    transform: translateY(-100%);
   }
   100% {
-    top: 200%;
+    transform: translateY(200%);
   }
 }
 
@@ -1202,15 +1304,11 @@ body.EN .apply-people__caption.en {
   border-radius: 50%;
   will-change: transform;
   transition:
-    width 0.3s var(--ease-out-expo),
-    height 0.3s var(--ease-out-expo),
     opacity 0.3s var(--ease-out-expo),
     background 0.3s ease;
 }
 
 .cur-dot.big {
-  width: 36px;
-  height: 36px;
   opacity: 0.14;
   background: var(--color-accent);
 }
@@ -1381,6 +1479,24 @@ body.lite-motion #cur {
   align-self: stretch;
 }
 
+.area-stack {
+  gap: 10px;
+}
+
+.area-item {
+  background: var(--color-card);
+  border: 1px solid rgba(11, 16, 32, 0.08);
+  border-left: 3px solid var(--color-accent);
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .area-item:hover {
+    border-color: rgba(74, 123, 255, 0.28);
+    background: #fff;
+  }
+}
+
 /* home section grids — full-height overlay lines (equal on all breakpoints) */
 .what-grid.sep-grid,
 .numbers-grid.sep-grid,
@@ -1499,6 +1615,11 @@ body.lite-motion #cur {
   will-change: transform, opacity;
 }
 /* join CTA heading char split */
+.join-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .join-char {
   display: inline-block;
   will-change: transform;
@@ -1630,7 +1751,7 @@ body.lite-motion #cur {
 
   .btn-p,
   .btn-primary {
-    @apply inline-flex items-center gap-2 border-none bg-dark px-7 py-3.5 text-[13px] font-semibold tracking-wide text-bg no-underline transition-[background-color,transform] duration-[250ms] hover:bg-accent max-sm:px-5 max-sm:py-3 max-sm:text-xs;
+    @apply inline-flex items-center gap-2 border-none bg-dark px-7 py-3.5 text-[13px] font-semibold tracking-wide text-bg no-underline transition-[background-color] duration-[250ms] hover:bg-accent max-sm:px-5 max-sm:py-3 max-sm:text-xs;
     position: relative;
     overflow: hidden;
     will-change: transform;
@@ -1659,7 +1780,7 @@ body.lite-motion #cur {
 
   .btn-g,
   .btn-ghost {
-    @apply inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-dark no-underline transition-all duration-[250ms] hover:border-dark max-sm:px-5 max-sm:py-3 max-sm:text-xs;
+    @apply inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-dark no-underline transition-[border-color,background-color,color] duration-[250ms] hover:border-dark max-sm:px-5 max-sm:py-3 max-sm:text-xs;
   }
 
   .btn-g.light {
@@ -1710,7 +1831,7 @@ body.lite-motion #cur {
     min-width: 280px;
     overflow: hidden;
     border: 1px solid var(--color-separator);
-    background: #fff;
+    background: var(--color-card);
     box-shadow: 0 16px 48px rgba(11, 16, 32, 0.14);
   }
 
@@ -1755,7 +1876,7 @@ body.lite-motion #cur {
     margin-top: 2px;
     border: 1px solid var(--color-separator);
     border-top: none;
-    background: #fff;
+    background: var(--color-card);
   }
 
   .join-mobile-option {
@@ -2015,11 +2136,143 @@ body.lite-motion #cur {
   }
 }
 
-/* about — media-literacy gap chart */
-.disinfo-bar {
-  width: 0;
-  transition: width 1.15s var(--ease-out-expo);
-  will-change: width;
+/* about — editorial disinfo chart */
+.disinfo-chart__fill {
+  height: 100%;
+  width: var(--w);
+  border-radius: inherit;
+  background: rgba(11, 16, 32, 0.18);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.disinfo-chart__fill.is-exposed {
+  background: var(--color-accent);
+}
+
+.disinfo-chart__fill.is-in {
+  transform: scaleX(1);
+  transition: transform 0.85s var(--ease-out-expo);
+  transition-delay: calc(var(--i) * 70ms);
+}
+
+body.lite-motion .disinfo-chart__fill,
+body.reduced-motion .disinfo-chart__fill {
+  transform: none;
+  transition: none;
+}
+
+/* about — fake news quiz phone mockup */
+.fake-news-quiz::before {
+  content: "";
+  position: absolute;
+  inset: 12% -18% auto;
+  height: 70%;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(74, 123, 255, 0.18) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fake-news-phone {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 9 / 18.2;
+  padding: 11px;
+  border-radius: 44px;
+  background:
+    linear-gradient(165deg, #3a425c 0%, #12182c 28%, #0b1020 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 28px 64px -20px rgba(11, 16, 32, 0.5);
+}
+
+.fake-news-phone__screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 34px;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(74, 123, 255, 0.08), transparent 55%),
+    var(--color-card);
+}
+
+.fake-news-phone__island {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  z-index: 2;
+  width: 82px;
+  height: 22px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #0b1020;
+  pointer-events: none;
+}
+
+.fake-news-phone__side {
+  position: absolute;
+  width: 3px;
+  background: #1a2136;
+  pointer-events: none;
+}
+
+.fake-news-phone__side--l {
+  left: -2px;
+  top: 92px;
+  height: 78px;
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 28px 0 0 #1a2136, 0 64px 0 0 #1a2136;
+}
+
+.fake-news-phone__side--r {
+  right: -2px;
+  top: 128px;
+  height: 52px;
+  border-radius: 0 2px 2px 0;
+}
+
+/* On a real phone, a fake iPhone is a phone-in-a-phone. Drop the chrome. */
+@media (max-width: 1023px) {
+  .fake-news-quiz::before {
+    display: none;
+  }
+
+  .fake-news-phone {
+    aspect-ratio: auto;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .fake-news-phone__screen {
+    height: auto;
+    border-radius: 0;
+    border: 1px solid rgba(11, 16, 32, 0.08);
+    background: var(--color-card);
+  }
+
+  .fake-news-quiz__bubble,
+  .fake-news-quiz__result,
+  .fake-news-action {
+    border-radius: 0;
+  }
+
+  .fake-news-phone__island,
+  .fake-news-phone__side,
+  .fake-news-phone__status,
+  .fake-news-phone__home {
+    display: none;
+  }
 }
 
 /* about — fake news quiz: message and verdict settle in, they don't pop */
@@ -2029,6 +2282,85 @@ body.lite-motion #cur {
 
 .fake-news-quiz__result {
   animation: quizResultIn 0.45s var(--ease-out-expo) both;
+}
+
+.fake-news-action {
+  cursor: pointer;
+  transition:
+    transform 160ms var(--ease-out-expo),
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+@media (min-width: 1024px) {
+  .fake-news-action {
+    border-radius: 999px;
+  }
+}
+
+.fake-news-action:active {
+  transform: scale(0.97);
+}
+
+.fake-news-flag {
+  padding: 0;
+  border: 0;
+  border-radius: 1px;
+  background: rgba(74, 123, 255, 0.14);
+  box-shadow: inset 0 -1.5px 0 var(--color-accent);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition: background-color 200ms ease;
+}
+
+.fake-news-flag.is-active {
+  background: rgba(74, 123, 255, 0.26);
+}
+
+.algo-feed__meter {
+  transition: transform 400ms var(--ease-out-expo);
+  transform-origin: left center;
+}
+
+.algo-feed__mix {
+  transform: scaleX(var(--mix));
+  transform-origin: left center;
+  transition: transform 400ms var(--ease-out-expo), opacity 200ms ease;
+}
+
+.algo-feed__card {
+  transition:
+    transform 160ms var(--ease-out-expo),
+    background-color 200ms ease;
+}
+
+.algo-feed__card:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.algo-feed__card[data-heat="3"] .algo-feed__heat i:nth-child(-n + 3),
+.algo-feed__card[data-heat="4"] .algo-feed__heat i:nth-child(-n + 4) {
+  background: var(--color-accent);
+}
+
+.algo-feed__card-in {
+  display: block;
+  animation: algoCardIn 0.4s var(--ease-out-expo) both;
+}
+
+.algo-feed__result {
+  animation: quizResultIn 0.45s var(--ease-out-expo) both;
+}
+
+.algo-feed__reset {
+  cursor: pointer;
+  transition: color 200ms ease, transform 160ms var(--ease-out-expo);
+}
+
+.algo-feed__reset:active {
+  transform: scale(0.97);
 }
 
 @keyframes quizBubbleIn {
@@ -2053,12 +2385,51 @@ body.lite-motion #cur {
   }
 }
 
-body.reduced-motion .disinfo-bar {
+@keyframes algoCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fake-news-action:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .fake-news-action--next:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .fake-news-flag:hover {
+    background: rgba(74, 123, 255, 0.22);
+  }
+
+  .algo-feed__card:hover:not(:disabled) {
+    background-color: #faf9f6;
+  }
+
+  .algo-feed__reset:hover {
+    color: var(--color-accent2);
+  }
+}
+
+body.reduced-motion .algo-feed__meter,
+body.reduced-motion .algo-feed__mix {
   transition: none;
 }
 
 body.reduced-motion .fake-news-quiz__bubble,
-body.reduced-motion .fake-news-quiz__result {
+body.reduced-motion .fake-news-quiz__result,
+body.reduced-motion .algo-feed__card-in,
+body.reduced-motion .algo-feed__result {
   animation: none;
 }
 
@@ -2104,7 +2475,7 @@ body.reduced-motion .fake-news-quiz__result {
 }
 
 .aktuality-info__computer-box {
-  fill: #f5f5f3;
+  fill: var(--color-card);
   stroke: rgba(11, 16, 32, 0.1);
   stroke-width: 1.2;
 }
@@ -2333,7 +2704,7 @@ body.reduced-motion .fake-news-quiz__result {
 @keyframes aktualityComputerBox0 {
   0%,
   19% {
-    fill: #f5f5f3;
+    fill: var(--color-card);
     stroke: rgba(11, 16, 32, 0.1);
   }
   20%,
@@ -2343,7 +2714,7 @@ body.reduced-motion .fake-news-quiz__result {
   }
   72%,
   100% {
-    fill: #f5f5f3;
+    fill: var(--color-card);
     stroke: rgba(11, 16, 32, 0.1);
   }
 }
@@ -2351,7 +2722,7 @@ body.reduced-motion .fake-news-quiz__result {
 @keyframes aktualityComputerBox1 {
   0%,
   21% {
-    fill: #f5f5f3;
+    fill: var(--color-card);
     stroke: rgba(11, 16, 32, 0.1);
   }
   22%,
@@ -2361,7 +2732,7 @@ body.reduced-motion .fake-news-quiz__result {
   }
   80%,
   100% {
-    fill: #f5f5f3;
+    fill: var(--color-card);
     stroke: rgba(11, 16, 32, 0.1);
   }
 }
@@ -2369,7 +2740,7 @@ body.reduced-motion .fake-news-quiz__result {
 @keyframes aktualityComputerBox2 {
   0%,
   23% {
-    fill: #f5f5f3;
+    fill: var(--color-card);
     stroke: rgba(11, 16, 32, 0.1);
   }
   24%,
@@ -2379,7 +2750,7 @@ body.reduced-motion .fake-news-quiz__result {
   }
   72%,
   100% {
-    fill: #f5f5f3;
+    fill: var(--color-card);
     stroke: rgba(11, 16, 32, 0.1);
   }
 }
@@ -2387,7 +2758,7 @@ body.reduced-motion .fake-news-quiz__result {
 @keyframes aktualityComputerBox3 {
   0%,
   25% {
-    fill: #f5f5f3;
+    fill: var(--color-card);
     stroke: rgba(11, 16, 32, 0.1);
   }
   26%,
@@ -2397,7 +2768,7 @@ body.reduced-motion .fake-news-quiz__result {
   }
   80%,
   100% {
-    fill: #f5f5f3;
+    fill: var(--color-card);
     stroke: rgba(11, 16, 32, 0.1);
   }
 }
@@ -2405,7 +2776,7 @@ body.reduced-motion .fake-news-quiz__result {
 @keyframes aktualityComputerBox4 {
   0%,
   27% {
-    fill: #f5f5f3;
+    fill: var(--color-card);
     stroke: rgba(11, 16, 32, 0.1);
   }
   28%,
@@ -2415,7 +2786,7 @@ body.reduced-motion .fake-news-quiz__result {
   }
   72%,
   100% {
-    fill: #f5f5f3;
+    fill: var(--color-card);
     stroke: rgba(11, 16, 32, 0.1);
   }
 }
@@ -3133,16 +3504,7 @@ body.reduced-motion .apply-people__you-scale {
 
 /* About structure org chart animation */
 .about-structure {
-  width: min(100%, 380px);
-  margin-inline: auto;
-}
-
-@media (min-width: 1024px) {
-  .about-structure {
-    width: 100%;
-    max-width: 520px;
-    margin-inline: 0;
-  }
+  width: 100%;
 }
 
 .about-structure__svg {
@@ -3150,6 +3512,104 @@ body.reduced-motion .apply-people__you-scale {
   width: 100%;
   height: auto;
   overflow: visible;
+}
+
+.org-chart-frame {
+  overflow: hidden;
+  border: 1px solid rgba(11, 16, 32, 0.08);
+  background: var(--color-card, #fff);
+  padding: 20px 16px 12px;
+}
+
+.org-dir {
+  overflow: hidden;
+  border: 1px solid rgba(11, 16, 32, 0.08);
+  background: var(--color-card, #fff);
+}
+
+.org-dir__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid rgba(11, 16, 32, 0.08);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.org-dir__count {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  color: var(--color-mid);
+}
+
+.org-dir__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 12px 16px;
+  padding: 11px 20px;
+  border-bottom: 1px solid rgba(11, 16, 32, 0.06);
+}
+
+.org-dir__row:last-child {
+  border-bottom: 0;
+}
+
+.org-dir__row:has(.org-dir__id) {
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+}
+
+.org-dir__id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  color: var(--color-accent);
+}
+
+.org-dir__name {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: var(--color-dark);
+}
+
+.org-dir__role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-align: right;
+  color: var(--color-mid);
+}
+
+@media (max-width: 640px) {
+  .org-dir__head,
+  .org-dir__row {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .org-dir__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .org-dir__row:has(.org-dir__id) {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+
+  .org-dir__role {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .org-dir__row:has(.org-dir__id) .org-dir__role {
+    grid-column: 2;
+  }
 }
 
 .about-structure__label.cs {

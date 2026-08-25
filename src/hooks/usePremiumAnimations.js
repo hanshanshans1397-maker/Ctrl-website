@@ -19,13 +19,14 @@ const BLOCK_ITEM_SELECTORS = [
   '.val-grid > *',
   '.join-grid > *',
   '.offer-card',
+  '.for-card',
 ];
 
 const BLOCK_ITEM_QUERY = BLOCK_ITEM_SELECTORS.join(', ');
 
 const GRID_SELECTORS = '.what-grid, .numbers-grid, .board-grid, .val-grid, .join-grid';
 
-const DIRECT_ITEM_SELECTORS = ['.what-card', '.number-card', '.offer-card'];
+const DIRECT_ITEM_SELECTORS = ['.what-card', '.number-card', '.offer-card', '.for-card'];
 
 function findGridContainer(head) {
   const sibling = head.nextElementSibling;
@@ -74,7 +75,13 @@ function prepareSvgIcon(svg) {
 
 function addIconDraw(tl, svg, position) {
   const strokes = getStrokeElements(svg);
-  tl.to(svg, { opacity: 1, scale: 1, duration: 0.45, ease: EASE_PREMIUM }, position);
+  // clearProps: the leftover inline transform would otherwise override
+  // CSS hover states (e.g. .what-card:hover .what-icon).
+  tl.to(
+    svg,
+    { opacity: 1, scale: 1, duration: 0.45, ease: EASE_PREMIUM, clearProps: 'transform' },
+    position,
+  );
   strokes.forEach((el, i) => {
     tl.to(
       el,
@@ -117,6 +124,14 @@ function sectionBlockReveal() {
     const grid = findGridContainer(head);
     const trailing = collectTrailingSiblings(head, contentRoot);
 
+    // Page-hero subtitles (.page-sub) sit outside .section-head — fold them
+    // into the same entrance so the Join/Apply/News heroes match other pages.
+    const heroSubs = head.parentElement
+      ? [...head.parentElement.children].filter(
+          (el) => el !== head && el.classList.contains('page-sub'),
+        )
+      : [];
+
     if (!label && !title && !prose && !items.length && !trailing.length) return;
 
     const trigger = head.closest('section') || head.closest('[class*="sec-"]') || contentRoot || head.parentElement;
@@ -141,7 +156,21 @@ function sectionBlockReveal() {
       if (titleEm) gsap.set(titleEm, { opacity: 0, y: 12 });
     }
     if (prose) gsap.set(prose, { opacity: 0, y: 28 });
-    if (grid) gsap.set(grid, { opacity: 1, clipPath: 'inset(0 100% 0 0)' });
+    if (heroSubs.length) gsap.set(heroSubs, { opacity: 0, y: 24 });
+
+    // sep-grids paint their separator lines via a dark container background —
+    // hide it while the cards are still transparent (otherwise the whole grid
+    // flashes as solid navy blocks) and draw the lines in after the cards.
+    let gridBg = null;
+    if (grid) {
+      const bg = getComputedStyle(grid).backgroundColor;
+      if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') gridBg = bg;
+      gsap.set(grid, {
+        opacity: 1,
+        clipPath: 'inset(0 100% 0 0)',
+        ...(gridBg ? { backgroundColor: 'rgba(0, 0, 0, 0)' } : {}),
+      });
+    }
     trailing.forEach((el) => gsap.set(el, { opacity: 0, y: 24 }));
 
     items.forEach((item) => {
@@ -198,6 +227,15 @@ function sectionBlockReveal() {
       t += 0.12;
     }
 
+    if (heroSubs.length) {
+      tl.to(
+        heroSubs,
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.05, ease: EASE_PREMIUM },
+        t + 0.06,
+      );
+      t += 0.1;
+    }
+
     if (grid) {
       tl.to(
         grid,
@@ -227,6 +265,8 @@ function sectionBlockReveal() {
     const cardsStart = t + 0.22;
 
     if (items.length) {
+      // clearProps + dropping .anim-gsap hand the cards back to CSS after the
+      // reveal, so their hover transforms/transitions work again.
       tl.to(
         items,
         {
@@ -236,6 +276,8 @@ function sectionBlockReveal() {
           duration: 0.88,
           stagger: 0.1,
           ease: EASE_PREMIUM,
+          clearProps: 'transform',
+          onComplete: () => items.forEach((el) => el.classList.remove('anim-gsap')),
         },
         cardsStart,
       );
@@ -250,7 +292,7 @@ function sectionBlockReveal() {
         if (numberVal) {
           tl.to(
             numberVal,
-            { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'back.out(1.9)' },
+            { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'back.out(1.9)', clearProps: 'transform' },
             offset + 0.08,
           );
         }
@@ -267,6 +309,16 @@ function sectionBlockReveal() {
         tl.add(() => item.classList.add('in'), offset);
       });
     }
+
+    // Separator lines draw in last, once the cards are solid.
+    if (grid && gridBg) {
+      const at = items.length ? cardsStart + items.length * 0.1 + 0.25 : t + 0.5;
+      tl.to(
+        grid,
+        { backgroundColor: gridBg, duration: 0.55, ease: 'power1.inOut', clearProps: 'backgroundColor' },
+        at,
+      );
+    }
   });
 }
 
@@ -280,7 +332,7 @@ function sectionBlockReveal() {
  * resolves as a single gesture instead of five separate pops.
  */
 function stackRowReveal() {
-  document.querySelectorAll('.sep-stack').forEach((stack) => {
+  document.querySelectorAll('.sep-stack, .area-stack').forEach((stack) => {
     // Only the editorial stacks — their rows carry `.rev`. The compact fact
     // stacks (e.g. the About "Založeno / Studentů" rail) reveal as one block.
     const rows = [...stack.children].filter((el) => el.classList.contains('rev'));
@@ -394,6 +446,84 @@ function staggerReveal(selector, options = {}) {
   );
 }
 
+/**
+ * Gentle scrub parallax inside photo frames, sitewide. Images need vertical
+ * headroom in the markup (taller than their frame) so the drift never shows
+ * a gap — e.g. `top-[-7%] h-[114%]` inside an overflow-hidden parent.
+ */
+function photoParallax() {
+  document.querySelectorAll('.photo-strip img, [data-plx]').forEach((img) => {
+    gsap.fromTo(
+      img,
+      { yPercent: -5 },
+      {
+        yPercent: 5,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: img.parentElement,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      },
+    );
+  });
+}
+
+/**
+ * Fast scrolling shears the photos slightly (Locomotive-style velocity skew);
+ * they spring back upright as the scroll settles.
+ */
+function velocitySkew() {
+  const imgs = gsap.utils.toArray('.photo-strip img, [data-plx]');
+  if (!imgs.length) return;
+
+  const proxy = { skew: 0 };
+  const clampSkew = gsap.utils.clamp(-3.5, 3.5);
+
+  ScrollTrigger.create({
+    onUpdate(self) {
+      const skew = clampSkew(self.getVelocity() / -350);
+      if (Math.abs(skew) > Math.abs(proxy.skew)) {
+        proxy.skew = skew;
+        gsap.to(proxy, {
+          skew: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          overwrite: true,
+          onUpdate: () => gsap.set(imgs, { skewY: proxy.skew }),
+        });
+      }
+    },
+  });
+}
+
+/**
+ * The footer unveils itself: its content sits shifted down inside the
+ * overflow-hidden footer and parallaxes into place as the page bottoms out.
+ */
+function footerReveal() {
+  const inner = document.querySelector('[data-footer-inner]');
+  const footer = inner?.closest('footer');
+  if (!inner || !footer) return;
+
+  gsap.fromTo(
+    inner,
+    { yPercent: 26, opacity: 0.35 },
+    {
+      yPercent: 0,
+      opacity: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: footer,
+        start: 'top bottom',
+        end: 'bottom bottom',
+        scrub: true,
+      },
+    },
+  );
+}
+
 function imageReveal() {
   const strips = document.querySelectorAll('.photo-strip > *');
   if (!strips.length) return [];
@@ -440,6 +570,9 @@ export function usePremiumAnimations(pathname) {
       stackRowReveal();
       staggerReveal('.join-criterion', { trigger: '.join-criteria', x: -20, y: 0, stagger: 0.06, duration: 0.7 });
       imageReveal();
+      photoParallax();
+      velocitySkew();
+      footerReveal();
     });
 
     requestAnimationFrame(() => ScrollTrigger.refresh());

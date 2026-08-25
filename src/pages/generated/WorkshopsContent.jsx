@@ -162,7 +162,7 @@ export function WorkshopsPageContent() {
             </div>
             <div className="rev d2 grid grid-cols-2 sep-grid">
               {/* 90 MIN */}
-              <div className="bg-bg2 px-6 py-6 flex flex-col gap-2">
+              <div className="bg-card px-6 py-6 flex flex-col gap-2">
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-mono text-[10px] tracking-[2px] uppercase font-medium opacity-100">
                     <span className="cs text-dark">Délka</span>
@@ -194,7 +194,7 @@ export function WorkshopsPageContent() {
                 </div>
               </div>
               {/* 0 Kč FREE */}
-              <div className="bg-bg2 px-6 py-6 flex flex-col gap-2">
+              <div className="bg-card px-6 py-6 flex flex-col gap-2">
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-mono text-[10px] tracking-[2px] uppercase font-medium opacity-100">
                     <span className="cs text-dark">Cena</span>
@@ -227,7 +227,7 @@ export function WorkshopsPageContent() {
                 </div>
               </div>
               {/* 8 TOPICS */}
-              <div className="bg-bg2 px-6 py-6 flex flex-col gap-2">
+              <div className="bg-card px-6 py-6 flex flex-col gap-2">
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-mono text-[10px] tracking-[2px] uppercase font-medium opacity-100">
                     <span className="cs text-dark">Témata</span>
@@ -257,7 +257,7 @@ export function WorkshopsPageContent() {
                 </div>
               </div>
               {/* 26 AGE */}
-              <div className="bg-bg2 px-6 py-6 flex flex-col gap-2">
+              <div className="bg-card px-6 py-6 flex flex-col gap-2">
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-mono text-[10px] tracking-[2px] uppercase font-medium opacity-100">
                     <span className="cs text-dark">Věk</span>
@@ -325,7 +325,7 @@ export function WorkshopsPageContent() {
       </section>
 
       <section
-        className="sec bg-bg px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16"
+        className="sec bg-bg2 px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16"
         id="topics"
       >
         <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full">
@@ -840,7 +840,7 @@ export function WorkshopsPageContent() {
         </div>
       </section>
 
-      <section className="sec bg-bg">
+      <section className="sec bg-bg2">
         <div className="inner">
           <div className="section-head rev">
             <span className="section-label">
@@ -887,7 +887,7 @@ export function WorkshopsPageContent() {
             </div>
             <div className="rev d2 flex flex-col sep-stack">
               {/* FREE */}
-              <div className="flex items-center gap-5 bg-bg2 px-7 py-5 max-sm:px-5 max-sm:py-4">
+              <div className="flex items-center gap-5 bg-card px-7 py-5 max-sm:px-5 max-sm:py-4">
                 <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
                   <svg
                     className="w-4 h-4"
@@ -918,7 +918,7 @@ export function WorkshopsPageContent() {
                 </div>
               </div>
               {/* ADAPT */}
-              <div className="flex items-center gap-5 bg-bg2 px-7 py-5 max-sm:px-5 max-sm:py-4">
+              <div className="flex items-center gap-5 bg-card px-7 py-5 max-sm:px-5 max-sm:py-4">
                 <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
                   <svg
                     className="w-4 h-4"
@@ -947,7 +947,7 @@ export function WorkshopsPageContent() {
                 </div>
               </div>
               {/* FLEX */}
-              <div className="flex items-center gap-5 bg-bg2 px-7 py-5 max-sm:px-5 max-sm:py-4">
+              <div className="flex items-center gap-5 bg-card px-7 py-5 max-sm:px-5 max-sm:py-4">
                 <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
                   <svg
                     className="w-4 h-4"
@@ -982,7 +982,7 @@ export function WorkshopsPageContent() {
                 </div>
               </div>
               {/* ON-SITE */}
-              <div className="flex items-center gap-5 bg-bg2 px-7 py-5 max-sm:px-5 max-sm:py-4">
+              <div className="flex items-center gap-5 bg-card px-7 py-5 max-sm:px-5 max-sm:py-4">
                 <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
                   <svg
                     className="w-4 h-4"
@@ -1012,7 +1012,7 @@ export function WorkshopsPageContent() {
                 </div>
               </div>
               {/* PARTNER */}
-              <div className="flex items-center gap-5 bg-bg2 px-7 py-5 max-sm:px-5 max-sm:py-4">
+              <div className="flex items-center gap-5 bg-card px-7 py-5 max-sm:px-5 max-sm:py-4">
                 <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
                   <svg
                     className="w-4 h-4"
@@ -1058,7 +1058,7 @@ export function WorkshopsPageContent() {
         </div>
       </section>
 
-      <section className="sec bg-bg2">
+      <section className="sec bg-bg">
         <div className="inner">
           <div className="section-head rev">
             <span className="section-label">
@@ -1075,7 +1075,7 @@ export function WorkshopsPageContent() {
             </h2>
           </div>
           <div className="grid grid-cols-3 sep-grid max-md:grid-cols-1">
-            <div className="rev d1 bg-bg2 px-10 py-12 max-sm:px-6 max-sm:py-8">
+            <div className="rev d1 bg-card px-10 py-12 max-sm:px-6 max-sm:py-8">
               <div className="mb-5">
                 <svg
                   viewBox="0 0 30 20"
@@ -1114,7 +1114,7 @@ export function WorkshopsPageContent() {
                 history, media environment and digital challenges of the region.
               </p>
             </div>
-            <div className="rev d2 bg-bg2 px-10 py-12 max-sm:px-6 max-sm:py-8">
+            <div className="rev d2 bg-card px-10 py-12 max-sm:px-6 max-sm:py-8">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 <span className="cs">Výměna</span>
                 <span className="en">Exchange</span>
@@ -1134,7 +1134,7 @@ export function WorkshopsPageContent() {
                 Sharing experiences and building international contacts.
               </p>
             </div>
-            <div className="rev d3 bg-bg2 px-10 py-12 max-sm:px-6 max-sm:py-8">
+            <div className="rev d3 bg-card px-10 py-12 max-sm:px-6 max-sm:py-8">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 <span className="cs">Vize</span>
                 <span className="en">Vision</span>
@@ -1197,7 +1197,7 @@ export function WorkshopsPageContent() {
             </div>
             <div className="rev d2 flex flex-col gap-2.5">
               {/* Cyber step badges — no hover, static */}
-              <div className="flex items-start gap-5 border border-separator bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
+              <div className="flex items-start gap-5 border border-separator bg-card px-7 py-6 max-sm:px-5 max-sm:py-5">
                 <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
                   01
                 </div>
@@ -1208,7 +1208,7 @@ export function WorkshopsPageContent() {
                   Network of partner schools in JMK and across CZ
                 </span>
               </div>
-              <div className="flex items-start gap-5 border border-separator bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
+              <div className="flex items-start gap-5 border border-separator bg-card px-7 py-6 max-sm:px-5 max-sm:py-5">
                 <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
                   02
                 </div>
@@ -1219,7 +1219,7 @@ export function WorkshopsPageContent() {
                   Expansion to CEE countries: Slovakia, Poland and beyond
                 </span>
               </div>
-              <div className="flex items-start gap-5 border border-separator bg-bg px-7 py-6 max-sm:px-5 max-sm:py-5">
+              <div className="flex items-start gap-5 border border-separator bg-card px-7 py-6 max-sm:px-5 max-sm:py-5">
                 <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
                   03
                 </div>
