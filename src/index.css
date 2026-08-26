@@ -290,7 +290,8 @@ body.reduced-motion .page-curtain {
     transition-delay: 0s;
   }
 
-  body:not(.lite-motion) .rev.in.val-card {
+  body:not(.lite-motion) .rev.in.val-card,
+  body:not(.lite-motion) .rev.in.perk-card {
     transition-property: border-color, background-color;
     transition-duration: 0.3s;
     transition-timing-function: ease;
@@ -1466,17 +1467,39 @@ body.lite-motion #cur {
 }
 
 /* separators — gap fallback for generic grids */
-.sep-grid,
-.sep-stack {
+.sep-grid {
   gap: 1px;
   background-color: var(--color-separator);
   align-items: stretch;
 }
 
-.sep-grid > *,
+.sep-grid > * {
+  border: none;
+  align-self: stretch;
+}
+
+/* Editorial row stacks. Real borders — a 1px gap + parent fill disappears
+   whenever a child is composited (`.rev` translate / GSAP leftover transform). */
+.sep-stack {
+  gap: 0;
+  background-color: transparent;
+  align-items: stretch;
+}
+
 .sep-stack > * {
   border: none;
   align-self: stretch;
+}
+
+.sep-stack > * + * {
+  border-top: 1px solid var(--color-separator);
+}
+
+/* The row chrome (background + rules) is already in place; only inner copy moves. */
+.sep-stack > .rev {
+  opacity: 1;
+  translate: none;
+  will-change: auto;
 }
 
 .area-stack {
@@ -5031,4 +5054,168 @@ body.reduced-motion .join-partnership__seek,
 body.reduced-motion .join-partnership__ring,
 body.reduced-motion .join-partnership__spark {
   opacity: 0 !important;
+}
+
+/* ── Workshops: school perks (bento) ── */
+.perk-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.perk-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-card);
+  border: 1px solid rgba(11, 16, 32, 0.08);
+  padding: 26px 24px 24px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.perk-card--featured {
+  grid-row: span 2;
+  padding: 28px 28px 30px;
+}
+
+.perk-visit {
+  display: block;
+  width: min(100%, 168px);
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.perk-card--featured .perk-icon {
+  margin-top: auto;
+}
+
+.perk-pin {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.perk-card--featured.rev.in .perk-pin {
+  animation: perkPinDrop 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+@keyframes perkPinDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.perk-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 16px;
+  color: var(--color-accent);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.perk-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.perk-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+}
+
+.perk-desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--color-dark);
+}
+
+.perk-card--featured .perk-desc {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .perk-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      180px circle at 28% 0%,
+      rgba(74, 123, 255, 0.1),
+      transparent 70%
+    );
+    transition: opacity 0.2s ease;
+  }
+
+  .perk-card:hover::before {
+    opacity: 1;
+  }
+
+  .perk-card:hover {
+    border-color: rgba(74, 123, 255, 0.28);
+    background: #fff;
+  }
+
+  .perk-card:hover .perk-icon {
+    transform: translateY(-3px);
+  }
+}
+
+.perk-icon,
+.perk-label,
+.perk-desc,
+.perk-visit {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .perk-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perk-card--featured {
+    grid-row: auto;
+  }
+
+  .perk-visit {
+    margin-bottom: 18px;
+    width: min(100%, 140px);
+  }
+
+  .perk-card,
+  .perk-card--featured {
+    padding: 22px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .perk-card--featured.rev.in .perk-pin,
+  body.reduced-motion .perk-card--featured .perk-pin {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+body.lite-motion .perk-card--featured.rev.in .perk-pin {
+  animation: none;
+  opacity: 1;
+  transform: none;
 }

@@ -5,14 +5,14 @@ import { prefersReducedMotion, shouldUseLiteMotion } from '../utils/motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TILT_SELECTOR = '.what-card, .offer-card, .for-card, .val-card';
+const TILT_SELECTOR = '.what-card, .offer-card, .for-card, .val-card, .perk-card';
 const TILT_DEG = 5;
 
 /** Per-card hover lift (px) — mirrors what the CSS hover used to do, since
  * GSAP owns the card transform once tilt is active. */
 function liftFor(card) {
   if (card.classList.contains('offer-card')) return -4;
-  if (card.classList.contains('for-card')) return -3;
+  if (card.classList.contains('for-card') || card.classList.contains('perk-card')) return -3;
   return 0;
 }
 

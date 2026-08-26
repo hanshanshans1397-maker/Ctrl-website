@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { WorkshopPerks } from "../../components/WorkshopPerks";
 
 export function WorkshopsPageContent() {
   return (
@@ -885,175 +886,7 @@ export function WorkshopsPageContent() {
                 </Link>
               </div>
             </div>
-            <div className="rev d2 flex flex-col sep-stack">
-              {/* FREE */}
-              <div className="flex items-center gap-5 bg-card px-7 py-5 max-sm:px-5 max-sm:py-4">
-                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
-                  <svg
-                    className="w-4 h-4"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.25"
-                  >
-                    <circle cx="8" cy="8" r="6.5" />
-                    <path
-                      d="M5.5 8.5l1.8 1.8 3.5-4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    <span className="cs">Zdarma</span>
-                    <span className="en">Free</span>
-                  </div>
-                  <span className="cs text-[14px] font-normal text-dark">
-                    Workshopy zdarma pro partnerské školy
-                  </span>
-                  <span className="en text-[14px] font-normal text-dark">
-                    Free workshops for partner schools
-                  </span>
-                </div>
-              </div>
-              {/* ADAPT */}
-              <div className="flex items-center gap-5 bg-card px-7 py-5 max-sm:px-5 max-sm:py-4">
-                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
-                  <svg
-                    className="w-4 h-4"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.25"
-                  >
-                    <path
-                      d="M2 5h3M9 5h5M5 3v4M2 11h5M11 11h3M7 9v4"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    <span className="cs">Přizpůsobený</span>
-                    <span className="en">Adapted</span>
-                  </div>
-                  <span className="cs text-[14px] font-normal text-dark">
-                    Přizpůsobený obsah pro každý věk
-                  </span>
-                  <span className="en text-[14px] font-normal text-dark">
-                    Adapted content for every age group
-                  </span>
-                </div>
-              </div>
-              {/* FLEX */}
-              <div className="flex items-center gap-5 bg-card px-7 py-5 max-sm:px-5 max-sm:py-4">
-                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
-                  <svg
-                    className="w-4 h-4"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.25"
-                  >
-                    <rect x="2" y="2.5" width="12" height="11" rx="1.5" />
-                    <path
-                      d="M2 6.5h12M5.5 1v3M10.5 1v3"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M4.5 9.5h2M8 9.5h3.5M4.5 12h4"
-                      strokeLinecap="round"
-                      opacity="0.5"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    <span className="cs">Flexibilní</span>
-                    <span className="en">Flexible</span>
-                  </div>
-                  <span className="cs text-[14px] font-normal text-dark">
-                    Flexibilní časový formát
-                  </span>
-                  <span className="en text-[14px] font-normal text-dark">
-                    Flexible time format
-                  </span>
-                </div>
-              </div>
-              {/* ON-SITE */}
-              <div className="flex items-center gap-5 bg-card px-7 py-5 max-sm:px-5 max-sm:py-4">
-                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
-                  <svg
-                    className="w-4 h-4"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.25"
-                  >
-                    <path
-                      d="M8 14.5S2.5 9.5 2.5 6a5.5 5.5 0 0111 0c0 3.5-5.5 8.5-5.5 8.5z"
-                      strokeLinejoin="round"
-                    />
-                    <circle cx="8" cy="6" r="2" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    <span className="cs">U vás</span>
-                    <span className="en">ON-SITE</span>
-                  </div>
-                  <span className="cs text-[14px] font-normal text-dark">
-                    Přímo na vaší škole
-                  </span>
-                  <span className="en text-[14px] font-normal text-dark">
-                    Directly at your school
-                  </span>
-                </div>
-              </div>
-              {/* PARTNER */}
-              <div className="flex items-center gap-5 bg-card px-7 py-5 max-sm:px-5 max-sm:py-4">
-                <div className="shrink-0 flex items-center justify-center w-9 h-9 border border-separator bg-bg text-mid">
-                  <svg
-                    className="w-4 h-4"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.25"
-                  >
-                    <circle cx="3.5" cy="8" r="2" />
-                    <circle cx="12.5" cy="8" r="2" />
-                    <path d="M5.5 8h5" strokeLinecap="round" />
-                    <circle cx="3.5" cy="3" r="1.5" />
-                    <circle cx="12.5" cy="3" r="1.5" />
-                    <path
-                      d="M3.5 4.5v1.5M12.5 4.5v1.5"
-                      strokeLinecap="round"
-                      opacity="0.5"
-                    />
-                    <circle cx="3.5" cy="13" r="1.5" />
-                    <circle cx="12.5" cy="13" r="1.5" />
-                    <path
-                      d="M3.5 10v1.5M12.5 10v1.5"
-                      strokeLinecap="round"
-                      opacity="0.5"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-mono text-[9px] tracking-[2px] uppercase text-accent opacity-70 mb-0.5">
-                    <span className="cs">Partnerství</span>
-                    <span className="en">Partnership</span>
-                  </div>
-                  <span className="cs text-[14px] font-normal text-dark">
-                    Dlouhodobá partnerská spolupráce
-                  </span>
-                  <span className="en text-[14px] font-normal text-dark">
-                    Long-term partnership cooperation
-                  </span>
-                </div>
-              </div>
-            </div>
+            <WorkshopPerks />
           </div>
         </div>
       </section>
@@ -1074,7 +907,7 @@ export function WorkshopsPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-3 sep-grid max-md:grid-cols-1">
+          <div className="for-grid grid grid-cols-3 sep-grid max-md:grid-cols-1">
             <div className="rev d1 bg-card px-10 py-12 max-sm:px-6 max-sm:py-8">
               <div className="mb-5">
                 <svg
@@ -1159,83 +992,7 @@ export function WorkshopsPageContent() {
         </div>
       </section>
 
-      <section className="sec bg-bg2">
-        <div className="inner">
-          <div className="section-head rev">
-            <span className="section-label">
-              <span className="cs">Dlouhodobá vize</span>
-              <span className="en">Long-term vision</span>
-            </span>
-            <h2 className="section-title italic">
-              <span className="cs">
-                Síť škol. <em>Celá Evropa.</em>
-              </span>
-              <span className="en">
-                A network of schools. <em>All of Europe.</em>
-              </span>
-            </h2>
-          </div>
-          <div className="about-2col grid grid-cols-2 items-center gap-[100px] max-lg:grid-cols-1 max-lg:gap-12 max-lg:items-start max-sm:gap-10">
-            <div className="rev">
-              <p className="cs mb-[18px] text-base leading-[1.85] font-light text-mid">
-                Naším cílem je vybudovat dlouhodobý edukační program který
-                propájčí školy, studenty a organizace napříč střední Evropou.
-              </p>
-              <p className="en mb-[18px] text-base leading-[1.85] font-light text-mid">
-                Our goal is to build a long-term educational program that
-                connects schools, students and organizations across Central
-                Europe.
-              </p>
-              <p className="cs text-base leading-[1.85] font-light text-mid">
-                Neslibujeme co nemůžeme dodržet. Stavíme program krok po kroku.
-                Každý workshop je dalším krokem.
-              </p>
-              <p className="en text-base leading-[1.85] font-light text-mid">
-                We don't promise what we can't deliver. We build it step by
-                step. Every workshop is another step forward.
-              </p>
-            </div>
-            <div className="rev d2 flex flex-col gap-2.5">
-              {/* Cyber step badges — no hover, static */}
-              <div className="flex items-start gap-5 border border-separator bg-card px-7 py-6 max-sm:px-5 max-sm:py-5">
-                <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
-                  01
-                </div>
-                <span className="cs text-sm font-light text-dark">
-                  Síť partnerských škol v JMK a celé ČR
-                </span>
-                <span className="en text-sm font-light text-dark">
-                  Network of partner schools in JMK and across CZ
-                </span>
-              </div>
-              <div className="flex items-start gap-5 border border-separator bg-card px-7 py-6 max-sm:px-5 max-sm:py-5">
-                <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
-                  02
-                </div>
-                <span className="cs text-sm font-light text-dark">
-                  Rozsíření do zemí CEE: Slovensko, Polsko a dál
-                </span>
-                <span className="en text-sm font-light text-dark">
-                  Expansion to CEE countries: Slovakia, Poland and beyond
-                </span>
-              </div>
-              <div className="flex items-start gap-5 border border-separator bg-card px-7 py-6 max-sm:px-5 max-sm:py-5">
-                <div className="font-mono text-[11px] tracking-[2px] text-accent uppercase mt-0.5 shrink-0">
-                  03
-                </div>
-                <span className="cs text-sm font-light text-dark">
-                  Vzdělávací materiály a online platforma
-                </span>
-                <span className="en text-sm font-light text-dark">
-                  Educational materials and online platform
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="sec bg-bg text-center">
+      <section className="sec bg-bg2 text-center">
         <div className="inner mx-auto max-w-[700px]">
           <h2 className="rev cs mb-6 text-[clamp(40px,5.5vw,80px)] leading-none font-extrabold tracking-[-3px] text-dark">
             Objednejte workshop.
