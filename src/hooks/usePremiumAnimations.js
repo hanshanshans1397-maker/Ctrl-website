@@ -339,7 +339,13 @@ function stackRowReveal() {
     const rows = [...stack.children].filter((el) => el.classList.contains('rev'));
     if (!rows.length) return;
 
-    rows.forEach(prepareGsap);
+    rows.forEach((row) => {
+      prepareGsap(row);
+      // Keep the row frame (and its separator) painted from the first frame.
+      // A leftover GSAP transform would composite the row and eat the 1px rule.
+      row.classList.add('in');
+      gsap.set(row, { opacity: 1, clearProps: 'transform' });
+    });
 
     const tl = gsap.timeline({
       scrollTrigger: { trigger: stack, start: 'top 82%', once: true },
@@ -351,10 +357,6 @@ function stackRowReveal() {
       const headings = body?.querySelectorAll('h3');
       const copy = body?.querySelectorAll('p');
       const icon = rail?.querySelector('svg');
-
-      // The row itself never travels — only what sits inside it.
-      gsap.set(row, { opacity: 1, y: 0 });
-      tl.add(() => row.classList.add('in'), at);
 
       if (icon) prepareSvgIcon(icon);
 
