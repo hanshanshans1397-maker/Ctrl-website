@@ -20,13 +20,14 @@ const BLOCK_ITEM_SELECTORS = [
   '.join-grid > *',
   '.offer-card',
   '.for-card',
+  '.perk-card',
 ];
 
 const BLOCK_ITEM_QUERY = BLOCK_ITEM_SELECTORS.join(', ');
 
-const GRID_SELECTORS = '.what-grid, .numbers-grid, .board-grid, .val-grid, .join-grid';
+const GRID_SELECTORS = '.what-grid, .numbers-grid, .board-grid, .val-grid, .join-grid, .perk-grid';
 
-const DIRECT_ITEM_SELECTORS = ['.what-card', '.number-card', '.offer-card', '.for-card'];
+const DIRECT_ITEM_SELECTORS = ['.what-card', '.number-card', '.offer-card', '.for-card', '.perk-card'];
 
 function findGridContainer(head) {
   const sibling = head.nextElementSibling;
@@ -181,7 +182,7 @@ function sectionBlockReveal() {
       if (numberVal) gsap.set(numberVal, { opacity: 0, y: 24, scale: 0.8, transformOrigin: 'left bottom' });
       const avatar = item.querySelector(':scope > .rounded-full');
       if (avatar) gsap.set(avatar, { opacity: 0, scale: 0.4, rotate: -10, transformOrigin: '50% 50%' });
-      const icon = item.querySelector('.what-icon');
+      const icon = item.querySelector('.what-icon, .perk-icon');
       if (icon) prepareSvgIcon(icon);
     });
 
@@ -304,7 +305,7 @@ function sectionBlockReveal() {
             offset + 0.12,
           );
         }
-        const icon = item.querySelector('.what-icon');
+        const icon = item.querySelector('.what-icon, .perk-icon');
         if (icon) addIconDraw(tl, icon, offset + 0.1);
         tl.add(() => item.classList.add('in'), offset);
       });
