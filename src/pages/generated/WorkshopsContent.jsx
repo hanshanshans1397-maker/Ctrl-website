@@ -344,8 +344,8 @@ export function WorkshopsPageContent() {
               </span>
             </h2>
           </div>
-          <div className="flex flex-col sep-stack">
-            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+          <div className="area-stack mt-10 flex flex-col max-lg:mt-8">
+            <div className="area-item rev d1 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -391,7 +391,7 @@ export function WorkshopsPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d1 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -428,7 +428,7 @@ export function WorkshopsPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d1 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -508,7 +508,7 @@ export function WorkshopsPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d1 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -551,7 +551,7 @@ export function WorkshopsPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d2 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d2 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -591,7 +591,7 @@ export function WorkshopsPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d2 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d2 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -633,7 +633,7 @@ export function WorkshopsPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d3 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d3 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -676,7 +676,7 @@ export function WorkshopsPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d3 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d3 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -740,102 +740,90 @@ export function WorkshopsPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-2 gap-20 max-lg:grid-cols-1 max-lg:gap-12 max-sm:gap-8">
-            <div className="rev d1">
-              <div className="how-step">
-                <div className="how-num">01</div>
-                <div>
-                  <div className="how-title cs">Interaktivní úvod</div>
-                  <div className="how-title en">Interactive introduction</div>
-                  <p className="how-desc cs">
-                    Workshop začíná kvízem nebo simulací. Ne přednáškou.
-                    Studenti jsou zapojení od první minuty.
-                  </p>
-                  <p className="how-desc en">
-                    The workshop starts with a quiz or a simulation. Not a
-                    lecture. Students are engaged from the first minute.
-                  </p>
-                </div>
-              </div>
-              <div className="how-step">
-                <div className="how-num">02</div>
-                <div>
-                  <div className="how-title cs">Reálné příklady</div>
-                  <div className="how-title en">Real-world examples</div>
-                  <p className="how-desc cs">
-                    Pracujeme s aktuálními případy z médií, sociálních sítí a
-                    technologického světa. Ne z učebnic.
-                  </p>
-                  <p className="how-desc en">
-                    We work with current cases from media, social networks and
-                    the technology world. Not from textbooks.
-                  </p>
-                </div>
-              </div>
-              <div className="how-step">
-                <div className="how-num">03</div>
-                <div>
-                  <div className="how-title cs">Skupinové aktivity</div>
-                  <div className="how-title en">Group activities</div>
-                  <p className="how-desc cs">
-                    Studenti pracují v týmech, diskutují, argumentují a společně
-                    řeší problémy. Žádné pasivní posízení.
-                  </p>
-                  <p className="how-desc en">
-                    Students work in teams, discuss, argue and solve problems
-                    together. No passive sitting.
-                  </p>
-                </div>
-              </div>
+          <div className="how-grid sep-grid">
+            <div className="how-row">
+            <div className="what-card rev d1 group relative flex h-full min-w-0 flex-col overflow-hidden bg-card px-9 py-10 transition-colors duration-300 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-400 after:content-[''] hover:bg-bg2 hover:after:scale-x-100 max-sm:px-5 max-sm:py-8">
+              <div className="how-num mb-8 max-sm:mb-5">01</div>
+              <div className="how-title cs">Interaktivní úvod</div>
+              <div className="how-title en">Interactive introduction</div>
+              <p className="how-desc cs">
+                Workshop začíná kvízem nebo simulací. Ne přednáškou.
+                Studenti jsou zapojení od první minuty.
+              </p>
+              <p className="how-desc en">
+                The workshop starts with a quiz or a simulation. Not a
+                lecture. Students are engaged from the first minute.
+              </p>
             </div>
-            <div className="rev d2">
-              <div className="how-step">
-                <div className="how-num">04</div>
-                <div>
-                  <div className="how-title cs">Multimediální prezentace</div>
-                  <div className="how-title en">Multimedia presentation</div>
-                  <p className="how-desc cs">
-                    Vizuální, dynamický, moderní. Workshop je navržen pro
-                    generaci která vyrůstala s chytrými telefony.
-                  </p>
-                  <p className="how-desc en">
-                    Visual, dynamic, modern. The workshop is designed for the
-                    generation that grew up with smartphones.
-                  </p>
-                </div>
-              </div>
-              <div className="how-step">
-                <div className="how-num">05</div>
-                <div>
-                  <div className="how-title cs">Simulace a deepfake test</div>
-                  <div className="how-title en">
-                    Simulations and deepfake test
-                  </div>
-                  <p className="how-desc cs">
-                    Studenti testují své schopnosti poznat syntetický obsah a
-                    manipulaci v reálných ukázkách.
-                  </p>
-                  <p className="how-desc en">
-                    Students test their ability to recognize synthetic content
-                    and manipulation in real examples.
-                  </p>
-                </div>
-              </div>
-              <div className="how-step">
-                <div className="how-num">06</div>
-                <div>
-                  <div className="how-title cs">Diskuze a závěr</div>
-                  <div className="how-title en">Discussion and conclusion</div>
-                  <p className="how-desc cs">
-                    Workshop končí řízenou diskuzí kde studenti sdílejí názory a
-                    lektor odpovídá na otázky.
-                  </p>
-                  <p className="how-desc en">
-                    The workshop ends with a structured discussion where
-                    students share views and the lecturer answers questions.
-                  </p>
-                </div>
-              </div>
+            <div className="what-card rev d2 group relative flex h-full min-w-0 flex-col overflow-hidden bg-card px-9 py-10 transition-colors duration-300 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-400 after:content-[''] hover:bg-bg2 hover:after:scale-x-100 max-sm:px-5 max-sm:py-8">
+              <div className="how-num mb-8 max-sm:mb-5">04</div>
+              <div className="how-title cs">Multimediální prezentace</div>
+              <div className="how-title en">Multimedia presentation</div>
+              <p className="how-desc cs">
+                Vizuální, dynamický, moderní. Workshop je navržen pro
+                generaci která vyrůstala s chytrými telefony.
+              </p>
+              <p className="how-desc en">
+                Visual, dynamic, modern. The workshop is designed for the
+                generation that grew up with smartphones.
+              </p>
+            </div>
+            </div>
+            <div className="how-row">
+            <div className="what-card rev d3 group relative flex h-full min-w-0 flex-col overflow-hidden bg-card px-9 py-10 transition-colors duration-300 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-400 after:content-[''] hover:bg-bg2 hover:after:scale-x-100 max-sm:px-5 max-sm:py-8">
+              <div className="how-num mb-8 max-sm:mb-5">02</div>
+              <div className="how-title cs">Reálné příklady</div>
+              <div className="how-title en">Real-world examples</div>
+              <p className="how-desc cs">
+                Pracujeme s aktuálními případy z médií, sociálních sítí a
+                technologického světa. Ne z učebnic.
+              </p>
+              <p className="how-desc en">
+                We work with current cases from media, social networks and
+                the technology world. Not from textbooks.
+              </p>
+            </div>
+            <div className="what-card rev d4 group relative flex h-full min-w-0 flex-col overflow-hidden bg-card px-9 py-10 transition-colors duration-300 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-400 after:content-[''] hover:bg-bg2 hover:after:scale-x-100 max-sm:px-5 max-sm:py-8">
+              <div className="how-num mb-8 max-sm:mb-5">05</div>
+              <div className="how-title cs">Simulace a deepfake test</div>
+              <div className="how-title en">Simulations and deepfake test</div>
+              <p className="how-desc cs">
+                Studenti testují své schopnosti poznat syntetický obsah a
+                manipulaci v reálných ukázkách.
+              </p>
+              <p className="how-desc en">
+                Students test their ability to recognize synthetic content
+                and manipulation in real examples.
+              </p>
+            </div>
+            </div>
+            <div className="how-row">
+            <div className="what-card rev d5 group relative flex h-full min-w-0 flex-col overflow-hidden bg-card px-9 py-10 transition-colors duration-300 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-400 after:content-[''] hover:bg-bg2 hover:after:scale-x-100 max-sm:px-5 max-sm:py-8">
+              <div className="how-num mb-8 max-sm:mb-5">03</div>
+              <div className="how-title cs">Skupinové aktivity</div>
+              <div className="how-title en">Group activities</div>
+              <p className="how-desc cs">
+                Studenti pracují v týmech, diskutují, argumentují a společně
+                řeší problémy. Žádné pasivní posízení.
+              </p>
+              <p className="how-desc en">
+                Students work in teams, discuss, argue and solve problems
+                together. No passive sitting.
+              </p>
+            </div>
+            <div className="what-card rev d6 group relative flex h-full min-w-0 flex-col overflow-hidden bg-card px-9 py-10 transition-colors duration-300 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-400 after:content-[''] hover:bg-bg2 hover:after:scale-x-100 max-sm:px-5 max-sm:py-8">
+              <div className="how-num mb-8 max-sm:mb-5">06</div>
+              <div className="how-title cs">Diskuze a závěr</div>
+              <div className="how-title en">Discussion and conclusion</div>
+              <p className="how-desc cs">
+                Workshop končí řízenou diskuzí kde studenti sdílejí názory a
+                lektor odpovídá na otázky.
+              </p>
+              <p className="how-desc en">
+                The workshop ends with a structured discussion where
+                students share views and the lecturer answers questions.
+              </p>
+            </div>
             </div>
           </div>
         </div>

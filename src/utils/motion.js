@@ -39,6 +39,16 @@ export function shouldUseLiteMotion() {
   return isMobileViewport() || isCoarsePointer() || isTouchDevice() || isLowEndDevice();
 }
 
+/**
+ * Scroll-linked movement (rotate / drift) is the marketing-page motion.
+ * Run it on any desktop-width screen, including touch laptops — lite-motion
+ * used to skip GSAP entirely there and left only CSS fades.
+ */
+export function shouldUseScrollMotion() {
+  if (prefersReducedMotion()) return false;
+  return !isMobileViewport();
+}
+
 export function shouldDisableSmoothScroll() {
   return shouldUseLiteMotion();
 }

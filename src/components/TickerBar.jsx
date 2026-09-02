@@ -9,7 +9,6 @@ export function TickerBar({ wrapId = "ticker" }) {
         <div className={`cs ${ITEM}`}>Digitální odolnost</div>
         <div className={`en ${ITEM}`}>Digital Resilience</div>
         <div className={ITEM}>jihomoravský kraj</div>
-        <div className={ITEM}>Erasmus+</div>
         <div className={ITEM}>CTRL Summit 2026</div>
         <div className="ticker-item px-12 max-sm:px-5 shrink-0 flex items-center gap-12">
           <img

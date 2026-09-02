@@ -330,8 +330,8 @@ export function AlgorithmFeed() {
                   data-heat={item.heat}
                 >
                   <span
-                    className="algo-feed__card-in block"
-                    style={{ animationDelay: `${index * 40}ms` }}
+                    className={`algo-feed__card-in block${item.heat >= 3 ? " is-hot" : ""}`}
+                    style={{ animationDelay: `${index * 70}ms` }}
                   >
                     <span className="mb-1.5 flex items-center gap-2">
                       <span className="font-mono text-[9px] uppercase tracking-[1.5px] text-accent">

@@ -5,6 +5,7 @@ import {
   EASE_PREMIUM,
   prefersReducedMotion,
   shouldUseLiteMotion,
+  shouldUseScrollMotion,
   revealGsapElements,
   applyMotionBodyClass,
 } from '../utils/motion';
@@ -25,7 +26,7 @@ const BLOCK_ITEM_SELECTORS = [
 
 const BLOCK_ITEM_QUERY = BLOCK_ITEM_SELECTORS.join(', ');
 
-const GRID_SELECTORS = '.what-grid, .numbers-grid, .board-grid, .val-grid, .join-grid, .perk-grid';
+const GRID_SELECTORS = '.what-grid, .how-grid, .offer-grid, .for-grid, .numbers-grid, .board-grid, .val-grid, .join-grid, .perk-grid';
 
 const DIRECT_ITEM_SELECTORS = ['.what-card', '.number-card', '.offer-card', '.for-card', '.perk-card'];
 
@@ -116,14 +117,22 @@ function sectionBlockReveal() {
     if (contentRoot && processedRoots.has(contentRoot)) return;
     if (contentRoot) processedRoots.add(contentRoot);
 
-    const items = collectBlockItems(head);
+    const items = collectBlockItems(head).filter((el) => !el.hasAttribute('data-enter'));
     const label = head.querySelector('.section-label, .page-label, .sec-label');
     const title = head.querySelector('.section-title, .sec-title, .page-title, h2');
     const titleEm = title?.querySelector('em');
     // blockquotes with data-scrub-words are revealed word-by-word while scrolling
     const prose = head.querySelector('blockquote:not([data-scrub-words]), .section-lede');
     const grid = findGridContainer(head);
-    const trailing = collectTrailingSiblings(head, contentRoot);
+    const skipGridWipe = grid?.classList.contains('board-grid--custom') || shouldUseScrollMotion();
+    const scrubOwnsTransform = shouldUseScrollMotion();
+    const trailing = collectTrailingSiblings(head, contentRoot).filter(
+      (el) =>
+        !el.classList.contains('board-grid--custom') &&
+        !el.hasAttribute('data-enter') &&
+        !el.querySelector?.('[data-enter]') &&
+        !el.querySelector?.('.fake-news-quiz, .algo-feed, .disinfo-chart'),
+    );
 
     // Page-hero subtitles (.page-sub) sit outside .section-head — fold them
     // into the same entrance so the Join/Apply/News heroes match other pages.
@@ -151,19 +160,33 @@ function sectionBlockReveal() {
       },
     });
 
-    if (label) gsap.set(label, { opacity: 0, x: -18 });
-    if (title) {
-      gsap.set(title, { opacity: 0, y: 64, skewY: 3.5, transformOrigin: 'left top' });
-      if (titleEm) gsap.set(titleEm, { opacity: 0, y: 12 });
+    if (label) {
+      if (scrubOwnsTransform) gsap.set(label, { opacity: 0 });
+      else gsap.set(label, { opacity: 0, x: -18 });
     }
-    if (prose) gsap.set(prose, { opacity: 0, y: 28 });
-    if (heroSubs.length) gsap.set(heroSubs, { opacity: 0, y: 24 });
+    if (title) {
+      if (scrubOwnsTransform) {
+        gsap.set(title, { opacity: 0 });
+        if (titleEm) gsap.set(titleEm, { opacity: 0 });
+      } else {
+        gsap.set(title, { opacity: 0, y: 64, skewY: 3.5, transformOrigin: 'left top' });
+        if (titleEm) gsap.set(titleEm, { opacity: 0, y: 12 });
+      }
+    }
+    if (prose) {
+      if (scrubOwnsTransform) gsap.set(prose, { opacity: 0 });
+      else gsap.set(prose, { opacity: 0, y: 28 });
+    }
+    if (heroSubs.length) {
+      if (scrubOwnsTransform) gsap.set(heroSubs, { opacity: 0 });
+      else gsap.set(heroSubs, { opacity: 0, y: 24 });
+    }
 
     // sep-grids paint their separator lines via a dark container background —
     // hide it while the cards are still transparent (otherwise the whole grid
     // flashes as solid navy blocks) and draw the lines in after the cards.
     let gridBg = null;
-    if (grid) {
+    if (grid && !skipGridWipe) {
       const bg = getComputedStyle(grid).backgroundColor;
       if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') gridBg = bg;
       gsap.set(grid, {
@@ -175,8 +198,12 @@ function sectionBlockReveal() {
     trailing.forEach((el) => gsap.set(el, { opacity: 0, y: 24 }));
 
     items.forEach((item) => {
-      gsap.set(item, { opacity: 0, y: 52, scale: 0.97, transformOrigin: '50% 100%' });
-      const num = item.querySelector('.what-num');
+      if (scrubOwnsTransform) {
+        gsap.set(item, { opacity: 0 });
+      } else {
+        gsap.set(item, { opacity: 0, y: 52, scale: 0.97, transformOrigin: '50% 100%' });
+      }
+      const num = item.querySelector('.what-num, .how-num');
       if (num) gsap.set(num, { opacity: 0, scale: 0.55, transformOrigin: 'left center' });
       const numberVal = item.querySelector('.number-val');
       if (numberVal) gsap.set(numberVal, { opacity: 0, y: 24, scale: 0.8, transformOrigin: 'left bottom' });
@@ -196,7 +223,9 @@ function sectionBlockReveal() {
     if (label) {
       tl.to(
         label,
-        { opacity: 1, x: 0, duration: 0.55, ease: EASE_PREMIUM },
+        scrubOwnsTransform
+          ? { opacity: 1, duration: 0.55, ease: EASE_PREMIUM }
+          : { opacity: 1, x: 0, duration: 0.55, ease: EASE_PREMIUM },
         t,
       );
       // Decode effect: label text resolves from random glyphs.
@@ -210,11 +239,19 @@ function sectionBlockReveal() {
     if (title) {
       tl.to(
         title,
-        { opacity: 1, y: 0, skewY: 0, duration: 0.95, ease: EASE_PREMIUM },
+        scrubOwnsTransform
+          ? { opacity: 1, duration: 0.7, ease: EASE_PREMIUM }
+          : { opacity: 1, y: 0, skewY: 0, duration: 0.95, ease: EASE_PREMIUM },
         t,
       );
       if (titleEm) {
-        tl.to(titleEm, { opacity: 1, y: 0, duration: 0.7, ease: EASE_PREMIUM }, t + 0.22);
+        tl.to(
+          titleEm,
+          scrubOwnsTransform
+            ? { opacity: 1, duration: 0.55, ease: EASE_PREMIUM }
+            : { opacity: 1, y: 0, duration: 0.7, ease: EASE_PREMIUM },
+          t + 0.22,
+        );
       }
       t += 0.14;
     }
@@ -222,7 +259,9 @@ function sectionBlockReveal() {
     if (prose) {
       tl.to(
         prose,
-        { opacity: 1, y: 0, duration: 0.85, ease: EASE_PREMIUM },
+        scrubOwnsTransform
+          ? { opacity: 1, duration: 0.85, ease: EASE_PREMIUM }
+          : { opacity: 1, y: 0, duration: 0.85, ease: EASE_PREMIUM },
         t + 0.06,
       );
       t += 0.12;
@@ -231,13 +270,15 @@ function sectionBlockReveal() {
     if (heroSubs.length) {
       tl.to(
         heroSubs,
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.05, ease: EASE_PREMIUM },
+        scrubOwnsTransform
+          ? { opacity: 1, duration: 0.8, stagger: 0.05, ease: EASE_PREMIUM }
+          : { opacity: 1, y: 0, duration: 0.8, stagger: 0.05, ease: EASE_PREMIUM },
         t + 0.06,
       );
       t += 0.1;
     }
 
-    if (grid) {
+    if (grid && !skipGridWipe) {
       tl.to(
         grid,
         { clipPath: 'inset(0 0% 0 0)', duration: 0.95, ease: EASE_PREMIUM },
@@ -266,26 +307,32 @@ function sectionBlockReveal() {
     const cardsStart = t + 0.22;
 
     if (items.length) {
-      // clearProps + dropping .anim-gsap hand the cards back to CSS after the
-      // reveal, so their hover transforms/transitions work again.
       tl.to(
         items,
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.88,
-          stagger: 0.1,
-          ease: EASE_PREMIUM,
-          clearProps: 'transform',
-          onComplete: () => items.forEach((el) => el.classList.remove('anim-gsap')),
-        },
+        scrubOwnsTransform
+          ? {
+              opacity: 1,
+              duration: 0.5,
+              stagger: 0.08,
+              ease: EASE_PREMIUM,
+              onComplete: () => items.forEach((el) => el.classList.remove('anim-gsap')),
+            }
+          : {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.88,
+              stagger: 0.1,
+              ease: EASE_PREMIUM,
+              clearProps: 'transform',
+              onComplete: () => items.forEach((el) => el.classList.remove('anim-gsap')),
+            },
         cardsStart,
       );
 
       items.forEach((item, i) => {
         const offset = cardsStart + i * 0.1;
-        const num = item.querySelector('.what-num');
+        const num = item.querySelector('.what-num, .how-num');
         if (num) {
           tl.to(num, { opacity: 1, scale: 1, duration: 0.5, ease: EASE_PREMIUM }, offset + 0.05);
         }
@@ -312,7 +359,7 @@ function sectionBlockReveal() {
     }
 
     // Separator lines draw in last, once the cards are solid.
-    if (grid && gridBg) {
+    if (grid && gridBg && !skipGridWipe) {
       const at = items.length ? cardsStart + items.length * 0.1 + 0.25 : t + 0.5;
       tl.to(
         grid,
@@ -455,12 +502,12 @@ function staggerReveal(selector, options = {}) {
  * a gap — e.g. `top-[-7%] h-[114%]` inside an overflow-hidden parent.
  */
 function photoParallax() {
-  document.querySelectorAll('.photo-strip img, [data-plx]').forEach((img) => {
+  document.querySelectorAll('.photo-strip img, [data-plx]:not([data-rotate-scrub])').forEach((img) => {
     gsap.fromTo(
       img,
-      { yPercent: -5 },
+      { yPercent: -12 },
       {
-        yPercent: 5,
+        yPercent: 12,
         ease: 'none',
         scrollTrigger: {
           trigger: img.parentElement,
@@ -482,7 +529,7 @@ function velocitySkew() {
   if (!imgs.length) return;
 
   const proxy = { skew: 0 };
-  const clampSkew = gsap.utils.clamp(-3.5, 3.5);
+  const clampSkew = gsap.utils.clamp(-8, 8);
 
   ScrollTrigger.create({
     onUpdate(self) {
@@ -557,25 +604,282 @@ function imageReveal() {
   });
 }
 
+function scrubFromTo(el, from, to, trigger = el, extra = {}) {
+  gsap.fromTo(el, from, {
+    ...to,
+    ease: 'none',
+    force3D: true,
+    scrollTrigger: {
+      trigger,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 0.6,
+      ...extra,
+    },
+  });
+}
+
+function setScene(el, perspective = 1400) {
+  gsap.set(el, {
+    transformPerspective: perspective,
+    transformStyle: 'preserve-3d',
+  });
+}
+
+function scrollChoreography() {
+  // Motion that finishes while the element is still on screen — readable, not a 2px drift.
+  const arrive = { start: 'top 90%', end: 'top 38%', scrub: 0.55 };
+
+  function wall(grid, selector, fromFor, { scene = true } = {}) {
+    if (scene) setScene(grid);
+    const items = gsap.utils.toArray(grid.querySelectorAll(selector));
+    items.forEach((el, i) => {
+      const rest = { x: 0, y: -10, z: 0, rotationX: 0, rotationY: 0 };
+      scrubFromTo(el, fromFor(i, items.length), rest, el, {
+        start: 'top 92%',
+        end: 'top 36%',
+        scrub: 0.65,
+      });
+    });
+  }
+
+  // —— Copy on every section (this is the frequency: something moves at each heading) ——
+  gsap.utils.toArray('.section-label, .page-label, .sec-label').forEach((el) => {
+    if (el.closest('.page-hero, #hero')) return;
+    scrubFromTo(el, { x: -52 }, { x: 0 }, el, arrive);
+  });
+
+  gsap.utils.toArray('.section-title, .sec-title').forEach((title) => {
+    if (title.closest('.page-hero, #hero, #join')) return;
+    // Wrapping / italic headings cannot use preserve-3d: Chrome stacks the
+    // line boxes on top of each other until a later scroll recomposites them.
+    scrubFromTo(title, { y: 48, opacity: 0.15 }, { y: 0, opacity: 1 }, title, arrive);
+  });
+
+  gsap.utils.toArray('.section-lede, .page-sub').forEach((el) => {
+    if (el.closest('.page-hero, #hero')) return;
+    scrubFromTo(el, { y: 40, x: 28, opacity: 0.4 }, { y: -4, x: 0, opacity: 1 }, el, arrive);
+  });
+
+  // —— Homepage dead zones between the big grids ——
+  gsap.utils.toArray('#aktuality-promo p').forEach((el) => {
+    scrubFromTo(el, { x: -64, y: 20 }, { x: 0, y: 0 }, el, arrive);
+  });
+  gsap.utils.toArray('#aktuality-promo .rev.d1').forEach((el) => {
+    scrubFromTo(el, { x: 80, z: -36 }, { x: 0, z: 0 }, el, arrive);
+  });
+
+  gsap.utils.toArray('#join p').forEach((el) => {
+    setScene(el, 900);
+    scrubFromTo(el, { y: 48, z: -32 }, { y: -6, z: 0 }, '#join', {
+      start: 'top 82%',
+      end: 'center 42%',
+      scrub: 0.45,
+    });
+  });
+  gsap.utils.toArray('#join .rev.d2').forEach((el) => {
+    setScene(el, 900);
+    scrubFromTo(el, { y: 36, z: -48 }, { y: -8, z: 0 }, '#join', {
+      start: 'top 72%',
+      end: 'center 32%',
+      scrub: 0.5,
+    });
+  });
+
+  gsap.utils.toArray('.why-facts > *').forEach((el, i) => {
+    setScene(el.parentElement, 1000);
+    scrubFromTo(el, { y: 36 + i * 18, z: -64 }, { y: 0, z: 0 }, el, {
+      start: 'top 90%',
+      end: 'top 48%',
+      scrub: 0.5,
+    });
+  });
+  gsap.utils.toArray('#why .rev.d2').forEach((el) => {
+    setScene(el, 1400);
+    scrubFromTo(
+      el,
+      { x: 72, z: -80, rotationY: -14 },
+      { x: 0, z: 0, rotationY: 0 },
+      '#why',
+      { start: 'top 85%', end: 'center 30%', scrub: 0.6 },
+    );
+  });
+
+  // —— About columns, fact rails, accordion ——
+  gsap.utils.toArray('.about-2col > :first-child').forEach((el) => {
+    setScene(el, 1000);
+    scrubFromTo(el, { x: -72, z: -36 }, { x: 0, z: 0 }, el, arrive);
+  });
+  gsap.utils.toArray('.about-2col .sep-stack > *').forEach((el, i) => {
+    scrubFromTo(el, { x: 56, y: 12 }, { x: 0, y: 0 }, el, {
+      start: `top+=${i * 28} 88%`,
+      end: 'top 42%',
+      scrub: 0.45,
+    });
+  });
+
+  // —— Grids: each card is its own beat, so the row doesn't fire as one lump ——
+  gsap.utils.toArray('.what-grid').forEach((grid) => {
+    wall(grid, '.what-card', (i, n) => {
+      const fromCenter = i - (n - 1) / 2;
+      return { y: 56, z: -120, rotationY: fromCenter * -9, x: fromCenter * 36 };
+    });
+  });
+
+  gsap.utils.toArray('.how-grid').forEach((grid) => {
+    // Flatten the grid so separator rules stay a 2D layer behind the tiles.
+    // preserve-3d would let translateZ send a card under the overlay lines.
+    wall(
+      grid,
+      '.what-card',
+      (i) => {
+        const col = i % 2;
+        return { y: 48, z: -90, x: col === 0 ? -32 : 32, rotationY: col === 0 ? 7 : -7 };
+      },
+      { scene: false },
+    );
+  });
+
+  gsap.utils.toArray('.numbers-grid').forEach((grid) => {
+    wall(grid, '.number-card', (i) => ({ y: 70 + i * 10, z: -80, rotationX: 12 }));
+  });
+
+  gsap.utils.toArray('.photo-strip').forEach((strip) => {
+    gsap.utils.toArray(strip.children).forEach((cell, i) => {
+      scrubFromTo(
+        cell,
+        { y: 56, z: -48, rotate: i === 1 ? 0 : 2.5 },
+        { y: -16, z: 0, rotate: 0 },
+        cell,
+        { start: 'top 94%', end: 'top 40%', scrub: 0.5 },
+      );
+    });
+  });
+
+  gsap.utils.toArray('.board-grid').forEach((grid) => {
+    wall(grid, '.exec-card', (i, n) => {
+      const fromCenter = i - (n - 1) / 2;
+      return { x: fromCenter * 64, z: -110, rotationY: fromCenter * -11, y: 32 };
+    });
+  });
+
+  gsap.utils.toArray('.board-mini').forEach((grid) => {
+    const from = [
+      { x: -110, z: -36, rotationY: 20 },
+      { x: 0, z: -160, rotationY: 0 },
+      { x: 110, z: -36, rotationY: -20 },
+    ];
+    wall(grid, '.exec-card', (i) => ({ ...from[i % from.length], y: 24 }));
+  });
+
+  gsap.utils.toArray('.val-grid').forEach((grid) => {
+    wall(grid, '.val-card', (i) => ({ x: i % 2 === 0 ? -52 : 52, z: -44, rotationY: i % 2 === 0 ? 8 : -8, y: 20 }));
+  });
+
+  gsap.utils.toArray('.join-grid > *, .area-item').forEach((el, i) => {
+    const side = i % 2 === 0 ? -1 : 1;
+    setScene(el.parentElement || el);
+    scrubFromTo(el, { x: side * 48, z: -40, y: 24 }, { x: 0, z: 0, y: -6 }, el, arrive);
+  });
+
+  gsap.utils.toArray('.perk-card').forEach((el) => {
+    gsap.fromTo(
+      el,
+      { y: 48, z: -56, clipPath: 'inset(0 0 24% 0)' },
+      {
+        y: -10,
+        z: 0,
+        clipPath: 'inset(0 0 0% 0%)',
+        ease: 'none',
+        force3D: true,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 92%',
+          end: 'top 40%',
+          scrub: 0.55,
+        },
+      },
+    );
+  });
+
+  gsap.utils.toArray('.partner-card').forEach((el, i) => {
+    const side = i % 2 === 0 ? -1 : 1;
+    scrubFromTo(el, { x: side * 40, y: 28, opacity: 0.55 }, { x: 0, y: -8, opacity: 1 }, el, arrive);
+  });
+
+  gsap.utils.toArray('.council-rail').forEach((el, i) => {
+    setScene(el);
+    scrubFromTo(
+      el,
+      { x: i === 0 ? -72 : 72, z: -40 },
+      { x: 0, z: 0 },
+      el,
+      arrive,
+    );
+  });
+
+  gsap.utils.toArray('.org-chart-frame').forEach((frame) => {
+    setScene(frame.parentElement || frame);
+    scrubFromTo(frame, { y: 48, z: -90, rotationX: 10 }, { y: -10, z: 0, rotationX: 0 }, frame, {
+      start: 'top 90%',
+      end: 'top 40%',
+      scrub: 0.6,
+    });
+  });
+
+  gsap.utils.toArray('[data-rotate-scrub]').forEach((el) => {
+    scrubFromTo(
+      el,
+      { rotationY: -16, yPercent: 6, scale: 1.06 },
+      { rotationY: 10, yPercent: -4, scale: 1 },
+      el.closest('section') || el.parentElement,
+      { scrub: true },
+    );
+  });
+
+  gsap.utils.toArray('#about-advisor [data-slide-from]').forEach((el) => {
+    const fromLeft = el.getAttribute('data-slide-from') === 'left';
+    scrubFromTo(
+      el,
+      { x: fromLeft ? -88 : 88, z: -48 },
+      { x: fromLeft ? 10 : -10, z: 0 },
+      '#about-advisor',
+      { start: 'top 88%', end: 'center 35%', scrub: 0.55 },
+    );
+  });
+}
+
 export function usePremiumAnimations(pathname) {
   useEffect(() => {
     applyMotionBodyClass();
 
-    if (shouldUseLiteMotion()) {
-      // Reduced motion: show everything immediately. Other lite devices
-      // (mobile, low-end) get the cheap CSS .rev reveals from useScrollReveal.
-      if (prefersReducedMotion()) revealGsapElements();
+    if (prefersReducedMotion()) {
+      revealGsapElements();
       return undefined;
     }
 
     const ctx = gsap.context(() => {
-      sectionBlockReveal();
-      stackRowReveal();
-      staggerReveal('.join-criterion', { trigger: '.join-criteria', x: -20, y: 0, stagger: 0.06, duration: 0.7 });
-      imageReveal();
-      photoParallax();
-      velocitySkew();
-      footerReveal();
+      if (shouldUseLiteMotion()) {
+        revealGsapElements();
+      } else {
+        sectionBlockReveal();
+        stackRowReveal();
+        staggerReveal('.join-criterion', {
+          trigger: '.join-criteria',
+          x: -56,
+          y: 0,
+          stagger: 0.07,
+          duration: 0.75,
+        });
+        imageReveal();
+        photoParallax();
+        velocitySkew();
+        footerReveal();
+      }
+
+      if (shouldUseScrollMotion()) {
+        scrollChoreography();
+      }
     });
 
     requestAnimationFrame(() => ScrollTrigger.refresh());

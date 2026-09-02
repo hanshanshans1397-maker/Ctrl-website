@@ -65,10 +65,12 @@ export function AktualityPageContent() {
               </p>
               <h2 className="sec-title mt-6 mb-5 text-[clamp(28px,3vw,44px)] italic">
                 <span className="cs">
-                  Brzy sem přidáme <em>aktuální oznámení.</em>
+                  Brzy sem přidáme
+                  <em>aktuální oznámení.</em>
                 </span>
                 <span className="en">
-                  We&apos;ll post <em>updates here soon.</em>
+                  We&apos;ll post
+                  <em>updates here soon.</em>
                 </span>
               </h2>
               <p className="cs text-[15px] leading-[1.85] font-light text-mid">
@@ -105,7 +107,6 @@ export function AktualityPageContent() {
           <div className="ticker-item cs">Digitální odolnost</div>
           <div className="ticker-item en">Digital Resilience</div>
           <div className="ticker-item">CTRL Summit 2026</div>
-          <div className="ticker-item">Erasmus+</div>
           <div className="ticker-item cs">AI povědomí</div>
           <div className="ticker-item en">AI Awareness</div>
           <div className="ticker-item cs">Mediální gramotnost</div>

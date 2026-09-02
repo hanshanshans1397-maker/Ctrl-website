@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { EASE_PREMIUM, prefersReducedMotion, shouldUseLiteMotion } from '../utils/motion';
+import { EASE_PREMIUM, prefersReducedMotion, shouldUseLiteMotion, shouldUseScrollMotion } from '../utils/motion';
 import { addScrambleTween } from '../utils/scramble';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -91,7 +91,7 @@ export function useHomeEffects() {
   // Scroll-driven motion (desktop / capable devices only): hero depth,
   // word-by-word quote reveal, photo parallax, velocity-reactive ticker.
   useEffect(() => {
-    if (prefersReducedMotion() || shouldUseLiteMotion()) return undefined;
+    if (prefersReducedMotion() || !shouldUseScrollMotion()) return undefined;
 
     const cleanups = [];
 
@@ -198,7 +198,7 @@ export function useHomeEffects() {
         cleanups.push(() => card.removeEventListener('pointermove', onMove));
       });
 
-      // 6) Ticker speeds up with scroll velocity, then settles back.
+      // 8) Ticker speeds up with scroll velocity, then settles back.
       const tickerWrap = document.getElementById('tickerWrap');
       if (tickerWrap) {
         tickerWrap.style.animation = 'none';

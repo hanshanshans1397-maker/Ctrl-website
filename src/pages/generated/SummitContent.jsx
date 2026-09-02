@@ -299,8 +299,8 @@ export function SummitPageContent() {
               </span>
             </h2>
           </div>
-          <div className="flex flex-col sep-stack">
-            <div className="rev d1 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+          <div className="area-stack mt-10 flex flex-col max-lg:mt-8">
+            <div className="area-item rev d1 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -348,7 +348,7 @@ export function SummitPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d2 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d2 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -387,7 +387,7 @@ export function SummitPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d3 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d3 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -421,7 +421,7 @@ export function SummitPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d4 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d4 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -459,7 +459,7 @@ export function SummitPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d5 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d5 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -492,7 +492,7 @@ export function SummitPageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d5 grid grid-cols-[200px_1fr] items-start gap-12 bg-bg px-11 py-10 transition-colors duration-300 hover:bg-bg2 max-lg:grid-cols-1 max-lg:gap-4 max-sm:px-5 max-sm:py-7">
+            <div className="area-item rev d6 py-10 px-8 grid grid-cols-[132px_1fr] gap-10 items-start max-lg:grid-cols-1 max-lg:gap-4 max-lg:py-8 max-lg:px-5">
               <div className="pt-1">
                 <svg
                   className="w-8 h-8 text-accent"
@@ -568,8 +568,8 @@ export function SummitPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-4 sep-grid max-lg:grid-cols-2 max-sm:grid-cols-1">
-            <div className="offer-card rev d1 relative overflow-hidden border border-separator bg-card px-9 py-11 transition-[transform,box-shadow] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(11,16,32,0.08)] hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
+          <div className="offer-grid grid grid-cols-4 sep-grid max-lg:grid-cols-2 max-sm:grid-cols-1">
+            <div className="offer-card rev d1 relative overflow-hidden bg-card px-9 py-11 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg2 hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 01
               </div>
@@ -616,7 +616,7 @@ export function SummitPageContent() {
                 scientists and technology sector representatives.
               </p>
             </div>
-            <div className="offer-card rev d2 relative overflow-hidden border border-separator bg-card px-9 py-11 transition-[transform,box-shadow] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(11,16,32,0.08)] hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
+            <div className="offer-card rev d2 relative overflow-hidden bg-card px-9 py-11 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg2 hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 02
               </div>
@@ -673,7 +673,7 @@ export function SummitPageContent() {
                 equal footing.
               </p>
             </div>
-            <div className="offer-card rev d3 relative overflow-hidden border border-separator bg-card px-9 py-11 transition-[transform,box-shadow] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(11,16,32,0.08)] hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
+            <div className="offer-card rev d3 relative overflow-hidden bg-card px-9 py-11 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg2 hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 03
               </div>
@@ -728,7 +728,7 @@ export function SummitPageContent() {
                 and tools.
               </p>
             </div>
-            <div className="offer-card rev d4 relative overflow-hidden border border-separator bg-card px-9 py-11 transition-[transform,box-shadow] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(11,16,32,0.08)] hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
+            <div className="offer-card rev d4 relative overflow-hidden bg-card px-9 py-11 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg2 hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 04
               </div>
@@ -821,7 +821,7 @@ export function SummitPageContent() {
                 and building cooperation.
               </p>
             </div>
-            <div className="offer-card rev d1 relative overflow-hidden border border-separator bg-card px-9 py-11 transition-[transform,box-shadow] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(11,16,32,0.08)] hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
+            <div className="offer-card rev d1 relative overflow-hidden bg-card px-9 py-11 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg2 hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 05
               </div>
@@ -860,7 +860,7 @@ export function SummitPageContent() {
                 representation from across the region.
               </p>
             </div>
-            <div className="offer-card rev d2 relative overflow-hidden border border-separator bg-card px-9 py-11 transition-[transform,box-shadow] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(11,16,32,0.08)] hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
+            <div className="offer-card rev d2 relative overflow-hidden bg-card px-9 py-11 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg2 hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 06
               </div>
@@ -919,7 +919,7 @@ export function SummitPageContent() {
                 policymakers.
               </p>
             </div>
-            <div className="offer-card rev d3 relative overflow-hidden border border-separator bg-card px-9 py-11 transition-[transform,box-shadow] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(11,16,32,0.08)] hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
+            <div className="offer-card rev d3 relative overflow-hidden bg-card px-9 py-11 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg2 hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 07
               </div>
@@ -989,7 +989,7 @@ export function SummitPageContent() {
                 the event.
               </p>
             </div>
-            <div className="offer-card rev d4 relative overflow-hidden border border-separator bg-card px-9 py-11 transition-[transform,box-shadow] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(11,16,32,0.08)] hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
+            <div className="offer-card rev d4 relative overflow-hidden bg-card px-9 py-11 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg2 hover:before:scale-x-100 max-lg:px-6 max-lg:py-8 max-sm:px-5 max-sm:py-7">
               <div className="mb-5 font-mono text-[11px] tracking-[2px] text-accent uppercase">
                 08
               </div>
@@ -1066,8 +1066,8 @@ export function SummitPageContent() {
               </span>
             </h2>
           </div>
-          <div className="for-grid grid grid-cols-3 sep-grid max-md:grid-cols-1">
-            <div className="for-card rev d1 bg-card p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
+          <div className="for-grid for-grid--rows grid grid-cols-3 sep-grid max-md:grid-cols-1">
+            <div className="for-card rev d1 relative overflow-hidden bg-card p-8 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg hover:before:scale-x-100 max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Studenti
               </div>
@@ -1083,7 +1083,7 @@ export function SummitPageContent() {
                 in digital technology, media or politics.
               </p>
             </div>
-            <div className="for-card rev d2 bg-card p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
+            <div className="for-card rev d2 relative overflow-hidden bg-card p-8 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg hover:before:scale-x-100 max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Školy a učitelé
               </div>
@@ -1099,7 +1099,7 @@ export function SummitPageContent() {
                 with an international environment.
               </p>
             </div>
-            <div className="for-card rev d3 bg-card p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
+            <div className="for-card rev d3 relative overflow-hidden bg-card p-8 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg hover:before:scale-x-100 max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Mládežnické organizace
               </div>
@@ -1115,7 +1115,7 @@ export function SummitPageContent() {
                 cooperation and share experiences.
               </p>
             </div>
-            <div className="for-card rev d1 bg-card p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
+            <div className="for-card rev d1 relative overflow-hidden bg-card p-8 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg hover:before:scale-x-100 max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Experti a řečníci
               </div>
@@ -1131,7 +1131,7 @@ export function SummitPageContent() {
                 their expertise with young people.
               </p>
             </div>
-            <div className="for-card rev d2 bg-card p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
+            <div className="for-card rev d2 relative overflow-hidden bg-card p-8 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg hover:before:scale-x-100 max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Partneři a sponzoři
               </div>
@@ -1147,7 +1147,7 @@ export function SummitPageContent() {
                 support the emergence of a new generation of leadership.
               </p>
             </div>
-            <div className="for-card rev d3 bg-card p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] max-sm:p-5">
+            <div className="for-card rev d3 relative overflow-hidden bg-card p-8 transition-colors duration-300 before:absolute before:right-0 before:bottom-0 before:left-0 before:h-0.5 before:origin-left before:scale-x-0 before:bg-accent before:transition-transform before:duration-400 hover:bg-bg hover:before:scale-x-100 max-sm:p-5">
               <div className="for-title cs mb-2 text-base font-semibold text-dark">
                 Média
               </div>

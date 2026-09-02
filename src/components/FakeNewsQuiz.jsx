@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "../context/LangContext";
+import { prefersReducedMotion } from "../utils/motion";
 
 const CARDS = [
   {
@@ -121,20 +122,25 @@ function formatTime(date) {
 
 function StatusIcons() {
   return (
-    <span className="flex items-center gap-[5px]" aria-hidden="true">
-      <svg width="15" height="10" viewBox="0 0 15 10" fill="none">
+    <span className="flex items-center gap-[4px]" aria-hidden="true">
+      <svg width="13" height="9" viewBox="0 0 15 10" fill="none">
         <rect x="0" y="6" width="2.5" height="4" rx="0.4" fill="currentColor" />
         <rect x="4" y="4" width="2.5" height="6" rx="0.4" fill="currentColor" />
         <rect x="8" y="2" width="2.5" height="8" rx="0.4" fill="currentColor" />
         <rect x="12" y="0" width="2.5" height="10" rx="0.4" fill="currentColor" opacity="0.35" />
       </svg>
-      <svg width="22" height="11" viewBox="0 0 22 11" fill="none">
+      <svg width="19" height="10" viewBox="0 0 22 11" fill="none">
         <rect x="0.6" y="0.6" width="18" height="9.8" rx="2.2" stroke="currentColor" strokeWidth="1.2" />
         <rect x="2.2" y="2.2" width="13.4" height="6.6" rx="1" fill="currentColor" />
         <path d="M20.2 3.4v4.2c.8-.4.8-1.4 0-1.8V3.4Z" fill="currentColor" opacity="0.55" />
       </svg>
     </span>
   );
+}
+
+function previewText(card, isEn) {
+  const full = card.parts.map((part) => (isEn ? part.en : part.cs)).join("");
+  return full.length > 72 ? `${full.slice(0, 71)}…` : full;
 }
 
 function MessageBody({ parts, reveal, activeFlag, onFlag, isEn }) {
@@ -160,11 +166,16 @@ function MessageBody({ parts, reveal, activeFlag, onFlag, isEn }) {
 
 export function FakeNewsQuiz() {
   const { isEn } = useLang();
+  const rootRef = useRef(null);
+  const phoneRef = useRef(null);
   const [index, setIndex] = useState(0);
   const [answer, setAnswer] = useState(null);
   const [activeFlag, setActiveFlag] = useState(null);
   const [score, setScore] = useState({ correct: 0, answered: 0 });
   const [clock, setClock] = useState(() => formatTime(new Date()));
+  const [typing, setTyping] = useState(false);
+  const [arrived, setArrived] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const card = CARDS[index];
   const isCorrect = answer !== null && answer === card.isFake;
@@ -173,6 +184,7 @@ export function FakeNewsQuiz() {
     .filter((i) => i !== null);
   const activePart =
     activeFlag !== null ? card.parts[activeFlag] : card.parts[flagIndexes[0]];
+  const reduce = prefersReducedMotion();
 
   useEffect(() => {
     const id = window.setInterval(() => {
@@ -180,6 +192,73 @@ export function FakeNewsQuiz() {
     }, 15000);
     return () => window.clearInterval(id);
   }, []);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return undefined;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setArrived(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.28 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    const phone = phoneRef.current;
+    if (!root || !phone || prefersReducedMotion()) return undefined;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      return undefined;
+    }
+
+    const onMove = (event) => {
+      const r = root.getBoundingClientRect();
+      const px = (event.clientX - r.left) / r.width - 0.5;
+      const py = (event.clientY - r.top) / r.height - 0.5;
+      phone.style.setProperty("--ty", `${(px * 14).toFixed(2)}deg`);
+      phone.style.setProperty("--tx", `${(py * -9).toFixed(2)}deg`);
+    };
+    const onEnter = () => phone.classList.add("is-tracking");
+    const onLeave = () => {
+      phone.classList.remove("is-tracking");
+      phone.style.setProperty("--ty", "0deg");
+      phone.style.setProperty("--tx", "0deg");
+    };
+
+    root.addEventListener("pointerenter", onEnter);
+    root.addEventListener("pointermove", onMove);
+    root.addEventListener("pointerleave", onLeave);
+    return () => {
+      root.removeEventListener("pointerenter", onEnter);
+      root.removeEventListener("pointermove", onMove);
+      root.removeEventListener("pointerleave", onLeave);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!arrived) return undefined;
+    if (reduce) {
+      setOpen(true);
+      return undefined;
+    }
+    setOpen(false);
+    const id = window.setTimeout(() => setOpen(true), 1600);
+    return () => window.clearTimeout(id);
+  }, [arrived, card.id, reduce]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    setTyping(true);
+    const delay = reduce ? 0 : 480;
+    const id = window.setTimeout(() => setTyping(false), delay);
+    return () => window.clearTimeout(id);
+  }, [open, card.id, reduce]);
 
   const handleAnswer = (guessFake) => {
     if (answer !== null) return;
@@ -194,24 +273,89 @@ export function FakeNewsQuiz() {
   const handleNext = () => {
     setAnswer(null);
     setActiveFlag(null);
+    setTyping(false);
+    setOpen(reduce);
     setIndex((i) => (i + 1) % CARDS.length);
   };
 
-  return (
-    <div className="fake-news-quiz relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[268px]">
-      <div className="fake-news-phone">
-        <div className="fake-news-phone__side fake-news-phone__side--l" aria-hidden="true" />
-        <div className="fake-news-phone__side fake-news-phone__side--r" aria-hidden="true" />
+  const handleOpen = () => setOpen(true);
 
-        <div className="fake-news-phone__screen">
+  return (
+    <div
+      ref={rootRef}
+      className="fake-news-quiz relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[360px]"
+    >
+      <div className="fake-news-phone" ref={phoneRef}>
+        <div className="fake-news-phone__shell" aria-hidden="true">
+          <span className="fake-news-phone__back">
+            <span className="fake-news-phone__cam">
+              <span className="fake-news-phone__lens" />
+              <span className="fake-news-phone__lens" />
+              <span className="fake-news-phone__flash" />
+            </span>
+          </span>
+          <span className="fake-news-phone__btn fake-news-phone__btn--action" />
+          <span className="fake-news-phone__btn fake-news-phone__btn--vol-up" />
+          <span className="fake-news-phone__btn fake-news-phone__btn--vol-down" />
+          <span className="fake-news-phone__btn fake-news-phone__btn--power" />
+          <span className="fake-news-phone__btn fake-news-phone__btn--camera" />
+        </div>
+
+        <div className="fake-news-phone__glass">
+          <div className="fake-news-phone__bezel">
+          <div className="fake-news-phone__shine" aria-hidden="true" />
+          <div className={`fake-news-phone__screen${open ? " is-open" : ""}`}>
           <div className="fake-news-phone__island" aria-hidden="true" />
 
-          <div className="fake-news-phone__status flex shrink-0 items-center justify-between px-5 pb-1 pt-3 text-[11px] font-semibold tabular-nums text-dark/80">
-            <span>{clock}</span>
-            <StatusIcons />
+          <div
+            className={`fake-news-lock${arrived ? " is-arrived" : ""}${open ? " is-open" : ""}`}
+            aria-hidden={open}
+          >
+            <div className="fake-news-lock__status">
+              <span>{clock}</span>
+              <StatusIcons />
+            </div>
+            <div className="fake-news-lock__clock">{clock}</div>
+            {arrived && (
+              <button
+                type="button"
+                key={card.id}
+                className="fake-news-banner"
+                onClick={handleOpen}
+              >
+                <span className="fake-news-banner__avatar" aria-hidden="true">
+                  TH
+                </span>
+                <span className="fake-news-banner__copy">
+                  <span className="fake-news-banner__row">
+                    <span className="fake-news-banner__name">
+                      <span className="cs">Teta Hana</span>
+                      <span className="en">Aunt Hana</span>
+                    </span>
+                    <span className="fake-news-banner__when">
+                      <span className="cs">teď</span>
+                      <span className="en">now</span>
+                    </span>
+                  </span>
+                  <span className="fake-news-banner__app">
+                    <span className="cs">Zprávy</span>
+                    <span className="en">Messages</span>
+                  </span>
+                  <span className="fake-news-banner__text">
+                    {previewText(card, isEn)}
+                  </span>
+                </span>
+              </button>
+            )}
           </div>
 
-          <div className="flex shrink-0 items-center gap-2.5 border-b border-[rgba(11,16,32,0.06)] bg-card/70 px-3.5 py-2.5 backdrop-blur-md">
+          <div className={`fake-news-chat${open ? " is-open" : ""}`} aria-hidden={!open}>
+            <div className="fake-news-phone__status">
+              <span>{clock}</span>
+              <StatusIcons />
+            </div>
+
+            <div className="flex shrink-0 items-center gap-2.5 border-b border-[rgba(11,16,32,0.06)] bg-card/70 px-3.5 py-2.5 backdrop-blur-md">
             <div
               className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-dim font-mono text-[10px] font-semibold tracking-[0.5px] text-accent"
               aria-hidden="true"
@@ -233,31 +377,42 @@ export function FakeNewsQuiz() {
             </div>
           </div>
 
-          <div className="flex min-h-0 flex-1 flex-col px-3 py-3.5 max-lg:flex-none max-lg:py-4">
+          <div className="fake-news-phone__thread">
             <p className="mb-2.5 text-center font-mono text-[9px] uppercase tracking-[1.6px] text-mid opacity-70">
               <span className="cs">Dnes</span>
               <span className="en">Today</span>
             </p>
 
-            <div
-              key={card.id}
-              className="fake-news-quiz__bubble max-w-[94%] rounded-[20px] rounded-tl-[6px] bg-card px-3.5 py-3 shadow-[0_8px_24px_rgba(11,16,32,0.06)]"
-            >
-              <div className="mb-1.5 flex items-center gap-1 font-mono text-[9px] uppercase tracking-[1.4px] text-mid opacity-70">
-                <span aria-hidden="true">&#8618;</span>
-                <span className="cs">Přeposláno</span>
-                <span className="en">Forwarded</span>
+            {typing ? (
+              <div
+                className="fake-news-quiz__bubble fake-news-quiz__typing max-w-[94%] rounded-[20px] rounded-tl-[6px] bg-card px-3.5 py-3 shadow-[0_8px_24px_rgba(11,16,32,0.06)]"
+                aria-hidden="true"
+              >
+                <span />
+                <span />
+                <span />
               </div>
-              <p className="text-[14px] leading-[1.5] text-dark">
-                <MessageBody
-                  parts={card.parts}
-                  reveal={answer !== null}
-                  activeFlag={activeFlag}
-                  onFlag={setActiveFlag}
-                  isEn={isEn}
-                />
-              </p>
-            </div>
+            ) : (
+              <div
+                key={card.id}
+                className="fake-news-quiz__bubble max-w-[94%] rounded-[20px] rounded-tl-[6px] bg-card px-3.5 py-3 shadow-[0_8px_24px_rgba(11,16,32,0.06)]"
+              >
+                <div className="mb-1.5 flex items-center gap-1 font-mono text-[9px] uppercase tracking-[1.4px] text-mid opacity-70">
+                  <span aria-hidden="true">&#8618;</span>
+                  <span className="cs">Přeposláno</span>
+                  <span className="en">Forwarded</span>
+                </div>
+                <p className="text-[14px] leading-[1.5] text-dark">
+                  <MessageBody
+                    parts={card.parts}
+                    reveal={answer !== null}
+                    activeFlag={activeFlag}
+                    onFlag={setActiveFlag}
+                    isEn={isEn}
+                  />
+                </p>
+              </div>
+            )}
 
             {answer !== null && (
               <div className="fake-news-quiz__result mt-2.5 max-w-[94%] rounded-[16px] bg-card px-3.5 py-3 shadow-[0_8px_24px_rgba(11,16,32,0.06)]">
@@ -309,8 +464,8 @@ export function FakeNewsQuiz() {
             )}
           </div>
 
-          <div className="shrink-0 bg-card/55 px-3 pt-2.5 pb-1 backdrop-blur-md">
-            {answer === null ? (
+          <div className="fake-news-phone__dock">
+            {answer === null && !typing ? (
               <>
                 <p className="mb-2 text-center font-mono text-[10px] uppercase tracking-[2px] text-mid">
                   <span className="cs">Je to fake news?</span>
@@ -335,19 +490,23 @@ export function FakeNewsQuiz() {
                   </button>
                 </div>
               </>
-            ) : (
+            ) : answer !== null ? (
               <button
                 type="button"
                 onClick={handleNext}
-                className="fake-news-action fake-news-action--next w-full border border-dark bg-dark py-2.5 font-mono text-[11px] font-medium uppercase tracking-[1.2px] text-bg"
+                className="fake-news-action fake-news-action--next"
               >
-                <span className="cs">Další zpráva &rarr;</span>
-                <span className="en">Next message &rarr;</span>
+                <span className="cs">Další zpráva</span>
+                <span className="en">Next message</span>
+                <span aria-hidden="true">&rarr;</span>
               </button>
-            )}
+            ) : null}
             <div className="fake-news-phone__home flex justify-center py-2.5" aria-hidden="true">
               <div className="h-[4px] w-[108px] rounded-full bg-dark/18" />
             </div>
+          </div>
+          </div>
+        </div>
           </div>
         </div>
       </div>

@@ -1,89 +1,17 @@
 import { Link } from "react-router-dom";
 import { AboutStructureAnimation } from "../../components/AboutStructureAnimation";
 import { AlgorithmFeed } from "../../components/AlgorithmFeed";
+import { BoardMemberCard } from "../../components/BoardMemberCard";
 import { DisinfoGapChart } from "../../components/DisinfoGapChart";
 import { FakeNewsQuiz } from "../../components/FakeNewsQuiz";
+import { NationalCoordinators } from "../../components/NationalCoordinators";
+import { PartnersSection } from "../../components/PartnersSection";
 import { TickerBar } from "../../components/TickerBar";
-
-const CELL_LEADERS = [
-  {
-    id: "01",
-    deptCs: "PR a komunikace",
-    deptEn: "PR & Communications",
-    name: "Jakub Rašovský",
-  },
-  {
-    id: "02",
-    deptCs: "Sociální sítě",
-    deptEn: "Social Media",
-    name: "Jiří Vítek",
-  },
-  {
-    id: "03",
-    deptCs: "Podcast",
-    deptEn: "Podcast",
-    name: "Marek Roušar",
-  },
-  {
-    id: "04",
-    deptCs: "Výzkum",
-    deptEn: "Research",
-    name: "Pavel Klusák",
-  },
-  {
-    id: "05",
-    deptCs: "Grafika",
-    deptEn: "Graphics",
-    name: "Zdeněk Frőmel",
-  },
-  {
-    id: "06",
-    deptCs: "Video",
-    deptEn: "Video",
-    name: "Lukáš Holec",
-  },
-  {
-    id: "07",
-    deptCs: "Mezinárodní komunikace",
-    deptEn: "International communication",
-    name: "Laith Awad",
-  },
-  {
-    id: "08",
-    deptCs: "Organizace eventů",
-    deptEn: "Event organization",
-    name: "Vojtěch Kubín",
-  },
-  {
-    id: "09",
-    deptCs: "Technologie a digital",
-    deptEn: "Technology & digital",
-    name: "Nikola Crhák",
-  },
-];
-
-const BOARD_MEMBERS = [
-  {
-    name: "Jan Krejčí",
-    roleCs: "Prezident & Zakladatel",
-    roleEn: "President & Founder",
-  },
-  {
-    name: "Jakub Rašovský",
-    roleCs: "Místopředseda",
-    roleEn: "Vice President",
-  },
-  {
-    name: "Bety Fritzová",
-    roleCs: "Tajemnice",
-    roleEn: "Secretary",
-  },
-  {
-    name: "Alena Marková",
-    roleCs: "Zástupce předsednictva",
-    roleEn: "Board Rep.",
-  },
-];
+import {
+  ADVISOR,
+  BOARD_MEMBERS,
+  BOARD_REST,
+} from "../../data/leadership";
 
 const CORE_VALUES = [
   {
@@ -143,13 +71,24 @@ const CORE_VALUES = [
 function StructureDirectoryRow({
   id,
   name,
+  nameCs,
+  nameEn,
   labelCs,
   labelEn,
 }) {
   return (
     <div className="org-dir__row">
       {id ? <span className="org-dir__id">{id}</span> : null}
-      <span className="org-dir__name">{name}</span>
+      <span className="org-dir__name">
+        {nameCs || nameEn ? (
+          <>
+            <span className="cs">{nameCs || name}</span>
+            <span className="en">{nameEn || name}</span>
+          </>
+        ) : (
+          name
+        )}
+      </span>
       <span className="org-dir__role">
         <span className="cs">{labelCs}</span>
         <span className="en">{labelEn}</span>
@@ -164,11 +103,11 @@ function BoardStructureBlock({ className = "" }) {
       <div className="org-dir__head">
         <span className="cs">Předsednictvo</span>
         <span className="en">Executive Board</span>
-        <span className="org-dir__count">4</span>
+        <span className="org-dir__count">{BOARD_MEMBERS.length}</span>
       </div>
       {BOARD_MEMBERS.map((member) => (
         <StructureDirectoryRow
-          key={member.name}
+          key={member.id}
           name={member.name}
           labelCs={member.roleCs}
           labelEn={member.roleEn}
@@ -178,23 +117,33 @@ function BoardStructureBlock({ className = "" }) {
   );
 }
 
-function CouncilStructureBlock({ className = "" }) {
+function LayersStructureBlock({ className = "" }) {
   return (
     <div className={`org-dir ${className}`}>
       <div className="org-dir__head">
-        <span className="cs">Rada zástupců</span>
-        <span className="en">Council of Representatives</span>
-        <span className="org-dir__count">9</span>
+        <span className="cs">Struktura</span>
+        <span className="en">Structure</span>
+        <span className="org-dir__count">3</span>
       </div>
-      {CELL_LEADERS.map((leader) => (
-        <StructureDirectoryRow
-          key={leader.id}
-          id={leader.id}
-          name={leader.name}
-          labelCs={leader.deptCs}
-          labelEn={leader.deptEn}
-        />
-      ))}
+      <StructureDirectoryRow
+        id="01"
+        nameCs="Předsednictvo"
+        nameEn="Executive Board"
+        labelCs="Strategie"
+        labelEn="Strategy"
+      />
+      <StructureDirectoryRow
+        id="02"
+        name="Main Council"
+        labelCs="Dominik Ševela"
+        labelEn="Dominik Ševela"
+      />
+      <StructureDirectoryRow
+        id="03"
+        name="National Teams"
+        labelCs="Koordinátoři"
+        labelEn="Coordinators"
+      />
     </div>
   );
 }
@@ -395,7 +344,7 @@ export function AboutPageContent() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-[minmax(0,268px)_minmax(0,1fr)] lg:gap-16 xl:gap-24">
+          <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:gap-16 xl:gap-20">
             <div className="rev d1">
               <p className="mb-8 max-w-[400px] text-[15px] leading-[1.8] font-light text-mid">
                 <span className="cs">
@@ -797,7 +746,7 @@ export function AboutPageContent() {
         </div>
       </section>
       <section
-        className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"
+        className="sec layer-band layer-band--founder py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"
         id="about-team"
       >
         <div className="inner max-w-[1300px] mx-auto">
@@ -863,23 +812,25 @@ export function AboutPageContent() {
               </div>
             </div>
             <div className="rev d2">
-              <div className="text-xl text-accent mb-10 cs">
+              <div className="text-xl text-accent mb-10 cs" data-scramble-role="">
                 Prezident & Zakladatel CTRL Europe
               </div>
-              <div className="text-xl text-accent mb-10 en">
+              <div className="text-xl text-accent mb-10 en" data-scramble-role="">
                 President & Founder of CTRL Europe
               </div>
               <div className="prose">
-                <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
-                  CTRL Europe jsem nezaložil jako školní projekt. Založil jsem
-                  ho protože vidím skutečný problém a věřím, že naše generace ho
-                  musí řešit sama.
-                </p>
-                <p className="en text-base font-light leading-[1.85] text-mid mb-5">
-                  I didn't start CTRL Europe as a school project. I started it
-                  because I see a real problem, and because I believe our
-                  generation has to solve it ourselves.
-                </p>
+                <div data-scrub-words="">
+                  <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
+                    CTRL Europe jsem nezaložil jako školní projekt. Založil jsem
+                    ho protože vidím skutečný problém a věřím, že naše generace ho
+                    musí řešit sama.
+                  </p>
+                  <p className="en text-base font-light leading-[1.85] text-mid mb-5">
+                    I didn't start CTRL Europe as a school project. I started it
+                    because I see a real problem, and because I believe our
+                    generation has to solve it ourselves.
+                  </p>
+                </div>
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
                   Jsem sedmnáctiletý student IT na Střední škole informatiky,
                   poštovnictví a finančnictví v Brně. Od mládí mě zajímá
@@ -995,7 +946,131 @@ export function AboutPageContent() {
         </div>
       </section>
 
-      <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
+      <section
+        className="sec layer-band layer-band--advisor py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg2"
+        id="about-advisor"
+      >
+        <div className="inner max-w-[1300px] mx-auto">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Odborná garantka</span>
+              <span className="en">Academic Advisor</span>
+            </span>
+            <h2 className="section-title">{ADVISOR.name}</h2>
+          </div>
+          <div className="about-2col about-2col--reverse grid grid-cols-2 gap-[100px] items-start max-lg:grid-cols-1 max-lg:gap-12 lg:grid-cols-[1fr_400px]">
+            <div className="max-lg:order-2" data-slide-from="left">
+              <div className="text-xl text-accent mb-10 cs" data-scramble-role="">
+                {ADVISOR.roleCs} CTRL Europe
+              </div>
+              <div className="text-xl text-accent mb-10 en" data-scramble-role="">
+                {ADVISOR.roleEn} of CTRL Europe
+              </div>
+              <div className="prose">
+                {ADVISOR.bioCs.map((paragraph) => (
+                  <p
+                    key={paragraph}
+                    className="cs text-base font-light leading-[1.85] text-mid mb-5"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+                {ADVISOR.bioEn.map((paragraph) => (
+                  <p
+                    key={paragraph}
+                    className="en text-base font-light leading-[1.85] text-mid mb-5"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+            <div className="max-lg:order-1" data-slide-from="right">
+              <div className="aspect-[3/4] overflow-hidden mb-6 relative bg-card">
+                {ADVISOR.photo ? (
+                  <img
+                    src={ADVISOR.photo}
+                    alt={ADVISOR.photoAlt}
+                    data-rotate-scrub=""
+                    className="absolute left-0 top-[-4%] w-full h-[108%] object-cover origin-center"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div
+                    data-rotate-scrub=""
+                    className="absolute inset-0 flex items-center justify-center origin-center bg-[linear-gradient(160deg,rgba(74,123,255,0.16),rgba(11,16,32,0.06))]"
+                  >
+                    <span className="font-mono text-[56px] font-bold tracking-[4px] text-accent/70">
+                      {ADVISOR.initials}
+                    </span>
+                  </div>
+                )}
+                <div className="absolute bottom-0 left-0 right-0 py-3 px-5 bg-[rgba(245,245,243,0.85)]">
+                  <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid">
+                    {ADVISOR.name}
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3">
+                <div className="flex justify-between py-3 border-b border-separator">
+                  <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid cs">
+                    Role
+                  </div>
+                  <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid en">
+                    Role
+                  </div>
+                  <div className="text-[13px] font-medium text-dark cs">
+                    {ADVISOR.roleCs}
+                  </div>
+                  <div className="text-[13px] font-medium text-dark en">
+                    {ADVISOR.roleEn}
+                  </div>
+                </div>
+                <div className="flex justify-between py-3 border-b border-separator">
+                  <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid cs">
+                    Působiště
+                  </div>
+                  <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid en">
+                    Base
+                  </div>
+                  <div className="text-[13px] font-medium text-dark">
+                    {ADVISOR.base}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="sec layer-band layer-band--board py-[100px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"
+        id="about-board"
+      >
+        <div className="inner max-w-[1300px] mx-auto">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Předsednictvo</span>
+              <span className="en">Executive Board</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">Zbytek vedení.</span>
+              <span className="en">The rest of the board.</span>
+            </h2>
+          </div>
+          <div className="board-mini mt-10 grid grid-cols-3 gap-5 max-lg:grid-cols-1 lg:mt-14">
+            {BOARD_REST.map((member) => (
+              <BoardMemberCard key={member.id} member={member} variant="about" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="sec layer-band layer-band--structure py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg2"
+        id="about-structure"
+      >
         <div className="inner max-w-[1300px] mx-auto">
           <div className="section-head rev">
             <span className="section-label">
@@ -1004,10 +1079,10 @@ export function AboutPageContent() {
             </span>
             <h2 className="section-title italic">
               <span className="cs">
-                Profesionální struktura. <em>Pohled mladých lidí.</em>
+                Předsednictvo. Main Council. <em>National Teams.</em>
               </span>
               <span className="en">
-                Professional structure. <em>Youth perspective.</em>
+                Executive Board. Main Council. <em>National Teams.</em>
               </span>
             </h2>
           </div>
@@ -1018,40 +1093,48 @@ export function AboutPageContent() {
                   <strong className="font-medium text-dark">
                     Předsednictvo
                   </strong>{" "}
-                  tvoří čtyři členové: předseda, místopředseda, tajemnice a
-                  zástupce předsednictva. Předsednictvo rozhoduje o strategickém
-                  směřování organizace.
+                  tvoří zakladatel a výkonné vedení: prezident, místopředseda,
+                  vedoucí kanceláře a předseda Main Council. Rozhoduje o
+                  strategickém směřování organizace.
                 </p>
                 <p className="en mb-5 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
                     The Executive Board
                   </strong>{" "}
-                  consists of four members: president, vice president, secretary
-                  and board representative. The board decides on the strategic
-                  direction of the organization.
+                  is the founder and operational leadership: president, deputy
+                  chair, chief of staff and the chairman of the Main Council.
+                  The board decides on the strategic direction of the
+                  organization.
                 </p>
                 <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
-                    Rada zástupců
+                    Main Council
                   </strong>{" "}
-                  sdružuje vedoucí všech buněk. Každá buňka má vlastní agendu,
-                  vlastní projekty a přímé napojení na předsednictvo.
+                  propojuje předsednictvo s národními týmy. Předsedá mu Dominik
+                  Ševela. Council drží společný směr napříč zeměmi, aniž by
+                  stíral místní kontext.
                 </p>
                 <p className="en mb-5 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
-                    The Council of Representatives
+                    The Main Council
                   </strong>{" "}
-                  brings together the leaders of all cells. Each cell has its
-                  own agenda, its own projects and a direct connection to the
-                  board.
+                  connects the board with national teams. It is chaired by
+                  Dominik Ševela. The Council keeps a shared direction across
+                  countries without flattening local context.
                 </p>
                 <p className="cs mb-8 text-base leading-[1.85] font-light text-mid">
-                  Vícejázyčný tým. Střední Evropa jako výchozí bod. Evropa jako
-                  cíl.
+                  <strong className="font-medium text-dark">
+                    National Teams
+                  </strong>{" "}
+                  vedou národní koordinátoři. Každý tým má vlastní agendu a
+                  přímé napojení na Main Council.
                 </p>
                 <p className="en mb-8 text-base leading-[1.85] font-light text-mid">
-                  Multilingual team. Central Europe as the starting point.
-                  Europe as the goal.
+                  <strong className="font-medium text-dark">
+                    National Teams
+                  </strong>{" "}
+                  are led by national coordinators. Each team has its own agenda
+                  and a direct line to the Main Council.
                 </p>
               </div>
               <div className="org-chart-frame">
@@ -1060,11 +1143,73 @@ export function AboutPageContent() {
             </div>
             <div className="rev d2 flex flex-col gap-4">
               <BoardStructureBlock />
-              <CouncilStructureBlock />
+              <LayersStructureBlock />
             </div>
           </div>
         </div>
       </section>
+
+      <section
+        className="sec layer-band layer-band--council py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"
+        id="about-council"
+      >
+        <div className="inner max-w-[1300px] mx-auto">
+          <div className="council-pin lg:grid lg:grid-cols-[minmax(280px,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-16">
+            <div className="council-pin__head lg:sticky lg:top-28">
+              <div className="section-head rev">
+                <span className="section-label">
+                  <span className="cs">Main Council</span>
+                  <span className="en">Main Council</span>
+                </span>
+                <h2 className="section-title">
+                  <span className="cs">
+                    Most mezi vedením a <em>národními týmy.</em>
+                  </span>
+                  <span className="en">
+                    The bridge between leadership and <em>national teams.</em>
+                  </span>
+                </h2>
+              </div>
+            </div>
+            <div className="council-pin__body mt-10 space-y-8 lg:mt-4">
+              <div className="council-rail bg-card px-8 py-10 max-sm:px-6" data-enter="rotate-left">
+                <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-4">
+                  Chairman
+                </div>
+                <div className="text-2xl font-semibold tracking-[-0.4px] text-dark mb-2">
+                  Dominik Ševela
+                </div>
+                <p className="cs text-[15px] font-light leading-[1.8] text-mid">
+                  Předseda Main Council. Drží agendu rady a napojení na
+                  předsednictvo.
+                </p>
+                <p className="en text-[15px] font-light leading-[1.8] text-mid">
+                  Chairman of the Main Council. He holds the council agenda and
+                  the link to the executive board.
+                </p>
+              </div>
+              <div className="council-rail bg-bg2 px-8 py-10 max-sm:px-6" data-enter="rotate-up">
+                <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-4">
+                  <span className="cs">Mandát</span>
+                  <span className="en">Mandate</span>
+                </div>
+                <p className="cs text-[15px] font-light leading-[1.8] text-mid">
+                  Council sjednocuje priority National Teams, hlídá kvalitu
+                  výstupů a přenáší rozhodnutí předsednictva do jednotlivých
+                  zemí.
+                </p>
+                <p className="en text-[15px] font-light leading-[1.8] text-mid">
+                  The Council aligns National Teams priorities, guards output
+                  quality and carries board decisions into each country.
+                </p>
+              </div>
+              <NationalCoordinators />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <PartnersSection />
 
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
         <div className="inner max-w-[1300px] mx-auto">
