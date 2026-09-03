@@ -91,13 +91,13 @@ export function HomePageContent() {
               </a>
               <Link
                 to="/about"
-                className="btn-ghost cs text-[13px] font-medium text-bg border border-[rgba(245,245,243,0.25)] px-7 py-3.5 transition-[background-color,border-color] duration-250 hover:bg-[rgba(245,245,243,0.08)] no-underline"
+                className="btn-ghost cs inline-flex items-center gap-2 border border-[rgba(245,245,243,0.35)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-bg no-underline transition-[background-color,border-color] duration-250 hover:border-[rgba(245,245,243,0.7)] hover:bg-[rgba(245,245,243,0.08)] max-sm:px-5 max-sm:py-3 max-sm:text-xs"
               >
                 O nás &rarr;
               </Link>
               <Link
                 to="/about"
-                className="btn-ghost en text-[13px] font-medium text-bg border border-[rgba(245,245,243,0.25)] px-7 py-3.5 transition-[background-color,border-color] duration-250 hover:bg-[rgba(245,245,243,0.08)] no-underline"
+                className="btn-ghost en inline-flex items-center gap-2 border border-[rgba(245,245,243,0.35)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-bg no-underline transition-[background-color,border-color] duration-250 hover:border-[rgba(245,245,243,0.7)] hover:bg-[rgba(245,245,243,0.08)] max-sm:px-5 max-sm:py-3 max-sm:text-xs"
               >
                 About us &rarr;
               </Link>
@@ -452,7 +452,7 @@ export function HomePageContent() {
         </div>
       </section>
 
-      <Flythrough variant="letters" />
+      <Flythrough variant="keys" />
 
       <section className="sec py-16 px-[52px] max-lg:py-14 max-lg:px-6 max-[480px]:py-12 max-[480px]:px-5 bg-dark">
         <div className="inner max-w-[1300px] mx-auto">
@@ -552,7 +552,7 @@ export function HomePageContent() {
         </div>
       </section>
 
-      <Flythrough variant="slash" />
+      <Flythrough variant="rail" />
 
       <section
         id="aktuality-promo"

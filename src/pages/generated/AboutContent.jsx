@@ -205,16 +205,28 @@ export function AboutPageContent() {
               connect and build digital resilience for the next generation.
             </p>
             <div className="flex shrink-0 flex-wrap gap-3 max-[640px]:w-full max-[480px]:gap-2">
-              <Link to="/apply" className="btn-p cs">
+              <Link
+                to="/apply"
+                className="btn-p cs inline-flex items-center gap-2 border-none bg-bg px-7 py-3.5 text-[13px] font-semibold tracking-wide text-dark no-underline transition-[background-color,color] duration-250 hover:bg-accent hover:text-bg max-sm:px-5 max-sm:py-3 max-sm:text-xs"
+              >
                 Zapojit se &rarr;
               </Link>
-              <Link to="/apply" className="btn-p en">
+              <Link
+                to="/apply"
+                className="btn-p en inline-flex items-center gap-2 border-none bg-bg px-7 py-3.5 text-[13px] font-semibold tracking-wide text-dark no-underline transition-[background-color,color] duration-250 hover:bg-accent hover:text-bg max-sm:px-5 max-sm:py-3 max-sm:text-xs"
+              >
                 Get involved &rarr;
               </Link>
-              <a href="#about-team" className="btn-g light cs">
+              <a
+                href="#about-team"
+                className="btn-g light cs inline-flex items-center gap-2 border border-[rgba(245,245,243,0.35)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-bg no-underline transition-[background-color,border-color] duration-250 hover:border-[rgba(245,245,243,0.7)] hover:bg-[rgba(245,245,243,0.08)] max-sm:px-5 max-sm:py-3 max-sm:text-xs"
+              >
                 Náš tým
               </a>
-              <a href="#about-team" className="btn-g light en">
+              <a
+                href="#about-team"
+                className="btn-g light en inline-flex items-center gap-2 border border-[rgba(245,245,243,0.35)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-bg no-underline transition-[background-color,border-color] duration-250 hover:border-[rgba(245,245,243,0.7)] hover:bg-[rgba(245,245,243,0.08)] max-sm:px-5 max-sm:py-3 max-sm:text-xs"
+              >
                 Our team
               </a>
             </div>
@@ -394,7 +406,7 @@ export function AboutPageContent() {
         </div>
       </section>
 
-      <Flythrough variant="logo" />
+      <Flythrough variant="signal" />
 
       <section className="sec py-16 px-[52px] max-lg:py-14 max-lg:px-6 max-[480px]:py-12 max-[480px]:px-5 bg-dark">
         <div className="inner max-w-[1300px] mx-auto">
@@ -749,7 +761,7 @@ export function AboutPageContent() {
         </div>
       </section>
 
-      <Flythrough variant="slash" />
+      <Flythrough variant="network" />
 
       <section
         className="sec layer-band layer-band--founder py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"
@@ -1155,7 +1167,7 @@ export function AboutPageContent() {
         </div>
       </section>
 
-      <Flythrough variant="ring" />
+      <Flythrough variant="ticker" />
 
       <section
         className="sec layer-band layer-band--council py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"

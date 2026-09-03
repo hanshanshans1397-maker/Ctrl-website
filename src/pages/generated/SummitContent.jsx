@@ -91,25 +91,25 @@ export function SummitPageContent() {
             <div className="flex shrink-0 flex-wrap gap-3">
               <Link
                 to="/join"
-                className="btn-p cs inline-flex items-center gap-2 border-none bg-dark px-7 py-3.5 text-[13px] font-semibold tracking-[0.3px] text-bg no-underline transition-[background-color] duration-[250ms] hover:bg-accent"
+                className="btn-p cs inline-flex items-center gap-2 border-none bg-bg px-7 py-3.5 text-[13px] font-semibold tracking-wide text-dark no-underline transition-[background-color,color] duration-250 hover:bg-accent hover:text-bg max-sm:px-5 max-sm:py-3 max-sm:text-xs"
               >
                 Registrovat se &rarr;
               </Link>
               <Link
                 to="/join"
-                className="btn-p en inline-flex items-center gap-2 border-none bg-dark px-7 py-3.5 text-[13px] font-semibold tracking-[0.3px] text-bg no-underline transition-[background-color] duration-[250ms] hover:bg-accent"
+                className="btn-p en inline-flex items-center gap-2 border-none bg-bg px-7 py-3.5 text-[13px] font-semibold tracking-wide text-dark no-underline transition-[background-color,color] duration-250 hover:bg-accent hover:text-bg max-sm:px-5 max-sm:py-3 max-sm:text-xs"
               >
                 Register &rarr;
               </Link>
               <a
                 href="#about"
-                className="btn-g light cs inline-flex items-center gap-2 border border-[rgba(245,245,243,0.15)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-bg no-underline transition-[border-color] duration-[250ms] hover:border-[rgba(245,245,243,0.4)]"
+                className="btn-g light cs inline-flex items-center gap-2 border border-[rgba(245,245,243,0.35)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-bg no-underline transition-[background-color,border-color] duration-250 hover:border-[rgba(245,245,243,0.7)] hover:bg-[rgba(245,245,243,0.08)] max-sm:px-5 max-sm:py-3 max-sm:text-xs"
               >
                 Více informací
               </a>
               <a
                 href="#about"
-                className="btn-g light en inline-flex items-center gap-2 border border-[rgba(245,245,243,0.15)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-bg no-underline transition-[border-color] duration-[250ms] hover:border-[rgba(245,245,243,0.4)]"
+                className="btn-g light en inline-flex items-center gap-2 border border-[rgba(245,245,243,0.35)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-bg no-underline transition-[background-color,border-color] duration-250 hover:border-[rgba(245,245,243,0.7)] hover:bg-[rgba(245,245,243,0.08)] max-sm:px-5 max-sm:py-3 max-sm:text-xs"
               >
                 Learn more
               </a>
@@ -1051,7 +1051,7 @@ export function SummitPageContent() {
         </div>
       </section>
 
-      <Flythrough variant="word" />
+      <Flythrough variant="odometer" />
 
       <section className="sec bg-bg2 px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16">
         <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full">
@@ -1170,7 +1170,7 @@ export function SummitPageContent() {
         </div>
       </section>
 
-      <Flythrough variant="ring" />
+      <Flythrough variant="gather" />
 
       <section className="sec bg-bg px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16">
         <div className="inner mx-auto max-w-[900px] text-center max-sm:max-w-full">

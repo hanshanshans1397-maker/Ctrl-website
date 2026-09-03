@@ -10,6 +10,7 @@ import {
   applyMotionBodyClass,
 } from '../utils/motion';
 import { addScrambleTween } from '../utils/scramble';
+import { flythroughPass } from '../utils/flythroughMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -870,113 +871,6 @@ function scrollChoreography() {
       '#about-advisor',
       { start: 'top 88%', end: 'center 35%', scrub: 0.55 },
     );
-  });
-}
-
-function flythroughPass() {
-  const scrub = { start: 'top 82%', end: 'bottom 18%', scrub: 0.55 };
-
-  gsap.utils.toArray('.flythrough').forEach((section) => {
-    const variant = section.getAttribute('data-fly') || 'logo';
-    const st = { trigger: section, ...scrub };
-
-    if (variant === 'logo') {
-      const mark = section.querySelector('.flythrough__mark');
-      if (!mark) return;
-      gsap
-        .timeline({ scrollTrigger: st })
-        .fromTo(
-          mark,
-          { xPercent: -28, yPercent: 18, scale: 0.42, rotate: -16, opacity: 0, filter: 'blur(12px)', force3D: true },
-          { xPercent: 0, yPercent: 0, scale: 1.06, rotate: -3, opacity: 1, filter: 'blur(0px)', duration: 0.38, ease: 'none' },
-        )
-        .to(mark, {
-          xPercent: 16,
-          yPercent: -14,
-          scale: 3.6,
-          rotate: 9,
-          opacity: 0,
-          filter: 'blur(18px)',
-          duration: 0.62,
-          ease: 'none',
-        });
-      return;
-    }
-
-    if (variant === 'letters') {
-      const letters = section.querySelectorAll('.flythrough__letter');
-      if (!letters.length) return;
-      const tl = gsap.timeline({ scrollTrigger: st });
-      letters.forEach((el, i) => {
-        const spread = (i - 1.5) * 36;
-        tl.fromTo(
-          el,
-          { y: 72, x: spread - 90, rotate: -16 + i * 5, scale: 0.46, opacity: 0, filter: 'blur(10px)', force3D: true },
-          { y: 0, x: spread * 0.15, rotate: 0, scale: 1, opacity: 1, filter: 'blur(0px)', duration: 0.36, ease: 'none' },
-          i * 0.05,
-        ).to(
-          el,
-          {
-            y: -96,
-            x: spread * 0.7 + 48,
-            scale: 2.5,
-            rotate: 7,
-            opacity: 0,
-            filter: 'blur(14px)',
-            duration: 0.54,
-            ease: 'none',
-          },
-          0.4 + i * 0.04,
-        );
-      });
-      return;
-    }
-
-    if (variant === 'slash') {
-      const slash = section.querySelector('.flythrough__slash');
-      if (!slash) return;
-      gsap
-        .timeline({ scrollTrigger: st })
-        .fromTo(
-          slash,
-          { xPercent: -82, opacity: 0, rotate: -18, force3D: true },
-          { xPercent: -8, opacity: 1, rotate: -18, duration: 0.34, ease: 'none' },
-        )
-        .to(slash, { xPercent: 78, opacity: 0, rotate: -18, duration: 0.66, ease: 'none' });
-      return;
-    }
-
-    if (variant === 'word') {
-      const word = section.querySelector('.flythrough__word');
-      if (!word) return;
-      gsap
-        .timeline({ scrollTrigger: st })
-        .fromTo(
-          word,
-          { xPercent: 22, yPercent: 24, scale: 0.5, rotate: 8, opacity: 0, filter: 'blur(12px)', force3D: true },
-          { xPercent: 0, yPercent: 0, scale: 1, rotate: 0, opacity: 1, filter: 'blur(0px)', duration: 0.36, ease: 'none' },
-        )
-        .to(word, {
-          xPercent: -18,
-          yPercent: -16,
-          scale: 3.2,
-          rotate: -6,
-          opacity: 0,
-          filter: 'blur(16px)',
-          duration: 0.64,
-          ease: 'none',
-        });
-      return;
-    }
-
-    if (variant === 'ring') {
-      const ring = section.querySelector('.flythrough__ring');
-      if (!ring) return;
-      gsap
-        .timeline({ scrollTrigger: st })
-        .fromTo(ring, { scale: 0.28, opacity: 0 }, { scale: 1.04, opacity: 1, duration: 0.34, ease: 'none' })
-        .to(ring, { scale: 7.2, opacity: 0, duration: 0.66, ease: 'none' });
-    }
   });
 }
 

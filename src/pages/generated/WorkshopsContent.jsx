@@ -61,16 +61,28 @@ export function WorkshopsPageContent() {
               future of education. Directly at your school. Free of charge.
             </p>
             <div className="flex shrink-0 flex-wrap gap-3 max-[640px]:w-full max-[480px]:gap-2">
-              <Link to="/join" className="btn-p cs">
+              <Link
+                to="/join"
+                className="btn-p cs inline-flex items-center gap-2 border-none bg-bg px-7 py-3.5 text-[13px] font-semibold tracking-wide text-dark no-underline transition-[background-color,color] duration-250 hover:bg-accent hover:text-bg max-sm:px-5 max-sm:py-3 max-sm:text-xs"
+              >
                 Objednat workshop &rarr;
               </Link>
-              <Link to="/join" className="btn-p en">
+              <Link
+                to="/join"
+                className="btn-p en inline-flex items-center gap-2 border-none bg-bg px-7 py-3.5 text-[13px] font-semibold tracking-wide text-dark no-underline transition-[background-color,color] duration-250 hover:bg-accent hover:text-bg max-sm:px-5 max-sm:py-3 max-sm:text-xs"
+              >
                 Order workshop &rarr;
               </Link>
-              <a href="#topics" className="btn-g light cs">
+              <a
+                href="#topics"
+                className="btn-g light cs inline-flex items-center gap-2 border border-[rgba(245,245,243,0.35)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-bg no-underline transition-[background-color,border-color] duration-250 hover:border-[rgba(245,245,243,0.7)] hover:bg-[rgba(245,245,243,0.08)] max-sm:px-5 max-sm:py-3 max-sm:text-xs"
+              >
                 Témata
               </a>
-              <a href="#topics" className="btn-g light en">
+              <a
+                href="#topics"
+                className="btn-g light en inline-flex items-center gap-2 border border-[rgba(245,245,243,0.35)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-bg no-underline transition-[background-color,border-color] duration-250 hover:border-[rgba(245,245,243,0.7)] hover:bg-[rgba(245,245,243,0.08)] max-sm:px-5 max-sm:py-3 max-sm:text-xs"
+              >
                 Topics
               </a>
             </div>
@@ -830,7 +842,7 @@ export function WorkshopsPageContent() {
         </div>
       </section>
 
-      <Flythrough variant="slash" />
+      <Flythrough variant="scan" />
 
       <section className="sec bg-bg2">
         <div className="inner">
@@ -882,7 +894,7 @@ export function WorkshopsPageContent() {
         </div>
       </section>
 
-      <Flythrough variant="letters" />
+      <Flythrough variant="verify" />
 
       <section className="sec bg-bg">
         <div className="inner">
