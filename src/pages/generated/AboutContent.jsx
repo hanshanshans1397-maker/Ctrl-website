@@ -4,6 +4,7 @@ import { AlgorithmFeed } from "../../components/AlgorithmFeed";
 import { BoardMemberCard } from "../../components/BoardMemberCard";
 import { DisinfoGapChart } from "../../components/DisinfoGapChart";
 import { FakeNewsQuiz } from "../../components/FakeNewsQuiz";
+import { Flythrough } from "../../components/Flythrough";
 import { NationalCoordinators } from "../../components/NationalCoordinators";
 import { PartnersSection } from "../../components/PartnersSection";
 import { TickerBar } from "../../components/TickerBar";
@@ -393,6 +394,8 @@ export function AboutPageContent() {
         </div>
       </section>
 
+      <Flythrough variant="logo" />
+
       <section className="sec py-16 px-[52px] max-lg:py-14 max-lg:px-6 max-[480px]:py-12 max-[480px]:px-5 bg-dark">
         <div className="inner max-w-[1300px] mx-auto">
           <div className="section-head rev mb-10 max-lg:mb-8">
@@ -745,6 +748,9 @@ export function AboutPageContent() {
           </div>
         </div>
       </section>
+
+      <Flythrough variant="slash" />
+
       <section
         className="sec layer-band layer-band--founder py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"
         id="about-team"
@@ -1148,6 +1154,8 @@ export function AboutPageContent() {
           </div>
         </div>
       </section>
+
+      <Flythrough variant="ring" />
 
       <section
         className="sec layer-band layer-band--council py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"

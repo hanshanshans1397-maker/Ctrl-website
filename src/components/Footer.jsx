@@ -80,6 +80,13 @@ export function Footer() {
                 Project
               </h4>
               <Link
+                to="/"
+                className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
+              >
+                <span className="cs">Domů</span>
+                <span className="en">Home</span>
+              </Link>
+              <Link
                 to="/about"
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >
@@ -182,8 +189,12 @@ export function Footer() {
             <span className="cs">IČO: {ORGANIZATION.ico}</span>
             <span className="en">Company ID (IČO): {ORGANIZATION.ico}</span>
           </div>
-          <div className="cs mt-1 max-w-[720px]">{ORGANIZATION.registrationCs}</div>
-          <div className="en mt-1 max-w-[720px]">{ORGANIZATION.registrationEn}</div>
+          <div className="cs mt-1 max-w-[720px]">
+            {ORGANIZATION.registrationCs}
+          </div>
+          <div className="en mt-1 max-w-[720px]">
+            {ORGANIZATION.registrationEn}
+          </div>
         </div>
         <div className="flex items-center justify-between gap-4 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-2">
           <div className="font-mono text-[11px] font-light text-[rgba(245,245,243,0.3)]">

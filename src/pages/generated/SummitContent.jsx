@@ -1,3 +1,4 @@
+import { Flythrough } from "../../components/Flythrough";
 import { Link } from "react-router-dom";
 
 export function SummitPageContent() {
@@ -1050,6 +1051,8 @@ export function SummitPageContent() {
         </div>
       </section>
 
+      <Flythrough variant="word" />
+
       <section className="sec bg-bg2 px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16">
         <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full">
           <div className="section-head rev mb-16 max-sm:mb-12">
@@ -1166,6 +1169,8 @@ export function SummitPageContent() {
           </div>
         </div>
       </section>
+
+      <Flythrough variant="ring" />
 
       <section className="sec bg-bg px-[52px] py-[120px] max-lg:px-6 max-lg:py-20 max-md:px-6 max-md:py-[72px] max-sm:px-5 max-sm:py-16">
         <div className="inner mx-auto max-w-[900px] text-center max-sm:max-w-full">

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Flythrough } from "../../components/Flythrough";
 import { WorkshopPerks } from "../../components/WorkshopPerks";
 
 export function WorkshopsPageContent() {
@@ -829,6 +830,8 @@ export function WorkshopsPageContent() {
         </div>
       </section>
 
+      <Flythrough variant="slash" />
+
       <section className="sec bg-bg2">
         <div className="inner">
           <div className="section-head rev">
@@ -878,6 +881,8 @@ export function WorkshopsPageContent() {
           </div>
         </div>
       </section>
+
+      <Flythrough variant="letters" />
 
       <section className="sec bg-bg">
         <div className="inner">

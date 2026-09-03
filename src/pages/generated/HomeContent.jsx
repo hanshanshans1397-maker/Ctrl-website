@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { AnimatedCounter } from "../../components/AnimatedCounter";
 import { BoardMemberCard } from "../../components/BoardMemberCard";
+import { Flythrough } from "../../components/Flythrough";
 import { TickerBar } from "../../components/TickerBar";
 import { BOARD_MEMBERS } from "../../data/leadership";
 export function HomePageContent() {
@@ -451,6 +452,8 @@ export function HomePageContent() {
         </div>
       </section>
 
+      <Flythrough variant="letters" />
+
       <section className="sec py-16 px-[52px] max-lg:py-14 max-lg:px-6 max-[480px]:py-12 max-[480px]:px-5 bg-dark">
         <div className="inner max-w-[1300px] mx-auto">
           <div className="photo-strip grid grid-cols-3 gap-3 max-lg:grid-cols-1 max-[640px]:gap-2">
@@ -548,6 +551,8 @@ export function HomePageContent() {
           </div>
         </div>
       </section>
+
+      <Flythrough variant="slash" />
 
       <section
         id="aktuality-promo"
