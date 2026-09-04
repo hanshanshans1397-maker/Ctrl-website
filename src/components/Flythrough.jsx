@@ -1,16 +1,16 @@
 const COUNTRIES = [
-  { cs: 'Česká republika', en: 'Czech Republic' },
-  { cs: 'Slovensko', en: 'Slovakia' },
-  { cs: 'Rakousko', en: 'Austria' },
-  { cs: 'Polsko', en: 'Poland' },
-  { cs: 'Slovinsko', en: 'Slovenia' },
-  { cs: 'Maďarsko', en: 'Hungary' },
+  { cs: "Česká republika", en: "Czech Republic" },
+  { cs: "Slovensko", en: "Slovakia" },
+  { cs: "Rakousko", en: "Austria" },
+  { cs: "Polsko", en: "Poland" },
+  { cs: "Slovinsko", en: "Slovenia" },
+  { cs: "Maďarsko", en: "Hungary" },
 ];
 
-const KEYS = ['CTRL', 'ALT', 'DEL'];
+const KEYS = ["CTRL", "ALT", "DEL"];
 const SIGNAL_BARS = 56;
 const REEL_DIGITS = Array.from({ length: 20 }, (_, i) => i % 10);
-const YEAR = [2, 0, 2, 6];
+const YEAR = [2, 0, 2, 7];
 
 const NODES = [
   [80, 120],
@@ -45,7 +45,9 @@ function Rail() {
         height={340}
         decoding="async"
       />
-      <span className="flythrough__tag">Take control before someone else does.</span>
+      <span className="flythrough__tag">
+        Take control before someone else does.
+      </span>
     </>
   );
 }
@@ -81,7 +83,11 @@ function Signal() {
 
 function Network() {
   return (
-    <svg className="flythrough__net" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet">
+    <svg
+      className="flythrough__net"
+      viewBox="0 0 1000 200"
+      preserveAspectRatio="xMidYMid meet"
+    >
       {EDGES.map(([a, b]) => (
         <line
           key={`${a}-${b}`}
@@ -165,14 +171,18 @@ function Scan() {
 
 const CHECK_COLS = 7;
 const CHECK_ROWS = 5;
-const CHECK_ON = new Set(['6,0', '5,1', '0,2', '4,2', '1,3', '3,3', '2,4']);
+const CHECK_ON = new Set(["6,0", "5,1", "0,2", "4,2", "1,3", "3,3", "2,4"]);
 
 function Verify() {
   const cells = [];
   for (let y = 0; y < CHECK_ROWS; y += 1) {
     for (let x = 0; x < CHECK_COLS; x += 1) {
       cells.push(
-        <span key={`${x},${y}`} className="flythrough__pix" data-on={CHECK_ON.has(`${x},${y}`) ? '' : undefined} />,
+        <span
+          key={`${x},${y}`}
+          className="flythrough__pix"
+          data-on={CHECK_ON.has(`${x},${y}`) ? "" : undefined}
+        />,
       );
     }
   }
@@ -211,10 +221,14 @@ const VARIANTS = {
  * Each variant carries a piece of the CTRL story; none leaves a trace.
  * Motion lives in utils/flythroughMotion.js, keyed by `data-fly`.
  */
-export function Flythrough({ variant = 'rail' }) {
+export function Flythrough({ variant = "rail" }) {
   const Content = VARIANTS[variant] ?? Rail;
   return (
-    <section className={`flythrough flythrough--${variant}`} data-fly={variant} aria-hidden="true">
+    <section
+      className={`flythrough flythrough--${variant}`}
+      data-fly={variant}
+      aria-hidden="true"
+    >
       <div className="flythrough__stage">
         <Content />
       </div>
