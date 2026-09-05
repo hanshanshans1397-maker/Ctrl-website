@@ -135,13 +135,15 @@ function LayersStructureBlock({ className = "" }) {
       />
       <StructureDirectoryRow
         id="02"
-        name="Main Council"
+        nameCs="Hlavní rada"
+        nameEn="Main Council"
         labelCs="Dominik Ševela"
         labelEn="Dominik Ševela"
       />
       <StructureDirectoryRow
         id="03"
-        name="National Teams"
+        nameCs="Národní týmy"
+        nameEn="National Teams"
         labelCs="Koordinátoři"
         labelEn="Coordinators"
       />
@@ -1077,7 +1079,7 @@ export function AboutPageContent() {
               <span className="en">The rest of the board.</span>
             </h2>
           </div>
-          <div className="board-mini mt-10 grid grid-cols-3 gap-5 max-lg:grid-cols-1 lg:mt-14">
+          <div className="board-mini mt-8 grid grid-cols-2 gap-3 max-lg:grid-cols-1 lg:mt-10 xl:grid-cols-4">
             {BOARD_REST.map((member) => (
               <BoardMemberCard key={member.id} member={member} variant="about" />
             ))}
@@ -1097,7 +1099,7 @@ export function AboutPageContent() {
             </span>
             <h2 className="section-title italic">
               <span className="cs">
-                Předsednictvo. Main Council. <em>National Teams.</em>
+                Předsednictvo. Hlavní rada. <em>Národní týmy.</em>
               </span>
               <span className="en">
                 Executive Board. Main Council. <em>National Teams.</em>
@@ -1111,26 +1113,27 @@ export function AboutPageContent() {
                   <strong className="font-medium text-dark">
                     Předsednictvo
                   </strong>{" "}
-                  tvoří zakladatel a výkonné vedení: prezident, místopředseda,
-                  vedoucí kanceláře a předseda Main Council. Rozhoduje o
-                  strategickém směřování organizace.
+                  tvoří zakladatel a výkonné vedení: prezident, odborná
+                  garantka, místopředseda, vedoucí kanceláře, předseda hlavní
+                  rady a tajemnice. Rozhoduje o strategickém směřování
+                  organizace.
                 </p>
                 <p className="en mb-5 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
                     The Executive Board
                   </strong>{" "}
-                  is the founder and operational leadership: president, deputy
-                  chair, chief of staff and the chairman of the Main Council.
-                  The board decides on the strategic direction of the
-                  organization.
+                  is the founder and operational leadership: president, academic
+                  advisor, deputy chair, chief of staff, the chairman of the
+                  Main Council and the secretary. The board decides on the
+                  strategic direction of the organization.
                 </p>
                 <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
-                    Main Council
+                    Hlavní rada
                   </strong>{" "}
                   propojuje předsednictvo s národními týmy. Předsedá mu Dominik
-                  Ševela. Council drží společný směr napříč zeměmi, aniž by
-                  stíral místní kontext.
+                  Ševela. Rada drží společný směr napříč zeměmi, aniž by stíral
+                  místní kontext.
                 </p>
                 <p className="en mb-5 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
@@ -1142,10 +1145,10 @@ export function AboutPageContent() {
                 </p>
                 <p className="cs mb-8 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
-                    National Teams
+                    Národní týmy
                   </strong>{" "}
                   vedou národní koordinátoři. Každý tým má vlastní agendu a
-                  přímé napojení na Main Council.
+                  přímé napojení na hlavní radu.
                 </p>
                 <p className="en mb-8 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
@@ -1178,7 +1181,7 @@ export function AboutPageContent() {
             <div className="council-pin__head lg:sticky lg:top-28">
               <div className="section-head rev">
                 <span className="section-label">
-                  <span className="cs">Main Council</span>
+                  <span className="cs">Hlavní rada</span>
                   <span className="en">Main Council</span>
                 </span>
                 <h2 className="section-title">
@@ -1194,13 +1197,14 @@ export function AboutPageContent() {
             <div className="council-pin__body mt-10 space-y-8 lg:mt-4">
               <div className="council-rail bg-card px-8 py-10 max-sm:px-6" data-enter="rotate-left">
                 <div className="font-mono text-[10px] tracking-[2px] uppercase text-accent mb-4">
-                  Chairman
+                  <span className="cs">Předseda</span>
+                  <span className="en">Chairman</span>
                 </div>
                 <div className="text-2xl font-semibold tracking-[-0.4px] text-dark mb-2">
                   Dominik Ševela
                 </div>
                 <p className="cs text-[15px] font-light leading-[1.8] text-mid">
-                  Předseda Main Council. Drží agendu rady a napojení na
+                  Předseda hlavní rady. Drží agendu rady a napojení na
                   předsednictvo.
                 </p>
                 <p className="en text-[15px] font-light leading-[1.8] text-mid">
@@ -1214,9 +1218,8 @@ export function AboutPageContent() {
                   <span className="en">Mandate</span>
                 </div>
                 <p className="cs text-[15px] font-light leading-[1.8] text-mid">
-                  Council sjednocuje priority National Teams, hlídá kvalitu
-                  výstupů a přenáší rozhodnutí předsednictva do jednotlivých
-                  zemí.
+                  Rada sjednocuje priority národních týmů, hlídá kvalitu výstupů
+                  a přenáší rozhodnutí předsednictva do jednotlivých zemí.
                 </p>
                 <p className="en text-[15px] font-light leading-[1.8] text-mid">
                   The Council aligns National Teams priorities, guards output

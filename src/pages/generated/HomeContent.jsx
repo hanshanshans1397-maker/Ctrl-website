@@ -3,7 +3,7 @@ import { AnimatedCounter } from "../../components/AnimatedCounter";
 import { BoardMemberCard } from "../../components/BoardMemberCard";
 import { Flythrough } from "../../components/Flythrough";
 import { TickerBar } from "../../components/TickerBar";
-import { BOARD_MEMBERS } from "../../data/leadership";
+import { BOARD_LEADERS, BOARD_REST } from "../../data/leadership";
 export function HomePageContent() {
   return (
     <>
@@ -610,18 +610,34 @@ export function HomePageContent() {
               <span className="en">Executive Board.</span>
             </h2>
           </div>
-          <div className="board-grid board-grid--custom grid grid-cols-4 sep-grid max-lg:grid-cols-2 max-[480px]:grid-cols-2">
-            {BOARD_MEMBERS.map((member) => (
-              <BoardMemberCard key={member.id} member={member} variant="home" />
-            ))}
+          <div className="board-stack flex flex-col gap-5 max-lg:gap-4">
+            <div className="board-grid board-grid--custom board-grid--leads grid grid-cols-2 sep-grid lg:grid-cols-4">
+              {BOARD_LEADERS.map((member, index) => (
+                <BoardMemberCard
+                  key={member.id}
+                  member={member}
+                  variant="home"
+                  className={index === 0 ? "lg:col-start-2" : ""}
+                />
+              ))}
+            </div>
+            <div className="board-grid board-grid--custom board-grid--rest grid grid-cols-4 sep-grid max-lg:grid-cols-2">
+              {BOARD_REST.map((member) => (
+                <BoardMemberCard
+                  key={member.id}
+                  member={member}
+                  variant="home"
+                />
+              ))}
+            </div>
           </div>
-          <div className="mt-8 text-center">
+          <div className="mt-6 text-center">
             <Link
               to="/about"
               className="text-[13px] font-normal text-mid no-underline font-mono tracking-wide transition-colors duration-200 hover:text-dark"
             >
-              <span className="cs">Všichni členové → O nás</span>
-              <span className="en">All members → About us</span>
+              <span className="cs">→ O nás</span>
+              <span className="en">→ About us</span>
             </Link>
           </div>
         </div>

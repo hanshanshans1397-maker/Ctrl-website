@@ -1,22 +1,26 @@
+import { useLang } from '../context/LangContext';
+
 const VIEW_WIDTH = 400;
-const VIEW_HEIGHT = 300;
+const VIEW_HEIGHT = 330;
 const CENTER_X = 200;
 
-const BOARD = { x: 28, y: 10, w: 344, h: 78 };
+const BOARD = { x: 28, y: 8, w: 344, h: 108 };
 const BOARD_NODES = [
-  { x: 78, y: 50, name: 'Jan' },
-  { x: 158, y: 50, name: 'Laura' },
-  { x: 238, y: 50, name: 'Dominik' },
-  { x: 318, y: 50, name: 'Jakub' },
+  { x: 140, y: 42, name: 'Jan' },
+  { x: 260, y: 42, name: 'Michaela' },
+  { x: 70, y: 90, name: 'Laura' },
+  { x: 156, y: 90, name: 'Dominik' },
+  { x: 244, y: 90, name: 'Jakub' },
+  { x: 330, y: 90, name: 'Alžběta' },
 ];
 
-const COUNCIL = { x: 70, y: 122, w: 260, h: 48 };
+const COUNCIL = { x: 70, y: 144, w: 260, h: 48 };
 const TEAMS = [
   { id: '01', x: 28, labelCs: 'TÝMY', labelEn: 'TEAMS' },
   { id: '02', x: 156, labelCs: 'ZEMĚ', labelEn: 'COUNTRIES' },
   { id: '03', x: 284, labelCs: 'SÍŤ', labelEn: 'NETWORK' },
 ];
-const TEAM_Y = 210;
+const TEAM_Y = 228;
 const TEAM_W = 88;
 const TEAM_H = 62;
 
@@ -43,11 +47,17 @@ function MiniSilhouette() {
 }
 
 export function AboutStructureAnimation() {
+  const { isEn } = useLang();
+
   return (
     <div
       className="about-structure"
       role="img"
-      aria-label="Ilustrace organizační struktury CTRL Europe: předsednictvo, Main Council, National Teams"
+      aria-label={
+        isEn
+          ? 'Illustration of CTRL Europe organizational structure: Executive Board, Main Council, National Teams'
+          : 'Ilustrace organizační struktury CTRL Europe: předsednictvo, hlavní rada, národní týmy'
+      }
     >
       <svg
         className="about-structure__svg"
@@ -148,7 +158,7 @@ export function AboutStructureAnimation() {
               fontFamily="var(--font-mono, monospace)"
               letterSpacing="2"
             >
-              MAIN COUNCIL
+              HLAVNÍ RADA
             </text>
             <text
               className="about-structure__label en"

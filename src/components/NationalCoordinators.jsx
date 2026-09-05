@@ -20,7 +20,7 @@ export function NationalCoordinators() {
       >
         <span className="coord-accordion__copy">
           <span className="coord-accordion__kicker">
-            <span className="cs">National Teams</span>
+            <span className="cs">Národní týmy</span>
             <span className="en">National Teams</span>
           </span>
           <span className="coord-accordion__title">
@@ -58,8 +58,8 @@ export function NationalCoordinators() {
           ) : (
             <p className="coord-accordion__empty">
               <span className="cs">
-                Seznam národních koordinátorů se právě doplňuje. Síť National
-                Teams se rozšiřuje napříč střední Evropou.
+                Seznam národních koordinátorů se právě doplňuje. Síť národních
+                týmů se rozšiřuje napříč střední Evropou.
               </span>
               <span className="en">
                 The list of national coordinators is being completed. The
