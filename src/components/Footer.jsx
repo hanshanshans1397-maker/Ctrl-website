@@ -21,18 +21,6 @@ function IconInstagram() {
   );
 }
 
-function IconTikTok() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className="w-[14px] h-[14px] shrink-0"
-    >
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.89a8.18 8.18 0 0 0 4.78 1.52V7c-.01 0-.4-.06-1.01-.31z" />
-    </svg>
-  );
-}
-
 function IconLinkedIn() {
   return (
     <svg
@@ -163,13 +151,6 @@ export function Footer() {
                 <IconInstagram />
                 Instagram
               </a>
-              <a
-                href="https://www.tiktok.com/@ctrleurope"
-                className="mb-2 flex items-center gap-2 text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
-              >
-                <IconTikTok />
-                TikTok
-              </a>
               {/*  
               <a
                 href="#"
@@ -198,25 +179,7 @@ export function Footer() {
         </div>
         <div className="flex items-center justify-between gap-4 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-2">
           <div className="font-mono text-[11px] font-light text-[rgba(245,245,243,0.3)]">
-            © 2026 {ORGANIZATION.name} | Website by{" "}
-            <a
-              href="https://hiro.dankoweby.cz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[rgba(245,245,243,0.55)] hover:text-bg transition-colors duration-200 no-underline"
-            >
-              Sebastián Danko
-            </a>
-            {" & "}
-            <a
-              href="https://nikola.weply.cz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[rgba(245,245,243,0.55)] hover:text-bg transition-colors duration-200 no-underline"
-            >
-              Nikola Crhák
-            </a>
-            {" (CTRL Team)"}
+            © 2026 {ORGANIZATION.name}
           </div>
           <div className="font-mono text-[10px] tracking-[2px] text-[rgba(245,245,243,0.45)] uppercase shrink-0">
             CEE Youth Platform

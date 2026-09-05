@@ -1,10 +1,10 @@
-export function BoardMemberCard({ member, variant = 'home' }) {
+export function BoardMemberCard({ member, variant = 'home', className = '' }) {
   const isFeatured = Boolean(member.photo);
   const compact = variant === 'about';
 
   return (
     <div
-      className={`exec-card ${compact ? 'exec-card--about' : 'exec-card--home'} ${isFeatured ? 'exec-card--photo' : ''}`}
+      className={`exec-card ${compact ? 'exec-card--about' : 'exec-card--home'} ${isFeatured ? 'exec-card--photo' : ''} ${className}`.trim()}
       data-enter={member.enter || 'pop'}
     >
       {member.photo ? (
@@ -23,10 +23,12 @@ export function BoardMemberCard({ member, variant = 'home' }) {
           {member.initials}
         </div>
       )}
-      <div className="exec-card__name">{member.name}</div>
-      <div className="exec-card__role">
-        <span className="cs">{member.roleCs}</span>
-        <span className="en">{member.roleEn}</span>
+      <div className="exec-card__body">
+        <div className="exec-card__name">{member.name}</div>
+        <div className="exec-card__role">
+          <span className="cs">{member.roleCs}</span>
+          <span className="en">{member.roleEn}</span>
+        </div>
       </div>
     </div>
   );
