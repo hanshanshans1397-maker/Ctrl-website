@@ -18,8 +18,8 @@ export const ADVISOR = {
   initials: "MO",
   photo: null,
   photoAlt: "Ing. Michaela Oslejšková",
-  roleCs: "Role",
-  roleEn: "Role",
+  roleCs: "Odborná garantka",
+  roleEn: "Academic Advisor",
   base: "Česko",
   bioCs: ["Ing. Michaela Oslejšková je ...", "..."],
   bioEn: ["Ing. Michaela Oslejšková is ...", "..."],
@@ -42,7 +42,7 @@ export const BOARD_REST = [
     firstName: "Dominik",
     initials: "DŠ",
     photo: null,
-    roleCs: "Předseda Main Council",
+    roleCs: "Předseda hlavní rady",
     roleEn: "Chairman of Main Council",
     enter: "pop",
   },
@@ -56,9 +56,24 @@ export const BOARD_REST = [
     roleEn: "Deputy Chair",
     enter: "rotate-up",
   },
+  {
+    id: "alzbeta",
+    name: "Alžběta Fritzová",
+    firstName: "Alžběta",
+    initials: "AF",
+    photo: null,
+    roleCs: "Tajemnice",
+    roleEn: "Secretary",
+    enter: "rotate-left",
+  },
 ];
 
-/** Homepage + directory: founder first, then the rest of the board. */
-export const BOARD_MEMBERS = [{ ...FOUNDER, enter: "photo" }, ...BOARD_REST];
+/** Jan + Michaela first — the two lead figures, always kept together. */
+export const BOARD_LEADERS = [
+  { ...FOUNDER, enter: "photo" },
+  { ...ADVISOR, enter: "pop" },
+];
+
+export const BOARD_MEMBERS = [...BOARD_LEADERS, ...BOARD_REST];
 
 export const NATIONAL_COORDINATORS = [];

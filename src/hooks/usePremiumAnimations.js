@@ -789,12 +789,22 @@ function scrollChoreography() {
   });
 
   gsap.utils.toArray('.board-mini').forEach((grid) => {
-    const from = [
-      { x: -110, z: -36, rotationY: 20 },
-      { x: 0, z: -160, rotationY: 0 },
-      { x: 110, z: -36, rotationY: -20 },
-    ];
-    wall(grid, '.exec-card', (i) => ({ ...from[i % from.length], y: 24 }));
+    const cols = Math.max(
+      1,
+      getComputedStyle(grid)
+        .gridTemplateColumns.split(' ')
+        .filter(Boolean).length,
+    );
+    wall(grid, '.exec-card', (i) => {
+      const col = i % cols;
+      const fromCenter = col - (cols - 1) / 2;
+      return {
+        x: fromCenter * 72,
+        y: 24,
+        z: cols === 1 ? -80 : -56,
+        rotationY: fromCenter * -10,
+      };
+    });
   });
 
   gsap.utils.toArray('.val-grid').forEach((grid) => {
