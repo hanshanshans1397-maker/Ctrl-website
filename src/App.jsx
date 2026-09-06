@@ -9,6 +9,7 @@ import JoinPage from './pages/JoinPage';
 import SummitPage from './pages/SummitPage';
 import WorkshopsPage from './pages/WorkshopsPage';
 import AktualityPage from './pages/AktualityPage';
+import NewsArticlePage from './pages/NewsArticlePage';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
             <Route index element={<HomePage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="news" element={<AktualityPage />} />
+            <Route path="news/:slug" element={<NewsArticlePage />} />
             {/* Články a výzkum se nyní píší v Aktualitách — staré cesty přesměrováváme */}
             <Route path="articles" element={<Navigate to="/news" replace />} />
             <Route path="research" element={<Navigate to="/news" replace />} />

@@ -1,11 +1,7 @@
-import { useLang } from "../../context/LangContext";
-import { AktualityInfoAnimation } from "../../components/AktualityInfoAnimation";
-import { getInstagramUrl } from "../../utils/socialLinks";
+import { NEWS } from "../../data/news";
+import { NewsCard } from "../../components/sections/NewsCard";
 
 export function AktualityPageContent() {
-  const { isEn } = useLang();
-  const instagramUrl = getInstagramUrl(isEn);
-
   return (
     <>
       <div className="page-hero relative overflow-hidden bg-dark" id="hero">
@@ -37,7 +33,7 @@ export function AktualityPageContent() {
           <div className="section-head">
             <span className="page-label cs max-sm:hidden">Co se děje</span>
             <span className="page-label en max-sm:hidden">
-              What's happening
+              What&apos;s happening
             </span>
             <h1 className="page-title cs text-bg max-sm:hidden">Aktuality</h1>
             <h1 className="page-title en text-bg max-sm:hidden">News</h1>
@@ -55,45 +51,12 @@ export function AktualityPageContent() {
 
       <section className="sec bg-bg" id="aktuality-list">
         <div className="inner">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,480px)_1fr] lg:gap-16 xl:gap-20">
-            <div className="rev order-2 max-w-[560px] lg:order-1 lg:max-w-none">
-              <p className="font-mono text-[11px] tracking-[3px] uppercase text-mid cs">
-                Zatím tu nic není.
-              </p>
-              <p className="font-mono text-[11px] tracking-[3px] uppercase text-mid en">
-                Nothing here yet.
-              </p>
-              <h2 className="sec-title mt-6 mb-5 text-[clamp(28px,3vw,44px)] italic">
-                <span className="cs">
-                  Brzy sem přidáme <em>aktuální oznámení.</em>
-                </span>
-                <span className="en">
-                  We&apos;ll post <em>updates here soon.</em>
-                </span>
-              </h2>
-              <p className="cs text-[15px] leading-[1.85] font-light text-mid">
-                Na této stránce budeme sdílet články, výzkum, soutěže, výzvy a
-                další novinky pro veřejnost. Zatím sledujte náš Instagram.
-              </p>
-              <p className="en text-[15px] leading-[1.85] font-light text-mid">
-                This page will feature articles, research, competitions, calls
-                and other news for the public. For now, follow us on
-                Instagram.
-              </p>
-              <a
-                href={instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-p mt-8 inline-flex"
-              >
-                <span className="cs">Sledujte nás na Instagramu &rarr;</span>
-                <span className="en">Follow us on Instagram &rarr;</span>
-              </a>
-            </div>
-
-            <div className="rev d1 order-1 flex justify-center lg:order-2">
-              <AktualityInfoAnimation />
-            </div>
+          <div className="news-grid grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {NEWS.map((article, index) => (
+              <div key={article.slug} className={`rev${index > 0 ? ` d${Math.min(index, 5)}` : ''}`}>
+                <NewsCard article={article} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
