@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
-import { formatNewsDate } from '../../data/news';
+import { Link } from "react-router-dom";
+import { formatNewsDate } from "../../data/news";
+import { NewsTitleText } from "../ui/NewsTitleText";
 
 export function NewsCard({ article }) {
   const href = `/news/${article.slug}`;
@@ -11,7 +12,9 @@ export function NewsCard({ article }) {
     >
       <div
         className="news-card-banner relative overflow-hidden bg-dark"
-        style={{ aspectRatio: `${article.inviteWidth} / ${article.inviteHeight}` }}
+        style={{
+          aspectRatio: `${article.inviteWidth} / ${article.inviteHeight}`,
+        }}
       >
         <img
           src={article.invite}
@@ -35,8 +38,12 @@ export function NewsCard({ article }) {
           </span>
         </div>
         <h2 className="mb-3 text-[clamp(22px,1.8vw,28px)] font-extrabold leading-[1.12] tracking-[-0.8px] text-dark">
-          <span className="cs">{article.title.cs}</span>
-          <span className="en">{article.title.en}</span>
+          <span className="cs">
+            <NewsTitleText text={article.title.cs} />
+          </span>
+          <span className="en">
+            <NewsTitleText text={article.title.en} />
+          </span>
         </h2>
         <p className="mb-5 line-clamp-3 text-[14px] font-light leading-[1.75] text-mid">
           <span className="cs">{article.excerpt.cs}</span>

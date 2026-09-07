@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { formatNewsDate } from '../../data/news';
 import { NewsInvite } from '../ui/NewsInvite';
+import { NewsTitleText } from '../ui/NewsTitleText';
 
 function CharityLink({ href, children }) {
   return (
@@ -114,19 +115,23 @@ export function NewsArticle({ article }) {
       <section className="bg-bg pt-[140px] max-lg:pt-[120px] max-sm:pt-[100px]">
         <div className="article-body !pt-0">
           <header className="mb-2">
-            <div className="mb-5 flex flex-wrap items-center gap-x-4 gap-y-1">
-              <span className="font-mono text-[10px] tracking-[2px] text-accent uppercase">
+            <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-1">
+              <span className="font-mono text-[13px] tracking-[2px] text-accent uppercase">
                 <span className="cs">{article.category.cs}</span>
                 <span className="en">{article.category.en}</span>
               </span>
-              <span className="font-mono text-[10px] text-mid">
+              <span className="font-mono text-[13px] text-mid">
                 <span className="cs">{formatNewsDate(article.date, false)}</span>
                 <span className="en">{formatNewsDate(article.date, true)}</span>
               </span>
             </div>
-            <h1 className="mb-10 text-[clamp(36px,5vw,64px)] font-extrabold leading-[1.05] tracking-[-2px] text-dark">
-              <span className="cs">{article.title.cs}</span>
-              <span className="en">{article.title.en}</span>
+            <h1 className="mb-12 text-[clamp(44px,6vw,80px)] font-extrabold leading-[1.05] tracking-[-2px] text-dark">
+              <span className="cs">
+                <NewsTitleText text={article.title.cs} />
+              </span>
+              <span className="en">
+                <NewsTitleText text={article.title.en} />
+              </span>
             </h1>
           </header>
 
@@ -148,7 +153,7 @@ export function NewsArticle({ article }) {
       </section>
 
       <section className="sec bg-bg2 py-[60px]">
-        <div className="mx-auto flex max-w-[720px] flex-wrap items-center justify-between gap-5">
+        <div className="mx-auto flex max-w-[900px] flex-wrap items-center justify-between gap-5 px-16 max-lg:px-6 max-sm:px-5">
           <div>
             <div className="cs mb-2 font-mono text-[11px] tracking-[2px] text-mid uppercase">
               Další aktuality

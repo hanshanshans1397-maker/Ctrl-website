@@ -1694,6 +1694,10 @@ body.lite-motion #cur {
   transition: transform 0.35s var(--ease-out-expo);
 }
 
+.news-title-accent {
+  color: #00b398;
+}
+
 .news-invite {
   position: relative;
   display: block;
@@ -2123,27 +2127,27 @@ body.reduced-motion .news-invite-dialog[open]::backdrop {
   }
 
   .article-body {
-    @apply mx-auto max-w-[720px] px-[52px] py-20 max-lg:px-6 max-sm:px-5;
+    @apply mx-auto max-w-[900px] px-16 py-20 max-lg:px-6 max-sm:px-5;
   }
 
   .article-body h2 {
-    @apply mt-12 mb-6 text-[clamp(28px,3vw,40px)] leading-tight font-bold tracking-[-1px] text-dark first:mt-0;
+    @apply mt-14 mb-7 text-[clamp(34px,3.6vw,50px)] leading-tight font-bold tracking-[-1px] text-dark first:mt-0;
   }
 
   .article-body h3 {
-    @apply mt-8 mb-4 text-xl font-semibold tracking-[-0.3px] text-dark;
+    @apply mt-10 mb-5 text-2xl font-semibold tracking-[-0.3px] text-dark;
   }
 
   .article-body p {
-    @apply mb-5 text-base leading-[1.85] font-light text-mid;
+    @apply mb-6 text-[20px] leading-[1.8] font-light text-mid max-sm:text-[17px];
   }
 
   .article-body blockquote {
-    @apply my-10 border-l-[3px] border-accent bg-bg2 py-6 pr-6 pl-8;
+    @apply my-12 border-l-[3px] border-accent bg-bg2 py-7 pr-7 pl-9;
   }
 
   .article-body blockquote p {
-    @apply mb-0 text-lg leading-[1.7] font-light text-dark italic;
+    @apply mb-0 text-[22px] leading-[1.7] font-light text-dark italic;
   }
 
   .article-body a {
@@ -2151,7 +2155,7 @@ body.reduced-motion .news-invite-dialog[open]::backdrop {
   }
 
   .article-table-wrap {
-    @apply mb-8 overflow-x-auto border border-separator bg-card;
+    @apply mb-10 overflow-x-auto border border-separator bg-card;
   }
 
   .article-table {
@@ -2160,11 +2164,11 @@ body.reduced-motion .news-invite-dialog[open]::backdrop {
 
   .article-table th,
   .article-table td {
-    @apply px-5 py-3.5 align-top text-[15px] leading-[1.6];
+    @apply px-6 py-[18px] align-top text-[18px] leading-[1.6] max-sm:px-4 max-sm:py-3.5 max-sm:text-[16px];
   }
 
   .article-table thead th {
-    @apply border-b border-separator bg-bg2 font-mono text-[11px] font-medium tracking-[1.6px] text-mid uppercase;
+    @apply border-b border-separator bg-bg2 font-mono text-[13px] font-medium tracking-[1.6px] text-mid uppercase;
   }
 
   .article-table tbody th {
