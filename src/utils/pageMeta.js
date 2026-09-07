@@ -44,8 +44,7 @@ export function setMetaDescription(content) {
   setMetaName('description', content);
 }
 
-export function applyPageMeta(pageKey, isEn) {
-  const meta = PAGE_META[pageKey]?.[isEn ? 'en' : 'cs'];
+export function applyMetaRecord(meta, isEn, ogType = 'website') {
   if (!meta) return;
 
   const url = `${SITE_ORIGIN}${window.location.pathname}`;
@@ -56,7 +55,7 @@ export function applyPageMeta(pageKey, isEn) {
   setMetaDescription(meta.description);
   setCanonical(url);
 
-  setMetaProperty('og:type', 'website');
+  setMetaProperty('og:type', ogType);
   setMetaProperty('og:site_name', SITE_NAME);
   setMetaProperty('og:title', meta.title);
   setMetaProperty('og:description', meta.description);
@@ -69,4 +68,8 @@ export function applyPageMeta(pageKey, isEn) {
   setMetaName('twitter:title', meta.title);
   setMetaName('twitter:description', meta.description);
   setMetaName('twitter:image', image);
+}
+
+export function applyPageMeta(pageKey, isEn) {
+  applyMetaRecord(PAGE_META[pageKey]?.[isEn ? 'en' : 'cs'], isEn);
 }

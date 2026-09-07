@@ -1,3 +1,5 @@
+import { getNewsBySlug } from '../src/data/news.js';
+
 export const PAGE_META = {
   home: {
     cs: {
@@ -130,7 +132,14 @@ export function getPageMeta(pageKey, lang = 'cs') {
 }
 
 export function getPageMetaForPath(pathname, lang = 'cs') {
-  return getPageMeta(getPageKeyForPath(pathname), lang);
+  const path = normalizePath(pathname);
+  const newsMatch = path.match(/^\/news\/([^/]+)$/);
+  if (newsMatch) {
+    const article = getNewsBySlug(newsMatch[1]);
+    const locale = lang === 'en' ? 'en' : 'cs';
+    if (article?.meta?.[locale]) return article.meta[locale];
+  }
+  return getPageMeta(getPageKeyForPath(path), lang);
 }
 
 export function absoluteOgImage(origin, meta) {

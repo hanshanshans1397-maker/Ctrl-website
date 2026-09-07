@@ -4,6 +4,9 @@ import { BoardMemberCard } from "../../components/BoardMemberCard";
 import { Flythrough } from "../../components/Flythrough";
 import { TickerBar } from "../../components/TickerBar";
 import { BOARD_LEADERS, BOARD_REST } from "../../data/leadership";
+import { NewsCard } from "../../components/sections/NewsCard";
+import { NEWS } from "../../data/news";
+
 export function HomePageContent() {
   return (
     <>
@@ -596,6 +599,13 @@ export function HomePageContent() {
             </Link>
           </div>
         </div>
+        {NEWS[0] ? (
+          <div className="mx-auto mt-12 max-w-[1300px]">
+            <div className="news-grid grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <NewsCard article={NEWS[0]} />
+            </div>
+          </div>
+        ) : null}
       </section>
 
       <section className="sec-board py-[120px] px-[52px] bg-bg2 max-lg:py-20 max-lg:px-6 max-[640px]:py-[52px] max-[640px]:px-5 max-[480px]:py-12 max-[480px]:px-5">

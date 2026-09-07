@@ -27,7 +27,7 @@ export function ArticleTemplatePageContent() {
       </section>
 
       <section className="sec bg-bg2 py-[60px]">
-        <div className="mx-auto flex max-w-[720px] flex-wrap items-center justify-between gap-5">
+        <div className="mx-auto flex max-w-[900px] flex-wrap items-center justify-between gap-5 px-16 max-lg:px-6 max-sm:px-5">
           <div>
             <div className="cs mb-2 font-mono text-[11px] tracking-[2px] text-mid uppercase">Další aktuality</div>
             <div className="en mb-2 font-mono text-[11px] tracking-[2px] text-mid uppercase">More news</div>
