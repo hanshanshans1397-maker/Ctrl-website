@@ -13,93 +13,170 @@ export const NEWS = [
     inviteWidth: NEWS_INVITE.width,
     inviteHeight: NEWS_INVITE.height,
     category: { cs: 'Akce', en: 'Event' },
-    title: { cs: 'Charitativní běh', en: 'Charity run' },
+    title: {
+      cs: 'Charitativní běh pro Podané ruce Brno',
+      en: 'Charity run for Podané ruce Brno',
+    },
     excerpt: {
-      cs: 'V sobotu 3. října pořádáme u sportovního areálu Komec charitativní běh. Výtěžek půjde Podané ruce Brno, které pomáhají dětem a mladým lidem bojujícím se závislostmi.',
-      en: 'On Saturday 3 October we are hosting a charity run at the Komec sports complex. Proceeds will go to Podané ruce Brno, who help children and young people struggling with addiction.',
+      cs: 'V sobotu 3. října 2026 u sportovního areálu Komec. Veškerý výtěžek věnujeme Společnosti Podané ruce, která pomáhá dětem a mladým lidem bojujícím se závislostmi.',
+      en: 'On Saturday 3 October 2026 at the Komec sports complex. All proceeds go to Společnost Podané ruce, which helps children and young people struggling with addiction.',
     },
     meta: {
       cs: {
-        title: 'Charitativní běh | CTRL Europe',
+        title: 'Charitativní běh pro Podané ruce Brno | CTRL Europe',
         description:
-          'Charitativní běh CTRL Europe 3. října 2026 u areálu Komec. 5 a půl km, afterparty Odlož ten telefon, rezervace od 19. září. Výtěžek pro Podané ruce Brno.',
+          'Charitativní běh CTRL Europe 3. října 2026 u areálu Komec. 5,5 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek pro Podané ruce Brno.',
         image: '/photos/charitativni-beh.webp',
       },
       en: {
-        title: 'Charity run | CTRL Europe',
+        title: 'Charity run for Podané ruce Brno | CTRL Europe',
         description:
-          'CTRL Europe charity run on 3 October 2026 at Komec. Five and a half km, Put the phone down afterparty, reservations from 19 September. Proceeds go to Podané ruce Brno.',
+          'CTRL Europe charity run on 3 October 2026 at Komec. 5.5 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds go to Podané ruce Brno.',
         image: '/photos/charitativni-beh.webp',
       },
     },
     sections: [
       {
         type: 'p',
-        cs: 'Nejde jen o odpoledne na dráze. Chceme dát dohromady lidi z naší sítě, otevřít akci i veřejnosti a zároveň něco reálného poslat dál. Proto CTRL Europe v sobotu 3. října 2026 pořádá charitativní běh u sportovního areálu Komec v Brně-Komárově.',
-        en: 'This is not just an afternoon on the track. We want to bring people from our network together, open the event to the public, and send something real onward. That is why CTRL Europe is hosting a charity run on Saturday 3 October 2026 at the Komec sports complex in Brno-Komárov.',
+        cs: [
+          'V sobotu 3. října 2026 pořádá organizace CTRL Europe charitativní běh u sportovního areálu Komec v Brně-Komárově. Veškerý výtěžek z akce věnujeme organizaci ',
+          { text: 'Společnost Podané ruce', href: PODANE_RUCE },
+          ', která poskytuje odbornou pomoc a zázemí dětem a mladým lidem bojujícím se závislostmi.',
+        ],
+        en: [
+          'On Saturday 3 October 2026, CTRL Europe is hosting a charity run at the Komec sports complex in Brno-Komárov. All proceeds from the event will go to ',
+          { text: 'Společnost Podané ruce', href: PODANE_RUCE },
+          ', which provides professional support and a safe setting for children and young people struggling with addiction.',
+        ],
+      },
+      {
+        type: 'p',
+        cs: 'Cílem akce je propojit naši komunitu s veřejností a vybrat finanční prostředky pro projekt, který má reálný dopad.',
+        en: 'The aim is to connect our community with the public and raise funds for a project with a real impact.',
+      },
+      {
+        type: 'h2',
+        cs: 'Harmonogram a organizace',
+        en: 'Schedule and organisation',
+      },
+      {
+        type: 'table',
+        rows: [
+          {
+            cs: ['Místo konání', 'Sportovní areál Komec, Brno-Komárov'],
+            en: ['Venue', 'Komec sports complex, Brno-Komárov'],
+          },
+          {
+            cs: ['Délka trasy', '5,5 km (okruh v okolí areálu)'],
+            en: ['Distance', '5.5 km (circuit around the grounds)'],
+          },
+          {
+            cs: [
+              'Zahájení programu',
+              '15:00 — registrace na místě, informace o podpořeném projektu, rozcvička',
+            ],
+            en: [
+              'Programme start',
+              '15:00 — on-site registration, information about the supported project, warm-up',
+            ],
+          },
+          {
+            cs: ['Start běhu', '16:00 až 16:20 (čas podle situace)'],
+            en: ['Run start', '16:00 to 16:20 (timing depends on the situation)'],
+          },
+          {
+            cs: ['Konec běhu', '17:00 až 17:20'],
+            en: ['Run finish', '17:00 to 17:20'],
+          },
+          {
+            cs: ['Večerní program a párty', 'od 18:30'],
+            en: ['Evening programme and party', 'from 18:30'],
+          },
+          {
+            cs: ['Odhadovaný konec párty', '22:00'],
+            en: ['Estimated end of the party', '22:00'],
+          },
+        ],
+      },
+      {
+        type: 'p',
+        cs: 'Běh nemá soutěžní charakter — neměří se čas a tempo si určuje každý účastník sám.',
+        en: 'The run is not a race — times are not recorded and each participant sets their own pace.',
+      },
+      {
+        type: 'h2',
+        cs: 'Registrace a vstupné',
+        en: 'Registration and entry',
+      },
+      {
+        type: 'table',
+        head: {
+          cs: ['Typ vstupného', 'Cena'],
+          en: ['Ticket', 'Price'],
+        },
+        rows: [
+          { cs: ['Základní vstupné', '200 Kč'], en: ['Standard entry', '200 CZK'] },
+          {
+            cs: ['Studentské vstupné', '170 Kč (sleva 15 %)'],
+            en: ['Student entry', '170 CZK (15% off)'],
+          },
+        ],
+      },
+      {
+        type: 'p',
+        cs: 'Spuštění online rezervací: 19. září 2026. Kapacita akce je omezená. Odkaz na online rezervační formulář zveřejníme 19. září na tomto webu a na našich sociálních sítích.',
+        en: 'Online reservations open on 19 September 2026. Capacity is limited. The link to the online reservation form will be published on 19 September on this website and on our social media.',
+      },
+      {
+        type: 'h2',
+        cs: 'Večerní program: Seznamovací party „Odlož ten telefon“',
+        en: 'Evening programme: “Put the phone down” mixer',
+      },
+      {
+        type: 'p',
+        cs: 'Od 18:30 navazuje v areálu večerní program a seznamovací párty zaměřená na osobní setkávání bez mobilních telefonů. Odhadovaný konec je ve 22:00. Součástí jsou společenské hry a soutěže.',
+        en: 'From 18:30 an evening programme and mixer follows on site, focused on meeting in person without mobile phones. The estimated end is 22:00. It includes social games and contests.',
+      },
+      {
+        type: 'p',
+        cs: 'Součástí večera je i dobrovolná seznamovací hra pomocí barevných náramků:',
+        en: 'The evening also includes an optional mixer game with coloured wristbands:',
+      },
+      {
+        type: 'table',
+        head: {
+          cs: ['Náramek', 'Význam'],
+          en: ['Wristband', 'Meaning'],
+        },
+        rows: [
+          {
+            cs: ['Single / Taken / One night', 'rozlišení stavu účastníka'],
+            en: ['Single / Taken / One night', 'indicates the participant’s status'],
+          },
+          {
+            cs: [
+              'Doplňkový barevný náramek',
+              'označení pro zájemce o seznamování s osobou stejného pohlaví',
+            ],
+            en: [
+              'Extra coloured wristband',
+              'for those interested in meeting someone of the same sex',
+            ],
+          },
+        ],
       },
       {
         type: 'p',
         cs: [
-          'Celý výtěžek jde ',
+          'Zúčastnit se můžete běžecké části, večerního programu nebo obou aktivit. Veškeré vybrané prostředky ze vstupného budou předány organizaci ',
           { text: 'Podané ruce Brno', href: PODANE_RUCE },
-          ' — organizaci, která pomáhá dětem a mladým lidem bojujícím se závislostmi. Dělají to s respektem a bez předsudků, často v situacích, kdy je kolem těžké najít klidnou oporu. Běh je náš způsob, jak k tomu přispět.',
+          '.',
         ],
         en: [
-          'All proceeds go to ',
+          'You can take part in the run, the evening programme, or both. All entry fees collected will be given to ',
           { text: 'Podané ruce Brno', href: PODANE_RUCE },
-          ' — an organisation that helps children and young people struggling with addiction. They do it with respect and without judgement, often in situations where calm support is hard to find. The run is our way of contributing.',
+          '.',
         ],
-      },
-      {
-        type: 'quote',
-        cs: 'Neběžíme proto, abychom měli hezkou fotku. Běžíme proto, aby pomoc dorazila k těm, kteří ji opravdu potřebují.',
-        en: 'We are not running for a nice photo. We are running so that help actually reaches the people who need it.',
-      },
-      {
-        type: 'h2',
-        cs: 'Jak bude vypadat odpoledne',
-        en: 'How the afternoon will look',
-      },
-      {
-        type: 'p',
-        cs: 'Od 15:00 začíná zhruba hodinový program. Není to jen rozcvička před startem — chceme, aby se lidé potkali ještě před během, pochopili, kam peníze jdou, a měli čas se rozdýchat. V 16:00 se vyráží na charitativní běh. Trať měří 5 a půl kilometru a vede po okruhu u sportovního areálu Komec. Doběh plánujeme kolem 17:00.',
-        en: 'From 15:00 there will be about an hour of programme. It is not just a warm-up before the start — we want people to meet before the run, understand where the money goes, and have time to settle in. At 16:00 the charity run begins. The course is five and a half kilometres and follows the circuit at the Komec sports complex. We expect to finish around 17:00.',
-      },
-      {
-        type: 'p',
-        cs: 'Vstupné je 200 Kč, studenti mají slevu 15 %. Nejde o závod, ve kterém se počítají vteřiny. Jde o to dorazit, doběhnout a být u toho. Tempo si každý volí sám — důležité je, že se běží společně a s jasným důvodem.',
-        en: 'Entry is 200 CZK, students get 15% off. This is not a race measured in seconds. It is about showing up, finishing, and being part of it. Everyone sets their own pace — what matters is that we run together, with a clear reason.',
-      },
-      {
-        type: 'h2',
-        cs: 'Rezervace',
-        en: 'Reservations',
-      },
-      {
-        type: 'p',
-        cs: 'Kapacita není bezedná, proto se na akci hlásí dopředu. Rezervace se otevírá 19. září 2026 a probíhá online. Termín si klidně poznamenejte — jakmile se přihlášky spustí, dáme vědět i tady a na našich sítích.',
-        en: 'Capacity is limited, so you need to sign up in advance. Reservations open on 19 September 2026 and will be online. Note the date — once registration goes live, we will also post it here and on our social channels.',
-      },
-      {
-        type: 'h2',
-        cs: 'Afterparty Odlož ten telefon',
-        en: 'Put the phone down afterparty',
-      },
-      {
-        type: 'p',
-        cs: 'Po doběhu se večer nechceme jen rozuteč. Od 18:30 navazuje studentská afterparty v duchu naší iniciativy Odlož ten telefon. Telefony se odloží — ne proto, abychom někoho trestali, ale aby se lidé opravdu potkali. Místo scrollování budou soutěže, hry a společné aktivity.',
-        en: 'After the run we do not want the evening to scatter. From 18:30 a student afterparty follows, in the spirit of our Put the phone down initiative. Phones are put away — not as a punishment, but so people actually meet. Instead of scrolling there will be contests, games and shared activities.',
-      },
-      {
-        type: 'p',
-        cs: 'Na zápěstí dostanete náramky single, taken nebo one night. Kdo chce, může si vzít ještě další barevný náramek jako signál, že hledá partnera stejného pohlaví. Je to jednoduchá, čitelná hra — a zároveň způsob, jak seznamování nechat na místě, ne v chatu.',
-        en: 'You will get a wristband: single, taken or one night. Anyone who wants can add another coloured band as a signal that they are looking for a same-sex partner. It is a simple, readable game — and a way to keep meeting people in the room, not in a chat.',
-      },
-      {
-        type: 'p',
-        cs: 'Afterparty může trvat zhruba do 21:00. Přijít můžete na běh, na večer, nebo na obojí. Podstatné je, že výtěžek z odpoledne zůstane u dětí a mladých lidí, kterým Podané ruce v Brně pomáhají ze závislosti ven.',
-        en: 'The afterparty may run until around 21:00. You can come for the run, for the evening, or for both. What matters is that the afternoon’s proceeds stay with the children and young people in Brno whom Podané ruce are helping out of addiction.',
       },
     ],
   },
@@ -118,3 +195,4 @@ export function formatNewsDate(iso, isEn) {
     year: 'numeric',
   }).format(date);
 }
+

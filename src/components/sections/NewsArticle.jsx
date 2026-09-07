@@ -26,14 +26,65 @@ function RichText({ value }) {
   });
 }
 
+function LocalePair({ cs, en, as: Tag = 'span' }) {
+  return (
+    <Tag>
+      <span className="cs">{cs}</span>
+      <span className="en">{en}</span>
+    </Tag>
+  );
+}
+
+function ArticleTable({ block }) {
+  const colCount = block.head?.cs.length ?? block.rows[0]?.cs.length ?? 0;
+
+  return (
+    <div className="article-table-wrap">
+      <table className="article-table">
+        {block.head ? (
+          <thead>
+            <tr>
+              {block.head.cs.map((label, index) => (
+                <th key={index} scope="col">
+                  <span className="cs">{label}</span>
+                  <span className="en">{block.head.en[index]}</span>
+                </th>
+              ))}
+            </tr>
+          </thead>
+        ) : null}
+        <tbody>
+          {block.rows.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {Array.from({ length: colCount }, (_, index) => {
+                const isLabel = index === 0;
+                const Tag = isLabel ? 'th' : 'td';
+                return (
+                  <Tag key={index} {...(isLabel ? { scope: 'row' } : {})}>
+                    <span className="cs">{row.cs[index]}</span>
+                    <span className="en">{row.en[index]}</span>
+                  </Tag>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function ArticleBlock({ block }) {
   if (block.type === 'h2') {
-    return (
-      <h2>
-        <span className="cs">{block.cs}</span>
-        <span className="en">{block.en}</span>
-      </h2>
-    );
+    return <LocalePair as="h2" cs={block.cs} en={block.en} />;
+  }
+
+  if (block.type === 'h3') {
+    return <LocalePair as="h3" cs={block.cs} en={block.en} />;
+  }
+
+  if (block.type === 'table') {
+    return <ArticleTable block={block} />;
   }
 
   if (block.type === 'quote') {
@@ -73,14 +124,10 @@ export function NewsArticle({ article }) {
                 <span className="en">{formatNewsDate(article.date, true)}</span>
               </span>
             </div>
-            <h1 className="mb-5 text-[clamp(36px,5vw,64px)] font-extrabold leading-[1.05] tracking-[-2px] text-dark">
+            <h1 className="mb-10 text-[clamp(36px,5vw,64px)] font-extrabold leading-[1.05] tracking-[-2px] text-dark">
               <span className="cs">{article.title.cs}</span>
               <span className="en">{article.title.en}</span>
             </h1>
-            <p className="page-sub mb-0 max-w-none">
-              <span className="cs">{article.excerpt.cs}</span>
-              <span className="en">{article.excerpt.en}</span>
-            </p>
           </header>
 
           {article.sections.map((block, index) => (
