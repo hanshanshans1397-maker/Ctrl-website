@@ -1,6 +1,6 @@
 export const NEWS_INVITE = {
-  width: 1024,
-  height: 723,
+  width: 2245,
+  height: 1587,
 };
 
 const PODANE_RUCE = "https://podaneruce.cz/";
@@ -9,7 +9,7 @@ export const NEWS = [
   {
     slug: "charitativni-beh",
     date: "2026-10-03",
-    invite: "/photos/charitativni-beh.webp",
+    invite: "/photos/charitativni-beh.png",
     inviteWidth: NEWS_INVITE.width,
     inviteHeight: NEWS_INVITE.height,
     category: { cs: "Akce", en: "Event" },
@@ -26,13 +26,13 @@ export const NEWS = [
         title: 'Charitativní běh pro Podané ruce | CTRL Europe',
         description:
           "Charitativní běh CTRL Europe 3. října 2026 u areálu Komec. 5,5 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek pro Podané ruce Brno.",
-        image: "/photos/charitativni-beh.webp",
+        image: "/photos/charitativni-beh.png",
       },
       en: {
         title: 'Charity run for Podané ruce | CTRL Europe',
         description:
           "CTRL Europe charity run on 3 October 2026 at Komec. 5.5 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds go to Podané ruce Brno.",
-        image: "/photos/charitativni-beh.webp",
+        image: "/photos/charitativni-beh.png",
       },
     },
     sections: [

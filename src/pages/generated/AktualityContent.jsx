@@ -1,5 +1,6 @@
 import { NEWS } from "../../data/news";
 import { NewsCard } from "../../components/sections/NewsCard";
+import { NewsAboutPanel } from "../../components/sections/NewsAboutPanel";
 
 export function AktualityPageContent() {
   return (
@@ -57,6 +58,7 @@ export function AktualityPageContent() {
                 <NewsCard article={article} />
               </div>
             ))}
+            <NewsAboutPanel filledCount={NEWS.length} />
           </div>
         </div>
       </section>
