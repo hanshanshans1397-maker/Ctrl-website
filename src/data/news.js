@@ -18,20 +18,20 @@ export const NEWS = [
       en: 'Charity run for Podané ruce',
     },
     excerpt: {
-      cs: "V sobotu 3. října 2026 u sportovního areálu Komec. Veškerý výtěžek věnujeme Společnosti Podané ruce, která pomáhá dětem a mladým lidem bojujícím se závislostmi.",
-      en: "On Saturday 3 October 2026 at the Komec sports complex. All proceeds go to Společnost Podané ruce, which helps children and young people struggling with addiction.",
+      cs: "V sobotu 3. října 2026 u sportovního areálu Komec plánujeme charitativní běh. Veškerý výtěžek věnujeme Společnosti Podané ruce, která pomáhá dětem a mladým lidem bojujícím se závislostmi.",
+      en: "On Saturday 3 October 2026 we are planning a charity run at the Komec sports complex. All proceeds go to Společnost Podané ruce, which helps children and young people struggling with addiction.",
     },
     meta: {
       cs: {
         title: 'Charitativní běh pro Podané ruce | CTRL Europe',
         description:
-          "Charitativní běh CTRL Europe 3. října 2026 u areálu Komec. 5,5 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek pro Podané ruce Brno.",
+          "CTRL Europe plánuje charitativní běh 3. října 2026 u areálu Komec. 5,5 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek pro Podané ruce Brno.",
         image: "/photos/charitativni-beh.png",
       },
       en: {
         title: 'Charity run for Podané ruce | CTRL Europe',
         description:
-          "CTRL Europe charity run on 3 October 2026 at Komec. 5.5 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds go to Podané ruce Brno.",
+          "CTRL Europe is planning a charity run on 3 October 2026 at Komec. 5.5 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds go to Podané ruce Brno.",
         image: "/photos/charitativni-beh.png",
       },
     },
@@ -39,12 +39,12 @@ export const NEWS = [
       {
         type: "p",
         cs: [
-          "V sobotu 3. října 2026 pořádá organizace CTRL Europe charitativní běh u sportovního areálu Komec v Brně-Komárově. Veškerý výtěžek z akce věnujeme organizaci ",
+          "V sobotu 3. října 2026 plánuje organizace CTRL Europe charitativní běh u sportovního areálu Komec v Brně-Komárově. Veškerý výtěžek z akce věnujeme organizaci ",
           { text: "Společnost Podané ruce", href: PODANE_RUCE },
           ", která poskytuje odbornou pomoc a zázemí dětem a mladým lidem bojujícím se závislostmi.",
         ],
         en: [
-          "On Saturday 3 October 2026, CTRL Europe is hosting a charity run at the Komec sports complex in Brno-Komárov. All proceeds from the event will go to ",
+          "On Saturday 3 October 2026, CTRL Europe is planning a charity run at the Komec sports complex in Brno-Komárov. All proceeds from the event will go to ",
           { text: "Společnost Podané ruce", href: PODANE_RUCE },
           ", which provides professional support and a safe setting for children and young people struggling with addiction.",
         ],
