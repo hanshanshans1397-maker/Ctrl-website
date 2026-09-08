@@ -4,6 +4,10 @@ export const NEWS_INVITE = {
 };
 
 const PODANE_RUCE = "https://podaneruce.cz/";
+const STRAVA_ROUTE_ID = "3531339168018099800";
+const STRAVA_ROUTE = `https://www.strava.com/routes/${STRAVA_ROUTE_ID}`;
+const MAPY_ROUTE = "https://mapy.com/s/casonadacu";
+const MAPY_EMBED = "https://mapy.com/s/celuluralo";
 
 export const NEWS = [
   {
@@ -105,6 +109,43 @@ export const NEWS = [
         type: "p",
         cs: "Běh nemá soutěžní charakter — neměří se čas a tempo si určuje každý účastník sám.",
         en: "The run is not a race — times are not recorded and each participant sets their own pace.",
+      },
+      {
+        type: "h2",
+        cs: "Trasa",
+        en: "The route",
+      },
+      {
+        type: "p",
+        cs: "Okruh vede okolím sportovního areálu Komec. Trasou se můžete projít předem na Mapy.cz nebo na Stravě.",
+        en: "The loop runs around the Komec sports complex. You can preview the course on Mapy.cz or Strava beforehand.",
+      },
+      {
+        type: "route",
+        platforms: [
+          {
+            id: "mapy",
+            label: { cs: "Mapy.cz", en: "Mapy.cz" },
+            open: { cs: "Otevřít na Mapy.cz", en: "Open in Mapy.cz" },
+            title: {
+              cs: "Trasa na Mapy.cz",
+              en: "Route on Mapy.cz",
+            },
+            embed: MAPY_EMBED,
+            href: MAPY_ROUTE,
+          },
+          {
+            id: "strava",
+            label: { cs: "Strava", en: "Strava" },
+            open: { cs: "Otevřít na Stravě", en: "Open in Strava" },
+            title: {
+              cs: "Charitativní běh — CTRL Europe Run",
+              en: "Charity run — CTRL Europe Run",
+            },
+            embed: `https://strava-embeds.com/route/${STRAVA_ROUTE_ID}`,
+            href: STRAVA_ROUTE,
+          },
+        ],
       },
       {
         type: "h2",

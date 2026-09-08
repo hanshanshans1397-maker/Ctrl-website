@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { formatNewsDate } from '../../data/news';
+import { ArticleRouteMap } from '../ui/ArticleRouteMap';
 import { NewsInvite } from '../ui/NewsInvite';
 import { NewsTitleText } from '../ui/NewsTitleText';
 
@@ -86,6 +87,10 @@ function ArticleBlock({ block }) {
 
   if (block.type === 'table') {
     return <ArticleTable block={block} />;
+  }
+
+  if (block.type === 'route') {
+    return <ArticleRouteMap platforms={block.platforms} />;
   }
 
   if (block.type === 'quote') {
