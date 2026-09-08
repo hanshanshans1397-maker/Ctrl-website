@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { formatNewsDate } from '../../data/news';
+import { ArticleRouteMap } from '../ui/ArticleRouteMap';
 import { NewsInvite } from '../ui/NewsInvite';
 import { NewsPhraseMarquee } from '../ui/NewsPhraseMarquee';
 import { NewsTitleText } from '../ui/NewsTitleText';
-import { StravaRouteEmbed } from '../ui/StravaRouteEmbed';
 
 function CharityLink({ href, children }) {
   return (
@@ -94,14 +94,8 @@ function ArticleBlock({ block }) {
     return <ArticleTable block={block} />;
   }
 
-  if (block.type === 'strava') {
-    return (
-      <StravaRouteEmbed
-        routeId={block.routeId}
-        href={block.href}
-        title={block.title}
-      />
-    );
+  if (block.type === 'route') {
+    return <ArticleRouteMap platforms={block.platforms} />;
   }
 
   if (block.type === 'quote') {
