@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { formatNewsDate } from '../../data/news';
 import { NewsInvite } from '../ui/NewsInvite';
+import { NewsPhraseMarquee } from '../ui/NewsPhraseMarquee';
 import { NewsTitleText } from '../ui/NewsTitleText';
 
 function CharityLink({ href, children }) {
@@ -76,6 +77,10 @@ function ArticleTable({ block }) {
 }
 
 function ArticleBlock({ block }) {
+  if (block.type === 'marquee') {
+    return <NewsPhraseMarquee phrases={block.phrases} />;
+  }
+
   if (block.type === 'h2') {
     return <LocalePair as="h2" cs={block.cs} en={block.en} />;
   }
@@ -110,10 +115,13 @@ function ArticleBlock({ block }) {
 }
 
 export function NewsArticle({ article }) {
+  const introMarquee = article.sections[0]?.type === 'marquee' ? article.sections[0] : null;
+  const bodySections = introMarquee ? article.sections.slice(1) : article.sections;
+
   return (
     <>
       <section className="bg-bg pt-[140px] max-lg:pt-[120px] max-sm:pt-[100px]">
-        <div className="article-body !pt-0">
+        <div className="article-body !pt-0 !pb-0">
           <header className="mb-2">
             <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-1">
               <span className="font-mono text-[13px] tracking-[2px] text-accent uppercase">
@@ -125,7 +133,7 @@ export function NewsArticle({ article }) {
                 <span className="en">{formatNewsDate(article.date, true)}</span>
               </span>
             </div>
-            <h1 className="mb-12 text-[clamp(44px,6vw,80px)] font-extrabold leading-[1.05] tracking-[-2px] text-dark">
+            <h1 className="mb-8 text-[clamp(44px,6vw,80px)] font-extrabold leading-[1.05] tracking-[-2px] text-dark">
               <span className="cs">
                 <NewsTitleText text={article.title.cs} />
               </span>
@@ -134,8 +142,12 @@ export function NewsArticle({ article }) {
               </span>
             </h1>
           </header>
+        </div>
 
-          {article.sections.map((block, index) => (
+        {introMarquee ? <NewsPhraseMarquee phrases={introMarquee.phrases} /> : null}
+
+        <div className="article-body !pt-10">
+          {bodySections.map((block, index) => (
             <ArticleBlock key={`${block.type}-${index}`} block={block} />
           ))}
 

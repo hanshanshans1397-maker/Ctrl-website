@@ -18,8 +18,8 @@ export const NEWS = [
       en: 'Charity run for Podané ruce',
     },
     excerpt: {
-      cs: "V sobotu 3. října 2026 u sportovního areálu Komec plánujeme charitativní běh. Veškerý výtěžek věnujeme Společnosti Podané ruce, která pomáhá dětem a mladým lidem bojujícím se závislostmi.",
-      en: "On Saturday 3 October 2026 we are planning a charity run at the Komec sports complex. All proceeds go to Společnost Podané ruce, which helps children and young people struggling with addiction.",
+      cs: "Telefon odlož. Tenisky obuj. Vyraž s námi. CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh u areálu Komec. Výtěžek poputuje Společnosti Podané ruce.",
+      en: "Put the phone down. Lace up. Come with us. CTRL Europe is planning a charity run on Saturday 3 October 2026 at Komec. Proceeds go to Společnost Podané ruce.",
     },
     meta: {
       cs: {
@@ -37,22 +37,34 @@ export const NEWS = [
     },
     sections: [
       {
+        type: "marquee",
+        phrases: {
+          cs: ["Telefon odlož.", "Tenisky obuj.", "Vyraž s námi."],
+          en: ["Put the phone down.", "Lace up.", "Come with us."],
+        },
+      },
+      {
+        type: "p",
+        cs: "CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh u sportovního areálu Komec v Brně-Komárově. Bojujeme proti závislostem na digitálních technologiích — a proto jsme se rozhodli udělat něco jednoduchého a přímého: vylákat lidi od obrazovek ven, mezi lidi, do pohybu.",
+        en: "CTRL Europe is planning a charity run on Saturday 3 October 2026 at the Komec sports complex in Brno-Komárov. We fight addiction to digital technology — so we decided to do something simple and direct: get people away from screens, out among people, and moving.",
+      },
+      {
         type: "p",
         cs: [
-          "V sobotu 3. října 2026 plánuje organizace CTRL Europe charitativní běh u sportovního areálu Komec v Brně-Komárově. Veškerý výtěžek z akce věnujeme organizaci ",
-          { text: "Společnost Podané ruce", href: PODANE_RUCE },
-          ", která poskytuje odbornou pomoc a zázemí dětem a mladým lidem bojujícím se závislostmi.",
+          "Veškerý výtěžek poputuje ",
+          { text: "Společnosti Podané ruce", href: PODANE_RUCE },
+          ", která pomáhá mladým lidem bojujícím se závislostmi.",
         ],
         en: [
-          "On Saturday 3 October 2026, CTRL Europe is planning a charity run at the Komec sports complex in Brno-Komárov. All proceeds from the event will go to ",
+          "All proceeds will go to ",
           { text: "Společnost Podané ruce", href: PODANE_RUCE },
-          ", which provides professional support and a safe setting for children and young people struggling with addiction.",
+          ", which helps young people struggling with addiction.",
         ],
       },
       {
         type: "p",
-        cs: "Cílem akce je propojit naši komunitu s veřejností a vybrat finanční prostředky pro projekt, který má reálný dopad.",
-        en: "The aim is to connect our community with the public and raise funds for a project with a real impact.",
+        cs: "Přijď běžet. Podpoř dobrý projekt. A nech telefon doma.",
+        en: "Come run. Support a good cause. And leave your phone at home.",
       },
       {
         type: "h2",
@@ -135,18 +147,33 @@ export const NEWS = [
       },
       {
         type: "h2",
-        cs: "Večerní program: Seznamovací party „ODLOŽ TEN TELEFON“",
-        en: "Evening programme: “Put the phone down” mixer",
+        cs: "Večerní program: Odlož ten telefon — a seznam se",
+        en: "Evening programme: Put the phone down — and meet someone",
       },
       {
         type: "p",
-        cs: "Od 18:30 navazuje v areálu večerní program a seznamovací párty zaměřená na osobní setkávání bez mobilních telefonů. Odhadovaný konec je ve 22:00. Součástí jsou společenské hry a soutěže.",
-        en: "From 18:30 an evening programme and mixer follows on site, focused on meeting in person without mobile phones. The estimated end is 22:00. It includes social games and contests.",
+        cs: "Večer po běhu plánujeme seznamovací akci v rámci naší iniciativy Odlož ten telefon — a seznam se.",
+        en: "After the run we are planning a mixer as part of our Put the phone down — and meet someone initiative.",
       },
       {
         type: "p",
-        cs: "Součástí večera je i dobrovolná seznamovací hra pomocí barevných náramků:",
-        en: "The evening also includes an optional mixer game with coloured wristbands:",
+        cs: "Bez scrollování, bez profilových fotek, bez matchování přes obrazovku. Přijdeš, vybereš si náramek, odložíš telefon a můžeš se opravdu potkat s novými lidmi — ať už hledáš nové přátele nebo něco víc.",
+        en: "No scrolling, no profile photos, no matching through a screen. You show up, pick a wristband, put the phone down and actually meet new people — whether you’re looking for new friends or something more.",
+      },
+      {
+        type: "p",
+        cs: "Každý účastník dostane při registraci své číslo. Pokud tě někdo zaujme, zapíšeš jeho číslo na lístek u organizátora. Po akci zkontrolujeme oboustranný zájem a pošleme kontakt oběma stranám e-mailem — nikdo nedostane tvůj kontakt bez tvého vědomí.",
+        en: "Each participant gets a number at registration. If someone catches your eye, you write their number on a slip with the organiser. After the event we check for mutual interest and email the contact to both sides — nobody gets your details without you knowing.",
+      },
+      {
+        type: "p",
+        cs: "V rámci večera proběhne mini party a další program. Vše osobně, tváří v tvář. Telefon nech v kapse.",
+        en: "The evening includes a mini party and more programme. All of it in person, face to face. Keep your phone in your pocket.",
+      },
+      {
+        type: "p",
+        cs: "Součástí večera je dobrovolná seznamovací hra pomocí náramků:",
+        en: "The evening also includes an optional mixer game with wristbands:",
       },
       {
         type: "table",
@@ -156,20 +183,25 @@ export const NEWS = [
         },
         rows: [
           {
-            cs: ["Single / Taken / One night", "rozlišení stavu účastníka"],
-            en: [
-              "Single / Taken / One night",
-              "indicates the participant’s status",
-            ],
+            cs: ["Modrý", "single — one night / friend"],
+            en: ["Blue", "single — one night / friend"],
+          },
+          {
+            cs: ["Zelený", "single — něco vážného"],
+            en: ["Green", "single — something serious"],
+          },
+          {
+            cs: ["Červený", "taken / pouze doprovod"],
+            en: ["Red", "taken / accompaniment only"],
           },
           {
             cs: [
-              "Doplňkový barevný náramek",
-              "označení pro zájemce o seznamování s osobou stejného pohlaví",
+              "Barevný (doplňkový)",
+              "stejné pohlaví — přidáš k náramku výše",
             ],
             en: [
-              "Extra coloured wristband",
-              "for those interested in meeting someone of the same sex",
+              "Extra coloured band",
+              "same sex — add it to one of the bands above",
             ],
           },
         ],
