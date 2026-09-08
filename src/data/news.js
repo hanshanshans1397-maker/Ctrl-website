@@ -172,12 +172,16 @@ export const NEWS = [
         },
         rows: [
           {
-            cs: ["Základní vstupné", "250 Kč"],
-            en: ["Standard entry", "250 CZK"],
+            cs: ["Základní vstupné", "240 Kč"],
+            en: ["Standard entry", "240 CZK"],
           },
           {
-            cs: ["Studentské vstupné", "200 Kč (sleva 20 %)"],
-            en: ["Student entry", "200 CZK (20% off)"],
+            cs: ["Studentské vstupné", "190 Kč (sleva 20 %)"],
+            en: ["Student entry", "190 CZK (20% off)"],
+          },
+          {
+            cs: ["Rodinné vstupné", "600 Kč (max. 2 dospělí a 3 děti)"],
+            en: ["Family entry", "600 CZK (max. 2 adults and 3 children)"],
           },
         ],
       },
