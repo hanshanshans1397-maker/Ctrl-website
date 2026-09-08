@@ -3,6 +3,7 @@ import { formatNewsDate } from '../../data/news';
 import { NewsInvite } from '../ui/NewsInvite';
 import { NewsPhraseMarquee } from '../ui/NewsPhraseMarquee';
 import { NewsTitleText } from '../ui/NewsTitleText';
+import { StravaRouteEmbed } from '../ui/StravaRouteEmbed';
 
 function CharityLink({ href, children }) {
   return (
@@ -91,6 +92,16 @@ function ArticleBlock({ block }) {
 
   if (block.type === 'table') {
     return <ArticleTable block={block} />;
+  }
+
+  if (block.type === 'strava') {
+    return (
+      <StravaRouteEmbed
+        routeId={block.routeId}
+        href={block.href}
+        title={block.title}
+      />
+    );
   }
 
   if (block.type === 'quote') {

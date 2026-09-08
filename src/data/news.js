@@ -4,6 +4,8 @@ export const NEWS_INVITE = {
 };
 
 const PODANE_RUCE = "https://podaneruce.cz/";
+const STRAVA_ROUTE_ID = "3531339168018099800";
+const STRAVA_ROUTE = `https://www.strava.com/routes/${STRAVA_ROUTE_ID}`;
 
 export const NEWS = [
   {
@@ -25,13 +27,13 @@ export const NEWS = [
       cs: {
         title: 'Charitativní běh pro Podané ruce | CTRL Europe',
         description:
-          "CTRL Europe plánuje charitativní běh 3. října 2026 u areálu Komec. 5,5 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek pro Podané ruce Brno.",
+          "CTRL Europe plánuje charitativní běh 3. října 2026 u areálu Komec. 5,7 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek pro Podané ruce Brno.",
         image: "/photos/charitativni-beh.png",
       },
       en: {
         title: 'Charity run for Podané ruce | CTRL Europe',
         description:
-          "CTRL Europe is planning a charity run on 3 October 2026 at Komec. 5.5 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds go to Podané ruce Brno.",
+          "CTRL Europe is planning a charity run on 3 October 2026 at Komec. 5.7 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds go to Podané ruce Brno.",
         image: "/photos/charitativni-beh.png",
       },
     },
@@ -79,8 +81,8 @@ export const NEWS = [
             en: ["Venue", "Komec sports complex, Brno-Komárov"],
           },
           {
-            cs: ["Délka trasy", "5,5 km (okruh v okolí areálu)"],
-            en: ["Distance", "5.5 km (circuit around the grounds)"],
+            cs: ["Délka trasy", "5,7 km (okruh v okolí areálu)"],
+            en: ["Distance", "5.7 km (circuit around the grounds)"],
           },
           {
             cs: [
@@ -117,6 +119,25 @@ export const NEWS = [
         type: "p",
         cs: "Běh nemá soutěžní charakter — neměří se čas a tempo si určuje každý účastník sám.",
         en: "The run is not a race — times are not recorded and each participant sets their own pace.",
+      },
+      {
+        type: "h2",
+        cs: "Trasa",
+        en: "The route",
+      },
+      {
+        type: "p",
+        cs: "Okruh měří 5,7 km a vede okolím sportovního areálu Komec. Trasou se můžete projít předem na Stravě.",
+        en: "The loop is 5.7 km and runs around the Komec sports complex. You can preview the course on Strava beforehand.",
+      },
+      {
+        type: "strava",
+        routeId: STRAVA_ROUTE_ID,
+        href: STRAVA_ROUTE,
+        title: {
+          cs: "Charitativní běh — CTRL Europe Run",
+          en: "Charity run — CTRL Europe Run",
+        },
       },
       {
         type: "h2",
