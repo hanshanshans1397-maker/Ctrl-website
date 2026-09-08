@@ -131,12 +131,12 @@ export const NEWS = [
         },
         rows: [
           {
-            cs: ["Základní vstupné", "200 Kč"],
-            en: ["Standard entry", "200 CZK"],
+            cs: ["Základní vstupné", "250 Kč"],
+            en: ["Standard entry", "250 CZK"],
           },
           {
-            cs: ["Studentské vstupné", "170 Kč (sleva 15 %)"],
-            en: ["Student entry", "170 CZK (15% off)"],
+            cs: ["Studentské vstupné", "200 Kč (sleva 20 %)"],
+            en: ["Student entry", "200 CZK (20% off)"],
           },
         ],
       },
