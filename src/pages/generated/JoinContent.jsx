@@ -412,7 +412,7 @@ export function JoinPageContent() {
                         type="button"
                         className={`apply-btn-next${valid ? ' apply-btn-next--active' : ''}`}
                         onClick={goNext}
-                        aria-disabled={!valid}
+                        disabled={!valid}
                       >
                         <span className="cs">Další</span>
                         <span className="en">Next</span>
@@ -437,7 +437,7 @@ export function JoinPageContent() {
                         type="button"
                         className={`apply-btn-next${valid && !isSubmitting ? ' apply-btn-next--active' : ''}`}
                         onClick={handleSubmit}
-                        aria-disabled={!valid || isSubmitting}
+                        disabled={!valid || isSubmitting}
                       >
                         {isSubmitting ? (
                           <span>...</span>
@@ -477,6 +477,9 @@ export function JoinPageContent() {
           </div>
           <div className="ticker-item flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
             CTRL Summit 2026
+          </div>
+          <div className="ticker-item flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
+            Erasmus+
           </div>
           <div className="ticker-item cs flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
             AI povědomí

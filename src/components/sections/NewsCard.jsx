@@ -37,7 +37,7 @@ export function NewsCard({ article }) {
             <span className="en">{formatNewsDate(article.date, true)}</span>
           </span>
         </div>
-        <h2 className="mb-5 text-[clamp(22px,1.8vw,28px)] font-extrabold leading-[1.12] tracking-[-0.8px] text-dark">
+        <h2 className="mb-3 text-[clamp(22px,1.8vw,28px)] font-extrabold leading-[1.12] tracking-[-0.8px] text-dark">
           <span className="cs">
             <NewsTitleText text={article.title.cs} />
           </span>
@@ -45,6 +45,10 @@ export function NewsCard({ article }) {
             <NewsTitleText text={article.title.en} />
           </span>
         </h2>
+        <p className="mb-5 line-clamp-3 text-[14px] font-light leading-[1.75] text-mid">
+          <span className="cs">{article.excerpt.cs}</span>
+          <span className="en">{article.excerpt.en}</span>
+        </p>
         <span className="mt-auto inline-flex items-center gap-2 font-mono text-[11px] font-medium tracking-[1.5px] text-dark uppercase">
           <span className="cs">Číst dál</span>
           <span className="en">Read more</span>

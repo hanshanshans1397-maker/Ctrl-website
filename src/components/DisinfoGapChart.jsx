@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatedCounter } from "./AnimatedCounter";
 import { prefersReducedMotion, shouldUseLiteMotion } from "../utils/motion";
 
 const SOURCE_URL =
@@ -55,7 +54,7 @@ export function DisinfoGapChart() {
   return (
     <figure
       ref={ref}
-      className="disinfo-chart m-0 w-full border border-[rgba(11,16,32,0.08)] bg-card p-8 max-sm:p-6"
+      className="disinfo-chart m-0 w-full overflow-hidden border border-[rgba(11,16,32,0.08)] bg-card p-8 max-sm:p-6"
     >
       <div className="mb-8 flex items-end justify-between gap-6 max-sm:mb-6">
         <div>
@@ -67,7 +66,7 @@ export function DisinfoGapChart() {
             className="mt-2 font-extrabold leading-none tracking-[-4px] text-dark"
             style={{ fontSize: "clamp(64px, 8vw, 92px)" }}
           >
-            <AnimatedCounter value={EXPOSED} />%
+            {EXPOSED}%
           </p>
         </div>
         <p className="max-w-[180px] pb-1.5 text-right text-[13px] leading-[1.5] font-light text-mid max-sm:hidden">

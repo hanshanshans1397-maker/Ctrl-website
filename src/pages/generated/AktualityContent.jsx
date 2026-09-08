@@ -70,6 +70,7 @@ export function AktualityPageContent() {
           <div className="ticker-item cs">Digitální odolnost</div>
           <div className="ticker-item en">Digital Resilience</div>
           <div className="ticker-item">CTRL Summit 2026</div>
+          <div className="ticker-item">Erasmus+</div>
           <div className="ticker-item cs">AI povědomí</div>
           <div className="ticker-item en">AI Awareness</div>
           <div className="ticker-item cs">Mediální gramotnost</div>
