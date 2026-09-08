@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { prefersReducedMotion, shouldUseLiteMotion } from '../utils/motion';
+import { prefersReducedMotion, shouldUseLiteMotion, shouldUseScrollMotion } from '../utils/motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TILT_SELECTOR = '.what-card, .offer-card, .for-card, .val-card, .perk-card';
+const TILT_SELECTOR = '.what-card, .offer-card, .for-card, .val-card, .perk-card, .exec-card, .partner-card';
 const TILT_DEG = 5;
 
 /** Per-card hover lift (px) — mirrors what the CSS hover used to do, since
@@ -16,13 +16,37 @@ function liftFor(card) {
   return 0;
 }
 
+/** Cursor spotlight on `.what-card` — same hover wash as homepage work areas. */
+export function useCardSpotlight(pathname) {
+  useEffect(() => {
+    if (prefersReducedMotion() || shouldUseLiteMotion()) return undefined;
+    if (typeof window !== 'undefined' && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return undefined;
+    }
+
+    const cleanups = [];
+    document.querySelectorAll('.what-card').forEach((card) => {
+      const onMove = (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      };
+      card.addEventListener('pointermove', onMove);
+      cleanups.push(() => card.removeEventListener('pointermove', onMove));
+    });
+
+    return () => cleanups.forEach((fn) => fn());
+  }, [pathname]);
+}
+
 /**
  * Cards tilt gently in 3D toward the cursor. Desktop / fine pointer only;
  * quickTo keeps the motion interruptible without killing other tweens.
  */
 export function useCardTilt(pathname) {
   useEffect(() => {
-    if (prefersReducedMotion() || shouldUseLiteMotion()) return undefined;
+    // Scroll choreography owns card transforms on desktop; tilt would fight it.
+    if (prefersReducedMotion() || shouldUseLiteMotion() || shouldUseScrollMotion()) return undefined;
 
     const cleanups = [];
 

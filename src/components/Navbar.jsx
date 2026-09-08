@@ -242,6 +242,7 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
       </nav>
 
       <div
+        data-mobile-menu=""
         className={`fixed inset-0 z-[999] flex w-screen flex-col justify-center bg-bg px-8 py-[52px] transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] lg:hidden ${
           menuOpen ? 'mobile-menu-open pointer-events-auto translate-y-0' : 'pointer-events-none -translate-y-full'
         }`}
