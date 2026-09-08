@@ -12,11 +12,13 @@ export function getLenis() {
   return lenisInstance;
 }
 
-export function scrollPageToTop() {
+export function scrollPageToTop({ immediate = true, duration = 1.15 } = {}) {
   if (lenisInstance) {
-    lenisInstance.scrollTo(0, { immediate: true, force: true });
+    lenisInstance.scrollTo(0, { immediate, force: true, duration });
+    if (immediate) window.scrollTo(0, 0);
+    return;
   }
-  window.scrollTo(0, 0);
+  window.scrollTo({ top: 0, behavior: immediate ? 'auto' : 'smooth' });
 }
 
 export function useLenis() {

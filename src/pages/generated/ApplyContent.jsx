@@ -270,6 +270,17 @@ export function ApplyPageContent() {
       <div className="apply-page apply-page--below-hero">
         <div className="apply-layout">
           <aside className="apply-layout__aside">
+            <h2 className="sec-title mb-8 text-[clamp(32px,3.5vw,52px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px]">
+              <span className="cs">Buduj s námi.</span>
+              <span className="en">Build with us.</span>
+            </h2>
+            <p className="cs mb-4 text-base leading-[1.85] font-light text-mid">
+              Nepřipravenost není možnost. Hledáme lidi, kteří to ví taky.
+            </p>
+            <p className="en mb-4 text-base leading-[1.85] font-light text-mid">
+              Not being prepared is not an option. We are looking for people
+              who know that too.
+            </p>
             <ApplyNetworkAnimation
               step={step}
               isSuccess={isSuccess}
@@ -777,7 +788,7 @@ export function ApplyPageContent() {
                     type="button"
                     className={`apply-btn-next${valid ? " apply-btn-next--active" : ""}`}
                     onClick={goNext}
-                    disabled={!valid}
+                    aria-disabled={!valid}
                   >
                     <span className="cs">Další</span>
                     <span className="en">Next</span>
@@ -802,7 +813,7 @@ export function ApplyPageContent() {
                     type="button"
                     className={`apply-btn-next${valid && !isSubmitting ? " apply-btn-next--active" : ""}`}
                     onClick={handleSubmit}
-                    disabled={!valid || isSubmitting}
+                    aria-disabled={!valid || isSubmitting}
                   >
                     {isSubmitting ? (
                       <span>...</span>
@@ -853,9 +864,6 @@ export function ApplyPageContent() {
           </div>
           <div className="ticker-item flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
             CTRL Summit 2026
-          </div>
-          <div className="ticker-item flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
-            Erasmus+
           </div>
           <div className="ticker-item cs flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
             AI povědomí

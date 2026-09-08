@@ -4,6 +4,36 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { scrollPageToTop } from './useLenis';
 import { GSAP_REVEAL, prefersReducedMotion, shouldUseLiteMotion } from '../utils/motion';
 
+function normalizePath(path) {
+  return path.replace(/\/+$/, '') || '/';
+}
+
+function isModifiedClick(event) {
+  return event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+}
+
+function getChromeNavLink(event) {
+  return event.target.closest('#nav a[href], footer a[href], [data-mobile-menu] a[href]');
+}
+
+function getSamePageInternalUrl(link) {
+  const href = link.getAttribute('href');
+  if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) {
+    return null;
+  }
+  if (/^https?:/i.test(href) || href.startsWith('//')) return null;
+
+  try {
+    const url = new URL(href, window.location.origin);
+    if (url.origin !== window.location.origin) return null;
+    if (url.hash) return null;
+    if (normalizePath(url.pathname) !== normalizePath(window.location.pathname)) return null;
+    return url;
+  } catch {
+    return null;
+  }
+}
+
 export function useScrollToTop() {
   const { pathname, hash } = useLocation();
 
@@ -46,6 +76,23 @@ export function useScrollToTop() {
       cancelAnimationFrame(id);
     };
   }, [pathname, hash]);
+
+  // Same-route navbar/footer clicks do not change location, so the effects
+  // above never run — scroll back to the top of the already-loaded page.
+  useEffect(() => {
+    const onClick = (event) => {
+      if (isModifiedClick(event)) return;
+      const link = getChromeNavLink(event);
+      if (!link || !getSamePageInternalUrl(link)) return;
+
+      window.setTimeout(() => {
+        scrollPageToTop({ immediate: prefersReducedMotion() });
+      }, 0);
+    };
+
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
 }
 
 function isGsapContentColumn(el) {

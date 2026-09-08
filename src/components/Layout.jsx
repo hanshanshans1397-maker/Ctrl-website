@@ -12,11 +12,11 @@ import {
   useScrollToTop,
   useTickerClone,
 } from '../hooks/usePageEffects';
-import { useCardTilt, useScrollProgress } from '../hooks/useInteractiveMotion';
+import { useCardSpotlight, useCardTilt, useScrollProgress } from '../hooks/useInteractiveMotion';
 import { useLenis } from '../hooks/useLenis';
 import { usePauseOffscreenAnimations } from '../hooks/usePauseOffscreenAnimations';
 import { usePremiumAnimations } from '../hooks/usePremiumAnimations';
-import { prefersReducedMotion, shouldUseLiteMotion, applyMotionBodyClass, onReducedMotionChange } from '../utils/motion';
+import { prefersReducedMotion, shouldUseLiteMotion, shouldUseScrollMotion, applyMotionBodyClass, onReducedMotionChange } from '../utils/motion';
 import { hasDarkHero } from '../utils/routes';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -25,7 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function useHeroParallax(pathname) {
   useEffect(() => {
-    if (prefersReducedMotion() || shouldUseLiteMotion()) return undefined;
+    if (prefersReducedMotion() || !shouldUseScrollMotion()) return undefined;
 
     const img = document.querySelector('#hero > img');
     if (!img || window.innerWidth < 641) return undefined;
@@ -100,6 +100,7 @@ export function Layout() {
   useHeroParallax(pathname);
   useMagneticButtons(pathname);
   useCardTilt(pathname);
+  useCardSpotlight(pathname);
   useScrollProgress(pathname);
 
   useEffect(() => {

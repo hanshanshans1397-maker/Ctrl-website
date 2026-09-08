@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { AnimatedCounter } from "../../components/AnimatedCounter";
+import { BoardMemberCard } from "../../components/BoardMemberCard";
+import { Flythrough } from "../../components/Flythrough";
 import { TickerBar } from "../../components/TickerBar";
+import { BOARD_LEADERS, BOARD_REST } from "../../data/leadership";
 import { NewsCard } from "../../components/sections/NewsCard";
 import { NEWS } from "../../data/news";
+
 export function HomePageContent() {
   return (
     <>
@@ -90,13 +94,13 @@ export function HomePageContent() {
               </a>
               <Link
                 to="/about"
-                className="btn-ghost cs text-[13px] font-medium text-bg border border-[rgba(245,245,243,0.25)] px-7 py-3.5 transition-[background-color,border-color] duration-250 hover:bg-[rgba(245,245,243,0.08)] no-underline"
+                className="btn-ghost cs inline-flex items-center gap-2 border border-[rgba(245,245,243,0.35)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-bg no-underline transition-[background-color,border-color] duration-250 hover:border-[rgba(245,245,243,0.7)] hover:bg-[rgba(245,245,243,0.08)] max-sm:px-5 max-sm:py-3 max-sm:text-xs"
               >
                 O nás &rarr;
               </Link>
               <Link
                 to="/about"
-                className="btn-ghost en text-[13px] font-medium text-bg border border-[rgba(245,245,243,0.25)] px-7 py-3.5 transition-[background-color,border-color] duration-250 hover:bg-[rgba(245,245,243,0.08)] no-underline"
+                className="btn-ghost en inline-flex items-center gap-2 border border-[rgba(245,245,243,0.35)] bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-wide text-bg no-underline transition-[background-color,border-color] duration-250 hover:border-[rgba(245,245,243,0.7)] hover:bg-[rgba(245,245,243,0.08)] max-sm:px-5 max-sm:py-3 max-sm:text-xs"
               >
                 About us &rarr;
               </Link>
@@ -451,6 +455,8 @@ export function HomePageContent() {
         </div>
       </section>
 
+      <Flythrough variant="keys" />
+
       <section className="sec py-16 px-[52px] max-lg:py-14 max-lg:px-6 max-[480px]:py-12 max-[480px]:px-5 bg-dark">
         <div className="inner max-w-[1300px] mx-auto">
           <div className="photo-strip grid grid-cols-3 gap-3 max-lg:grid-cols-1 max-[640px]:gap-2">
@@ -549,6 +555,8 @@ export function HomePageContent() {
         </div>
       </section>
 
+      <Flythrough variant="rail" />
+
       <section
         id="aktuality-promo"
         className="bg-bg px-[52px] py-20 max-lg:px-6 max-lg:py-16 max-sm:px-5 max-sm:py-14"
@@ -612,61 +620,34 @@ export function HomePageContent() {
               <span className="en">Executive Board.</span>
             </h2>
           </div>
-          <div className="board-grid grid grid-cols-4 sep-grid max-lg:grid-cols-2 max-[480px]:grid-cols-2">
-            <div className="rev d1 bg-card py-10 px-8">
-              <div className="w-[72px] h-[72px] rounded-full mb-5 overflow-hidden">
-                <img
-                  src="/IMG_4222.webp"
-                  alt="Jan Krejčí"
-                  className="w-full h-full object-cover object-[center_22%]"
-                  loading="lazy"
-                  decoding="async"
+          <div className="board-stack flex flex-col gap-5 max-lg:gap-4">
+            <div className="board-grid board-grid--custom board-grid--leads grid grid-cols-2 sep-grid lg:grid-cols-4">
+              {BOARD_LEADERS.map((member, index) => (
+                <BoardMemberCard
+                  key={member.id}
+                  member={member}
+                  variant="home"
+                  className={index === 0 ? "lg:col-start-2" : ""}
                 />
-              </div>
-              <div className="text-base font-semibold mb-1">Jan Krejčí</div>
-              <div className="font-mono text-[10px] tracking-[1.5px] uppercase text-accent mb-1.5">
-                <span className="cs">Prezident & Zakladatel</span>
-                <span className="en">President & Founder</span>
-              </div>
+              ))}
             </div>
-            <div className="rev d2 bg-card py-10 px-8">
-              <div className="w-[72px] h-[72px] bg-light rounded-full mb-5 flex items-center justify-center text-xl font-bold text-mid font-mono">
-                JR
-              </div>
-              <div className="text-base font-semibold mb-1">Jakub Rašovský</div>
-              <div className="font-mono text-[10px] tracking-[1.5px] uppercase text-accent mb-1.5">
-                <span className="cs">Místopředseda</span>
-                <span className="en">Vice President</span>
-              </div>
-            </div>
-            <div className="rev d3 bg-card py-10 px-8">
-              <div className="w-[72px] h-[72px] bg-light rounded-full mb-5 flex items-center justify-center text-xl font-bold text-mid font-mono">
-                BF
-              </div>
-              <div className="text-base font-semibold mb-1">Bety Fritzová</div>
-              <div className="font-mono text-[10px] tracking-[1.5px] uppercase text-accent mb-1.5">
-                <span className="cs">Tajemnice</span>
-                <span className="en">Secretary</span>
-              </div>
-            </div>
-            <div className="rev d4 bg-card py-10 px-8">
-              <div className="w-[72px] h-[72px] bg-light rounded-full mb-5 flex items-center justify-center text-xl font-bold text-mid font-mono">
-                AM
-              </div>
-              <div className="text-base font-semibold mb-1">Alena Marková</div>
-              <div className="font-mono text-[10px] tracking-[1.5px] uppercase text-accent mb-1.5">
-                <span className="cs">Zástupce předsednictva</span>
-                <span className="en">Board Rep.</span>
-              </div>
+            <div className="board-grid board-grid--custom board-grid--rest grid grid-cols-4 sep-grid max-lg:grid-cols-2">
+              {BOARD_REST.map((member) => (
+                <BoardMemberCard
+                  key={member.id}
+                  member={member}
+                  variant="home"
+                />
+              ))}
             </div>
           </div>
-          <div className="mt-8 text-center">
+          <div className="mt-6 text-center">
             <Link
               to="/about"
               className="text-[13px] font-normal text-mid no-underline font-mono tracking-wide transition-colors duration-200 hover:text-dark"
             >
-              <span className="cs">Všichni členové → O nás</span>
-              <span className="en">All members → About us</span>
+              <span className="cs">→ O nás</span>
+              <span className="en">→ About us</span>
             </Link>
           </div>
         </div>
@@ -766,7 +747,7 @@ export function HomePageContent() {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-px bg-dark max-[480px]:grid-cols-1">
+            <div className="why-facts grid grid-cols-3 gap-3 max-[480px]:grid-cols-1">
               <div className="bg-card py-6 px-6">
                 <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid mb-2">
                   <span className="cs">Vznik</span>
@@ -799,7 +780,8 @@ export function HomePageContent() {
                 <img
                   src="/IMG_4222.webp"
                   alt="Jan Krejčí, zakladatel CTRL Europe"
-                  className="w-full h-full object-cover object-[center_8%]"
+                  data-plx=""
+                  className="relative top-[-7%] h-[114%] w-full object-cover object-[center_8%]"
                   loading="lazy"
                   decoding="async"
                 />
