@@ -112,8 +112,8 @@ export function Layout() {
 
     gsap.fromTo(
       nav,
-      { y: -20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.05 },
+      { opacity: 0 },
+      { opacity: 1, duration: 0.55, ease: 'power3.out' },
     );
     nav.classList.add('is-ready');
     return undefined;

@@ -173,6 +173,10 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
           <img
             src="/ctrl-logo.png"
             alt="CTRL Europe"
+            width={874}
+            height={620}
+            decoding="async"
+            fetchpriority="high"
             className={`h-7 w-auto max-[480px]:h-6 transition-[filter] duration-300 ${darkNav ? 'lg:brightness-0 lg:invert' : ''}`}
           />
         </Link>

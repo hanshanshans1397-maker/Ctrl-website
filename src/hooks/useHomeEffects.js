@@ -55,12 +55,13 @@ export function useHomeEffects() {
     const logoWord = document.querySelector('.hero-title .word--logo span');
     const textWords = document.querySelectorAll('.hero-title .word:not(.word--logo) span');
 
-    // Logo PNG sits in overflow:visible — use a softer rise so it can't clip.
+    // Rise in em (title font-size), not yPercent of the PNG — percent
+    // offsets jump when the image finishes loading and the box grows.
     if (logoWord) {
       tl.fromTo(
         logoWord,
-        { yPercent: 40, opacity: 0 },
-        { yPercent: 0, opacity: 1, duration: 1.05 },
+        { y: '0.28em', opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.05 },
         0.15,
       );
     }

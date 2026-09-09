@@ -15,7 +15,7 @@ export function HomePageContent() {
         className="min-h-screen flex flex-col justify-end px-[52px] pb-[100px] relative overflow-hidden bg-dark max-lg:px-6 max-lg:pb-20 max-[640px]:px-7 max-[640px]:pb-16 max-sm:px-0 max-sm:pb-0 max-sm:pt-0 max-sm:min-h-0 max-sm:justify-start max-[480px]:px-5 max-[480px]:pb-14 max-[480px]:pt-0"
       >
         <div
-          className="hero-grain absolute inset-0 z-[2] opacity-[0.02] bg-[url('data:image/svg+xml,%3Csvg%20viewBox=%270%200%20512%20512%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.75%27%20numOctaves=%274%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27100%25%27%20height=%27100%25%27%20filter=%27url(%23n)%27/%3E%3C/svg%3E')] max-sm:hidden"
+          className="hero-grain pointer-events-none absolute inset-0 z-[1] opacity-[0.02] bg-[url('data:image/svg+xml,%3Csvg%20viewBox=%270%200%20512%20512%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.75%27%20numOctaves=%274%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27100%25%27%20height=%27100%25%27%20filter=%27url(%23n)%27/%3E%3C/svg%3E')] max-sm:hidden"
           aria-hidden="true"
         />
 
@@ -25,11 +25,11 @@ export function HomePageContent() {
             <span className="block font-mono text-[9px] tracking-[2.5px] uppercase text-accent mb-2">
               BRNO &middot; 2026
             </span>
-            <div className="flex items-baseline gap-[0.1em] text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
+            <div className="flex items-end gap-[0.1em] text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <img
                 src="/ctrl_logo_cropped.png"
                 alt="CTRL"
-                className="hero-logo h-[1em] w-auto"
+                className="hero-logo h-[1em] w-auto shrink-0"
                 width={833}
                 height={340}
                 fetchpriority="high"
@@ -40,20 +40,20 @@ export function HomePageContent() {
           </div>
         </div>
 
-        <div className="hero-mobile-body max-sm:px-5">
+        <div className="hero-mobile-body relative z-[3] max-sm:px-5">
           <div className="hero-meta relative z-[3] flex items-center gap-5 mb-12 opacity-0 max-[640px]:justify-center max-[640px]:mb-8 max-[640px]:flex-wrap max-sm:hidden max-[480px]:gap-2">
             <span className="font-mono text-[10px] font-medium tracking-[3px] uppercase text-accent">
               BRNO &middot; 2026
             </span>
           </div>
 
-          <h1 className="hero-title relative z-[3] flex items-baseline gap-[0.12em] text-[clamp(72px,10vw,160px)] font-extrabold leading-[0.95] tracking-[-4px] text-bg mb-10 max-w-[1100px] max-lg:text-[clamp(52px,8vw,100px)] max-lg:tracking-[-2px] max-[640px]:text-[clamp(44px,10vw,72px)] max-[640px]:tracking-[-1.5px] max-[640px]:mb-7 max-[640px]:mx-auto max-sm:hidden max-[480px]:text-[clamp(40px,11vw,60px)]">
+          <h1 className="hero-title relative z-[3] flex items-end gap-[0.12em] text-[clamp(72px,10vw,160px)] font-extrabold leading-[0.95] tracking-[-4px] text-bg mb-10 max-w-[1100px] max-lg:text-[clamp(52px,8vw,100px)] max-lg:tracking-[-2px] max-[640px]:text-[clamp(44px,10vw,72px)] max-[640px]:tracking-[-1.5px] max-[640px]:mb-7 max-[640px]:mx-auto max-sm:hidden max-[480px]:text-[clamp(40px,11vw,60px)]">
             <div className="word word--logo">
               <span>
                 <img
                   src="/ctrl_logo_cropped.png"
                   alt="CTRL"
-                  className="hero-logo h-[1em] w-auto"
+                  className="hero-logo h-[1em] w-auto shrink-0"
                   width={833}
                   height={340}
                   fetchpriority="high"
@@ -79,7 +79,7 @@ export function HomePageContent() {
                 prepared generation is democracy&apos;s first line of defense.
               </strong>
             </p>
-            <div className="hero-ctas flex gap-3 opacity-0 translate-y-5 max-[640px]:flex-wrap max-[640px]:justify-center max-sm:justify-start">
+            <div className="hero-ctas relative z-[4] flex gap-3 opacity-0 translate-y-5 max-[640px]:flex-wrap max-[640px]:justify-center max-sm:justify-start">
               <a
                 href="#what"
                 className="btn-primary cs inline-flex items-center gap-2 text-[13px] font-semibold bg-bg text-dark px-7 py-3.5 tracking-wide transition-[background-color,color] duration-250 hover:bg-accent hover:text-bg no-underline"
