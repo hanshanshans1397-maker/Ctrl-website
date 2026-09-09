@@ -12,7 +12,7 @@ export const NEWS = [
   {
     slug: "charitativni-beh",
     date: "2026-10-03",
-    invite: "/photos/charitativni-beh.png",
+    invite: "/photos/charitativni-beh.jpg",
     inviteWidth: NEWS_INVITE.width,
     inviteHeight: NEWS_INVITE.height,
     category: { cs: "Akce", en: "Event" },
@@ -30,14 +30,14 @@ export const NEWS = [
           "Charitativní běh na podporu prevence digitálních závislostí | CTRL Europe",
         description:
           "CTRL Europe plánuje charitativní běh CTRL Run 3. října 2026 u areálu Komec. 5,7 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek na prevenci digitálních závislostí u dětí a mládeže.",
-        image: "/photos/charitativni-beh.png",
+        image: "/photos/charitativni-beh.jpg",
       },
       en: {
         title:
           "Charity run for the prevention of digital addictions | CTRL Europe",
         description:
           "CTRL Europe is planning the CTRL Run charity run on 3 October 2026 at Komec. 5.7 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds support the prevention of digital addictions in children and young people.",
-        image: "/photos/charitativni-beh.png",
+        image: "/photos/charitativni-beh.jpg",
       },
     },
     sections: [
