@@ -715,7 +715,8 @@ body.reduced-motion #heroBottom {
   overflow: visible;
 }
 
-.hero-title .word--logo .hero-logo {
+.hero-title .word--logo .hero-logo,
+.hero-logo {
   display: block;
   aspect-ratio: 833 / 340;
 }
@@ -728,9 +729,9 @@ body.reduced-motion #heroBottom {
   transform: translate3d(0, 110%, 0);
 }
 
-/* Softer initial offset (no overflow clip on the logo word). */
+/* Softer initial offset in em — independent of PNG intrinsic height. */
 .hero-title .word--logo span {
-  transform: translate3d(0, 40%, 0);
+  transform: translate3d(0, 0.28em, 0);
 }
 
 .split-text.in .word span {
@@ -1676,6 +1677,10 @@ body.lite-motion #cur {
   will-change: transform, opacity;
 }
 
+#nav img {
+  aspect-ratio: 874 / 620;
+}
+
 #nav.is-ready {
   will-change: auto;
 }
@@ -1787,8 +1792,9 @@ body.lite-motion #cur {
   }
 }
 
-/* hero grain subtle drift */
+/* hero grain subtle drift — never steal clicks from CTAs underneath */
 .hero-grain {
+  pointer-events: none;
   animation: grainDrift 12s linear infinite;
 }
 
