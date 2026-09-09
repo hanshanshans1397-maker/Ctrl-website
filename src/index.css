@@ -2947,8 +2947,22 @@ body.reduced-motion .news-invite-dialog[open]::backdrop {
     @apply mx-auto max-w-[900px] px-16 py-20 max-lg:px-6 max-sm:px-5;
   }
 
+  .article-body--lede {
+    @apply max-w-[1180px];
+  }
+
+  .article-title {
+    @apply text-[clamp(40px,5.2vw,72px)] leading-[1.06] tracking-[-2px];
+    text-wrap: balance;
+  }
+
+  .article-title--long {
+    @apply text-[clamp(36px,5.5vw,70px)] leading-[1.1] tracking-[-1.8px];
+    text-wrap: pretty;
+  }
+
   .article-body h2 {
-    @apply mt-14 mb-7 text-[clamp(34px,3.6vw,50px)] leading-tight font-bold tracking-[-1px] text-dark first:mt-0;
+    @apply mt-14 mb-7 text-[clamp(32px,3.4vw,46px)] leading-tight font-bold tracking-[-1px] text-dark first:mt-0;
   }
 
   .article-body h3 {

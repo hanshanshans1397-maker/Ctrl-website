@@ -122,11 +122,13 @@ function ArticleBlock({ block }) {
 export function NewsArticle({ article }) {
   const introMarquee = article.sections[0]?.type === 'marquee' ? article.sections[0] : null;
   const bodySections = introMarquee ? article.sections.slice(1) : article.sections;
+  const isLongTitle =
+    Math.max(article.title.cs.length, article.title.en.length) > 48;
 
   return (
     <>
       <section className="bg-bg pt-[140px] max-lg:pt-[120px] max-sm:pt-[100px]">
-        <div className="article-body !pt-0 !pb-0">
+        <div className="article-body article-body--lede !pt-0 !pb-0">
           <header className="mb-2">
             <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-1">
               <span className="font-mono text-[13px] tracking-[2px] text-accent uppercase">
@@ -138,7 +140,7 @@ export function NewsArticle({ article }) {
                 <span className="en">{formatNewsDate(article.date, true)}</span>
               </span>
             </div>
-            <h1 className="mb-8 text-[clamp(44px,6vw,80px)] font-extrabold leading-[1.05] tracking-[-2px] text-dark">
+            <h1 className={`mb-8 font-extrabold text-dark${isLongTitle ? ' article-title--long' : ' article-title'}`}>
               <span className="cs">
                 <NewsTitleText text={article.title.cs} />
               </span>

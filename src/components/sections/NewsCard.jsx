@@ -37,7 +37,7 @@ export function NewsCard({ article }) {
             <span className="en">{formatNewsDate(article.date, true)}</span>
           </span>
         </div>
-        <h2 className="mb-5 text-[clamp(22px,1.8vw,28px)] font-extrabold leading-[1.12] tracking-[-0.8px] text-dark">
+        <h2 className="mb-5 text-[clamp(20px,1.7vw,24px)] font-extrabold leading-[1.2] tracking-[-0.6px] text-dark text-balance">
           <span className="cs">
             <NewsTitleText text={article.title.cs} />
           </span>
