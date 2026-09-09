@@ -1,3 +1,4 @@
+/* Unpublished at request of Společnost Podané ruce — do not republish without written consent.
 export const NEWS_INVITE = {
   width: 2245,
   height: 1587,
@@ -8,8 +9,10 @@ const STRAVA_ROUTE_ID = "3531339168018099800";
 const STRAVA_ROUTE = `https://www.strava.com/routes/${STRAVA_ROUTE_ID}`;
 const MAPY_ROUTE = "https://mapy.com/s/casonadacu";
 const MAPY_EMBED = "https://mapy.com/s/celuluralo";
+*/
 
 export const NEWS = [
+  /*
   {
     slug: "charitativni-beh",
     date: "2026-10-03",
@@ -266,6 +269,7 @@ export const NEWS = [
       },
     ],
   },
+  */
 ];
 
 export function getNewsBySlug(slug) {
