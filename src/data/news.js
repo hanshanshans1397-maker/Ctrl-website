@@ -1,18 +1,14 @@
-/* Unpublished at request of Společnost Podané ruce — do not republish without written consent.
 export const NEWS_INVITE = {
   width: 2245,
   height: 1587,
 };
 
-const PODANE_RUCE = "https://podaneruce.cz/";
 const STRAVA_ROUTE_ID = "3531339168018099800";
 const STRAVA_ROUTE = `https://www.strava.com/routes/${STRAVA_ROUTE_ID}`;
 const MAPY_ROUTE = "https://mapy.com/s/casonadacu";
 const MAPY_EMBED = "https://mapy.com/s/celuluralo";
-*/
 
 export const NEWS = [
-  /*
   {
     slug: "charitativni-beh",
     date: "2026-10-03",
@@ -21,24 +17,26 @@ export const NEWS = [
     inviteHeight: NEWS_INVITE.height,
     category: { cs: "Akce", en: "Event" },
     title: {
-      cs: 'Charitativní běh pro Podané ruce',
-      en: 'Charity run for Podané ruce',
+      cs: "Charitativní běh na podporu prevence digitálních závislostí dětí a mládeže",
+      en: "Charity run in support of preventing digital addictions in children and young people",
     },
     excerpt: {
-      cs: "Telefon odlož. Tenisky obuj. Vyraž s námi. CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh u areálu Komec. Výtěžek poputuje Společnosti Podané ruce.",
-      en: "Put the phone down. Lace up. Come with us. CTRL Europe is planning a charity run on Saturday 3 October 2026 at Komec. Proceeds go to Společnost Podané ruce.",
+      cs: "Telefon odlož. Tenisky obuj. Vyraž s námi. CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh u areálu Komec. Veškerý výtěžek z CTRL Run věnujeme na podporu prevence digitálních závislostí u dětí a mládeže — v souladu s posláním CTRL Europe.",
+      en: "Put the phone down. Lace up. Come with us. CTRL Europe is planning a charity run on Saturday 3 October 2026 at Komec. All proceeds from CTRL Run go towards preventing digital addictions in children and young people — in line with the mission of CTRL Europe.",
     },
     meta: {
       cs: {
-        title: 'Charitativní běh pro Podané ruce | CTRL Europe',
+        title:
+          "Charitativní běh na podporu prevence digitálních závislostí | CTRL Europe",
         description:
-          "CTRL Europe plánuje charitativní běh 3. října 2026 u areálu Komec. 5,7 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek pro Podané ruce Brno.",
+          "CTRL Europe plánuje charitativní běh CTRL Run 3. října 2026 u areálu Komec. 5,7 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek na prevenci digitálních závislostí u dětí a mládeže.",
         image: "/photos/charitativni-beh.png",
       },
       en: {
-        title: 'Charity run for Podané ruce | CTRL Europe',
+        title:
+          "Charity run for the prevention of digital addictions | CTRL Europe",
         description:
-          "CTRL Europe is planning a charity run on 3 October 2026 at Komec. 5.7 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds go to Podané ruce Brno.",
+          "CTRL Europe is planning the CTRL Run charity run on 3 October 2026 at Komec. 5.7 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds support the prevention of digital addictions in children and young people.",
         image: "/photos/charitativni-beh.png",
       },
     },
@@ -52,21 +50,13 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh u sportovního areálu Komec v Brně-Komárově. Bojujeme proti závislostem na digitálních technologiích — a proto jsme se rozhodli udělat něco jednoduchého a přímého: vylákat lidi od obrazovek ven, mezi lidi, do pohybu.",
-        en: "CTRL Europe is planning a charity run on Saturday 3 October 2026 at the Komec sports complex in Brno-Komárov. We fight addiction to digital technology — so we decided to do something simple and direct: get people away from screens, out among people, and moving.",
+        cs: "CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh CTRL Run u sportovního areálu Komec v Brně-Komárově. Bojujeme proti závislostem na digitálních technologiích — a proto jsme se rozhodli udělat něco jednoduchého a přímého: vylákat lidi od obrazovek ven, mezi lidi, do pohybu.",
+        en: "CTRL Europe is planning the CTRL Run charity run on Saturday 3 October 2026 at the Komec sports complex in Brno-Komárov. We fight addiction to digital technology — so we decided to do something simple and direct: get people away from screens, out among people, and moving.",
       },
       {
         type: "p",
-        cs: [
-          "Veškerý výtěžek poputuje ",
-          { text: "Společnosti Podané ruce", href: PODANE_RUCE },
-          ", která pomáhá mladým lidem bojujícím se závislostmi.",
-        ],
-        en: [
-          "All proceeds will go to ",
-          { text: "Společnost Podané ruce", href: PODANE_RUCE },
-          ", which helps young people struggling with addiction.",
-        ],
+        cs: "Veškerý výtěžek z CTRL Run věnujeme na podporu prevence digitálních závislostí u dětí a mládeže — v souladu s posláním CTRL Europe.",
+        en: "All proceeds from CTRL Run go towards preventing digital addictions in children and young people — in line with the mission of CTRL Europe.",
       },
       {
         type: "p",
@@ -256,20 +246,11 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: [
-          "Zúčastnit se můžete běžecké části, večerního programu nebo obou aktivit. Veškeré vybrané prostředky ze vstupného budou předány organizaci ",
-          { text: "Podané ruce Brno", href: PODANE_RUCE },
-          ".",
-        ],
-        en: [
-          "You can take part in the run, the evening programme, or both. All entry fees collected will be given to ",
-          { text: "Podané ruce Brno", href: PODANE_RUCE },
-          ".",
-        ],
+        cs: "Zúčastnit se můžete běžecké části, večerního programu nebo obou aktivit. Veškeré vybrané prostředky ze vstupného použijeme na podporu prevence digitálních závislostí u dětí a mládeže a na boj se závislostmi — v souladu s posláním CTRL Europe.",
+        en: "You can take part in the run, the evening programme, or both. All entry fees collected will be used to support the prevention of digital addictions in children and young people and the fight against addictions — in line with the mission of CTRL Europe.",
       },
     ],
   },
-  */
 ];
 
 export function getNewsBySlug(slug) {
