@@ -1,6 +1,6 @@
 export const NEWS_INVITE = {
-  width: 2245,
-  height: 1587,
+  width: 1024,
+  height: 723,
 };
 
 const STRAVA_ROUTE_ID = "3531339168018099800";
