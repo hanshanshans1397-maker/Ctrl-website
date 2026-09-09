@@ -973,8 +973,8 @@ export function AboutPageContent() {
         <div className="inner max-w-[1300px] mx-auto">
           <div className="section-head rev">
             <span className="section-label">
-              <span className="cs">Odborná garantka</span>
-              <span className="en">Academic Advisor</span>
+              <span className="cs">Předseda</span>
+              <span className="en">Chair</span>
             </span>
             <h2 className="section-title">{ADVISOR.name}</h2>
           </div>
@@ -987,22 +987,60 @@ export function AboutPageContent() {
                 {ADVISOR.roleEn} of CTRL Europe
               </div>
               <div className="prose">
-                {ADVISOR.bioCs.map((paragraph) => (
-                  <p
-                    key={paragraph}
-                    className="cs text-base font-light leading-[1.85] text-mid mb-5"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-                {ADVISOR.bioEn.map((paragraph) => (
-                  <p
-                    key={paragraph}
-                    className="en text-base font-light leading-[1.85] text-mid mb-5"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
+                {ADVISOR.bioCs.map((paragraph, index) => {
+                  const isLast = index === ADVISOR.bioCs.length - 1;
+                  return (
+                    <p
+                      key={paragraph}
+                      className="cs text-base font-light leading-[1.85] text-mid mb-5"
+                    >
+                      {isLast ? (
+                        <strong className="text-dark font-medium">
+                          {paragraph}
+                        </strong>
+                      ) : (
+                        paragraph
+                      )}
+                    </p>
+                  );
+                })}
+                {ADVISOR.bioEn.map((paragraph, index) => {
+                  const isLast = index === ADVISOR.bioEn.length - 1;
+                  return (
+                    <p
+                      key={paragraph}
+                      className="en text-base font-light leading-[1.85] text-mid mb-5"
+                    >
+                      {isLast ? (
+                        <strong className="text-dark font-medium">
+                          {paragraph}
+                        </strong>
+                      ) : (
+                        paragraph
+                      )}
+                    </p>
+                  );
+                })}
+              </div>
+              <div className="mt-12 pt-10 border-t border-separator">
+                <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid mb-5 cs">
+                  Certifikace a vzdělávání
+                </div>
+                <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid mb-5 en">
+                  Certifications and education
+                </div>
+                <div className="flex flex-col gap-3">
+                  {ADVISOR.credentials.map((item) => (
+                    <div
+                      key={item.cs}
+                      className="flex items-start gap-3.5 text-sm font-light text-mid"
+                    >
+                      <div className="w-1 h-1 bg-accent rounded-full shrink-0 mt-[7px]"></div>
+                      <span className="cs">{item.cs}</span>
+                      <span className="en">{item.en}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="max-lg:order-1" data-slide-from="right">
@@ -1113,19 +1151,18 @@ export function AboutPageContent() {
                   <strong className="font-medium text-dark">
                     Předsednictvo
                   </strong>{" "}
-                  tvoří zakladatel a výkonné vedení: prezident, odborná
-                  garantka, místopředseda, vedoucí kanceláře, předseda hlavní
-                  rady a tajemnice. Rozhoduje o strategickém směřování
-                  organizace.
+                  tvoří zakladatel a výkonné vedení: prezident, předseda,
+                  místopředseda, vedoucí kanceláře, předseda hlavní rady a
+                  tajemnice. Rozhoduje o strategickém směřování organizace.
                 </p>
                 <p className="en mb-5 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
                     The Executive Board
                   </strong>{" "}
-                  is the founder and operational leadership: president, academic
-                  advisor, deputy chair, chief of staff, the chairman of the
-                  Main Council and the secretary. The board decides on the
-                  strategic direction of the organization.
+                  is the founder and operational leadership: president, chair,
+                  deputy chair, chief of staff, the chairman of the Main Council
+                  and the secretary. The board decides on the strategic
+                  direction of the organization.
                 </p>
                 <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
