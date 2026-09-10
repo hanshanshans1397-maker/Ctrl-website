@@ -106,4 +106,29 @@ export const BOARD_LEADERS = [
 
 export const BOARD_MEMBERS = [...BOARD_LEADERS, ...BOARD_REST];
 
-export const NATIONAL_COORDINATORS = [];
+export const NATIONAL_COORDINATORS = [
+  {
+    id: "cz",
+    countryCs: "Česká republika",
+    countryEn: "Czech Republic",
+    people: [
+      {
+        name: "Karin Polišenská",
+        roleCs: "Národní koordinátorka",
+        roleEn: "National Coordinator",
+      },
+    ],
+  },
+  {
+    id: "sk",
+    countryCs: "Slovenská republika",
+    countryEn: "Slovak Republic",
+    people: [
+      {
+        name: "Sofia Ramšíková",
+        roleCs: "Národní koordinátorka",
+        roleEn: "National Coordinator",
+      },
+    ],
+  },
+];
