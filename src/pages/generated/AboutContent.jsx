@@ -5,7 +5,7 @@ import { BoardMemberCard } from "../../components/BoardMemberCard";
 import { DisinfoGapChart } from "../../components/DisinfoGapChart";
 import { FakeNewsQuiz } from "../../components/FakeNewsQuiz";
 import { Flythrough } from "../../components/Flythrough";
-// import { NationalCoordinators } from "../../components/NationalCoordinators";
+import { NationalCoordinators } from "../../components/NationalCoordinators";
 // import { PartnersSection } from "../../components/PartnersSection";
 import { TickerBar } from "../../components/TickerBar";
 import {
@@ -1209,7 +1209,6 @@ export function AboutPageContent() {
 
       <Flythrough variant="ticker" />
 
-      {/* Hlavní rada — odkomentuj pro návrat:
       <section
         className="sec layer-band layer-band--council py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"
         id="about-council"
@@ -1269,7 +1268,6 @@ export function AboutPageContent() {
           </div>
         </div>
       </section>
-      */}
 
       {/* Partneři — odkomentuj pro návrat:
       <PartnersSection />

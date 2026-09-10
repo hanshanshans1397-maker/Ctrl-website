@@ -7214,6 +7214,11 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
   }
 }
 
+.coord-accordion__empty,
+.coord-team {
+  padding: 22px 32px 24px;
+}
+
 .coord-accordion__empty {
   font-size: 15px;
   font-weight: 300;
@@ -7244,6 +7249,22 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
 
 .coord-team__row:last-child {
   border-bottom: 0;
+}
+
+.coord-team__name {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: var(--color-dark);
+}
+
+.coord-team__role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--color-mid);
+  text-align: right;
 }
 
 .partner-group__label {
@@ -7335,6 +7356,15 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
   .coord-team {
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .coord-team__row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .coord-team__role {
+    text-align: left;
   }
 }
 

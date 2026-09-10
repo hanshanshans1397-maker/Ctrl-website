@@ -3,7 +3,7 @@ import { NATIONAL_COORDINATORS } from '../data/leadership';
 
 export function NationalCoordinators() {
   const panelId = useId();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(NATIONAL_COORDINATORS.length > 0);
   const count = NATIONAL_COORDINATORS.reduce(
     (sum, team) => sum + (team.people?.length || 0),
     0,
