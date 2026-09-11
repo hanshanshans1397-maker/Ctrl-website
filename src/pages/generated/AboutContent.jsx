@@ -302,7 +302,7 @@ export function AboutPageContent() {
                   Founded
                 </div>
                 <div className="text-xl font-semibold text-dark">
-                  2025, Brno
+                  2026, Brno
                 </div>
               </div>
               <div className="py-8 px-9 border-b border-separator bg-bg">
@@ -479,12 +479,12 @@ export function AboutPageContent() {
               <div className="prose">
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
                   CTRL Europe je nezávislá studentská organizace a youth
-                  platforma se sídlem v Brně. Vznikla v roce 2025 z iniciativy
+                  platforma se sídlem v Brně. Vznikla v roce 2026 z iniciativy
                   studentů ve věku 16–19 let ze střední Evropy.
                 </p>
                 <p className="en text-base font-light leading-[1.85] text-mid mb-5">
                   CTRL Europe is an independent student organization and youth
-                  platform based in Brno. It was founded in 2025 on the
+                  platform based in Brno. It was founded in 2026 on the
                   initiative of students aged 16–19 from Central Europe.
                 </p>
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
@@ -790,7 +790,7 @@ export function AboutPageContent() {
                 />
                 <div className="absolute bottom-0 left-0 right-0 py-3 px-5 bg-[rgba(245,245,243,0.85)]">
                   <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid">
-                    Jan Krejčí, 2025
+                    Jan Krejčí, 2026
                   </div>
                 </div>
               </div>
