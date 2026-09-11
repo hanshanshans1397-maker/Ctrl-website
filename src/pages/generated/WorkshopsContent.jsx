@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Flythrough } from "../../components/Flythrough";
+import { WorkshopFacts } from "../../components/WorkshopFacts";
 import { WorkshopPerks } from "../../components/WorkshopPerks";
 
 export function WorkshopsPageContent() {
@@ -142,8 +143,8 @@ export function WorkshopsPageContent() {
           <div className="about-2col grid grid-cols-2 items-start gap-[100px] max-lg:grid-cols-1 max-lg:gap-12 max-sm:gap-10">
             <div className="rev">
               <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">
-                Algoritmy rozhodují co vidíme. Deepfaky nahrazují realitu.
-                Dezinformace se šíří rychleji než fakty. A vzdělávací systém na
+                Algoritmy rozhodují, co vidíme. Deepfaky nahrazují realitu.
+                Dezinformace se šíří rychleji než fakta a vzdělávací systém na
                 to není připravený.
               </p>
               <p className="en mb-5 text-base leading-[1.85] font-light text-mid">
@@ -152,9 +153,9 @@ export function WorkshopsPageContent() {
                 system is not prepared for this.
               </p>
               <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">
-                Osnovy vznikají roky dopředu. Technologie se mění každý měsíc.
-                CTRL Workshops tuto propast překlenuje. Prakticky, interaktivně,
-                bez zbytečné teorie.
+                Osnovy vznikají roky dopředu, ale technologie se mění každý
+                měsíc. CTRL Workshops tuto propast překlenují. Prakticky,
+                interaktivně a bez zbytečné teorie.
               </p>
               <p className="en mb-5 text-base leading-[1.85] font-light text-mid">
                 Curricula are developed years in advance. Technology changes
@@ -174,165 +175,8 @@ export function WorkshopsPageContent() {
                 </strong>
               </p>
             </div>
-            <div className="rev d2 grid grid-cols-2 sep-grid">
-              {/* 90 MIN */}
-              <div className="bg-card px-6 py-6 flex flex-col gap-2">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-mono text-[10px] tracking-[2px] uppercase font-medium opacity-100">
-                    <span className="cs text-dark">Délka</span>
-                    <span className="en text-dark">Duration</span>
-                  </span>
-                  <svg
-                    className="w-[18px] h-[18px] text-mid opacity-50"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                  >
-                    <circle cx="8" cy="8" r="6.5" />
-                    <path
-                      d="M8 4.5V8.2l2.2 1.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div className="font-mono text-[40px] font-bold text-accent leading-none tracking-[-2px]">
-                  90
-                </div>
-                <div className="cs text-sm font-light text-mid mt-1">
-                  Délka programu
-                </div>
-                <div className="en text-sm font-light text-mid mt-1">
-                  Program duration
-                </div>
-              </div>
-              {/* 0 Kč FREE */}
-              <div className="bg-card px-6 py-6 flex flex-col gap-2">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-mono text-[10px] tracking-[2px] uppercase font-medium opacity-100">
-                    <span className="cs text-dark">Cena</span>
-                    <span className="en text-dark">Price</span>
-                  </span>
-                  <svg
-                    className="w-[18px] h-[18px] text-mid opacity-50"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                  >
-                    <circle cx="8" cy="8" r="6.5" />
-                    <path
-                      d="M5.5 8.5l1.8 1.8 3.5-4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div className="font-mono text-[40px] font-bold text-accent leading-none tracking-[-2px]">
-                  <span className="cs">Zdarma</span>
-                  <span className="en">Free</span>
-                </div>
-                <div className="cs text-sm font-light text-mid mt-1">
-                  Pro partnerské školy
-                </div>
-                <div className="en text-sm font-light text-mid mt-1">
-                  For partner schools
-                </div>
-              </div>
-              {/* 8 TOPICS */}
-              <div className="bg-card px-6 py-6 flex flex-col gap-2">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-mono text-[10px] tracking-[2px] uppercase font-medium opacity-100">
-                    <span className="cs text-dark">Témata</span>
-                    <span className="en text-dark">Topics</span>
-                  </span>
-                  <svg
-                    className="w-[18px] h-[18px] text-mid opacity-50"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                  >
-                    <rect x="1.5" y="1.5" width="5" height="5" rx="0.75" />
-                    <rect x="9.5" y="1.5" width="5" height="5" rx="0.75" />
-                    <rect x="1.5" y="9.5" width="5" height="5" rx="0.75" />
-                    <rect x="9.5" y="9.5" width="5" height="5" rx="0.75" />
-                  </svg>
-                </div>
-                <div className="font-mono text-[40px] font-bold text-accent leading-none tracking-[-2px]">
-                  8
-                </div>
-                <div className="cs text-sm font-light text-mid mt-1">
-                  Hlavních témat
-                </div>
-                <div className="en text-sm font-light text-mid mt-1">
-                  Main topics
-                </div>
-              </div>
-              {/* 26 AGE */}
-              <div className="bg-card px-6 py-6 flex flex-col gap-2">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-mono text-[10px] tracking-[2px] uppercase font-medium opacity-100">
-                    <span className="cs text-dark">Věk</span>
-                    <span className="en text-dark">Age</span>
-                  </span>
-                  <svg
-                    className="w-[18px] h-[18px] text-mid opacity-50"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                  >
-                    <circle cx="8" cy="5" r="2.5" />
-                    <path
-                      d="M2.5 14c0-3 2.5-4.5 5.5-4.5s5.5 1.5 5.5 4.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-                <div className="font-sans text-[32px] font-bold text-accent leading-tight tracking-[-0.5px]">
-                  <span className="cs">26 let</span>
-                  <span className="en">26 years</span>
-                </div>
-                <div className="cs text-sm font-light text-mid mt-1">
-                  Maximální věk
-                </div>
-                <div className="en text-sm font-light text-mid mt-1">
-                  Maximum age
-                </div>
-              </div>
-              {/* note — full width */}
-              <div className="col-span-2 flex items-start gap-4 bg-bg px-6 py-4 border-t border-separator">
-                <svg
-                  className="w-4 h-4 text-accent shrink-0 mt-0.5"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.3"
-                >
-                  <path
-                    d="M8 14s-5-4.5-5-8a5 5 0 0110 0c0 3.5-5 8-5 8z"
-                    strokeLinejoin="round"
-                  />
-                  <circle
-                    cx="8"
-                    cy="6"
-                    r="1.8"
-                    fill="currentColor"
-                    stroke="none"
-                    opacity="0.7"
-                  />
-                </svg>
-                <p className="cs text-[13px] leading-[1.7] font-light text-mid">
-                  Workshop probíhá přímo na vaší škole. Žádné cestování, žádné
-                  komplikace.
-                </p>
-                <p className="en text-[13px] leading-[1.7] font-light text-mid">
-                  The workshop takes place directly at your school. No travel,
-                  no complications.
-                </p>
-              </div>
+            <div>
+              <WorkshopFacts />
             </div>
           </div>
         </div>

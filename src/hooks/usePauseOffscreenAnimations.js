@@ -16,6 +16,7 @@ const ANIMATED_CONTAINERS = [
   '.apply-people',
   '#hero',
   '.page-hero.bg-dark',
+  '.workshop-facts',
 ].join(', ');
 
 export function usePauseOffscreenAnimations(pathname) {

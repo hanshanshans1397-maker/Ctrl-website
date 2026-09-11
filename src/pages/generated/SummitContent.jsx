@@ -236,46 +236,48 @@ export function SummitPageContent() {
               <div className="about-stats grid grid-cols-2 sep-grid max-sm:[&>div]:px-3 max-sm:[&>div]:py-[18px] max-sm:[&>div>div:first-child]:text-[32px]">
                 <div className="bg-card px-6 py-6 text-center">
                   <div className="text-[40px] font-extrabold tracking-[-2px] text-accent">
-                    1
+                    <span className="cs">1 den</span>
+                    <span className="en">1 day</span>
                   </div>
-                  <div className="cs mt-1 font-mono text-[10px] tracking-[2px] text-mid uppercase">
-                    Den programu
+                  <div className="cs mt-1 font-mono text-[10px] tracking-[1.5px] leading-snug text-mid uppercase">
+                    plný přednášek a workshopů
                   </div>
-                  <div className="en mt-1 font-mono text-[10px] tracking-[2px] text-mid uppercase">
-                    Day of program
-                  </div>
-                </div>
-                <div className="bg-card px-6 py-6 text-center">
-                  <div className="text-[40px] font-extrabold tracking-[-2px] text-accent">
-                    3+
-                  </div>
-                  <div className="cs mt-1 font-mono text-[10px] tracking-[2px] text-mid uppercase">
-                    Hlavní témata
-                  </div>
-                  <div className="en mt-1 font-mono text-[10px] tracking-[2px] text-mid uppercase">
-                    Main themes
+                  <div className="en mt-1 font-mono text-[10px] tracking-[1.5px] leading-snug text-mid uppercase">
+                    packed with talks and workshops
                   </div>
                 </div>
                 <div className="bg-card px-6 py-6 text-center">
                   <div className="text-[40px] font-extrabold tracking-[-2px] text-accent">
-                    CEE
+                    6
                   </div>
                   <div className="cs mt-1 font-mono text-[10px] tracking-[2px] text-mid uppercase">
-                    Region
+                    klíčových témat
                   </div>
                   <div className="en mt-1 font-mono text-[10px] tracking-[2px] text-mid uppercase">
-                    Region
+                    key topics
                   </div>
                 </div>
                 <div className="bg-card px-6 py-6 text-center">
                   <div className="text-[40px] font-extrabold tracking-[-2px] text-accent">
-                    0 Kč
+                    Brno
                   </div>
                   <div className="cs mt-1 font-mono text-[10px] tracking-[2px] text-mid uppercase">
-                    vstup
+                    místo konání
                   </div>
                   <div className="en mt-1 font-mono text-[10px] tracking-[2px] text-mid uppercase">
-                    Entry fee
+                    host city
+                  </div>
+                </div>
+                <div className="bg-card px-6 py-6 text-center">
+                  <div className="text-[40px] font-extrabold tracking-[-2px] text-accent">
+                    <span className="cs">Zdarma</span>
+                    <span className="en">Free</span>
+                  </div>
+                  <div className="cs mt-1 font-mono text-[10px] tracking-[1.5px] leading-snug text-mid uppercase">
+                    vstupné po registraci
+                  </div>
+                  <div className="en mt-1 font-mono text-[10px] tracking-[1.5px] leading-snug text-mid uppercase">
+                    admission after registration
                   </div>
                 </div>
               </div>
