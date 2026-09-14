@@ -179,9 +179,7 @@ export const NEWS = [
         ],
       },
       {
-        type: "p",
-        cs: "Spuštění online rezervací: 19. září 2026. Kapacita akce je omezená. Odkaz na online rezervační formulář zveřejníme 19. září na tomto webu a na našich sociálních sítích.",
-        en: "Online reservations open on 19 September 2026. Capacity is limited. The link to the online reservation form will be published on 19 September on this website and on our social media.",
+        type: "register",
       },
       {
         type: "h2",

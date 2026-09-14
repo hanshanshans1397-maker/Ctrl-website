@@ -4,6 +4,7 @@ import { ArticleRouteMap } from '../ui/ArticleRouteMap';
 import { NewsInvite } from '../ui/NewsInvite';
 import { NewsPhraseMarquee } from '../ui/NewsPhraseMarquee';
 import { NewsTitleText } from '../ui/NewsTitleText';
+import { RunRegisterCta } from '../ui/RunRegisterCta';
 
 function CharityLink({ href, children }) {
   return (
@@ -96,6 +97,10 @@ function ArticleBlock({ block }) {
 
   if (block.type === 'route') {
     return <ArticleRouteMap platforms={block.platforms} />;
+  }
+
+  if (block.type === 'register') {
+    return <RunRegisterCta />;
   }
 
   if (block.type === 'quote') {
