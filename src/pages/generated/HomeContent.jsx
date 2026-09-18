@@ -754,7 +754,7 @@ export function HomePageContent() {
                   <span className="en">Founded</span>
                 </div>
                 <div className="text-[15px] font-medium text-dark">
-                  2025 · Brno
+                  2026 · Brno
                 </div>
               </div>
               <div className="bg-card py-6 px-6">
@@ -789,7 +789,7 @@ export function HomePageContent() {
             </div>
             <div className="absolute bottom-0 left-0 right-0 py-3 px-5 bg-[rgba(11,16,32,0.85)]">
               <div className="font-mono text-[10px] tracking-[2px] uppercase text-[rgba(245,245,243,1)]">
-                Jan Krejčí · 2025
+                Jan Krejčí · 2026
               </div>
             </div>
           </div>

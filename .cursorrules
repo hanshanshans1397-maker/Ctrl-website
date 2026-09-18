@@ -12,3 +12,8 @@
 - Nikdy nevytvářej obří monolitické soubory. Rozbíjej komponenty na menší části (`/components/ui`, `/components/sections`).
 - Pokud používáš externí knihovny (Three.js, Lucide icons, Framer Motion), vždy zkontroluj, že jsou správně importované a kompatibilní s aktuálním Reactem.
 - Piš čistý, produkčně připravený kód bez placeholderů typu `// doplňte později`.
+
+# Commit messages
+- Formát: `typ(stránka): text` — např. `feat(workshops): přestavba infoboxu faktů na hodnotu-první mřížku`.
+- Typy: `feat`, `fix`, `copy`, `style`, `refactor`, `chore`. Stránka = `workshops`, `summit`, `home`, `about`, …
+- Předmět nestačí: vždy rozepiš tělo commitu (co, proč, co je draft). Podrobnosti v `.cursor/rules/commit-messages.mdc`.

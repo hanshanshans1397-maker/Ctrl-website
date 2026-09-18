@@ -52,10 +52,10 @@ export function Cursor() {
     };
 
     const onOver = (e) => {
-      if (e.target.closest('a, button, [data-cursor-hover], .what-card, .number-card, .offer-card, .perk-card')) onEnter();
+      if (e.target.closest('a, button, [data-cursor-hover], .what-card, .number-card, .offer-card, .perk-card, .workshop-fact')) onEnter();
     };
     const onOut = (e) => {
-      if (e.target.closest('a, button, [data-cursor-hover], .what-card, .number-card, .offer-card, .perk-card')) onLeave();
+      if (e.target.closest('a, button, [data-cursor-hover], .what-card, .number-card, .offer-card, .perk-card, .workshop-fact')) onLeave();
     };
 
     document.addEventListener('mouseover', onOver);

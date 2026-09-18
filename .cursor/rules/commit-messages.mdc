@@ -1,0 +1,24 @@
+---
+description: Formát a délka git commit message — typ(stránka) a rozepsané tělo
+alwaysApply: true
+---
+
+# Commit messages
+
+Při každém commitu používej formát:
+
+`typ(stránka): text`
+
+- **typ** — `feat` (nové chování), `fix`, `copy` (texty), `style` (vzhled bez nové logiky), `refactor`, `chore`
+- **stránka** — konkrétní stránka nebo oblast (`workshops`, `summit`, `home`, `about`, `run`, `cursor`, …). Sahá-li změna na víc stránek, splitni commity, nebo dej do závorky hlavní stránku a zbytek rozepiš v těle.
+- **text** — česky, konkrétně co se změnilo. Ne jednoslovný souhrn.
+
+Předmět nestačí. **Vždy rozepiš tělo** (zhruba 2–4 věty): co přesně, proč, případně co je ještě draft. Piš pro někoho, kdo diff neotevře.
+
+```
+feat(workshops): přestavba infoboxu faktů na hodnotu-první mřížku
+
+Místo stísněného dashboardu s ikonami a duplicitními labely je velká
+hodnota a krátký popisek. Stagger při vstupu do viewportu, hover
+podtržení, křížové oddělovače místo gap: 1px.
+```

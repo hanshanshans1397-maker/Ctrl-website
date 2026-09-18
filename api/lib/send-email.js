@@ -1,13 +1,11 @@
+import { getApplyToEmail, getResendApiKey, getResendFromEmail, getSiteUrl } from './env.js';
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
-}
-
-function getSiteUrl() {
-  return (process.env.SITE_URL || "https://ctrleurope.com").replace(/\/$/, "");
 }
 
 function getLogoUrl() {
@@ -25,8 +23,8 @@ function emailRow(label, value) {
 function confirmationRow(label, value) {
   if (!value) return "";
   return `<tr>
-    <td style="padding:10px 0;border-bottom:1px solid rgba(29,78,216,0.12);font-family:Geist Mono,Consolas,monospace;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#1d4ed8;vertical-align:top;width:42%;">${escapeHtml(label)}</td>
-    <td style="padding:10px 0 10px 16px;border-bottom:1px solid rgba(29,78,216,0.12);font-size:14px;line-height:1.5;color:#0b1020;font-weight:500;">${escapeHtml(value)}</td>
+    <td class="email-row-label" style="padding:10px 0;border-bottom:1px solid rgba(29,78,216,0.12);font-family:Geist Mono,Consolas,monospace;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#1d4ed8;vertical-align:top;width:42%;">${escapeHtml(label)}</td>
+    <td class="email-row-value" style="padding:10px 0 10px 16px;border-bottom:1px solid rgba(29,78,216,0.12);font-size:14px;line-height:1.5;color:#0b1020;font-weight:500;word-break:break-word;">${escapeHtml(value).replaceAll("\n", "<br />")}</td>
   </tr>`;
 }
 
@@ -44,33 +42,120 @@ function wrapEmail(title, rows) {
 
 function wrapConfirmationEmail({
   isEn,
+  eyebrow,
+  headline,
   greeting,
   intro,
   summaryTitle,
   rows,
   outro,
+  ctaHref,
+  ctaLabel,
+  secondaryCtaHref,
+  secondaryCtaLabel,
 }) {
   const siteUrl = getSiteUrl();
   const logoUrl = getLogoUrl();
-  const eyebrow = isEn ? "Member application" : "Přihláška člena";
-  const headline = isEn ? "Thank you for applying." : "Děkujeme za přihlášku.";
-  const websiteLabel = isEn ? "Visit website" : "Navštívit web";
+  const resolvedEyebrow =
+    eyebrow ?? (isEn ? "Member application" : "Přihláška člena");
+  const resolvedHeadline =
+    headline ?? (isEn ? "Thank you for applying." : "Děkujeme za přihlášku.");
+  const resolvedCtaHref = ctaHref || siteUrl;
+  const resolvedCtaLabel =
+    ctaLabel ?? (isEn ? "Visit website" : "Navštívit web");
   const tagline = isEn
     ? "Building digital resilience for the next European generation."
     : "Budujeme digitální odolnost pro novou evropskou generaci.";
+
+  const secondaryCta =
+    secondaryCtaHref && secondaryCtaLabel
+      ? `<td class="email-cta-cell" style="padding-left:10px;">
+          <a class="email-cta-link email-cta-link--ghost" href="${escapeHtml(secondaryCtaHref)}" style="display:inline-block;padding:14px 24px;font-size:14px;font-weight:600;color:#0b1020;text-decoration:none;border:1px solid rgba(11,16,32,0.18);border-radius:8px;">
+            ${escapeHtml(secondaryCtaLabel)} &rarr;
+          </a>
+        </td>`
+      : "";
 
   return `<!DOCTYPE html>
 <html lang="${isEn ? "en" : "cs"}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${escapeHtml(headline)}</title>
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no" />
+    <title>${escapeHtml(resolvedHeadline)}</title>
+    <!--[if mso]>
+    <noscript>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+    </noscript>
+    <![endif]-->
+    <style type="text/css">
+      html, body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+      body { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+      table, td { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+      img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+      a { text-decoration: none; }
+      @media only screen and (max-width: 620px) {
+        .email-outer { padding: 20px 12px 28px !important; }
+        .email-hero { padding: 22px 18px 20px !important; border-radius: 10px 10px 0 0 !important; }
+        .email-body { padding: 22px 18px !important; border-radius: 0 0 10px 10px !important; }
+        .email-headline { font-size: 24px !important; line-height: 1.2 !important; }
+        .email-summary { padding: 16px !important; }
+        .email-row-label,
+        .email-row-value {
+          display: block !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .email-row-label {
+          padding: 12px 0 2px !important;
+          border-bottom: none !important;
+        }
+        .email-row-value {
+          padding: 0 0 12px !important;
+        }
+        .email-cta-wrap,
+        .email-cta-wrap tbody,
+        .email-cta-wrap tr {
+          display: block !important;
+          width: 100% !important;
+        }
+        .email-cta-cell {
+          display: block !important;
+          width: 100% !important;
+          padding: 0 0 10px !important;
+          background: transparent !important;
+        }
+        .email-cta-link {
+          display: block !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          text-align: center !important;
+          background: #0b1020 !important;
+          color: #f5f5f3 !important;
+          border-radius: 8px !important;
+        }
+        .email-cta-link--ghost {
+          background: #ffffff !important;
+          color: #0b1020 !important;
+          border: 1px solid rgba(11,16,32,0.18) !important;
+        }
+      }
+    </style>
   </head>
   <body style="margin:0;padding:0;background:#f5f5f3;font-family:Geist,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#0b1020;">
-    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5f5f3;">
+    <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">
+      ${escapeHtml(resolvedHeadline)}
+    </div>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5f5f3;width:100%;">
       <tr>
-        <td align="center" style="padding:40px 20px 48px;">
-          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;">
+        <td class="email-outer" align="center" style="padding:40px 20px 48px;">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;width:100%;">
             <tr>
               <td style="padding:0 0 28px;text-align:center;">
                 <a href="${escapeHtml(siteUrl)}" style="text-decoration:none;">
@@ -79,39 +164,40 @@ function wrapConfirmationEmail({
               </td>
             </tr>
             <tr>
-              <td style="background:#0b1020;border-radius:12px 12px 0 0;padding:28px 32px 24px;">
+              <td class="email-hero" style="background:#0b1020;border-radius:12px 12px 0 0;padding:28px 32px 24px;">
                 <p style="margin:0 0 10px;font-family:Geist Mono,Consolas,monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#4a7bff;">
                   <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#4a7bff;vertical-align:middle;margin-right:8px;"></span>
-                  ${escapeHtml(eyebrow)}
+                  ${escapeHtml(resolvedEyebrow)}
                 </p>
-                <h1 style="margin:0;font-size:28px;line-height:1.1;font-weight:800;letter-spacing:-0.8px;color:#f5f5f3;">
-                  ${escapeHtml(headline)}
+                <h1 class="email-headline" style="margin:0;font-size:28px;line-height:1.1;font-weight:800;letter-spacing:-0.8px;color:#f5f5f3;">
+                  ${escapeHtml(resolvedHeadline)}
                 </h1>
               </td>
             </tr>
             <tr>
-              <td style="background:#ffffff;border:1px solid rgba(11,16,32,0.08);border-top:none;border-radius:0 0 12px 12px;padding:32px;">
+              <td class="email-body" style="background:#ffffff;border:1px solid rgba(11,16,32,0.08);border-top:none;border-radius:0 0 12px 12px;padding:32px;">
                 <p style="margin:0 0 16px;font-size:16px;line-height:1.6;font-weight:600;color:#0b1020;">${escapeHtml(greeting)}</p>
                 <p style="margin:0 0 28px;font-size:15px;line-height:1.7;color:#6b7280;">${escapeHtml(intro)}</p>
 
-                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom:28px;">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom:28px;width:100%;">
                   <tr>
-                    <td style="background:#eff4ff;border:1px solid rgba(29,78,216,0.14);border-left:3px solid #1d4ed8;border-radius:8px;padding:20px 22px;">
+                    <td class="email-summary" style="background:#eff4ff;border:1px solid rgba(29,78,216,0.14);border-left:3px solid #1d4ed8;border-radius:8px;padding:20px 22px;">
                       <h2 style="margin:0 0 14px;font-size:13px;line-height:1.4;font-weight:700;letter-spacing:-0.2px;color:#0b1020;">${escapeHtml(summaryTitle)}</h2>
-                      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">${rows}</table>
+                      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;">${rows}</table>
                     </td>
                   </tr>
                 </table>
 
-                <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#0b1020;">${escapeHtml(outro)}</p>
+                <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#0b1020;">${escapeHtml(outro).replaceAll("\n", "<br />")}</p>
 
-                <table role="presentation" cellspacing="0" cellpadding="0">
+                <table role="presentation" class="email-cta-wrap" cellspacing="0" cellpadding="0" style="width:auto;">
                   <tr>
-                    <td style="border-radius:8px;background:#0b1020;">
-                      <a href="${escapeHtml(siteUrl)}" style="display:inline-block;padding:14px 24px;font-size:14px;font-weight:600;color:#f5f5f3;text-decoration:none;">
-                        ${escapeHtml(websiteLabel)} &rarr;
+                    <td class="email-cta-cell" style="border-radius:8px;background:#0b1020;">
+                      <a class="email-cta-link" href="${escapeHtml(resolvedCtaHref)}" style="display:inline-block;padding:14px 24px;font-size:14px;font-weight:600;color:#f5f5f3;text-decoration:none;">
+                        ${escapeHtml(resolvedCtaLabel)} &rarr;
                       </a>
                     </td>
+                    ${secondaryCta}
                   </tr>
                 </table>
               </td>
@@ -133,10 +219,9 @@ function wrapConfirmationEmail({
 }
 
 export async function sendEmail({ subject, html, to, replyTo }) {
-  const apiKey = process.env.RESEND_API_KEY;
-  const from =
-    process.env.RESEND_FROM_EMAIL || "CTRL Europe <no-reply@ctrleurope.com>";
-  const recipient = to || process.env.APPLY_TO_EMAIL || "ctrleurope@seznam.cz";
+  const apiKey = getResendApiKey();
+  const from = getResendFromEmail();
+  const recipient = to || getApplyToEmail();
 
   if (!apiKey) {
     throw new Error("RESEND_API_KEY is not configured");
@@ -243,5 +328,104 @@ export function buildApplyConfirmationEmail(body) {
       outro,
     }),
     to: body.email,
+  };
+}
+
+const TICKET_LABELS = {
+  Základní: { cs: "Základní", en: "Standard" },
+  Studentské: { cs: "Studentské", en: "Student" },
+  Rodinné: { cs: "Rodinné", en: "Family" },
+};
+
+function formatTicketForEmail(person, isEn) {
+  const base = TICKET_LABELS[person.ticket]?.[isEn ? "en" : "cs"] ?? person.ticket;
+  if (person.ticket !== "Rodinné") return base;
+  if (isEn) {
+    const adults = `${person.adults} adult${person.adults === 1 ? "" : "s"}`;
+    const children = `${person.children} child${person.children === 1 ? "" : "ren"}`;
+    return `${base} (${adults}, ${children})`;
+  }
+  const adults =
+    person.adults === 1 ? "1 dospělý" : `${person.adults} dospělí`;
+  const children =
+    person.children === 1 ? "1 dítě" : `${person.children} děti`;
+  return `${base} (${adults}, ${children})`;
+}
+
+export function buildRunRegisterConfirmationEmail({ email, people, lang }) {
+  const isEn = lang === "en";
+  const siteUrl = getSiteUrl();
+  const articleUrl = `${siteUrl}/news/charitativni-beh`;
+  const cancelEmail = "ctrleurope@seznam.cz";
+
+  const totalPeople = people.reduce(
+    (sum, person) =>
+      sum +
+      (person.ticket === "Rodinné" ? person.adults + person.children : 1),
+    0,
+  );
+
+  const firstName = String(people[0]?.name ?? "")
+    .trim()
+    .split(/\s+/)[0];
+
+  const peopleLines = people
+    .map((person) => `${person.name} — ${formatTicketForEmail(person, isEn)}`)
+    .join("\n");
+
+  const subject = isEn
+    ? "CTRL Run registration confirmed — CTRL Europe"
+    : "Potvrzení registrace na CTRL Run — CTRL Europe";
+
+  const greeting = isEn
+    ? `Hi${firstName ? ` ${firstName}` : ""},`
+    : `Ahoj${firstName ? ` ${firstName}` : ""},`;
+
+  const intro = isEn
+    ? "Thank you for registering for CTRL Run. We have received your reservation and look forward to seeing you at Komec."
+    : "Děkujeme za registraci na CTRL Run. Rezervaci jsme přijali a těšíme se na vás u Komecu.";
+
+  const summaryTitle = isEn ? "Your registration" : "Vaše registrace";
+
+  const rows = [
+    confirmationRow(
+      isEn ? "Date" : "Datum",
+      isEn ? "Saturday 3 October 2026" : "sobota 3. října 2026",
+    ),
+    confirmationRow(
+      isEn ? "Location" : "Místo",
+      isEn
+        ? "Komec sports complex, Brno-Komárov"
+        : "Sportovní areál Komec, Brno-Komárov",
+    ),
+    confirmationRow(
+      isEn ? "People" : "Počet osob",
+      String(totalPeople),
+    ),
+    confirmationRow(isEn ? "Registered" : "Přihlášení", peopleLines),
+  ].join("");
+
+  const outro = isEn
+    ? `If you need to cancel your reservation, write to ${cancelEmail}.\n\nYou can also revisit the event page or our website using the buttons below.`
+    : `Pokud chcete rezervaci zrušit, napište na ${cancelEmail}.\n\nAktualitu k běhu i web CTRL Europe otevřete tlačítky níže.`;
+
+  return {
+    subject,
+    html: wrapConfirmationEmail({
+      isEn,
+      eyebrow: "CTRL Run",
+      headline: isEn ? "You’re registered." : "Jste registrováni.",
+      greeting,
+      intro,
+      summaryTitle,
+      rows,
+      outro,
+      ctaHref: articleUrl,
+      ctaLabel: isEn ? "Open event page" : "Otevřít aktualitu",
+      secondaryCtaHref: siteUrl,
+      secondaryCtaLabel: isEn ? "ctrleurope.com" : "ctrleurope.com",
+    }),
+    to: email,
+    replyTo: cancelEmail,
   };
 }
