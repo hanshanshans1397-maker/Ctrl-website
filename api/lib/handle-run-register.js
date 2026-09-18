@@ -7,16 +7,14 @@ import {
   sheetPeopleCount,
   validatePeople,
 } from '../../shared/runRegister.js';
+import { getRunSheetsWebhookUrl } from './env.js';
 import { buildRunRegisterConfirmationEmail, sendEmail } from './send-email.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const WEBHOOK_TIMEOUT_MS = 25000;
 
 function getWebhookUrl() {
-  return (
-    process.env.RUN_SHEETS_WEBHOOK_URL ||
-    'https://script.google.com/macros/s/AKfycbx-lmy-k0ujqbsfGNJEoUhk582zi1UnODeArt-tgT5aY0CWmduYeo_1ZBldnVezFw-s_g/exec'
-  );
+  return getRunSheetsWebhookUrl();
 }
 
 function badRequest(message, fields) {

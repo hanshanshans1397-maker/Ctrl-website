@@ -1,13 +1,11 @@
+import { getApplyToEmail, getResendApiKey, getResendFromEmail, getSiteUrl } from './env.js';
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
-}
-
-function getSiteUrl() {
-  return (process.env.SITE_URL || "https://ctrleurope.com").replace(/\/$/, "");
 }
 
 function getLogoUrl() {
@@ -221,10 +219,9 @@ function wrapConfirmationEmail({
 }
 
 export async function sendEmail({ subject, html, to, replyTo }) {
-  const apiKey = process.env.RESEND_API_KEY;
-  const from =
-    process.env.RESEND_FROM_EMAIL || "CTRL Europe <no-reply@ctrleurope.com>";
-  const recipient = to || process.env.APPLY_TO_EMAIL || "ctrleurope@seznam.cz";
+  const apiKey = getResendApiKey();
+  const from = getResendFromEmail();
+  const recipient = to || getApplyToEmail();
 
   if (!apiKey) {
     throw new Error("RESEND_API_KEY is not configured");
