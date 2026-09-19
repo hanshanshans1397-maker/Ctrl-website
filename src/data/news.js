@@ -162,7 +162,12 @@ export const NEWS = [
         items: [
           { cs: "JUKO petfood", en: "JUKO petfood", href: "https://www.juko-krmiva.cz/cz/" },
           { cs: "BIRELL", en: "BIRELL", href: "https://www.birell.cz" },
-          { cs: "občerstvení u lampy", en: "Občerstvení u lampy" },
+          {
+            cs: "občerstvení u lampy",
+            en: "Občerstvení u lampy",
+            href: "https://www.facebook.com/ObcerstveniULampy/",
+            logo: "/partners/obcerstveni-u-lampy.svg",
+          },
           { cs: "a další", en: "and others" },
         ],
       },
