@@ -5,10 +5,16 @@ import { NewsInvite } from '../ui/NewsInvite';
 import { NewsPhraseMarquee } from '../ui/NewsPhraseMarquee';
 import { NewsTitleText } from '../ui/NewsTitleText';
 import { RunRegisterCta } from '../ui/RunRegisterCta';
+import './article-orgs.css';
 
-function CharityLink({ href, children }) {
+function CharityLink({ href, children, className }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+    >
       {children}
     </a>
   );
@@ -105,44 +111,56 @@ function ArticleBlock({ block }) {
 
   if (block.type === 'orgs') {
     return (
-      <ul className="my-6 flex list-none flex-col gap-3 p-0 font-mono text-[14px]">
-        {block.items.map((item, index) => {
-          const name = (
-            <>
-              <span className="cs">{item.cs}</span>
-              <span className="en">{item.en}</span>
-            </>
-          );
-          const label = item.href ? (
-            <CharityLink href={item.href}>{name}</CharityLink>
-          ) : (
-            name
-          );
+      <div className="article-orgs">
+        <div className="article-orgs__grid">
+          {block.items.map((item, index) => {
+            const isPlaceholder = Boolean(item.placeholder);
+            const monogram = isPlaceholder
+              ? '—'
+              : (item.cs || item.en || '?').trim().charAt(0).toUpperCase();
 
-          return (
-            <li
-              key={index}
-              className="flex items-center gap-3 border border-[rgba(11,16,32,0.1)] bg-card px-3 py-2.5"
-            >
-              {item.logo ? (
-                <img
-                  src={item.logo}
-                  alt=""
-                  className="h-12 w-12 shrink-0 object-contain"
-                />
-              ) : (
-                <span
-                  className="flex h-12 w-12 shrink-0 items-center justify-center text-accent"
-                  aria-hidden="true"
-                >
-                  ·
+            const inner = (
+              <>
+                {item.logo ? (
+                  <img
+                    src={item.logo}
+                    alt=""
+                    className="article-orgs__logo"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <span className="article-orgs__mark" aria-hidden="true">
+                    {monogram}
+                  </span>
+                )}
+                <span className="article-orgs__name">
+                  <span className="cs">{item.cs}</span>
+                  <span className="en">{item.en}</span>
                 </span>
-              )}
-              <span className="min-w-0 leading-snug text-dark">{label}</span>
-            </li>
-          );
-        })}
-      </ul>
+              </>
+            );
+
+            const className = `article-orgs__card${
+              isPlaceholder ? ' article-orgs__card--placeholder' : ''
+            }`;
+
+            if (item.href) {
+              return (
+                <CharityLink key={index} href={item.href} className={className}>
+                  {inner}
+                </CharityLink>
+              );
+            }
+
+            return (
+              <div key={index} className={className}>
+                {inner}
+              </div>
+            );
+          })}
+        </div>
+      </div>
     );
   }
 
