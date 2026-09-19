@@ -103,6 +103,25 @@ function ArticleBlock({ block }) {
     return <RunRegisterCta />;
   }
 
+  if (block.type === 'orgs') {
+    return (
+      <ul className="my-6 list-disc space-y-2 pl-5 font-mono text-[14px] marker:text-accent">
+        {block.items.map((item, index) => (
+          <li key={index}>
+            {item.href ? (
+              <CharityLink href={item.href}>
+                <span className="cs">{item.cs}</span>
+                <span className="en">{item.en}</span>
+              </CharityLink>
+            ) : (
+              <LocalePair cs={item.cs} en={item.en} />
+            )}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   if (block.type === 'quote') {
     return (
       <blockquote>

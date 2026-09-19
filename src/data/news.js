@@ -154,6 +154,20 @@ export const NEWS = [
       },
       {
         type: "h2",
+        cs: "Spolupracující organizace",
+        en: "Collaborating organisations",
+      },
+      {
+        type: "orgs",
+        items: [
+          { cs: "JUKO petfood", en: "JUKO petfood", href: "https://www.juko-krmiva.cz/cz/" },
+          { cs: "BIRELL", en: "BIRELL", href: "https://www.birell.cz" },
+          { cs: "občerstvení u lampy", en: "Občerstvení u lampy" },
+          { cs: "a další", en: "and others" },
+        ],
+      },
+      {
+        type: "h2",
         cs: "Registrace a vstupné",
         en: "Registration and entry",
       },
