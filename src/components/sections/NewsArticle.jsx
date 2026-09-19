@@ -105,19 +105,43 @@ function ArticleBlock({ block }) {
 
   if (block.type === 'orgs') {
     return (
-      <ul className="my-6 list-disc space-y-2 pl-5 font-mono text-[14px] marker:text-accent">
-        {block.items.map((item, index) => (
-          <li key={index}>
-            {item.href ? (
-              <CharityLink href={item.href}>
-                <span className="cs">{item.cs}</span>
-                <span className="en">{item.en}</span>
-              </CharityLink>
-            ) : (
-              <LocalePair cs={item.cs} en={item.en} />
-            )}
-          </li>
-        ))}
+      <ul className="my-6 flex list-none flex-col gap-3 p-0 font-mono text-[14px]">
+        {block.items.map((item, index) => {
+          const name = (
+            <>
+              <span className="cs">{item.cs}</span>
+              <span className="en">{item.en}</span>
+            </>
+          );
+          const label = item.href ? (
+            <CharityLink href={item.href}>{name}</CharityLink>
+          ) : (
+            name
+          );
+
+          return (
+            <li
+              key={index}
+              className="flex items-center gap-3 border border-[rgba(11,16,32,0.1)] bg-card px-3 py-2.5"
+            >
+              {item.logo ? (
+                <img
+                  src={item.logo}
+                  alt=""
+                  className="h-12 w-12 shrink-0 object-contain"
+                />
+              ) : (
+                <span
+                  className="flex h-12 w-12 shrink-0 items-center justify-center text-accent"
+                  aria-hidden="true"
+                >
+                  ·
+                </span>
+              )}
+              <span className="min-w-0 leading-snug text-dark">{label}</span>
+            </li>
+          );
+        })}
       </ul>
     );
   }
