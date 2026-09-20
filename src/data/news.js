@@ -65,6 +65,35 @@ export const NEWS = [
       },
       {
         type: "h2",
+        cs: "Partneři akce",
+        en: "Event partners",
+      },
+      {
+        type: "orgs",
+        items: [
+          {
+            cs: "JUKO petfood",
+            en: "JUKO petfood",
+            href: "https://www.juko-krmiva.cz/cz/",
+            logo: "/partners/juko-petfood.svg",
+          },
+          {
+            cs: "BIRELL",
+            en: "BIRELL",
+            href: "https://www.birell.cz",
+            logo: "/partners/birell.svg",
+          },
+          {
+            cs: "Občerstvení u lampy",
+            en: "Občerstvení u lampy",
+            href: "https://www.facebook.com/ObcerstveniULampy/",
+            logo: "/partners/obcerstveni-u-lampy.svg",
+          },
+          { cs: "a další", en: "and others", placeholder: true },
+        ],
+      },
+      {
+        type: "h2",
         cs: "Harmonogram a organizace",
         en: "Schedule and organisation",
       },
@@ -154,37 +183,13 @@ export const NEWS = [
       },
       {
         type: "h2",
-        cs: "Spolupracující organizace",
-        en: "Collaborating organisations",
-      },
-      {
-        type: "orgs",
-        items: [
-          {
-            cs: "JUKO petfood",
-            en: "JUKO petfood",
-            href: "https://www.juko-krmiva.cz/cz/",
-            logo: "/partners/juko-petfood.svg",
-          },
-          {
-            cs: "BIRELL",
-            en: "BIRELL",
-            href: "https://www.birell.cz",
-            logo: "/partners/birell.svg",
-          },
-          {
-            cs: "Občerstvení u lampy",
-            en: "Občerstvení u lampy",
-            href: "https://www.facebook.com/ObcerstveniULampy/",
-            logo: "/partners/obcerstveni-u-lampy.svg",
-          },
-          { cs: "a další", en: "and others", placeholder: true },
-        ],
-      },
-      {
-        type: "h2",
         cs: "Registrace a vstupné",
         en: "Registration and entry",
+      },
+      {
+        type: "p",
+        cs: "Seznamovací akce (večerní program) je určená především studentům. Pokud neběžíš a přijdeš jen na seznamovačku, studentské vstupné je 90 Kč.",
+        en: "The mixer (evening programme) is aimed primarily at students. If you are not running and only attend the mixer, student entry is 90 CZK.",
       },
       {
         type: "table",
@@ -194,16 +199,23 @@ export const NEWS = [
         },
         rows: [
           {
-            cs: ["Základní vstupné", "240 Kč"],
-            en: ["Standard entry", "240 CZK"],
+            cs: ["Základní vstupné (běh)", "240 Kč"],
+            en: ["Standard entry (run)", "240 CZK"],
           },
           {
-            cs: ["Studentské vstupné", "190 Kč (sleva 20 %)"],
-            en: ["Student entry", "190 CZK (20% off)"],
+            cs: ["Studentské vstupné (běh)", "190 Kč (sleva 20 %)"],
+            en: ["Student entry (run)", "190 CZK (20% off)"],
           },
           {
-            cs: ["Rodinné vstupné", "600 Kč (max. 2 dospělí a 3 děti)"],
-            en: ["Family entry", "600 CZK (max. 2 adults and 3 children)"],
+            cs: ["Rodinné vstupné (běh)", "600 Kč (max. 2 dospělí a 3 děti)"],
+            en: ["Family entry (run)", "600 CZK (max. 2 adults and 3 children)"],
+          },
+          {
+            cs: [
+              "Studentské vstupné — pouze seznamovací akce",
+              "90 Kč",
+            ],
+            en: ["Student entry — mixer only", "90 CZK"],
           },
         ],
       },
@@ -217,28 +229,33 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Večer po běhu plánujeme seznamovací akci v rámci naší iniciativy Odlož ten telefon — a seznam se.",
-        en: "After the run we are planning a mixer as part of our Put the phone down — and meet someone initiative.",
+        cs: "Večer po běhu plánujeme seznamovací akci v rámci naší iniciativy Odlož ten telefon — a seznam se. Je určená především studentům.",
+        en: "After the run we are planning a mixer as part of our Put the phone down — and meet someone initiative. It is aimed primarily at students.",
       },
       {
         type: "p",
-        cs: "Bez scrollování, bez profilových fotek, bez matchování přes obrazovku. Přijdeš, vybereš si náramek, odložíš telefon a můžeš se opravdu potkat s novými lidmi — ať už hledáš nové přátele nebo něco víc.",
-        en: "No scrolling, no profile photos, no matching through a screen. You show up, pick a wristband, put the phone down and actually meet new people — whether you’re looking for new friends or something more.",
+        cs: "Bez scrollování, bez profilových fotek, bez matchování přes obrazovku. Přijdeš, odložíš telefon a můžeš se opravdu potkat s novými lidmi — ať už hledáš nové přátele nebo něco víc.",
+        en: "No scrolling, no profile photos, no matching through a screen. You show up, put the phone down and actually meet new people — whether you’re looking for new friends or something more.",
       },
       {
         type: "p",
-        cs: "Každý účastník dostane při registraci své číslo. Pokud tě někdo zaujme, zapíšeš jeho číslo na lístek u organizátora. Po akci zkontrolujeme oboustranný zájem a pošleme kontakt oběma stranám e-mailem — nikdo nedostane tvůj kontakt bez tvého vědomí.",
-        en: "Each participant gets a number at registration. If someone catches your eye, you write their number on a slip with the organiser. After the event we check for mutual interest and email the contact to both sides — nobody gets your details without you knowing.",
+        cs: "Aktivity a hry se odehrají na odstaveném tramvaji, který bude příjemně nasvícený a připravený jako příjemné prostředí pro setkávání.",
+        en: "Activities and games will take place on a decommissioned tram that will be nicely lit, with a pleasant environment prepared for meeting people.",
       },
       {
         type: "p",
-        cs: "V rámci večera proběhne mini party a další program. Vše osobně, tváří v tvář. Telefon nech v kapse.",
-        en: "The evening includes a mini party and more programme. All of it in person, face to face. Keep your phone in your pocket.",
+        cs: "Jak funguje matching:",
+        en: "How matching works:",
       },
       {
         type: "p",
-        cs: "Součástí večera je dobrovolná seznamovací hra pomocí náramků:",
-        en: "The evening also includes an optional mixer game with wristbands:",
+        cs: "Dostaneš číslo a vedle něj napíšeš své kontaktní údaje a jméno. Pak se seznamuješ — pokud tě někdo zaujme, zapíšeš si jeho číslo. Na konci večera odevzdáš seznam. Organizátoři zkontrolují oboustranný zájem: když je MATCH, oba dostanete kontakt hned po akci. Nikdo nedostane tvůj kontakt bez tvého vědomí.",
+        en: "You receive a number and write your contact details and name next to it. Then you socialize — if someone impresses you, you write down their number. At the end of the evening you hand in the list. Organisers check for mutual interest: when it’s a MATCH, both of you get the other’s contact right after the event. Nobody gets your details without you knowing.",
+      },
+      {
+        type: "p",
+        cs: "Součástí večera je dobrovolná seznamovací hra pomocí náramků — náramek jen napovídá, s čím přicházíš:",
+        en: "The evening also includes an optional mixer game with wristbands — the band simply signals what you’re open to:",
       },
       {
         type: "table",
@@ -273,8 +290,28 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Zúčastnit se můžete běžecké části, večerního programu nebo obou aktivit. Veškeré vybrané prostředky ze vstupného použijeme na podporu prevence digitálních závislostí u dětí a mládeže a na boj se závislostmi — v souladu s posláním CTRL Europe.",
-        en: "You can take part in the run, the evening programme, or both. All entry fees collected will be used to support the prevention of digital addictions in children and young people and the fight against addictions — in line with the mission of CTRL Europe.",
+        cs: "Každý účastník je automaticky v tombole. Ceny jsou od našich partnerů — včetně velkých cen.",
+        en: "Every participant is automatically in the raffle. Prizes come from our partners — including big prizes.",
+      },
+      {
+        type: "h2",
+        cs: "Startovní balíček",
+        en: "Starter pack",
+      },
+      {
+        type: "p",
+        cs: "Účastníci běhu dostanou startovní balíček:",
+        en: "Run participants receive a starter pack:",
+      },
+      {
+        type: "p",
+        cs: "Birell (18+), diplom / medaile, dárky od sponzorů a další drobnosti.",
+        en: "Birell (18+), a diploma / medal, gifts from sponsors, and other small items.",
+      },
+      {
+        type: "p",
+        cs: "Zúčastnit se můžete běžecké části, večerního programu nebo obou aktivit. Na charitativní účel — prevenci digitálních závislostí u dětí a mládeže — jde výtěžek ze vstupného na běh. Vstupné pouze na seznamovací akci na charitu nejde.",
+        en: "You can take part in the run, the evening programme, or both. Proceeds from the run entry go to the charity cause — preventing digital addictions in children and young people. Mixer-only tickets do not go to charity.",
       },
     ],
   },
