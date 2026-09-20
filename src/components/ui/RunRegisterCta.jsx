@@ -227,7 +227,7 @@ export function RunRegisterCta() {
   };
 
   return (
-    <div className="run-register">
+    <div className="run-register" id="registrace">
       <div className="run-register-band">
         <div className="run-register-band__copy">
           <p className="run-register-band__eyebrow">CTRL Run</p>

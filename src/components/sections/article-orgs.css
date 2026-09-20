@@ -1,0 +1,103 @@
+/* Collaborating orgs on news articles — mirrors .partner-card language */
+.article-orgs {
+  margin: 8px 0 28px;
+}
+
+.article-orgs__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .article-orgs__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.article-orgs__card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 88px;
+  padding: 20px 24px;
+  background: var(--color-card);
+  border: 1px solid rgba(11, 16, 32, 0.08);
+  text-decoration: none;
+  color: inherit;
+  font-weight: inherit;
+}
+
+/* Beat .article-body a accent/underline defaults when the card is the link */
+.article-body a.article-orgs__card,
+.article-body a.article-orgs__card:hover {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.article-orgs__card--placeholder {
+  border-style: dashed;
+  opacity: 0.72;
+}
+
+.article-orgs__card--placeholder .article-orgs__name {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-mid);
+}
+
+.article-orgs__logo {
+  max-height: 40px;
+  max-width: 96px;
+  width: auto;
+  height: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.article-orgs__mark {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-light);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.article-orgs__name {
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-dark);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .article-orgs__card {
+    transition:
+      transform 200ms var(--ease-out-expo),
+      box-shadow 200ms var(--ease-out-expo),
+      border-color 200ms var(--ease-out-expo);
+  }
+
+  .article-orgs__card:hover {
+    translate: 0 -2px;
+    border-color: rgba(11, 16, 32, 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-orgs__card {
+    transition: none;
+    animation: none;
+  }
+}

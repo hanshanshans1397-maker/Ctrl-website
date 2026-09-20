@@ -36,6 +36,7 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     background-color: var(--color-bg);
+    scroll-behavior: smooth;
   }
 
   body {
@@ -2896,7 +2897,8 @@ body.reduced-motion .news-invite-dialog[open]::backdrop {
 }
 
 .run-register {
-  margin: 36px 0 56px;
+  margin: 8px 0 48px;
+  scroll-margin-top: 108px;
 }
 
 .run-register-band {

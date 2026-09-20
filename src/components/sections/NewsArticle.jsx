@@ -5,10 +5,22 @@ import { NewsInvite } from '../ui/NewsInvite';
 import { NewsPhraseMarquee } from '../ui/NewsPhraseMarquee';
 import { NewsTitleText } from '../ui/NewsTitleText';
 import { RunRegisterCta } from '../ui/RunRegisterCta';
+import {
+  ArticleFacts,
+  ArticleOrgs,
+  ArticleTimeline,
+} from './ArticleBlocks';
+import './article-orgs.css';
+import './article-blocks.css';
 
-function CharityLink({ href, children }) {
+function CharityLink({ href, children, className }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+    >
       {children}
     </a>
   );
@@ -30,9 +42,9 @@ function RichText({ value }) {
   });
 }
 
-function LocalePair({ cs, en, as: Tag = 'span' }) {
+function LocalePair({ cs, en, as: Tag = 'span', id }) {
   return (
-    <Tag>
+    <Tag id={id}>
       <span className="cs">{cs}</span>
       <span className="en">{en}</span>
     </Tag>
@@ -84,11 +96,11 @@ function ArticleBlock({ block }) {
   }
 
   if (block.type === 'h2') {
-    return <LocalePair as="h2" cs={block.cs} en={block.en} />;
+    return <LocalePair as="h2" id={block.id} cs={block.cs} en={block.en} />;
   }
 
   if (block.type === 'h3') {
-    return <LocalePair as="h3" cs={block.cs} en={block.en} />;
+    return <LocalePair as="h3" id={block.id} cs={block.cs} en={block.en} />;
   }
 
   if (block.type === 'table') {
@@ -101,6 +113,18 @@ function ArticleBlock({ block }) {
 
   if (block.type === 'register') {
     return <RunRegisterCta />;
+  }
+
+  if (block.type === 'facts') {
+    return <ArticleFacts block={block} />;
+  }
+
+  if (block.type === 'timeline') {
+    return <ArticleTimeline block={block} />;
+  }
+
+  if (block.type === 'orgs') {
+    return <ArticleOrgs block={block} />;
   }
 
   if (block.type === 'quote') {
