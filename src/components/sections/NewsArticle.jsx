@@ -5,7 +5,13 @@ import { NewsInvite } from '../ui/NewsInvite';
 import { NewsPhraseMarquee } from '../ui/NewsPhraseMarquee';
 import { NewsTitleText } from '../ui/NewsTitleText';
 import { RunRegisterCta } from '../ui/RunRegisterCta';
+import {
+  ArticleFacts,
+  ArticleOrgs,
+  ArticleTimeline,
+} from './ArticleBlocks';
 import './article-orgs.css';
+import './article-blocks.css';
 
 function CharityLink({ href, children, className }) {
   return (
@@ -36,9 +42,9 @@ function RichText({ value }) {
   });
 }
 
-function LocalePair({ cs, en, as: Tag = 'span' }) {
+function LocalePair({ cs, en, as: Tag = 'span', id }) {
   return (
-    <Tag>
+    <Tag id={id}>
       <span className="cs">{cs}</span>
       <span className="en">{en}</span>
     </Tag>
@@ -90,11 +96,11 @@ function ArticleBlock({ block }) {
   }
 
   if (block.type === 'h2') {
-    return <LocalePair as="h2" cs={block.cs} en={block.en} />;
+    return <LocalePair as="h2" id={block.id} cs={block.cs} en={block.en} />;
   }
 
   if (block.type === 'h3') {
-    return <LocalePair as="h3" cs={block.cs} en={block.en} />;
+    return <LocalePair as="h3" id={block.id} cs={block.cs} en={block.en} />;
   }
 
   if (block.type === 'table') {
@@ -109,59 +115,16 @@ function ArticleBlock({ block }) {
     return <RunRegisterCta />;
   }
 
+  if (block.type === 'facts') {
+    return <ArticleFacts block={block} />;
+  }
+
+  if (block.type === 'timeline') {
+    return <ArticleTimeline block={block} />;
+  }
+
   if (block.type === 'orgs') {
-    return (
-      <div className="article-orgs">
-        <div className="article-orgs__grid">
-          {block.items.map((item, index) => {
-            const isPlaceholder = Boolean(item.placeholder);
-            const monogram = isPlaceholder
-              ? '—'
-              : (item.cs || item.en || '?').trim().charAt(0).toUpperCase();
-
-            const inner = (
-              <>
-                {item.logo ? (
-                  <img
-                    src={item.logo}
-                    alt=""
-                    className="article-orgs__logo"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                ) : (
-                  <span className="article-orgs__mark" aria-hidden="true">
-                    {monogram}
-                  </span>
-                )}
-                <span className="article-orgs__name">
-                  <span className="cs">{item.cs}</span>
-                  <span className="en">{item.en}</span>
-                </span>
-              </>
-            );
-
-            const className = `article-orgs__card${
-              isPlaceholder ? ' article-orgs__card--placeholder' : ''
-            }`;
-
-            if (item.href) {
-              return (
-                <CharityLink key={index} href={item.href} className={className}>
-                  {inner}
-                </CharityLink>
-              );
-            }
-
-            return (
-              <div key={index} className={className}>
-                {inner}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
+    return <ArticleOrgs block={block} />;
   }
 
   if (block.type === 'quote') {
