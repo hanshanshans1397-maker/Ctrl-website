@@ -59,6 +59,67 @@ export const NEWS = [
         en: "All proceeds from CTRL Run go towards preventing digital addictions in children and young people. Come run. Support a good cause. And leave your phone at home.",
       },
       {
+        type: "h2",
+        cs: "Startovní balíček",
+        en: "Starter pack",
+      },
+      {
+        type: "p",
+        cs: "Účastníci běhu dostanou startovní balíček: Birell (18+), diplom / medaile, dárky od sponzorů a další drobnosti. Zúčastnit se můžete běhu, večera nebo obou.",
+        en: "Run participants receive a starter pack: Birell (18+), a diploma / medal, gifts from sponsors, and other small items. You can take part in the run, the evening, or both.",
+      },
+      {
+        type: "h2",
+        id: "partneri",
+        cs: "Partneři akce",
+        en: "Event partners",
+      },
+      {
+        type: "orgs",
+        groups: [
+          {
+            id: "sponsors",
+            items: [
+              {
+                cs: "JUKO petfood",
+                en: "JUKO petfood",
+                href: "https://www.juko-krmiva.cz/cz/",
+                logo: "/partners/juko-petfood.svg",
+              },
+              {
+                cs: "BIRELL",
+                en: "BIRELL",
+                href: "https://www.birell.cz",
+                logo: "/partners/birell.svg",
+              },
+              {
+                cs: "Občerstvení u lampy",
+                en: "Občerstvení u lampy",
+                href: "https://www.facebook.com/ObcerstveniULampy/",
+                logo: "/partners/obcerstveni-u-lampy.png",
+              },
+              { cs: "a další", en: "and others", placeholder: true },
+            ],
+          },
+          {
+            id: "participants",
+            label: { cs: "Účastní se", en: "Taking part" },
+            items: [
+              {
+                id: "armada",
+                mark: "AČR",
+                cs: "Armáda",
+                en: "Czech Army",
+                detail: {
+                  cs: "Armáda České republiky",
+                  en: "Army of the Czech Republic",
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
         type: "facts",
         items: [
           {
@@ -246,68 +307,7 @@ export const NEWS = [
             en: ["Extra coloured band", "same sex — add it to one of the bands above"],
           },
         ],
-      },
-      {
-        type: "h2",
-        cs: "Startovní balíček",
-        en: "Starter pack",
-      },
-      {
-        type: "p",
-        cs: "Účastníci běhu dostanou startovní balíček: Birell (18+), diplom / medaile, dárky od sponzorů a další drobnosti. Zúčastnit se můžete běhu, večera nebo obou.",
-        en: "Run participants receive a starter pack: Birell (18+), a diploma / medal, gifts from sponsors, and other small items. You can take part in the run, the evening, or both.",
-      },
-      {
-        type: "h2",
-        id: "partneri",
-        cs: "Partneři akce",
-        en: "Event partners",
-      },
-      {
-        type: "orgs",
-        groups: [
-          {
-            id: "sponsors",
-            items: [
-              {
-                cs: "JUKO petfood",
-                en: "JUKO petfood",
-                href: "https://www.juko-krmiva.cz/cz/",
-                logo: "/partners/juko-petfood.svg",
-              },
-              {
-                cs: "BIRELL",
-                en: "BIRELL",
-                href: "https://www.birell.cz",
-                logo: "/partners/birell.svg",
-              },
-              {
-                cs: "Občerstvení u lampy",
-                en: "Občerstvení u lampy",
-                href: "https://www.facebook.com/ObcerstveniULampy/",
-                logo: "/partners/obcerstveni-u-lampy.png",
-              },
-              { cs: "a další", en: "and others", placeholder: true },
-            ],
-          },
-          {
-            id: "participants",
-            label: { cs: "Účastní se", en: "Taking part" },
-            items: [
-              {
-                id: "armada",
-                mark: "AČR",
-                cs: "Armáda",
-                en: "Czech Army",
-                detail: {
-                  cs: "Armáda České republiky",
-                  en: "Army of the Czech Republic",
-                },
-              },
-            ],
-          },
-        ],
-      },
+      }
     ],
   },
 ];
