@@ -214,8 +214,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Aktivity a hry se odehrají na trávníku. Dostaneš číslo, napíšeš kontakt a jméno, seznamuješ se — a na konci odevzdáš seznam. Při oboustranném MATCH dostanete kontakt po akci. Nikdo nedostane tvůj kontakt bez tvého vědomí.",
-        en: "Activities and games take place on the lawn. You receive a number, write your contact and name, socialize — and hand in the list at the end. On a mutual MATCH you both get the contact after the event. Nobody gets your details without you knowing.",
+        cs: "Aktivity a hry se odehrají na parníku. Dostaneš číslo, napíšeš kontakt a jméno, seznamuješ se — a na konci odevzdáš seznam. Při oboustranném MATCH dostanete kontakt po akci. Nikdo nedostane tvůj kontakt bez tvého vědomí.",
+        en: "Activities and games take place on a steamboat. You receive a number, write your contact and name, socialize — and hand in the list at the end. On a mutual MATCH you both get the contact after the event. Nobody gets your details without you knowing.",
       },
       {
         type: "p",
