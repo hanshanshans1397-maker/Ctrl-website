@@ -1,6 +1,18 @@
 /* Collaborating orgs on news articles — mirrors .partner-card language */
 .article-orgs {
   margin: 8px 0 28px;
+  display: grid;
+  gap: 28px;
+}
+
+.article-orgs__label {
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent);
 }
 
 .article-orgs__grid {
@@ -73,12 +85,33 @@
   color: var(--color-accent);
 }
 
-.article-orgs__name {
+.article-orgs__mark--wide {
+  width: auto;
+  min-width: 40px;
+  padding: 0 8px;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+}
+
+.article-orgs__copy {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.article-orgs__name {
   font-size: 15px;
   font-weight: 600;
   line-height: 1.35;
   color: var(--color-dark);
+}
+
+.article-orgs__detail {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-mid);
 }
 
 @media (hover: hover) and (pointer: fine) {

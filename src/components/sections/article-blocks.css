@@ -50,7 +50,7 @@
 
 .article-timeline__item {
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
+  grid-template-columns: 104px minmax(0, 1fr);
   gap: 16px 28px;
   align-items: baseline;
   padding: 18px 24px;

@@ -132,6 +132,11 @@ export const NEWS = [
             en: "On-site registration, project briefing, warm-up",
           },
           {
+            time: { cs: "od 15:00", en: "from 15:00" },
+            cs: "Aktivity a stánky sponzorů a zúčastněných organizací",
+            en: "Activities and stands from sponsors and participating organisations",
+          },
+          {
             time: "16:00",
             cs: "Start běhu (až 16:20 podle situace)",
             en: "Run start (as late as 16:20 depending on the situation)",
@@ -152,6 +157,11 @@ export const NEWS = [
             en: "End of the party",
           },
         ],
+      },
+      {
+        type: "p",
+        cs: "Na místě budou aktivity a stánky sponzorů i zúčastněných organizací. Zastavit se u nich můžete před během i po něm.",
+        en: "Sponsors and participating organisations will have activities and stands on site. You can stop by before the run and after it.",
       },
       {
         type: "h2",
@@ -255,26 +265,47 @@ export const NEWS = [
       },
       {
         type: "orgs",
-        items: [
+        groups: [
           {
-            cs: "JUKO petfood",
-            en: "JUKO petfood",
-            href: "https://www.juko-krmiva.cz/cz/",
-            logo: "/partners/juko-petfood.svg",
+            id: "sponsors",
+            items: [
+              {
+                cs: "JUKO petfood",
+                en: "JUKO petfood",
+                href: "https://www.juko-krmiva.cz/cz/",
+                logo: "/partners/juko-petfood.svg",
+              },
+              {
+                cs: "BIRELL",
+                en: "BIRELL",
+                href: "https://www.birell.cz",
+                logo: "/partners/birell.svg",
+              },
+              {
+                cs: "Občerstvení u lampy",
+                en: "Občerstvení u lampy",
+                href: "https://www.facebook.com/ObcerstveniULampy/",
+                logo: "/partners/obcerstveni-u-lampy.png",
+              },
+              { cs: "a další", en: "and others", placeholder: true },
+            ],
           },
           {
-            cs: "BIRELL",
-            en: "BIRELL",
-            href: "https://www.birell.cz",
-            logo: "/partners/birell.svg",
+            id: "participants",
+            label: { cs: "Účastní se", en: "Taking part" },
+            items: [
+              {
+                id: "armada",
+                mark: "AČR",
+                cs: "Armáda",
+                en: "Czech Army",
+                detail: {
+                  cs: "Armáda České republiky",
+                  en: "Army of the Czech Republic",
+                },
+              },
+            ],
           },
-          {
-            cs: "Občerstvení u lampy",
-            en: "Občerstvení u lampy",
-            href: "https://www.facebook.com/ObcerstveniULampy/",
-            logo: "/partners/obcerstveni-u-lampy.png",
-          },
-          { cs: "a další", en: "and others", placeholder: true },
         ],
       },
     ],
