@@ -96,7 +96,7 @@ export const NEWS = [
                 cs: "Občerstvení u lampy",
                 en: "Občerstvení u lampy",
                 href: "https://www.facebook.com/ObcerstveniULampy/",
-                logo: "/partners/obcerstveni-u-lampy.png",
+                logo: "/partners/obcerstveni-u-lampy.svg",
               },
               {
                 cs: "HUDY",
