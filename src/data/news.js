@@ -29,14 +29,14 @@ export const NEWS = [
         title:
           "Charitativní běh na podporu prevence digitálních závislostí | CTRL Europe",
         description:
-          "CTRL Europe plánuje charitativní běh CTRL Run 3. října 2026 u areálu Komec. 5,7 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek na prevenci digitálních závislostí u dětí a mládeže.",
+          "CTRL Europe plánuje charitativní běh CTRL Run 3. října 2026 u areálu Komec. 5 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek na prevenci digitálních závislostí u dětí a mládeže.",
         image: "/photos/charitativni-beh.jpg",
       },
       en: {
         title:
           "Charity run for the prevention of digital addictions | CTRL Europe",
         description:
-          "CTRL Europe is planning the CTRL Run charity run on 3 October 2026 at Komec. 5.7 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds support the prevention of digital addictions in children and young people.",
+          "CTRL Europe is planning the CTRL Run charity run on 3 October 2026 at Komec. 5 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds support the prevention of digital addictions in children and young people.",
         image: "/photos/charitativni-beh.jpg",
       },
     },
@@ -96,7 +96,13 @@ export const NEWS = [
                 cs: "Občerstvení u lampy",
                 en: "Občerstvení u lampy",
                 href: "https://www.facebook.com/ObcerstveniULampy/",
-                logo: "/partners/obcerstveni-u-lampy.png",
+                logo: "/partners/obcerstveni-u-lampy.svg",
+              },
+              {
+                cs: "HUDY",
+                en: "HUDY",
+                href: "https://www.hudy.cz",
+                logo: "/partners/hudy.svg",
               },
               { cs: "a další", en: "and others", placeholder: true },
             ],
@@ -132,7 +138,7 @@ export const NEWS = [
           },
           {
             label: { cs: "Trasa", en: "Distance" },
-            value: { cs: "5,7 km", en: "5.7 km" },
+            value: { cs: "5 km", en: "5 km" },
           },
           {
             label: { cs: "Start", en: "Start" },
@@ -232,8 +238,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Okruh měří 5,7 km a vede okolím sportovního areálu Komec. Trasou se můžete projít předem na Mapy.cz nebo na Stravě.",
-        en: "The loop is 5.7 km and runs around the Komec sports complex. You can preview the course on Mapy.cz or Strava beforehand.",
+        cs: "Okruh měří 5 km a vede okolím sportovního areálu Komec. Trasou se můžete projít předem na Mapy.cz nebo na Stravě.",
+        en: "The loop is 5 km and runs around the Komec sports complex. You can preview the course on Mapy.cz or Strava beforehand.",
       },
       {
         type: "route",
@@ -280,8 +286,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Dobrovolné náramky jen napovídají, s čím přicházíš. Každý účastník je automaticky v tombole — ceny jsou od partnerů.",
-        en: "Optional wristbands simply signal what you’re open to. Every participant is automatically in the raffle — prizes come from partners.",
+        cs: "Dobrovolné náramky jen napovídají, s čím přicházíš. Každý účastník je automaticky v tombole — ceny v hodnotě několika desítek tisíc korun od JUKO petfood, HUDY a dalších.",
+        en: "Optional wristbands simply signal what you’re open to. Every participant is automatically in the raffle — prizes worth several tens of thousands of crowns from JUKO petfood, HUDY and others.",
       },
       {
         type: "table",
