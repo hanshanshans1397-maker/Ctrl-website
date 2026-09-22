@@ -5,8 +5,8 @@ export const NEWS_INVITE = {
 
 const STRAVA_ROUTE_ID = "3531339168018099800";
 const STRAVA_ROUTE = `https://www.strava.com/routes/${STRAVA_ROUTE_ID}`;
-const MAPY_ROUTE = "https://mapy.com/s/casonadacu";
-const MAPY_EMBED = "https://mapy.com/s/celuluralo";
+const MAPY_ROUTE = "https://mapy.com/s/jojavusaro";
+const MAPY_EMBED = "https://mapy.com/s/jojavusaro";
 
 export const NEWS = [
   {
@@ -249,8 +249,8 @@ export const NEWS = [
             label: { cs: "Mapy.cz", en: "Mapy.cz" },
             open: { cs: "Otevřít na Mapy.cz", en: "Open in Mapy.cz" },
             title: {
-              cs: "Trasa na Mapy.cz",
-              en: "Route on Mapy.cz",
+              cs: "Brno-jih — 5 km",
+              en: "Brno-jih — 5 km",
             },
             embed: MAPY_EMBED,
             href: MAPY_ROUTE,
