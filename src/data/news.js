@@ -59,6 +59,30 @@ export const NEWS = [
         en: "All proceeds from CTRL Run go to Společnost Podané ruce to support preventing digital addictions in children and young people. Come run. Support a good cause. And leave your phone at home.",
       },
       {
+        type: "facts",
+        items: [
+          {
+            label: { cs: "Datum", en: "Date" },
+            value: { cs: "3. 10. 2026", en: "3 Oct 2026" },
+          },
+          {
+            label: { cs: "Místo", en: "Venue" },
+            value: { cs: "Komec, Brno-Komárov", en: "Komec, Brno-Komárov" },
+          },
+          {
+            label: { cs: "Trasa", en: "Distance" },
+            value: { cs: "5 km", en: "5 km" },
+          },
+          {
+            label: { cs: "Start", en: "Start" },
+            value: { cs: "16:00", en: "16:00" },
+          },
+        ],
+      },
+      {
+        type: "register",
+      },
+      {
         type: "h2",
         cs: "Startovní balíček",
         en: "Starter pack",
@@ -142,30 +166,6 @@ export const NEWS = [
         ],
       },
       {
-        type: "facts",
-        items: [
-          {
-            label: { cs: "Datum", en: "Date" },
-            value: { cs: "3. 10. 2026", en: "3 Oct 2026" },
-          },
-          {
-            label: { cs: "Místo", en: "Venue" },
-            value: { cs: "Komec, Brno-Komárov", en: "Komec, Brno-Komárov" },
-          },
-          {
-            label: { cs: "Trasa", en: "Distance" },
-            value: { cs: "5 km", en: "5 km" },
-          },
-          {
-            label: { cs: "Start", en: "Start" },
-            value: { cs: "16:00", en: "16:00" },
-          },
-        ],
-      },
-      {
-        type: "register",
-      },
-      {
         type: "h2",
         cs: "Vstupné",
         en: "Entry fees",
@@ -199,6 +199,10 @@ export const NEWS = [
             en: ["Student — mixer only", "90 CZK"],
           },
         ],
+      },
+      {
+        type: "register",
+        variant: "inline",
       },
       {
         type: "h2",
