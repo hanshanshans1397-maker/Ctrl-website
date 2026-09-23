@@ -6,7 +6,7 @@ export const NEWS_INVITE = {
 const STRAVA_ROUTE_ID = "3531339168018099800";
 const STRAVA_ROUTE = `https://www.strava.com/routes/${STRAVA_ROUTE_ID}`;
 const MAPY_ROUTE = "https://mapy.com/s/jojavusaro";
-const MAPY_EMBED = "https://mapy.com/cs/turisticka?planovani-trasy&x=16.6087980033&y=49.1825743598&z=15&rc=9mOJIxTk5WLwhW-fUSOr38-i.7M6Cz5P13DBgxL3EjNQgbs&rs=&ri=&rs=&ri=&rs=base&ri=2064922&rs=&ri=&rs=&ri=&rs=stre&ri=79503&rs=&ri=&rs=&ri=&mrp=%7B%22d%22%3Atrue%2C%22c%22%3A134%7D&rbf=alf&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&frame=1";
+const MAPY_EMBED = "https://mapy.com/cs/turisticka?planovani-trasy&x=16.6087980033&y=49.1825743598&z=15&rc=9mOJIxTk5WLwhW-fUSOr38-i.7M6Cz5P13DBgxL3EjNQgbs&rs=&ri=&rs=&ri=&rs=base&ri=2064922&rs=&ri=&rs=stre&ri=79503&rs=&ri=&rs=&ri=&mrp=%7B%22d%22%3Atrue%2C%22c%22%3A134%7D&rbf=alf&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&frame=1";
 
 export const NEWS = [
   {
@@ -21,22 +21,22 @@ export const NEWS = [
       en: "Charity run in support of preventing digital addictions in children and young people",
     },
     excerpt: {
-      cs: "Telefon odlož. Tenisky obuj. Vyraž s námi. CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh u areálu Komec. Veškerý výtěžek z CTRL Run věnujeme na podporu prevence digitálních závislostí u dětí a mládeže — v souladu s posláním CTRL Europe.",
-      en: "Put the phone down. Lace up. Come with us. CTRL Europe is planning a charity run on Saturday 3 October 2026 at Komec. All proceeds from CTRL Run go towards preventing digital addictions in children and young people — in line with the mission of CTRL Europe.",
+      cs: "Telefon odlož. Tenisky obuj. Vyraž s námi. CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh u areálu Komec. Veškerý výtěžek z CTRL Run jde Společnosti Podané ruce na prevenci digitálních závislostí u dětí a mládeže.",
+      en: "Put the phone down. Lace up. Come with us. CTRL Europe is planning a charity run on Saturday 3 October 2026 at Komec. All proceeds from CTRL Run go to Společnost Podané ruce for preventing digital addictions in children and young people.",
     },
     meta: {
       cs: {
         title:
           "Charitativní běh na podporu prevence digitálních závislostí | CTRL Europe",
         description:
-          "CTRL Europe plánuje charitativní běh CTRL Run 3. října 2026 u areálu Komec. 5 km, začátek 15:00, běh od 16:00, párty od 18:30 do cca 22:00. Výtěžek na prevenci digitálních závislostí u dětí a mládeže.",
+          "CTRL Europe plánuje charitativní běh CTRL Run 3. října 2026 u areálu Komec. 5 km, začátek 15:00, běh od 16:00, tombola 17:20, přednáška 17:40, párty od 18:30. Výtěžek jde Podaným rukám.",
         image: "/photos/charitativni-beh.jpg",
       },
       en: {
         title:
           "Charity run for the prevention of digital addictions | CTRL Europe",
         description:
-          "CTRL Europe is planning the CTRL Run charity run on 3 October 2026 at Komec. 5 km, start 15:00, run from 16:00, party from 18:30 until around 22:00. Proceeds support the prevention of digital addictions in children and young people.",
+          "CTRL Europe is planning the CTRL Run charity run on 3 October 2026 at Komec. 5 km, start 15:00, run from 16:00, raffle 17:20, talk 17:40, party from 18:30. Proceeds go to Podané ruce.",
         image: "/photos/charitativni-beh.jpg",
       },
     },
@@ -55,8 +55,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Veškerý výtěžek z CTRL Run věnujeme na podporu prevence digitálních závislostí u dětí a mládeže. Přijď běžet. Podpoř dobrý projekt. A nech telefon doma.",
-        en: "All proceeds from CTRL Run go towards preventing digital addictions in children and young people. Come run. Support a good cause. And leave your phone at home.",
+        cs: "Veškerý výtěžek z CTRL Run jde Společnosti Podané ruce na podporu prevence digitálních závislostí u dětí a mládeže. Přijď běžet. Podpoř dobrý projekt. A nech telefon doma.",
+        en: "All proceeds from CTRL Run go to Společnost Podané ruce to support preventing digital addictions in children and young people. Come run. Support a good cause. And leave your phone at home.",
       },
       {
         type: "h2",
@@ -70,6 +70,16 @@ export const NEWS = [
       },
       {
         type: "h2",
+        cs: "Tombola",
+        en: "Raffle",
+      },
+      {
+        type: "p",
+        cs: "Každý účastník je automaticky v tombole — ceny v hodnotě několika desítek tisíc korun od JUKO petfood, HUDY a dalších partnerů. Losování proběhne v 17:20.",
+        en: "Every participant is automatically entered into the raffle — prizes worth several tens of thousands of crowns from JUKO petfood, HUDY and other partners. The draw takes place at 17:20.",
+      },
+      {
+        type: "h2",
         id: "partneri",
         cs: "Partneři akce",
         en: "Event partners",
@@ -80,6 +90,12 @@ export const NEWS = [
           {
             id: "sponsors",
             items: [
+              {
+                cs: "Podané ruce",
+                en: "Podané ruce",
+                href: "https://podaneruce.cz",
+                logo: "/partners/podane-ruce.svg",
+              },
               {
                 cs: "JUKO petfood",
                 en: "JUKO petfood",
@@ -156,8 +172,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Kapacita je omezená. Běh nemá soutěžní charakter — čas se neměří a tempo si určuje každý sám. Výtěžek ze vstupného na běh jde na charitu; vstupné jen na seznamovačku ne.",
-        en: "Capacity is limited. The run is not a race — times are not recorded and each participant sets their own pace. Proceeds from run entry go to charity; mixer-only tickets do not.",
+        cs: "Kapacita je omezená. Běh nemá soutěžní charakter — čas se neměří a tempo si určuje každý sám. Výtěžek ze vstupného na běh jde Společnosti Podané ruce; vstupné jen na seznamovačku ne.",
+        en: "Capacity is limited. The run is not a race — times are not recorded and each participant sets their own pace. Proceeds from run entry go to Společnost Podané ruce; mixer-only tickets do not.",
       },
       {
         type: "table",
@@ -214,6 +230,16 @@ export const NEWS = [
             en: "Run finish (as late as 17:20)",
           },
           {
+            time: "17:20",
+            cs: "Tombola",
+            en: "Raffle",
+          },
+          {
+            time: "17:40",
+            cs: "Přednáška pana Škerle z Podaných rukou na téma digitálních závislostí u dětí a mládeže",
+            en: "Talk by Mr Škerle from Podané ruce on digital addictions in children and young people",
+          },
+          {
             time: "18:30",
             cs: "Večerní program a seznamovací akce",
             en: "Evening programme and mixer",
@@ -227,8 +253,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Na místě budou aktivity a stánky sponzorů i zúčastněných organizací. Zastavit se u nich můžete před během i po něm.",
-        en: "Sponsors and participating organisations will have activities and stands on site. You can stop by before the run and after it.",
+        cs: "Na místě budou aktivity a stánky sponzorů i zúčastněných organizací. Zastavit se u nich můžete před během i po něm. Po běhu vás čeká tombola a přednáška pana Škerle ze Společnosti Podané ruce.",
+        en: "Sponsors and participating organisations will have activities and stands on site. You can stop by before the run and after it. After the run there will be a raffle and a talk by Mr Škerle from Společnost Podané ruce.",
       },
       {
         type: "h2",
@@ -286,8 +312,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Dobrovolné náramky jen napovídají, s čím přicházíš. Každý účastník je automaticky v tombole — ceny v hodnotě několika desítek tisíc korun od JUKO petfood, HUDY a dalších.",
-        en: "Optional wristbands simply signal what you’re open to. Every participant is automatically in the raffle — prizes worth several tens of thousands of crowns from JUKO petfood, HUDY and others.",
+        cs: "Dobrovolné náramky jen napovídají, s čím přicházíš. Tombola s cenami od partnerů je součástí programu (losování v 17:20) — detaily najdeš výše u startovního balíčku.",
+        en: "Optional wristbands simply signal what you’re open to. The partner-prize raffle is part of the programme (draw at 17:20) — see details above under the starter pack.",
       },
       {
         type: "table",
