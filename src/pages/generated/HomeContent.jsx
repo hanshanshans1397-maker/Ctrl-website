@@ -5,9 +5,14 @@ import { Flythrough } from "../../components/Flythrough";
 import { TickerBar } from "../../components/TickerBar";
 import { BOARD_LEADERS, BOARD_REST } from "../../data/leadership";
 import { NewsCard } from "../../components/sections/NewsCard";
+import { RunRegisterHomeLure } from "../../components/sections/RunRegisterHomeLure";
+import { RunRegisterCta, RunRegisterFrame } from "../../components/ui/RunRegisterCta";
 import { NEWS } from "../../data/news";
 
 export function HomePageContent() {
+  const featured = NEWS[0];
+  const featuredHasRegister = featured?.sections?.some((block) => block.type === "register");
+
   return (
     <>
       <section
@@ -599,12 +604,14 @@ export function HomePageContent() {
             </Link>
           </div>
         </div>
-        {NEWS[0] ? (
-          <div className="mx-auto mt-12 max-w-[1300px]">
-            <div className="news-grid grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <NewsCard article={NEWS[0]} />
+        {featured ? (
+          <RunRegisterFrame enabled={featuredHasRegister} dock={false}>
+            <div className="news-home mx-auto mt-12 max-w-[1300px]">
+              <NewsCard article={featured} />
+              {featuredHasRegister ? <RunRegisterHomeLure /> : null}
             </div>
-          </div>
+            {featuredHasRegister ? <RunRegisterCta band={false} /> : null}
+          </RunRegisterFrame>
         ) : null}
       </section>
 

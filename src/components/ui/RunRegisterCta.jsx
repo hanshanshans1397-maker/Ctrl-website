@@ -118,7 +118,7 @@ function SuccessMark() {
 
 const RunRegisterContext = createContext(null);
 
-function useRunRegister() {
+export function useRunRegister() {
   const value = useContext(RunRegisterContext);
   if (!value) {
     throw new Error('Run registration is rendered outside RunRegisterFrame');
@@ -126,7 +126,7 @@ function useRunRegister() {
   return value;
 }
 
-export function RunRegisterFrame({ enabled, children }) {
+export function RunRegisterFrame({ enabled, dock = true, children }) {
   const openRef = useRef(() => {});
   const [dialogOpen, setDialogOpen] = useState(false);
   const value = useMemo(
@@ -146,7 +146,7 @@ export function RunRegisterFrame({ enabled, children }) {
   return (
     <RunRegisterContext.Provider value={value}>
       {children}
-      <RunRegisterDock />
+      {dock ? <RunRegisterDock /> : null}
     </RunRegisterContext.Provider>
   );
 }
@@ -229,7 +229,7 @@ function RunRegisterDock() {
   );
 }
 
-export function RunRegisterCta() {
+export function RunRegisterCta({ band = true }) {
   const { isEn } = useLang();
   const dialogRef = useRef(null);
   const nameRef = useRef(null);
@@ -351,15 +351,17 @@ export function RunRegisterCta() {
   };
 
   return (
-    <div className="run-register" id="registrace">
-      <button
-        type="button"
-        className="run-register-band"
-        onClick={() => setOpen(true)}
-        aria-haspopup="dialog"
-        aria-expanded={open}
-        aria-controls="run-register-dialog"
-      >
+    <>
+      {band ? (
+        <div className="run-register" id="registrace">
+          <button
+            type="button"
+            className="run-register-band"
+            onClick={() => setOpen(true)}
+            aria-haspopup="dialog"
+            aria-expanded={open}
+            aria-controls="run-register-dialog"
+          >
         <span className="run-register-band__copy">
           <span className="run-register-band__eyebrow">
             <span className="cs">CTRL Run · 3. října 2026 · Komec</span>
@@ -388,6 +390,8 @@ export function RunRegisterCta() {
           </span>
         </span>
       </button>
+        </div>
+      ) : null}
 
       <dialog
         ref={dialogRef}
@@ -647,6 +651,6 @@ export function RunRegisterCta() {
           )}
         </div>
       </dialog>
-    </div>
+    </>
   );
 }
