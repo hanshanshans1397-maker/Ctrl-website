@@ -6,7 +6,7 @@ export const NEWS_INVITE = {
 const STRAVA_ROUTE_ID = "3531339168018099800";
 const STRAVA_ROUTE = `https://www.strava.com/routes/${STRAVA_ROUTE_ID}`;
 const MAPY_ROUTE = "https://mapy.com/s/jojavusaro";
-const MAPY_EMBED = "https://mapy.com/cs/turisticka?planovani-trasy&x=16.6087980033&y=49.1825743598&z=15&rc=9mOJIxTk5WLwhW-fUSOr38-i.7M6Cz5P13DBgxL3EjNQgbs&rs=&ri=&rs=&ri=&rs=base&ri=2064922&rs=&ri=&rs=&ri=&rs=stre&ri=79503&rs=&ri=&rs=&ri=&mrp=%7B%22d%22%3Atrue%2C%22c%22%3A134%7D&rbf=alf&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&frame=1";
+const MAPY_EMBED = "https://mapy.com/cs/turisticka?planovani-trasy&x=16.6087980033&y=49.1825743598&z=15&rc=9mOJIxTk5WLwhW-fUSOr38-i.7M6Cz5P13DBgxL3EjNQgbs&rs=&ri=&rs=&ri=&rs=base&ri=2064922&rs=&ri=&rs=&ri=&rs=stre&ri=79503&rs=&ri=&rs=&ri=&mrp=%7B%22d%22%3Atrue%2C%22c%22%3A134%7D&rbf=alf&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&rt=&frame=1";
 
 export const NEWS = [
   {
