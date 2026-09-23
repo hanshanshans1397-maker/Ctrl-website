@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useLang } from '../../context/LangContext';
 import {
   FAMILY_MAX_ADULTS,
@@ -115,6 +116,119 @@ function SuccessMark() {
   );
 }
 
+const RunRegisterContext = createContext(null);
+
+function useRunRegister() {
+  const value = useContext(RunRegisterContext);
+  if (!value) {
+    throw new Error('Run registration is rendered outside RunRegisterFrame');
+  }
+  return value;
+}
+
+export function RunRegisterFrame({ enabled, children }) {
+  const openRef = useRef(() => {});
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const value = useMemo(
+    () => ({
+      openRegister: () => openRef.current(),
+      bindOpen: (open) => {
+        openRef.current = open;
+      },
+      dialogOpen,
+      setDialogOpen,
+    }),
+    [dialogOpen],
+  );
+
+  if (!enabled) return children;
+
+  return (
+    <RunRegisterContext.Provider value={value}>
+      {children}
+      <RunRegisterDock />
+    </RunRegisterContext.Provider>
+  );
+}
+
+export function RunRegisterButton({ className = '' }) {
+  const { openRegister, dialogOpen } = useRunRegister();
+
+  return (
+    <button
+      type="button"
+      className={`run-register-btn${className ? ` ${className}` : ''}`}
+      onClick={openRegister}
+      aria-haspopup="dialog"
+      aria-expanded={dialogOpen}
+      aria-controls="run-register-dialog"
+    >
+      <span className="cs">Registrovat se</span>
+      <span className="en">Register</span>
+      <span className="run-register-btn__arrow" aria-hidden="true">
+        →
+      </span>
+    </button>
+  );
+}
+
+export function RunRegisterInline() {
+  return (
+    <div className="run-register-inline">
+      <p className="run-register-inline__copy">
+        <span className="cs">Rezervujte si místo. Kapacita je omezená.</span>
+        <span className="en">Reserve your place. Capacity is limited.</span>
+      </p>
+      <RunRegisterButton />
+    </div>
+  );
+}
+
+function RunRegisterDock() {
+  const { dialogOpen } = useRunRegister();
+  const [passedBand, setPassedBand] = useState(false);
+  const shown = passedBand && !dialogOpen;
+
+  useEffect(() => {
+    const band = document.getElementById('registrace');
+    if (!band) return undefined;
+
+    const update = () => {
+      setPassedBand(band.getBoundingClientRect().bottom < 72);
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle('run-register-dock-on', shown);
+    return () => document.body.classList.remove('run-register-dock-on');
+  }, [shown]);
+
+  return createPortal(
+    <div
+      className={`run-register-dock${shown ? ' is-visible' : ''}`}
+      aria-hidden={shown ? undefined : true}
+      inert={shown ? undefined : true}
+    >
+      <div className="run-register-dock__inner">
+        <p className="run-register-dock__label">
+          <span className="cs">CTRL Run · 3. října · Komec</span>
+          <span className="en">CTRL Run · 3 October · Komec</span>
+        </p>
+        <RunRegisterButton />
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
 export function RunRegisterCta() {
   const { isEn } = useLang();
   const dialogRef = useRef(null);
@@ -127,6 +241,16 @@ export function RunRegisterCta() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
   const titleId = useId();
+  const register = useRunRegister();
+
+  useEffect(() => {
+    register.bindOpen(() => setOpen(true));
+    return () => register.bindOpen(() => {});
+  }, [register]);
+
+  useEffect(() => {
+    register.setDialogOpen(open);
+  }, [open, register]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -228,14 +352,24 @@ export function RunRegisterCta() {
 
   return (
     <div className="run-register" id="registrace">
-      <div className="run-register-band">
-        <div className="run-register-band__copy">
-          <p className="run-register-band__eyebrow">CTRL Run</p>
-          <p className="run-register-band__title">
+      <button
+        type="button"
+        className="run-register-band"
+        onClick={() => setOpen(true)}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        aria-controls="run-register-dialog"
+      >
+        <span className="run-register-band__copy">
+          <span className="run-register-band__eyebrow">
+            <span className="cs">CTRL Run · 3. října 2026 · Komec</span>
+            <span className="en">CTRL Run · 3 October 2026 · Komec</span>
+          </span>
+          <span className="run-register-band__title">
             <span className="cs">Přihlaste se na charitativní běh</span>
             <span className="en">Register for the charity run</span>
-          </p>
-          <p className="run-register-band__lede">
+          </span>
+          <span className="run-register-band__lede">
             <span className="cs">
               Kapacita je omezená. Stačí e-mail, jméno a typ vstupného — v jednom
               formuláři můžete přihlásit víc lidí.
@@ -244,22 +378,20 @@ export function RunRegisterCta() {
               Capacity is limited. Just e-mail, name and ticket type — you can
               register several people in one form.
             </span>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="btn-p run-register-band__cta"
-          onClick={() => setOpen(true)}
-          aria-haspopup="dialog"
-          aria-expanded={open}
-        >
+          </span>
+        </span>
+        <span className="run-register-band__cta">
           <span className="cs">Registrovat se</span>
           <span className="en">Register</span>
-        </button>
-      </div>
+          <span className="run-register-band__arrow" aria-hidden="true">
+            →
+          </span>
+        </span>
+      </button>
 
       <dialog
         ref={dialogRef}
+        id="run-register-dialog"
         className={`run-register-dialog${submitted ? ' is-success' : ''}`}
         aria-labelledby={titleId}
         onClose={close}

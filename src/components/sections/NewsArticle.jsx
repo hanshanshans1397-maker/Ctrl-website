@@ -4,7 +4,12 @@ import { ArticleRouteMap } from '../ui/ArticleRouteMap';
 import { NewsInvite } from '../ui/NewsInvite';
 import { NewsPhraseMarquee } from '../ui/NewsPhraseMarquee';
 import { NewsTitleText } from '../ui/NewsTitleText';
-import { RunRegisterCta } from '../ui/RunRegisterCta';
+import {
+  RunRegisterButton,
+  RunRegisterCta,
+  RunRegisterFrame,
+  RunRegisterInline,
+} from '../ui/RunRegisterCta';
 import {
   ArticleFacts,
   ArticleOrgs,
@@ -112,6 +117,7 @@ function ArticleBlock({ block }) {
   }
 
   if (block.type === 'register') {
+    if (block.variant === 'inline') return <RunRegisterInline />;
     return <RunRegisterCta />;
   }
 
@@ -153,9 +159,10 @@ export function NewsArticle({ article }) {
   const bodySections = introMarquee ? article.sections.slice(1) : article.sections;
   const isLongTitle =
     Math.max(article.title.cs.length, article.title.en.length) > 48;
+  const hasRunRegister = article.sections.some((block) => block.type === 'register');
 
   return (
-    <>
+    <RunRegisterFrame enabled={hasRunRegister}>
       <section className="bg-bg pt-[140px] max-lg:pt-[120px] max-sm:pt-[100px]">
         <div className="article-body article-body--lede !pt-0 !pb-0">
           <header className="mb-2">
@@ -177,6 +184,15 @@ export function NewsArticle({ article }) {
                 <NewsTitleText text={article.title.en} />
               </span>
             </h1>
+            {hasRunRegister ? (
+              <div className="article-register-lead">
+                <p className="article-register-lead__meta">
+                  <span className="cs">Sobota 3. října · Komec · 5 km</span>
+                  <span className="en">Saturday 3 October · Komec · 5 km</span>
+                </p>
+                <RunRegisterButton />
+              </div>
+            ) : null}
           </header>
         </div>
 
@@ -197,6 +213,7 @@ export function NewsArticle({ article }) {
             height={article.inviteHeight}
             title={article.title}
           />
+          {hasRunRegister ? <RunRegisterInline /> : null}
         </div>
       </section>
 
@@ -216,6 +233,6 @@ export function NewsArticle({ article }) {
           </Link>
         </div>
       </section>
-    </>
+    </RunRegisterFrame>
   );
 }
