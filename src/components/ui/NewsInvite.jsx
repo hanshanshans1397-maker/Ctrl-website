@@ -13,7 +13,7 @@ function InviteImage({ src, alt, width, height, className = '' }) {
   );
 }
 
-export function NewsInvite({ src, width, height, title }) {
+export function NewsInvite({ src, width, height, title, caption }) {
   const dialogRef = useRef(null);
   const [open, setOpen] = useState(false);
   const titleId = useId();
@@ -53,8 +53,17 @@ export function NewsInvite({ src, width, height, title }) {
         </span>
       </button>
       <figcaption className="mt-3 font-mono text-[10px] tracking-[1.5px] text-mid uppercase">
-        <span className="cs">Kliknutím zvětšíte pozvánku</span>
-        <span className="en">Click to enlarge the invitation</span>
+        {caption ? (
+          <>
+            <span className="cs">{caption.cs}</span>
+            <span className="en">{caption.en}</span>
+          </>
+        ) : (
+          <>
+            <span className="cs">Kliknutím zvětšíte pozvánku</span>
+            <span className="en">Click to enlarge the invitation</span>
+          </>
+        )}
       </figcaption>
 
       <dialog

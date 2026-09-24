@@ -36,6 +36,15 @@ const TICKETS = [
     noteCs: `max. ${FAMILY_MAX_ADULTS}+${FAMILY_MAX_CHILDREN}`,
     noteEn: `max. ${FAMILY_MAX_ADULTS}+${FAMILY_MAX_CHILDREN}`,
   },
+  {
+    value: 'Studentské afterparty',
+    cs: 'Jen afterparty',
+    en: 'Afterparty only',
+    priceCs: '90 Kč',
+    priceEn: '90 CZK',
+    noteCs: 'studentské',
+    noteEn: 'student',
+  },
 ];
 
 let personSeq = 0;

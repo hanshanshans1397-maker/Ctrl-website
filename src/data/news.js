@@ -15,6 +15,22 @@ export const NEWS = [
     invite: "/photos/charitativni-beh.jpg",
     inviteWidth: NEWS_INVITE.width,
     inviteHeight: NEWS_INVITE.height,
+    posters: [
+      {
+        src: "/photos/ctrl-run-plakat.png",
+        width: 724,
+        height: 1024,
+        title: { cs: "Plakát CTRL Run", en: "CTRL Run poster" },
+        caption: { cs: "Plakát", en: "Poster" },
+      },
+      {
+        src: "/photos/ctrl-run-program.png",
+        width: 720,
+        height: 1024,
+        title: { cs: "Program CTRL Run", en: "CTRL Run programme" },
+        caption: { cs: "Program", en: "Programme" },
+      },
+    ],
     category: { cs: "Akce", en: "Event" },
     title: {
       cs: "Charitativní běh na podporu prevence digitálních závislostí dětí a mládeže",
@@ -195,8 +211,8 @@ export const NEWS = [
             en: ["Family (run)", "600 CZK · max. 2 adults and 3 children"],
           },
           {
-            cs: ["Studentské — jen seznamovačka", "90 Kč"],
-            en: ["Student — mixer only", "90 CZK"],
+            cs: ["Studentské — jen afterparty", "90 Kč"],
+            en: ["Student — afterparty only", "90 CZK"],
           },
         ],
       },
