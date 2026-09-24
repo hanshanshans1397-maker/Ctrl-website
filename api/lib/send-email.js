@@ -335,6 +335,10 @@ const TICKET_LABELS = {
   Základní: { cs: "Základní", en: "Standard" },
   Studentské: { cs: "Studentské", en: "Student" },
   Rodinné: { cs: "Rodinné", en: "Family" },
+  "Studentské afterparty": {
+    cs: "Studentské — jen afterparty",
+    en: "Student afterparty only",
+  },
 };
 
 function formatTicketForEmail(person, isEn) {

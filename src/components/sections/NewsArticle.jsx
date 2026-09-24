@@ -213,6 +213,20 @@ export function NewsArticle({ article }) {
             height={article.inviteHeight}
             title={article.title}
           />
+          {article.posters?.length ? (
+            <div className="news-invite-grid">
+              {article.posters.map((poster) => (
+                <NewsInvite
+                  key={poster.src}
+                  src={poster.src}
+                  width={poster.width}
+                  height={poster.height}
+                  title={poster.title}
+                  caption={poster.caption}
+                />
+              ))}
+            </div>
+          ) : null}
           {hasRunRegister ? <RunRegisterInline /> : null}
         </div>
       </section>

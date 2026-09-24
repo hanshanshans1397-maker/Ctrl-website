@@ -1,4 +1,4 @@
-export const TICKET_VALUES = ['Základní', 'Studentské', 'Rodinné'];
+export const TICKET_VALUES = ['Základní', 'Studentské', 'Rodinné', 'Studentské afterparty'];
 export const FAMILY_MAX_ADULTS = 2;
 export const FAMILY_MAX_CHILDREN = 3;
 export const MAX_PEOPLE = 10;
