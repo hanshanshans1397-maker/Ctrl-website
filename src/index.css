@@ -8514,10 +8514,15 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
 
 @media (hover: hover) and (pointer: fine) {
   .exec-card,
-  .partner-card,
   .council-rail {
     transition:
       transform 200ms var(--ease-out-expo),
+      box-shadow 200ms var(--ease-out-expo);
+  }
+
+  .partner-card {
+    transition:
+      translate 200ms var(--ease-out-expo),
       box-shadow 200ms var(--ease-out-expo);
   }
 
@@ -8731,7 +8736,7 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
 
 .partner-group__grid {
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 
 @media (min-width: 768px) {

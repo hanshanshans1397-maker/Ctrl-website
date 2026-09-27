@@ -1,6 +1,6 @@
 import { PARTNER_ORGS, SPONSORS } from '../data/partners';
 
-function PartnerCard({ item, index }) {
+function PartnerCard({ item }) {
   const nameEn = item.nameEn || item.name;
   const inner = (
     <>
@@ -22,27 +22,17 @@ function PartnerCard({ item, index }) {
     </>
   );
 
-  const className = `partner-card ${index % 2 === 0 ? 'partner-card--left' : 'partner-card--right'}${item.placeholder ? ' partner-card--placeholder' : ''}`;
+  const className = `partner-card${item.placeholder ? ' partner-card--placeholder' : ''}`;
 
   if (item.href) {
     return (
-      <a
-        className={className}
-        href={item.href}
-        target="_blank"
-        rel="noreferrer"
-        data-enter={index % 2 === 0 ? 'rotate-left' : 'rotate-up'}
-      >
+      <a className={className} href={item.href} target="_blank" rel="noreferrer">
         {inner}
       </a>
     );
   }
 
-  return (
-    <div className={className} data-enter={index % 2 === 0 ? 'rotate-left' : 'rotate-up'}>
-      {inner}
-    </div>
-  );
+  return <div className={className}>{inner}</div>;
 }
 
 const GROUPS = [
@@ -70,8 +60,8 @@ function PartnerGroup({ id, labelCs, labelEn, items, showLabel }) {
         </div>
       ) : null}
       <div className={`partner-group__grid${showLabel ? '' : ' partner-group__grid--row'}`}>
-        {items.map((item, index) => (
-          <PartnerCard key={item.id} item={item} index={index} />
+        {items.map((item) => (
+          <PartnerCard key={item.id} item={item} />
         ))}
       </div>
     </div>
