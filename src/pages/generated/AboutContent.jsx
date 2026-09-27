@@ -6,7 +6,7 @@ import { DisinfoGapChart } from "../../components/DisinfoGapChart";
 import { FakeNewsQuiz } from "../../components/FakeNewsQuiz";
 import { Flythrough } from "../../components/Flythrough";
 import { NationalCoordinators } from "../../components/NationalCoordinators";
-// import { PartnersSection } from "../../components/PartnersSection";
+import { PartnersSection } from "../../components/PartnersSection";
 import { TickerBar } from "../../components/TickerBar";
 import {
   ADVISOR,
@@ -1269,9 +1269,7 @@ export function AboutPageContent() {
         </div>
       </section>
 
-      {/* Partneři — odkomentuj pro návrat:
       <PartnersSection />
-      */}
 
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg">
         <div className="inner max-w-[1300px] mx-auto">
