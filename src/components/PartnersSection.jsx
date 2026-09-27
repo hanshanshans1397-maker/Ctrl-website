@@ -45,14 +45,31 @@ function PartnerCard({ item, index }) {
   );
 }
 
-function PartnerGroup({ id, labelCs, labelEn, items }) {
+const GROUPS = [
+  {
+    id: 'sponsors',
+    labelCs: 'Sponzoři',
+    labelEn: 'Sponsors',
+    items: SPONSORS,
+  },
+  {
+    id: 'orgs',
+    labelCs: 'Spolupracující organizace',
+    labelEn: 'Cooperating organizations',
+    items: PARTNER_ORGS,
+  },
+].filter((group) => group.items.length > 0);
+
+function PartnerGroup({ id, labelCs, labelEn, items, showLabel }) {
   return (
     <div className="partner-group" data-partner-group={id}>
-      <div className="partner-group__label">
-        <span className="cs">{labelCs}</span>
-        <span className="en">{labelEn}</span>
-      </div>
-      <div className="partner-group__grid">
+      {showLabel ? (
+        <div className="partner-group__label">
+          <span className="cs">{labelCs}</span>
+          <span className="en">{labelEn}</span>
+        </div>
+      ) : null}
+      <div className={`partner-group__grid${showLabel ? '' : ' partner-group__grid--row'}`}>
         {items.map((item, index) => (
           <PartnerCard key={item.id} item={item} index={index} />
         ))}
@@ -62,6 +79,10 @@ function PartnerGroup({ id, labelCs, labelEn, items }) {
 }
 
 export function PartnersSection() {
+  const hasSponsors = SPONSORS.length > 0;
+  const hasOrgs = PARTNER_ORGS.length > 0;
+  const showLabels = GROUPS.length > 1;
+
   return (
     <section
       id="partners"
@@ -74,35 +95,51 @@ export function PartnersSection() {
             <span className="en">Partners</span>
           </span>
           <h2 className="section-title">
-            <span className="cs">
-              Sponzoři a <em>spolupracující organizace.</em>
-            </span>
-            <span className="en">
-              Sponsors and <em>cooperating organizations.</em>
-            </span>
+            {hasSponsors && hasOrgs ? (
+              <>
+                <span className="cs">
+                  Sponzoři a <em>spolupracující organizace.</em>
+                </span>
+                <span className="en">
+                  Sponsors and <em>cooperating organizations.</em>
+                </span>
+              </>
+            ) : hasSponsors ? (
+              <>
+                <span className="cs">
+                  Naši <em>sponzoři.</em>
+                </span>
+                <span className="en">
+                  Our <em>sponsors.</em>
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="cs">
+                  Spolupracující <em>organizace.</em>
+                </span>
+                <span className="en">
+                  Cooperating <em>organizations.</em>
+                </span>
+              </>
+            )}
           </h2>
           <p className="section-lede mt-5 max-w-[520px] text-[15px] font-light leading-[1.8] text-mid">
-            <span className="cs">
-              Jména a loga doplníme, jakmile budou partnerství potvrzená.
-            </span>
-            <span className="en">
-              Names and logos will be added once partnerships are confirmed.
-            </span>
+            <span className="cs">Organizace, se kterými spolupracujeme.</span>
+            <span className="en">Organizations we work with.</span>
           </p>
         </div>
-        <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-14">
-          <PartnerGroup
-            id="sponsors"
-            labelCs="Sponzoři"
-            labelEn="Sponsors"
-            items={SPONSORS}
-          />
-          <PartnerGroup
-            id="orgs"
-            labelCs="Spolupracující organizace"
-            labelEn="Cooperating organizations"
-            items={PARTNER_ORGS}
-          />
+        <div className={`mt-12 lg:mt-16${showLabels ? ' grid gap-10 lg:grid-cols-2 lg:gap-14' : ''}`}>
+          {GROUPS.map((group) => (
+            <PartnerGroup
+              key={group.id}
+              id={group.id}
+              labelCs={group.labelCs}
+              labelEn={group.labelEn}
+              items={group.items}
+              showLabel={showLabels}
+            />
+          ))}
         </div>
       </div>
     </section>

@@ -1,37 +1,25 @@
-export const SPONSORS = [
-  {
-    id: 'sponsor-01',
-    name: 'Sponzor 01',
-    nameEn: 'Sponsor 01',
-    logo: null,
-    href: null,
-    placeholder: true,
-  },
-  {
-    id: 'sponsor-02',
-    name: 'Sponzor 02',
-    nameEn: 'Sponsor 02',
-    logo: null,
-    href: null,
-    placeholder: true,
-  },
-];
+export const SPONSORS = [];
 
 export const PARTNER_ORGS = [
   {
-    id: 'org-01',
-    name: 'Organizace 01',
-    nameEn: 'Organization 01',
-    logo: null,
-    href: null,
-    placeholder: true,
+    id: 'sic',
+    name: 'Středočeské inovační centrum',
+    nameEn: 'Central Bohemian Innovation Centre',
+    logo: '/partners/sic.svg',
+    href: 'https://s-ic.cz/',
   },
   {
-    id: 'org-02',
-    name: 'Organizace 02',
-    nameEn: 'Organization 02',
-    logo: null,
-    href: null,
-    placeholder: true,
+    id: 'jic',
+    name: 'Jihomoravské inovační centrum',
+    nameEn: 'South Moravian Innovation Centre',
+    logo: '/partners/jic.svg',
+    href: 'https://www.jic.cz/',
+  },
+  {
+    id: 'den-hejtmanem',
+    name: 'Den hejtmanem',
+    nameEn: 'Den hejtmanem',
+    logo: '/partners/den-hejtmanem.png',
+    href: 'https://denhejtmanem.cz/',
   },
 ];
