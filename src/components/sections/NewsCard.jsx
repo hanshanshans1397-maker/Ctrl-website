@@ -4,6 +4,8 @@ import { NewsTitleText } from "../ui/NewsTitleText";
 
 export function NewsCard({ article }) {
   const href = `/news/${article.slug}`;
+  const width = article.inviteWidth ?? 1024;
+  const height = article.inviteHeight ?? 723;
 
   return (
     <Link
@@ -13,18 +15,61 @@ export function NewsCard({ article }) {
       <div
         className="news-card-banner relative overflow-hidden bg-dark"
         style={{
-          aspectRatio: `${article.inviteWidth} / ${article.inviteHeight}`,
+          aspectRatio: `${width} / ${height}`,
         }}
       >
-        <img
-          src={article.invite}
-          alt=""
-          width={article.inviteWidth}
-          height={article.inviteHeight}
-          className="news-card-banner__media absolute inset-0 h-full w-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
+        {article.invite ? (
+          <img
+            src={article.invite}
+            alt=""
+            width={width}
+            height={height}
+            className="news-card-banner__media absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div className={`news-card-banner__fallback news-invite-placeholder${article.banner?.variant ? ` news-card-banner__fallback--${article.banner.variant}` : ""}`}>
+            {article.banner?.mark ? (
+              <span className="news-card-banner__mark" aria-hidden="true">
+                <span className="cs">{article.banner.mark.cs}</span>
+                <span className="en">{article.banner.mark.en}</span>
+              </span>
+            ) : null}
+            <div className="news-card-banner__top">
+              <span className="news-card-banner__kicker">
+                <span className="cs">{article.category.cs}</span>
+                <span className="en">{article.category.en}</span>
+              </span>
+              <span className="news-card-banner__date">
+                <span className="cs">{article.banner?.date?.cs ?? formatNewsDate(article.date, false)}</span>
+                <span className="en">{article.banner?.date?.en ?? formatNewsDate(article.date, true)}</span>
+              </span>
+            </div>
+            <div className="news-card-banner__copy">
+              <span className="news-card-banner__fallback-title">
+                <span className="cs"><NewsTitleText text={article.title.cs} /></span>
+                <span className="en"><NewsTitleText text={article.title.en} /></span>
+              </span>
+              {article.banner?.lead ? (
+                <span className="news-card-banner__lead">
+                  <span className="cs">{article.banner.lead.cs}</span>
+                  <span className="en">{article.banner.lead.en}</span>
+                </span>
+              ) : null}
+            </div>
+            {article.banner?.points ? (
+              <ul className="news-card-banner__points">
+                {article.banner.points.cs.map((point, index) => (
+                  <li key={point}>
+                    <span className="cs">{point}</span>
+                    <span className="en">{article.banner.points.en[index]}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        )}
       </div>
       <div className="flex flex-1 flex-col px-5 py-5">
         <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">

@@ -10,7 +10,9 @@ import { RunRegisterCta, RunRegisterFrame } from "../../components/ui/RunRegiste
 import { NEWS } from "../../data/news";
 
 export function HomePageContent() {
-  const featured = NEWS[0];
+  const featured =
+    NEWS.find((item) => item.sections.some((block) => block.type === "register")) ??
+    NEWS[0];
   const featuredHasRegister = featured?.sections?.some((block) => block.type === "register");
 
   return (
