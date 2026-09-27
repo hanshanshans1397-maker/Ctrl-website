@@ -57,10 +57,10 @@ export const ADVISOR = {
 
 export const BOARD_REST = [
   {
-    id: "laura",
-    name: "Laura Trunečková",
-    firstName: "Laura",
-    initials: "LT",
+    id: "iris",
+    name: "Iris Maria Zamfir",
+    firstName: "Iris",
+    initials: "IMZ",
     photo: null,
     roleCs: "Vedoucí kanceláře",
     roleEn: "Chief of Staff",
