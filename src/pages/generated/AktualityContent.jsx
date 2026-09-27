@@ -2,6 +2,12 @@ import { NEWS } from "../../data/news";
 import { NewsCard } from "../../components/sections/NewsCard";
 import { NewsAboutPanel } from "../../components/sections/NewsAboutPanel";
 
+const ARTICLES = [...NEWS].sort((a, b) => {
+  const byPublished = (b.published ?? b.date).localeCompare(a.published ?? a.date);
+  if (byPublished !== 0) return byPublished;
+  return b.date.localeCompare(a.date);
+});
+
 export function AktualityPageContent() {
   return (
     <>
@@ -53,12 +59,12 @@ export function AktualityPageContent() {
       <section className="sec bg-bg" id="aktuality-list">
         <div className="inner">
           <div className="news-grid grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {NEWS.map((article, index) => (
+            {ARTICLES.map((article, index) => (
               <div key={article.slug} className={`rev${index > 0 ? ` d${Math.min(index, 5)}` : ''}`}>
                 <NewsCard article={article} />
               </div>
             ))}
-            <NewsAboutPanel filledCount={NEWS.length} />
+            <NewsAboutPanel filledCount={ARTICLES.length} />
           </div>
         </div>
       </section>

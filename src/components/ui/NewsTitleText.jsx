@@ -1,4 +1,15 @@
-const ACCENTS = ["digitálních závislostí", "digital addictions"];
+const ACCENTS = [
+  "digitálních závislostí",
+  "digital addictions",
+  "Gymnázium Vídeňská",
+  "digitálním vyšetřovatelem",
+  "digital investigator",
+  "workshopem o AI",
+  "AI workshop",
+  "Slovensko",
+  "Slovakia",
+  "CTRL Day",
+];
 
 export function NewsTitleText({ text }) {
   const accent = ACCENTS.find((phrase) => text.includes(phrase));

@@ -36,6 +36,13 @@ function RichText({ value }) {
 
   return value.map((part, index) => {
     if (typeof part === 'string') return <span key={index}>{part}</span>;
+    if (part.href?.startsWith('/')) {
+      return (
+        <Link key={index} to={part.href}>
+          {part.text}
+        </Link>
+      );
+    }
     if (part.href) {
       return (
         <CharityLink key={index} href={part.href}>
@@ -138,6 +145,12 @@ function ArticleBlock({ block }) {
       <blockquote>
         <p className="cs">&bdquo;<RichText value={block.cs} />&ldquo;</p>
         <p className="en">&ldquo;<RichText value={block.en} />&rdquo;</p>
+        {block.author ? (
+          <footer>
+            <span className="cs">{block.author.cs}</span>
+            <span className="en">{block.author.en}</span>
+          </footer>
+        ) : null}
       </blockquote>
     );
   }
@@ -203,16 +216,20 @@ export function NewsArticle({ article }) {
             <ArticleBlock key={`${block.type}-${index}`} block={block} />
           ))}
 
-          <h2>
-            <span className="cs">Pozvánka</span>
-            <span className="en">Invitation</span>
-          </h2>
-          <NewsInvite
-            src={article.invite}
-            width={article.inviteWidth}
-            height={article.inviteHeight}
-            title={article.title}
-          />
+          {article.invite ? (
+            <>
+              <h2>
+                <span className="cs">Pozvánka</span>
+                <span className="en">Invitation</span>
+              </h2>
+              <NewsInvite
+                src={article.invite}
+                width={article.inviteWidth}
+                height={article.inviteHeight}
+                title={article.title}
+              />
+            </>
+          ) : null}
           {article.posters?.length ? (
             <div className="news-invite-grid">
               {article.posters.map((poster) => (
