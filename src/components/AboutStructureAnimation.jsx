@@ -8,7 +8,7 @@ const BOARD = { x: 28, y: 8, w: 344, h: 108 };
 const BOARD_NODES = [
   { x: 140, y: 42, name: 'Jan' },
   { x: 260, y: 42, name: 'Michaela' },
-  { x: 70, y: 90, name: 'Laura' },
+  { x: 70, y: 90, name: 'Iris' },
   { x: 156, y: 90, name: 'Dominik' },
   { x: 244, y: 90, name: 'Jakub' },
   { x: 330, y: 90, name: 'Alžběta' },
