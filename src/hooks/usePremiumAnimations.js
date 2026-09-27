@@ -837,9 +837,9 @@ function scrollChoreography() {
     );
   });
 
-  gsap.utils.toArray('.partner-card').forEach((el, i) => {
-    const side = i % 2 === 0 ? -1 : 1;
-    scrubFromTo(el, { x: side * 40, y: 28, opacity: 0.55 }, { x: 0, y: -8, opacity: 1 }, el, arrive);
+  gsap.utils.toArray('.partner-group__grid').forEach((grid) => {
+    gsap.set(grid.querySelectorAll('.partner-card'), { x: 0, rotation: 0, rotationY: 0 });
+    scrubFromTo(grid, { y: 28, opacity: 0.55 }, { y: 0, opacity: 1 }, grid, arrive);
   });
 
   gsap.utils.toArray('.council-rail').forEach((el, i) => {
