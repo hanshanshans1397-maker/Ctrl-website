@@ -1041,6 +1041,12 @@ export const NEWS = [
                 href: "https://www.hudy.cz",
                 logo: "/partners/hudy.svg",
               },
+              {
+                cs: "Střední škola a vyšší odborná škola informatiky a financí Brno",
+                en: "Secondary School and College of Informatics and Finance Brno",
+                href: "https://www.cichnovabrno.cz/",
+                logo: "/partners/cichnova-brno.png",
+              },
               { cs: "a další", en: "and others", placeholder: true },
             ],
           },
