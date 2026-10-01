@@ -1137,8 +1137,8 @@ export const NEWS = [
           },
           {
             time: "17:40",
-            cs: "Přednáška pana Škerle z Podaných rukou na téma digitálních závislostí u dětí a mládeže",
-            en: "Talk by Mr Škerle from Podané ruce on digital addictions in children and young people",
+            cs: "Přednáška pana Škerleho",
+            en: "Talk by Mr Škerle",
           },
           {
             time: "18:30",
@@ -1154,7 +1154,7 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Na místě budou aktivity a stánky sponzorů i zúčastněných organizací. Zastavit se u nich můžete před během i po něm. Po běhu vás čeká tombola a přednáška pana Škerle ze Společnosti Podané ruce.",
+        cs: "Na místě budou aktivity a stánky sponzorů i zúčastněných organizací. Zastavit se u nich můžete před během i po něm. Po běhu vás čeká tombola a přednáška pana Škerleho ze Společnosti Podané ruce.",
         en: "Sponsors and participating organisations will have activities and stands on site. You can stop by before the run and after it. After the run there will be a raffle and a talk by Mr Škerle from Společnost Podané ruce.",
       },
       {
