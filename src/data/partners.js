@@ -1,4 +1,12 @@
-export const SPONSORS = [];
+export const SPONSORS = [
+  {
+    id: 'cichnova-brno',
+    name: 'Střední škola a vyšší odborná škola informatiky a financí Brno',
+    nameEn: 'Secondary School and College of Informatics and Finance Brno',
+    logo: '/partners/cichnova-brno.png',
+    href: 'https://www.cichnovabrno.cz/',
+  },
+];
 
 export const PARTNER_ORGS = [
   {
