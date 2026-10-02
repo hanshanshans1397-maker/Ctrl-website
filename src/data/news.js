@@ -185,10 +185,10 @@ export const NEWS = [
     inviteHeight: NEWS_INVITE.height,
     banner: {
       variant: "orb",
-      date: { cs: "1.–3. listopadu", en: "1–3 November" },
+      date: { cs: "1.–2. listopadu", en: "1–2 November" },
       points: {
-        cs: ["Brno", "3 gymnázia", "6 lektorů"],
-        en: ["Brno", "3 schools", "6 facilitators"],
+        cs: ["Karlovarský kraj", "2 gymnázia", "6 lektorů"],
+        en: ["Karlovy Vary Region", "2 schools", "6 facilitators"],
       },
     },
     category: { cs: "Vzdělávání", en: "Education" },
@@ -197,33 +197,33 @@ export const NEWS = [
       en: "We're taking a new AI workshop to schools",
     },
     excerpt: {
-      cs: "1.–3. listopadu povede vedení CTRL Europe tři workshopy o umělé inteligenci a manipulaci na gymnáziích v Brně.",
-      en: "On 1–3 November, the CTRL Europe leadership will run three workshops on artificial intelligence and manipulation at grammar schools in Brno.",
+      cs: "1.–2. listopadu povede vedení CTRL Europe dva dny workshopů o umělé inteligenci a manipulaci na gymnáziích v Karlovarském kraji.",
+      en: "On 1–2 November, the CTRL Europe leadership will run two days of workshops on artificial intelligence and manipulation at grammar schools in the Karlovy Vary Region.",
     },
     meta: {
       cs: {
         title: "Vyrážíme s novým workshopem o AI | CTRL Europe",
         description:
-          "1.–3. listopadu 2026 tři workshopy Dnů AI na gymnáziích v Brně. Šest lektorů z vedení, vlastní náplň a webová aplikace k programu.",
+          "1.–2. listopadu 2026 dva dny workshopů Dnů AI na gymnáziích v Karlovarském kraji. Šest lektorů z vedení, vlastní náplň a webová aplikace k programu.",
       },
       en: {
         title: "We're taking a new AI workshop to schools | CTRL Europe",
         description:
-          "On 1–3 November 2026, three AI Days workshops at grammar schools in Brno. Six facilitators from the leadership, a programme we wrote, and a web app that runs alongside it.",
+          "On 1–2 November 2026, two days of AI Days workshops at grammar schools in the Karlovy Vary Region. Six facilitators from the leadership, a programme we wrote, and a web app that runs alongside it.",
       },
     },
     sections: [
       {
         type: "marquee",
         phrases: {
-          cs: ["1.–3. listopadu.", "Tři gymnázia.", "Workshop o AI."],
-          en: ["1–3 November.", "Three schools.", "A workshop on AI."],
+          cs: ["1.–2. listopadu.", "Dvě gymnázia.", "Dva dny workshopů."],
+          en: ["1–2 November.", "Two schools.", "Two days of workshops."],
         },
       },
       {
         type: "p",
-        cs: "1.–3. listopadu povede naše vedení tři workshopy o umělé inteligenci a manipulaci na gymnáziích v rámci nově spuštěného vzdělávacího programu CTRL Europe.",
-        en: "On 1–3 November our leadership will run three workshops on artificial intelligence and manipulation at grammar schools, as part of a newly launched CTRL Europe education programme.",
+        cs: "1.–2. listopadu povede naše vedení dva dny workshopů o umělé inteligenci a manipulaci na gymnáziích v Karlovarském kraji v rámci nově spuštěného vzdělávacího programu CTRL Europe.",
+        en: "On 1–2 November our leadership will run two days of workshops on artificial intelligence and manipulation at grammar schools in the Karlovy Vary Region, as part of a newly launched CTRL Europe education programme.",
       },
       {
         type: "h2",
@@ -233,8 +233,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "V rámci Dnů AI odučí šest lidí z vedení CTRL Europe tři workshopy na téma umělé inteligence, manipulace a digitálních závislostí přímo na gymnáziích v Brně.",
-        en: "During the AI Days, six people from the CTRL Europe leadership will teach three workshops on artificial intelligence, manipulation and digital addictions, in grammar schools in Brno.",
+        cs: "V rámci Dnů AI odučí šest lidí z vedení CTRL Europe dva dny workshopů na téma umělé inteligence, manipulace a digitálních závislostí přímo na gymnáziích v Karlovarském kraji.",
+        en: "During the AI Days, six people from the CTRL Europe leadership will teach two days of workshops on artificial intelligence, manipulation and digital addictions, in grammar schools in the Karlovy Vary Region.",
       },
       {
         type: "p",
@@ -244,31 +244,26 @@ export const NEWS = [
       {
         type: "h2",
         id: "skoly",
-        cs: "Tři dny, tři gymnázia",
-        en: "Three days, three schools",
+        cs: "Dva dny, dvě gymnázia",
+        en: "Two days, two schools",
       },
       {
         type: "p",
-        cs: "Každý den jiné gymnázium v Brně. Jména škol doplníme, až budou potvrzená.",
-        en: "A different grammar school in Brno each day. We'll add the school names once they are confirmed.",
+        cs: "Každý den jiné gymnázium v Karlovarském kraji. Jména škol doplníme, až budou potvrzená.",
+        en: "A different grammar school in the Karlovy Vary Region each day. We'll add the school names once they are confirmed.",
       },
       {
         type: "timeline",
         items: [
           {
             time: "1. 11.",
-            cs: "První workshop.",
-            en: "First workshop.",
+            cs: "První den workshopů.",
+            en: "First day of workshops.",
           },
           {
             time: "2. 11.",
-            cs: "Druhý workshop.",
-            en: "Second workshop.",
-          },
-          {
-            time: "3. 11.",
-            cs: "Třetí workshop.",
-            en: "Third workshop.",
+            cs: "Druhý den workshopů.",
+            en: "Second day of workshops.",
           },
         ],
       },
@@ -293,8 +288,8 @@ export const NEWS = [
           },
           {
             time: "03",
-            cs: "Jdeme na první gymnázia. Tři workshopy, tři školy, reální studenti.",
-            en: "We're going into the first grammar schools. Three workshops, three schools, real students.",
+            cs: "Jdeme na první gymnázia. Dva dny workshopů, dvě školy, reální studenti.",
+            en: "We're going into the first grammar schools. Two days of workshops, two schools, real students.",
           },
         ],
       },
@@ -309,11 +304,11 @@ export const NEWS = [
         items: [
           {
             label: { cs: "Kdy", en: "When" },
-            value: { cs: "1.–3. 11. 2026", en: "1–3 Nov 2026" },
+            value: { cs: "1.–2. 11. 2026", en: "1–2 Nov 2026" },
           },
           {
             label: { cs: "Kde", en: "Where" },
-            value: { cs: "Brno", en: "Brno" },
+            value: { cs: "Karlovarský kraj", en: "Karlovy Vary Region" },
           },
           {
             label: { cs: "Lektoři", en: "Facilitators" },
@@ -321,7 +316,7 @@ export const NEWS = [
           },
           {
             label: { cs: "Workshopy", en: "Workshops" },
-            value: { cs: "3 za tři dny", en: "3 in three days" },
+            value: { cs: "2 dny", en: "2 days" },
           },
         ],
       },
