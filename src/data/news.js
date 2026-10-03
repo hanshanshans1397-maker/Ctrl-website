@@ -907,28 +907,28 @@ export const NEWS = [
         caption: { cs: "Program", en: "Programme" },
       },
     ],
-    category: { cs: "Akce", en: "Event" },
+    category: { cs: "Proběhlá akce", en: "Past event" },
     title: {
       cs: "Charitativní běh na podporu prevence digitálních závislostí dětí a mládeže",
       en: "Charity run in support of preventing digital addictions in children and young people",
     },
     excerpt: {
-      cs: "Telefon odlož. Tenisky obuj. Vyraž s námi. CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh u areálu Komec. Veškerý výtěžek z CTRL Run jde Společnosti Podané ruce na prevenci digitálních závislostí u dětí a mládeže.",
-      en: "Put the phone down. Lace up. Come with us. CTRL Europe is planning a charity run on Saturday 3 October 2026 at Komec. All proceeds from CTRL Run go to Společnost Podané ruce for preventing digital addictions in children and young people.",
+      cs: "Akce už proběhla. CTRL Europe uspořádal v sobotu 3. října 2026 charitativní běh u areálu Komec. Veškerý výtěžek z CTRL Run jde Společnosti Podané ruce na prevenci digitálních závislostí u dětí a mládeže.",
+      en: "This event has already taken place. CTRL Europe held the charity run on Saturday 3 October 2026 at Komec. All proceeds from CTRL Run go to Společnost Podané ruce for preventing digital addictions in children and young people.",
     },
     meta: {
       cs: {
         title:
           "Charitativní běh na podporu prevence digitálních závislostí | CTRL Europe",
         description:
-          "CTRL Europe plánuje charitativní běh CTRL Run 3. října 2026 u areálu Komec. 5 km, začátek 15:00, běh od 16:00, tombola 17:20, přednáška 17:40, párty od 18:30. Výtěžek jde Podaným rukám.",
+          "Charitativní běh CTRL Run už proběhl 3. října 2026 u areálu Komec. 5 km, začátek 15:00, běh od 16:00, tombola 17:20, přednáška 17:40, párty od 18:30. Výtěžek jde Podaným rukám.",
         image: "/photos/charitativni-beh.jpg",
       },
       en: {
         title:
           "Charity run for the prevention of digital addictions | CTRL Europe",
         description:
-          "CTRL Europe is planning the CTRL Run charity run on 3 October 2026 at Komec. 5 km, start 15:00, run from 16:00, raffle 17:20, talk 17:40, party from 18:30. Proceeds go to Podané ruce.",
+          "The CTRL Run charity run took place on 3 October 2026 at Komec. 5 km, start 15:00, run from 16:00, raffle 17:20, talk 17:40, party from 18:30. Proceeds go to Podané ruce.",
         image: "/photos/charitativni-beh.jpg",
       },
     },
@@ -942,13 +942,13 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh CTRL Run u sportovního areálu Komec v Brně-Komárově. Bojujeme proti závislostem na digitálních technologiích — a proto jsme se rozhodli udělat něco jednoduchého a přímého: vylákat lidi od obrazovek ven, mezi lidi, do pohybu.",
-        en: "CTRL Europe is planning the CTRL Run charity run on Saturday 3 October 2026 at the Komec sports complex in Brno-Komárov. We fight addiction to digital technology — so we decided to do something simple and direct: get people away from screens, out among people, and moving.",
+        cs: "Akce už proběhla. CTRL Europe uspořádal v sobotu 3. října 2026 charitativní běh CTRL Run u sportovního areálu Komec v Brně-Komárově. Bojujeme proti závislostem na digitálních technologiích — a proto jsme se rozhodli udělat něco jednoduchého a přímého: vylákat lidi od obrazovek ven, mezi lidi, do pohybu.",
+        en: "This event has already taken place. CTRL Europe held the CTRL Run charity run on Saturday 3 October 2026 at the Komec sports complex in Brno-Komárov. We fight addiction to digital technology — so we decided to do something simple and direct: get people away from screens, out among people, and moving.",
       },
       {
         type: "p",
-        cs: "Veškerý výtěžek z CTRL Run jde Společnosti Podané ruce na podporu prevence digitálních závislostí u dětí a mládeže. Přijď běžet. Podpoř dobrý projekt. A nech telefon doma.",
-        en: "All proceeds from CTRL Run go to Společnost Podané ruce to support preventing digital addictions in children and young people. Come run. Support a good cause. And leave your phone at home.",
+        cs: "Veškerý výtěžek z CTRL Run šel Společnosti Podané ruce na podporu prevence digitálních závislostí u dětí a mládeže.",
+        en: "All proceeds from CTRL Run went to Společnost Podané ruce to support preventing digital addictions in children and young people.",
       },
       {
         type: "facts",
@@ -970,9 +970,6 @@ export const NEWS = [
             value: { cs: "16:00", en: "16:00" },
           },
         ],
-      },
-      {
-        type: "register",
       },
       {
         type: "h2",
@@ -1099,10 +1096,6 @@ export const NEWS = [
         ],
       },
       {
-        type: "register",
-        variant: "inline",
-      },
-      {
         type: "h2",
         id: "harmonogram",
         cs: "Harmonogram",
@@ -1204,8 +1197,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Po běhu plánujeme seznamovací akci určenou především studentům. Bez scrollování, bez profilových fotek, bez matchování přes obrazovku. Přijdeš, odložíš telefon a můžeš se opravdu potkat s novými lidmi.",
-        en: "After the run we are planning a mixer aimed primarily at students. No scrolling, no profile photos, no matching through a screen. You show up, put the phone down and actually meet new people.",
+        cs: "Po běhu proběhla seznamovací akce určená především studentům. Bez scrollování, bez profilových fotek, bez matchování přes obrazovku — telefon stranou a setkání s novými lidmi.",
+        en: "After the run there was a mixer aimed primarily at students. No scrolling, no profile photos, no matching through a screen — phones aside, and meeting new people.",
       },
       {
         type: "p",
