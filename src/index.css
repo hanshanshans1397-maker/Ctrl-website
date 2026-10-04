@@ -2315,29 +2315,27 @@ body.reduced-motion .workshop-facts:not(.in) .workshop-spec-note {
   background-position: 50% 0;
 }
 
+/* Phone and tablet: the centered cross was drawn over the cards. */
 @media (max-width: 1023px) {
-  .board-grid.sep-grid::before {
-    top: 8%;
-    bottom: 8%;
-    background-image:
-      linear-gradient(var(--color-separator), var(--color-separator)),
-      linear-gradient(var(--color-separator), var(--color-separator));
-    background-size: 1px 42%, 28% 1px;
-    background-position: 50% 50%, 50% 50%;
+  .board-grid.sep-grid {
+    gap: 12px;
+    background-color: transparent;
   }
 
+  .board-grid.sep-grid::before,
   .board-grid--leads.sep-grid::before {
-    background-image: linear-gradient(
-      var(--color-separator),
-      var(--color-separator)
-    );
-    background-size: 1px 70%;
-    background-position: 50% 50%;
+    content: none;
+  }
+
+  .board-grid .exec-card {
+    min-width: 0;
+    border: 1px solid rgba(11, 16, 32, 0.08);
   }
 }
 
 @media (max-width: 639px) {
-  .what-grid.sep-grid::before {
+  .what-grid.sep-grid::before,
+  .numbers-grid.sep-grid::before {
     background-image:
       linear-gradient(to right, var(--color-separator), var(--color-separator)),
       linear-gradient(to right, var(--color-separator), var(--color-separator)),
@@ -8815,6 +8813,12 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
 
   .exec-card__name {
     font-size: 16px;
+    overflow-wrap: break-word;
+  }
+
+  .exec-card__role {
+    font-size: 10px;
+    letter-spacing: 0.4px;
   }
 
   .coord-accordion__trigger,
