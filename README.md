@@ -35,6 +35,8 @@ npm run preview  # náhled buildu
 | `/news` | Aktuality (vč. článků a výzkumu) |
 | `/join` | Zapojit se |
 | `/apply` | Přihláška člena |
+| `/newsletter` | Newsletter — přihlášení |
+| `/newsletter/unsubscribe` | Newsletter — odhlášení |
 | `/summit` | Summit |
 | `/workshops` | Workshopy |
 | `/article-template` | Šablona článku |

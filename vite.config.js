@@ -2,6 +2,10 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { handleApplySubmission } from './api/lib/handle-apply.js';
+import {
+  handleNewsletterSubscribe,
+  handleNewsletterUnsubscribe,
+} from './api/lib/newsletter.js';
 import { handleRunRegisterSubmission } from './api/lib/handle-run-register.js';
 
 function readJsonBody(req) {
@@ -88,6 +92,16 @@ export default defineConfig(({ mode }) => {
           path: '/api/run-register',
           handler: handleRunRegisterSubmission,
           errorMessage: 'Failed to save registration',
+        },
+        {
+          path: '/api/newsletter/subscribe',
+          handler: handleNewsletterSubscribe,
+          errorMessage: 'Could not save',
+        },
+        {
+          path: '/api/newsletter/unsubscribe',
+          handler: handleNewsletterUnsubscribe,
+          errorMessage: 'Could not unsubscribe',
         },
       ]),
     ],

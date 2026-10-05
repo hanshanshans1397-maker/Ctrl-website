@@ -20,7 +20,7 @@ function emailRow(label, value) {
   </tr>`;
 }
 
-function confirmationRow(label, value) {
+export function confirmationRow(label, value) {
   if (!value) return "";
   return `<tr>
     <td class="email-row-label" style="padding:10px 0;border-bottom:1px solid rgba(29,78,216,0.12);font-family:Geist Mono,Consolas,monospace;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#1d4ed8;vertical-align:top;width:42%;">${escapeHtml(label)}</td>
@@ -40,7 +40,7 @@ function wrapEmail(title, rows) {
 </html>`;
 }
 
-function wrapConfirmationEmail({
+export function wrapConfirmationEmail({
   isEn,
   eyebrow,
   headline,
