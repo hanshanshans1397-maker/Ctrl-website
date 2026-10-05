@@ -1117,7 +1117,7 @@ export function AboutPageContent() {
               <span className="en">The rest of the board.</span>
             </h2>
           </div>
-          <div className="board-mini mt-8 grid grid-cols-2 gap-3 max-lg:grid-cols-1 lg:mt-10 xl:grid-cols-4">
+          <div className="board-mini mt-8 grid grid-cols-2 gap-3 lg:mt-10 xl:grid-cols-4">
             {BOARD_REST.map((member) => (
               <BoardMemberCard key={member.id} member={member} variant="about" />
             ))}
