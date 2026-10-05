@@ -1,4 +1,4 @@
-import { PARTNER_ORGS, SPONSORS } from '../data/partners';
+import { PARTNER_ORGS, PAST_PARTNERS, SPONSORS } from '../data/partners';
 
 function PartnerCard({ item }) {
   const nameEn = item.nameEn || item.name;
@@ -47,6 +47,12 @@ const GROUPS = [
     labelCs: 'Spolupracující organizace',
     labelEn: 'Cooperating organizations',
     items: PARTNER_ORGS,
+  },
+  {
+    id: 'past',
+    labelCs: 'Organizace, se kterými jsme spolupracovali',
+    labelEn: 'Organizations we have collaborated with',
+    items: PAST_PARTNERS,
   },
 ].filter((group) => group.items.length > 0);
 

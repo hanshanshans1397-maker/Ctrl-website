@@ -185,10 +185,10 @@ export const NEWS = [
     inviteHeight: NEWS_INVITE.height,
     banner: {
       variant: "orb",
-      date: { cs: "1.–3. listopadu", en: "1–3 November" },
+      date: { cs: "1.–2. listopadu", en: "1–2 November" },
       points: {
-        cs: ["Brno", "3 gymnázia", "6 lektorů"],
-        en: ["Brno", "3 schools", "6 facilitators"],
+        cs: ["Karlovarský kraj", "2 gymnázia", "6 lektorů"],
+        en: ["Karlovy Vary Region", "2 schools", "6 facilitators"],
       },
     },
     category: { cs: "Vzdělávání", en: "Education" },
@@ -197,33 +197,33 @@ export const NEWS = [
       en: "We're taking a new AI workshop to schools",
     },
     excerpt: {
-      cs: "1.–3. listopadu povede vedení CTRL Europe tři workshopy o umělé inteligenci a manipulaci na gymnáziích v Brně.",
-      en: "On 1–3 November, the CTRL Europe leadership will run three workshops on artificial intelligence and manipulation at grammar schools in Brno.",
+      cs: "1.–2. listopadu povede vedení CTRL Europe dva dny workshopů o umělé inteligenci a manipulaci na gymnáziích v Karlovarském kraji.",
+      en: "On 1–2 November, the CTRL Europe leadership will run two days of workshops on artificial intelligence and manipulation at grammar schools in the Karlovy Vary Region.",
     },
     meta: {
       cs: {
         title: "Vyrážíme s novým workshopem o AI | CTRL Europe",
         description:
-          "1.–3. listopadu 2026 tři workshopy Dnů AI na gymnáziích v Brně. Šest lektorů z vedení, vlastní náplň a webová aplikace k programu.",
+          "1.–2. listopadu 2026 dva dny workshopů Dnů AI na gymnáziích v Karlovarském kraji. Šest lektorů z vedení, vlastní náplň a webová aplikace k programu.",
       },
       en: {
         title: "We're taking a new AI workshop to schools | CTRL Europe",
         description:
-          "On 1–3 November 2026, three AI Days workshops at grammar schools in Brno. Six facilitators from the leadership, a programme we wrote, and a web app that runs alongside it.",
+          "On 1–2 November 2026, two days of AI Days workshops at grammar schools in the Karlovy Vary Region. Six facilitators from the leadership, a programme we wrote, and a web app that runs alongside it.",
       },
     },
     sections: [
       {
         type: "marquee",
         phrases: {
-          cs: ["1.–3. listopadu.", "Tři gymnázia.", "Workshop o AI."],
-          en: ["1–3 November.", "Three schools.", "A workshop on AI."],
+          cs: ["1.–2. listopadu.", "Dvě gymnázia.", "Dva dny workshopů."],
+          en: ["1–2 November.", "Two schools.", "Two days of workshops."],
         },
       },
       {
         type: "p",
-        cs: "1.–3. listopadu povede naše vedení tři workshopy o umělé inteligenci a manipulaci na gymnáziích v rámci nově spuštěného vzdělávacího programu CTRL Europe.",
-        en: "On 1–3 November our leadership will run three workshops on artificial intelligence and manipulation at grammar schools, as part of a newly launched CTRL Europe education programme.",
+        cs: "1.–2. listopadu povede naše vedení dva dny workshopů o umělé inteligenci a manipulaci na gymnáziích v Karlovarském kraji v rámci nově spuštěného vzdělávacího programu CTRL Europe.",
+        en: "On 1–2 November our leadership will run two days of workshops on artificial intelligence and manipulation at grammar schools in the Karlovy Vary Region, as part of a newly launched CTRL Europe education programme.",
       },
       {
         type: "h2",
@@ -233,8 +233,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "V rámci Dnů AI odučí šest lidí z vedení CTRL Europe tři workshopy na téma umělé inteligence, manipulace a digitálních závislostí přímo na gymnáziích v Brně.",
-        en: "During the AI Days, six people from the CTRL Europe leadership will teach three workshops on artificial intelligence, manipulation and digital addictions, in grammar schools in Brno.",
+        cs: "V rámci Dnů AI odučí šest lidí z vedení CTRL Europe dva dny workshopů na téma umělé inteligence, manipulace a digitálních závislostí přímo na gymnáziích v Karlovarském kraji.",
+        en: "During the AI Days, six people from the CTRL Europe leadership will teach two days of workshops on artificial intelligence, manipulation and digital addictions, in grammar schools in the Karlovy Vary Region.",
       },
       {
         type: "p",
@@ -244,31 +244,26 @@ export const NEWS = [
       {
         type: "h2",
         id: "skoly",
-        cs: "Tři dny, tři gymnázia",
-        en: "Three days, three schools",
+        cs: "Dva dny, dvě gymnázia",
+        en: "Two days, two schools",
       },
       {
         type: "p",
-        cs: "Každý den jiné gymnázium v Brně. Jména škol doplníme, až budou potvrzená.",
-        en: "A different grammar school in Brno each day. We'll add the school names once they are confirmed.",
+        cs: "Každý den jiné gymnázium v Karlovarském kraji. Jména škol doplníme, až budou potvrzená.",
+        en: "A different grammar school in the Karlovy Vary Region each day. We'll add the school names once they are confirmed.",
       },
       {
         type: "timeline",
         items: [
           {
             time: "1. 11.",
-            cs: "První workshop.",
-            en: "First workshop.",
+            cs: "První den workshopů.",
+            en: "First day of workshops.",
           },
           {
             time: "2. 11.",
-            cs: "Druhý workshop.",
-            en: "Second workshop.",
-          },
-          {
-            time: "3. 11.",
-            cs: "Třetí workshop.",
-            en: "Third workshop.",
+            cs: "Druhý den workshopů.",
+            en: "Second day of workshops.",
           },
         ],
       },
@@ -293,8 +288,8 @@ export const NEWS = [
           },
           {
             time: "03",
-            cs: "Jdeme na první gymnázia. Tři workshopy, tři školy, reální studenti.",
-            en: "We're going into the first grammar schools. Three workshops, three schools, real students.",
+            cs: "Jdeme na první gymnázia. Dva dny workshopů, dvě školy, reální studenti.",
+            en: "We're going into the first grammar schools. Two days of workshops, two schools, real students.",
           },
         ],
       },
@@ -309,11 +304,11 @@ export const NEWS = [
         items: [
           {
             label: { cs: "Kdy", en: "When" },
-            value: { cs: "1.–3. 11. 2026", en: "1–3 Nov 2026" },
+            value: { cs: "1.–2. 11. 2026", en: "1–2 Nov 2026" },
           },
           {
             label: { cs: "Kde", en: "Where" },
-            value: { cs: "Brno", en: "Brno" },
+            value: { cs: "Karlovarský kraj", en: "Karlovy Vary Region" },
           },
           {
             label: { cs: "Lektoři", en: "Facilitators" },
@@ -321,7 +316,7 @@ export const NEWS = [
           },
           {
             label: { cs: "Workshopy", en: "Workshops" },
-            value: { cs: "3 za tři dny", en: "3 in three days" },
+            value: { cs: "2 dny", en: "2 days" },
           },
         ],
       },
@@ -912,28 +907,28 @@ export const NEWS = [
         caption: { cs: "Program", en: "Programme" },
       },
     ],
-    category: { cs: "Akce", en: "Event" },
+    category: { cs: "Proběhlá akce", en: "Past event" },
     title: {
       cs: "Charitativní běh na podporu prevence digitálních závislostí dětí a mládeže",
       en: "Charity run in support of preventing digital addictions in children and young people",
     },
     excerpt: {
-      cs: "Telefon odlož. Tenisky obuj. Vyraž s námi. CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh u areálu Komec. Veškerý výtěžek z CTRL Run jde Společnosti Podané ruce na prevenci digitálních závislostí u dětí a mládeže.",
-      en: "Put the phone down. Lace up. Come with us. CTRL Europe is planning a charity run on Saturday 3 October 2026 at Komec. All proceeds from CTRL Run go to Společnost Podané ruce for preventing digital addictions in children and young people.",
+      cs: "Akce už proběhla. CTRL Europe uspořádal v sobotu 3. října 2026 charitativní běh u areálu Komec. Veškerý výtěžek z CTRL Run jde Společnosti Podané ruce na prevenci digitálních závislostí u dětí a mládeže.",
+      en: "This event has already taken place. CTRL Europe held the charity run on Saturday 3 October 2026 at Komec. All proceeds from CTRL Run go to Společnost Podané ruce for preventing digital addictions in children and young people.",
     },
     meta: {
       cs: {
         title:
           "Charitativní běh na podporu prevence digitálních závislostí | CTRL Europe",
         description:
-          "CTRL Europe plánuje charitativní běh CTRL Run 3. října 2026 u areálu Komec. 5 km, začátek 15:00, běh od 16:00, tombola 17:20, přednáška 17:40, párty od 18:30. Výtěžek jde Podaným rukám.",
+          "Charitativní běh CTRL Run už proběhl 3. října 2026 u areálu Komec. 5 km, začátek 15:00, běh od 16:00, tombola 17:20, přednáška 17:40, párty od 18:30. Výtěžek jde Podaným rukám.",
         image: "/photos/charitativni-beh.jpg",
       },
       en: {
         title:
           "Charity run for the prevention of digital addictions | CTRL Europe",
         description:
-          "CTRL Europe is planning the CTRL Run charity run on 3 October 2026 at Komec. 5 km, start 15:00, run from 16:00, raffle 17:20, talk 17:40, party from 18:30. Proceeds go to Podané ruce.",
+          "The CTRL Run charity run took place on 3 October 2026 at Komec. 5 km, start 15:00, run from 16:00, raffle 17:20, talk 17:40, party from 18:30. Proceeds go to Podané ruce.",
         image: "/photos/charitativni-beh.jpg",
       },
     },
@@ -947,13 +942,13 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "CTRL Europe plánuje na sobotu 3. října 2026 charitativní běh CTRL Run u sportovního areálu Komec v Brně-Komárově. Bojujeme proti závislostem na digitálních technologiích — a proto jsme se rozhodli udělat něco jednoduchého a přímého: vylákat lidi od obrazovek ven, mezi lidi, do pohybu.",
-        en: "CTRL Europe is planning the CTRL Run charity run on Saturday 3 October 2026 at the Komec sports complex in Brno-Komárov. We fight addiction to digital technology — so we decided to do something simple and direct: get people away from screens, out among people, and moving.",
+        cs: "Akce už proběhla. CTRL Europe uspořádal v sobotu 3. října 2026 charitativní běh CTRL Run u sportovního areálu Komec v Brně-Komárově. Bojujeme proti závislostem na digitálních technologiích — a proto jsme se rozhodli udělat něco jednoduchého a přímého: vylákat lidi od obrazovek ven, mezi lidi, do pohybu.",
+        en: "This event has already taken place. CTRL Europe held the CTRL Run charity run on Saturday 3 October 2026 at the Komec sports complex in Brno-Komárov. We fight addiction to digital technology — so we decided to do something simple and direct: get people away from screens, out among people, and moving.",
       },
       {
         type: "p",
-        cs: "Veškerý výtěžek z CTRL Run jde Společnosti Podané ruce na podporu prevence digitálních závislostí u dětí a mládeže. Přijď běžet. Podpoř dobrý projekt. A nech telefon doma.",
-        en: "All proceeds from CTRL Run go to Společnost Podané ruce to support preventing digital addictions in children and young people. Come run. Support a good cause. And leave your phone at home.",
+        cs: "Veškerý výtěžek z CTRL Run šel Společnosti Podané ruce na podporu prevence digitálních závislostí u dětí a mládeže.",
+        en: "All proceeds from CTRL Run went to Společnost Podané ruce to support preventing digital addictions in children and young people.",
       },
       {
         type: "facts",
@@ -975,9 +970,6 @@ export const NEWS = [
             value: { cs: "16:00", en: "16:00" },
           },
         ],
-      },
-      {
-        type: "register",
       },
       {
         type: "h2",
@@ -1041,6 +1033,12 @@ export const NEWS = [
                 href: "https://www.hudy.cz",
                 logo: "/partners/hudy.svg",
               },
+              {
+                cs: "Střední škola a vyšší odborná škola informatiky a financí Brno",
+                en: "Secondary School and College of Informatics and Finance Brno",
+                href: "https://www.cichnovabrno.cz/",
+                logo: "/partners/cichnova-brno.png",
+              },
               { cs: "a další", en: "and others", placeholder: true },
             ],
           },
@@ -1098,10 +1096,6 @@ export const NEWS = [
         ],
       },
       {
-        type: "register",
-        variant: "inline",
-      },
-      {
         type: "h2",
         id: "harmonogram",
         cs: "Harmonogram",
@@ -1137,8 +1131,8 @@ export const NEWS = [
           },
           {
             time: "17:40",
-            cs: "Přednáška pana Škerle z Podaných rukou na téma digitálních závislostí u dětí a mládeže",
-            en: "Talk by Mr Škerle from Podané ruce on digital addictions in children and young people",
+            cs: "Přednáška pana Škerleho",
+            en: "Talk by Mr Škerle",
           },
           {
             time: "18:30",
@@ -1154,7 +1148,7 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Na místě budou aktivity a stánky sponzorů i zúčastněných organizací. Zastavit se u nich můžete před během i po něm. Po běhu vás čeká tombola a přednáška pana Škerle ze Společnosti Podané ruce.",
+        cs: "Na místě budou aktivity a stánky sponzorů i zúčastněných organizací. Zastavit se u nich můžete před během i po něm. Po běhu vás čeká tombola a přednáška pana Škerleho ze Společnosti Podané ruce.",
         en: "Sponsors and participating organisations will have activities and stands on site. You can stop by before the run and after it. After the run there will be a raffle and a talk by Mr Škerle from Společnost Podané ruce.",
       },
       {
@@ -1203,8 +1197,8 @@ export const NEWS = [
       },
       {
         type: "p",
-        cs: "Po běhu plánujeme seznamovací akci určenou především studentům. Bez scrollování, bez profilových fotek, bez matchování přes obrazovku. Přijdeš, odložíš telefon a můžeš se opravdu potkat s novými lidmi.",
-        en: "After the run we are planning a mixer aimed primarily at students. No scrolling, no profile photos, no matching through a screen. You show up, put the phone down and actually meet new people.",
+        cs: "Po běhu proběhla seznamovací akce určená především studentům. Bez scrollování, bez profilových fotek, bez matchování přes obrazovku — telefon stranou a setkání s novými lidmi.",
+        en: "After the run there was a mixer aimed primarily at students. No scrolling, no profile photos, no matching through a screen — phones aside, and meeting new people.",
       },
       {
         type: "p",

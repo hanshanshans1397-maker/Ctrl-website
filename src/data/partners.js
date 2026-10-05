@@ -22,4 +22,35 @@ export const PARTNER_ORGS = [
     logo: '/partners/den-hejtmanem.png',
     href: 'https://denhejtmanem.cz/',
   },
+  {
+    id: 'cichnova-brno',
+    name: 'Střední škola a vyšší odborná škola informatiky a financí Brno',
+    nameEn: 'Secondary School and College of Informatics and Finance Brno',
+    logo: '/partners/cichnova-brno.png',
+    href: 'https://www.cichnovabrno.cz/',
+  },
+];
+
+export const PAST_PARTNERS = [
+  {
+    id: 'hudy',
+    name: 'HUDY',
+    nameEn: 'HUDY',
+    logo: '/partners/hudy.svg',
+    href: 'https://www.hudy.cz',
+  },
+  {
+    id: 'birell',
+    name: 'BIRELL',
+    nameEn: 'BIRELL',
+    logo: '/partners/birell.svg',
+    href: 'https://www.birell.cz',
+  },
+  {
+    id: 'juko-petfood',
+    name: 'JUKO petfood',
+    nameEn: 'JUKO petfood',
+    logo: '/partners/juko-petfood.svg',
+    href: 'https://www.juko-krmiva.cz/cz/',
+  },
 ];

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLang } from "../context/LangContext";
 import { getInstagramUrl, CONTACT_EMAIL } from "../utils/socialLinks";
@@ -38,9 +39,43 @@ function IconLinkedIn() {
 export function Footer() {
   const { isEn } = useLang();
   const instagramUrl = getInstagramUrl(isEn);
+  const accRef = useRef(null);
+
+  // Desktop: all columns always open. Mobile (<=480px): collapsed accordions.
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 480px)");
+    const sync = () => {
+      const items = accRef.current?.querySelectorAll("details.footer-acc") || [];
+      items.forEach((d) => {
+        if (mq.matches) d.removeAttribute("open");
+        else d.setAttribute("open", "");
+      });
+    };
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   return (
     <footer className="overflow-hidden border-t border-[rgba(245,245,243,0.06)] bg-dark px-[52px] pt-10 pb-7 max-lg:px-6 max-lg:pt-9 max-lg:pb-6 max-[480px]:px-5 max-[480px]:pt-7 max-[480px]:pb-5">
+      <style>{`
+        .footer-acc summary { list-style: none; }
+        .footer-acc summary::-webkit-details-marker { display: none; }
+        .footer-acc__chevron { display: none; width: 14px; height: 14px; color: rgba(245,245,243,0.5); transition: transform 0.2s ease; flex-shrink: 0; }
+        @media (min-width: 481px) {
+          .footer-acc summary { pointer-events: none; }
+        }
+        @media (max-width: 480px) {
+          .footer-accs { gap: 0 !important; width: 100%; }
+          .footer-acc { width: 100%; border-bottom: 1px solid rgba(245,245,243,0.06); }
+          .footer-acc:first-child { border-top: 1px solid rgba(245,245,243,0.06); }
+          .footer-acc summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 14px 0; -webkit-tap-highlight-color: transparent; }
+          .footer-acc summary h4 { margin-bottom: 0 !important; }
+          .footer-acc__chevron { display: block; }
+          .footer-acc[open] .footer-acc__chevron { transform: rotate(180deg); }
+          .footer-acc__body { padding-bottom: 10px; }
+        }
+      `}</style>
       <div className="mx-auto max-w-[1300px]" data-footer-inner="">
         <div className="mb-8 flex items-start justify-between border-b border-[rgba(245,245,243,0.06)] pb-8 max-lg:mb-6 max-lg:flex-col max-lg:gap-7 max-lg:pb-6 max-[480px]:mb-5 max-[480px]:gap-5 max-[480px]:pb-5">
           <div>
@@ -59,14 +94,18 @@ export function Footer() {
               "Take control before someone else does."
             </div>
           </div>
-          <div className="flex gap-14 max-lg:flex-wrap max-lg:gap-8 max-[480px]:flex-col max-[480px]:gap-5">
-            <div>
-              <h4 className="cs mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
+          <div ref={accRef} className="footer-accs flex gap-14 max-lg:flex-wrap max-lg:gap-8 max-[480px]:flex-col max-[480px]:gap-5">
+            <details className="footer-acc" open>
+              <summary>
+                <h4 className="cs mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
                 Projekt
               </h4>
               <h4 className="en mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
                 Project
               </h4>
+                <svg className="footer-acc__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+              </summary>
+              <div className="footer-acc__body">
               <Link
                 to="/"
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
@@ -82,11 +121,11 @@ export function Footer() {
                 <span className="en">About</span>
               </Link>
               <Link
-                to="/about#partners"
+                to="/news"
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >
-                <span className="cs">Partneři</span>
-                <span className="en">Partners</span>
+                <span className="cs">Aktuality</span>
+                <span className="en">News</span>
               </Link>
               <Link
                 to="/summit"
@@ -102,20 +141,25 @@ export function Footer() {
                 <span className="en">Workshops</span>
               </Link>
               <Link
-                to="/news"
+                to="/about#partners"
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >
-                <span className="cs">Aktuality</span>
-                <span className="en">News</span>
+                <span className="cs">Partneři</span>
+                <span className="en">Partners</span>
               </Link>
-            </div>
-            <div>
-              <h4 className="cs mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
+              </div>
+            </details>
+            <details className="footer-acc" open>
+              <summary>
+                <h4 className="cs mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
                 Kontakt
               </h4>
               <h4 className="en mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
                 Contact
               </h4>
+                <svg className="footer-acc__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+              </summary>
+              <div className="footer-acc__body">
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
@@ -143,14 +187,19 @@ export function Footer() {
                 <span className="cs">Newsletter</span>
                 <span className="en">Newsletter</span>
               </Link>
-            </div>
-            <div>
-              <h4 className="cs mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
+              </div>
+            </details>
+            <details className="footer-acc" open>
+              <summary>
+                <h4 className="cs mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
                 Sociální sítě
               </h4>
               <h4 className="en mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">
                 Social
               </h4>
+                <svg className="footer-acc__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+              </summary>
+              <div className="footer-acc__body">
               <a
                 href={instagramUrl}
                 className="mb-2 flex items-center gap-2 text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
@@ -167,7 +216,8 @@ export function Footer() {
                 LinkedIn
               </a>
               */}
-            </div>
+              </div>
+            </details>
           </div>
         </div>
         <div className="mb-6 font-mono text-[10px] font-light leading-relaxed text-[rgba(245,245,243,0.25)] max-[640px]:mb-4">
