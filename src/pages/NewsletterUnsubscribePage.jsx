@@ -38,46 +38,53 @@ export default function NewsletterUnsubscribePage() {
   }, [searchParams]);
 
   return (
-    <div className="apply-page">
-      <div className="apply-wrap">
-        <div className="section-head">
-          <span className="section-label">
-            <span className="cs">Newsletter</span>
-            <span className="en">Newsletter</span>
-          </span>
-          <h1 className="cs">Odhlášení</h1>
-          <h1 className="en">Unsubscribe</h1>
+    <>
+      <div
+        className="page-hero relative overflow-hidden bg-dark flex min-h-[60vh] flex-col justify-end px-[52px] pt-40 pb-[100px] max-lg:px-6 max-lg:pb-20 max-sm:justify-center max-sm:px-5"
+        id="hero"
+      >
+        <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full relative z-[2]">
+          <div className="section-head">
+            <span className="page-label cs">Newsletter</span>
+            <span className="page-label en">Newsletter</span>
+            <h1 className="page-title cs text-bg">Odhlášení</h1>
+            <h1 className="page-title en text-bg">Unsubscribe</h1>
+          </div>
         </div>
-
-        {phase === 'loading' ? (
-          <p className="lede">
-            <span className="cs">Odhlašuji…</span>
-            <span className="en">Unsubscribing…</span>
-          </p>
-        ) : null}
-
-        {phase === 'done' ? (
-          <p className="lede" role="status">
-            <span className="cs">
-              Pokud byl odkaz platný, odběr newsletteru je ukončený.
-            </span>
-            <span className="en">
-              If the link was valid, the newsletter subscription is cancelled.
-            </span>
-          </p>
-        ) : null}
-
-        {phase === 'error' ? (
-          <p className="lede" role="alert">
-            <span className="cs">
-              Nepodařilo se odhlásit. Otevři odkaz z mailu ještě jednou.
-            </span>
-            <span className="en">
-              Could not unsubscribe. Open the link from the email again.
-            </span>
-          </p>
-        ) : null}
       </div>
-    </div>
+
+      <section className="sec bg-bg">
+        <div className="inner max-w-[680px]">
+          {phase === 'loading' ? (
+            <p className="page-sub">
+              <span className="cs">Odhlašuji…</span>
+              <span className="en">Unsubscribing…</span>
+            </p>
+          ) : null}
+
+          {phase === 'done' ? (
+            <p className="page-sub" role="status">
+              <span className="cs">
+                Pokud byl odkaz platný, odběr newsletteru je ukončený.
+              </span>
+              <span className="en">
+                If the link was valid, the newsletter subscription is cancelled.
+              </span>
+            </p>
+          ) : null}
+
+          {phase === 'error' ? (
+            <p className="page-sub" role="alert">
+              <span className="cs">
+                Nepodařilo se odhlásit. Otevři odkaz z mailu ještě jednou.
+              </span>
+              <span className="en">
+                Could not unsubscribe. Open the link from the email again.
+              </span>
+            </p>
+          ) : null}
+        </div>
+      </section>
+    </>
   );
 }

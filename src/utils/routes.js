@@ -6,6 +6,8 @@ export const DARK_HERO_ROUTES = [
   '/join',
   '/news',
   '/apply',
+  '/newsletter',
+  '/newsletter/unsubscribe',
 ];
 
 export function hasDarkHero(pathname) {
