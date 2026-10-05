@@ -513,7 +513,7 @@ export function HomePageContent() {
               <span className="en">Real numbers. Real impact.</span>
             </h2>
           </div>
-          <div className="numbers-grid grid grid-cols-1 sep-grid sm:grid-cols-2 lg:grid-cols-4">
+          <div className="numbers-grid grid grid-cols-2 sep-grid lg:grid-cols-4">
             <div className="number-card rev d1 bg-card py-[52px] px-11 transition-colors duration-300 hover:bg-bg2 max-[640px]:text-center max-[640px]:flex max-[640px]:flex-col max-[640px]:items-center max-[640px]:py-9 max-[640px]:px-5">
               <div className="number-val text-[clamp(52px,6vw,80px)] font-bold tracking-[-3px] leading-none text-dark mb-3 [&_span]:text-accent">
                 <AnimatedCounter value={621} />+
