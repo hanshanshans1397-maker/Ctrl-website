@@ -193,27 +193,29 @@ Když chybí `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` nebo `RESEND_API_KEY`, 
 
 Až dojdeš k zastávce, přestaň a napiš člověku text z ní. Pokračuj v kódu, teprve až napíše, že je hotovo. Kód, který na klíče ještě nečeká (stránka, API, skript), můžeš napsat před zastávkou 1. Nepiš mu, ať něco kóduje.
 
-### Zastávka 1 — účet Supabase
+### Zastávka 1 — přístup do Supabase
+
+Projekt v Supabase už existuje. Nový nezakládej a člověku neříkej, ať ho zakládá.
 
 Napiš mu:
 
-> Teď potřebuju, abys v prohlížeči založil databázi. Kód zatím nech na mně.
+> Napiš Nikovi. On ti dá přihlašovací údaje do Supabase.
 >
-> 1. Otevři https://supabase.com/dashboard a přihlas se.
-> 2. **New project**. Název třeba `ctrl-website`. Heslo k databázi si ulož mimo chat (do projektu ho psát nebudeme). Počkej, až projekt doběhne.
-> 3. Vlevo **SQL Editor** → **New query**. Vlož celý SQL, který ti pošlu pod tímhle postupem, a dej **Run**. Má skončit bez červené chyby.
-> 4. Vlevo **Project Settings** (ozubené kolečko) → **API**.
-> 5. Zkopíruj **Project URL**.
-> 6. U **Project API keys** zkopíruj **service_role** (secret). To není klíč `anon` / `public`. `anon` nekopíruj a nikam ho nedávej.
-> 7. V kořeni projektu otevři soubor `.env` (ne `.env.example`). Když `.env` nemáš, zkopíruj `.env.example` na `.env`. Na konec přidej dva řádky a hodnoty vlož za rovnítko, bez uvozovek a bez mezer:
+> Až se s nimi dostaneš do projektu, udělej tohle. Nový projekt nezakládej.
+>
+> 1. Vlevo **SQL Editor** → **New query**. Vlož celý SQL, který ti pošlu pod tímhle postupem, a dej **Run**. Má skončit bez červené chyby.
+> 2. Vlevo **Project Settings** (ozubené kolečko) → **API**.
+> 3. Zkopíruj **Project URL**.
+> 4. U **Project API keys** zkopíruj **service_role** (secret). To není klíč `anon` / `public`. `anon` nekopíruj a nikam ho nedávej.
+> 5. V kořeni projektu otevři soubor `.env` (ne `.env.example`). Když `.env` nemáš, zkopíruj `.env.example` na `.env`. Na konec přidej dva řádky a hodnoty vlož za rovnítko, bez uvozovek a bez mezer:
 >
 > ```
 > SUPABASE_URL=sem-project-url
 > SUPABASE_SERVICE_ROLE_KEY=sem-service-role
 > ```
 >
-> 8. Soubor ulož. `.env` se do gitu nedává. Klíče mi do chatu neposílej.
-> 9. Napiš mi jen: hotovo.
+> 6. Soubor ulož. `.env` se do gitu nedává. Heslo ani klíče mi do chatu neposílej.
+> 7. Napiš mi jen: hotovo.
 
 Pod ten postup vlož SQL z části **Tabulka**.
 
