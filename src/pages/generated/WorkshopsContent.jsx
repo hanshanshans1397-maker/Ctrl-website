@@ -22,7 +22,10 @@ export function WorkshopsPageContent() {
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,16,32,0.96)_0%,rgba(11,16,32,0.72)_45%,rgba(11,16,32,0.38)_100%)]" aria-hidden="true" />
           */}
           <div className="px-5 z-[3]">
-            <span className="block text-xl text-accent mb-2">Education</span>
+            <span className="block text-xl text-accent mb-2">
+              <span className="cs">Vzdělávání</span>
+              <span className="en">Education</span>
+            </span>
             <div className="flex flex-col text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span className="cs">Workshopy</span>
               <span className="en">Workshops</span>
