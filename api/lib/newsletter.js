@@ -1,4 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
+import {
+  buildPreferencesUpdatedEmail,
+  buildSubscribedEmail,
+  buildUnsubscribedEmail,
+  sendNewsletterTransactional,
+} from './newsletter-emails.js';
 
 export const NEWSLETTER_GROUPS = ['news', 'workshops', 'summit', 'run'];
 
@@ -46,6 +52,12 @@ export function isValidUnsubscribeToken(token) {
   return typeof token === 'string' && UUID_RE.test(token.trim());
 }
 
+function samePreferences(a = [], b = []) {
+  const left = [...a].sort().join(',');
+  const right = [...b].sort().join(',');
+  return left === right;
+}
+
 export function getSupabaseAdmin() {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -60,6 +72,14 @@ export function getSupabaseAdmin() {
   return createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
+}
+
+async function sendOrLog(label, payload) {
+  try {
+    await sendNewsletterTransactional(payload);
+  } catch (error) {
+    console.error(`${label}:`, error);
+  }
 }
 
 export async function handleNewsletterSubscribe(body = {}) {
@@ -96,20 +116,61 @@ export async function handleNewsletterSubscribe(body = {}) {
     throw serverError('Could not save');
   }
 
-  const { error } = await supabase.from('newsletter_subscribers').upsert(
-    {
-      email,
-      preferences,
-      lang,
-      status: 'subscribed',
-      updated_at: new Date().toISOString(),
-    },
-    { onConflict: 'email' },
-  );
+  const { data: existing, error: existingError } = await supabase
+    .from('newsletter_subscribers')
+    .select('email, preferences, lang, status, unsubscribe_token')
+    .eq('email', email)
+    .maybeSingle();
 
-  if (error) {
+  if (existingError) {
+    console.error('Newsletter subscribe lookup error:', existingError);
+    throw serverError('Could not save');
+  }
+
+  const { data: saved, error } = await supabase
+    .from('newsletter_subscribers')
+    .upsert(
+      {
+        email,
+        preferences,
+        lang,
+        status: 'subscribed',
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: 'email' },
+    )
+    .select('email, preferences, lang, unsubscribe_token')
+    .single();
+
+  if (error || !saved) {
     console.error('Newsletter subscribe Supabase error:', error);
     throw serverError('Could not save');
+  }
+
+  const wasActive = existing?.status === 'subscribed';
+  const preferencesChanged =
+    wasActive && !samePreferences(existing.preferences, preferences);
+
+  if (!wasActive) {
+    await sendOrLog(
+      'Newsletter subscribed email failed',
+      buildSubscribedEmail({
+        email: saved.email,
+        lang: saved.lang,
+        preferences: saved.preferences,
+        token: saved.unsubscribe_token,
+      }),
+    );
+  } else if (preferencesChanged) {
+    await sendOrLog(
+      'Newsletter preferences email failed',
+      buildPreferencesUpdatedEmail({
+        email: saved.email,
+        lang: saved.lang,
+        preferences: saved.preferences,
+        token: saved.unsubscribe_token,
+      }),
+    );
   }
 
   return { ok: true };
@@ -130,6 +191,25 @@ export async function handleNewsletterUnsubscribe(body = {}) {
     throw serverError('Could not unsubscribe');
   }
 
+  const { data: existing, error: lookupError } = await supabase
+    .from('newsletter_subscribers')
+    .select('email, lang, status, unsubscribe_token')
+    .eq('unsubscribe_token', token)
+    .maybeSingle();
+
+  if (lookupError) {
+    console.error('Newsletter unsubscribe lookup error:', lookupError);
+    throw serverError('Could not unsubscribe');
+  }
+
+  if (!existing) {
+    return { ok: true };
+  }
+
+  if (existing.status === 'unsubscribed') {
+    return { ok: true };
+  }
+
   const { error } = await supabase
     .from('newsletter_subscribers')
     .update({
@@ -142,6 +222,14 @@ export async function handleNewsletterUnsubscribe(body = {}) {
     console.error('Newsletter unsubscribe Supabase error:', error);
     throw serverError('Could not unsubscribe');
   }
+
+  await sendOrLog(
+    'Newsletter unsubscribed email failed',
+    buildUnsubscribedEmail({
+      email: existing.email,
+      lang: existing.lang,
+    }),
+  );
 
   return { ok: true };
 }
