@@ -630,7 +630,7 @@ export function HomePageContent() {
             </h2>
           </div>
           <div className="board-stack flex flex-col gap-5 max-lg:gap-4">
-            <div className="board-grid board-grid--custom board-grid--leads grid grid-cols-1 sep-grid sm:grid-cols-2 lg:grid-cols-4">
+            <div className="board-grid board-grid--custom board-grid--leads grid grid-cols-2 sep-grid sm:grid-cols-2 lg:grid-cols-4">
               {BOARD_LEADERS.map((member, index) => (
                 <BoardMemberCard
                   key={member.id}
@@ -640,7 +640,7 @@ export function HomePageContent() {
                 />
               ))}
             </div>
-            <div className="board-grid board-grid--custom board-grid--rest grid grid-cols-1 sep-grid sm:grid-cols-2 lg:grid-cols-4">
+            <div className="board-grid board-grid--custom board-grid--rest grid grid-cols-2 sep-grid sm:grid-cols-2 lg:grid-cols-4">
               {BOARD_REST.map((member) => (
                 <BoardMemberCard
                   key={member.id}
