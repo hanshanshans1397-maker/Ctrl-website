@@ -136,6 +136,13 @@ export function Footer() {
                 <span className="cs">Přidejte se k nám</span>
                 <span className="en">Join Us</span>
               </Link>
+              <Link
+                to="/newsletter"
+                className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
+              >
+                <span className="cs">Newsletter</span>
+                <span className="en">Newsletter</span>
+              </Link>
             </div>
             <div>
               <h4 className="cs mb-3.5 font-mono text-[10px] font-bold tracking-[2px] text-[rgba(245,245,243,0.88)] uppercase">

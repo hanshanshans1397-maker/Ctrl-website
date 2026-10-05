@@ -6,6 +6,8 @@ import ArticleTemplatePage from './pages/ArticleTemplatePage';
 import HomePage from './pages/HomePage';
 import ApplyPage from './pages/ApplyPage';
 import JoinPage from './pages/JoinPage';
+import NewsletterPage from './pages/NewsletterPage';
+import NewsletterUnsubscribePage from './pages/NewsletterUnsubscribePage';
 import SummitPage from './pages/SummitPage';
 import WorkshopsPage from './pages/WorkshopsPage';
 import AktualityPage from './pages/AktualityPage';
@@ -26,6 +28,8 @@ export default function App() {
             <Route path="research" element={<Navigate to="/news" replace />} />
             <Route path="join" element={<JoinPage />} />
             <Route path="apply" element={<ApplyPage />} />
+            <Route path="newsletter" element={<NewsletterPage />} />
+            <Route path="newsletter/unsubscribe" element={<NewsletterUnsubscribePage />} />
             <Route path="summit" element={<SummitPage />} />
             <Route path="workshops" element={<WorkshopsPage />} />
             {import.meta.env.DEV ? (
