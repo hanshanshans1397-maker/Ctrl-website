@@ -10,12 +10,14 @@ export default function NewsletterPage() {
     setEmail,
     preferences,
     togglePreference,
+    toggleAll,
+    allSelected,
     consent,
     setConsent,
     honeypot,
     setHoneypot,
     status,
-    errorVisible,
+    errorCode,
     preferenceOptions,
     submit,
   } = useNewsletterForm();
@@ -52,11 +54,11 @@ export default function NewsletterPage() {
             <span className="en">Only what you choose.</span>
           </h2>
           <p className="cs text-base leading-[1.85] font-light text-mid">
-            Čtyři skupiny, jeden e-mail. Signál se rozsvítí podle toho, co
+            Pět skupin, jeden e-mail. Signál se rozsvítí podle toho, co
             zaškrtnete.
           </p>
           <p className="en text-base leading-[1.85] font-light text-mid">
-            Four groups, one email. The signal lights up according to what
+            Five groups, one email. The signal lights up according to what
             you tick.
           </p>
         </div>
@@ -118,8 +120,20 @@ export default function NewsletterPage() {
                     required
                     autoComplete="email"
                     value={email}
+                    aria-invalid={errorCode === 'email'}
+                    aria-describedby={errorCode === 'email' ? 'newsletter-email-error' : undefined}
                     onChange={(event) => setEmail(event.target.value)}
                   />
+                  {errorCode === 'email' ? (
+                    <p
+                      id="newsletter-email-error"
+                      className="mt-2 text-[14px] font-light text-red-700"
+                      role="alert"
+                    >
+                      <span className="cs">Zadejte e-mail ve tvaru jmeno@domena.cz.</span>
+                      <span className="en">Enter an email like name@domain.com.</span>
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className="field">
@@ -128,6 +142,15 @@ export default function NewsletterPage() {
                     <span className="en">Topics</span>
                   </span>
                   <div className="chip-group" role="group">
+                    <button
+                      type="button"
+                      className={`chip${allSelected ? ' selected' : ''}`}
+                      aria-pressed={allSelected}
+                      onClick={toggleAll}
+                    >
+                      <span className="cs">Vše</span>
+                      <span className="en">All</span>
+                    </button>
                     {preferenceOptions.map((option) => {
                       const selected = preferences.includes(option.value);
                       return (
@@ -169,7 +192,7 @@ export default function NewsletterPage() {
                   </label>
                 </div>
 
-                {errorVisible ? (
+                {errorCode === 'save' ? (
                   <p className="mb-5 text-[14px] font-light text-red-700" role="alert">
                     <span className="cs">Nepodařilo se uložit. Zkuste to znovu.</span>
                     <span className="en">Could not save. Please try again.</span>

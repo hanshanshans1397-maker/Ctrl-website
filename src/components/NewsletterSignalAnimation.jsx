@@ -1,40 +1,50 @@
-const HUB = { x: 220, y: 220 };
+const HUB = { x: 250, y: 250 };
 const NODE_R = 52;
+const HUB_R = 64;
+const ORBIT = 168;
 
-const LINKS = [
+const GROUPS = [
+  { id: 'workshops', cs: 'Workshopy', en: 'Workshops', angle: -90 },
+  { id: 'summit', cs: 'Summit', en: 'Summit', angle: -18 },
+  { id: 'run', cs: 'Sportovní akce', en: 'Sports events', angle: 54 },
+  { id: 'partners', cs: 'Spolupráce', en: 'Partnerships', angle: 126 },
   {
-    id: 'news',
-    x: 68,
-    y: 62,
-    cs: 'Aktuality',
-    en: 'News',
-    d: 'M 106.8 102.4 Q 126.9 146.3 170.1 168.1',
-  },
-  {
-    id: 'workshops',
-    x: 372,
-    y: 62,
-    cs: 'Workshopy',
-    en: 'Workshops',
-    d: 'M 333.2 102.4 Q 313.1 146.3 269.9 168.1',
-  },
-  {
-    id: 'summit',
-    x: 68,
-    y: 378,
-    cs: 'Summit',
-    en: 'Summit',
-    d: 'M 106.8 337.6 Q 126.9 293.7 170.1 271.9',
-  },
-  {
-    id: 'run',
-    x: 372,
-    y: 378,
-    cs: 'CTRL Run',
-    en: 'CTRL Run',
-    d: 'M 333.2 337.6 Q 313.1 293.7 269.9 271.9',
+    id: 'media',
+    cs: 'Média a',
+    cs2: 'podcasty',
+    en: 'Media and',
+    en2: 'podcasts',
+    angle: 198,
   },
 ];
+
+function round(value) {
+  return Math.round(value * 10) / 10;
+}
+
+const LINKS = GROUPS.map((group) => {
+  const rad = (group.angle * Math.PI) / 180;
+  const x = HUB.x + ORBIT * Math.cos(rad);
+  const y = HUB.y + ORBIT * Math.sin(rad);
+  const dx = HUB.x - x;
+  const dy = HUB.y - y;
+  const len = Math.hypot(dx, dy);
+  const ux = dx / len;
+  const uy = dy / len;
+  const startX = x + ux * (NODE_R + 8);
+  const startY = y + uy * (NODE_R + 8);
+  const endX = HUB.x - ux * (HUB_R + 12);
+  const endY = HUB.y - uy * (HUB_R + 12);
+  const midX = (startX + endX) / 2 - uy * 14;
+  const midY = (startY + endY) / 2 + ux * 14;
+
+  return {
+    ...group,
+    x: round(x),
+    y: round(y),
+    d: `M ${round(startX)} ${round(startY)} Q ${round(midX)} ${round(midY)} ${round(endX)} ${round(endY)}`,
+  };
+});
 
 function copyFor(count, isSuccess) {
   if (isSuccess) {
@@ -56,16 +66,6 @@ function copyFor(count, isSuccess) {
 }
 
 const GLYPH_TRANSFORM = 'translate(0 -7) scale(1.42) translate(-8 -8)';
-
-function NewsGlyph() {
-  return (
-    <g className="newsletter-signal__glyph" transform={GLYPH_TRANSFORM}>
-      <path d="M2 3.5h8.5l3 3V13.5H2V3.5z" strokeLinejoin="round" />
-      <path d="M10.5 3.5V6.5H13.5" strokeLinejoin="round" />
-      <path d="M5 9h6M5 11h4" strokeLinecap="round" />
-    </g>
-  );
-}
 
 function WorkshopsGlyph() {
   return (
@@ -103,12 +103,55 @@ function RunGlyph() {
   );
 }
 
+function PartnersGlyph() {
+  return (
+    <g className="newsletter-signal__glyph" transform={GLYPH_TRANSFORM}>
+      <circle cx="5" cy="4.6" r="1.7" fill="none" />
+      <path d="M1.6 12.6c.35-2.15 1.6-3.2 3.4-3.2s3.05 1.05 3.4 3.2" strokeLinecap="round" />
+      <circle cx="11" cy="4.6" r="1.7" fill="none" />
+      <path d="M7.6 12.6c.35-2.15 1.6-3.2 3.4-3.2s3.05 1.05 3.4 3.2" strokeLinecap="round" />
+    </g>
+  );
+}
+
+function MediaGlyph() {
+  return (
+    <g className="newsletter-signal__glyph" transform={GLYPH_TRANSFORM}>
+      <rect x="6" y="1.4" width="4" height="6.6" rx="2" />
+      <path d="M4.1 7.1a3.9 3.9 0 0 0 7.8 0" strokeLinecap="round" />
+      <path d="M8 11v2.6M5.8 13.6h4.4" strokeLinecap="round" />
+    </g>
+  );
+}
+
 const GLYPHS = {
-  news: NewsGlyph,
   workshops: WorkshopsGlyph,
   summit: SummitGlyph,
   run: RunGlyph,
+  partners: PartnersGlyph,
+  media: MediaGlyph,
 };
+
+function NodeName({ link, lang }) {
+  const line1 = lang === 'cs' ? link.cs : link.en;
+  const line2 = lang === 'cs' ? link.cs2 : link.en2;
+  const className = `newsletter-signal__name ${lang}`;
+
+  if (!line2) {
+    return (
+      <text className={className} y="18" textAnchor="middle">
+        {line1}
+      </text>
+    );
+  }
+
+  return (
+    <text className={className} textAnchor="middle">
+      <tspan x="0" y="11">{line1}</tspan>
+      <tspan x="0" y="24">{line2}</tspan>
+    </text>
+  );
+}
 
 export function NewsletterSignalAnimation({ preferences = [], isSuccess = false }) {
   const active = new Set(preferences);
@@ -123,7 +166,7 @@ export function NewsletterSignalAnimation({ preferences = [], isSuccess = false 
     >
       <svg
         className="newsletter-signal__svg"
-        viewBox="0 0 440 440"
+        viewBox="0 0 500 500"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
@@ -138,7 +181,7 @@ export function NewsletterSignalAnimation({ preferences = [], isSuccess = false 
         <circle
           cx={HUB.x}
           cy={HUB.y}
-          r="150"
+          r="120"
           fill="url(#newsletter-signal-glow)"
         />
 
@@ -176,12 +219,8 @@ export function NewsletterSignalAnimation({ preferences = [], isSuccess = false 
               >
                 <circle className="newsletter-signal__disc" r={NODE_R} />
                 <Glyph />
-                <text className="newsletter-signal__name cs" y="18" textAnchor="middle">
-                  {link.cs}
-                </text>
-                <text className="newsletter-signal__name en" y="18" textAnchor="middle">
-                  {link.en}
-                </text>
+                <NodeName link={link} lang="cs" />
+                <NodeName link={link} lang="en" />
               </g>
             </g>
           );

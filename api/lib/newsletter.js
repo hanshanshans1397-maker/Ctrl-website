@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { isEmailFormat } from '../../shared/email.js';
 import {
   buildPreferencesUpdatedEmail,
   buildSubscribedEmail,
@@ -6,9 +7,7 @@ import {
   sendNewsletterTransactional,
 } from './newsletter-emails.js';
 
-export const NEWSLETTER_GROUPS = ['news', 'workshops', 'summit', 'run'];
-
-const EMAIL_MAX_LENGTH = 254;
+export const NEWSLETTER_GROUPS = ['workshops', 'summit', 'run', 'partners', 'media'];
 const UUID_RE =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -26,13 +25,7 @@ function serverError(message) {
 }
 
 export function isValidEmail(value) {
-  const email = String(value ?? '').trim().toLowerCase();
-  if (!email || email.length > EMAIL_MAX_LENGTH) return false;
-  if (/\s/.test(email)) return false;
-  const at = email.indexOf('@');
-  if (at <= 0 || at !== email.lastIndexOf('@')) return false;
-  if (at === email.length - 1) return false;
-  return true;
+  return isEmailFormat(value);
 }
 
 export function normalizeEmail(value) {

@@ -54,7 +54,7 @@ create table newsletter_subscribers (
   constraint newsletter_subscribers_lang check (lang in ('cs', 'en')),
   constraint newsletter_subscribers_status check (status in ('subscribed', 'unsubscribed')),
   constraint newsletter_subscribers_preferences check (
-    preferences <@ array['news', 'workshops', 'summit', 'run']::text[]
+    preferences <@ array['workshops', 'summit', 'run', 'partners', 'media']::text[]
   )
 );
 
@@ -63,7 +63,7 @@ alter table newsletter_subscribers enable row level security;
 
 Žádnou policy pro `anon` ani `authenticated` nepřidávej. Čte a zapisuje jen server přes `SUPABASE_SERVICE_ROLE_KEY`.
 
-Povolené skupiny: `news`, `workshops`, `summit`, `run`.
+Povolené skupiny: `workshops`, `summit`, `run`, `partners`, `media`.
 
 Upsert podle `email`: přepiš `preferences`, `lang`, nastav `status` na `subscribed`, posuň `updated_at`. `unsubscribe_token` a `created_at` v upsertu neposílej, ať se při opakovaném zápisu nezmění. E-mail ukládej oříznutý a malými písmeny.
 
@@ -79,13 +79,13 @@ Přesné texty:
 | nadpis | Zůstaňte v obraze. | Stay in the loop. |
 | perex | Napíšeme, když bude nový summit, workshop, běh nebo zpráva. | We will write when there is a new summit, workshop, run, or update. |
 | e-mail | E-mail | Email |
-| skupiny | Aktuality, Workshopy, Summit, CTRL Run | News, Workshops, Summit, CTRL Run |
+| skupiny | Workshopy, Summit, Sportovní akce, Spolupráce, Média a podcasty | Workshops, Summit, Sports events, Partnerships, Media and podcasts |
 | souhlas | Souhlasím se zasíláním newsletteru na tento e-mail. Odhlásit se můžu kdykoli odkazem v mailu. | I agree to receive the newsletter at this email. I can unsubscribe anytime from a link in the email. |
 | tlačítko | Přihlásit se | Subscribe |
 | úspěch | Hotovo. Až bude něco nového, ozveme se. | Done. We will be in touch when there is something new. |
 | chyba | Nepodařilo se uložit. Zkuste to znovu. | Could not save. Please try again. |
 
-Hodnoty checkboxů posílej jako `news`, `workshops`, `summit`, `run`, ne jako viditelný popisek. Alespoň jedna skupina. Souhlas je povinný checkbox. Skryté pole `_gotcha` (honeypot) jako u přihlášky: když přijde vyplněné, API vrátí `{ "ok": true }` a nic nezapíše.
+Hodnoty checkboxů posílej jako `workshops`, `summit`, `run`, `partners`, `media`, ne jako viditelný popisek. Alespoň jedna skupina. Souhlas je povinný checkbox. Skryté pole `_gotcha` (honeypot) jako u přihlášky: když přijde vyplněné, API vrátí `{ "ok": true }` a nic nezapíše.
 
 `fetch('/api/newsletter/subscribe', { method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/json' }, body })`.
 
@@ -111,7 +111,7 @@ Odmítni 400, když:
 
 - `consent` není `true`
 - e-mail po oříznutí není rozumná adresa (obsahuje jedno `@`, bez mezer, délka nejvýš 254)
-- `preferences` není neprázdné pole, nebo obsahuje něco mimo čtyři skupiny
+- `preferences` není neprázdné pole, nebo obsahuje něco mimo pět skupin
 - `lang` není `cs` ani `en`
 
 Úspěch je jen `{ "ok": true }`. Žádný token, žádný e-mail, žádný seznam. Resend nevolej. Když chybí env nebo spadne Supabase, do prohlížeče vrať 500 s obecnou větou `Could not save` a podrobnost jen do server logu.

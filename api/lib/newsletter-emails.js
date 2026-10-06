@@ -6,10 +6,11 @@ import {
 } from './send-email.js';
 
 const PREFERENCE_LABELS = {
-  news: { cs: 'Aktuality', en: 'News' },
   workshops: { cs: 'Workshopy', en: 'Workshops' },
   summit: { cs: 'Summit', en: 'Summit' },
-  run: { cs: 'CTRL Run', en: 'CTRL Run' },
+  run: { cs: 'Sportovní akce', en: 'Sports events' },
+  partners: { cs: 'Spolupráce', en: 'Partnerships' },
+  media: { cs: 'Média a podcasty', en: 'Media and podcasts' },
 };
 
 function formatPreferences(preferences, lang) {

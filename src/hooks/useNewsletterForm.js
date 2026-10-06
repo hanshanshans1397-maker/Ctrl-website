@@ -1,13 +1,15 @@
 import { useState } from 'react';
+import { isEmailFormat } from '../../shared/email.js';
 import { useLang } from '../context/LangContext';
 
 const NEWSLETTER_API_URL = '/api/newsletter/subscribe';
 
 const PREFERENCE_OPTIONS = [
-  { value: 'news', cs: 'Aktuality', en: 'News' },
   { value: 'workshops', cs: 'Workshopy', en: 'Workshops' },
   { value: 'summit', cs: 'Summit', en: 'Summit' },
-  { value: 'run', cs: 'CTRL Run', en: 'CTRL Run' },
+  { value: 'run', cs: 'Sportovní akce', en: 'Sports events' },
+  { value: 'partners', cs: 'Spolupráce', en: 'Partnerships' },
+  { value: 'media', cs: 'Média a podcasty', en: 'Media and podcasts' },
 ];
 
 export function useNewsletterForm() {
@@ -17,7 +19,7 @@ export function useNewsletterForm() {
   const [consent, setConsent] = useState(false);
   const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState('idle');
-  const [errorVisible, setErrorVisible] = useState(false);
+  const [errorCode, setErrorCode] = useState(null);
 
   function togglePreference(value) {
     setPreferences((prev) =>
@@ -25,12 +27,30 @@ export function useNewsletterForm() {
     );
   }
 
+  function toggleAll() {
+    setPreferences((prev) =>
+      prev.length === PREFERENCE_OPTIONS.length
+        ? []
+        : PREFERENCE_OPTIONS.map((option) => option.value),
+    );
+  }
+
+  function updateEmail(value) {
+    setEmail(value);
+    setErrorCode((current) => (current === 'email' ? null : current));
+  }
+
   async function submit(event) {
     event.preventDefault();
-    setErrorVisible(false);
+    setErrorCode(null);
+
+    if (!isEmailFormat(email)) {
+      setErrorCode('email');
+      return;
+    }
 
     if (preferences.length === 0 || !consent) {
-      setErrorVisible(true);
+      setErrorCode('save');
       return;
     }
 
@@ -60,26 +80,33 @@ export function useNewsletterForm() {
         return;
       }
 
+      const data = await res.json().catch(() => ({}));
       setStatus('idle');
-      setErrorVisible(true);
+      setErrorCode(
+        res.status === 400 && Array.isArray(data.fields) && data.fields.includes('email')
+          ? 'email'
+          : 'save',
+      );
     } catch {
       setStatus('idle');
-      setErrorVisible(true);
+      setErrorCode('save');
     }
   }
 
   return {
     isEn,
     email,
-    setEmail,
+    setEmail: updateEmail,
     preferences,
     togglePreference,
+    toggleAll,
+    allSelected: preferences.length === PREFERENCE_OPTIONS.length,
     consent,
     setConsent,
     honeypot,
     setHoneypot,
     status,
-    errorVisible,
+    errorCode,
     preferenceOptions: PREFERENCE_OPTIONS,
     submit,
   };
