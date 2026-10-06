@@ -177,8 +177,8 @@ export default function NewsletterPage() {
                 ) : null}
 
                 <button type="submit" className="submit-btn" disabled={isLoading}>
-                  <span className="cs">{isLoading ? '…' : 'Přihlásit se'}</span>
-                  <span className="en">{isLoading ? '…' : 'Subscribe'}</span>
+                  <span className="cs">{isLoading ? '…' : 'Přihlásit se do newsletteru'}</span>
+                  <span className="en">{isLoading ? '…' : 'Subscribe to the newsletter'}</span>
                 </button>
               </form>
             )}

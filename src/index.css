@@ -9114,8 +9114,9 @@ body.EN .newsletter-signal__name.en {
 }
 
 .newsletter-signal .is-on .newsletter-signal__disc {
-  fill: var(--color-accent);
+  fill: color-mix(in srgb, var(--color-accent) 58%, white);
   stroke: var(--color-accent);
+  stroke-width: 2.2;
 }
 
 .newsletter-signal__glyph {
@@ -9129,8 +9130,8 @@ body.EN .newsletter-signal__name.en {
 }
 
 .newsletter-signal .is-on .newsletter-signal__glyph {
-  stroke: #fff;
-  color: #fff;
+  stroke: var(--color-dark);
+  color: var(--color-dark);
 }
 
 .newsletter-signal__name {
@@ -9144,7 +9145,7 @@ body.EN .newsletter-signal__name.en {
 }
 
 .newsletter-signal .is-on .newsletter-signal__name {
-  fill: #fff;
+  fill: var(--color-dark);
 }
 
 .newsletter-signal__hub-bg {

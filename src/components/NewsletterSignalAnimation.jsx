@@ -61,7 +61,7 @@ function copyFor(count, isSuccess) {
   };
 }
 
-const GLYPH_TRANSFORM = 'translate(0 -13) scale(1.42) translate(-8 -8)';
+const GLYPH_TRANSFORM = 'translate(0 -7) scale(1.42) translate(-8 -8)';
 
 function NewsGlyph() {
   return (
@@ -187,10 +187,10 @@ export function NewsletterSignalAnimation({ preferences = [], isSuccess = false 
               >
                 <circle className="newsletter-signal__disc" r={NODE_R} />
                 <Glyph />
-                <text className="newsletter-signal__name cs" y="32" textAnchor="middle">
+                <text className="newsletter-signal__name cs" y="18" textAnchor="middle">
                   {link.cs}
                 </text>
-                <text className="newsletter-signal__name en" y="32" textAnchor="middle">
+                <text className="newsletter-signal__name en" y="18" textAnchor="middle">
                   {link.en}
                 </text>
               </g>
