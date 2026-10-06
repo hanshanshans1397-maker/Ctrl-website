@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLang } from "../context/LangContext";
-import { getInstagramUrl, CONTACT_EMAIL } from "../utils/socialLinks";
+import { getInstagramUrl, CONTACT_EMAIL, TIKTOK_URL } from "../utils/socialLinks";
 import { ORGANIZATION } from "../utils/organizationInfo";
 
 function IconInstagram() {
@@ -32,6 +32,19 @@ function IconLinkedIn() {
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
       <rect x="2" y="9" width="4" height="12" />
       <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
+function IconTikTok() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="w-[14px] h-[14px] shrink-0"
+      aria-hidden="true"
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.16 15.2a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.73a8.18 8.18 0 0 0 4.76 1.52V6.84a4.85 4.85 0 0 1-1.01-.15z" />
     </svg>
   );
 }
@@ -199,6 +212,13 @@ export function Footer() {
               >
                 <IconInstagram />
                 Instagram
+              </a>
+              <a
+                href={TIKTOK_URL}
+                className="mb-2 flex items-center gap-2 text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
+              >
+                <IconTikTok />
+                TikTok
               </a>
               {/*  
               <a
