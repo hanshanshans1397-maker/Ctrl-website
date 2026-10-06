@@ -5,15 +5,28 @@ import { Flythrough } from "../../components/Flythrough";
 import { TickerBar } from "../../components/TickerBar";
 import { BOARD_LEADERS, BOARD_REST } from "../../data/leadership";
 import { NewsCard } from "../../components/sections/NewsCard";
-import { RunRegisterHomeLure } from "../../components/sections/RunRegisterHomeLure";
 import { RunRegisterCta, RunRegisterFrame } from "../../components/ui/RunRegisterCta";
 import { NEWS } from "../../data/news";
 
+function nearestEvents(articles, count = 3) {
+  const now = new Date();
+  const today = [
+    now.getFullYear(),
+    String(now.getMonth() + 1).padStart(2, "0"),
+    String(now.getDate()).padStart(2, "0"),
+  ].join("-");
+  const byDate = [...articles].sort((a, b) => a.date.localeCompare(b.date));
+  const upcoming = byDate.filter((item) => item.date >= today);
+  if (upcoming.length >= count) return upcoming.slice(0, count);
+  const past = byDate.filter((item) => item.date < today).reverse();
+  return [...upcoming, ...past].slice(0, count);
+}
+
 export function HomePageContent() {
-  const featured =
-    NEWS.find((item) => item.sections.some((block) => block.type === "register")) ??
-    NEWS[0];
-  const featuredHasRegister = featured?.sections?.some((block) => block.type === "register");
+  const featuredEvents = nearestEvents(NEWS);
+  const featuredHasRegister = featuredEvents.some((item) =>
+    item.sections?.some((block) => block.type === "register"),
+  );
 
   return (
     <>
@@ -606,11 +619,14 @@ export function HomePageContent() {
             </Link>
           </div>
         </div>
-        {featured ? (
+        {featuredEvents.length ? (
           <RunRegisterFrame enabled={featuredHasRegister} dock={false}>
-            <div className="news-home mx-auto mt-12 max-w-[1300px]">
-              <NewsCard article={featured} />
-              {featuredHasRegister ? <RunRegisterHomeLure /> : null}
+            <div className="news-grid mx-auto mt-12 grid max-w-[1300px] grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {featuredEvents.map((article) => (
+                <div key={article.slug} className="rev">
+                  <NewsCard article={article} />
+                </div>
+              ))}
             </div>
             {featuredHasRegister ? <RunRegisterCta band={false} /> : null}
           </RunRegisterFrame>
