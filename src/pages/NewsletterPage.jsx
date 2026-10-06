@@ -1,11 +1,13 @@
 import { usePageMeta } from '../hooks/usePageMeta';
 import { useNewsletterForm } from '../hooks/useNewsletterForm';
 import { NewsletterSignalAnimation } from '../components/NewsletterSignalAnimation';
+import { NewsletterTopicPicker } from '../components/NewsletterTopicPicker';
 
 export default function NewsletterPage() {
   usePageMeta('newsletter');
 
   const {
+    isEn,
     email,
     setEmail,
     preferences,
@@ -28,7 +30,7 @@ export default function NewsletterPage() {
   return (
     <>
       <div
-        className="page-hero relative overflow-hidden bg-dark flex min-h-[60vh] flex-col justify-end px-[52px] pt-40 pb-[100px] max-lg:px-6 max-lg:pb-20 max-sm:justify-center max-sm:px-5"
+        className="newsletter-hero page-hero relative overflow-hidden bg-dark flex min-h-[60vh] flex-col justify-end px-[52px] pt-40 pb-[100px] max-lg:px-6 max-lg:pb-20 max-sm:justify-center max-sm:px-5"
         id="hero"
       >
         <div className="inner mx-auto max-w-[1300px] max-sm:max-w-full relative z-[2]">
@@ -119,6 +121,8 @@ export default function NewsletterPage() {
                     type="email"
                     required
                     autoComplete="email"
+                    inputMode="email"
+                    placeholder={isEn ? 'name@domain.com' : 'jmeno@domena.cz'}
                     value={email}
                     aria-invalid={errorCode === 'email'}
                     aria-describedby={errorCode === 'email' ? 'newsletter-email-error' : undefined}
@@ -137,10 +141,26 @@ export default function NewsletterPage() {
                 </div>
 
                 <div className="field">
-                  <span className="mb-2 block font-mono text-[10px] font-normal tracking-[2px] text-mid uppercase">
-                    <span className="cs">Skupiny</span>
-                    <span className="en">Topics</span>
-                  </span>
+                  <div className="newsletter-groups__head">
+                    <span className="block font-mono text-[10px] font-normal tracking-[2px] text-mid uppercase">
+                      <span className="cs">Skupiny</span>
+                      <span className="en">Topics</span>
+                    </span>
+                    <button
+                      type="button"
+                      className="newsletter-groups__all"
+                      aria-pressed={allSelected}
+                      onClick={toggleAll}
+                    >
+                      <span className="cs">{allSelected ? 'Zrušit vše' : 'Vybrat vše'}</span>
+                      <span className="en">{allSelected ? 'Clear all' : 'Select all'}</span>
+                    </button>
+                  </div>
+                  <NewsletterTopicPicker
+                    options={preferenceOptions}
+                    preferences={preferences}
+                    onToggle={togglePreference}
+                  />
                   <div className="chip-group" role="group">
                     <button
                       type="button"
