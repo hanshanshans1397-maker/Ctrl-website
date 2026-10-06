@@ -9006,12 +9006,20 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
 /* Newsletter — signal graphic, same line language as apply / join */
 .apply-page.newsletter-page {
   min-height: 0;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .newsletter-intro {
   width: 100%;
   max-width: 1140px;
-  margin: 0 auto 8px;
+  margin: 0 auto 40px;
+}
+
+.newsletter-intro.rev,
+.newsletter-intro.rev.in {
+  translate: none;
+  transform: none;
 }
 
 .newsletter-signal {
@@ -9243,7 +9251,7 @@ body.lite-motion .newsletter-signal__link.is-on .newsletter-signal__pulse {
 
   .newsletter-page .newsletter-signal {
     justify-self: center;
-    align-self: center;
+    align-self: start;
     margin-top: 0;
   }
 
