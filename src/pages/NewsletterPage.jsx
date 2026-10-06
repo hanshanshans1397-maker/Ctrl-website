@@ -46,25 +46,25 @@ export default function NewsletterPage() {
       </div>
 
       <div className="apply-page apply-page--below-hero newsletter-page">
+        <div className="newsletter-intro rev">
+          <h2 className="sec-title mb-4 text-[clamp(32px,3.5vw,52px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px]">
+            <span className="cs">Jen to, co si vyberete.</span>
+            <span className="en">Only what you choose.</span>
+          </h2>
+          <p className="cs text-base leading-[1.85] font-light text-mid">
+            Čtyři skupiny, jeden e-mail. Signál se rozsvítí podle toho, co
+            zaškrtnete.
+          </p>
+          <p className="en text-base leading-[1.85] font-light text-mid">
+            Four groups, one email. The signal lights up according to what
+            you tick.
+          </p>
+        </div>
         <div className="apply-layout">
-          <aside className="apply-layout__aside rev">
-            <h2 className="sec-title mb-8 text-[clamp(32px,3.5vw,52px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px]">
-              <span className="cs">Jen to, co si vyberete.</span>
-              <span className="en">Only what you choose.</span>
-            </h2>
-            <p className="cs mb-4 text-base leading-[1.85] font-light text-mid">
-              Čtyři skupiny, jeden e-mail. Signál se rozsvítí podle toho, co
-              zaškrtnete.
-            </p>
-            <p className="en mb-4 text-base leading-[1.85] font-light text-mid">
-              Four groups, one email. The signal lights up according to what
-              you tick.
-            </p>
-            <NewsletterSignalAnimation
-              preferences={preferences}
-              isSuccess={isSuccess}
-            />
-          </aside>
+          <NewsletterSignalAnimation
+            preferences={preferences}
+            isSuccess={isSuccess}
+          />
 
           <div className="apply-wrap rev d2">
             {isSuccess ? (
@@ -147,15 +147,16 @@ export default function NewsletterPage() {
                 </div>
 
                 <div className="field">
-                  <label className="flex cursor-pointer items-start gap-3 !normal-case !tracking-normal !font-sans !text-[14px] !text-[var(--apply-ink)]">
+                  <label className="newsletter-consent">
                     <input
                       type="checkbox"
                       name="consent"
                       checked={consent}
                       onChange={(event) => setConsent(event.target.checked)}
-                      className="mt-1 size-4 shrink-0 accent-[var(--apply-blue)]"
+                      className="newsletter-consent__input"
                     />
-                    <span>
+                    <span className="newsletter-consent__box" aria-hidden="true" />
+                    <span className="newsletter-consent__text">
                       <span className="cs">
                         Souhlasím se zasíláním newsletteru na tento e-mail. Odhlásit se
                         můžu kdykoli odkazem v mailu.

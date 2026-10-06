@@ -1070,6 +1070,88 @@ body.reduced-motion #heroBottom {
   color: var(--color-bg);
 }
 
+.apply-page.newsletter-page .chip:hover,
+.apply-page.newsletter-page .chip.selected {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 58%, white);
+  color: var(--color-dark);
+}
+
+.apply-page.newsletter-page .newsletter-consent {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 0;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-dark);
+}
+
+.newsletter-consent__input {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.newsletter-consent__box {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(11, 16, 32, 0.28);
+  background: transparent;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.newsletter-consent__box::after {
+  content: "";
+  display: block;
+  width: 9px;
+  height: 5px;
+  margin: 4px 0 0 3.5px;
+  border-left: 1.6px solid #fff;
+  border-bottom: 1.6px solid #fff;
+  transform: rotate(-45deg);
+  opacity: 0;
+}
+
+.newsletter-consent:hover .newsletter-consent__box {
+  border-color: var(--color-accent);
+}
+
+.newsletter-consent__input:checked + .newsletter-consent__box {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+.newsletter-consent__input:checked + .newsletter-consent__box::after {
+  opacity: 1;
+}
+
+.newsletter-consent__input:focus-visible + .newsletter-consent__box {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.newsletter-consent__text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(11, 16, 32, 0.78);
+}
+
 .apply-page .radio-cards {
   display: flex;
   flex-direction: column;
@@ -8926,10 +9008,17 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
   min-height: 0;
 }
 
+.newsletter-intro {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto 8px;
+}
+
 .newsletter-signal {
   width: 100%;
-  max-width: 480px;
-  margin: 28px 0 0;
+  max-width: 440px;
+  margin: 12px auto 0;
+  text-align: center;
 }
 
 .newsletter-signal__header {
@@ -8974,17 +9063,33 @@ body.EN .newsletter-signal__name.en {
   overflow: visible;
 }
 
+.newsletter-signal__halo {
+  fill: none;
+  stroke: rgba(74, 123, 255, 0.22);
+  stroke-width: 1;
+  opacity: 0.4;
+}
+
+.newsletter-signal:not([data-count="0"]) .newsletter-signal__halo {
+  animation: newsletterHalo 3.6s ease-in-out infinite;
+}
+
+.newsletter-signal:not([data-count="0"]) .newsletter-signal__halo--2 {
+  animation-delay: 1.2s;
+}
+
 .newsletter-signal__line {
   fill: none;
-  stroke: rgba(74, 123, 255, 0.28);
-  stroke-width: 1.2;
+  stroke: rgba(74, 123, 255, 0.34);
+  stroke-width: 1.35;
   stroke-linecap: round;
-  stroke-dasharray: 4 7;
+  stroke-dasharray: 2 6;
   animation: newsletterDash 16s linear infinite;
 }
 
 .newsletter-signal__link.is-on .newsletter-signal__line {
   stroke: #4a7bff;
+  stroke-width: 1.6;
   stroke-dasharray: none;
   animation: none;
 }
@@ -9001,47 +9106,56 @@ body.EN .newsletter-signal__name.en {
   animation-delay: var(--pulse-delay, 0s);
 }
 
-.newsletter-signal__node circle {
-  fill: rgba(74, 123, 255, 0.05);
-  stroke: rgba(74, 123, 255, 0.28);
-  stroke-width: 1.2;
+.newsletter-signal__disc {
+  fill: var(--color-card);
+  stroke: rgba(11, 16, 32, 0.16);
+  stroke-width: 1.4;
   transition: fill 0.35s ease, stroke 0.35s ease;
 }
 
-.newsletter-signal .is-on .newsletter-signal__node circle {
-  fill: rgba(74, 123, 255, 0.14);
-  stroke: #4a7bff;
+.newsletter-signal .is-on .newsletter-signal__disc {
+  fill: var(--color-accent);
+  stroke: var(--color-accent);
 }
 
-.newsletter-signal__index {
-  fill: #4a7bff;
-  font-family: var(--font-mono), monospace;
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-anchor: middle;
-  dominant-baseline: central;
+.newsletter-signal__glyph {
+  fill: none;
+  stroke: rgba(11, 16, 32, 0.62);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: rgba(11, 16, 32, 0.62);
+  transition: stroke 0.35s ease, color 0.35s ease;
+}
+
+.newsletter-signal .is-on .newsletter-signal__glyph {
+  stroke: #fff;
+  color: #fff;
 }
 
 .newsletter-signal__name {
-  fill: rgba(11, 16, 32, 0.55);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  fill: rgba(11, 16, 32, 0.82);
+  font-family: var(--font-sans), Montserrat, system-ui, sans-serif;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  dominant-baseline: central;
+  transition: fill 0.35s ease;
 }
 
 .newsletter-signal .is-on .newsletter-signal__name {
-  fill: var(--color-dark);
-}
-
-.newsletter-signal__hub-ring,
-.newsletter-signal__hub-bg {
-  fill: none;
-  stroke: rgba(74, 123, 255, 0.18);
-  stroke-width: 1;
+  fill: #fff;
 }
 
 .newsletter-signal__hub-bg {
-  fill: rgba(74, 123, 255, 0.06);
+  fill: var(--color-card);
+  stroke: rgba(74, 123, 255, 0.4);
+  stroke-width: 1.4;
+  transition: fill 0.35s ease, stroke 0.35s ease;
+}
+
+.newsletter-signal:not([data-count="0"]) .newsletter-signal__hub-bg {
+  stroke: #4a7bff;
 }
 
 .newsletter-signal__mail rect,
@@ -9075,12 +9189,12 @@ body.EN .newsletter-signal__name.en {
 }
 
 .newsletter-signal[data-success] .newsletter-signal__hub-bg {
-  fill: rgba(74, 123, 255, 0.12);
-  stroke: rgba(74, 123, 255, 0.45);
+  fill: rgba(74, 123, 255, 0.1);
+  stroke: #4a7bff;
 }
 
 .newsletter-signal__caption {
-  margin-top: 4px;
+  margin: 4px auto 0;
   font-size: 14px;
   line-height: 1.65;
   font-weight: 300;
@@ -9091,6 +9205,16 @@ body.EN .newsletter-signal__name.en {
 @keyframes newsletterDash {
   to {
     stroke-dashoffset: -140;
+  }
+}
+
+@keyframes newsletterHalo {
+  0%,
+  100% {
+    opacity: 0.28;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
@@ -9113,8 +9237,10 @@ body.EN .newsletter-signal__name.en {
 
 body.reduced-motion .newsletter-signal__line,
 body.reduced-motion .newsletter-signal__pulse,
+body.reduced-motion .newsletter-signal__halo,
 body.lite-motion .newsletter-signal__line,
-body.lite-motion .newsletter-signal__pulse {
+body.lite-motion .newsletter-signal__pulse,
+body.lite-motion .newsletter-signal__halo {
   animation: none;
 }
 
@@ -9125,9 +9251,16 @@ body.lite-motion .newsletter-signal__link.is-on .newsletter-signal__pulse {
 }
 
 @media (min-width: 1024px) {
-  .apply-layout__aside .newsletter-signal {
-    max-width: none;
-    margin-top: 12px;
+  .newsletter-page .apply-layout {
+    grid-template-columns: minmax(300px, 1fr) minmax(0, 1.15fr);
+    gap: 48px 56px;
+    align-items: center;
+  }
+
+  .newsletter-page .newsletter-signal {
+    justify-self: center;
+    align-self: center;
+    margin-top: 0;
   }
 
   .newsletter-signal__caption {
