@@ -622,8 +622,11 @@ export function HomePageContent() {
         {featuredEvents.length ? (
           <RunRegisterFrame enabled={featuredHasRegister} dock={false}>
             <div className="news-grid mx-auto mt-12 grid max-w-[1300px] grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {featuredEvents.map((article) => (
-                <div key={article.slug} className="rev">
+              {featuredEvents.map((article, index) => (
+                <div
+                  key={article.slug}
+                  className={`rev${index === 1 ? " max-md:hidden" : ""}${index > 1 ? " max-lg:hidden" : ""}`}
+                >
                   <NewsCard article={article} />
                 </div>
               ))}
