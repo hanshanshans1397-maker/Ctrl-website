@@ -20,6 +20,7 @@ export default function NewsletterPage() {
     setHoneypot,
     status,
     errorCode,
+    canSubmit,
     preferenceOptions,
     submit,
   } = useNewsletterForm();
@@ -219,7 +220,11 @@ export default function NewsletterPage() {
                   </p>
                 ) : null}
 
-                <button type="submit" className="submit-btn" disabled={isLoading}>
+                <button
+                  type="submit"
+                  className="submit-btn"
+                  disabled={!canSubmit || isLoading}
+                >
                   <span className="cs">{isLoading ? '…' : 'Přihlásit se do newsletteru'}</span>
                   <span className="en">{isLoading ? '…' : 'Subscribe to the newsletter'}</span>
                 </button>

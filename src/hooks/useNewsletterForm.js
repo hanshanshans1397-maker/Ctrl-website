@@ -40,19 +40,13 @@ export function useNewsletterForm() {
     setErrorCode((current) => (current === 'email' ? null : current));
   }
 
+  const canSubmit = isEmailFormat(email) && preferences.length > 0 && consent;
+
   async function submit(event) {
     event.preventDefault();
     setErrorCode(null);
 
-    if (!isEmailFormat(email)) {
-      setErrorCode('email');
-      return;
-    }
-
-    if (preferences.length === 0 || !consent) {
-      setErrorCode('save');
-      return;
-    }
+    if (!canSubmit) return;
 
     setStatus('loading');
 
@@ -107,6 +101,7 @@ export function useNewsletterForm() {
     setHoneypot,
     status,
     errorCode,
+    canSubmit,
     preferenceOptions: PREFERENCE_OPTIONS,
     submit,
   };

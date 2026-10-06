@@ -1276,6 +1276,16 @@ body.reduced-motion #heroBottom {
   opacity: 0.5;
 }
 
+.apply-page.newsletter-page .submit-btn:disabled,
+.apply-page.newsletter-page .submit-btn:disabled:hover,
+.apply-page.newsletter-page .submit-btn:disabled:active {
+  background: rgba(11, 16, 32, 0.16);
+  color: rgba(11, 16, 32, 0.4);
+  opacity: 1;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .apply-page .submit-note {
   text-align: center;
   font-size: 12px;
