@@ -33,8 +33,8 @@ export default function NewsletterPage() {
           <div className="section-head">
             <span className="page-label cs">Newsletter</span>
             <span className="page-label en">Newsletter</span>
-            <h1 className="page-title cs text-bg">Vyberte si oblasti.</h1>
-            <h1 className="page-title en text-bg">Choose your areas.</h1>
+            <h1 className="page-title cs text-bg">Váš výběr ve schránce.</h1>
+            <h1 className="page-title en text-bg">Your pick, in your inbox.</h1>
           </div>
           <p className="page-sub cs max-w-[560px] text-lg leading-[1.65] font-light text-[rgba(245,245,243,0.65)] max-sm:text-[15px]">
             Přihlaste k odběru svůj e-mail a dostávejte zprávy jen z toho, co si zvolíte.
