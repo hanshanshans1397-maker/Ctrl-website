@@ -39,23 +39,17 @@ const LINKS = [
 function copyFor(count, isSuccess) {
   if (isSuccess) {
     return {
-      labelCs: 'Přihlášeno',
-      labelEn: 'Subscribed',
       captionCs: 'Až bude něco nového, ozveme se.',
       captionEn: 'We will write when there is something new.',
     };
   }
   if (count === 0) {
     return {
-      labelCs: 'Ticho',
-      labelEn: 'Quiet',
       captionCs: 'Zaškrtněte skupiny. Rozsvítí se jen ty, které chcete.',
       captionEn: 'Tick the groups. Only the ones you want will light up.',
     };
   }
   return {
-    labelCs: 'Signál',
-    labelEn: 'Signal',
     captionCs: 'Pošleme zprávy jen k vybraným skupinám.',
     captionEn: 'We only send updates for the groups you picked.',
   };
@@ -127,11 +121,6 @@ export function NewsletterSignalAnimation({ preferences = [], isSuccess = false 
       data-success={isSuccess ? 'true' : undefined}
       data-count={count}
     >
-      <figcaption className="newsletter-signal__header">
-        <span className="newsletter-signal__label cs">{copy.labelCs}</span>
-        <span className="newsletter-signal__label en">{copy.labelEn}</span>
-      </figcaption>
-
       <svg
         className="newsletter-signal__svg"
         viewBox="0 0 440 440"

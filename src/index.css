@@ -9021,33 +9021,16 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
   text-align: center;
 }
 
-.newsletter-signal__header {
-  margin-bottom: 8px;
-}
-
-.newsletter-signal__label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--color-accent);
-}
-
-.newsletter-signal__label.en,
 .newsletter-signal__caption.en,
 .newsletter-signal__name.en {
   display: none;
 }
 
-body.EN .newsletter-signal__label.cs,
 body.EN .newsletter-signal__caption.cs,
 body.EN .newsletter-signal__name.cs {
   display: none;
 }
 
-body.EN .newsletter-signal__label.en,
 body.EN .newsletter-signal__caption.en {
   display: block;
 }
