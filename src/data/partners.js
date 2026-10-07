@@ -29,6 +29,20 @@ export const PARTNER_ORGS = [
     logo: '/partners/cichnova-brno.png',
     href: 'https://www.cichnovabrno.cz/',
   },
+  {
+    id: 'kic-kk',
+    name: 'KIC KK',
+    nameEn: 'KIC KK',
+    logo: '/partners/kic-kk.svg',
+    href: 'https://kickk.cz',
+  },
+  {
+    id: 'faketicky',
+    name: 'Fak(e)ticky',
+    nameEn: 'Fak(e)ticky',
+    logo: '/partners/faketicky.png',
+    href: 'https://www.faketicky.cz',
+  },
 ];
 
 export const PAST_PARTNERS = [
