@@ -8,11 +8,26 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;');
 }
 
-export function renderOgHtml({ title, description, url, image, locale = 'cs_CZ' }) {
+export function renderOgHtml({
+  title,
+  description,
+  url,
+  image,
+  locale = 'cs_CZ',
+  imageWidth,
+  imageHeight,
+}) {
   const safeTitle = escapeHtml(title);
   const safeDescription = escapeHtml(description);
   const safeUrl = escapeHtml(url);
   const safeImage = escapeHtml(image);
+  const imageSize =
+    imageWidth && imageHeight
+      ? `
+    <meta property="og:image:width" content="${imageWidth}" />
+    <meta property="og:image:height" content="${imageHeight}" />
+    <meta property="og:image:type" content="image/jpeg" />`
+      : '';
 
   return `<!DOCTYPE html>
 <html lang="${locale.startsWith('en') ? 'en' : 'cs'}">
@@ -27,7 +42,7 @@ export function renderOgHtml({ title, description, url, image, locale = 'cs_CZ' 
     <meta property="og:description" content="${safeDescription}" />
     <meta property="og:url" content="${safeUrl}" />
     <meta property="og:image" content="${safeImage}" />
-    <meta property="og:image:secure_url" content="${safeImage}" />
+    <meta property="og:image:secure_url" content="${safeImage}" />${imageSize}
     <meta property="og:locale" content="${locale}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${safeTitle}" />

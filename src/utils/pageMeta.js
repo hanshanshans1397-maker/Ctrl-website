@@ -1,4 +1,7 @@
 import {
+  DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_HEIGHT,
+  DEFAULT_OG_IMAGE_WIDTH,
   PAGE_META,
   SITE_NAME,
   absoluteOgImage,
@@ -28,6 +31,10 @@ function setMetaName(name, content) {
 
 function setMetaProperty(property, content) {
   setMetaByAttr('property', property, content);
+}
+
+function removeMetaProperty(property) {
+  document.querySelector(`meta[property="${property}"]`)?.remove();
 }
 
 function setCanonical(url) {
@@ -62,6 +69,15 @@ export function applyMetaRecord(meta, isEn, ogType = 'website') {
   setMetaProperty('og:url', url);
   setMetaProperty('og:image', image);
   setMetaProperty('og:image:secure_url', image);
+  if ((meta.image || DEFAULT_OG_IMAGE) === DEFAULT_OG_IMAGE) {
+    setMetaProperty('og:image:width', String(DEFAULT_OG_IMAGE_WIDTH));
+    setMetaProperty('og:image:height', String(DEFAULT_OG_IMAGE_HEIGHT));
+    setMetaProperty('og:image:type', 'image/jpeg');
+  } else {
+    removeMetaProperty('og:image:width');
+    removeMetaProperty('og:image:height');
+    removeMetaProperty('og:image:type');
+  }
   setMetaProperty('og:locale', locale);
 
   setMetaName('twitter:card', 'summary_large_image');
