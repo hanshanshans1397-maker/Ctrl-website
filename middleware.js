@@ -1,5 +1,8 @@
 import {
   absoluteOgImage,
+  DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_HEIGHT,
+  DEFAULT_OG_IMAGE_WIDTH,
   getPageMetaForPath,
 } from './shared/pageMetaData.js';
 import { renderOgHtml } from './shared/renderOgHtml.js';
@@ -25,6 +28,7 @@ export default function middleware(request) {
   const meta = getPageMetaForPath(url.pathname, 'cs');
   const pageUrl = `${SITE_ORIGIN}${url.pathname}`;
   const image = absoluteOgImage(SITE_ORIGIN, meta);
+  const usesDefaultImage = (meta?.image || DEFAULT_OG_IMAGE) === DEFAULT_OG_IMAGE;
 
   return new Response(
     renderOgHtml({
@@ -33,6 +37,8 @@ export default function middleware(request) {
       url: pageUrl,
       image,
       locale: 'cs_CZ',
+      imageWidth: usesDefaultImage ? DEFAULT_OG_IMAGE_WIDTH : undefined,
+      imageHeight: usesDefaultImage ? DEFAULT_OG_IMAGE_HEIGHT : undefined,
     }),
     {
       headers: {

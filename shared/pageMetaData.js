@@ -6,13 +6,13 @@ export const PAGE_META = {
       title: 'CTRL Europe | Digitální odolnost pro novou evropskou generaci',
       description:
         'CTRL Europe — Budujeme digitální odolnost pro novou evropskou generaci.',
-      image: '/photos/hero.png',
+      image: '/og-image.jpg',
     },
     en: {
       title: 'CTRL Europe | Digital resilience for a new European generation',
       description:
         'CTRL Europe — Building digital resilience for a new European generation.',
-      image: '/photos/hero.png',
+      image: '/og-image.jpg',
     },
   },
   about: {
@@ -115,7 +115,9 @@ export const PATH_TO_PAGE_KEY = {
   '/workshops': 'workshops',
 };
 
-export const DEFAULT_OG_IMAGE = '/photos/hero.png';
+export const DEFAULT_OG_IMAGE = '/og-image.jpg';
+export const DEFAULT_OG_IMAGE_WIDTH = 1024;
+export const DEFAULT_OG_IMAGE_HEIGHT = 537;
 export const SITE_NAME = 'CTRL Europe';
 
 export function normalizePath(pathname) {
