@@ -951,6 +951,19 @@ export const NEWS = [
         en: "All proceeds from CTRL Run went to Společnost Podané ruce to support preventing digital addictions in children and young people.",
       },
       {
+        type: "p",
+        cs: [
+          "Fotky z akce najdete ",
+          { text: "na našem Facebooku", href: "https://www.facebook.com/permalink.php?story_fbid=pfbid02drz1EQfTBvkxTQPdRETjSfAXAevvMfSCpZP67W2yGxmB63NdxtH9KyEebRgJySgYl&id=61594327006714" },
+          ".",
+        ],
+        en: [
+          "Photos from the event are ",
+          { text: "on our Facebook", href: "https://www.facebook.com/permalink.php?story_fbid=pfbid02drz1EQfTBvkxTQPdRETjSfAXAevvMfSCpZP67W2yGxmB63NdxtH9KyEebRgJySgYl&id=61594327006714" },
+          ".",
+        ],
+      },
+      {
         type: "facts",
         items: [
           {
