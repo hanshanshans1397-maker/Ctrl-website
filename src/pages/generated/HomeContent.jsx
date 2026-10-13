@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { AlgorithmFeed } from "../../components/AlgorithmFeed";
 import { AnimatedCounter } from "../../components/AnimatedCounter";
 import { BoardMemberCard } from "../../components/BoardMemberCard";
+import { DisinfoGapChart } from "../../components/DisinfoGapChart";
+import { FakeNewsQuiz } from "../../components/FakeNewsQuiz";
 import { Flythrough } from "../../components/Flythrough";
 import { TickerBar } from "../../components/TickerBar";
 import { BOARD_LEADERS, BOARD_REST } from "../../data/leadership";
@@ -130,6 +133,181 @@ export function HomePageContent() {
       </section>
 
       <TickerBar wrapId="tickerWrap" />
+
+      <section
+        id="why-exists"
+        className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg"
+      >
+        <div className="inner max-w-[1300px] mx-auto">
+          <div className="section-head rev">
+            <span className="section-label">
+              <span className="cs">Proč CTRL existuje</span>
+              <span className="en">Why CTRL exists</span>
+            </span>
+            <h2 className="section-title">
+              <span className="cs">
+                Technologie mění společnost rychleji než ji umíme vysvětlit.
+              </span>
+              <span className="en">
+                Technology is changing society faster than we can explain it.
+              </span>
+            </h2>
+          </div>
+          <div className="about-2col grid grid-cols-2 gap-[100px] items-start max-lg:grid-cols-1 max-lg:gap-12">
+            <div className="rev">
+              <div className="prose">
+                <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
+                  Umělá inteligence, deepfakes, dezinformace a algoritmická
+                  manipulace. To nejsou vzdálené problémy. Jsou součástí
+                  každodenního života každého studenta, každé školy, každé
+                  rodiny.
+                </p>
+                <p className="en text-base font-light leading-[1.85] text-mid mb-5">
+                  Artificial intelligence, deepfakes, disinformation and
+                  algorithmic manipulation. These are not distant problems. They
+                  are part of the everyday life of every student, every school,
+                  every family.
+                </p>
+                <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
+                  Vzdělávací systémy na tuto změnu nestíhají reagovat. Osnovy
+                  vznikají roky dopředu. Technologie se mění každý měsíc. Mezi
+                  tím, co školy učí a tím, co mladí lidé skutečně potřebují
+                  vědět, roste propast.
+                </p>
+                <p className="en text-base font-light leading-[1.85] text-mid mb-5">
+                  Education systems are not keeping up with this change.
+                  Curricula are developed years in advance. Technology changes
+                  every month. The gap between what schools teach and what young
+                  people actually need to know is growing.
+                </p>
+                <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
+                  <strong className="text-dark font-medium">
+                    CTRL Europe tuto propast překlenžuje. Ne akademicky.
+                    Prakticky. Přímo tam, kde mladí lidé jsou.
+                  </strong>
+                </p>
+                <p className="en text-base font-light leading-[1.85] text-mid mb-5">
+                  <strong className="text-dark font-medium">
+                    CTRL Europe bridges this gap. Not academically. Practically.
+                    Directly where young people are.
+                  </strong>
+                </p>
+              </div>
+            </div>
+            <div className="rev d2 flex flex-col sep-stack">
+              <div className="py-8 px-9 border-b border-separator bg-bg">
+                <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 cs">
+                  Založeno
+                </div>
+                <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 en">
+                  Founded
+                </div>
+                <div className="text-xl font-semibold text-dark">
+                  2026, Brno
+                </div>
+              </div>
+              <div className="py-8 px-9 border-b border-separator bg-bg">
+                <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 cs">
+                  Studentů v CEE
+                </div>
+                <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 en">
+                  Students in CEE
+                </div>
+                <div className="text-xl font-semibold text-accent">621+</div>
+              </div>
+              <div className="py-8 px-9 border-b border-separator bg-bg">
+                <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 cs">
+                  Jazyků v týmu
+                </div>
+                <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 en">
+                  Languages in team
+                </div>
+                <div className="text-xl font-semibold text-dark">9+</div>
+              </div>
+              <div className="py-8 px-9 bg-bg">
+                <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 cs">
+                  Region
+                </div>
+                <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 en">
+                  Region
+                </div>
+                <div className="text-xl font-semibold text-dark">
+                  <span className="cs">Střední Evropa</span>
+                  <span className="en">Central Europe</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg2"
+        id="try-it"
+      >
+        <div className="inner max-w-[1300px] mx-auto">
+          <div className="section-head rev mb-14 max-lg:mb-10">
+            <span className="section-label">
+              <span className="cs">Vyzkoušejte si to</span>
+              <span className="en">Try it yourself</span>
+            </span>
+            <h2 className="section-title italic">
+              <span className="cs">
+                Ta propast <em>není abstraktní.</em>
+              </span>
+              <span className="en">
+                That gap <em>is not abstract.</em>
+              </span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:gap-16 xl:gap-20">
+            <div className="rev d1">
+              <p className="mb-8 max-w-[400px] text-[15px] leading-[1.8] font-light text-mid">
+                <span className="cs">
+                  Tohle je přesně ten typ zprávy, který na workshopech
+                  rozebíráme se studenty. Zkuste si sami, jestli poznáte, co je
+                  smyšlené — a proč.
+                </span>
+                <span className="en">
+                  This is exactly the kind of message we take apart with
+                  students in our workshops. See for yourself whether you can
+                  tell what is fabricated — and why.
+                </span>
+              </p>
+              <FakeNewsQuiz />
+            </div>
+            <div className="rev d2 lg:pt-[4.75rem]">
+              <p className="mb-8 max-w-[440px] text-[15px] leading-[1.8] font-light text-mid">
+                <span className="cs">
+                  76&nbsp;% mladých Evropanů se s dezinformacemi setkalo jen
+                  za poslední týden. Takhle často — a přesně tady začínají naše
+                  workshopy.
+                </span>
+                <span className="en">
+                  76% of young Europeans encountered disinformation in the past
+                  week alone. This is how often — and this is where our
+                  workshops start.
+                </span>
+              </p>
+              <DisinfoGapChart />
+            </div>
+          </div>
+          <div className="rev d3 mt-20 border-t border-separator pt-16 max-lg:mt-14 max-lg:pt-12">
+            <p className="mb-8 max-w-[540px] text-[15px] leading-[1.8] font-light text-mid">
+              <span className="cs">
+                A pak je tu ještě něco, co se ve škole skoro neučí: doporučovací
+                algoritmus. Tři kliknutí. Podívejte se, co udělají s feedem.
+              </span>
+              <span className="en">
+                And then there is something schools barely teach: the
+                recommendation algorithm. Three taps. Watch what they do to a
+                feed.
+              </span>
+            </p>
+            <AlgorithmFeed />
+          </div>
+        </div>
+      </section>
 
       <section
         id="what"
