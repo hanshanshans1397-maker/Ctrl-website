@@ -36,6 +36,7 @@ npm run preview  # náhled buildu
 | `/join` | Zapojit se |
 | `/apply` | Přihláška člena |
 | `/newsletter` | Newsletter — přihlášení |
+| `/newsletter/preferences` | Newsletter — změna předvoleb |
 | `/newsletter/unsubscribe` | Newsletter — odhlášení |
 | `/summit` | Summit |
 | `/workshops` | Workshopy |

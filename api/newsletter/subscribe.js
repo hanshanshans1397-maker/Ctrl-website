@@ -24,6 +24,9 @@ export default async function handler(req, res) {
     if (error.status === 400) {
       return res.status(400).json({ error: error.message, fields: error.fields });
     }
+    if (error.status === 409) {
+      return res.status(409).json({ error: error.message, code: error.code });
+    }
     console.error('Newsletter subscribe failed:', error);
     return res.status(500).json({ error: 'Could not save' });
   }

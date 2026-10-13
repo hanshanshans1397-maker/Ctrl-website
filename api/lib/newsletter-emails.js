@@ -25,17 +25,20 @@ function unsubscribeUrl(token) {
   return `${getSiteUrl()}/newsletter/unsubscribe?token=${token}`;
 }
 
+function preferencesUrl(token) {
+  return `${getSiteUrl()}/newsletter/preferences?token=${token}`;
+}
+
 function preferenceRows(preferences, lang) {
   const isEn = lang === 'en';
   return confirmationRow(
-    isEn ? 'Topics' : 'Skupiny',
+    isEn ? 'Topics' : 'Témata',
     formatPreferences(preferences, lang),
   );
 }
 
 export function buildSubscribedEmail({ email, lang, preferences, token }) {
   const isEn = lang === 'en';
-  const siteUrl = getSiteUrl();
 
   return {
     to: email,
@@ -53,10 +56,39 @@ export function buildSubscribedEmail({ email, lang, preferences, token }) {
       summaryTitle: isEn ? 'Your subscription' : 'Váš odběr',
       rows: preferenceRows(preferences, lang),
       outro: isEn
-        ? 'You can change your topics anytime by submitting the form again, or unsubscribe using the button below.'
-        : 'Skupiny můžete změnit opětovným odesláním formuláře, nebo se odhlásit tlačítkem níže.',
-      ctaHref: siteUrl,
-      ctaLabel: isEn ? 'Visit website' : 'Navštívit web',
+        ? 'Want different topics later? Use the button below. You can also unsubscribe anytime.'
+        : 'Chcete později jiná témata? Použijte tlačítko níže. Odhlásit se můžete kdykoli.',
+      ctaHref: preferencesUrl(token),
+      ctaLabel: isEn ? 'Change preferences' : 'Změnit předvolby',
+      secondaryCtaHref: unsubscribeUrl(token),
+      secondaryCtaLabel: isEn ? 'Unsubscribe' : 'Odhlásit odběr',
+    }),
+  };
+}
+
+export function buildAlreadySubscribedEmail({ email, lang, preferences, token }) {
+  const isEn = lang === 'en';
+
+  return {
+    to: email,
+    subject: isEn
+      ? 'You are already subscribed — CTRL Europe'
+      : 'Už jste přihlášeni — CTRL Europe',
+    html: wrapConfirmationEmail({
+      isEn,
+      eyebrow: 'Newsletter',
+      headline: isEn ? 'You are already subscribed.' : 'Už jste přihlášeni.',
+      greeting: isEn ? 'Hi,' : 'Ahoj,',
+      intro: isEn
+        ? 'This email is already on the CTRL Europe newsletter. To pick different topics, use the button below.'
+        : 'Tento e-mail už je v newsletteru CTRL Europe. Jiná témata vyberete tlačítkem níže.',
+      summaryTitle: isEn ? 'Current topics' : 'Aktuální témata',
+      rows: preferenceRows(preferences, lang),
+      outro: isEn
+        ? 'You can also unsubscribe anytime.'
+        : 'Odhlásit se můžete kdykoli.',
+      ctaHref: preferencesUrl(token),
+      ctaLabel: isEn ? 'Change preferences' : 'Změnit předvolby',
       secondaryCtaHref: unsubscribeUrl(token),
       secondaryCtaLabel: isEn ? 'Unsubscribe' : 'Odhlásit odběr',
     }),
@@ -65,7 +97,6 @@ export function buildSubscribedEmail({ email, lang, preferences, token }) {
 
 export function buildPreferencesUpdatedEmail({ email, lang, preferences, token }) {
   const isEn = lang === 'en';
-  const siteUrl = getSiteUrl();
 
   return {
     to: email,
@@ -80,13 +111,13 @@ export function buildPreferencesUpdatedEmail({ email, lang, preferences, token }
       intro: isEn
         ? 'Your CTRL Europe newsletter preferences were changed.'
         : 'Vaše preference newsletteru CTRL Europe byly změněny.',
-      summaryTitle: isEn ? 'Current topics' : 'Aktuální skupiny',
+      summaryTitle: isEn ? 'Current topics' : 'Aktuální témata',
       rows: preferenceRows(preferences, lang),
       outro: isEn
-        ? 'You can update them again anytime on the website, or unsubscribe using the button below.'
-        : 'Kdykoli je můžete znovu upravit na webu, nebo se odhlásit tlačítkem níže.',
-      ctaHref: `${siteUrl}/newsletter`,
-      ctaLabel: isEn ? 'Open newsletter' : 'Otevřít newsletter',
+        ? 'You can change them again anytime with the button below, or unsubscribe.'
+        : 'Znovu je můžete kdykoli změnit tlačítkem níže, nebo se odhlásit.',
+      ctaHref: preferencesUrl(token),
+      ctaLabel: isEn ? 'Change preferences' : 'Změnit předvolby',
       secondaryCtaHref: unsubscribeUrl(token),
       secondaryCtaLabel: isEn ? 'Unsubscribe' : 'Odhlásit odběr',
     }),

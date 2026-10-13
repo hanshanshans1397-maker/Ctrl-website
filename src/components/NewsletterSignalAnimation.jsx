@@ -55,13 +55,13 @@ function copyFor(count, isSuccess) {
   }
   if (count === 0) {
     return {
-      captionCs: 'Zaškrtněte skupiny. Rozsvítí se jen ty, které chcete.',
-      captionEn: 'Tick the groups. Only the ones you want will light up.',
+      captionCs: 'Zaškrtněte témata. Rozsvítí se jen ta, která chcete.',
+      captionEn: 'Tick the topics. Only the ones you want will light up.',
     };
   }
   return {
-    captionCs: 'Pošleme zprávy jen k vybraným skupinám.',
-    captionEn: 'We only send updates for the groups you picked.',
+    captionCs: 'Pošleme zprávy jen k vybraným tématům.',
+    captionEn: 'We only send updates for the topics you picked.',
   };
 }
 
@@ -156,7 +156,7 @@ function NodeName({ link, lang }) {
 export function NewsletterSignalAnimation({ preferences = [], isSuccess = false }) {
   const active = new Set(preferences);
   const copy = copyFor(active.size, isSuccess);
-  const count = isSuccess ? LINKS.length : active.size;
+  const count = active.size;
 
   return (
     <figure
@@ -191,7 +191,7 @@ export function NewsletterSignalAnimation({ preferences = [], isSuccess = false 
         </g>
 
         {LINKS.map((link, index) => {
-          const on = isSuccess || active.has(link.id);
+          const on = active.has(link.id);
           return (
             <g
               key={link.id}
@@ -209,7 +209,7 @@ export function NewsletterSignalAnimation({ preferences = [], isSuccess = false 
         })}
 
         {LINKS.map((link) => {
-          const on = isSuccess || active.has(link.id);
+          const on = active.has(link.id);
           const Glyph = GLYPHS[link.id];
           return (
             <g key={link.id} className={on ? 'is-on' : undefined}>

@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import ApplyPage from './pages/ApplyPage';
 import JoinPage from './pages/JoinPage';
 import NewsletterPage from './pages/NewsletterPage';
+import NewsletterPreferencesPage from './pages/NewsletterPreferencesPage';
 import NewsletterUnsubscribePage from './pages/NewsletterUnsubscribePage';
 import SummitPage from './pages/SummitPage';
 import WorkshopsPage from './pages/WorkshopsPage';
@@ -29,6 +30,7 @@ export default function App() {
             <Route path="join" element={<JoinPage />} />
             <Route path="apply" element={<ApplyPage />} />
             <Route path="newsletter" element={<NewsletterPage />} />
+            <Route path="newsletter/preferences" element={<NewsletterPreferencesPage />} />
             <Route path="newsletter/unsubscribe" element={<NewsletterUnsubscribePage />} />
             <Route path="summit" element={<SummitPage />} />
             <Route path="workshops" element={<WorkshopsPage />} />

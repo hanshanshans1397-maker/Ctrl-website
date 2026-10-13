@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { isEmailFormat } from '../../shared/email.js';
 import {
+  buildAlreadySubscribedEmail,
   buildPreferencesUpdatedEmail,
   buildSubscribedEmail,
   buildUnsubscribedEmail,
@@ -15,6 +16,13 @@ function badRequest(message, fields) {
   const error = new Error(message);
   error.status = 400;
   error.fields = fields;
+  return error;
+}
+
+function conflict(message, code) {
+  const error = new Error(message);
+  error.status = 409;
+  error.code = code;
   return error;
 }
 
@@ -120,6 +128,19 @@ export async function handleNewsletterSubscribe(body = {}) {
     throw serverError('Could not save');
   }
 
+  if (existing?.status === 'subscribed') {
+    await sendOrLog(
+      'Newsletter already-subscribed email failed',
+      buildAlreadySubscribedEmail({
+        email: existing.email,
+        lang: isValidLang(existing.lang) ? existing.lang : lang,
+        preferences: existing.preferences,
+        token: existing.unsubscribe_token,
+      }),
+    );
+    throw conflict('Email already subscribed', 'already_subscribed');
+  }
+
   const { data: saved, error } = await supabase
     .from('newsletter_subscribers')
     .upsert(
@@ -140,31 +161,85 @@ export async function handleNewsletterSubscribe(body = {}) {
     throw serverError('Could not save');
   }
 
-  const wasActive = existing?.status === 'subscribed';
-  const preferencesChanged =
-    wasActive && !samePreferences(existing.preferences, preferences);
+  await sendOrLog(
+    'Newsletter subscribed email failed',
+    buildSubscribedEmail({
+      email: saved.email,
+      lang: saved.lang,
+      preferences: saved.preferences,
+      token: saved.unsubscribe_token,
+    }),
+  );
 
-  if (!wasActive) {
-    await sendOrLog(
-      'Newsletter subscribed email failed',
-      buildSubscribedEmail({
-        email: saved.email,
-        lang: saved.lang,
-        preferences: saved.preferences,
-        token: saved.unsubscribe_token,
-      }),
-    );
-  } else if (preferencesChanged) {
-    await sendOrLog(
-      'Newsletter preferences email failed',
-      buildPreferencesUpdatedEmail({
-        email: saved.email,
-        lang: saved.lang,
-        preferences: saved.preferences,
-        token: saved.unsubscribe_token,
-      }),
-    );
+  return { ok: true };
+}
+
+export async function handleNewsletterPreferences(body = {}) {
+  const token = typeof body.token === 'string' ? body.token.trim() : '';
+
+  if (!isValidUnsubscribeToken(token)) {
+    throw badRequest('Invalid token', ['token']);
   }
+
+  const preferences = Array.isArray(body.preferences)
+    ? [...new Set(body.preferences)]
+    : body.preferences;
+  if (!isValidPreferences(preferences)) {
+    throw badRequest('Invalid preferences', ['preferences']);
+  }
+
+  let supabase;
+  try {
+    supabase = getSupabaseAdmin();
+  } catch (error) {
+    console.error('Newsletter preferences env error:', error.message);
+    throw serverError('Could not save');
+  }
+
+  const { data: existing, error: lookupError } = await supabase
+    .from('newsletter_subscribers')
+    .select('email, preferences, lang, status, unsubscribe_token')
+    .eq('unsubscribe_token', token)
+    .maybeSingle();
+
+  if (lookupError) {
+    console.error('Newsletter preferences lookup error:', lookupError);
+    throw serverError('Could not save');
+  }
+
+  if (!existing || existing.status !== 'subscribed') {
+    throw badRequest('Invalid token', ['token']);
+  }
+
+  if (samePreferences(existing.preferences, preferences)) {
+    return { ok: true };
+  }
+
+  const { data: saved, error } = await supabase
+    .from('newsletter_subscribers')
+    .update({
+      preferences,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('unsubscribe_token', token)
+    .eq('status', 'subscribed')
+    .select('email, preferences, lang, unsubscribe_token')
+    .single();
+
+  if (error || !saved) {
+    console.error('Newsletter preferences Supabase error:', error);
+    throw serverError('Could not save');
+  }
+
+  await sendOrLog(
+    'Newsletter preferences email failed',
+    buildPreferencesUpdatedEmail({
+      email: saved.email,
+      lang: saved.lang,
+      preferences: saved.preferences,
+      token: saved.unsubscribe_token,
+    }),
+  );
 
   return { ok: true };
 }

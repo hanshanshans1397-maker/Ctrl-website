@@ -115,6 +115,16 @@ export const PAGE_META = {
       description: 'Unsubscribe from the CTRL Europe newsletter.',
     },
   },
+  newsletterPreferences: {
+    cs: {
+      title: 'Předvolby newsletteru | CTRL Europe',
+      description: 'Změna témat newsletteru CTRL Europe.',
+    },
+    en: {
+      title: 'Newsletter preferences | CTRL Europe',
+      description: 'Change your CTRL Europe newsletter topics.',
+    },
+  },
   'article-template': {
     cs: {
       title: 'Článek | CTRL Europe',
@@ -134,6 +144,7 @@ export const PATH_TO_PAGE_KEY = {
   '/join': 'join',
   '/apply': 'apply',
   '/newsletter': 'newsletter',
+  '/newsletter/preferences': 'newsletterPreferences',
   '/newsletter/unsubscribe': 'newsletterUnsubscribe',
   '/summit': 'summit',
   '/workshops': 'workshops',

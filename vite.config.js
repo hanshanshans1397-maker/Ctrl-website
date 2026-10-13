@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { handleApplySubmission } from './api/lib/handle-apply.js';
 import {
+  handleNewsletterPreferences,
   handleNewsletterSubscribe,
   handleNewsletterUnsubscribe,
 } from './api/lib/newsletter.js';
@@ -60,9 +61,15 @@ function jsonApiDevPlugin(env, routes) {
             res.statusCode = 200;
             res.end(JSON.stringify(result));
           } catch (error) {
-            if (error.status === 400) {
-              res.statusCode = 400;
-              res.end(JSON.stringify({ error: error.message, fields: error.fields }));
+            if (error.status === 400 || error.status === 409) {
+              res.statusCode = error.status;
+              res.end(
+                JSON.stringify({
+                  error: error.message,
+                  fields: error.fields,
+                  code: error.code,
+                }),
+              );
               return;
             }
             console.error(`[dev${route.path}]`, error);
@@ -102,6 +109,11 @@ export default defineConfig(({ mode }) => {
           path: '/api/newsletter/unsubscribe',
           handler: handleNewsletterUnsubscribe,
           errorMessage: 'Could not unsubscribe',
+        },
+        {
+          path: '/api/newsletter/preferences',
+          handler: handleNewsletterPreferences,
+          errorMessage: 'Could not save',
         },
       ]),
     ],

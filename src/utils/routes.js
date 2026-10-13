@@ -7,6 +7,7 @@ export const DARK_HERO_ROUTES = [
   '/news',
   '/apply',
   '/newsletter',
+  '/newsletter/preferences',
   '/newsletter/unsubscribe',
 ];
 
