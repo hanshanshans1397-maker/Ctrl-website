@@ -110,7 +110,7 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
   const [mobileJoinOpen, setMobileJoinOpen] = useState(false);
   const joinRef = useRef(null);
 
-  const isActive = (to) => pathname === to || (to !== '/' && pathname.startsWith(to));
+  const isActive = (to) => pathname === to || (to !== '/' && pathname.startsWith(`${to}/`));
   const isJoinActive = isActive('/join') || isActive('/apply');
 
   useEffect(() => {

@@ -93,6 +93,38 @@ export const PAGE_META = {
       image: '/photos/workshopy.png',
     },
   },
+  newsletter: {
+    cs: {
+      title: 'Newsletter | CTRL Europe',
+      description:
+        'Přihlaste se k newsletteru CTRL Europe — summit, workshopy, běh a aktuality.',
+    },
+    en: {
+      title: 'Newsletter | CTRL Europe',
+      description:
+        'Subscribe to the CTRL Europe newsletter — summit, workshops, run, and updates.',
+    },
+  },
+  newsletterUnsubscribe: {
+    cs: {
+      title: 'Odhlášení | CTRL Europe',
+      description: 'Odhlášení z newsletteru CTRL Europe.',
+    },
+    en: {
+      title: 'Unsubscribe | CTRL Europe',
+      description: 'Unsubscribe from the CTRL Europe newsletter.',
+    },
+  },
+  newsletterPreferences: {
+    cs: {
+      title: 'Předvolby newsletteru | CTRL Europe',
+      description: 'Změna témat newsletteru CTRL Europe.',
+    },
+    en: {
+      title: 'Newsletter preferences | CTRL Europe',
+      description: 'Change your CTRL Europe newsletter topics.',
+    },
+  },
   'article-template': {
     cs: {
       title: 'Článek | CTRL Europe',
@@ -111,6 +143,9 @@ export const PATH_TO_PAGE_KEY = {
   '/news': 'aktuality',
   '/join': 'join',
   '/apply': 'apply',
+  '/newsletter': 'newsletter',
+  '/newsletter/preferences': 'newsletterPreferences',
+  '/newsletter/unsubscribe': 'newsletterUnsubscribe',
   '/summit': 'summit',
   '/workshops': 'workshops',
 };
