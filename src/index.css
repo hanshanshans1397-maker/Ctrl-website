@@ -9029,6 +9029,17 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
   transform: none;
 }
 
+.newsletter-intro__title {
+  overflow: clip;
+  padding-top: 0.12em;
+  margin-top: -0.12em;
+  padding-bottom: 0.06em;
+}
+
+.newsletter-intro__rise {
+  display: block;
+}
+
 .newsletter-signal {
   width: 100%;
   max-width: 500px;

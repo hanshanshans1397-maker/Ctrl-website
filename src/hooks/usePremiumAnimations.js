@@ -651,10 +651,17 @@ function scrollChoreography() {
   });
 
   gsap.utils.toArray('.section-title, .sec-title').forEach((title) => {
-    if (title.closest('.page-hero, #hero, #join')) return;
+    if (title.closest('.page-hero, #hero, #join, .newsletter-intro')) return;
     // Wrapping / italic headings cannot use preserve-3d: Chrome stacks the
     // line boxes on top of each other until a later scroll recomposites them.
     scrubFromTo(title, { y: 48, opacity: 0.15 }, { y: 0, opacity: 1 }, title, arrive);
+  });
+
+  // Same fade-and-rise as other headings, kept inside the heading. A 48px
+  // move on the h2 itself dropped "Vyberte si…" through the caption.
+  gsap.utils.toArray('.newsletter-intro__rise').forEach((rise) => {
+    const title = rise.closest('.sec-title') || rise;
+    scrubFromTo(rise, { y: 18, opacity: 0.15 }, { y: 0, opacity: 1 }, title, arrive);
   });
 
   gsap.utils.toArray('.section-lede, .page-sub').forEach((el) => {

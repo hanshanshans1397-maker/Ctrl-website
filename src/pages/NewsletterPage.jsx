@@ -112,9 +112,11 @@ export default function NewsletterPage() {
 
       <div className="apply-page apply-page--below-hero newsletter-page">
         <div className="newsletter-intro rev">
-          <h2 className="sec-title mb-4 text-[clamp(32px,3.5vw,52px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px]">
-            <span className="cs">Vyberte si, co chcete číst.</span>
-            <span className="en">Choose what you want to read.</span>
+          <h2 className="sec-title newsletter-intro__title mb-4 text-[clamp(32px,3.5vw,52px)] leading-[1.1] font-bold tracking-[-2px] text-dark max-sm:text-[clamp(26px,7vw,40px)] max-sm:tracking-[-1px]">
+            <span className="newsletter-intro__rise">
+              <span className="cs">Vyberte si, co chcete číst.</span>
+              <span className="en">Choose what you want to read.</span>
+            </span>
           </h2>
           <p className="cs text-base leading-[1.85] font-light text-mid">
             Pět témat, jeden e-mail. Zaškrtněte, co vás zajímá, a my pošleme jen to.
