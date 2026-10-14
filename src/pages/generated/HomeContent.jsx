@@ -679,8 +679,8 @@ export function HomePageContent() {
             <div className="relative h-[380px] max-[640px]:h-[280px] overflow-hidden group">
               <img
                 src="/photos/member-heart.webp"
-                alt="Studentský projekt CTRL"
-                className="strip-img absolute left-0 top-[-7%] w-full h-[114%] object-cover object-top transition-[scale] duration-700 group-hover:scale-105"
+                alt="Rozhovor členů CTRL"
+                className="strip-img absolute left-0 top-[-7%] w-full h-[114%] object-cover object-[32%_center] transition-[scale] duration-700 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
               />
