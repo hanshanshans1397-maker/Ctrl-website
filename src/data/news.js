@@ -13,6 +13,10 @@ export const NEWS = [
     slug: "erasmus-slovensko",
     date: "2026-10-23",
     published: "2026-09-27",
+    invite: {
+      cs: "/photos/news/slovensko-cs.webp",
+      en: "/photos/news/slovensko-en.webp",
+    },
     inviteWidth: NEWS_INVITE.width,
     inviteHeight: NEWS_INVITE.height,
     banner: {
@@ -181,6 +185,10 @@ export const NEWS = [
     slug: "dny-ai",
     date: "2026-11-01",
     published: "2026-09-27",
+    invite: {
+      cs: "/photos/news/dny-ai-cs.webp",
+      en: "/photos/news/dny-ai-en.webp",
+    },
     inviteWidth: NEWS_INVITE.width,
     inviteHeight: NEWS_INVITE.height,
     banner: {
@@ -358,6 +366,10 @@ export const NEWS = [
     slug: "ctrl-challenge",
     date: "2026-12-04",
     published: "2026-09-27",
+    invite: {
+      cs: "/photos/news/challenge-cs.webp",
+      en: "/photos/news/challenge-en.webp",
+    },
     inviteWidth: NEWS_INVITE.width,
     inviteHeight: NEWS_INVITE.height,
     banner: {
@@ -535,6 +547,10 @@ export const NEWS = [
     slug: "ctrl-day",
     date: "2027-01-14",
     published: "2026-09-27",
+    invite: {
+      cs: "/photos/news/ctrl-day-cs.webp",
+      en: "/photos/news/ctrl-day-en.webp",
+    },
     inviteWidth: NEWS_INVITE.width,
     inviteHeight: NEWS_INVITE.height,
     banner: {
@@ -711,6 +727,10 @@ export const NEWS = [
     slug: "gymnazium-videnska",
     date: "2026-10-27",
     published: "2026-09-27",
+    invite: {
+      cs: "/photos/news/videnska-cs.webp",
+      en: "/photos/news/videnska-en.webp",
+    },
     inviteWidth: NEWS_INVITE.width,
     inviteHeight: NEWS_INVITE.height,
     banner: {

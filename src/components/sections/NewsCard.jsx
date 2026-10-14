@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { formatNewsDate } from "../../data/news";
+import { NewsCover } from "../ui/NewsInvite";
 import { NewsTitleText } from "../ui/NewsTitleText";
 
 export function NewsCard({ article }) {
@@ -19,14 +20,12 @@ export function NewsCard({ article }) {
         }}
       >
         {article.invite ? (
-          <img
+          <NewsCover
             src={article.invite}
-            alt=""
             width={width}
             height={height}
-            className="news-card-banner__media absolute inset-0 h-full w-full object-cover"
             loading="lazy"
-            decoding="async"
+            className="news-card-banner__media absolute inset-0 h-full w-full object-cover"
           />
         ) : (
           <div className={`news-card-banner__fallback news-invite-placeholder${article.banner?.variant ? ` news-card-banner__fallback--${article.banner.variant}` : ""}`}>

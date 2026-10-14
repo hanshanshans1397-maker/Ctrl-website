@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <title>CTRL news posters</title>
+  <style>
+    @font-face {
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 600;
+      font-display: block;
+      src: url("fonts/montserrat-latin-ext-600.woff2") format("woff2");
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 600;
+      font-display: block;
+      src: url("fonts/montserrat-latin-600.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 700;
+      font-display: block;
+      src: url("fonts/montserrat-latin-ext-700.woff2") format("woff2");
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 700;
+      font-display: block;
+      src: url("fonts/montserrat-latin-700.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 800;
+      font-display: block;
+      src: url("fonts/montserrat-latin-ext-800.woff2") format("woff2");
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 800;
+      font-display: block;
+      src: url("fonts/montserrat-latin-800.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #111; }
+    body { width: 1024px; }
+    .board {
+      position: relative;
+      width: 1024px;
+      height: 723px;
+      overflow: hidden;
+      background: #0d101f;
+      color: #f7f4ef;
+      font-family: "Montserrat", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .lockup {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 46px;
+    }
+    .lockup img {
+      display: block;
+      height: 40px;
+      width: auto;
+    }
+    .lockup span {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      line-height: 1;
+      color: #f7f4ef;
+    }
+    .lockup.on-paper span { color: #0d101f; }
+
+    /* CTRL Day */
+    .day {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 48px 40px;
+    }
+    .day-top {
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .day-date {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #f89a33;
+    }
+    .day-copy {
+      margin: auto 0;
+    }
+    .day-kicker {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+      color: #f89a33;
+    }
+    .day-title {
+      margin-top: 16px;
+      font-size: 110px;
+      font-weight: 800;
+      letter-spacing: -4.5px;
+      line-height: 0.92;
+    }
+    .day-title em {
+      font-style: normal;
+      color: #4a7bff;
+    }
+    .day-lead {
+      margin-top: 22px;
+      max-width: 24em;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.4px;
+      color: rgba(247, 244, 239, 0.82);
+    }
+    .day-foot {
+      flex: none;
+      display: flex;
+      align-items: center;
+      padding-top: 26px;
+      border-top: 1px solid rgba(247, 244, 239, 0.22);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .day-foot i {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin: 0 14px;
+      background: #f89a33;
+      font-style: normal;
+    }
+
+    /* Challenge */
+    .challenge {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 48px 0;
+    }
+    .challenge-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .challenge-date {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #f89a33;
+    }
+    .challenge-copy {
+      margin: auto 0;
+    }
+    .challenge-kicker {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3.4px;
+      text-transform: uppercase;
+      color: #f89a33;
+    }
+    .challenge-title {
+      margin-top: 16px;
+      font-size: 78px;
+      font-weight: 800;
+      letter-spacing: -3.2px;
+      line-height: 0.92;
+    }
+    .challenge-title em {
+      font-style: normal;
+      color: #4a7bff;
+    }
+    .challenge-foot {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.15fr;
+      border-top: 1px solid rgba(247, 244, 239, 0.22);
+    }
+    .challenge-foot div {
+      padding: 28px 0 32px;
+    }
+    .challenge-foot div + div {
+      padding-left: 28px;
+      border-left: 1px solid rgba(247, 244, 239, 0.22);
+      margin-left: 28px;
+    }
+    .challenge-foot b {
+      display: block;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      color: #f89a33;
+      line-height: 1;
+    }
+    .challenge-foot span {
+      display: block;
+      margin-top: 8px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    /* Dny AI */
+    .ai {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 48px 40px;
+    }
+    .ai-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex: none;
+    }
+    .ai-label {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+      color: #f89a33;
+    }
+    .ai-copy {
+      margin: auto 0;
+    }
+    .ai-title {
+      font-size: 78px;
+      font-weight: 800;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .ai-title em {
+      font-style: normal;
+      color: #4a7bff;
+    }
+    .ai-dates {
+      display: flex;
+      gap: 14px;
+      margin-top: 36px;
+    }
+    .ai-chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 14px 22px;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .ai-chip.blue { background: #0028f8; color: #f7f4ef; }
+    .ai-chip.amber { background: #f89a33; color: #0d101f; }
+    .ai-foot {
+      flex: none;
+      display: flex;
+      align-items: center;
+      padding-top: 26px;
+      border-top: 1px solid rgba(247, 244, 239, 0.22);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .ai-foot i {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin: 0 14px;
+      background: #f89a33;
+      font-style: normal;
+    }
+
+    /* Vídeňská */
+    .school {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 48px 40px;
+    }
+    .school-top {
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .school-date {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #f89a33;
+    }
+    .school-copy {
+      margin: auto 0;
+    }
+    .school-kicker {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+      color: #f89a33;
+    }
+    .school-title {
+      margin-top: 16px;
+      font-size: 92px;
+      font-weight: 800;
+      letter-spacing: -3.8px;
+      line-height: 0.94;
+    }
+    .school-title em {
+      font-style: normal;
+      color: #4a7bff;
+    }
+    .school-foot {
+      flex: none;
+      display: flex;
+      align-items: center;
+      padding-top: 26px;
+      border-top: 1px solid rgba(247, 244, 239, 0.22);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .school-foot i {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin: 0 14px;
+      background: #f89a33;
+      font-style: normal;
+    }
+
+    /* Slovensko */
+    .trip {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 0 44px;
+    }
+    .trip .lockup { padding: 0 48px; }
+    .trip-stack {
+      margin: auto 0;
+    }
+    .trip-kicker {
+      margin: 0 48px;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+      color: #f89a33;
+    }
+    .trip-city {
+      margin: 8px 48px 0;
+      font-size: 108px;
+      font-weight: 800;
+      letter-spacing: -5px;
+      line-height: 0.88;
+    }
+    .trip-band {
+      margin-top: 22px;
+      background: #f89a33;
+      color: #0d101f;
+      padding: 18px 48px;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+    }
+    .trip-city.to {
+      margin-top: 18px;
+      color: #4a7bff;
+    }
+    .trip-meta {
+      margin: 28px 48px 0;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+  </style>
+</head>
+<body>
+  <section class="board day" id="ctrl-day-cs">
+    <div class="day-top">
+      <div class="lockup"><img src="../../public/ctrl_logo_cropped.png" alt="" /><span>Europe</span></div>
+      <div class="day-date">14. ledna 2027</div>
+    </div>
+    <div class="day-copy">
+      <div class="day-kicker">Konference</div>
+      <div class="day-title">CTRL <em>Day</em></div>
+      <div class="day-lead">První studentská konference pro Jihomoravský kraj</div>
+    </div>
+    <div class="day-foot">Brno<i></i>300–800 studentů<i></i>Celý kraj</div>
+  </section>
+
+  <section class="board day" id="ctrl-day-en">
+    <div class="day-top">
+      <div class="lockup"><img src="../../public/ctrl_logo_cropped.png" alt="" /><span>Europe</span></div>
+      <div class="day-date">14 January 2027</div>
+    </div>
+    <div class="day-copy">
+      <div class="day-kicker">Conference</div>
+      <div class="day-title">CTRL <em>Day</em></div>
+      <div class="day-lead">The first student conference for the South Moravian Region</div>
+    </div>
+    <div class="day-foot">Brno<i></i>300–800 students<i></i>The whole region</div>
+  </section>
+
+  <section class="board challenge" id="challenge-cs">
+    <div class="challenge-top">
+      <div class="lockup"><img src="../../public/ctrl_logo_cropped.png" alt="" /><span>Europe</span></div>
+      <div class="challenge-date">4. prosince</div>
+    </div>
+    <div class="challenge-copy">
+      <div class="challenge-kicker">Soutěž</div>
+      <div class="challenge-title">Staňte se<br />digitálním<br /><em>vyšetřovatelem</em></div>
+    </div>
+    <div class="challenge-foot">
+      <div><b>01</b><span>Bez AI</span></div>
+      <div><b>02</b><span>Týmy</span></div>
+      <div><b>03</b><span>Střední školy</span></div>
+    </div>
+  </section>
+
+  <section class="board challenge" id="challenge-en">
+    <div class="challenge-top">
+      <div class="lockup"><img src="../../public/ctrl_logo_cropped.png" alt="" /><span>Europe</span></div>
+      <div class="challenge-date">4 December</div>
+    </div>
+    <div class="challenge-copy">
+      <div class="challenge-kicker">Competition</div>
+      <div class="challenge-title">Become a<br />digital<br /><em>investigator</em></div>
+    </div>
+    <div class="challenge-foot">
+      <div><b>01</b><span>No AI</span></div>
+      <div><b>02</b><span>Teams</span></div>
+      <div><b>03</b><span>Secondary schools</span></div>
+    </div>
+  </section>
+
+  <section class="board ai" id="dny-ai-cs">
+    <div class="ai-top">
+      <div class="lockup"><img src="../../public/ctrl_logo_cropped.png" alt="" /><span>Europe</span></div>
+      <div class="ai-label">Vzdělávání</div>
+    </div>
+    <div class="ai-copy">
+      <div class="ai-title">Vyrážíme s novým<br /><em>workshopem o AI</em></div>
+      <div class="ai-dates">
+        <span class="ai-chip blue">1. listopadu</span>
+        <span class="ai-chip amber">2. listopadu</span>
+      </div>
+    </div>
+    <div class="ai-foot">Karlovarský kraj<i></i>2 gymnázia<i></i>6 lektorů</div>
+  </section>
+
+  <section class="board ai" id="dny-ai-en">
+    <div class="ai-top">
+      <div class="lockup"><img src="../../public/ctrl_logo_cropped.png" alt="" /><span>Europe</span></div>
+      <div class="ai-label">Education</div>
+    </div>
+    <div class="ai-copy">
+      <div class="ai-title">Taking a new<br /><em>AI workshop</em> to schools</div>
+      <div class="ai-dates">
+        <span class="ai-chip blue">1 November</span>
+        <span class="ai-chip amber">2 November</span>
+      </div>
+    </div>
+    <div class="ai-foot">Karlovy Vary Region<i></i>2 schools<i></i>6 facilitators</div>
+  </section>
+
+  <section class="board school" id="videnska-cs">
+    <div class="school-top">
+      <div class="lockup"><img src="../../public/ctrl_logo_cropped.png" alt="" /><span>Europe</span></div>
+      <div class="school-date">27. října</div>
+    </div>
+    <div class="school-copy">
+      <div class="school-kicker">Míříme na</div>
+      <div class="school-title">Gymnázium<br /><em>Vídeňská</em></div>
+    </div>
+    <div class="school-foot">Brno<i></i>Přednáška<i></i>AI a manipulace</div>
+  </section>
+
+  <section class="board school" id="videnska-en">
+    <div class="school-top">
+      <div class="lockup"><img src="../../public/ctrl_logo_cropped.png" alt="" /><span>Europe</span></div>
+      <div class="school-date">27 October</div>
+    </div>
+    <div class="school-copy">
+      <div class="school-kicker">We're heading to</div>
+      <div class="school-title">Gymnázium<br /><em>Vídeňská</em></div>
+    </div>
+    <div class="school-foot">Brno<i></i>Talk<i></i>AI and manipulation</div>
+  </section>
+
+  <section class="board trip" id="slovensko-cs">
+    <div class="lockup"><img src="../../public/ctrl_logo_cropped.png" alt="" /><span>Europe</span></div>
+    <div class="trip-stack">
+      <div class="trip-kicker">Naši lidé jedou</div>
+      <div class="trip-city">Brno</div>
+      <div class="trip-band">23.–29. října</div>
+      <div class="trip-city to">Slovensko</div>
+      <div class="trip-meta">Fak(e)ticky · 3–4 studenti</div>
+    </div>
+  </section>
+
+  <section class="board trip" id="slovensko-en">
+    <div class="lockup"><img src="../../public/ctrl_logo_cropped.png" alt="" /><span>Europe</span></div>
+    <div class="trip-stack">
+      <div class="trip-kicker">Our people are going</div>
+      <div class="trip-city">Brno</div>
+      <div class="trip-band">23–29 October</div>
+      <div class="trip-city to">Slovakia</div>
+      <div class="trip-meta">Fak(e)ticky · 3–4 students</div>
+    </div>
+  </section>
+</body>
+</html>

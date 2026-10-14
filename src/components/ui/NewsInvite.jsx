@@ -1,15 +1,43 @@
 import { useEffect, useId, useRef, useState } from 'react';
 
-function InviteImage({ src, alt, width, height, className = '' }) {
+export function NewsCover({ src, width, height, className = '', loading, alt = '' }) {
+  if (!src) return null;
+
+  if (typeof src === 'string') {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className={className}
+        loading={loading}
+        decoding="async"
+      />
+    );
+  }
+
   return (
-    <img
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-      className={`h-full w-full object-cover ${className}`.trim()}
-      decoding="async"
-    />
+    <>
+      <img
+        src={src.cs}
+        alt=""
+        width={width}
+        height={height}
+        className={`${className} cs`.trim()}
+        loading={loading}
+        decoding="async"
+      />
+      <img
+        src={src.en}
+        alt=""
+        width={width}
+        height={height}
+        className={`${className} en`.trim()}
+        loading={loading}
+        decoding="async"
+      />
+    </>
   );
 }
 
@@ -46,7 +74,12 @@ export function NewsInvite({ src, width, height, title, caption }) {
         aria-haspopup="dialog"
         aria-expanded={open}
       >
-        <InviteImage src={src} alt="" width={width} height={height} />
+        <NewsCover
+          src={src}
+          width={width}
+          height={height}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <span className="sr-only">
           <span className="cs">Zvětšit pozvánku: {labelCs}</span>
           <span className="en">Enlarge invitation: {labelEn}</span>
@@ -80,11 +113,11 @@ export function NewsInvite({ src, width, height, title, caption }) {
             <span className="cs">{labelCs}</span>
             <span className="en">{labelEn}</span>
           </p>
-          <img
+          <NewsCover
             src={src}
-            alt={alt}
             width={width}
             height={height}
+            alt={alt}
             className="news-invite-dialog__img"
           />
           <button type="button" className="news-invite-dialog__close" onClick={close}>
