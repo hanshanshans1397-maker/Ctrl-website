@@ -194,7 +194,7 @@ export function HomePageContent() {
                 </p>
               </div>
             </div>
-            <div className="rev d2 flex flex-col sep-stack">
+            <div className="rev d2 home-facts flex flex-col sep-stack">
               <div className="py-8 px-9 border-b border-separator bg-bg">
                 <div className="font-mono text-[11px] tracking-[2px] uppercase text-mid mb-2.5 cs">
                   Založeno

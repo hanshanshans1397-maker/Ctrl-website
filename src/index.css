@@ -2008,6 +2008,44 @@ body.lite-motion #cur {
   will-change: auto;
 }
 
+/* Homepage fact rail stays a column beside the copy. On a phone it is the
+   first block under the intro, so it collapses into a tight 2×2. Real borders,
+   same reason as .sep-stack: a 1px gap disappears under GSAP transforms. */
+@media (max-width: 639px) {
+  .home-facts.sep-stack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .home-facts.sep-stack > * {
+    border-bottom: 0;
+    padding: 14px 14px 13px;
+  }
+
+  .home-facts.sep-stack > * + * {
+    border-top: 0;
+  }
+
+  .home-facts.sep-stack > *:nth-child(odd) {
+    border-right: 1px solid var(--color-separator);
+  }
+
+  .home-facts.sep-stack > *:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--color-separator);
+  }
+
+  .home-facts .font-mono {
+    margin-bottom: 4px;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+  }
+
+  .home-facts .text-xl {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
 .workshop-facts {
   position: relative;
   overflow: hidden;
