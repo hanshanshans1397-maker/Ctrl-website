@@ -6,10 +6,14 @@ import ArticleTemplatePage from './pages/ArticleTemplatePage';
 import HomePage from './pages/HomePage';
 import ApplyPage from './pages/ApplyPage';
 import JoinPage from './pages/JoinPage';
+import NewsletterPage from './pages/NewsletterPage';
+import NewsletterPreferencesPage from './pages/NewsletterPreferencesPage';
+import NewsletterUnsubscribePage from './pages/NewsletterUnsubscribePage';
 import SummitPage from './pages/SummitPage';
 import WorkshopsPage from './pages/WorkshopsPage';
 import AktualityPage from './pages/AktualityPage';
 import NewsArticlePage from './pages/NewsArticlePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (
@@ -26,12 +30,15 @@ export default function App() {
             <Route path="research" element={<Navigate to="/news" replace />} />
             <Route path="join" element={<JoinPage />} />
             <Route path="apply" element={<ApplyPage />} />
+            <Route path="newsletter" element={<NewsletterPage />} />
+            <Route path="newsletter/preferences" element={<NewsletterPreferencesPage />} />
+            <Route path="newsletter/unsubscribe" element={<NewsletterUnsubscribePage />} />
             <Route path="summit" element={<SummitPage />} />
             <Route path="workshops" element={<WorkshopsPage />} />
             {import.meta.env.DEV ? (
               <Route path="article-template" element={<ArticleTemplatePage />} />
             ) : null}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
