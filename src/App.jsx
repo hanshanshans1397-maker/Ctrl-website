@@ -13,6 +13,7 @@ import SummitPage from './pages/SummitPage';
 import WorkshopsPage from './pages/WorkshopsPage';
 import AktualityPage from './pages/AktualityPage';
 import NewsArticlePage from './pages/NewsArticlePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (
@@ -37,7 +38,7 @@ export default function App() {
             {import.meta.env.DEV ? (
               <Route path="article-template" element={<ArticleTemplatePage />} />
             ) : null}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

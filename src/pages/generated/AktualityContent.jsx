@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NEWS } from "../../data/news";
 import { NewsCard } from "../../components/sections/NewsCard";
 import { NewsAboutPanel } from "../../components/sections/NewsAboutPanel";
@@ -34,6 +35,14 @@ export function AktualityPageContent() {
             News, articles, research and announcements from CTRL Europe for
             the public.
           </p>
+          <div className="mt-6">
+            <Link to="/newsletter" className="btn-g light cs">
+              Odebírat newsletter &rarr;
+            </Link>
+            <Link to="/newsletter" className="btn-g light en">
+              Subscribe to the newsletter &rarr;
+            </Link>
+          </div>
         </div>
 
         <div className="inner relative z-[2] max-sm:hidden">
@@ -53,6 +62,14 @@ export function AktualityPageContent() {
             News, articles, research and announcements from CTRL Europe for
             the public.
           </p>
+          <div className="mt-8">
+            <Link to="/newsletter" className="btn-g light cs">
+              Odebírat newsletter &rarr;
+            </Link>
+            <Link to="/newsletter" className="btn-g light en">
+              Subscribe to the newsletter &rarr;
+            </Link>
+          </div>
         </div>
       </div>
 

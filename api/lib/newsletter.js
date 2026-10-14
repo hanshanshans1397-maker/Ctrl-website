@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { isEmailFormat } from '../../shared/email.js';
+import { isValidUnsubscribeToken } from '../../shared/newsletterToken.js';
 import {
   buildAlreadySubscribedEmail,
   buildPreferencesUpdatedEmail,
@@ -8,9 +9,8 @@ import {
   sendNewsletterTransactional,
 } from './newsletter-emails.js';
 
+export { isValidUnsubscribeToken };
 export const NEWSLETTER_GROUPS = ['workshops', 'summit', 'run', 'partners', 'media'];
-const UUID_RE =
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 function badRequest(message, fields) {
   const error = new Error(message);
@@ -47,10 +47,6 @@ export function isValidPreferences(preferences) {
 
 export function isValidLang(lang) {
   return lang === 'cs' || lang === 'en';
-}
-
-export function isValidUnsubscribeToken(token) {
-  return typeof token === 'string' && UUID_RE.test(token.trim());
 }
 
 function samePreferences(a = [], b = []) {
