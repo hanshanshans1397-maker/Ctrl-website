@@ -115,6 +115,16 @@ export const PAGE_META = {
       description: 'Unsubscribe from the CTRL Europe newsletter.',
     },
   },
+  notFound: {
+    cs: {
+      title: '404 | CTRL Europe',
+      description: 'Stránka nebyla nalezena.',
+    },
+    en: {
+      title: '404 | CTRL Europe',
+      description: 'Page not found.',
+    },
+  },
   newsletterPreferences: {
     cs: {
       title: 'Předvolby newsletteru | CTRL Europe',

@@ -788,12 +788,18 @@ export function HomePageContent() {
               </span>
             </p>
           </div>
-          <div className="rev d1 shrink-0">
+          <div className="rev d1 flex shrink-0 flex-col items-start gap-3">
             <Link to="/news" className="btn-g cs">
               Přejít na Aktuality &rarr;
             </Link>
             <Link to="/news" className="btn-g en">
               Go to News &rarr;
+            </Link>
+            <Link to="/newsletter" className="btn-g cs">
+              Odebírat newsletter &rarr;
+            </Link>
+            <Link to="/newsletter" className="btn-g en">
+              Subscribe to the newsletter &rarr;
             </Link>
           </div>
         </div>

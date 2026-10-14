@@ -1,19 +1,38 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { isValidUnsubscribeToken } from '../../shared/newsletterToken.js';
+import { NewsletterUnsubscribeStatus } from '../components/NewsletterUnsubscribeStatus';
 import { usePageMeta } from '../hooks/usePageMeta';
+import NotFoundPage from './NotFoundPage';
 
 const UNSUBSCRIBE_API_URL = '/api/newsletter/unsubscribe';
+// Aby stav "Odhlašuji…" nebliknul na zlomek vteřiny, necháme animaci chvíli doběhnout.
+const MIN_LOADING_MS = 900;
 
 export default function NewsletterUnsubscribePage() {
-  usePageMeta('newsletterUnsubscribe');
   const [searchParams] = useSearchParams();
+  const token = (searchParams.get('token') ?? '').trim();
+  const hasValidToken = isValidUnsubscribeToken(token);
+
+  if (!hasValidToken) {
+    return <NotFoundPage />;
+  }
+
+  return <UnsubscribeFlow token={token} />;
+}
+
+function UnsubscribeFlow({ token }) {
+  usePageMeta('newsletterUnsubscribe');
   const [phase, setPhase] = useState('loading');
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
-    const token = searchParams.get('token') ?? '';
     let cancelled = false;
 
     async function run() {
+      const startedAt = Date.now();
+      let ok = false;
+
       try {
         const res = await fetch(UNSUBSCRIBE_API_URL, {
           method: 'POST',
@@ -23,19 +42,26 @@ export default function NewsletterUnsubscribePage() {
           },
           body: JSON.stringify({ token }),
         });
-
-        if (cancelled) return;
-        setPhase(res.ok ? 'done' : 'error');
+        ok = res.ok;
       } catch {
-        if (!cancelled) setPhase('error');
+        ok = false;
       }
+
+      const wait = Math.max(0, MIN_LOADING_MS - (Date.now() - startedAt));
+      if (wait > 0) await new Promise((resolve) => setTimeout(resolve, wait));
+      if (!cancelled) setPhase(ok ? 'done' : 'error');
     }
 
     run();
     return () => {
       cancelled = true;
     };
-  }, [searchParams]);
+  }, [token, attempt]);
+
+  function retry() {
+    setPhase('loading');
+    setAttempt((value) => value + 1);
+  }
 
   return (
     <>
@@ -53,37 +79,8 @@ export default function NewsletterUnsubscribePage() {
         </div>
       </div>
 
-      <section className="sec bg-bg">
-        <div className="inner max-w-[680px]">
-          {phase === 'loading' ? (
-            <p className="page-sub">
-              <span className="cs">Odhlašuji…</span>
-              <span className="en">Unsubscribing…</span>
-            </p>
-          ) : null}
-
-          {phase === 'done' ? (
-            <p className="page-sub" role="status">
-              <span className="cs">
-                Pokud byl odkaz platný, odběr newsletteru je ukončený.
-              </span>
-              <span className="en">
-                If the link was valid, the newsletter subscription is cancelled.
-              </span>
-            </p>
-          ) : null}
-
-          {phase === 'error' ? (
-            <p className="page-sub" role="alert">
-              <span className="cs">
-                Nepodařilo se odhlásit. Otevři odkaz z mailu ještě jednou.
-              </span>
-              <span className="en">
-                Could not unsubscribe. Open the link from the email again.
-              </span>
-            </p>
-          ) : null}
-        </div>
+      <section className="unsub-section bg-bg">
+        <NewsletterUnsubscribeStatus phase={phase} onRetry={retry} />
       </section>
     </>
   );

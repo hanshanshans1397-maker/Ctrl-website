@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { NewsletterStatusIcon } from '../components/NewsletterStatusIcon';
 import { NewsletterTopicPicker } from '../components/NewsletterTopicPicker';
 import { NEWSLETTER_PREFERENCE_OPTIONS } from '../hooks/useNewsletterForm';
 import { usePageMeta } from '../hooks/usePageMeta';
@@ -106,51 +107,44 @@ export default function NewsletterPreferencesPage() {
       </div>
 
       <div className="apply-page apply-page--below-hero newsletter-page">
-        <div className="apply-wrap newsletter-preferences-wrap">
+        <div
+          className={`unsub-card prefs-card${isSuccess ? ' prefs-card--done' : ''}`}
+          data-phase={isSuccess ? 'done' : 'form'}
+        >
+          <span className="unsub-card__glow" aria-hidden="true" />
           {isSuccess ? (
-            <div className="success show newsletter-success" role="status">
-              <div className="success-icon">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                  className="text-accent"
-                >
-                  <path
-                    d="M5 13l4 4L19 7"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+            <>
+              <NewsletterStatusIcon phase="done" />
+              <div className="unsub-body" role="status">
+                <h2 className="unsub-title">
+                  <span className="cs">Předvolby uloženy.</span>
+                  <span className="en">Preferences saved.</span>
+                </h2>
+                <p className="unsub-text">
+                  <span className="cs">Od teď vám budeme psát jen o tématech, která máte vybraná.</span>
+                  <span className="en">From now on we will only write about the topics you selected.</span>
+                </p>
+                <ul className="newsletter-success__topics">
+                  {NEWSLETTER_PREFERENCE_OPTIONS.filter((option) =>
+                    preferences.includes(option.value),
+                  ).map((option) => (
+                    <li key={option.value}>
+                      <span className="cs">{option.cs}</span>
+                      <span className="en">{option.en}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="unsub-actions">
+                  <Link to="/" className="newsletter-success__link newsletter-success__link--primary">
+                    <span className="cs">Zpět na web</span>
+                    <span className="en">Back to the website</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                </div>
               </div>
-              <h2 className="cs">Předvolby uloženy.</h2>
-              <h2 className="en">Preferences saved.</h2>
-              <p className="cs">Od teď vám budeme psát jen o tématech, která máte vybraná.</p>
-              <p className="en">From now on we will only write about the topics you selected.</p>
-              <ul className="newsletter-success__topics">
-                {NEWSLETTER_PREFERENCE_OPTIONS.filter((option) =>
-                  preferences.includes(option.value),
-                ).map((option) => (
-                  <li key={option.value}>
-                    <span className="cs">{option.cs}</span>
-                    <span className="en">{option.en}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="newsletter-success__actions">
-                <Link to="/" className="newsletter-success__link newsletter-success__link--primary">
-                  <span className="cs">Zpět na web</span>
-                  <span className="en">Back to the website</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-            </div>
+            </>
           ) : (
-            <form className="form-live relative" onSubmit={submit} noValidate>
+            <form className="form-live relative prefs-form" onSubmit={submit} noValidate>
               <div className="field">
                 <div className="newsletter-groups__head">
                   <span
@@ -174,6 +168,13 @@ export default function NewsletterPreferencesPage() {
                       <span className="en">{allSelected ? 'Clear all' : 'Select all'}</span>
                     </button>
                   </span>
+                </div>
+                <div
+                  className="prefs-meter"
+                  aria-hidden="true"
+                  style={{ '--prefs-progress': preferences.length / NEWSLETTER_PREFERENCE_OPTIONS.length }}
+                >
+                  <span className="prefs-meter__fill" />
                 </div>
                 <NewsletterTopicPicker
                   options={NEWSLETTER_PREFERENCE_OPTIONS}
