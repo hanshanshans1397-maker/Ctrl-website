@@ -526,13 +526,13 @@ export function AboutPageContent() {
                 </h3>
                 <p className="text-[15px] font-light leading-[1.8] text-mid cs max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   CTRL Summit 2026 bude první mezinárodní konferencí CTRL
-                  Europe. Brno, jaro 2026. Keynotes, panelové diskuze,
+                  Europe. Brno, léto 2026, dva dny. Keynotes, panelové diskuze,
                   workshopy. Místo kde se setkává mladá středoevropská generace
                   a buduje společnou odpověď na digitální výzvy současnosti.
                 </p>
                 <p className="text-[15px] font-light leading-[1.8] text-mid en max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   CTRL Summit 2026 will be the first international CTRL Europe
-                  conference. Brno, spring 2026. Keynotes, panel discussions,
+                  conference. Brno, summer 2026, two days. Keynotes, panel discussions,
                   workshops. Where the young Central European generation meets
                   and builds a common response to today's digital challenges.
                 </p>

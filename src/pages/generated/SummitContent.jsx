@@ -31,8 +31,8 @@ export function SummitPageContent() {
           */}
           <div className="px-5 z-[3]">
             <span className="block text-xl text-accent mb-3">
-              <span className="cs">Jaro 2027</span>
-              <span className="en">Spring 2027</span>
+              <span className="cs">Léto 2027</span>
+              <span className="en">Summer 2027</span>
             </span>
             <div className="flex items-baseline gap-[0.15em] text-[clamp(42px,11vw,58px)] font-extrabold leading-[0.95] tracking-[-2px] text-bg">
               <span>Summit</span>
@@ -53,8 +53,8 @@ export function SummitPageContent() {
             className="mb-10 flex translate-y-4 items-center gap-5 opacity-0 max-sm:hidden"
           >
             <span className="text-xl text-accent">
-              <span className="cs">Jaro 2027</span>
-              <span className="en">Spring 2027</span>
+              <span className="cs">Léto 2027</span>
+              <span className="en">Summer 2027</span>
             </span>
           </div>
 
@@ -158,10 +158,10 @@ export function SummitPageContent() {
           </div>
           <div className="px-9 py-7 max-sm:px-4 max-sm:py-[18px]">
             <div className="cs font-mono text-[28px] font-bold text-white">
-              Jaro
+              Léto
             </div>
             <div className="en font-mono text-[28px] font-bold text-white">
-              Spring
+              Summer
             </div>
             <div className="mt-1 font-mono text-[10px] tracking-[2px] text-[rgba(255,255,255,0.6)] uppercase">
               2027
@@ -237,11 +237,11 @@ export function SummitPageContent() {
               <div className="about-stats grid grid-cols-2 sep-grid max-sm:[&>div]:px-3 max-sm:[&>div]:py-[18px] max-sm:[&>div>div:first-child]:text-[32px]">
                 <div className="bg-card px-6 py-6 text-center">
                   <div className="text-[40px] font-extrabold tracking-[-2px] text-accent">
-                    <span className="cs">1 den</span>
-                    <span className="en">1 day</span>
+                    <span className="cs">2 dny</span>
+                    <span className="en">2 days</span>
                   </div>
                   <div className="cs mt-1 font-mono text-[10px] tracking-[1.5px] leading-snug text-mid uppercase">
-                    plný přednášek a workshopů
+                    plné přednášek a workshopů
                   </div>
                   <div className="en mt-1 font-mono text-[10px] tracking-[1.5px] leading-snug text-mid uppercase">
                     packed with talks and workshops
@@ -1292,10 +1292,16 @@ export function SummitPageContent() {
             Digital Resilience
           </div>
           <div className="ticker-item cs flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
-            Jaro 2027
+            Léto 2027
           </div>
           <div className="ticker-item en flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
-            Spring 2027
+            Summer 2027
+          </div>
+          <div className="ticker-item cs flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
+            2 dny
+          </div>
+          <div className="ticker-item en flex shrink-0 items-center gap-11 px-11 font-mono text-[11px] font-normal tracking-[2px] text-mid uppercase">
+            2 days
           </div>
         </div>
       </div>
