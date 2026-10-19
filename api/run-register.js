@@ -1,4 +1,4 @@
-import { handleRunRegisterSubmission } from './lib/handle-run-register.js';
+import { handleRunRegisterSubmission } from './_lib/handle-run-register.js';
 
 function setCors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');

@@ -1,4 +1,4 @@
-import { handleApplySubmission } from './lib/handle-apply.js';
+import { handleApplySubmission } from './_lib/handle-apply.js';
 
 function setCors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');

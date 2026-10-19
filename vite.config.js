@@ -1,14 +1,14 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import { handleApplySubmission } from './api/lib/handle-apply.js';
-import { handleWorkshopInquiry } from './api/lib/handle-workshop-inquiry.js';
+import { handleApplySubmission } from './api/_lib/handle-apply.js';
+import { handleWorkshopInquiry } from './api/_lib/handle-workshop-inquiry.js';
 import {
   handleNewsletterPreferences,
   handleNewsletterSubscribe,
   handleNewsletterUnsubscribe,
-} from './api/lib/newsletter.js';
-import { handleRunRegisterSubmission } from './api/lib/handle-run-register.js';
+} from './api/_lib/newsletter.js';
+import { handleRunRegisterSubmission } from './api/_lib/handle-run-register.js';
 
 function readJsonBody(req) {
   return new Promise((resolve, reject) => {
