@@ -195,150 +195,78 @@ export const NEWS = [
     inviteHeight: NEWS_INVITE.height,
     banner: {
       variant: "orb",
-      date: { cs: "1.–2. listopadu", en: "1–2 November" },
+      date: { cs: "1.–3. listopadu", en: "1–3 November" },
       points: {
-        cs: ["Karlovarský kraj", "2 gymnázia", "6 lektorů"],
-        en: ["Karlovy Vary Region", "2 schools", "6 facilitators"],
+        cs: ["Dezinformace", "Deepfakes", "Manipulace"],
+        en: ["Disinformation", "Deepfakes", "Manipulation"],
       },
     },
     category: { cs: "Vzdělávání", en: "Education" },
     title: {
-      cs: "Vyrážíme s novým workshopem o AI",
-      en: "We're taking a new AI workshop to schools",
+      cs: "Vyrážíme na Dny AI",
+      en: "We're heading to AI Days",
     },
     excerpt: {
-      cs: "1.–2. listopadu povede vedení CTRL Europe dva dny workshopů o umělé inteligenci a manipulaci na gymnáziích v Karlovarském kraji.",
-      en: "On 1–2 November, the CTRL Europe leadership will run two days of workshops on artificial intelligence and manipulation at grammar schools in the Karlovy Vary Region.",
+      cs: "1.–3. listopadu jedeme na Dny AI s workshopem o dezinformacích, deepfakes a manipulaci.",
+      en: "On 1–3 November we are going to AI Days with a workshop on disinformation, deepfakes and manipulation.",
     },
     meta: {
       cs: {
-        title: "Vyrážíme s novým workshopem o AI | CTRL Europe",
+        title: "Vyrážíme na Dny AI | CTRL Europe",
         description:
-          "1.–2. listopadu 2026 dva dny workshopů Dnů AI na gymnáziích v Karlovarském kraji. Šest lektorů z vedení, vlastní náplň a webová aplikace k programu.",
+          "1.–3. listopadu 2026 jedeme na Dny AI s workshopem o dezinformacích, deepfakes a manipulaci.",
       },
       en: {
-        title: "We're taking a new AI workshop to schools | CTRL Europe",
+        title: "We're heading to AI Days | CTRL Europe",
         description:
-          "On 1–2 November 2026, two days of AI Days workshops at grammar schools in the Karlovy Vary Region. Six facilitators from the leadership, a programme we wrote, and a web app that runs alongside it.",
+          "On 1–3 November 2026 we are going to AI Days with a workshop on disinformation, deepfakes and manipulation.",
       },
     },
     sections: [
       {
         type: "marquee",
         phrases: {
-          cs: ["1.–2. listopadu.", "Dvě gymnázia.", "Dva dny workshopů."],
-          en: ["1–2 November.", "Two schools.", "Two days of workshops."],
+          cs: ["1.–3. listopadu.", "Dny AI.", "Dezinformace, deepfakes, manipulace."],
+          en: ["1–3 November.", "AI Days.", "Disinformation, deepfakes, manipulation."],
         },
       },
       {
         type: "p",
-        cs: "1.–2. listopadu povede naše vedení dva dny workshopů o umělé inteligenci a manipulaci na gymnáziích v Karlovarském kraji v rámci nově spuštěného vzdělávacího programu CTRL Europe.",
-        en: "On 1–2 November our leadership will run two days of workshops on artificial intelligence and manipulation at grammar schools in the Karlovy Vary Region, as part of a newly launched CTRL Europe education programme.",
+        cs: "1.–3. listopadu vyrážíme na Dny AI. Bereme s sebou workshop o dezinformacích, deepfakes a manipulaci.",
+        en: "On 1–3 November we are heading to AI Days. We are bringing a workshop on disinformation, deepfakes and manipulation.",
       },
       {
         type: "h2",
-        id: "program",
-        cs: "Nový program jde do škol",
-        en: "A new programme goes into schools",
+        id: "workshop",
+        cs: "O čem je workshop",
+        en: "What the workshop is about",
       },
       {
         type: "p",
-        cs: "V rámci Dnů AI odučí šest lidí z vedení CTRL Europe dva dny workshopů na téma umělé inteligence, manipulace a digitálních závislostí přímo na gymnáziích v Karlovarském kraji.",
-        en: "During the AI Days, six people from the CTRL Europe leadership will teach two days of workshops on artificial intelligence, manipulation and digital addictions, in grammar schools in the Karlovy Vary Region.",
-      },
-      {
-        type: "p",
-        cs: "Jde o program, který jsme připravovali několik měsíců — vlastní náplň workshopu i webovou aplikaci, která ho provází. Cílem je, aby se postupně rozšířil na školy po celé střední Evropě.",
-        en: "It is a programme we spent several months preparing — the workshop itself, and a web app that runs alongside it. The aim is for it to spread, over time, to schools across Central Europe.",
-      },
-      {
-        type: "h2",
-        id: "skoly",
-        cs: "Dva dny, dvě gymnázia",
-        en: "Two days, two schools",
-      },
-      {
-        type: "p",
-        cs: "Každý den jiné gymnázium v Karlovarském kraji. Jména škol doplníme, až budou potvrzená.",
-        en: "A different grammar school in the Karlovy Vary Region each day. We'll add the school names once they are confirmed.",
-      },
-      {
-        type: "timeline",
-        items: [
-          {
-            time: "1. 11.",
-            cs: "První den workshopů.",
-            en: "First day of workshops.",
-          },
-          {
-            time: "2. 11.",
-            cs: "Druhý den workshopů.",
-            en: "Second day of workshops.",
-          },
-        ],
-      },
-      {
-        type: "h2",
-        id: "priprava",
-        cs: "Za programem je práce",
-        en: "There is work behind the programme",
-      },
-      {
-        type: "timeline",
-        items: [
-          {
-            time: "01",
-            cs: "Napsali jsme náplň workshopu. Struktura, aktivity a časování celého programu o AI a manipulaci.",
-            en: "We wrote the workshop. The structure, activities and timing of the whole programme on AI and manipulation.",
-          },
-          {
-            time: "02",
-            cs: "Postavili jsme vlastní webovou aplikaci. Interaktivní nástroj, který workshop provází a dělá ho zážitkovým.",
-            en: "We built our own web app. An interactive tool that runs with the workshop and makes it something you take part in.",
-          },
-          {
-            time: "03",
-            cs: "Jdeme na první gymnázia. Dva dny workshopů, dvě školy, reální studenti.",
-            en: "We're going into the first grammar schools. Two days of workshops, two schools, real students.",
-          },
-        ],
-      },
-      {
-        type: "h2",
-        id: "start",
-        cs: "Program startuje",
-        en: "The programme starts",
+        cs: "Dezinformace. Deepfakes. Manipulace. Tři věci, které studenti potkávají každý den a které se ve škole skoro neučí.",
+        en: "Disinformation. Deepfakes. Manipulation. Three things students run into every day, and that school barely teaches.",
       },
       {
         type: "facts",
         items: [
           {
             label: { cs: "Kdy", en: "When" },
-            value: { cs: "1.–2. 11. 2026", en: "1–2 Nov 2026" },
+            value: { cs: "1.–3. 11. 2026", en: "1–3 Nov 2026" },
           },
           {
-            label: { cs: "Kde", en: "Where" },
-            value: { cs: "Karlovarský kraj", en: "Karlovy Vary Region" },
+            label: { cs: "Kam", en: "Where" },
+            value: { cs: "Dny AI", en: "AI Days" },
           },
           {
-            label: { cs: "Lektoři", en: "Facilitators" },
-            value: { cs: "6 z vedení", en: "6 from the board" },
-          },
-          {
-            label: { cs: "Workshopy", en: "Workshops" },
-            value: { cs: "2 dny", en: "2 days" },
+            label: { cs: "Workshop", en: "Workshop" },
+            value: { cs: "Dezinformace, deepfakes, manipulace", en: "Disinformation, deepfakes, manipulation" },
           },
         ],
       },
       {
-        type: "p",
-        cs: "Workshopy zatím vede přímo naše vedení. Postupně program předáme certifikovaným lektorům po celé zemi, aby se dostal na co nejvíc škol.",
-        en: "For now the workshops are led by our own leadership. Over time we will hand the programme to certified facilitators across the country, so it can reach as many schools as possible.",
-      },
-      {
         type: "quote",
-        cs: "Chceme, aby studenti odešli s pocitem, že umělé inteligenci rozumí líp než ráno.",
-        en: "We want students to leave feeling they understand artificial intelligence better than they did that morning.",
+        cs: "Chceme, aby studenti poznali dezinformaci, deepfake i manipulaci dřív, než jim uvěří.",
+        en: "We want students to recognise disinformation, a deepfake and manipulation before they believe them.",
         author: {
           cs: "Tým vedení CTRL Europe",
           en: "The CTRL Europe leadership team",
@@ -352,12 +280,12 @@ export const NEWS = [
       {
         type: "p",
         cs: [
-          "Po pilotním testu spouštíme workshopy pro školy po celé České republice — zdarma. Napiš na ",
+          "Workshop o dezinformacích, deepfakes a manipulaci bereme i na školy — zdarma. Napiš na ",
           { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
           ".",
         ],
         en: [
-          "After the pilot we are opening the workshops to schools across the Czech Republic — free of charge. Write to ",
+          "We also bring the workshop on disinformation, deepfakes and manipulation into schools — free of charge. Write to ",
           { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
           ".",
         ],
@@ -366,7 +294,7 @@ export const NEWS = [
   },
   {
     slug: "ctrl-challenge",
-    date: "2026-12-04",
+    date: "2026-12-08",
     published: "2026-09-27",
     invite: {
       cs: "/photos/news/challenge-cs.webp",
@@ -376,7 +304,7 @@ export const NEWS = [
     inviteHeight: NEWS_INVITE.height,
     banner: {
       variant: "rail",
-      date: { cs: "4. prosince", en: "4 December" },
+      date: { cs: "8. prosince", en: "8 December" },
       points: {
         cs: ["Bez AI", "Týmy", "Střední školy"],
         en: ["No AI", "Teams", "Secondary schools"],
@@ -388,33 +316,33 @@ export const NEWS = [
       en: "Become a digital investigator",
     },
     excerpt: {
-      cs: "4. prosince pořádáme CTRL Challenge — vyšetřovací kybernetickou soutěž pro středoškoláky, kde týmy řeší reálné případy manipulace a dezinformací.",
-      en: "On 4 December we are holding CTRL Challenge — an investigative cybersecurity competition for secondary-school students, where teams work real cases of manipulation and disinformation.",
+      cs: "8. prosince pořádáme CTRL Challenge — vyšetřovací kybernetickou soutěž pro středoškoláky, kde týmy řeší reálné případy manipulace a dezinformací.",
+      en: "On 8 December we are holding CTRL Challenge — an investigative cybersecurity competition for secondary-school students, where teams work real cases of manipulation and disinformation.",
     },
     meta: {
       cs: {
         title: "CTRL Challenge: staňte se digitálním vyšetřovatelem | CTRL Europe",
         description:
-          "4. prosince 2026 CTRL Challenge v Brně. Týmy středoškoláků vyšetřují reálné případy manipulace bez umělé inteligence. Registrace v listopadu.",
+          "8. prosince 2026 CTRL Challenge v Brně. Týmy středoškoláků vyšetřují reálné případy manipulace bez umělé inteligence. Registrace v listopadu.",
       },
       en: {
         title: "CTRL Challenge: become a digital investigator | CTRL Europe",
         description:
-          "CTRL Challenge on 4 December 2026. Secondary-school teams investigate real cases of manipulation, without artificial intelligence. Registration opens in November.",
+          "CTRL Challenge on 8 December 2026. Secondary-school teams investigate real cases of manipulation, without artificial intelligence. Registration opens in November.",
       },
     },
     sections: [
       {
         type: "marquee",
         phrases: {
-          cs: ["4. prosince.", "Bez umělé inteligence.", "Jen důkazy."],
-          en: ["4 December.", "No artificial intelligence.", "Just the evidence."],
+          cs: ["8. prosince.", "Bez umělé inteligence.", "Jen důkazy."],
+          en: ["8 December.", "No artificial intelligence.", "Just the evidence."],
         },
       },
       {
         type: "p",
-        cs: "4. prosince pořádáme CTRL Challenge — vyšetřovací kybernetickou soutěž pro středoškoláky a gymnazisty. Týmy vyšetřují reálné případy manipulace a dezinformací.",
-        en: "On 4 December we are holding CTRL Challenge — an investigative cybersecurity competition for secondary-school and grammar-school students. Teams investigate real cases of manipulation and disinformation.",
+        cs: "8. prosince pořádáme CTRL Challenge — vyšetřovací kybernetickou soutěž pro středoškoláky a gymnazisty. Týmy vyšetřují reálné případy manipulace a dezinformací.",
+        en: "On 8 December we are holding CTRL Challenge — an investigative cybersecurity competition for secondary-school and grammar-school students. Teams investigate real cases of manipulation and disinformation.",
       },
       {
         type: "h2",
@@ -437,7 +365,7 @@ export const NEWS = [
         items: [
           {
             label: { cs: "Kdy", en: "When" },
-            value: { cs: "4. 12. 2026", en: "4 Dec 2026" },
+            value: { cs: "8. 12. 2026", en: "8 Dec 2026" },
           },
           {
             label: { cs: "Pro koho", en: "Who" },

@@ -1,4 +1,4 @@
-import { handleNewsletterUnsubscribe } from '../lib/newsletter.js';
+import { handleNewsletterUnsubscribe } from '../_lib/newsletter.js';
 
 function setCors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');

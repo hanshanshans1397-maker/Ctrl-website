@@ -1,4 +1,4 @@
-import { handleWorkshopInquiry } from "./lib/handle-workshop-inquiry.js";
+import { handleWorkshopInquiry } from "./_lib/handle-workshop-inquiry.js";
 
 function setCors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
