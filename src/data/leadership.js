@@ -7,7 +7,6 @@ export const FOUNDER = {
   photoAlt: "Jan Krejčí",
   roleCs: "Prezident & Zakladatel",
   roleEn: "President & Founder",
-  age: "17",
   base: "Brno, CZ",
 };
 

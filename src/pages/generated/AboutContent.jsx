@@ -591,15 +591,6 @@ export function AboutPageContent() {
                 </div>
                 <div className="flex justify-between py-3 border-b border-separator">
                   <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid cs">
-                    Věk
-                  </div>
-                  <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid en">
-                    Age
-                  </div>
-                  <div className="text-[13px] font-medium text-dark">17</div>
-                </div>
-                <div className="flex justify-between py-3 border-b border-separator">
-                  <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid cs">
                     Působiště
                   </div>
                   <div className="font-mono text-[10px] tracking-[2px] uppercase text-mid en">
@@ -632,14 +623,14 @@ export function AboutPageContent() {
                   </p>
                 </div>
                 <p className="cs text-base font-light leading-[1.85] text-mid mb-5">
-                  Jsem sedmnáctiletý student IT na Střední škole informatiky,
+                  Jsem student IT na Střední škole informatiky,
                   poštovnictví a finančnictví v Brně. Od mládí mě zajímá
                   průsečík technologií, politiky a společnosti. Vidím jak
                   digitální manipulace ovlivňuje demokratické procesy. A jak
                   málo se o tom mluví tam, kde by se mluvit mělo.
                 </p>
                 <p className="en text-base font-light leading-[1.85] text-mid mb-5">
-                  I am a seventeen-year-old IT student at the Secondary School
+                  I am an IT student at the Secondary School
                   of Informatics, Posts and Finance in Brno. Since childhood I
                   have been interested in the intersection of technology,
                   politics and society. I see how digital manipulation
