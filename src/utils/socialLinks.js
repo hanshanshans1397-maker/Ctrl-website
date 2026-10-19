@@ -1,4 +1,4 @@
-export const CONTACT_EMAIL = 'ctrleurope@seznam.cz';
+export const CONTACT_EMAIL = 'ctrleurope@outlook.com';
 
 
 export const INSTAGRAM_URLS = {

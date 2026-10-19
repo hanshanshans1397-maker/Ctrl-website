@@ -4,7 +4,9 @@ import { BoardMemberCard } from "../../components/BoardMemberCard";
 import { Flythrough } from "../../components/Flythrough";
 import { NationalCoordinators } from "../../components/NationalCoordinators";
 import { PartnersSection } from "../../components/PartnersSection";
+import { ContactDirectory } from "../../components/sections/ContactDirectory";
 import { TickerBar } from "../../components/TickerBar";
+import { CONTACT_EMAIL } from "../../utils/socialLinks";
 import {
   ADVISOR,
   BOARD_MEMBERS,
@@ -1125,6 +1127,8 @@ export function AboutPageContent() {
         </div>
       </section>
 
+      <ContactDirectory />
+
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg text-center">
         <div className="inner max-w-[700px] mx-auto">
           <h2 className="rev cs text-[clamp(36px,5vw,72px)] font-extrabold leading-none tracking-[-2.5px] text-dark mb-6">
@@ -1154,10 +1158,10 @@ export function AboutPageContent() {
             <Link to="/apply" className="btn-g en">
               Application
             </Link>
-            <a href="mailto:ctrleurope@seznam.cz" className="btn-g cs">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="btn-g cs">
               Napište nám
             </a>
-            <a href="mailto:ctrleurope@seznam.cz" className="btn-g en">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="btn-g en">
               Write to us
             </a>
           </div>

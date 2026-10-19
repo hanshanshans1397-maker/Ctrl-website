@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "../utils/socialLinks";
+
 export const NEWS_INVITE = {
   width: 1024,
   height: 723,
@@ -351,12 +353,12 @@ export const NEWS = [
         type: "p",
         cs: [
           "Po pilotním testu spouštíme workshopy pro školy po celé České republice — zdarma. Napiš na ",
-          { text: "ctrleurope@seznam.cz", href: "mailto:ctrleurope@seznam.cz" },
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
           ".",
         ],
         en: [
           "After the pilot we are opening the workshops to schools across the Czech Republic — free of charge. Write to ",
-          { text: "ctrleurope@seznam.cz", href: "mailto:ctrleurope@seznam.cz" },
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
           ".",
         ],
       },
@@ -712,12 +714,12 @@ export const NEWS = [
         type: "p",
         cs: [
           "Zástupci organizací mohou žádat o vlastní stánek nebo přednáškový slot. Studenti a školy napište na ",
-          { text: "ctrleurope@seznam.cz", href: "mailto:ctrleurope@seznam.cz" },
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
           ".",
         ],
         en: [
           "Organisations can ask for their own stand or a talk slot. Students and schools, write to ",
-          { text: "ctrleurope@seznam.cz", href: "mailto:ctrleurope@seznam.cz" },
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
           ".",
         ],
       },
@@ -893,12 +895,12 @@ export const NEWS = [
         type: "p",
         cs: [
           "Naše workshopy a přednášky jsou zdarma pro všechny základní a střední školy. Napiš na ",
-          { text: "ctrleurope@seznam.cz", href: "mailto:ctrleurope@seznam.cz" },
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
           ".",
         ],
         en: [
           "Our workshops and talks are free for every primary and secondary school. Write to ",
-          { text: "ctrleurope@seznam.cz", href: "mailto:ctrleurope@seznam.cz" },
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
           ".",
         ],
       },

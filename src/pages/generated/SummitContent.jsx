@@ -1,5 +1,6 @@
 import { Flythrough } from "../../components/Flythrough";
 import { Link } from "react-router-dom";
+import { CONTACT_EMAIL } from "../../utils/socialLinks";
 
 export function SummitPageContent() {
   return (
@@ -1237,13 +1238,13 @@ export function SummitPageContent() {
               I&apos;m interested &rarr;
             </Link>
             <a
-              href="mailto:ctrleurope@seznam.cz"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="btn-g cs inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-dark no-underline transition-[border-color] duration-[250ms] hover:border-dark"
             >
               Napište nám
             </a>
             <a
-              href="mailto:ctrleurope@seznam.cz"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="btn-g en inline-flex items-center gap-2 border border-light bg-transparent px-7 py-3.5 text-[13px] font-medium tracking-[0.3px] text-dark no-underline transition-[border-color] duration-[250ms] hover:border-dark"
             >
               Email us

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { CONTACT_EMAIL } from "../../utils/socialLinks";
 import { Flythrough } from "../../components/Flythrough";
 import { WorkshopFacts } from "../../components/WorkshopFacts";
 import { WorkshopPerks } from "../../components/WorkshopPerks";
@@ -865,10 +866,10 @@ export function WorkshopsPageContent() {
             <Link to="/join" className="btn-p en">
               Order &rarr;
             </Link>
-            <a href="mailto:ctrleurope@seznam.cz" className="btn-g cs">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="btn-g cs">
               Napište nám
             </a>
-            <a href="mailto:ctrleurope@seznam.cz" className="btn-g en">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="btn-g en">
               Email us
             </a>
           </div>
