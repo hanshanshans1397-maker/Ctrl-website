@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { handleApplySubmission } from './api/lib/handle-apply.js';
+import { handleWorkshopInquiry } from './api/lib/handle-workshop-inquiry.js';
 import {
   handleNewsletterPreferences,
   handleNewsletterSubscribe,
@@ -93,6 +94,11 @@ export default defineConfig(({ mode }) => {
         {
           path: '/api/apply',
           handler: handleApplySubmission,
+          errorMessage: 'Failed to send email',
+        },
+        {
+          path: '/api/workshop-inquiry',
+          handler: handleWorkshopInquiry,
           errorMessage: 'Failed to send email',
         },
         {

@@ -83,13 +83,13 @@ export const PAGE_META = {
     cs: {
       title: 'Workshopy | CTRL Europe',
       description:
-        'Workshopy a vzdělávací programy CTRL Europe pro digitální odolnost.',
+        'Workshopy, které se dají zažít. Učíme mladé i dospělé poznat manipulaci, dezinformace a deepfaky.',
       image: '/photos/workshopy.png',
     },
     en: {
       title: 'Workshops | CTRL Europe',
       description:
-        'Workshops and training programmes from CTRL Europe for digital resilience.',
+        'Workshops you can experience. We teach young people and adults to recognize manipulation, disinformation and deepfakes.',
       image: '/photos/workshopy.png',
     },
   },
