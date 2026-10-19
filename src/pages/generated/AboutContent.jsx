@@ -426,15 +426,16 @@ export function AboutPageContent() {
                   Přijíždíme na střední školy s 90minutovým interaktivním
                   programem. Učíme studenty jak poznat deepfake, jak fungují
                   doporučovací algoritmy, jak se šíří dezinformace a jak si
-                  udržet kritický pohled na digitální obsah. Program je zdarma
-                  pro všechny partnerské školy.
+                  udržet kritický pohled na digitální obsah. Pro partnerské školy
+                  hledáme financování, aby pro ně mohly být workshopy zdarma.
                 </p>
                 <p className="text-[15px] font-light leading-[1.8] text-mid en max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   We come to secondary schools with a 90-minute interactive
                   program. We teach students how to detect deepfakes, how
                   recommendation algorithms work, how disinformation spreads and
-                  how to maintain a critical perspective on digital content. The
-                  program is free for all partner schools.
+                  how to maintain a critical perspective on digital content. For
+                  partner schools we look for funding so the workshops can be
+                  free for them.
                 </p>
               </div>
             </div>
@@ -931,16 +932,16 @@ export function AboutPageContent() {
                     Předsednictvo
                   </strong>{" "}
                   tvoří zakladatel a výkonné vedení: prezident, předseda,
-                  místopředseda, vedoucí kanceláře, předseda hlavní rady a
-                  tajemnice. Rozhoduje o strategickém směřování organizace.
+                  místopředseda, zástupkyně kanceláře prezidenta, předseda hlavní
+                  rady a tajemnice. Rozhoduje o strategickém směřování organizace.
                 </p>
                 <p className="en mb-5 text-base leading-[1.85] font-light text-mid">
                   <strong className="font-medium text-dark">
                     The Executive Board
                   </strong>{" "}
                   is the founder and operational leadership: president, chair,
-                  deputy chair, chief of staff, the chairman of the Main Council
-                  and the secretary. The board decides on the strategic
+                  deputy chair, representative of the Office of the President, the
+                  chairman of the Main Council and the secretary. The board decides on the strategic
                   direction of the organization.
                 </p>
                 <p className="cs mb-5 text-base leading-[1.85] font-light text-mid">

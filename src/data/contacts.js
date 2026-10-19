@@ -30,6 +30,20 @@ export const CONTACT_DIRECTORY = [
     scopeEn: "Direct contact for the president and founder.",
   },
   {
+    id: iris.id,
+    name: iris.name,
+    initials: iris.initials,
+    photo: iris.photo,
+    roleCs: "Zástupkyně kanceláře prezidenta",
+    roleEn: "Representative, Office of the President",
+    email: "irismariazamfir@gmail.com",
+    phone: "+420 733 475 773",
+    scopeCs:
+      "Cesty a program prezidenta, informace k jeho práci, domlouvání schůzek a první kontakt pro organizace.",
+    scopeEn:
+      "The president's travel and programme, information on his work, scheduling meetings, and the first contact for organizations.",
+  },
+  {
     id: jakub.id,
     name: jakub.name,
     initials: jakub.initials,
@@ -42,20 +56,6 @@ export const CONTACT_DIRECTORY = [
       "Informace za předsednictvo, plány organizace a vše, co se týká práce vedení.",
     scopeEn:
       "Information on behalf of the executive board, the organization's plans, and anything that concerns the board's work.",
-  },
-  {
-    id: iris.id,
-    name: iris.name,
-    initials: iris.initials,
-    photo: iris.photo,
-    roleCs: "Zástupkyně kanceláře prezidenta",
-    roleEn: "Deputy, Office of the President",
-    email: "irismariazamfir@gmail.com",
-    phone: "+420 733 475 773",
-    scopeCs:
-      "Cesty a program prezidenta, informace k jeho práci, domlouvání schůzek a první kontakt pro organizace.",
-    scopeEn:
-      "The president's travel and programme, information on his work, scheduling meetings, and the first contact for organizations.",
   },
   {
     id: dominik.id,

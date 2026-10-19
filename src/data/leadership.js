@@ -62,8 +62,8 @@ export const BOARD_REST = [
     firstName: "Iris",
     initials: "IMZ",
     photo: null,
-    roleCs: "Vedoucí kanceláře",
-    roleEn: "Chief of Staff",
+    roleCs: "Zástupkyně kanceláře prezidenta",
+    roleEn: "Representative, Office of the President",
     enter: "rotate-left",
   },
   {

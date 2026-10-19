@@ -1467,6 +1467,102 @@ body.EN .apply-people__caption.en {
   background: var(--color-bg2);
 }
 
+.apply-page.inquiry-embed {
+  min-height: 0;
+  display: block;
+  justify-content: unset;
+  background: var(--color-card);
+  padding: 36px 32px 40px;
+  border: 1px solid rgba(11, 16, 32, 0.08);
+}
+
+.apply-page.inquiry-embed .inquiry-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 4px;
+  margin-bottom: 28px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.55;
+  color: var(--color-mid);
+  cursor: pointer;
+}
+
+.apply-page.inquiry-embed .inquiry-consent input {
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--color-accent);
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.price-table th,
+.price-table td {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--color-separator);
+  vertical-align: baseline;
+}
+
+.price-table tr:first-child th,
+.price-table tr:first-child td {
+  border-top: 1px solid var(--color-separator);
+}
+
+.price-table th {
+  text-align: left;
+  font-weight: 500;
+  padding-right: 28px;
+}
+
+.price-table td {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+#partnerske-skoly .section-title {
+  color: var(--color-bg);
+}
+
+@media (max-width: 640px) {
+  .apply-page.inquiry-embed {
+    padding: 24px 18px 28px;
+  }
+
+  .price-table,
+  .price-table tbody,
+  .price-table tr,
+  .price-table th,
+  .price-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .price-table th {
+    padding: 18px 0 4px;
+    border-bottom: 0;
+  }
+
+  .price-table tr:first-child th {
+    border-top: 1px solid var(--color-separator);
+  }
+
+  .price-table td {
+    text-align: left;
+    padding: 0 0 18px;
+    border-bottom: 1px solid var(--color-separator);
+  }
+}
+
 @media (max-width: 960px) {
   .apply-page.join-apply-panel {
     padding: 36px;

@@ -433,3 +433,12 @@ export function buildRunRegisterConfirmationEmail({ email, people, lang }) {
     replyTo: cancelEmail,
   };
 }
+
+export function buildWorkshopInquiryEmail({ subject, replyTo, fields }) {
+  const rows = fields.map(([label, value]) => emailRow(label, value)).join("");
+  return {
+    subject,
+    html: wrapEmail(subject, rows),
+    replyTo,
+  };
+}
