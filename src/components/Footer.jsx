@@ -180,6 +180,13 @@ export function Footer() {
                 {CONTACT_EMAIL}
               </a>
               <Link
+                to="/about#contacts"
+                className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
+              >
+                <span className="cs">Kontakty</span>
+                <span className="en">Contacts</span>
+              </Link>
+              <Link
                 to="/join"
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >

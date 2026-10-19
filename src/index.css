@@ -8707,6 +8707,30 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
   line-height: 1.4;
 }
 
+.contact-card {
+  transition:
+    border-color 200ms var(--ease-out-expo),
+    color 200ms var(--ease-out-expo),
+    translate 200ms var(--ease-out-expo);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-card:hover {
+    translate: 0 -3px;
+    border-color: rgba(74, 123, 255, 0.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card {
+    transition: none;
+  }
+
+  .contact-card:hover {
+    translate: none;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .exec-card,
   .council-rail {
@@ -8762,6 +8786,10 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
 
 .layer-band--council::before {
   opacity: 0.58;
+}
+
+.layer-band--contacts::before {
+  opacity: 0.62;
 }
 
 .layer-band--partners::before {

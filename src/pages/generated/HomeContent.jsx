@@ -642,11 +642,11 @@ export function HomePageContent() {
               </h3>
               <p className="what-desc cs text-sm font-light leading-[1.75] text-mid">
                 CTRL Summit 2026 je první mezinárodní konference pro mladou
-                středoevropskou generaci. Brno, jaro 2026.
+                středoevropskou generaci. Brno, léto 2026, dva dny.
               </p>
               <p className="what-desc en text-sm font-light leading-[1.75] text-mid">
                 CTRL Summit 2026 is the first international conference for the
-                young Central European generation. Brno, spring 2026.
+                young Central European generation. Brno, summer 2026, two days.
               </p>
             </Link>
           </div>

@@ -4,7 +4,9 @@ import { BoardMemberCard } from "../../components/BoardMemberCard";
 import { Flythrough } from "../../components/Flythrough";
 import { NationalCoordinators } from "../../components/NationalCoordinators";
 import { PartnersSection } from "../../components/PartnersSection";
+import { ContactDirectory } from "../../components/sections/ContactDirectory";
 import { TickerBar } from "../../components/TickerBar";
+import { CONTACT_EMAIL } from "../../utils/socialLinks";
 import {
   ADVISOR,
   BOARD_MEMBERS,
@@ -524,13 +526,13 @@ export function AboutPageContent() {
                 </h3>
                 <p className="text-[15px] font-light leading-[1.8] text-mid cs max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   CTRL Summit 2026 bude první mezinárodní konferencí CTRL
-                  Europe. Brno, jaro 2026. Keynotes, panelové diskuze,
+                  Europe. Brno, léto 2026, dva dny. Keynotes, panelové diskuze,
                   workshopy. Místo kde se setkává mladá středoevropská generace
                   a buduje společnou odpověď na digitální výzvy současnosti.
                 </p>
                 <p className="text-[15px] font-light leading-[1.8] text-mid en max-lg:text-base max-lg:font-normal max-lg:leading-[1.7] max-lg:text-dark/75">
                   CTRL Summit 2026 will be the first international CTRL Europe
-                  conference. Brno, spring 2026. Keynotes, panel discussions,
+                  conference. Brno, summer 2026, two days. Keynotes, panel discussions,
                   workshops. Where the young Central European generation meets
                   and builds a common response to today's digital challenges.
                 </p>
@@ -1125,6 +1127,8 @@ export function AboutPageContent() {
         </div>
       </section>
 
+      <ContactDirectory />
+
       <section className="sec py-[120px] px-[52px] max-lg:py-20 max-lg:px-6 max-[480px]:py-16 max-[480px]:px-5 bg-bg text-center">
         <div className="inner max-w-[700px] mx-auto">
           <h2 className="rev cs text-[clamp(36px,5vw,72px)] font-extrabold leading-none tracking-[-2.5px] text-dark mb-6">
@@ -1154,10 +1158,10 @@ export function AboutPageContent() {
             <Link to="/apply" className="btn-g en">
               Application
             </Link>
-            <a href="mailto:ctrleurope@seznam.cz" className="btn-g cs">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="btn-g cs">
               Napište nám
             </a>
-            <a href="mailto:ctrleurope@seznam.cz" className="btn-g en">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="btn-g en">
               Write to us
             </a>
           </div>
