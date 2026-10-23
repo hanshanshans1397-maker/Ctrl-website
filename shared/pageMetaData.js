@@ -147,6 +147,18 @@ export const PAGE_META = {
       description: 'Change your CTRL Europe newsletter topics.',
     },
   },
+  privacy: {
+    cs: {
+      title: 'Zásady ochrany osobních údajů | CTRL Europe',
+      description:
+        'Jak spolek CTRL Europe, z. s. shromažďuje, používá a chrání osobní údaje v souladu s GDPR.',
+    },
+    en: {
+      title: 'Privacy Policy | CTRL Europe',
+      description:
+        'How CTRL Europe, z. s. collects, uses and protects personal data in line with the GDPR.',
+    },
+  },
   'article-template': {
     cs: {
       title: 'Článek | CTRL Europe',
@@ -171,6 +183,7 @@ export const PATH_TO_PAGE_KEY = {
   '/summit': 'summit',
   '/workshops': 'workshops',
   '/events': 'events',
+  '/privacy': 'privacy',
 };
 
 export const DEFAULT_OG_IMAGE = '/og-image.jpg';

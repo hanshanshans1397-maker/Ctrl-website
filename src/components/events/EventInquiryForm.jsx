@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { EVENT_INQUIRY_TYPES } from "../../../shared/events";
 import { useLang } from "../../context/LangContext";
 import { CONTACT_EMAIL } from "../../utils/socialLinks";
@@ -218,10 +219,19 @@ export function EventInquiryForm() {
                 />
                 <span>
                   <span className="cs">
-                    Souhlasím se zpracováním osobních údajů za účelem vyřízení této zprávy. *
+                    Souhlasím se zpracováním osobních údajů za účelem vyřízení této zprávy podle{' '}
+                    <Link to="/privacy" className="underline underline-offset-2">
+                      Zásad ochrany osobních údajů
+                    </Link>
+                    . *
                   </span>
                   <span className="en">
-                    I agree to the processing of my personal data so this message can be handled. *
+                    I agree to the processing of my personal data so this message can be handled, as
+                    described in the{' '}
+                    <Link to="/privacy" className="underline underline-offset-2">
+                      Privacy Policy
+                    </Link>
+                    . *
                   </span>
                 </span>
               </label>

@@ -15,6 +15,7 @@ import EventsPage from './pages/EventsPage';
 import AktualityPage from './pages/AktualityPage';
 import NewsArticlePage from './pages/NewsArticlePage';
 import NotFoundPage from './pages/NotFoundPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 export default function App() {
   return (
@@ -37,6 +38,11 @@ export default function App() {
             <Route path="summit" element={<SummitPage />} />
             <Route path="workshops" element={<WorkshopsPage />} />
             <Route path="events" element={<EventsPage />} />
+            <Route path="privacy" element={<PrivacyPolicyPage />} />
+            <Route
+              path="ochrana-osobnich-udaju"
+              element={<Navigate to="/privacy" replace />}
+            />
             {import.meta.env.DEV ? (
               <Route path="article-template" element={<ArticleTemplatePage />} />
             ) : null}
