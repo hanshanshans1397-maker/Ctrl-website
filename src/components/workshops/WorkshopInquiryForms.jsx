@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { useLang } from "../../context/LangContext";
 import {
   INQUIRY_AUDIENCES,
@@ -212,9 +213,19 @@ function Consent({ id, checked, onChange }) {
         required
       />
       <span>
-        <span className="cs">Souhlasím se zpracováním osobních údajů za účelem vyřízení této poptávky. *</span>
+        <span className="cs">
+          Souhlasím se zpracováním osobních údajů za účelem vyřízení této poptávky podle{' '}
+          <Link to="/privacy" className="underline underline-offset-2">
+            Zásad ochrany osobních údajů
+          </Link>
+          . *
+        </span>
         <span className="en">
-          I agree to the processing of my personal data so this request can be handled. *
+          I agree to the processing of my personal data so this request can be handled, as described in the{' '}
+          <Link to="/privacy" className="underline underline-offset-2">
+            Privacy Policy
+          </Link>
+          . *
         </span>
       </span>
     </label>

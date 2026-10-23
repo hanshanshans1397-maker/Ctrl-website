@@ -10,6 +10,7 @@ export const DARK_HERO_ROUTES = [
   '/newsletter',
   '/newsletter/preferences',
   '/newsletter/unsubscribe',
+  '/privacy',
 ];
 
 export function hasDarkHero(pathname) {

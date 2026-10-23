@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { useNewsletterForm } from '../hooks/useNewsletterForm';
 import { NewsletterSignalAnimation } from '../components/NewsletterSignalAnimation';
@@ -259,12 +260,18 @@ export default function NewsletterPage() {
                     <span className="newsletter-consent__box" aria-hidden="true" />
                     <span className="newsletter-consent__text">
                       <span className="cs">
-                        Souhlasím se zasíláním newsletteru na tento e-mail. Odhlásit se můžu
-                        kdykoli odkazem v e-mailu.
+                        Souhlasím se zasíláním newsletteru na tento e-mail podle{' '}
+                        <Link to="/privacy" className="underline underline-offset-2">
+                          Zásad ochrany osobních údajů
+                        </Link>
+                        . Odhlásit se můžu kdykoli odkazem v e-mailu.
                       </span>
                       <span className="en">
-                        I agree to receive the newsletter at this email. I can unsubscribe
-                        anytime from a link in the email.
+                        I agree to receive the newsletter at this email as described in the{' '}
+                        <Link to="/privacy" className="underline underline-offset-2">
+                          Privacy Policy
+                        </Link>
+                        . I can unsubscribe anytime from a link in the email.
                       </span>
                     </span>
                   </label>

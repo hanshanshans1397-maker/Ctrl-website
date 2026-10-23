@@ -272,8 +272,17 @@ export function Footer() {
           <div className="font-mono text-[11px] font-light text-[rgba(245,245,243,0.3)]">
             © 2026 {ORGANIZATION.name}
           </div>
-          <div className="font-mono text-[10px] tracking-[2px] text-[rgba(245,245,243,0.45)] uppercase shrink-0">
-            CEE Youth Platform
+          <div className="flex items-center gap-5 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-2">
+            <Link
+              to="/privacy"
+              className="font-mono text-[11px] font-light text-[rgba(245,245,243,0.35)] no-underline transition-colors duration-200 hover:text-bg"
+            >
+              <span className="cs">Ochrana osobních údajů</span>
+              <span className="en">Privacy Policy</span>
+            </Link>
+            <div className="font-mono text-[10px] tracking-[2px] text-[rgba(245,245,243,0.45)] uppercase shrink-0">
+              CEE Youth Platform
+            </div>
           </div>
         </div>
       </div>
