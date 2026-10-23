@@ -79,6 +79,18 @@ export const PAGE_META = {
       image: '/2026.png',
     },
   },
+  events: {
+    cs: {
+      title: 'Akce | CTRL Europe',
+      description:
+        'Soutěže, konference a setkání, kde se mladí lidé učí, potkávají a mění věci kolem sebe.',
+    },
+    en: {
+      title: 'Events | CTRL Europe',
+      description:
+        'Competitions, conferences and gatherings where young people learn, meet and change things around them.',
+    },
+  },
   workshops: {
     cs: {
       title: 'Workshopy | CTRL Europe',
@@ -158,6 +170,7 @@ export const PATH_TO_PAGE_KEY = {
   '/newsletter/unsubscribe': 'newsletterUnsubscribe',
   '/summit': 'summit',
   '/workshops': 'workshops',
+  '/events': 'events',
 };
 
 export const DEFAULT_OG_IMAGE = '/og-image.jpg';

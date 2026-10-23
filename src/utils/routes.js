@@ -3,6 +3,7 @@ export const DARK_HERO_ROUTES = [
   '/summit',
   '/about',
   '/workshops',
+  '/events',
   '/join',
   '/news',
   '/apply',

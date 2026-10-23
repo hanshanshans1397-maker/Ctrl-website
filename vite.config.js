@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { handleApplySubmission } from './api/_lib/handle-apply.js';
 import { handleWorkshopInquiry } from './api/_lib/handle-workshop-inquiry.js';
+import { handleEventInquiry } from './api/_lib/handle-event-inquiry.js';
 import {
   handleNewsletterPreferences,
   handleNewsletterSubscribe,
@@ -102,6 +103,11 @@ export default defineConfig(({ mode }) => {
           errorMessage: 'Failed to send email',
         },
         {
+          path: '/api/event-inquiry',
+          handler: handleEventInquiry,
+          errorMessage: 'Failed to send email',
+        },
+        {
           path: '/api/run-register',
           handler: handleRunRegisterSubmission,
           errorMessage: 'Failed to save registration',
@@ -125,3 +131,4 @@ export default defineConfig(({ mode }) => {
     ],
   };
 });
+

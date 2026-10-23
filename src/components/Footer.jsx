@@ -154,6 +154,13 @@ export function Footer() {
                 <span className="en">Workshops</span>
               </Link>
               <Link
+                to="/events"
+                className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
+              >
+                <span className="cs">Akce</span>
+                <span className="en">Events</span>
+              </Link>
+              <Link
                 to="/about#partners"
                 className="mb-2 block text-[13px] font-light text-[rgba(245,245,243,0.4)] no-underline transition-colors duration-200 hover:text-bg"
               >

@@ -57,6 +57,17 @@ const NAV_ITEMS = [
       </svg>
     ),
   },
+  {
+    to: '/events', cs: 'Akce', en: 'Events',
+    icon: (cls) => (
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" className={cls}>
+        <rect x="2" y="3" width="12" height="11" rx="1.5" />
+        <path d="M2 6.5h12" strokeWidth="0.9" opacity="0.4" />
+        <path d="M5.5 1.8v2.4M10.5 1.8v2.4" strokeLinecap="round" />
+        <circle cx="8" cy="10.2" r="1.15" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+  },
 ];
 
 const JOIN_OPTIONS = [
@@ -247,7 +258,7 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
 
       <div
         data-mobile-menu=""
-        className={`fixed inset-0 z-[999] flex w-screen flex-col justify-center bg-bg px-8 py-[52px] transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] lg:hidden ${
+        className={`fixed inset-0 z-[999] flex w-screen flex-col justify-center overflow-y-auto overscroll-contain bg-bg px-8 py-[52px] transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] lg:hidden ${
           menuOpen ? 'mobile-menu-open pointer-events-auto translate-y-0' : 'pointer-events-none -translate-y-full'
         }`}
       >
