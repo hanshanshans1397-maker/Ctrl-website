@@ -652,8 +652,9 @@ function scrollChoreography() {
 
   gsap.utils.toArray('.section-title, .sec-title').forEach((title) => {
     if (title.closest('.page-hero, #hero, #join, .newsletter-intro')) return;
-    // Wrapping / italic headings cannot use preserve-3d: Chrome stacks the
-    // line boxes on top of each other until a later scroll recomposites them.
+    // Wrapping headings cannot take a Y scrub: Chrome stacks the line boxes
+    // on top of each other and the second line falls through the text below.
+    if (title.classList.contains('section-title--plain')) return;
     scrubFromTo(title, { y: 48, opacity: 0.15 }, { y: 0, opacity: 1 }, title, arrive);
   });
 

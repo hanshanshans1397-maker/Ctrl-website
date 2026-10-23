@@ -11,6 +11,7 @@ import NewsletterPreferencesPage from './pages/NewsletterPreferencesPage';
 import NewsletterUnsubscribePage from './pages/NewsletterUnsubscribePage';
 import SummitPage from './pages/SummitPage';
 import WorkshopsPage from './pages/WorkshopsPage';
+import EventsPage from './pages/EventsPage';
 import AktualityPage from './pages/AktualityPage';
 import NewsArticlePage from './pages/NewsArticlePage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="newsletter/unsubscribe" element={<NewsletterUnsubscribePage />} />
             <Route path="summit" element={<SummitPage />} />
             <Route path="workshops" element={<WorkshopsPage />} />
+            <Route path="events" element={<EventsPage />} />
             {import.meta.env.DEV ? (
               <Route path="article-template" element={<ArticleTemplatePage />} />
             ) : null}
