@@ -4814,6 +4814,35 @@ body.reduced-motion .run-register-success__ripple {
     transition: none;
   }
 
+  .article-videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 16px;
+    margin: 28px 0 8px;
+  }
+
+  .article-videos figure {
+    margin: 0;
+  }
+
+  .article-videos video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--color-dark);
+    border: 1px solid rgba(10, 16, 32, 0.08);
+  }
+
+  .article-videos figcaption {
+    @apply mt-3 font-mono text-[10px] tracking-[1.5px] text-mid uppercase;
+  }
+
+  @media (max-width: 640px) {
+    .article-videos {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .article-table-wrap {
     @apply mb-10 overflow-x-auto border border-separator bg-card;
   }

@@ -236,6 +236,31 @@ export const NEWS = [
         items: CTRL_RUN_PHOTOS,
       },
       {
+        type: "videos",
+        items: [
+          {
+            src: "/photos/news/ctrl-run/start-beh.mp4",
+            poster: "/photos/news/ctrl-run/start-beh.webp",
+            width: 720,
+            height: 1280,
+            caption: {
+              cs: "Start pod obloukem",
+              en: "The start under the arch",
+            },
+          },
+          {
+            src: "/photos/news/ctrl-run/prubeh.mp4",
+            poster: "/photos/news/ctrl-run/prubeh.webp",
+            width: 720,
+            height: 1280,
+            caption: {
+              cs: "Stánek, občerstvení a večer",
+              en: "The stand, refreshments and the evening",
+            },
+          },
+        ],
+      },
+      {
         type: "h2",
         id: "program",
         cs: "Více než jen běh",
