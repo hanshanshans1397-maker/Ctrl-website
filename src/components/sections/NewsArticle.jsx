@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { formatNewsDate } from '../../data/news';
 import { ArticleGallery } from '../ui/ArticleGallery';
+import { ArticleVideos } from '../ui/ArticleVideos';
 import { ArticleRouteMap } from '../ui/ArticleRouteMap';
 import { NewsInvite } from '../ui/NewsInvite';
 import { NewsPhraseMarquee } from '../ui/NewsPhraseMarquee';
@@ -126,6 +127,10 @@ function ArticleBlock({ block }) {
 
   if (block.type === 'gallery') {
     return <ArticleGallery items={block.items} />;
+  }
+
+  if (block.type === 'videos') {
+    return <ArticleVideos items={block.items} />;
   }
 
   if (block.type === 'register') {
