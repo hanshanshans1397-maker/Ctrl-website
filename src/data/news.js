@@ -9,8 +9,336 @@ const STRAVA_ROUTE_ID = "3531339168018099800";
 const STRAVA_ROUTE = `https://www.strava.com/routes/${STRAVA_ROUTE_ID}`;
 const MAPY_ROUTE = "https://mapy.com/s/jojavusaro";
 const MAPY_EMBED = "https://mapy.com/s/nedasuvaza";
+const PODANE_RUCE = "https://podaneruce.cz";
+
+const CTRL_RUN_PHOTOS = [
+  {
+    src: "/photos/news/ctrl-run/start.webp",
+    width: 1024,
+    height: 768,
+    alt: {
+      cs: "Dav pod nafukovacím obloukem Armády České republiky na CTRL Run 2026",
+      en: "Crowd under the Czech Army inflatable arch at CTRL Run 2026",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/rozhovor.webp",
+    width: 1024,
+    height: 768,
+    alt: {
+      cs: "Rozhovor u banneru partnera JUKO během CTRL Run",
+      en: "An interview in front of the JUKO partner banner during CTRL Run",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/vyhlidka.webp",
+    width: 768,
+    height: 1024,
+    alt: {
+      cs: "Pohled z pódia na areál CTRL Run a oblouk Do armády",
+      en: "View from the stage over the CTRL Run site and the army arch",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/beh.webp",
+    width: 775,
+    height: 1024,
+    alt: {
+      cs: "Běžkyně se startovním číslem CTRL Run při rozcvičce",
+      en: "A runner with a CTRL Run bib warming up",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/startovni-cislo.webp",
+    width: 775,
+    height: 1024,
+    alt: {
+      cs: "Běžkyně se startovním číslem CTRL Run",
+      en: "A runner wearing a CTRL Run bib",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/v-cili.webp",
+    width: 775,
+    height: 1024,
+    alt: {
+      cs: "Běžkyně po doběhu odpočívá opřená o kolena",
+      en: "A runner catching her breath after the finish, hands on her knees",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/detsky-ucastnik.webp",
+    width: 775,
+    height: 1024,
+    alt: {
+      cs: "Dětský účastník se startovním číslem CTRL Run",
+      en: "A young participant with a CTRL Run bib",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/predavani.webp",
+    width: 751,
+    height: 1001,
+    alt: {
+      cs: "Předávání ceny z tomboly na CTRL Run",
+      en: "A raffle prize being handed over at CTRL Run",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/obcerstveni.webp",
+    width: 1024,
+    height: 775,
+    alt: {
+      cs: "Dobrovolník předává občerstvení účastnicím běhu",
+      en: "A volunteer handing out refreshments to runners",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/balicky.webp",
+    width: 1024,
+    height: 775,
+    alt: {
+      cs: "Startovní balíčky a nápoje Birell pro účastníky",
+      en: "Starter packs and Birell drinks for participants",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/setkani.webp",
+    width: 1024,
+    height: 775,
+    alt: {
+      cs: "Účastníci CTRL Run s nápoji Birell",
+      en: "CTRL Run participants with Birell drinks",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/organizace.webp",
+    width: 1024,
+    height: 768,
+    alt: {
+      cs: "Organizátorka CTRL Europe u cedule Take control before someone else does",
+      en: "A CTRL Europe organiser by the sign Take control before someone else does",
+    },
+  },
+  {
+    src: "/photos/news/ctrl-run/birell.webp",
+    width: 775,
+    height: 1024,
+    alt: {
+      cs: "Dobrovolník s plechovkami Birell",
+      en: "A volunteer holding cans of Birell",
+    },
+  },
+];
 
 export const NEWS = [
+  {
+    slug: "ctrl-run-2026",
+    date: "2026-10-03",
+    published: "2026-10-24",
+    cover: "/photos/news/ctrl-run/start.webp",
+    coverWidth: 1024,
+    coverHeight: 768,
+    category: { cs: "Proběhlá akce", en: "Past event" },
+    title: {
+      cs: "CTRL Run 2026: Sto běžců, pět kilometrů a společný cíl pomáhat",
+      en: "CTRL Run 2026: A hundred runners, five kilometres and a shared goal to help",
+    },
+    excerpt: {
+      cs: "Přibližně sto běžců se zapojilo do charitativního běhu CTRL Run 2026. Po odečtení nákladů se podařilo získat 10 031 Kč pro organizaci Podané ruce.",
+      en: "About a hundred runners joined the CTRL Run 2026 charity run. After costs, it raised 10,031 CZK for Podané ruce.",
+    },
+    meta: {
+      cs: {
+        title: "CTRL Run 2026: sto běžců a 10 031 Kč pro Podané ruce | CTRL Europe",
+        description:
+          "Charitativní běh CTRL Run 2026 v brněnském Komárově. Asi sto běžců, pět kilometrů a čistý výtěžek 10 031 Kč pro organizaci Podané ruce.",
+        image: "/photos/news/ctrl-run/start.webp",
+      },
+      en: {
+        title: "CTRL Run 2026: a hundred runners and 10,031 CZK for Podané ruce | CTRL Europe",
+        description:
+          "The CTRL Run 2026 charity run in Brno-Komárov. About a hundred runners, five kilometres, and net proceeds of 10,031 CZK for Podané ruce.",
+        image: "/photos/news/ctrl-run/start.webp",
+      },
+    },
+    sections: [
+      {
+        type: "marquee",
+        phrases: {
+          cs: ["Sto běžců.", "Pět kilometrů.", "10 031 Kč."],
+          en: ["A hundred runners.", "Five kilometres.", "10,031 CZK."],
+        },
+      },
+      {
+        type: "p",
+        cs: [
+          "Brno, 3. října 2026 — Přibližně sto běžců se zapojilo do charitativního běhu CTRL Run 2026, který uspořádala studentská nezisková organizace CTRL Europe. Akce spojila sport, komunitu a podporu prevence digitálních závislostí. Po odečtení organizačních nákladů se podařilo získat 10 031 Kč, které budou předány organizaci ",
+          { text: "Podané ruce", href: PODANE_RUCE },
+          ".",
+        ],
+        en: [
+          "Brno, 3 October 2026 — About a hundred runners took part in CTRL Run 2026, a charity run organised by the student non-profit CTRL Europe. The event brought together sport, community and support for the prevention of digital addictions. After organisational costs, it raised 10,031 CZK, which will be given to ",
+          { text: "Podané ruce", href: PODANE_RUCE },
+          ".",
+        ],
+      },
+      {
+        type: "facts",
+        items: [
+          {
+            label: { cs: "Běžci", en: "Runners" },
+            value: { cs: "asi 100", en: "about 100" },
+          },
+          {
+            label: { cs: "Trasa", en: "Distance" },
+            value: { cs: "5 km", en: "5 km" },
+          },
+          {
+            label: { cs: "Výtěžek", en: "Raised" },
+            value: { cs: "10 031 Kč", en: "10,031 CZK" },
+          },
+          {
+            label: { cs: "Podpora", en: "For" },
+            value: { cs: "Podané ruce", en: "Podané ruce" },
+          },
+        ],
+      },
+      {
+        type: "h2",
+        id: "kilometry",
+        cs: "Pět kilometrů pro dobrou věc",
+        en: "Five kilometres for a good cause",
+      },
+      {
+        type: "p",
+        cs: "Za slunečného počasí se v brněnském Komárově sešli běžci, dobrovolníci a podporovatelé, aby společně absolvovali pětikilometrovou trasu a přispěli na dobrou věc.",
+        en: "On a sunny day in Brno's Komárov, runners, volunteers and supporters came together to cover a five-kilometre course and contribute to a good cause.",
+      },
+      {
+        type: "p",
+        cs: "CTRL Run nebyl pouze sportovní událostí. Jeho hlavní myšlenkou bylo upozornit na problematiku digitálních závislostí a připomenout význam osobních setkání, pohybu a aktivit mimo digitální prostředí.",
+        en: "CTRL Run was not only a sporting event. Its main idea was to draw attention to digital addictions and to the value of meeting in person, moving, and spending time away from screens.",
+      },
+      {
+        type: "p",
+        cs: "Na průběhu akce se podílela řada dobrovolníků, kteří pomáhali s organizací i zajištěním trasy. Ta vedla mimo jiné přes pozemní komunikaci, kde členové organizačního týmu koordinovali pohyb běžců.",
+        en: "A number of volunteers helped run the day and look after the course. The route crossed a public road, where members of the organising team coordinated the runners.",
+      },
+      {
+        type: "h2",
+        id: "fotky",
+        cs: "Z průběhu akce",
+        en: "From the day",
+      },
+      {
+        type: "gallery",
+        items: CTRL_RUN_PHOTOS,
+      },
+      {
+        type: "h2",
+        id: "program",
+        cs: "Více než jen běh",
+        en: "More than a run",
+      },
+      {
+        type: "p",
+        cs: "Program zdaleka nekončil v cíli pětikilometrové trasy. Účastníci se mohli zapojit do tomboly, setkat se se zástupci organizace Podané ruce a užít si doprovodný program, jehož součástí byla také účast Armády České republiky.",
+        en: "The programme did not end at the finish of the five-kilometre course. Participants could join a raffle, meet people from Podané ruce and enjoy a side programme that included the Army of the Czech Republic.",
+      },
+      {
+        type: "p",
+        cs: "Akci doplnila společenská party, která nabídla prostor pro neformální setkávání a navazování nových kontaktů.",
+        en: "A party alongside the run left room for informal conversations and new contacts.",
+      },
+      {
+        type: "p",
+        cs: "Celý den tak nebyl jen o sportovních výkonech, ale především o společném zážitku, spolupráci a ochotě pomáhat.",
+        en: "The whole day was less about sporting results and more about a shared experience, cooperation and a willingness to help.",
+      },
+      {
+        type: "h2",
+        id: "vytezek",
+        cs: "10 031 Kč na podporu prevence digitálních závislostí",
+        en: "10,031 CZK for the prevention of digital addictions",
+      },
+      {
+        type: "p",
+        cs: "Díky běžcům, partnerům a všem, kteří akci podpořili, se podařilo získat čistý výtěžek 10 031 Kč po odečtení nákladů na organizaci.",
+        en: "Thanks to the runners, partners and everyone who supported the event, the net proceeds came to 10,031 CZK after organisational costs.",
+      },
+      {
+        type: "p",
+        cs: [
+          "Tato částka bude předána organizaci ",
+          { text: "Podané ruce", href: PODANE_RUCE },
+          ", která se dlouhodobě věnuje prevenci a pomoci lidem potýkajícím se se závislostmi.",
+        ],
+        en: [
+          "The sum will be given to ",
+          { text: "Podané ruce", href: PODANE_RUCE },
+          ", which has long worked on prevention and on helping people living with addiction.",
+        ],
+      },
+      {
+        type: "p",
+        cs: "Pro CTRL Europe představuje výsledek nejen finanční příspěvek na dobrou věc, ale také důkaz, že mladí lidé dokážou proměnit vlastní iniciativu v konkrétní pomoc druhým.",
+        en: "For CTRL Europe, the result is a financial contribution to a good cause, and proof that young people can turn their own initiative into concrete help for others.",
+      },
+      {
+        type: "h2",
+        id: "tym",
+        cs: "Za úspěchem stál společný tým",
+        en: "A shared team behind the result",
+      },
+      {
+        type: "p",
+        cs: "Přípravu a realizaci CTRL Run 2026 zajišťoval event management tým CTRL Europe ve spolupráci s dalšími členy organizace a dobrovolníky.",
+        en: "CTRL Run 2026 was prepared and run by the CTRL Europe event management team, together with other members of the organisation and volunteers.",
+      },
+      {
+        type: "p",
+        cs: "Organizace podobné události vyžaduje mnoho práce, která často zůstává v pozadí — od plánování a komunikace s partnery přes přípravu programu až po zajištění samotného průběhu běhu.",
+        en: "An event like this takes a lot of work that often stays in the background — from planning and talking to partners, through building the programme, to keeping the run itself on track.",
+      },
+      {
+        type: "p",
+        cs: "Velké poděkování proto patří všem členům CTRL Europe a dobrovolníkům, kteří věnovali svůj čas, energii a úsilí tomu, aby se akce mohla uskutečnit.",
+        en: "Thank you to every member of CTRL Europe and to the volunteers who gave their time, energy and effort so the event could happen.",
+      },
+      {
+        type: "p",
+        cs: "Stejně důležitou roli sehráli sponzoři a partneři, zejména Birell, JUKO Petfood a HUDY, jejichž podpora pomohla při realizaci akce a zajištění doprovodného programu. Poděkování patří také organizaci Podané ruce a Armádě České republiky za jejich účast a spolupráci.",
+        en: "Sponsors and partners played an equally important part, especially Birell, JUKO Petfood and HUDY, whose support helped make the event and the side programme possible. Thanks also to Podané ruce and the Army of the Czech Republic for taking part.",
+      },
+      {
+        type: "p",
+        cs: "A především děkujeme všem přibližně sto běžcům, kteří se rozhodli věnovat svůj čas, energii a sportovní výkon dobré věci. Právě jejich účast dala celé události skutečný smysl.",
+        en: "And above all, thank you to the hundred or so runners who chose to give their time, energy and a sporting effort to a good cause. Their taking part is what gave the day its meaning.",
+      },
+      {
+        type: "h2",
+        id: "krok",
+        cs: "Jeden běh, společný krok vpřed",
+        en: "One run, a shared step forward",
+      },
+      {
+        type: "p",
+        cs: "CTRL Run 2026 ukázal, že charitativní akce nemusí být jen o získávání finančních prostředků. Může být také příležitostí k setkávání, budování komunity a otevírání důležitých společenských témat.",
+        en: "CTRL Run 2026 showed that a charity event can be more than a way to raise money. It can also be a chance to meet, to build a community and to open important social topics.",
+      },
+      {
+        type: "p",
+        cs: "Pět kilometrů, přibližně sto běžců a 10 031 Kč určených na pomoc druhým — to jsou konkrétní výsledky dne, za kterým stálo úsilí mladých organizátorů, dobrovolníků a podporovatelů.",
+        en: "Five kilometres, about a hundred runners and 10,031 CZK for helping others — those are the concrete results of a day built by young organisers, volunteers and supporters.",
+      },
+      {
+        type: "quote",
+        cs: "Protože někdy stačí odložit telefon, nazout běžecké boty a udělat společně první krok.",
+        en: "Because sometimes all it takes is putting the phone down, lacing up your running shoes and taking the first step together.",
+      },
+    ],
+  },
   {
     slug: "erasmus-slovensko",
     date: "2026-10-23",
@@ -903,14 +1231,14 @@ export const NEWS = [
       {
         type: "p",
         cs: [
-          "Fotky z akce najdete ",
-          { text: "na našem Facebooku", href: "https://www.facebook.com/permalink.php?story_fbid=pfbid02drz1EQfTBvkxTQPdRETjSfAXAevvMfSCpZP67W2yGxmB63NdxtH9KyEebRgJySgYl&id=61594327006714" },
+          "Jak akce dopadla a fotografie z ní jsou v reportáži ",
+          { text: "CTRL Run 2026", href: "/news/ctrl-run-2026" },
           ".",
         ],
         en: [
-          "Photos from the event are ",
-          { text: "on our Facebook", href: "https://www.facebook.com/permalink.php?story_fbid=pfbid02drz1EQfTBvkxTQPdRETjSfAXAevvMfSCpZP67W2yGxmB63NdxtH9KyEebRgJySgYl&id=61594327006714" },
-          ".",
+          "How the day turned out, with photographs, is in the ",
+          { text: "CTRL Run 2026", href: "/news/ctrl-run-2026" },
+          " report.",
         ],
       },
       {

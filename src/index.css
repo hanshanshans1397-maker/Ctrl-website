@@ -4731,6 +4731,89 @@ body.reduced-motion .run-register-success__ripple {
     @apply font-medium text-accent underline decoration-accent/30 underline-offset-4 transition-colors duration-200 hover:text-accent2 hover:decoration-accent;
   }
 
+  .article-gallery {
+    @apply my-12;
+  }
+
+  .article-gallery__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .article-gallery__shot {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(10, 16, 32, 0.08);
+    background: var(--color-bg2);
+    cursor: zoom-in;
+  }
+
+  @media (min-width: 641px) {
+    .article-gallery__shot:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      width: calc((100% - 12px) / 2);
+      justify-self: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .article-gallery__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .article-gallery__shot img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease-out-expo);
+  }
+
+  .article-gallery figcaption {
+    @apply mt-3 font-mono text-[10px] tracking-[1.5px] text-mid uppercase;
+  }
+
+  .article-gallery__nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+  }
+
+  .article-gallery__count {
+    margin-right: auto;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: rgba(245, 245, 243, 0.7);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .article-gallery__shot:hover img {
+      transform: scale(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .article-gallery__shot img {
+      transition: none;
+    }
+  }
+
+  body.reduced-motion .article-gallery__shot img,
+  body.lite-motion .article-gallery__shot img {
+    transition: none;
+  }
+
   .article-table-wrap {
     @apply mb-10 overflow-x-auto border border-separator bg-card;
   }

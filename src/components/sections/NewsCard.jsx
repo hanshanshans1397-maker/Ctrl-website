@@ -5,8 +5,9 @@ import { NewsTitleText } from "../ui/NewsTitleText";
 
 export function NewsCard({ article }) {
   const href = `/news/${article.slug}`;
-  const width = article.inviteWidth ?? 1024;
-  const height = article.inviteHeight ?? 723;
+  const cover = article.cover ?? article.invite;
+  const width = article.coverWidth ?? article.inviteWidth ?? 1024;
+  const height = article.coverHeight ?? article.inviteHeight ?? 723;
 
   return (
     <Link
@@ -19,9 +20,9 @@ export function NewsCard({ article }) {
           aspectRatio: `${width} / ${height}`,
         }}
       >
-        {article.invite ? (
+        {cover ? (
           <NewsCover
-            src={article.invite}
+            src={cover}
             width={width}
             height={height}
             loading="lazy"

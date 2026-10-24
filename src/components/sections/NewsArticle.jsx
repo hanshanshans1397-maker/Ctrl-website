@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { formatNewsDate } from '../../data/news';
+import { ArticleGallery } from '../ui/ArticleGallery';
 import { ArticleRouteMap } from '../ui/ArticleRouteMap';
 import { NewsInvite } from '../ui/NewsInvite';
 import { NewsPhraseMarquee } from '../ui/NewsPhraseMarquee';
@@ -121,6 +122,10 @@ function ArticleBlock({ block }) {
 
   if (block.type === 'route') {
     return <ArticleRouteMap platforms={block.platforms} />;
+  }
+
+  if (block.type === 'gallery') {
+    return <ArticleGallery items={block.items} />;
   }
 
   if (block.type === 'register') {
