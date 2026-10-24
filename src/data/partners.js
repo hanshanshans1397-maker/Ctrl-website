@@ -43,6 +43,13 @@ export const PARTNER_ORGS = [
     logo: '/partners/faketicky.png',
     href: 'https://www.faketicky.cz',
   },
+  {
+    id: 'podane-ruce',
+    name: 'Podané ruce',
+    nameEn: 'Podané ruce',
+    logo: '/partners/podane-ruce.svg',
+    href: 'https://podaneruce.cz',
+  },
 ];
 
 export const PAST_PARTNERS = [

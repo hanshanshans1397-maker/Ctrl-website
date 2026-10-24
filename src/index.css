@@ -9091,11 +9091,13 @@ body.lite-motion .perk-card--featured.rev.in .perk-pin {
 }
 
 .partner-card__logo {
-  height: 56px;
   width: auto;
-  max-width: 220px;
+  height: auto;
+  max-width: 140px;
+  max-height: 44px;
   flex-shrink: 0;
   object-fit: contain;
+  object-position: left center;
 }
 
 .partner-card__mark {
