@@ -195,7 +195,7 @@ export const NEWS = [
             value: { cs: "5 km", en: "5 km" },
           },
           {
-            label: { cs: "Výtěžek", en: "Raised" },
+            label: { cs: "Za akci darujeme", en: "We are donating" },
             value: { cs: "10 031 Kč", en: "10,031 CZK" },
           },
           {
