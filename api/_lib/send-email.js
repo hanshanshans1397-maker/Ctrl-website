@@ -360,7 +360,7 @@ export function buildRunRegisterConfirmationEmail({ email, people, lang }) {
   const isEn = lang === "en";
   const siteUrl = getSiteUrl();
   const articleUrl = `${siteUrl}/news/charitativni-beh`;
-  const cancelEmail = "ctrleurope@seznam.cz";
+  const cancelEmail = "info@ctrleurope.com";
 
   const totalPeople = people.reduce(
     (sum, person) =>

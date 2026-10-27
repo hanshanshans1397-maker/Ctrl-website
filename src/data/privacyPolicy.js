@@ -3,7 +3,7 @@
 export const PRIVACY_POLICY = {
   title: 'Zásady ochrany osobních údajů (Privacy Policy)',
   effectiveFrom: '1. 9. 2026',
-  contactEmail: 'ctrleurope@seznam.cz',
+  contactEmail: 'info@ctrleurope.com',
   intro:
     'Tyto zásady ochrany osobních údajů vysvětlují, jak spolek CTRL Europe, z. s. shromažďuje, používá a chrání vaše osobní údaje při návštěvě a používání webu ctrleurope.com, při přihlašování k našim projektům, při účasti na našich akcích a při komunikaci s námi, a to v souladu s Nařízením Evropského parlamentu a Rady (EU) 2016/679 (GDPR) a zákonem č. 110/2019 Sb., o zpracování osobních údajů.',
   controller: {
@@ -27,7 +27,7 @@ export const PRIVACY_POLICY = {
         },
         {
           type: 'p',
-          text: 'V případě jakýchkoli dotazů ohledně zpracování osobních údajů nás můžete kontaktovat na e-mailu: ctrleurope@seznam.cz.',
+          text: 'V případě jakýchkoli dotazů ohledně zpracování osobních údajů nás můžete kontaktovat na e-mailu: info@ctrleurope.com.',
         },
       ],
     },
@@ -107,7 +107,7 @@ export const PRIVACY_POLICY = {
         },
         {
           type: 'p',
-          text: 'Portrétní a cílené záběry (jste na nich rozpoznatelní a jste hlavním motivem, rozhovory, medailonky) pořizujeme a zveřejňujeme na webu ctrleurope.com a na našich profilech na sociálních sítích (instagram: @ctrleurope.cz, @ctrleurope; tiktok: @ctrleurope.cz) pouze na základě vašeho předchozího souhlasu, a to včetně souhlasu se zachycením a rozšiřováním vaší podobizny. Právním základem je čl. 6 odst. 1 písm. a) GDPR. Je-li vám méně než 18 let, požádáme o písemný souhlas vašeho zákonného zástupce v přihlášce / na místě konání akce. Souhlas je dobrovolný a můžete jej kdykoli odvolat e-mailem na ctrleurope@seznam.cz. Odvoláním není dotčena zákonnost zpracování před odvoláním. Po odvolání záznam bez zbytečného odkladu stáhneme z webu a sítí, kde je to technicky možné; u již vytištěných materiálů to není možné.',
+          text: 'Portrétní a cílené záběry (jste na nich rozpoznatelní a jste hlavním motivem, rozhovory, medailonky) pořizujeme a zveřejňujeme na webu ctrleurope.com a na našich profilech na sociálních sítích (instagram: @ctrleurope.cz, @ctrleurope; tiktok: @ctrleurope.cz) pouze na základě vašeho předchozího souhlasu, a to včetně souhlasu se zachycením a rozšiřováním vaší podobizny. Právním základem je čl. 6 odst. 1 písm. a) GDPR. Je-li vám méně než 18 let, požádáme o písemný souhlas vašeho zákonného zástupce v přihlášce / na místě konání akce. Souhlas je dobrovolný a můžete jej kdykoli odvolat e-mailem na info@ctrleurope.com. Odvoláním není dotčena zákonnost zpracování před odvoláním. Po odvolání záznam bez zbytečného odkladu stáhneme z webu a sítí, kde je to technicky možné; u již vytištěných materiálů to není možné.',
         },
         {
           type: 'p',
@@ -220,7 +220,7 @@ export const PRIVACY_POLICY = {
             },
             {
               label: 'Jak svá práva uplatnit',
-              text: 'Napište nám na ctrleurope@seznam.cz. Odpovíme vám bez zbytečného odkladu, nejpozději do jednoho měsíce. Pro vyřízení žádosti můžeme požadovat ověření vaší totožnosti.',
+              text: 'Napište nám na info@ctrleurope.com. Odpovíme vám bez zbytečného odkladu, nejpozději do jednoho měsíce. Pro vyřízení žádosti můžeme požadovat ověření vaší totožnosti.',
             },
             {
               label: 'Automatizované rozhodování',

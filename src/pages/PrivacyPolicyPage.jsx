@@ -4,11 +4,11 @@ import { usePageHeroEntrance } from '../hooks/usePageHeroEntrance';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 function linkifyEmailsAndUrls(text) {
-  const parts = text.split(/(ctrleurope@seznam\.cz|www\.uoou\.cz|ctrleurope\.com)/g);
+  const parts = text.split(/(info@ctrleurope\.com|www\.uoou\.cz|ctrleurope\.com)/g);
   return parts.map((part, index) => {
-    if (part === 'ctrleurope@seznam.cz') {
+    if (part === 'info@ctrleurope.com') {
       return (
-        <a key={index} href="mailto:ctrleurope@seznam.cz" className="privacy-inline-link">
+        <a key={index} href="mailto:info@ctrleurope.com" className="privacy-inline-link">
           {part}
         </a>
       );
