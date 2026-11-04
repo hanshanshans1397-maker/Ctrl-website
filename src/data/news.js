@@ -133,6 +133,122 @@ const CTRL_RUN_PHOTOS = [
 
 export const NEWS = [
   {
+    slug: "den-hejtmanem",
+    date: "2026-11-06",
+    published: "2026-11-04",
+    banner: {
+      variant: "rail",
+      date: { cs: "6. listopadu", en: "6 November" },
+      points: {
+        cs: ["Jihomoravský kraj", "Workshopy", "Jan Krejčí"],
+        en: ["South Moravian Region", "Workshops", "Jan Krejčí"],
+      },
+    },
+    category: { cs: "Spolupráce", en: "Cooperation" },
+    title: {
+      cs: "CTRL Europe oficiálně na soutěži Den hejtmanem",
+      en: "CTRL Europe officially joins Den hejtmanem",
+    },
+    excerpt: {
+      cs: "Je to potvrzené: CTRL Europe se zapojí do soutěže Den hejtmanem Jihomoravského kraje. Pro kandidáty připravíme workshopy o online kampaních a Jan Krejčí nás představí už tento pátek.",
+      en: "It's confirmed: CTRL Europe will take part in the South Moravian Region's Den hejtmanem competition. We will prepare workshops on online campaigns for candidates, and Jan Krejčí will introduce us this Friday.",
+    },
+    meta: {
+      cs: {
+        title: "CTRL Europe oficiálně na soutěži Den hejtmanem | CTRL Europe",
+        description:
+          "CTRL Europe se zapojí do soutěže Den hejtmanem Jihomoravského kraje. Workshopy o online kampaních a vystoupení Jana Krejčího na zahájení 6. listopadu 2026.",
+      },
+      en: {
+        title: "CTRL Europe officially joins Den hejtmanem | CTRL Europe",
+        description:
+          "CTRL Europe will take part in the South Moravian Region's Den hejtmanem competition. Workshops on online campaigns and Jan Krejčí speaking at the opening on 6 November 2026.",
+      },
+    },
+    sections: [
+      {
+        type: "marquee",
+        phrases: {
+          cs: ["Den hejtmanem.", "Workshopy o kampaních.", "Návrat ke kořenům."],
+          en: ["Den hejtmanem.", "Campaign workshops.", "Back to our roots."],
+        },
+      },
+      {
+        type: "p",
+        cs: "Je to potvrzené: CTRL Europe se zapojí do soutěže Den hejtmanem Jihomoravského kraje. Pro kandidáty připravíme workshopy o tom, jak fungují politické kampaně online, a Jan Krejčí naši organizaci představí účastníkům už tento pátek na slavnostním zahájení.",
+        en: "It's confirmed: CTRL Europe will take part in the South Moravian Region's Den hejtmanem competition. For the candidates we will prepare workshops on how political campaigns work online, and Jan Krejčí will introduce our organisation to participants this Friday at the opening ceremony.",
+      },
+      {
+        type: "facts",
+        items: [
+          {
+            label: { cs: "Zahájení", en: "Opening" },
+            value: { cs: "6. 11. 2026", en: "6 Nov 2026" },
+          },
+          {
+            label: { cs: "Soutěž", en: "Competition" },
+            value: { cs: "Den hejtmanem JMK", en: "Den hejtmanem JMK" },
+          },
+          {
+            label: { cs: "Role", en: "Role" },
+            value: { cs: "Partneři", en: "Partners" },
+          },
+          {
+            label: { cs: "Workshopy", en: "Workshops" },
+            value: { cs: "Online kampaně", en: "Online campaigns" },
+          },
+        ],
+      },
+      {
+        type: "h2",
+        id: "koreny",
+        cs: "Návrat ke kořenům",
+        en: "Back to our roots",
+      },
+      {
+        type: "p",
+        cs: "Soutěž Den hejtmanem dává studentům možnost na vlastní kůži zažít, jak vypadá politika a vedení kraje. Pro CTRL Europe je to návrat ke kořenům: Jan Krejčí, spoluzakladatel a prezident CTRL Europe, sám soutěž v minulosti vyhrál. Letos se do ní vracíme jako partneři.",
+        en: "The Den hejtmanem competition lets students experience first-hand what politics and regional leadership look like. For CTRL Europe it is a return to our roots: Jan Krejčí, co-founder and President of CTRL Europe, once won the competition himself. This year we are coming back as partners.",
+      },
+      {
+        type: "h2",
+        id: "workshopy",
+        cs: "Workshopy o online kampaních",
+        en: "Workshops on online campaigns",
+      },
+      {
+        type: "p",
+        cs: "Pro kandidáty na „hejtmana na den“ připravíme workshopy o tom, jak fungují politické kampaně online a na sociálních sítích. Ukážeme, jak se kampaň sestavuje, jak oslovit voliče, jak funguje cílení a algoritmy, ale také kde končí férová komunikace a začíná manipulace. Kandidáti si tak odnesou nejen praktické tipy pro vlastní kampaň, ale i schopnost rozpoznat, když se o ně někdo pokouší jinými než poctivými prostředky.",
+        en: "For candidates for “governor for a day” we will prepare workshops on how political campaigns work online and on social media. We will show how a campaign is put together, how to reach voters, how targeting and algorithms work — and also where fair communication ends and manipulation begins. Candidates will leave not only with practical tips for their own campaign, but with the ability to recognise when someone is trying to influence them by less than honest means.",
+      },
+      {
+        type: "quote",
+        cs: "Kde končí férová komunikace a začíná manipulace.",
+        en: "Where fair communication ends and manipulation begins.",
+        author: {
+          cs: "Z workshopů pro kandidáty Den hejtmanem",
+          en: "From the workshops for Den hejtmanem candidates",
+        },
+      },
+      {
+        type: "h2",
+        id: "zahajeni",
+        cs: "Pátek 6. listopadu: zahájení",
+        en: "Friday 6 November: the opening",
+      },
+      {
+        type: "p",
+        cs: "Už tento pátek 6. listopadu 2026 vystoupí Jan Krejčí na zahájení soutěže a představí účastníkům CTRL Europe: kdo jsme, co děláme a jak se k nám mohou mladí lidé přidat.",
+        en: "This Friday, 6 November 2026, Jan Krejčí will speak at the competition opening and introduce CTRL Europe to participants: who we are, what we do, and how young people can join us.",
+      },
+      {
+        type: "p",
+        cs: "Děkujeme organizátorům soutěže Den hejtmanem za důvěru a všem soutěžícím přejeme hodně štěstí. Těšíme se na vás!",
+        en: "Thank you to the organisers of Den hejtmanem for their trust, and good luck to all the competitors. We look forward to seeing you!",
+      },
+    ],
+  },
+  {
     slug: "ctrl-run-2026",
     date: "2026-10-03",
     published: "2026-10-24",
