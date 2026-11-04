@@ -130,6 +130,10 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
   }, [pathname]);
 
   useEffect(() => {
+    if (!menuOpen) setMobileJoinOpen(false);
+  }, [menuOpen]);
+
+  useEffect(() => {
     if (!joinOpen) return undefined;
 
     const onPointerDown = (e) => {
@@ -257,62 +261,86 @@ export function Navbar({ navRef, menuOpen, darkNav, isSolid, onToggleMenu, onClo
       </nav>
 
       <div
+        aria-hidden="true"
+        className={`fixed inset-0 z-[998] bg-dark/40 transition-opacity duration-300 lg:hidden ${
+          menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        onClick={closeAll}
+      />
+
+      <div
         data-mobile-menu=""
-        className={`fixed inset-0 z-[999] flex w-screen flex-col justify-center overflow-y-auto overscroll-contain bg-bg px-8 py-[52px] transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] lg:hidden ${
+        className={`fixed inset-x-0 top-0 z-[999] w-screen transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] lg:hidden ${
           menuOpen ? 'mobile-menu-open pointer-events-auto translate-y-0' : 'pointer-events-none -translate-y-full'
         }`}
       >
-        <button
-          type="button"
-          className="absolute right-4 top-4 z-[1001] flex h-9 w-9 items-center justify-center border-none bg-transparent p-0 text-[22px] leading-none text-dark opacity-50 transition-opacity duration-200 hover:opacity-100"
-          aria-label="Close menu"
-          onClick={onCloseMenu}
-        >
-          ✕
-        </button>
+      <div className={`flex flex-col border-b border-separator bg-bg px-6 pb-5 ${menuOpen ? 'shadow-2xl' : ''}`}>
+        <div className="mb-1 flex h-14 items-center justify-between">
+          <Link
+            to="/"
+            aria-label="CTRL Europe"
+            className="flex items-end gap-[0.12em] text-[23px] font-bold leading-[0.95] tracking-[-0.5px] text-dark no-underline"
+            onClick={closeAll}
+          >
+            <img src="/ctrl_logo_cropped.png" alt="" className="h-[24px] w-auto" />
+            <span>Europe</span>
+          </Link>
+          <button
+            type="button"
+            className="-mr-2 flex h-9 w-9 items-center justify-center border-none bg-transparent p-0 text-[22px] leading-none text-dark opacity-50 transition-opacity duration-200 hover:opacity-100"
+            aria-label="Close menu"
+            onClick={closeAll}
+          >
+            ✕
+          </button>
+        </div>
         {NAV_ITEMS.map((item, i) => (
           <Link
             key={item.to}
             to={item.to}
-            className={`mobile-menu-link flex items-center gap-3 border-b border-separator py-3 text-[clamp(28px,8vw,48px)] font-extrabold tracking-[-1.5px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive(item.to) ? 'text-accent' : 'text-dark'}`}
+            className={`mobile-menu-link flex items-center gap-3 border-b border-separator py-2 text-[clamp(20px,5.5vw,28px)] font-extrabold tracking-[-0.8px] no-underline transition-[color,padding-left] duration-300 hover:pl-2.5 hover:text-accent ${isActive(item.to) ? 'text-accent' : 'text-dark'}`}
             style={{ animationDelay: `${0.1 + i * 0.05}s` }}
             onClick={closeAll}
           >
-            {item.icon('w-7 h-7 shrink-0 opacity-50')}
+            {item.icon('w-5 h-5 shrink-0 opacity-50')}
             <NavLabel item={item} />
           </Link>
         ))}
-        <div className="mt-7">
+        <div className="mt-4">
           <button
             type="button"
-            className={`menu-cta flex w-full items-center justify-between text-left${isJoinActive ? ' is-active' : ''}`}
+            className={`menu-cta !mt-0 flex w-full items-center justify-between text-left${isJoinActive ? ' is-active' : ''}`}
             aria-expanded={mobileJoinOpen}
             onClick={() => setMobileJoinOpen((v) => !v)}
           >
             <span className="cs">Zapojit se</span>
             <span className="en">Join us</span>
-            <span className="join-dropdown-chevron join-dropdown-chevron-light" aria-hidden="true" />
+            <span
+              className={`join-dropdown-chevron join-dropdown-chevron-light transition-transform duration-200 ${mobileJoinOpen ? 'rotate-180' : ''}`}
+              aria-hidden="true"
+            />
           </button>
-          {mobileJoinOpen && (
-            <div className="join-mobile-options">
-              {JOIN_OPTIONS.map((option) => (
-                <Link
-                  key={option.to}
-                  to={option.to}
-                  className={`join-mobile-option${isActive(option.to) ? ' is-active' : ''}`}
-                  onClick={closeAll}
-                >
-                  <span className="join-mobile-option-title">
-                    <JoinOptionLabel option={option} />
-                  </span>
-                  <span className="join-mobile-option-desc">
-                    <JoinOptionLabel option={option} variant="desc" />
-                  </span>
-                </Link>
-              ))}
-            </div>
-          )}
         </div>
+      </div>
+      {mobileJoinOpen && (
+        <div className="join-mobile-options absolute inset-x-0 top-full !mt-0 border-x-0 shadow-2xl">
+          {JOIN_OPTIONS.map((option) => (
+            <Link
+              key={option.to}
+              to={option.to}
+              className={`join-mobile-option px-6${isActive(option.to) ? ' is-active' : ''}`}
+              onClick={closeAll}
+            >
+              <span className="join-mobile-option-title">
+                <JoinOptionLabel option={option} />
+              </span>
+              <span className="join-mobile-option-desc">
+                <JoinOptionLabel option={option} variant="desc" />
+              </span>
+            </Link>
+          ))}
+        </div>
+      )}
       </div>
     </>
   );
