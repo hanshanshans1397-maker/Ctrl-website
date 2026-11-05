@@ -12,6 +12,8 @@ import {
   RunRegisterFrame,
   RunRegisterInline,
 } from '../ui/RunRegisterCta';
+import { ChallengeRegisterForm } from '../ui/ChallengeRegisterForm';
+import { getLenis } from '../../hooks/useLenis';
 import {
   ArticleFacts,
   ArticleOrgs,
@@ -138,6 +140,10 @@ function ArticleBlock({ block }) {
     return <RunRegisterCta />;
   }
 
+  if (block.type === 'challenge-register') {
+    return <ChallengeRegisterForm />;
+  }
+
   if (block.type === 'facts') {
     return <ArticleFacts block={block} />;
   }
@@ -177,12 +183,24 @@ function ArticleBlock({ block }) {
   );
 }
 
+function scrollToChallengeRegister() {
+  const target = document.getElementById('registrace');
+  if (!target) return;
+  const lenis = getLenis();
+  if (lenis) {
+    lenis.scrollTo(target, { offset: -108 });
+    return;
+  }
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 export function NewsArticle({ article }) {
   const introMarquee = article.sections[0]?.type === 'marquee' ? article.sections[0] : null;
   const bodySections = introMarquee ? article.sections.slice(1) : article.sections;
   const isLongTitle =
     Math.max(article.title.cs.length, article.title.en.length) > 48;
   const hasRunRegister = article.sections.some((block) => block.type === 'register');
+  const hasChallengeRegister = article.sections.some((block) => block.type === 'challenge-register');
 
   return (
     <RunRegisterFrame enabled={hasRunRegister}>
@@ -214,6 +232,18 @@ export function NewsArticle({ article }) {
                   <span className="en">Saturday 3 October · Komec · 5 km</span>
                 </p>
                 <RunRegisterButton />
+              </div>
+            ) : null}
+            {hasChallengeRegister ? (
+              <div className="article-register-lead">
+                <p className="article-register-lead__meta">
+                  <span className="cs">8. prosince · KUMST Brno · zdarma</span>
+                  <span className="en">8 December · KUMST Brno · free</span>
+                </p>
+                <button type="button" className="run-register-btn" onClick={scrollToChallengeRegister}>
+                  <span className="cs">Přihlásit tým</span>
+                  <span className="en">Register a team</span>
+                </button>
               </div>
             ) : null}
           </header>

@@ -4731,6 +4731,58 @@ body.reduced-motion .run-register-success__ripple {
     @apply font-medium text-accent underline decoration-accent/30 underline-offset-4 transition-colors duration-200 hover:text-accent2 hover:decoration-accent;
   }
 
+  .article-body .challenge-register {
+    margin: 8px 0 48px;
+    scroll-margin-top: 108px;
+  }
+
+  .article-body .challenge-register p {
+    margin-bottom: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .challenge-register__eyebrow {
+    margin: 0 0 8px !important;
+    font-family: var(--font-mono) !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1.8px !important;
+    text-transform: uppercase;
+    color: var(--color-accent) !important;
+  }
+
+  .challenge-register__title {
+    margin: 0 0 10px !important;
+    font-size: clamp(28px, 3vw, 36px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.6px !important;
+    line-height: 1.15 !important;
+    color: var(--color-dark) !important;
+  }
+
+  .challenge-register__lede {
+    margin: 0 0 28px !important;
+    max-width: 62ch;
+    color: var(--color-mid) !important;
+  }
+
+  .challenge-register__hint {
+    margin: 8px 0 0 !important;
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    color: var(--color-mid) !important;
+  }
+
+  .challenge-register__error {
+    margin: 0 0 16px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    color: #9f1239 !important;
+  }
+
   .article-gallery {
     @apply my-12;
   }
@@ -10430,4 +10482,38 @@ body.lite-motion .newsletter-signal__link.is-on .newsletter-signal__pulse {
   .prefs-meter__fill {
     transition: none;
   }
+}
+
+.apply-page .field.is-invalid input,
+.apply-page .field.is-invalid textarea {
+  border-bottom-color: #9f1239;
+}
+
+.challenge-register--success {
+  padding-block: 52px 48px;
+}
+
+.article-body .challenge-register .run-register-success__title,
+.article-body .challenge-register .run-register-success__lede {
+  margin-bottom: 0;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.article-body .challenge-register .run-register-success__title {
+  margin-bottom: 10px;
+  font-size: clamp(28px, 4.8vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.9px;
+  line-height: 1.12;
+  color: var(--color-dark);
+}
+
+.article-body .challenge-register .run-register-success__lede {
+  margin-bottom: 0;
+  max-width: 36ch;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-mid);
 }

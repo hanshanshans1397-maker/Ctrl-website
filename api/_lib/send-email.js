@@ -434,6 +434,69 @@ export function buildRunRegisterConfirmationEmail({ email, people, lang }) {
   };
 }
 
+export function buildChallengeRegisterOrgEmail(registration) {
+  const members = registration.members.map((name, index) => `${index + 1}. ${name}`).join('\n');
+  return buildWorkshopInquiryEmail({
+    subject: `CTRL Challenge — nová registrace: ${registration.school}`,
+    replyTo: registration.email,
+    fields: [
+      ['Škola', registration.school],
+      ['Město', registration.city],
+      ['Kontakt', registration.contact],
+      ['E-mail', registration.email],
+      ['Telefon', registration.phone],
+      ['Počet', String(registration.members.length)],
+      ['Členové týmu', members],
+      ['Poznámka', registration.note],
+    ],
+  });
+}
+
+export function buildChallengeRegisterConfirmationEmail(registration, lang) {
+  const isEn = lang === 'en';
+  const siteUrl = getSiteUrl();
+  const articleUrl = `${siteUrl}/news/ctrl-challenge-registrace`;
+  const firstName = registration.contact.trim().split(/\s+/)[0];
+  const members = registration.members.join('\n');
+
+  const rows = [
+    confirmationRow(isEn ? 'When' : 'Kdy', isEn ? '8 December 2026, 8:30–16:00' : '8. prosince 2026, 8:30–16:00'),
+    confirmationRow(isEn ? 'Where' : 'Kde', isEn ? 'KUMST creative centre, Brno' : 'Kreativní centrum KUMST, Brno'),
+    confirmationRow(isEn ? 'School' : 'Škola', registration.school),
+    confirmationRow(isEn ? 'City' : 'Město', registration.city),
+    confirmationRow(isEn ? 'Contact' : 'Kontakt', registration.contact),
+    confirmationRow(isEn ? 'Team' : 'Tým', members),
+  ].join('');
+
+  return {
+    subject: isEn
+      ? 'CTRL Challenge registration received — CTRL Europe'
+      : 'Přihláška na CTRL Challenge dorazila — CTRL Europe',
+    html: wrapConfirmationEmail({
+      isEn,
+      eyebrow: 'CTRL Challenge',
+      headline: isEn ? 'We have your team.' : 'Tým máme v přihláškách.',
+      greeting: isEn
+        ? `Hi${firstName ? ` ${firstName}` : ''},`
+        : `Dobrý den${firstName ? `, ${firstName}` : ''},`,
+      intro: isEn
+        ? 'Thank you for registering a team for CTRL Challenge. Places fill in the order applications arrive — we will write if anything else is needed.'
+        : 'Děkujeme za přihlášku týmu na CTRL Challenge. Místa se plní podle pořadí přihlášek — ozveme se, kdybychom ještě něco potřebovali.',
+      summaryTitle: isEn ? 'Your registration' : 'Vaše přihláška',
+      rows,
+      outro: isEn
+        ? 'Questions? Write to info@ctrleurope.com. We look forward to seeing what your team uncovers.'
+        : 'Máte otázky? Napište na info@ctrleurope.com. Těšíme se, co váš tým odhalí.',
+      ctaHref: articleUrl,
+      ctaLabel: isEn ? 'Open the announcement' : 'Otevřít aktualitu',
+      secondaryCtaHref: siteUrl,
+      secondaryCtaLabel: 'ctrleurope.com',
+    }),
+    to: registration.email,
+    replyTo: 'info@ctrleurope.com',
+  };
+}
+
 export function buildWorkshopInquiryEmail({ subject, replyTo, fields }) {
   const rows = fields.map(([label, value]) => emailRow(label, value)).join("");
   return {

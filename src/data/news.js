@@ -265,6 +265,113 @@ const VIDENSKA_PHOTOS = [
 
 export const NEWS = [
   {
+    slug: "ctrl-challenge-registrace",
+    date: "2026-11-05",
+    published: "2026-11-05",
+    banner: {
+      variant: "rail",
+      date: { cs: "8. prosince", en: "8 December" },
+      points: {
+        cs: ["Registrace otevřená", "Zdarma", "17 týmů"],
+        en: ["Registration open", "Free", "17 teams"],
+      },
+    },
+    category: { cs: "Soutěž", en: "Competition" },
+    title: {
+      cs: "Registrace na CTRL Challenge je spuštěná",
+      en: "CTRL Challenge registration is open",
+    },
+    excerpt: {
+      cs: "Máte rádi záhady a nevěříte všemu, co vidíte na internetu? Registrace studentských týmů na CTRL Challenge je otevřená a je zdarma. 8. prosince v KUMST v Brně.",
+      en: "You like a mystery and you don't believe everything you see online? Registration for student teams at CTRL Challenge is open, and it is free. 8 December at KUMST in Brno.",
+    },
+    meta: {
+      cs: {
+        title: "Registrace na CTRL Challenge je spuštěná | CTRL Europe",
+        description:
+          "Přihlaste tým střední školy na CTRL Challenge. 8. prosince 2026 v KUMST v Brně, zdarma, 17 týmů. Digitální vyšetřování bez umělé inteligence.",
+        image: "/photos/news/challenge-cs.webp",
+      },
+      en: {
+        title: "CTRL Challenge registration is open | CTRL Europe",
+        description:
+          "Register a secondary-school team for CTRL Challenge. 8 December 2026 at KUMST in Brno, free, 17 teams. A digital investigation with no artificial intelligence.",
+        image: "/photos/news/challenge-en.webp",
+      },
+    },
+    sections: [
+      {
+        type: "marquee",
+        phrases: {
+          cs: ["Registrace je otevřená.", "Zdarma.", "17 týmů."],
+          en: ["Registration is open.", "Free.", "17 teams."],
+        },
+      },
+      {
+        type: "p",
+        cs: "Máte rádi záhady, nevěříte všemu, co vidíte na internetu, a umíte pracovat v týmu? Pak je CTRL Challenge přesně pro vás. Registrace pro střední školy z celé České republiky je otevřená a je zdarma.",
+        en: "You like a mystery, you don't believe everything you see online, and you can work in a team? Then CTRL Challenge is for you. Registration for secondary schools from across the Czech Republic is open, and it is free.",
+      },
+      {
+        type: "p",
+        cs: "CTRL Challenge je digitální vyšetřovací soutěž pro studentské týmy. Čeká vás skutečný případ manipulace a dezinformací, který budete muset rozkrýt krok za krokem: prověřit podezřelá videa a fotky, odhalit falešné účty a weby, sledovat, kdo za kampaní stojí, a svá zjištění doložit důkazy. A to všechno bez pomoci umělé inteligence, jen s vlastní hlavou a týmovou spoluprací.",
+        en: "CTRL Challenge is a digital investigation contest for student teams. A real case of manipulation and disinformation is waiting, and you will have to open it step by step: check suspicious videos and photos, uncover fake accounts and websites, follow who is behind the campaign, and back up what you find with evidence. All of it without artificial intelligence — just your own head and the team.",
+      },
+      {
+        type: "facts",
+        items: [
+          {
+            label: { cs: "Kdy", en: "When" },
+            value: { cs: "8. 12. 2026", en: "8 Dec 2026" },
+          },
+          {
+            label: { cs: "Kde", en: "Where" },
+            value: { cs: "KUMST Brno", en: "KUMST Brno" },
+          },
+          {
+            label: { cs: "Čas", en: "Time" },
+            value: { cs: "8:30–16:00", en: "8:30–16:00" },
+          },
+          {
+            label: { cs: "Kapacita", en: "Capacity" },
+            value: { cs: "17 týmů", en: "17 teams" },
+          },
+        ],
+      },
+      {
+        type: "h2",
+        id: "pro-koho",
+        cs: "Pro koho a za kolik",
+        en: "Who it's for, and what it costs",
+      },
+      {
+        type: "p",
+        cs: "Soutěž je pro studenty středních škol z celé České republiky. Účast je zdarma. Kapacita je 70 míst, tedy 17 týmů. Místa se plní podle pořadí přihlášek, proto se vyplatí registrovat se co nejdříve. Na nejlepší týmy čekají zajímavé ceny.",
+        en: "The contest is for secondary-school students from across the Czech Republic. Entry is free. Capacity is 70 places, which means 17 teams. Places fill in the order applications arrive, so it pays to register early. The best teams leave with prizes worth having.",
+      },
+      {
+        type: "quote",
+        cs: "Bez pomoci umělé inteligence. Jen vlastní hlava a týmová spolupráce.",
+        en: "No help from artificial intelligence. Just your own head and the team.",
+        author: { cs: "CTRL Challenge", en: "CTRL Challenge" },
+      },
+      { type: "challenge-register" },
+      {
+        type: "p",
+        cs: [
+          "Máte otázky? Ozvěte se na ",
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+          ". Těšíme se na vás a na to, co dokážete odhalit.",
+        ],
+        en: [
+          "Questions? Write to ",
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+          ". We look forward to seeing you, and to what you manage to uncover.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "prednaskovy-den-videnska",
     date: "2026-10-27",
     published: "2026-11-05",
@@ -1309,12 +1416,12 @@ export const NEWS = [
       cs: {
         title: "CTRL Challenge: staňte se digitálním vyšetřovatelem | CTRL Europe",
         description:
-          "8. prosince 2026 CTRL Challenge v Brně. Týmy středoškoláků vyšetřují reálné případy manipulace bez umělé inteligence. Registrace v listopadu.",
+          "8. prosince 2026 CTRL Challenge v Brně. Týmy středoškoláků vyšetřují reálné případy manipulace bez umělé inteligence. Registrace je otevřená.",
       },
       en: {
         title: "CTRL Challenge: become a digital investigator | CTRL Europe",
         description:
-          "CTRL Challenge on 8 December 2026. Secondary-school teams investigate real cases of manipulation, without artificial intelligence. Registration opens in November.",
+          "CTRL Challenge on 8 December 2026. Secondary-school teams investigate real cases of manipulation, without artificial intelligence. Registration is open.",
       },
     },
     sections: [
@@ -1363,7 +1470,7 @@ export const NEWS = [
           },
           {
             label: { cs: "Registrace", en: "Registration" },
-            value: { cs: "V listopadu", en: "In November" },
+            value: { cs: "Otevřená", en: "Open" },
           },
         ],
       },
@@ -1447,14 +1554,14 @@ export const NEWS = [
       {
         type: "p",
         cs: [
-          "Registrace bude spuštěna v listopadu. Sleduj ",
-          { text: "Instagram", href: "https://www.instagram.com/ctrleurope.cz/" },
-          ", ať ti to neuteče.",
+          "Registrace je spuštěná a je zdarma. ",
+          { text: "Přihlásit tým", href: "/news/ctrl-challenge-registrace#registrace" },
+          " můžete rovnou na webu. Místa se plní podle pořadí přihlášek.",
         ],
         en: [
-          "Registration opens in November. Follow us on ",
-          { text: "Instagram", href: "https://www.instagram.com/ctrleurope.eu/" },
-          " so you don't miss it.",
+          "Registration is open and free. ",
+          { text: "Register your team", href: "/news/ctrl-challenge-registrace#registrace" },
+          " on the website. Places fill in the order applications arrive.",
         ],
       },
     ],
