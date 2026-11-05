@@ -131,7 +131,327 @@ const CTRL_RUN_PHOTOS = [
   },
 ];
 
+const DNY_AI_PHOTOS = [
+  {
+    src: "/photos/news/dnyai/aula-hra.webp",
+    width: 1024,
+    height: 768,
+    alt: {
+      cs: "Studenti Gymnázia Cheb při hře o volby v aule během Dnů AI",
+      en: "Gymnázium Cheb students during the election game in the lecture hall at AI Days",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/tymova-prace.webp",
+    width: 1024,
+    height: 768,
+    alt: {
+      cs: "Studenti v týmu sklánějí se nad dokumenty při vyšetřování fiktivní kampaně",
+      en: "Students in a team leaning over documents while investigating the fictional campaign",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/debata-kandidati.webp",
+    width: 768,
+    height: 1024,
+    alt: {
+      cs: "Lektoři CTRL Europe v rolích kandidátů u stolu a moderátor u pultu",
+      en: "CTRL Europe lecturers in candidate roles at the desk and a moderator at the lectern",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/workshop-tymy.webp",
+    width: 768,
+    height: 1024,
+    alt: {
+      cs: "Lektor ukazuje na obrazovku s barevnými týmy hry o volby",
+      en: "A lecturer pointing at the screen with the colour-coded election-game teams",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/student-pult.webp",
+    width: 768,
+    height: 1024,
+    alt: {
+      cs: "Student u pultu během workshopu na Gymnáziu Cheb",
+      en: "A student at the lectern during the workshop at Gymnázium Cheb",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/aula-publikum.webp",
+    width: 1024,
+    height: 768,
+    alt: {
+      cs: "Pohled z hlediště na debatu kandidátů během workshopu",
+      en: "View from the audience toward the candidate debate during the workshop",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/prednaska-banner.webp",
+    width: 768,
+    height: 1024,
+    alt: {
+      cs: "Lektor CTRL Europe s mikrofonem před bannerem Take control before someone else does",
+      en: "A CTRL Europe lecturer with a microphone in front of the Take control before someone else does banner",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/prednaska-pult.webp",
+    width: 768,
+    height: 1024,
+    alt: {
+      cs: "Lektor u moderního pultu v aule Gymnázia Cheb",
+      en: "A lecturer at a modern lectern in the Gymnázium Cheb lecture hall",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/tym-lektori.webp",
+    width: 1024,
+    height: 768,
+    alt: {
+      cs: "Lektorský tým CTRL Europe před bannerem na Dnech AI",
+      en: "The CTRL Europe lecturer team in front of the banner at AI Days",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/tym-peace.webp",
+    width: 1024,
+    height: 768,
+    alt: {
+      cs: "Tři lektoři CTRL Europe s vítězným gestem po workshopech",
+      en: "Three CTRL Europe lecturers flashing a victory sign after the workshops",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/prednaska-banner-kk.webp",
+    width: 768,
+    height: 1024,
+    alt: {
+      cs: "Lektor CTRL Europe při přednášce pro veřejnost v Krajské knihovně Karlovy Vary",
+      en: "A CTRL Europe lecturer during the public talk at the Karlovy Vary Regional Library",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/prednaska-overujte.webp",
+    width: 1024,
+    height: 768,
+    alt: {
+      cs: "Přednáška s slideem Čím víc to pálí, tím víc ověřujte",
+      en: "The talk with the slide The more it stings, the more you should verify",
+    },
+  },
+  {
+    src: "/photos/news/dnyai/prednaska-otazky.webp",
+    width: 768,
+    height: 1024,
+    alt: {
+      cs: "Jan Krejčí při závěrečných otázkách na přednášce Dny AI",
+      en: "Jan Krejčí taking final questions at the AI Days talk",
+    },
+  },
+];
+
+const VIDENSKA_PHOTOS = [
+  {
+    src: "/photos/news/videnska/prednaska-produkt.webp",
+    width: 768,
+    height: 1024,
+    alt: {
+      cs: "Jan Krejčí před slideem Pokud za produkt neplatíš, ty jsi ten produkt na Gymnáziu Vídeňská",
+      en: "Jan Krejčí in front of the slide If you don’t pay for the product, you are the product at Gymnázium Vídeňská",
+    },
+  },
+];
+
 export const NEWS = [
+  {
+    slug: "prednaskovy-den-videnska",
+    date: "2026-10-27",
+    published: "2026-11-05",
+    cover: "/photos/news/videnska/prednaska-produkt-cover.webp",
+    coverWidth: 1024,
+    coverHeight: 768,
+    category: { cs: "Proběhlá akce", en: "Past event" },
+    title: {
+      cs: "Deepfaky, manipulace a scrollování: přednáškový den na Gymnáziu Vídeňská",
+      en: "Deepfakes, manipulation and scrolling: a lecture day at Gymnázium Vídeňská",
+    },
+    excerpt: {
+      cs: "Tři přednášky, plné třídy a otázky, na které by se dalo odpovídat celý den. 27. října 2026 jsme strávili dopoledne se studenty Gymnázia Brno, Vídeňská.",
+      en: "Three talks, full classrooms and questions you could answer all day. On 27 October 2026 we spent the morning with students at Gymnázium Brno, Vídeňská.",
+    },
+    meta: {
+      cs: {
+        title:
+          "Deepfaky, manipulace a scrollování: přednáškový den na Gymnáziu Vídeňská | CTRL Europe",
+        description:
+          "Tři přednášky na Gymnáziu Brno, Vídeňská: AI podvody a deepfaky, manipulace na sociálních sítích a digitální závislost. Vedl Jan Krejčí.",
+        image: "/photos/news/videnska/prednaska-produkt-cover.webp",
+      },
+      en: {
+        title:
+          "Deepfakes, manipulation and scrolling: a lecture day at Gymnázium Vídeňská | CTRL Europe",
+        description:
+          "Three talks at Gymnázium Brno, Vídeňská: AI scams and deepfakes, social-media manipulation, and digital addiction. Led by Jan Krejčí.",
+        image: "/photos/news/videnska/prednaska-produkt-cover.webp",
+      },
+    },
+    sections: [
+      {
+        type: "marquee",
+        phrases: {
+          cs: ["Tři přednášky.", "Plné třídy.", "Gymnázium Vídeňská."],
+          en: ["Three talks.", "Full classrooms.", "Gymnázium Vídeňská."],
+        },
+      },
+      {
+        type: "p",
+        cs: "Tři přednášky, plné třídy a otázky, na které by se dalo odpovídat celý den. 27. října 2026 jsme strávili dopoledne se studenty Gymnázia Brno, Vídeňská.",
+        en: "Three talks, full classrooms and questions you could answer all day. On 27 October 2026 we spent the morning with students at Gymnázium Brno, Vídeňská.",
+      },
+      {
+        type: "p",
+        cs: "Do Gymnázia Brno, Vídeňská jsme přijeli s třemi pětačtyřicetiminutovými přednáškami o tom, jak nás technologie ovlivňují víc, než si připouštíme. Všechny tři byly plně obsazené.",
+        en: "We arrived at Gymnázium Brno, Vídeňská with three forty-five-minute talks on how technology shapes us more than we like to admit. All three were fully booked.",
+      },
+      {
+        type: "facts",
+        items: [
+          {
+            label: { cs: "Kdy", en: "When" },
+            value: { cs: "27. 10. 2026", en: "27 Oct 2026" },
+          },
+          {
+            label: { cs: "Kde", en: "Where" },
+            value: { cs: "Vídeňská, Brno", en: "Vídeňská, Brno" },
+          },
+          {
+            label: { cs: "Přednášky", en: "Talks" },
+            value: { cs: "3 × 45 min", en: "3 × 45 min" },
+          },
+          {
+            label: { cs: "Lektor", en: "Lecturer" },
+            value: { cs: "Jan Krejčí", en: "Jan Krejčí" },
+          },
+        ],
+      },
+      {
+        type: "h2",
+        id: "deepfaky",
+        cs: "AI podvody a deepfaky",
+        en: "AI scams and deepfakes",
+      },
+      {
+        type: "p",
+        cs: "V první přednášce jsme ukázali, jak snadno dnes vznikne falešné video, fotka nebo naklonovaný hlas, a hlavně jak se podle toho dají vést podvody: od falešných investic se známými tvářemi až po zprávy typu „mami, mám nové číslo, pošli peníze“. Studenti si odnesli, podle čeho se dá podvrh poznat a proč je ještě důležitější ověřovat, odkud obsah pochází.",
+        en: "In the first talk we showed how easily a fake video, photo or cloned voice can be made today — and above all how that fuels scams: from fake investments featuring familiar faces to messages like “mum, I’ve got a new number, send money.” Students left knowing how to spot a forgery and why it matters even more to check where content comes from.",
+      },
+      {
+        type: "h2",
+        id: "manipulace",
+        cs: "Manipulace na sociálních sítích",
+        en: "Manipulation on social media",
+      },
+      {
+        type: "p",
+        cs: "Druhá přednáška se věnovala tomu, proč se vztek a šok šíří rychleji než pravda, jak s námi pracují algoritmy a jaké triky používají ti, kdo chtějí ovlivnit, co si myslíme: vytržené citace, falešní odborníci, boti nebo tlak na rychlost.",
+        en: "The second talk looked at why anger and shock spread faster than truth, how algorithms work on us, and which tricks people use when they want to shape what we think: quotes ripped from context, fake experts, bots, or pressure to react fast.",
+      },
+      {
+        type: "h2",
+        id: "scrollovani",
+        cs: "Digitální závislost a scrollování",
+        en: "Digital addiction and scrolling",
+      },
+      {
+        type: "p",
+        cs: "Ve třetí přednášce jsme mluvili o tom, proč je tak těžké odložit telefon, jak jsou aplikace navržené, aby nás udržely co nejdéle, a co s tím můžeme udělat každý sám za sebe.",
+        en: "In the third talk we discussed why it is so hard to put the phone down, how apps are designed to keep us for as long as possible, and what each of us can do about it.",
+      },
+      {
+        type: "gallery",
+        items: VIDENSKA_PHOTOS,
+      },
+      {
+        type: "videos",
+        items: [
+          {
+            src: "/photos/news/videnska/prednaska-feed.mp4",
+            poster: "/photos/news/videnska/prednaska-feed.webp",
+            width: 720,
+            height: 1280,
+            caption: {
+              cs: "Jak vzniká tvůj feed — přednáška na Gymnáziu Vídeňská",
+              en: "How your feed is made — a talk at Gymnázium Vídeňská",
+            },
+          },
+          {
+            src: "/photos/news/videnska/prednaska-tlacitka.mp4",
+            poster: "/photos/news/videnska/prednaska-tlacitka.webp",
+            width: 720,
+            height: 1280,
+            caption: {
+              cs: "Sedm automatických tlačítek manipulace",
+              en: "Seven automatic buttons of manipulation",
+            },
+          },
+          {
+            src: "/photos/news/videnska/prednaska-stroj.mp4",
+            poster: "/photos/news/videnska/prednaska-stroj.webp",
+            width: 720,
+            height: 1280,
+            caption: {
+              cs: "Co o tobě stroj sbírá",
+              en: "What the machine collects about you",
+            },
+          },
+        ],
+      },
+      {
+        type: "quote",
+        cs: "Pokud za produkt neplatíš, ty jsi ten produkt.",
+        en: "If you don’t pay for the product, you are the product.",
+        author: {
+          cs: "Z přednášky na Gymnáziu Vídeňská",
+          en: "From the talk at Gymnázium Vídeňská",
+        },
+      },
+      {
+        type: "h2",
+        id: "ohlas",
+        cs: "Ohlasy ze školy",
+        en: "Feedback from the school",
+      },
+      {
+        type: "p",
+        cs: "Přednášky vedl Jan Krejčí, spoluzakladatel a prezident CTRL Europe. Studenti je hodnotili jako velmi zajímavé a dobré ohlasy přišly i od učitelů.",
+        en: "The talks were led by Jan Krejčí, co-founder and President of CTRL Europe. Students rated them as very interesting, and teachers sent positive feedback too.",
+      },
+      {
+        type: "p",
+        cs: "Gymnáziu Brno, Vídeňská děkujeme za pozvání a všem studentům za pozornost a otázky.",
+        en: "Thank you to Gymnázium Brno, Vídeňská for the invitation, and to every student for their attention and questions.",
+      },
+      {
+        type: "h2",
+        cs: "Chcete podobný přednáškový den i na své škole?",
+        en: "Want a similar lecture day at your school?",
+      },
+      {
+        type: "p",
+        cs: [
+          "Ozvěte se nám na ",
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+          ".",
+        ],
+        en: [
+          "Get in touch at ",
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+          ".",
+        ],
+      },
+    ],
+  },
   {
     slug: "den-hejtmanem",
     date: "2026-11-06",
@@ -245,6 +565,203 @@ export const NEWS = [
         type: "p",
         cs: "Děkujeme organizátorům soutěže Den hejtmanem za důvěru a všem soutěžícím přejeme hodně štěstí. Těšíme se na vás!",
         en: "Thank you to the organisers of Den hejtmanem for their trust, and good luck to all the competitors. We look forward to seeing you!",
+      },
+    ],
+  },
+  {
+    slug: "dny-ai-cheb",
+    date: "2026-11-03",
+    published: "2026-11-04",
+    cover: "/photos/news/dnyai/aula-hra.webp",
+    coverWidth: 1024,
+    coverHeight: 768,
+    category: { cs: "Proběhlá akce", en: "Past event" },
+    title: {
+      cs: "Dny AI: studenti z Chebu odhalovali, kdo jim ve volbách lže",
+      en: "AI Days: students from Cheb uncovered who was lying to them in an election",
+    },
+    excerpt: {
+      cs: "Čtyři workshopy, 32 týmů a jeden kandidát, který celý den lhal. Na Dnech AI jsme studentům Gymnázia Cheb ukázali, jak snadno se dá na sítích zmanipulovat volby.",
+      en: "Four workshops, 32 teams and one candidate who lied all day. At AI Days we showed Gymnázium Cheb students how easily an election can be manipulated online.",
+    },
+    meta: {
+      cs: {
+        title: "Dny AI: studenti z Chebu odhalovali, kdo jim ve volbách lže | CTRL Europe",
+        description:
+          "Čtyři workshopy na Gymnáziu Cheb, 32 týmů a hra o fiktivní volby. Studenti odhalovali manipulační triky a večer následovala přednáška v Krajské knihovně Karlovy Vary.",
+        image: "/photos/news/dnyai/aula-hra.webp",
+      },
+      en: {
+        title: "AI Days: Cheb students uncovered who was lying in an election | CTRL Europe",
+        description:
+          "Four workshops at Gymnázium Cheb, 32 teams and a fictional election game. Students uncovered manipulation tricks, followed by an evening talk at the Karlovy Vary Regional Library.",
+        image: "/photos/news/dnyai/aula-hra.webp",
+      },
+    },
+    sections: [
+      {
+        type: "marquee",
+        phrases: {
+          cs: ["Čtyři workshopy.", "32 týmů.", "Jeden kandidát, který lhal."],
+          en: ["Four workshops.", "32 teams.", "One candidate who lied."],
+        },
+      },
+      {
+        type: "p",
+        cs: "Čtyři workshopy, 32 týmů a jeden kandidát, který celý den lhal. Na Dnech AI v Karlovarském kraji jsme studentům Gymnázia Cheb ukázali, jak snadno se dá na sítích zmanipulovat celé volby, a zakončili jsme je přednáškou pro veřejnost v Krajské knihovně Karlovy Vary.",
+        en: "Four workshops, 32 teams and one candidate who lied all day. At AI Days in the Karlovy Vary Region we showed Gymnázium Cheb students how easily an entire election can be manipulated online, and we closed with a public talk at the Karlovy Vary Regional Library.",
+      },
+      {
+        type: "p",
+        cs: "Na pozvání Krajského inovačního centra Karlovarského kraje jsme se 2. a 3. listopadu 2026 zapojili do akce Dny AI. Pro studenty Gymnázia Cheb jsme připravili čtyři devadesátiminutové workshopy, každý zhruba pro 40 studentů. Místo přednášky jsme ale tentokrát postavili hru.",
+        en: "At the invitation of the Karlovy Vary Region Innovation Centre, we joined AI Days on 2 and 3 November 2026. For Gymnázium Cheb students we prepared four ninety-minute workshops, each for about 40 students. Instead of a lecture, this time we built a game.",
+      },
+      {
+        type: "facts",
+        items: [
+          {
+            label: { cs: "Kdy", en: "When" },
+            value: { cs: "2.–3. 11. 2026", en: "2–3 Nov 2026" },
+          },
+          {
+            label: { cs: "Workshopy", en: "Workshops" },
+            value: { cs: "4 × 90 min", en: "4 × 90 min" },
+          },
+          {
+            label: { cs: "Týmy", en: "Teams" },
+            value: { cs: "32", en: "32" },
+          },
+          {
+            label: { cs: "Odhalilo lháře", en: "Found the liar" },
+            value: { cs: "asi 20 týmů", en: "about 20 teams" },
+          },
+        ],
+      },
+      {
+        type: "h2",
+        id: "volby",
+        cs: "Volby, které se nesmí prohrát",
+        en: "An election that must not be lost",
+      },
+      {
+        type: "p",
+        cs: "Studenti se rozdělili do týmů po pěti a stali se redakcemi studentského zpravodaje. Ve fiktivních volbách hejtmana školství kandidovali tři lidé a jeden z nich tajně chystal zavedení školy i v sobotu. Po sítích se přitom celý den šířila videa, články, fotky a „zaručené“ informace o všech třech. Týmy měly 50 minut na to, aby zjistily, kdo jim lže.",
+        en: "Students split into teams of five and became newsrooms for a student paper. In a fictional election for education commissioner, three people were running — and one of them was secretly planning Saturday school. All day, videos, articles, photos and “guaranteed” tips about all three spread online. Teams had 50 minutes to find out who was lying to them.",
+      },
+      {
+        type: "p",
+        cs: "Každá obálka, kterou postupně otevíraly, skrývala jeden z nejčastějších triků manipulace: citaci vytrženou z kontextu, falešného odborníka se zmanipulovaným grafem, starou zprávu vydanou jako novinku, falešný účet, fotku upravenou pomocí umělé inteligence, podvodnou petici sbírající osobní údaje i síť botů. Studenti se je učili rozpoznat tak, že je museli sami odhalit.",
+        en: "Each envelope they opened hid one of the most common manipulation tricks: a quote ripped from context, a fake expert with a doctored chart, an old story dressed up as breaking news, a fake account, an AI-edited photo, a scam petition harvesting personal data, and a bot network. Students learned to spot them by having to uncover them themselves.",
+      },
+      {
+        type: "p",
+        cs: "Tři kandidáty hráli naši lektoři naživo a studenti si je mohli kdykoli vyslechnout. Právě to se ukázalo jako největší tahák: výslechy hru oživily, zvedly motivaci a celá situace díky nim působila mnohem realističtěji.",
+        en: "Our lecturers played the three candidates live, and students could interview them at any time. That turned out to be the biggest draw: the interrogations brought the game to life, raised motivation, and made the whole situation feel far more real.",
+      },
+      {
+        type: "h2",
+        id: "fotky",
+        cs: "Z průběhu workshopů",
+        en: "From the workshops",
+      },
+      {
+        type: "gallery",
+        items: DNY_AI_PHOTOS,
+      },
+      {
+        type: "videos",
+        items: [
+          {
+            src: "/photos/news/dnyai/workshop-mikrofon.mp4",
+            poster: "/photos/news/dnyai/workshop-mikrofon.webp",
+            width: 720,
+            height: 1280,
+            caption: {
+              cs: "Lektor s mikrofonem během workshopu",
+              en: "A lecturer with a microphone during the workshop",
+            },
+          },
+          {
+            src: "/photos/news/dnyai/workshop-studentka.mp4",
+            poster: "/photos/news/dnyai/workshop-studentka.webp",
+            width: 720,
+            height: 1280,
+            caption: {
+              cs: "Studentka u banneru CTRL Europe",
+              en: "A student by the CTRL Europe banner",
+            },
+          },
+        ],
+      },
+      {
+        type: "h2",
+        id: "hlasovani",
+        cs: "Hlasování, které všechno ukázalo",
+        en: "The vote that showed everything",
+      },
+      {
+        type: "p",
+        cs: "Studenti hlasovali dvakrát: hned po úvodní debatě a znovu na konci hry. Po debatě většinou zvítězil sympatický kandidát Daniel Šťastný, tedy právě ten, kdo za celou kampaní lží stál. Na konci hry ale pokaždé vyhrála kandidátka Tereza Vlčková, na kterou se celý den útočilo vytrženými citacemi.",
+        en: "Students voted twice: right after the opening debate and again at the end of the game. After the debate, the likeable candidate Daniel Šťastný usually won — the very person behind the lying campaign. By the end of the game, though, the winner was always Tereza Vlčková, the candidate attacked all day with quotes taken out of context.",
+      },
+      {
+        type: "p",
+        cs: "Z 32 týmů přišlo zhruba 20 na to, kdo za kampaní stojí, a dokázalo to doložit důkazy. A všichni si odnesli tu nejdůležitější zkušenost: jak rychle se dá názor změnit, když člověk reaguje dřív, než si informaci ověří.",
+        en: "Of 32 teams, about 20 worked out who was behind the campaign and backed it up with evidence. And everyone left with the most important lesson: how fast an opinion can flip when you react before you check the information.",
+      },
+      {
+        type: "quote",
+        cs: "Jak rychle se dá názor změnit, když člověk reaguje dřív, než si informaci ověří.",
+        en: "How fast an opinion can flip when you react before you check the information.",
+        author: {
+          cs: "Závěr workshopů na Gymnáziu Cheb",
+          en: "Takeaway from the Gymnázium Cheb workshops",
+        },
+      },
+      {
+        type: "h2",
+        id: "vecer",
+        cs: "Večer pro veřejnost",
+        en: "An evening for the public",
+      },
+      {
+        type: "p",
+        cs: "Na Dnech AI jsme také uskutečnili přednášku pro rodiče a veřejnost v Krajské knihovně Karlovy Vary. Mluvili jsme o dezinformacích, o online manipulaci a o tom, jak fungují algoritmy sociálních sítí. Na přednášku navázala živá debata: o tom, proč v USA stále tolik lidí věří, že je Země placatá, proč telefony nemusí nikoho odposlouchávat, aby věděly, co nám ukázat (stačí jim, jak scrollujeme), jak časté jsou dnes bankovní podvody a hlavně jak o tom všem mluvit se staršími i mladšími v rodině.",
+        en: "At AI Days we also gave a talk for parents and the public at the Karlovy Vary Regional Library. We spoke about disinformation, online manipulation and how social-media algorithms work. A lively debate followed: why so many people in the US still believe the Earth is flat, why phones do not need to listen in to know what to show us (how we scroll is enough), how common banking scams are today, and above all how to talk about all of this with older and younger people in the family.",
+      },
+      {
+        type: "h2",
+        id: "tym",
+        cs: "Kdo za tím stál",
+        en: "Who made it happen",
+      },
+      {
+        type: "p",
+        cs: "Workshopy připravil a vedl lektorský tým CTRL Europe: Jan Krejčí, Iris Maria Zamfir, Robin Kilián, Alžběta Fritzová, Jiří Vítek a Jakub Rašovský.",
+        en: "The workshops were prepared and led by the CTRL Europe lecturer team: Jan Krejčí, Iris Maria Zamfir, Robin Kilián, Alžběta Fritzová, Jiří Vítek and Jakub Rašovský.",
+      },
+      {
+        type: "p",
+        cs: "Děkujeme Krajskému inovačnímu centru Karlovarského kraje za pozvání a důvěru, Gymnáziu Cheb a Krajské knihovně Karlovy Vary za skvělé přijetí, a všem studentům, kteří s námi vyšetřovali až do poslední minuty.",
+        en: "Thanks to the Karlovy Vary Region Innovation Centre for the invitation and trust, to Gymnázium Cheb and the Karlovy Vary Regional Library for the warm welcome, and to every student who investigated with us until the last minute.",
+      },
+      {
+        type: "h2",
+        cs: "Chceš podobný workshop na svou školu?",
+        en: "Want a similar workshop at your school?",
+      },
+      {
+        type: "p",
+        cs: [
+          "Hru o volby a workshopy o dezinformacích a online manipulaci bereme i na další školy — zdarma. Napiš na ",
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+          ".",
+        ],
+        en: [
+          "We also bring the election game and workshops on disinformation and online manipulation to other schools — free of charge. Write to ",
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+          ".",
+        ],
       },
     ],
   },
