@@ -10,6 +10,7 @@ import {
   handleNewsletterUnsubscribe,
 } from './api/_lib/newsletter.js';
 import { handleRunRegisterSubmission } from './api/_lib/handle-run-register.js';
+import { handleChallengeRegisterSubmission } from './api/_lib/handle-challenge-register.js';
 
 function readJsonBody(req) {
   return new Promise((resolve, reject) => {
@@ -59,9 +60,17 @@ function jsonApiDevPlugin(env, routes) {
 
           try {
             const body = await readJsonBody(req);
-            const result = await route.handler(body);
+            const deferred = [];
+            const result = await route.handler(body, {
+              defer: (promise) => deferred.push(promise),
+            });
             res.statusCode = 200;
             res.end(JSON.stringify(result));
+            for (const promise of deferred) {
+              promise.catch((error) => {
+                console.error(`[dev${route.path}] deferred`, error);
+              });
+            }
           } catch (error) {
             if (error.status === 400 || error.status === 409) {
               res.statusCode = error.status;
@@ -110,6 +119,11 @@ export default defineConfig(({ mode }) => {
         {
           path: '/api/run-register',
           handler: handleRunRegisterSubmission,
+          errorMessage: 'Failed to save registration',
+        },
+        {
+          path: '/api/challenge-register',
+          handler: handleChallengeRegisterSubmission,
           errorMessage: 'Failed to save registration',
         },
         {

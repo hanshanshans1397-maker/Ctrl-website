@@ -11,6 +11,8 @@ const TEMP_APPLY_TO_EMAIL = 'ctrleurope@seznam.cz';
 const TEMP_SITE_URL = 'https://ctrleurope.com';
 const TEMP_RUN_SHEETS_WEBHOOK_URL =
   'https://script.google.com/macros/s/AKfycbx-lmy-k0ujqbsfGNJEoUhk582zi1UnODeArt-tgT5aY0CWmduYeo_1ZBldnVezFw-s_g/exec';
+const TEMP_CHALLENGE_SHEETS_WEBHOOK_URL =
+  'https://script.google.com/macros/s/AKfycbzXk21k4a3C-W-1wIX8IWeQJJfEvY3J19RiiIZPSd5P7Lkrhq7HVfLSmccwzluxaVJz/exec';
 
 export function getResendApiKey() {
   return process.env.RESEND_API_KEY || '';
@@ -30,4 +32,8 @@ export function getSiteUrl() {
 
 export function getRunSheetsWebhookUrl() {
   return process.env.RUN_SHEETS_WEBHOOK_URL || TEMP_RUN_SHEETS_WEBHOOK_URL;
+}
+
+export function getChallengeSheetsWebhookUrl() {
+  return process.env.CHALLENGE_SHEETS_WEBHOOK_URL || TEMP_CHALLENGE_SHEETS_WEBHOOK_URL;
 }
