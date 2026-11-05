@@ -784,8 +784,8 @@ export const NEWS = [
             width: 720,
             height: 1280,
             caption: {
-              cs: "Lektor s mikrofonem během workshopu",
-              en: "A lecturer with a microphone during the workshop",
+              cs: "Ústřižek závěrečného shrnutí celého workshopu a projití příkladů dezinformací a manipulací, se kterými se studenti setkali.",
+              en: "A clip from the closing summary of the whole workshop and a walkthrough of the disinformation and manipulation examples the students encountered.",
             },
           },
           {
@@ -794,8 +794,8 @@ export const NEWS = [
             width: 720,
             height: 1280,
             caption: {
-              cs: "Studentka u banneru CTRL Europe",
-              en: "A student by the CTRL Europe banner",
+              cs: "Jedna ze studentek „vyslýchá“ jednoho z našich herců (představitele kandidáta) a diskutuje s ním o jeho předvolebním programu.",
+              en: "One of the students “interrogates” one of our actors (a candidate) and discusses his campaign platform with him.",
             },
           },
         ],
