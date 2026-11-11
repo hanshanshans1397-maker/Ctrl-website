@@ -1,0 +1,38 @@
+# CTRL Europe
+
+> CTRL Europe, z. s. je český spolek, který buduje digitální odolnost nové evropské generace. Učí mladé lidi i dospělé rozpoznat manipulaci, dezinformace a deepfaky a pořádá soutěže, konference, workshopy a komunitní akce.
+> CTRL Europe is a Czech non-profit association building digital resilience for a new European generation. It teaches young people and adults to recognise manipulation, disinformation and deepfakes, and runs competitions, conferences, workshops and community events.
+
+Web je dvojjazyčný (čeština / angličtina), jazyk se přepíná na stránce. The site is bilingual (Czech / English), switched in the page UI.
+
+## Hlavní stránky / Main pages
+
+- [Domů / Home](https://ctrleurope.com/): Poslání a přehled aktivit CTRL Europe.
+- [O nás / About](https://ctrleurope.com/about): Kdo jsme, na co se zaměřujeme a proč.
+- [CTRL Summit 2026](https://ctrleurope.com/summit): Vlajková konference CTRL Europe v Brně.
+- [Workshopy / Workshops](https://ctrleurope.com/workshops): Zážitkové workshopy o manipulaci, dezinformacích a deepfacích pro školy i veřejnost.
+- [Akce / Events](https://ctrleurope.com/events): CTRL RUN, CTRL CHALLENGE, CTRL DAY, CTRL EXCHANGE, CTRL WORKSHOP DAY, CTRL DEBATE.
+- [Aktuality / News](https://ctrleurope.com/news): Novinky, články a oznámení.
+- [Zapojit se / Get involved](https://ctrleurope.com/join): Členství pro jednotlivce, organizace a partnery.
+- [Newsletter](https://ctrleurope.com/newsletter): Přihlášení k odběru novinek.
+- [Zásady ochrany osobních údajů / Privacy](https://ctrleurope.com/privacy)
+
+## Akce / Events
+
+- CTRL RUN: charitativní běh „Odlož ten telefon“. / Charity run "Put the phone down."
+- CTRL CHALLENGE: soutěž pro týmy základních, středních a vysokých škol o manipulaci a dezinformacích. / Competition for school and university teams on manipulation and disinformation.
+- CTRL DAY: studentská konference s odborníky z digitálního světa. / Student conference with digital-world experts.
+- CTRL EXCHANGE: mezinárodní výměny pro členy a partnerské školy. / International exchanges for members and partner schools.
+- CTRL WORKSHOP DAY: den workshopů a debat pro rodiče a veřejnost. / Workshops and talks for parents and the public.
+- CTRL DEBATE: debatní soutěž o digitálních tématech. / Debate competition on digital topics.
+
+## Kontakt / Contact
+
+- E-mail: info@ctrleurope.com
+- Instagram (CZ): https://www.instagram.com/ctrleurope.cz/
+- Instagram (EU): https://www.instagram.com/ctrleurope.eu/
+- TikTok: https://www.tiktok.com/@ctrleurope.cz
+
+## Optional
+
+- [Sitemap](https://ctrleurope.com/sitemap.xml)
