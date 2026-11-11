@@ -50,6 +50,13 @@ export const PARTNER_ORGS = [
     logo: '/partners/podane-ruce.svg',
     href: 'https://podaneruce.cz',
   },
+  {
+    id: 'nordvpn',
+    name: 'NordVPN',
+    nameEn: 'NordVPN',
+    logo: '/partners/nordvpn.png',
+    href: 'https://nordvpn.com/',
+  },
 ];
 
 export const PAST_PARTNERS = [
