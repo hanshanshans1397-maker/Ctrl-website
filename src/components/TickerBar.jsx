@@ -21,8 +21,11 @@ const TICKER_LOGO = {
   "cichnova-brno": "/cichnovabrnofull.png",
 };
 
+// Symbol-only marks get the name beside them, otherwise the ticker
+// shows a shape with no way to tell who it is.
 const TICKER_LABEL = {
   "den-hejtmanem": "Den hejtmanem",
+  nordvpn: "NordVPN",
 };
 
 const PHRASES = [
