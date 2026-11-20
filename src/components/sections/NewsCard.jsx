@@ -8,6 +8,7 @@ export function NewsCard({ article }) {
   const cover = article.cover ?? article.invite;
   const width = article.coverWidth ?? article.inviteWidth ?? 1024;
   const height = article.coverHeight ?? article.inviteHeight ?? 723;
+  const bannerTitle = article.banner?.title ?? article.title;
 
   return (
     <Link
@@ -48,8 +49,8 @@ export function NewsCard({ article }) {
             </div>
             <div className="news-card-banner__copy">
               <span className="news-card-banner__fallback-title">
-                <span className="cs"><NewsTitleText text={article.title.cs} /></span>
-                <span className="en"><NewsTitleText text={article.title.en} /></span>
+                <span className="cs"><NewsTitleText text={bannerTitle.cs} /></span>
+                <span className="en"><NewsTitleText text={bannerTitle.en} /></span>
               </span>
               {article.banner?.lead ? (
                 <span className="news-card-banner__lead">
