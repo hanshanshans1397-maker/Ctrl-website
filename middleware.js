@@ -6,11 +6,15 @@ import {
   getPageMetaForPath,
 } from './shared/pageMetaData.js';
 import { renderOgHtml } from './shared/renderOgHtml.js';
+import { renderAiHtml } from './shared/renderAiHtml.js';
 
 const SITE_ORIGIN = (process.env.SITE_URL || 'https://ctrleurope.com').replace(/\/$/, '');
 
 const SOCIAL_BOT_PATTERN =
   /facebookexternalhit|Facebot|Twitterbot|LinkedInBot|WhatsApp|Slackbot|Discordbot|TelegramBot|Pinterest|Google-Structured-Data-Testing-Tool|bingbot/i;
+
+const AI_BOT_PATTERN =
+  /GPTBot|OAI-SearchBot|ChatGPT-User|ClaudeBot|Claude-SearchBot|Claude-User|anthropic-ai|PerplexityBot|Perplexity-User|Google-Extended|Applebot-Extended|Amazonbot|CCBot|Bytespider|cohere-ai|DuckAssistBot|MistralAI-User|YouBot/i;
 
 export const config = {
   matcher: [
@@ -20,11 +24,22 @@ export const config = {
 
 export default function middleware(request) {
   const userAgent = request.headers.get('user-agent') || '';
+  const url = new URL(request.url);
+
+  if (AI_BOT_PATTERN.test(userAgent)) {
+    return new Response(renderAiHtml({ pathname: url.pathname, origin: SITE_ORIGIN }), {
+      headers: {
+        'Content-Type': 'text/html; charset=utf-8',
+        'Cache-Control': 'public, max-age=3600, s-maxage=86400',
+        Vary: 'User-Agent',
+      },
+    });
+  }
+
   if (!SOCIAL_BOT_PATTERN.test(userAgent)) {
     return;
   }
 
-  const url = new URL(request.url);
   const meta = getPageMetaForPath(url.pathname, 'cs');
   const pageUrl = `${SITE_ORIGIN}${url.pathname}`;
   const image = absoluteOgImage(SITE_ORIGIN, meta);
