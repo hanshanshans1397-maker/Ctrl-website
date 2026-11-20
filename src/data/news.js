@@ -272,9 +272,10 @@ export const NEWS = [
       variant: "watermark",
       mark: { cs: "25", en: "25" },
       date: { cs: "25. listopadu", en: "25 November" },
+      title: { cs: "INNOFORUM 2026", en: "INNOFORUM 2026" },
       lead: {
-        cs: "Startupová zóna konference INNOFORUM 2026",
-        en: "The startup zone at INNOFORUM 2026",
+        cs: "Startupová zóna",
+        en: "Startup zone",
       },
       points: {
         cs: ["DOX Praha", "Od 12:00", "1. patro"],
