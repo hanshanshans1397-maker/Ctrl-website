@@ -265,6 +265,114 @@ const VIDENSKA_PHOTOS = [
 
 export const NEWS = [
   {
+    slug: "innoforum-2026",
+    date: "2026-11-25",
+    published: "2026-11-19",
+    banner: {
+      variant: "watermark",
+      mark: { cs: "25", en: "25" },
+      date: { cs: "25. listopadu", en: "25 November" },
+      lead: {
+        cs: "Startupová zóna konference INNOFORUM 2026",
+        en: "The startup zone at INNOFORUM 2026",
+      },
+      points: {
+        cs: ["DOX Praha", "Od 12:00", "1. patro"],
+        en: ["DOX Prague", "From 12:00", "1st floor"],
+      },
+    },
+    category: { cs: "Konference", en: "Conference" },
+    title: {
+      cs: "CTRL Europe se představí na konferenci INNOFORUM 2026 v pražském DOXu",
+      en: "CTRL Europe will present at the INNOFORUM 2026 conference at Prague's DOX",
+    },
+    excerpt: {
+      cs: "Příští středu 25. listopadu představíme CTRL Europe ve startupové zóně konference INNOFORUM 2026 v pražském DOXu.",
+      en: "Next Wednesday, 25 November, we will present CTRL Europe in the startup zone of the INNOFORUM 2026 conference at DOX in Prague.",
+    },
+    meta: {
+      cs: {
+        title:
+          "CTRL Europe se představí na konferenci INNOFORUM 2026 v pražském DOXu | CTRL Europe",
+        description:
+          "25. listopadu 2026 představíme CTRL Europe ve startupové zóně konference INNOFORUM 2026 v Centru současného umění DOX v Praze, od 12:00.",
+      },
+      en: {
+        title:
+          "CTRL Europe will present at the INNOFORUM 2026 conference at Prague's DOX | CTRL Europe",
+        description:
+          "On 25 November 2026 we will present CTRL Europe in the startup zone of INNOFORUM 2026 at the DOX Centre for Contemporary Art in Prague, from 12:00.",
+      },
+    },
+    sections: [
+      {
+        type: "marquee",
+        phrases: {
+          cs: ["25. listopadu 2026.", "INNOFORUM.", "DOX Praha."],
+          en: ["25 November 2026.", "INNOFORUM.", "DOX Prague."],
+        },
+      },
+      {
+        type: "p",
+        cs: "Příští středu 25. listopadu vyrážíme do Prahy. Na pozvání Středočeského inovačního centra (SIC) představíme CTRL Europe ve startupové zóně konference INNOFORUM 2026, mezi podnikateli, investory a inovátory z celé republiky.",
+        en: "Next Wednesday, 25 November, we are heading to Prague. At the invitation of the Central Bohemian Innovation Center (SIC), we will present CTRL Europe in the startup zone of the INNOFORUM 2026 conference, among entrepreneurs, investors and innovators from across the country.",
+      },
+      {
+        type: "p",
+        cs: "INNOFORUM je každoroční konference, kterou pořádá Středočeské inovační centrum, organizace, která už přes deset let podporuje inovativní firmy a propojuje byznys, výzkum a veřejný sektor. Letošní ročník se uskuteční v Centru současného umění DOX v Praze a zaměří se na to, jak obstát pracovně i mentálně v době umělé inteligence a geopolitického napětí. Konference každoročně přivítá zhruba 250 podnikatelů, zakladatelů startupů, investorů a inovátorů.",
+        en: "INNOFORUM is an annual conference organised by the Central Bohemian Innovation Center, an organisation that has been supporting innovative companies and connecting business, research and the public sector for more than ten years. This year's edition will take place at the DOX Centre for Contemporary Art in Prague and will focus on how to hold your own, both at work and mentally, in a time of artificial intelligence and geopolitical tension. The conference welcomes around 250 entrepreneurs, startup founders, investors and innovators each year.",
+      },
+      {
+        type: "p",
+        cs: "Letos pořadatelé poprvé připravili samostatnou startupovou zónu se stánky, kde se mohou představit nové projekty, ukázat, na čem pracují, a potkat se s lidmi z inovačního prostředí. A mezi nimi bude i CTRL Europe.",
+        en: "This year, for the first time, the organisers have prepared a separate startup zone with stands, where new projects can introduce themselves, show what they are working on, and meet people from the innovation scene. And CTRL Europe will be among them.",
+      },
+      {
+        type: "h2",
+        id: "co-u-nas-uvidite",
+        cs: "Co u nás uvidíte",
+        en: "What you will see at our stand",
+      },
+      {
+        type: "p",
+        cs: "Na našem stánku představíme, jak učíme mladé lidi rozpoznávat dezinformace, deepfaky a online manipulaci a jak pracujeme s tématem digitální závislosti. Na iPadu a notebooku ukážeme naši vlastní webovou aplikaci a konkrétní ukázky toho, co děláme ve školách. Přivezeme i fotky z našich akcí, od workshopů na Dnech AI v Karlovarském kraji po přednášky na brněnských gymnáziích.",
+        en: "At our stand we will present how we teach young people to recognise disinformation, deepfakes and online manipulation, and how we work with the topic of digital addiction. On an iPad and a laptop we will show our own web application and concrete examples of what we do in schools. We will also bring photos from our events, from workshops at AI Days in the Karlovy Vary Region to talks at grammar schools in Brno.",
+      },
+      {
+        type: "p",
+        cs: "Téma letošního INNOFORA nám je blízké. Umělá inteligence mění to, jak pracujeme, ale stejně tak mění to, čemu věříme. A právě na to chceme upozornit: inovace potřebují i lidi, kteří jim rozumí a umí se v nich bezpečně pohybovat. Proto připravujeme mladou generaci, aby technologie ovládala ona, ne technologie ji.",
+        en: "The theme of this year's INNOFORUM is close to us. Artificial intelligence is changing how we work, but it is equally changing what we believe. And that is exactly what we want to point out: innovation also needs people who understand it and can move through it safely. That is why we are preparing the young generation so that they control technology, not the other way around.",
+      },
+      {
+        type: "h2",
+        id: "kde-nas-najdete",
+        cs: "Kde nás najdete",
+        en: "Where to find us",
+      },
+      {
+        type: "facts",
+        items: [
+          {
+            label: { cs: "Kdy", en: "When" },
+            value: { cs: "středa 25. listopadu 2026, od 12:00", en: "Wednesday 25 November 2026, from 12:00" },
+          },
+          {
+            label: { cs: "Kde", en: "Where" },
+            value: {
+              cs: "Centrum současného umění DOX, Poupětova 1, Praha 7 – Holešovice, startupová zóna v 1. patře",
+              en: "DOX Centre for Contemporary Art, Poupětova 1, Prague 7 – Holešovice, startup zone on the 1st floor",
+            },
+          },
+        ],
+      },
+      {
+        type: "p",
+        cs: "Děkujeme Středočeskému inovačnímu centru za pozvání a za dlouhodobou podporu. Pokud budete na INNOFORU, zastavte se u nás, rádi vám ukážeme, co děláme, a probereme možnou spolupráci.",
+        en: "Thank you to the Central Bohemian Innovation Center for the invitation and for its long-term support. If you will be at INNOFORUM, stop by and see us — we will be glad to show you what we do and to talk about possible cooperation.",
+      },
+    ],
+  },
+  {
     slug: "ctrl-challenge-registrace",
     date: "2026-11-05",
     published: "2026-11-05",
