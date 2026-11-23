@@ -16,12 +16,15 @@ import AktualityPage from './pages/AktualityPage';
 import NewsArticlePage from './pages/NewsArticlePage';
 import NotFoundPage from './pages/NotFoundPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import JanKrejciCardPage from './pages/jan-krejci/JanKrejciCardPage';
 
 export default function App() {
   return (
     <LangProvider>
       <BrowserRouter>
         <Routes>
+          {/* Dočasná vizitka — mimo menu, patičku i sitemapu. Nic na ni neodkazuje. */}
+          <Route path="jan-krejci" element={<JanKrejciCardPage />} />
           <Route element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="about" element={<AboutPage />} />
