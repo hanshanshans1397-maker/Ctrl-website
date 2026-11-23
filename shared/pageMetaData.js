@@ -159,6 +159,18 @@ export const PAGE_META = {
         'How CTRL Europe, z. s. collects, uses and protects personal data in line with the GDPR.',
     },
   },
+  janKrejci: {
+    cs: {
+      title: 'Jan Krejčí · CTRL Europe',
+      description:
+        'Online vizitka Jana Krejčího, spoluzakladatele a prezidenta CTRL Europe. Nechte nám kontakt.',
+    },
+    en: {
+      title: 'Jan Krejčí · CTRL Europe',
+      description:
+        'Online vizitka Jana Krejčího, spoluzakladatele a prezidenta CTRL Europe. Nechte nám kontakt.',
+    },
+  },
   'article-template': {
     cs: {
       title: 'Článek | CTRL Europe',
@@ -184,6 +196,7 @@ export const PATH_TO_PAGE_KEY = {
   '/workshops': 'workshops',
   '/events': 'events',
   '/privacy': 'privacy',
+  '/jan-krejci': 'janKrejci',
 };
 
 export const DEFAULT_OG_IMAGE = '/og-image.jpg';

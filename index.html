@@ -68,6 +68,12 @@
       html.dark-hero #root {
         background-color: #0b1020;
       }
+      html.jk-card-route,
+      html.jk-card-route body,
+      html.jk-card-route #root {
+        background-color: #0a0e1a;
+        color: #ece8e3;
+      }
     </style>
     <script>
       (function () {
@@ -84,6 +90,19 @@
         var path = window.location.pathname.replace(/\/+$/, '') || '/';
         if (darkHeroRoutes.indexOf(path) !== -1) {
           document.documentElement.classList.add('dark-hero');
+        }
+        if (path === '/jan-krejci') {
+          document.documentElement.classList.add('jk-card-route');
+          document.title = 'Jan Krejčí · CTRL Europe';
+          var desc = document.querySelector('meta[name="description"]');
+          if (desc) {
+            desc.setAttribute(
+              'content',
+              'Online vizitka Jana Krejčího, spoluzakladatele a prezidenta CTRL Europe. Nechte nám kontakt.',
+            );
+          }
+          var theme = document.querySelector('meta[name="theme-color"]');
+          if (theme) theme.setAttribute('content', '#0a0e1a');
         }
       })();
     </script>
